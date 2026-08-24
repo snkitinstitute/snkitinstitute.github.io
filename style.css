@@ -114,3 +114,18 @@
   .ticket-grid{grid-template-columns:1fr;}
   .rail{width:56px;}
 }
+
+
+/* COURSES */
+
+.courses {
+  ...
+}
+
+.course-grid {
+  ...
+}
+
+.course-card {
+  ...
+}
