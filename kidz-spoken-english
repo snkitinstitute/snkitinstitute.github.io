@@ -46,6 +46,11 @@
       display:block;
     }
 
+    button,
+    input{
+      font:inherit;
+    }
+
     .container{
       width:min(1180px,92%);
       margin:auto;
@@ -102,7 +107,8 @@
       transition:.3s;
     }
 
-    .menu a:hover{
+    .menu a:hover,
+    .menu a.active{
       color:#b7ff00;
     }
 
@@ -110,6 +116,7 @@
       display:flex;
       align-items:center;
       gap:10px;
+      flex-shrink:0;
     }
 
     .offer{
@@ -157,27 +164,19 @@
     .course-hero{
       position:relative;
 
-      min-height:650px;
-
-      display:flex;
-      align-items:center;
-
       overflow:hidden;
 
       background:
-
         radial-gradient(
-          circle at 80% 40%,
-          rgba(183,255,0,.13),
-          transparent 28%
+          circle at 78% 40%,
+          rgba(183,255,0,.14),
+          transparent 30%
         ),
-
         radial-gradient(
           circle at 10% 80%,
           rgba(183,255,0,.06),
           transparent 25%
         ),
-
         #050505;
     }
 
@@ -189,19 +188,40 @@
       width:600px;
       height:600px;
 
-      right:-280px;
+      right:-300px;
       top:50%;
 
       transform:translateY(-50%);
 
-      border:1px solid rgba(183,255,0,.08);
+      border:1px solid rgba(183,255,0,.07);
+
+      border-radius:50%;
+    }
+
+    .course-hero::after{
+      content:"";
+
+      position:absolute;
+
+      width:400px;
+      height:400px;
+
+      right:-200px;
+      top:50%;
+
+      transform:translateY(-50%);
+
+      border:1px solid rgba(183,255,0,.04);
 
       border-radius:50%;
     }
 
     .course-hero-grid{
       position:relative;
+
       z-index:2;
+
+      min-height:650px;
 
       display:grid;
 
@@ -211,20 +231,22 @@
 
       align-items:center;
 
-      gap:70px;
+      gap:65px;
 
       padding:90px 0;
     }
 
 
-    /* HERO CONTENT */
+    /* =====================================================
+       HERO CONTENT
+    ===================================================== */
 
     .course-content small{
-      display:inline-block;
+      display:block;
 
       color:#b7ff00;
 
-      font-size:12px;
+      font-size:11px;
 
       font-weight:800;
 
@@ -261,6 +283,8 @@
       width:7px;
       height:7px;
 
+      flex-shrink:0;
+
       border-radius:50%;
 
       background:#b7ff00;
@@ -285,19 +309,21 @@
     }
 
     .course-description{
+      max-width:620px;
+
       color:#929292;
 
-      font-size:17px;
+      font-size:16px;
 
       line-height:1.85;
-
-      max-width:620px;
 
       margin-bottom:30px;
     }
 
 
-    /* HERO BUTTONS */
+    /* =====================================================
+       HERO BUTTONS
+    ===================================================== */
 
     .hero-buttons{
       display:flex;
@@ -350,7 +376,9 @@
     }
 
 
-    /* COURSE META */
+    /* =====================================================
+       HERO META
+    ===================================================== */
 
     .course-meta{
       display:flex;
@@ -388,7 +416,8 @@
 
 
     /* =====================================================
-       HERO IMAGE
+       HERO VISUAL
+       FIXED — FRAME USED ONLY ONCE
     ===================================================== */
 
     .course-visual{
@@ -404,7 +433,9 @@
     }
 
     .course-frame{
-      position:absolute;
+      position:relative;
+
+      z-index:2;
 
       width:100%;
 
@@ -415,84 +446,59 @@
       filter:
         drop-shadow(
           0 0 35px
-          rgba(183,255,0,.12)
+          rgba(183,255,0,.13)
         );
+
+      transition:.4s;
     }
 
-    .course-frame-back{
-      transform:rotate(5deg);
-
-      opacity:.25;
+    .course-visual:hover .course-frame{
+      transform:translateY(-5px) scale(1.015);
     }
 
-    .course-frame-front{
-      transform:rotate(-3deg);
+    /*
+       Decorative glow behind image
+    */
 
-      opacity:.95;
-    }
+    .course-visual::before{
+      content:"";
 
-    .visual-center{
-      position:relative;
+      position:absolute;
 
-      z-index:5;
-
-      width:270px;
-      height:270px;
-
-      display:flex;
-
-      flex-direction:column;
-
-      align-items:center;
-
-      justify-content:center;
-
-      text-align:center;
-
-      border:
-        1px solid
-        rgba(183,255,0,.28);
-
-      border-radius:50%;
+      width:360px;
+      height:360px;
 
       background:
         radial-gradient(
           circle,
-          rgba(183,255,0,.14),
-          rgba(5,5,5,.96) 68%
+          rgba(183,255,0,.12),
+          transparent 68%
         );
 
-      box-shadow:
+      border-radius:50%;
 
-        0 0 70px
-        rgba(183,255,0,.1),
-
-        inset 0 0 50px
-        rgba(183,255,0,.05);
+      z-index:0;
     }
 
-    .visual-icon{
-      font-size:48px;
+    /*
+       Decorative ring
+    */
 
-      margin-bottom:10px;
-    }
+    .course-visual::after{
+      content:"";
 
-    .visual-center h2{
-      color:#b7ff00;
+      position:absolute;
 
-      font-size:28px;
+      width:440px;
+      height:440px;
 
-      letter-spacing:2px;
+      border:
+        1px solid
+        rgba(183,255,0,.07);
 
-      margin-bottom:7px;
-    }
+      border-radius:50%;
 
-    .visual-center p{
-      color:#999;
-
-      font-size:12px;
-
-      line-height:1.7;
+      z-index:1;
     }
 
 
@@ -504,7 +510,6 @@
       background:#090909;
 
       border-top:1px solid #1b1b1b;
-
       border-bottom:1px solid #1b1b1b;
     }
 
@@ -608,10 +613,9 @@
       display:grid;
 
       grid-template-columns:
-        1fr
-        1fr;
+        repeat(2,1fr);
 
-      gap:25px;
+      gap:20px;
     }
 
     .about-card{
@@ -666,7 +670,7 @@
 
 
     /* =====================================================
-       WHAT YOU WILL LEARN
+       LEARNING
     ===================================================== */
 
     .learning{
@@ -763,6 +767,7 @@
       position:absolute;
 
       left:20px;
+
       top:10px;
       bottom:10px;
 
@@ -779,6 +784,10 @@
       gap:25px;
 
       padding-bottom:35px;
+    }
+
+    .timeline-item:last-child{
+      padding-bottom:0;
     }
 
     .timeline-number{
@@ -826,7 +835,7 @@
 
 
     /* =====================================================
-       PRICE / ADMISSION
+       ADMISSION
     ===================================================== */
 
     .admission{
@@ -845,13 +854,11 @@
       padding:45px;
 
       background:
-
         radial-gradient(
           circle at 90% 10%,
           rgba(183,255,0,.10),
           transparent 35%
         ),
-
         #0d0d0d;
 
       border:1px solid #252525;
@@ -991,13 +998,11 @@
       text-align:center;
 
       background:
-
         radial-gradient(
           circle at center,
           rgba(183,255,0,.13),
           transparent 45%
         ),
-
         #050505;
 
       border-top:1px solid #1b1b1b;
@@ -1117,7 +1122,7 @@
 
         text-align:center;
 
-        gap:30px;
+        gap:35px;
       }
 
       .course-description{
@@ -1134,7 +1139,7 @@
       }
 
       .course-visual{
-        min-height:420px;
+        min-height:430px;
       }
 
       .about-grid{
@@ -1157,6 +1162,8 @@
       .container{
         width:90%;
       }
+
+      /* HEADER */
 
       .nav{
         min-height:70px;
@@ -1183,12 +1190,22 @@
 
       /* HERO */
 
-      .course-hero{
+      .course-hero-grid{
         min-height:auto;
+
+        padding:70px 0 55px;
       }
 
-      .course-hero-grid{
-        padding:70px 0 50px;
+      .course-badge{
+        font-size:10px;
+
+        padding:7px 11px;
+      }
+
+      .course-content small{
+        font-size:9px;
+
+        letter-spacing:1.5px;
       }
 
       .course-content h1{
@@ -1199,6 +1216,8 @@
 
       .course-description{
         font-size:14px;
+
+        line-height:1.75;
       }
 
       .hero-buttons{
@@ -1222,21 +1241,25 @@
         text-align:center;
       }
 
+
+      /* VISUAL */
+
       .course-visual{
-        min-height:340px;
+        min-height:330px;
       }
 
-      .visual-center{
-        width:210px;
-        height:210px;
+      .course-frame{
+        max-width:390px;
       }
 
-      .visual-icon{
-        font-size:38px;
+      .course-visual::before{
+        width:280px;
+        height:280px;
       }
 
-      .visual-center h2{
-        font-size:23px;
+      .course-visual::after{
+        width:330px;
+        height:330px;
       }
 
 
@@ -1279,6 +1302,8 @@
 
       .section-header h2{
         font-size:36px;
+
+        letter-spacing:-1.5px;
       }
 
 
@@ -1361,12 +1386,21 @@
       }
 
       .course-visual{
-        min-height:300px;
+        min-height:290px;
       }
 
-      .visual-center{
-        width:185px;
-        height:185px;
+      .course-frame{
+        max-width:330px;
+      }
+
+      .course-visual::before{
+        width:230px;
+        height:230px;
+      }
+
+      .course-visual::after{
+        width:270px;
+        height:270px;
       }
 
       .offer-grid{
@@ -1422,7 +1456,10 @@
           হোম
         </a>
 
-        <a href="courses.html">
+        <a
+          href="courses.html"
+          class="active"
+        >
           কোর্সসমূহ
         </a>
 
@@ -1546,7 +1583,6 @@
 
             <div class="course-meta">
 
-
               <div class="meta-box">
 
                 <span>
@@ -1598,7 +1634,6 @@
 
               </div>
 
-
             </div>
 
           </div>
@@ -1609,43 +1644,13 @@
 
           <div class="course-visual">
 
+            <!-- Frame 6 শুধু একবার -->
 
             <img
-              class="course-frame course-frame-back"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg"
-              alt=""
-            >
-
-
-            <img
-              class="course-frame course-frame-front"
+              class="course-frame"
               src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg"
               alt="100Days Kidz Spoken English"
             >
-
-
-            <div class="visual-center">
-
-              <div class="visual-icon">
-                🗣️
-              </div>
-
-              <h2>
-                ENGLISH
-              </h2>
-
-              <p>
-
-                Speak with confidence
-                <br>
-                Learn every day
-                <br>
-                Grow together
-
-              </p>
-
-            </div>
-
 
           </div>
 
@@ -1667,7 +1672,6 @@
       <div class="container">
 
         <div class="offer-grid">
-
 
           <div class="offer-item">
 
@@ -1720,7 +1724,6 @@
 
           </div>
 
-
         </div>
 
       </div>
@@ -1736,7 +1739,6 @@
     <section class="section about-course">
 
       <div class="container">
-
 
         <div class="section-header">
 
@@ -1768,7 +1770,6 @@
 
 
         <div class="about-grid">
-
 
           <article class="about-card">
 
@@ -1853,7 +1854,6 @@
 
           </article>
 
-
         </div>
 
       </div>
@@ -1869,7 +1869,6 @@
     <section class="section learning">
 
       <div class="container">
-
 
         <div class="section-header">
 
@@ -1893,7 +1892,6 @@
 
 
         <div class="learning-grid">
-
 
           <div class="learning-item">
 
@@ -2062,7 +2060,6 @@
 
           </div>
 
-
         </div>
 
       </div>
@@ -2078,7 +2075,6 @@
     <section class="section structure">
 
       <div class="container">
-
 
         <div class="section-header">
 
@@ -2110,7 +2106,6 @@
 
 
         <div class="timeline">
-
 
           <div class="timeline-item">
 
@@ -2199,7 +2194,6 @@
 
           </div>
 
-
         </div>
 
       </div>
@@ -2216,9 +2210,7 @@
 
       <div class="container">
 
-
         <div class="admission-box">
-
 
           <div class="admission-content">
 
@@ -2255,10 +2247,13 @@
           <div class="price-box">
 
             <div class="regular">
+
               Regular Price:
+
               <del>
                 ৳12,500
               </del>
+
             </div>
 
             <div class="offer-price">
@@ -2278,7 +2273,6 @@
 
           </div>
 
-
         </div>
 
       </div>
@@ -2294,7 +2288,6 @@
     <section class="section faq">
 
       <div class="container">
-
 
         <div class="section-header">
 
@@ -2318,7 +2311,6 @@
 
 
         <div class="faq-list">
-
 
           <div class="faq-item">
 
@@ -2387,7 +2379,6 @@
 
           </div>
 
-
         </div>
 
       </div>
@@ -2451,7 +2442,6 @@
 
     </section>
 
-
   </main>
 
 
@@ -2464,13 +2454,10 @@
 
     <div class="container footer-inner">
 
-
       <div>
 
         <div class="footer-brand">
-
           SNK <span>IT</span> Institute
-
         </div>
 
         <div class="footer-tagline">
@@ -2486,7 +2473,6 @@
         সর্বস্বত্ব সংরক্ষিত।
 
       </div>
-
 
     </div>
 
