@@ -1828,24 +1828,6 @@ input:focus-visible {
 }
 
 
-/* PAYMENT */
-
-.payment-text{
-  color:#666;
-
-  font-size:12px;
-
-  margin-bottom:14px;
-}
-
-.payment-methods{
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:8px;
-}
-
 .payment-card{
   min-width:95px;
 
@@ -1867,40 +1849,34 @@ input:focus-visible {
 }
 
 .payment-card:hover{
-  border-color:
-    rgba(183,255,0,.35);
-
+  border-color:rgba(183,255,0,.35);
   transform:translateY(-2px);
 }
 
-.payment-card strong{
-  font-size:13px;
-}
-
-.payment-card span{
-  color:#555;
-
-  font-size:9px;
-
-  text-transform:uppercase;
-
-  letter-spacing:.5px;
+.payment-card.bkash{
+  border-color:rgba(226,19,110,.25);
 }
 
 .payment-card.bkash strong{
   color:#e2136e;
 }
 
-.payment-card.visa strong{
-  color:#fff;
-  font-style:italic;
+.payment-card.bkash span{
+  color:#e2136e;
+
+  font-size:11px;
+
+  font-weight:700;
 }
 
+.payment-card.visa strong,
 .payment-card.mastercard strong{
   color:#fff;
 }
 
-
+.payment-card span{
+  font-size:9px;
+}
 /* FOOTER BOTTOM */
 
 .footer-bottom{
