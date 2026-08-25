@@ -1722,3 +1722,266 @@ input:focus-visible {
   }
 
 }
+
+/* =====================================================
+   FOOTER NEW
+===================================================== */
+
+.footer{
+  padding:65px 0 25px;
+
+  background:#050505;
+
+  border-top:1px solid #1b1b1b;
+}
+
+
+.footer-grid{
+  display:grid;
+
+  grid-template-columns:
+    1.4fr
+    1fr
+    1fr;
+
+  gap:60px;
+
+  padding-bottom:50px;
+}
+
+
+/* BRAND */
+
+.footer-brand-area{
+  max-width:380px;
+}
+
+.footer-brand{
+  color:#fff;
+
+  font-size:22px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+}
+
+.footer-brand span{
+  color:#b7ff00;
+}
+
+.footer-tagline{
+  color:#b7ff00;
+
+  font-size:12px;
+
+  margin-top:2px;
+
+  font-weight:700;
+
+  letter-spacing:1px;
+}
+
+.footer-description{
+  color:#666;
+
+  font-size:13px;
+
+  line-height:1.8;
+
+  max-width:340px;
+
+  margin-top:18px;
+}
+
+
+/* FOOTER COLUMNS */
+
+.footer-column h3{
+  color:#fff;
+
+  font-size:14px;
+
+  margin-bottom:18px;
+}
+
+.social-links{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:9px;
+}
+
+.social-links a{
+  color:#777;
+
+  font-size:13px;
+
+  transition:.3s;
+}
+
+.social-links a:hover{
+  color:#b7ff00;
+
+  transform:translateX(4px);
+}
+
+
+/* PAYMENT */
+
+.payment-text{
+  color:#666;
+
+  font-size:12px;
+
+  margin-bottom:14px;
+}
+
+.payment-methods{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:8px;
+}
+
+.payment-card{
+  min-width:95px;
+
+  padding:10px 12px;
+
+  background:#0d0d0d;
+
+  border:1px solid #222;
+
+  border-radius:8px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:2px;
+
+  transition:.3s;
+}
+
+.payment-card:hover{
+  border-color:
+    rgba(183,255,0,.35);
+
+  transform:translateY(-2px);
+}
+
+.payment-card strong{
+  font-size:13px;
+}
+
+.payment-card span{
+  color:#555;
+
+  font-size:9px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.5px;
+}
+
+.payment-card.bkash strong{
+  color:#e2136e;
+}
+
+.payment-card.visa strong{
+  color:#fff;
+  font-style:italic;
+}
+
+.payment-card.mastercard strong{
+  color:#fff;
+}
+
+
+/* FOOTER BOTTOM */
+
+.footer-bottom{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding-top:22px;
+
+  border-top:1px solid #1b1b1b;
+}
+
+.footer-bottom-left,
+.footer-bottom-right{
+  color:#555;
+
+  font-size:11px;
+}
+
+.footer-bottom-right{
+  text-align:right;
+}
+
+
+/* =====================================================
+   FOOTER MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+  .footer{
+    padding:50px 0 22px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+
+    gap:38px;
+
+    padding-bottom:35px;
+  }
+
+  .footer-brand-area{
+    max-width:100%;
+  }
+
+  .footer-description{
+    max-width:100%;
+  }
+
+  .social-links{
+    display:grid;
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:10px;
+  }
+
+  .payment-methods{
+    width:100%;
+  }
+
+  .payment-card{
+    flex:1;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:8px;
+  }
+
+  .footer-bottom-right{
+    text-align:left;
+  }
+
+}
