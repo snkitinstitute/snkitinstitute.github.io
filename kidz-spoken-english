@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>100Days Kidz Spoken English | SNK IT Institute</title>
 
+  <meta
+    name="description"
+    content="100Days Kidz Spoken English — Kidsদের English Speaking, Vocabulary, Pronunciation ও Communication Skill Development Program."
+  >
+
   <style>
 
-    /* ================================
+    /* =====================================================
        RESET
-    ================================= */
+    ===================================================== */
 
     *{
       margin:0;
@@ -27,6 +33,7 @@
       background:#050505;
       color:#fff;
       line-height:1.6;
+      overflow-x:hidden;
     }
 
     a{
@@ -45,19 +52,21 @@
     }
 
 
-    /* ================================
+    /* =====================================================
        HEADER
-    ================================= */
+    ===================================================== */
 
     .header{
       position:sticky;
       top:0;
-      z-index:999;
+      z-index:9999;
 
-      background:rgba(5,5,5,.92);
+      background:rgba(5,5,5,.94);
+
       backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
 
-      border-bottom:1px solid #1d1d1d;
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
 
     .nav{
@@ -70,8 +79,15 @@
       gap:25px;
     }
 
+    .brand{
+      display:flex;
+      align-items:center;
+      flex-shrink:0;
+    }
+
     .brand img{
       width:120px;
+      height:auto;
     }
 
     .menu{
@@ -90,6 +106,27 @@
       color:#b7ff00;
     }
 
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .offer{
+      color:#b7ff00;
+
+      border:1px solid rgba(183,255,0,.25);
+
+      background:rgba(183,255,0,.06);
+
+      padding:9px 13px;
+
+      border-radius:8px;
+
+      font-size:12px;
+      font-weight:700;
+    }
+
     .nav-button{
       background:#b7ff00;
       color:#050505;
@@ -106,62 +143,135 @@
 
     .nav-button:hover{
       transform:translateY(-2px);
-      box-shadow:0 10px 30px rgba(183,255,0,.2);
+
+      box-shadow:
+        0 10px 30px
+        rgba(183,255,0,.2);
     }
 
 
-    /* ================================
+    /* =====================================================
        HERO
-    ================================= */
+    ===================================================== */
 
     .course-hero{
       position:relative;
+
+      min-height:650px;
+
+      display:flex;
+      align-items:center;
+
       overflow:hidden;
 
-      padding:100px 0;
-
       background:
+
         radial-gradient(
-          circle at 80% 30%,
-          rgba(183,255,0,.14),
-          transparent 30%
+          circle at 80% 40%,
+          rgba(183,255,0,.13),
+          transparent 28%
         ),
+
+        radial-gradient(
+          circle at 10% 80%,
+          rgba(183,255,0,.06),
+          transparent 25%
+        ),
+
         #050505;
     }
 
+    .course-hero::before{
+      content:"";
+
+      position:absolute;
+
+      width:600px;
+      height:600px;
+
+      right:-280px;
+      top:50%;
+
+      transform:translateY(-50%);
+
+      border:1px solid rgba(183,255,0,.08);
+
+      border-radius:50%;
+    }
+
     .course-hero-grid{
+      position:relative;
+      z-index:2;
+
       display:grid;
 
       grid-template-columns:
-        1.05fr .95fr;
+        1fr
+        1fr;
 
       align-items:center;
 
       gap:70px;
+
+      padding:90px 0;
     }
 
-    .badge{
+
+    /* HERO CONTENT */
+
+    .course-content small{
+      display:inline-block;
+
+      color:#b7ff00;
+
+      font-size:12px;
+
+      font-weight:800;
+
+      letter-spacing:2px;
+
+      margin-bottom:18px;
+    }
+
+    .course-badge{
       display:inline-flex;
 
-      padding:8px 15px;
+      align-items:center;
 
-      margin-bottom:22px;
-
-      border:1px solid rgba(183,255,0,.25);
-
-      border-radius:50px;
+      gap:8px;
 
       color:#b7ff00;
 
       background:rgba(183,255,0,.06);
 
+      border:1px solid rgba(183,255,0,.25);
+
+      padding:8px 13px;
+
+      border-radius:30px;
+
       font-size:11px;
+
       font-weight:800;
-      letter-spacing:1px;
+
+      margin-bottom:22px;
     }
 
-    .course-hero h1{
-      font-size:clamp(45px,6vw,75px);
+    .course-badge span{
+      width:7px;
+      height:7px;
+
+      border-radius:50%;
+
+      background:#b7ff00;
+
+      box-shadow:
+        0 0 12px #b7ff00;
+    }
+
+    .course-content h1{
+      font-size:
+        clamp(42px,6vw,72px);
 
       line-height:1.05;
 
@@ -170,26 +280,33 @@
       margin-bottom:22px;
     }
 
-    .course-hero h1 span{
+    .course-content h1 span{
       color:#b7ff00;
     }
 
-    .course-hero-text{
-      max-width:650px;
-
-      color:#999;
+    .course-description{
+      color:#929292;
 
       font-size:17px;
 
-      line-height:1.8;
+      line-height:1.85;
+
+      max-width:620px;
 
       margin-bottom:30px;
     }
 
+
+    /* HERO BUTTONS */
+
     .hero-buttons{
       display:flex;
+
       flex-wrap:wrap;
+
       gap:12px;
+
+      margin-bottom:30px;
     }
 
     .btn{
@@ -198,11 +315,12 @@
       align-items:center;
       justify-content:center;
 
-      padding:14px 23px;
+      padding:14px 22px;
 
       border-radius:9px;
 
       font-size:14px;
+
       font-weight:800;
 
       transition:.3s;
@@ -215,7 +333,10 @@
 
     .primary:hover{
       transform:translateY(-3px);
-      box-shadow:0 12px 35px rgba(183,255,0,.2);
+
+      box-shadow:
+        0 12px 35px
+        rgba(183,255,0,.2);
     }
 
     .secondary{
@@ -229,61 +350,172 @@
     }
 
 
-    /* ================================
-       COURSE IMAGE
-    ================================= */
+    /* COURSE META */
 
-    .course-hero-image{
+    .course-meta{
       display:flex;
+
+      flex-wrap:wrap;
+
+      gap:10px;
+    }
+
+    .meta-box{
+      padding:12px 15px;
+
+      background:#0c0c0c;
+
+      border:1px solid #222;
+
+      border-radius:9px;
+    }
+
+    .meta-box span{
+      display:block;
+
+      color:#666;
+
+      font-size:10px;
+
+      margin-bottom:3px;
+    }
+
+    .meta-box strong{
+      color:#fff;
+
+      font-size:13px;
+    }
+
+
+    /* =====================================================
+       HERO IMAGE
+    ===================================================== */
+
+    .course-visual{
+      position:relative;
+
+      min-height:500px;
+
+      display:flex;
+
       align-items:center;
+
       justify-content:center;
     }
 
-    .course-image-box{
-      width:min(480px,100%);
+    .course-frame{
+      position:absolute;
 
-      padding:25px;
+      width:100%;
 
-      border:1px solid rgba(183,255,0,.2);
+      max-width:520px;
 
-      border-radius:24px;
+      height:auto;
+
+      filter:
+        drop-shadow(
+          0 0 35px
+          rgba(183,255,0,.12)
+        );
+    }
+
+    .course-frame-back{
+      transform:rotate(5deg);
+
+      opacity:.25;
+    }
+
+    .course-frame-front{
+      transform:rotate(-3deg);
+
+      opacity:.95;
+    }
+
+    .visual-center{
+      position:relative;
+
+      z-index:5;
+
+      width:270px;
+      height:270px;
+
+      display:flex;
+
+      flex-direction:column;
+
+      align-items:center;
+
+      justify-content:center;
+
+      text-align:center;
+
+      border:
+        1px solid
+        rgba(183,255,0,.28);
+
+      border-radius:50%;
 
       background:
         radial-gradient(
-          circle at center,
-          rgba(183,255,0,.10),
-          #0b0b0b 65%
+          circle,
+          rgba(183,255,0,.14),
+          rgba(5,5,5,.96) 68%
         );
 
       box-shadow:
-        0 0 80px rgba(183,255,0,.07);
+
+        0 0 70px
+        rgba(183,255,0,.1),
+
+        inset 0 0 50px
+        rgba(183,255,0,.05);
     }
 
-    .course-image-box img{
-      width:100%;
-      height:auto;
+    .visual-icon{
+      font-size:48px;
 
-      border-radius:15px;
+      margin-bottom:10px;
+    }
+
+    .visual-center h2{
+      color:#b7ff00;
+
+      font-size:28px;
+
+      letter-spacing:2px;
+
+      margin-bottom:7px;
+    }
+
+    .visual-center p{
+      color:#999;
+
+      font-size:12px;
+
+      line-height:1.7;
     }
 
 
-    /* ================================
-       COURSE INFO
-    ================================= */
+    /* =====================================================
+       OFFER BAR
+    ===================================================== */
 
-    .course-info-bar{
+    .offer-bar{
       background:#090909;
 
       border-top:1px solid #1b1b1b;
+
       border-bottom:1px solid #1b1b1b;
     }
 
-    .info-grid{
+    .offer-grid{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+
+      grid-template-columns:
+        repeat(4,1fr);
     }
 
-    .info-item{
+    .offer-item{
       padding:25px 15px;
 
       text-align:center;
@@ -291,69 +523,72 @@
       border-right:1px solid #1b1b1b;
     }
 
-    .info-item:last-child{
+    .offer-item:last-child{
       border-right:0;
     }
 
-    .info-item strong{
+    .offer-item strong{
       display:block;
 
       color:#b7ff00;
 
-      font-size:20px;
+      font-size:22px;
 
-      margin-bottom:4px;
+      margin-bottom:3px;
     }
 
-    .info-item span{
+    .offer-item span{
       color:#777;
+
       font-size:12px;
     }
 
 
-    /* ================================
+    /* =====================================================
        COMMON SECTION
-    ================================= */
+    ===================================================== */
 
     .section{
       padding:100px 0;
     }
 
-    .section-title{
+    .section-header{
       max-width:750px;
 
       margin-bottom:50px;
     }
 
-    .section-title small{
+    .section-header small{
       display:block;
 
       color:#b7ff00;
 
-      font-size:11px;
+      font-size:12px;
+
       font-weight:800;
 
       letter-spacing:2px;
 
-      margin-bottom:12px;
+      margin-bottom:13px;
     }
 
-    .section-title h2{
-      font-size:clamp(35px,5vw,55px);
+    .section-header h2{
+      font-size:
+        clamp(36px,5vw,58px);
 
-      line-height:1.1;
+      line-height:1.08;
 
       letter-spacing:-2px;
 
-      margin-bottom:15px;
+      margin-bottom:16px;
     }
 
-    .section-title h2 span{
+    .section-header h2 span{
       color:#b7ff00;
     }
 
-    .section-title p{
-      color:#888;
+    .section-header p{
+      color:#858585;
 
       font-size:15px;
 
@@ -361,42 +596,67 @@
     }
 
 
-    /* ================================
-       COURSE OVERVIEW
-    ================================= */
+    /* =====================================================
+       ABOUT COURSE
+    ===================================================== */
 
-    .overview{
+    .about-course{
       background:#050505;
     }
 
-    .overview-grid{
+    .about-grid{
       display:grid;
 
       grid-template-columns:
-        1fr 1fr;
+        1fr
+        1fr;
 
-      gap:20px;
+      gap:25px;
     }
 
-    .overview-card{
-      padding:30px;
+    .about-card{
+      padding:32px;
 
-      background:#0c0c0c;
+      background:#0b0b0b;
 
       border:1px solid #202020;
 
       border-radius:18px;
+
+      transition:.3s;
     }
 
-    .overview-card h3{
-      color:#fff;
+    .about-card:hover{
+      border-color:
+        rgba(183,255,0,.35);
 
-      font-size:21px;
+      transform:translateY(-4px);
+    }
+
+    .about-icon{
+      width:55px;
+      height:55px;
+
+      display:grid;
+
+      place-items:center;
+
+      background:rgba(183,255,0,.08);
+
+      border-radius:14px;
+
+      font-size:25px;
+
+      margin-bottom:20px;
+    }
+
+    .about-card h3{
+      font-size:22px;
 
       margin-bottom:12px;
     }
 
-    .overview-card p{
+    .about-card p{
       color:#858585;
 
       font-size:14px;
@@ -405,15 +665,15 @@
     }
 
 
-    /* ================================
+    /* =====================================================
        WHAT YOU WILL LEARN
-    ================================= */
+    ===================================================== */
 
-    .learn{
+    .learning{
       background:#080808;
     }
 
-    .learn-grid{
+    .learning-grid{
       display:grid;
 
       grid-template-columns:
@@ -422,126 +682,184 @@
       gap:15px;
     }
 
-    .learn-item{
+    .learning-item{
       display:flex;
+
       align-items:flex-start;
 
       gap:15px;
 
-      padding:22px;
+      padding:20px;
 
       background:#101010;
 
       border:1px solid #222;
 
-      border-radius:14px;
+      border-radius:13px;
+
+      transition:.3s;
     }
 
-    .learn-icon{
-      width:40px;
-      height:40px;
+    .learning-item:hover{
+      border-color:
+        rgba(183,255,0,.35);
 
+      transform:translateY(-3px);
+    }
+
+    .check{
       flex-shrink:0;
 
+      width:30px;
+      height:30px;
+
       display:grid;
+
       place-items:center;
 
       color:#050505;
 
       background:#b7ff00;
 
-      border-radius:10px;
+      border-radius:50%;
+
+      font-size:14px;
 
       font-weight:900;
     }
 
-    .learn-item h3{
-      font-size:16px;
+    .learning-item h3{
+      font-size:15px;
 
       margin-bottom:4px;
     }
 
-    .learn-item p{
+    .learning-item p{
       color:#777;
 
-      font-size:13px;
+      font-size:12px;
+
+      line-height:1.6;
     }
 
 
-    /* ================================
-       COURSE MODULES
-    ================================= */
+    /* =====================================================
+       COURSE STRUCTURE
+    ===================================================== */
 
-    .modules{
+    .structure{
       background:#050505;
     }
 
-    .module-list{
+    .timeline{
+      position:relative;
+
+      max-width:850px;
+    }
+
+    .timeline::before{
+      content:"";
+
+      position:absolute;
+
+      left:20px;
+      top:10px;
+      bottom:10px;
+
+      width:1px;
+
+      background:#2a2a2a;
+    }
+
+    .timeline-item{
+      position:relative;
+
+      display:flex;
+
+      gap:25px;
+
+      padding-bottom:35px;
+    }
+
+    .timeline-number{
+      position:relative;
+
+      z-index:2;
+
+      flex-shrink:0;
+
+      width:41px;
+      height:41px;
+
       display:grid;
 
-      grid-template-columns:
-        repeat(3,1fr);
+      place-items:center;
 
-      gap:15px;
+      color:#050505;
+
+      background:#b7ff00;
+
+      border-radius:50%;
+
+      font-size:13px;
+
+      font-weight:900;
     }
 
-    .module{
-      padding:25px;
-
-      background:#0b0b0b;
-
-      border:1px solid #202020;
-
-      border-radius:16px;
+    .timeline-content{
+      padding:5px 0;
     }
 
-    .module-number{
-      color:#b7ff00;
+    .timeline-content h3{
+      font-size:19px;
 
-      font-size:11px;
-      font-weight:800;
-
-      letter-spacing:1px;
-
-      margin-bottom:10px;
+      margin-bottom:7px;
     }
 
-    .module h3{
-      font-size:18px;
-
-      margin-bottom:8px;
-    }
-
-    .module p{
+    .timeline-content p{
       color:#777;
 
       font-size:13px;
 
-      line-height:1.7;
+      line-height:1.75;
     }
 
 
-    /* ================================
-       PRICE CTA
-    ================================= */
+    /* =====================================================
+       PRICE / ADMISSION
+    ===================================================== */
 
-    .price-section{
-      padding:100px 0;
+    .admission{
+      background:#080808;
+    }
+
+    .admission-box{
+      display:grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap:30px;
+
+      padding:45px;
 
       background:
-        radial-gradient(
-          circle at center,
-          rgba(183,255,0,.12),
-          transparent 45%
-        ),
-        #050505;
 
-      text-align:center;
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(183,255,0,.10),
+          transparent 35%
+        ),
+
+        #0d0d0d;
+
+      border:1px solid #252525;
+
+      border-radius:22px;
     }
 
-    .price-section small{
-      display:block;
-
+    .admission-content small{
       color:#b7ff00;
 
       font-size:11px;
@@ -549,48 +867,198 @@
       font-weight:800;
 
       letter-spacing:2px;
-
-      margin-bottom:12px;
     }
 
-    .price-section h2{
-      font-size:clamp(35px,5vw,55px);
+    .admission-content h2{
+      font-size:42px;
 
-      margin-bottom:15px;
+      line-height:1.1;
+
+      margin:12px 0 15px;
     }
 
-    .price{
+    .admission-content p{
+      color:#858585;
+
+      font-size:14px;
+
+      line-height:1.8;
+    }
+
+    .price-box{
       display:flex;
 
-      align-items:center;
+      flex-direction:column;
+
+      justify-content:center;
+
+      padding:30px;
+
+      background:#080808;
+
+      border:1px solid #222;
+
+      border-radius:16px;
+
+      text-align:center;
+    }
+
+    .regular{
+      color:#555;
+
+      font-size:14px;
+
+      margin-bottom:3px;
+    }
+
+    .regular del{
+      text-decoration:line-through;
+    }
+
+    .offer-price{
+      color:#b7ff00;
+
+      font-size:48px;
+
+      font-weight:900;
+
+      line-height:1.1;
+
+      margin-bottom:8px;
+    }
+
+    .limited{
+      color:#777;
+
+      font-size:12px;
+
+      margin-bottom:20px;
+    }
+
+    .price-box .btn{
+      width:100%;
+    }
+
+
+    /* =====================================================
+       FAQ
+    ===================================================== */
+
+    .faq{
+      background:#050505;
+    }
+
+    .faq-list{
+      max-width:850px;
+    }
+
+    .faq-item{
+      margin-bottom:10px;
+
+      padding:22px;
+
+      background:#0c0c0c;
+
+      border:1px solid #202020;
+
+      border-radius:12px;
+    }
+
+    .faq-item h3{
+      color:#fff;
+
+      font-size:16px;
+
+      margin-bottom:7px;
+    }
+
+    .faq-item p{
+      color:#777;
+
+      font-size:13px;
+
+      line-height:1.75;
+    }
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .cta{
+      padding:105px 0;
+
+      text-align:center;
+
+      background:
+
+        radial-gradient(
+          circle at center,
+          rgba(183,255,0,.13),
+          transparent 45%
+        ),
+
+        #050505;
+
+      border-top:1px solid #1b1b1b;
+    }
+
+    .cta small{
+      color:#b7ff00;
+
+      font-size:11px;
+
+      font-weight:800;
+
+      letter-spacing:2px;
+    }
+
+    .cta h2{
+      font-size:
+        clamp(40px,6vw,68px);
+
+      line-height:1.05;
+
+      letter-spacing:-3px;
+
+      margin:15px 0 18px;
+    }
+
+    .cta h2 span{
+      color:#b7ff00;
+    }
+
+    .cta p{
+      max-width:600px;
+
+      margin:0 auto 28px;
+
+      color:#858585;
+
+      font-size:15px;
+    }
+
+    .cta-buttons{
+      display:flex;
+
       justify-content:center;
 
       gap:12px;
 
-      margin:20px 0 30px;
-    }
-
-    .price del{
-      color:#555;
-      font-size:18px;
-    }
-
-    .price strong{
-      color:#b7ff00;
-      font-size:40px;
+      flex-wrap:wrap;
     }
 
 
-    /* ================================
+    /* =====================================================
        FOOTER
-    ================================= */
+    ===================================================== */
 
     .footer{
       padding:40px 0;
 
-      border-top:1px solid #1b1b1b;
-
       background:#050505;
+
+      border-top:1px solid #1b1b1b;
     }
 
     .footer-inner{
@@ -604,7 +1072,10 @@
     }
 
     .footer-brand{
+      color:#fff;
+
       font-size:18px;
+
       font-weight:800;
     }
 
@@ -614,22 +1085,30 @@
 
     .footer-tagline{
       color:#666;
+
       font-size:12px;
     }
 
     .copyright{
       color:#666;
+
       font-size:12px;
+
+      text-align:right;
     }
 
 
-    /* ================================
-       RESPONSIVE
-    ================================= */
+    /* =====================================================
+       TABLET
+    ===================================================== */
 
-    @media(max-width:900px){
+    @media(max-width:950px){
 
       .menu{
+        gap:15px;
+      }
+
+      .offer{
         display:none;
       }
 
@@ -638,10 +1117,10 @@
 
         text-align:center;
 
-        gap:45px;
+        gap:30px;
       }
 
-      .course-hero-text{
+      .course-description{
         margin-left:auto;
         margin-right:auto;
       }
@@ -650,19 +1129,34 @@
         justify-content:center;
       }
 
-      .course-hero-image{
-        max-width:500px;
-        margin:auto;
+      .course-meta{
+        justify-content:center;
       }
 
-      .module-list{
-        grid-template-columns:repeat(2,1fr);
+      .course-visual{
+        min-height:420px;
+      }
+
+      .about-grid{
+        grid-template-columns:1fr;
+      }
+
+      .admission-box{
+        grid-template-columns:1fr;
       }
 
     }
 
 
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
     @media(max-width:700px){
+
+      .container{
+        width:90%;
+      }
 
       .nav{
         min-height:70px;
@@ -672,22 +1166,39 @@
         width:105px;
       }
 
+      .menu{
+        display:none;
+      }
+
+      .header-actions{
+        margin-left:auto;
+      }
+
       .nav-button{
         padding:9px 13px;
+
         font-size:11px;
       }
 
+
+      /* HERO */
+
       .course-hero{
-        padding:70px 0;
+        min-height:auto;
       }
 
-      .course-hero h1{
+      .course-hero-grid{
+        padding:70px 0 50px;
+      }
+
+      .course-content h1{
         font-size:45px;
+
         letter-spacing:-2px;
       }
 
-      .course-hero-text{
-        font-size:15px;
+      .course-description{
+        font-size:14px;
       }
 
       .hero-buttons{
@@ -698,67 +1209,204 @@
         width:100%;
       }
 
-      .info-grid{
-        grid-template-columns:repeat(2,1fr);
+      .course-meta{
+        display:grid;
+
+        grid-template-columns:
+          repeat(2,1fr);
+
+        width:100%;
       }
 
-      .info-item{
+      .meta-box{
+        text-align:center;
+      }
+
+      .course-visual{
+        min-height:340px;
+      }
+
+      .visual-center{
+        width:210px;
+        height:210px;
+      }
+
+      .visual-icon{
+        font-size:38px;
+      }
+
+      .visual-center h2{
+        font-size:23px;
+      }
+
+
+      /* OFFER */
+
+      .offer-grid{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .offer-item{
+        padding:20px 10px;
+
         border-bottom:1px solid #1b1b1b;
       }
 
-      .info-item:nth-child(2){
+      .offer-item:nth-child(2){
         border-right:0;
       }
 
-      .info-item:nth-child(3){
+      .offer-item:nth-child(3),
+      .offer-item:nth-child(4){
         border-bottom:0;
       }
 
-      .info-item:nth-child(4){
+      .offer-item:nth-child(4){
         border-right:0;
-        border-bottom:0;
       }
+
+
+      /* SECTION */
 
       .section{
         padding:75px 0;
       }
 
-      .overview-grid,
-      .learn-grid{
+      .section-header{
+        margin-bottom:35px;
+      }
+
+      .section-header h2{
+        font-size:36px;
+      }
+
+
+      /* LEARNING */
+
+      .learning-grid{
         grid-template-columns:1fr;
       }
 
-      .module-list{
-        grid-template-columns:1fr;
+      .learning-item{
+        padding:17px;
       }
 
-      .price-section{
+
+      /* ADMISSION */
+
+      .admission-box{
+        padding:25px;
+
+        gap:25px;
+      }
+
+      .admission-content h2{
+        font-size:34px;
+      }
+
+      .offer-price{
+        font-size:42px;
+      }
+
+
+      /* CTA */
+
+      .cta{
         padding:75px 0;
       }
 
+      .cta h2{
+        font-size:42px;
+
+        letter-spacing:-2px;
+      }
+
+      .cta-buttons{
+        flex-direction:column;
+      }
+
+      .cta-buttons .btn{
+        width:100%;
+      }
+
+
+      /* FOOTER */
+
       .footer-inner{
         flex-direction:column;
+
         align-items:flex-start;
+      }
+
+      .copyright{
+        text-align:left;
+      }
+
+    }
+
+
+    /* =====================================================
+       VERY SMALL MOBILE
+    ===================================================== */
+
+    @media(max-width:400px){
+
+      .course-content h1{
+        font-size:39px;
+      }
+
+      .course-meta{
+        grid-template-columns:1fr;
+      }
+
+      .course-visual{
+        min-height:300px;
+      }
+
+      .visual-center{
+        width:185px;
+        height:185px;
+      }
+
+      .offer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .offer-item,
+      .offer-item:nth-child(3),
+      .offer-item:nth-child(4){
+        border-right:0;
+
+        border-bottom:1px solid #1b1b1b;
+      }
+
+      .offer-item:last-child{
+        border-bottom:0;
       }
 
     }
 
   </style>
+
 </head>
 
 
 <body>
 
 
-  <!-- ==========================================
+  <!-- =====================================================
        HEADER
-  =========================================== -->
+  ===================================================== -->
 
   <header class="header">
 
     <div class="container nav">
 
-      <a href="index.html" class="brand">
+      <a
+        href="index.html"
+        class="brand"
+      >
 
         <img
           src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
@@ -778,23 +1426,34 @@
           কোর্সসমূহ
         </a>
 
-        <a href="index.html#about">
+        <a href="about.html">
           আমাদের সম্পর্কে
         </a>
 
-        <a href="index.html#contact">
+        <a href="contact.html">
           যোগাযোগ
         </a>
 
       </nav>
 
 
-      <a
-        href="index.html#contact"
-        class="nav-button"
-      >
-        ভর্তি করুন →
-      </a>
+      <div class="header-actions">
+
+        <a
+          href="courses.html"
+          class="offer"
+        >
+          🎁 Special Offer
+        </a>
+
+        <a
+          href="admission.html"
+          class="nav-button"
+        >
+          ভর্তি করুন →
+        </a>
+
+      </div>
 
     </div>
 
@@ -802,616 +1461,1004 @@
 
 
 
-  <!-- ==========================================
-       HERO
-  =========================================== -->
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
 
-  <section class="course-hero">
-
-    <div class="container">
-
-      <div class="course-hero-grid">
+  <main>
 
 
-        <!-- LEFT -->
+    <!-- ===================================================
+         HERO
+    =================================================== -->
 
-        <div>
+    <section class="course-hero">
 
-          <div class="badge">
-            100 DAYS • KIDS PROGRAM
+      <div class="container">
+
+        <div class="course-hero-grid">
+
+
+          <!-- CONTENT -->
+
+          <div class="course-content">
+
+            <div class="course-badge">
+
+              <span></span>
+
+              100 DAYS KIDS PROGRAM
+
+            </div>
+
+
+            <small>
+              COMMUNICATION • CONFIDENCE • ENGLISH
+            </small>
+
+
+            <h1>
+
+              100Days
+
+              <br>
+
+              <span>
+                Kidz Spoken English
+              </span>
+
+            </h1>
+
+
+            <p class="course-description">
+
+              শিশুদের English speaking, vocabulary,
+              pronunciation এবং everyday communication
+              skill উন্নত করার জন্য তৈরি একটি
+              structured 100-day learning program।
+
+              আনন্দের সাথে English শেখা এবং
+              confidently কথা বলার অভ্যাস তৈরি করাই
+              এই program-এর মূল লক্ষ্য।
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+              <a
+                href="admission.html"
+                class="btn primary"
+              >
+                ভর্তি হতে চাই →
+              </a>
+
+
+              <a
+                href="contact.html"
+                class="btn secondary"
+              >
+                বিস্তারিত জানতে যোগাযোগ করুন
+              </a>
+
+            </div>
+
+
+            <div class="course-meta">
+
+
+              <div class="meta-box">
+
+                <span>
+                  DURATION
+                </span>
+
+                <strong>
+                  100 Days
+                </strong>
+
+              </div>
+
+
+              <div class="meta-box">
+
+                <span>
+                  PROGRAM
+                </span>
+
+                <strong>
+                  Kids English
+                </strong>
+
+              </div>
+
+
+              <div class="meta-box">
+
+                <span>
+                  START DATE
+                </span>
+
+                <strong>
+                  15 November
+                </strong>
+
+              </div>
+
+
+              <div class="meta-box">
+
+                <span>
+                  OFFER PRICE
+                </span>
+
+                <strong>
+                  ৳6,500
+                </strong>
+
+              </div>
+
+
+            </div>
+
           </div>
 
 
-          <h1>
 
-            100Days
+          <!-- VISUAL -->
 
-            <br>
+          <div class="course-visual">
 
-            <span>
-              Kidz Spoken English
-            </span>
-
-          </h1>
-
-
-          <p class="course-hero-text">
-
-            শিশুদের English speaking,
-            vocabulary, pronunciation এবং
-            communication skill উন্নয়নের জন্য
-            structured 100 Days learning program।
-
-            আনন্দের সাথে English শেখার মাধ্যমে
-            confidence তৈরি করুন।
-
-          </p>
-
-
-          <div class="hero-buttons">
-
-            <a
-              href="index.html#contact"
-              class="btn primary"
-            >
-              ভর্তি করুন →
-            </a>
-
-
-            <a
-              href="courses.html"
-              class="btn secondary"
-            >
-              ← সব কোর্স
-            </a>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- RIGHT IMAGE -->
-
-        <div class="course-hero-image">
-
-          <div class="course-image-box">
 
             <img
+              class="course-frame course-frame-back"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg"
+              alt=""
+            >
+
+
+            <img
+              class="course-frame course-frame-front"
               src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg"
               alt="100Days Kidz Spoken English"
             >
 
+
+            <div class="visual-center">
+
+              <div class="visual-icon">
+                🗣️
+              </div>
+
+              <h2>
+                ENGLISH
+              </h2>
+
+              <p>
+
+                Speak with confidence
+                <br>
+                Learn every day
+                <br>
+                Grow together
+
+              </p>
+
+            </div>
+
+
           </div>
 
-        </div>
 
+        </div>
 
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
 
-  <!-- ==========================================
-       INFO
-  =========================================== -->
+    <!-- ===================================================
+         OFFER BAR
+    =================================================== -->
 
-  <section class="course-info-bar">
+    <section class="offer-bar">
 
-    <div class="container">
+      <div class="container">
 
-      <div class="info-grid">
+        <div class="offer-grid">
 
 
-        <div class="info-item">
+          <div class="offer-item">
 
-          <strong>
-            100 Days
-          </strong>
+            <strong>
+              100
+            </strong>
 
-          <span>
-            Course Duration
-          </span>
+            <span>
+              Days Learning
+            </span>
+
+          </div>
+
+
+          <div class="offer-item">
+
+            <strong>
+              Kids
+            </strong>
+
+            <span>
+              Friendly Program
+            </span>
+
+          </div>
+
+
+          <div class="offer-item">
+
+            <strong>
+              ৳6,500
+            </strong>
+
+            <span>
+              Special Offer
+            </span>
+
+          </div>
+
+
+          <div class="offer-item">
+
+            <strong>
+              15 Nov
+            </strong>
+
+            <span>
+              Program Start
+            </span>
+
+          </div>
+
 
         </div>
-
-
-        <div class="info-item">
-
-          <strong>
-            Kids
-          </strong>
-
-          <span>
-            Target Learners
-          </span>
-
-        </div>
-
-
-        <div class="info-item">
-
-          <strong>
-            English
-          </strong>
-
-          <span>
-            Spoken Skill
-          </span>
-
-        </div>
-
-
-        <div class="info-item">
-
-          <strong>
-            Practical
-          </strong>
-
-          <span>
-            Learning Method
-          </span>
-
-        </div>
-
 
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
 
-  <!-- ==========================================
-       OVERVIEW
-  =========================================== -->
+    <!-- ===================================================
+         ABOUT COURSE
+    =================================================== -->
 
-  <section class="section overview">
+    <section class="section about-course">
 
-    <div class="container">
-
-
-      <div class="section-title">
-
-        <small>
-          COURSE OVERVIEW
-        </small>
-
-        <h2>
-
-          English শেখা হবে
-
-          <br>
-
-          <span>
-            সহজ ও আনন্দময়।
-          </span>
-
-        </h2>
-
-        <p>
-
-          শিশুদের বয়স ও শেখার উপযোগী করে
-          English communication-এর গুরুত্বপূর্ণ
-          skillগুলো ধাপে ধাপে শেখানো হবে।
-
-        </p>
-
-      </div>
+      <div class="container">
 
 
-      <div class="overview-grid">
+        <div class="section-header">
 
+          <small>
+            ABOUT THE PROGRAM
+          </small>
 
-        <div class="overview-card">
+          <h2>
 
-          <h3>
-            🎯 আমাদের লক্ষ্য
-          </h3>
+            English শেখা হবে
+
+            <br>
+
+            <span>
+              সহজ ও আনন্দময়।
+            </span>
+
+          </h2>
 
           <p>
 
-            শিশুদের English বলার confidence
-            বৃদ্ধি করা এবং দৈনন্দিন জীবনে
-            সহজে English ব্যবহার করার অভ্যাস
-            তৈরি করা।
+            শিশুদের বয়স ও learning ability বিবেচনা করে
+            English communication skill develop করার
+            জন্য এই program সাজানো হয়েছে।
 
           </p>
 
         </div>
 
 
-        <div class="overview-card">
-
-          <h3>
-            🌟 কেন এই কোর্স?
-          </h3>
-
-          <p>
-
-            শুধু grammar মুখস্থ নয়—
-            speaking practice, vocabulary,
-            pronunciation এবং real-life
-            communication-এর উপর গুরুত্ব দেওয়া হবে।
-
-          </p>
-
-        </div>
+        <div class="about-grid">
 
 
-      </div>
+          <article class="about-card">
 
-    </div>
-
-  </section>
-
-
-
-  <!-- ==========================================
-       WHAT YOU WILL LEARN
-  =========================================== -->
-
-  <section class="section learn">
-
-    <div class="container">
-
-
-      <div class="section-title">
-
-        <small>
-          WHAT KIDS WILL LEARN
-        </small>
-
-        <h2>
-
-          100 দিনে তৈরি হবে
-
-          <br>
-
-          <span>
-            Strong English Foundation
-          </span>
-
-        </h2>
-
-      </div>
-
-
-      <div class="learn-grid">
-
-
-        <div class="learn-item">
-
-          <div class="learn-icon">
-            ✓
-          </div>
-
-          <div>
+            <div class="about-icon">
+              🗣️
+            </div>
 
             <h3>
               Spoken English
             </h3>
 
             <p>
-              দৈনন্দিন কথোপকথনে English ব্যবহার।
+
+              দৈনন্দিন জীবনে ব্যবহৃত English words,
+              sentences এবং conversations-এর মাধ্যমে
+              শিশুদের speaking confidence তৈরি করা হবে।
+
             </p>
 
-          </div>
-
-        </div>
+          </article>
 
 
-        <div class="learn-item">
+          <article class="about-card">
 
-          <div class="learn-icon">
-            ✓
-          </div>
-
-          <div>
-
-            <h3>
-              Vocabulary
-            </h3>
-
-            <p>
-              প্রয়োজনীয় শব্দ ও বাক্য শেখা।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="learn-item">
-
-          <div class="learn-icon">
-            ✓
-          </div>
-
-          <div>
-
-            <h3>
-              Pronunciation
-            </h3>
-
-            <p>
-              সঠিক pronunciation ও speaking practice।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="learn-item">
-
-          <div class="learn-icon">
-            ✓
-          </div>
-
-          <div>
-
-            <h3>
-              Communication
-            </h3>
-
-            <p>
-              বাস্তব জীবনের communication skill।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="learn-item">
-
-          <div class="learn-icon">
-            ✓
-          </div>
-
-          <div>
+            <div class="about-icon">
+              🎯
+            </div>
 
             <h3>
               Confidence Building
             </h3>
 
             <p>
-              English বলার ভয় দূর করে confidence তৈরি।
+
+              English বলতে ভয় বা hesitation কমিয়ে
+              শিশুদের confidently communication করার
+              অভ্যাস তৈরি করা হবে।
+
             </p>
 
-          </div>
-
-        </div>
+          </article>
 
 
-        <div class="learn-item">
+          <article class="about-card">
 
-          <div class="learn-icon">
-            ✓
-          </div>
+            <div class="about-icon">
+              📚
+            </div>
 
-          <div>
+            <h3>
+              Vocabulary Development
+            </h3>
+
+            <p>
+
+              প্রয়োজনীয় everyday vocabulary শেখানোর
+              মাধ্যমে শিশুদের English word bank
+              gradually শক্তিশালী করা হবে।
+
+            </p>
+
+          </article>
+
+
+          <article class="about-card">
+
+            <div class="about-icon">
+              🌟
+            </div>
 
             <h3>
               Fun Learning
             </h3>
 
             <p>
-              Interactive ও engaging learning activities।
+
+              Interactive activities, practice এবং
+              engaging learning experience-এর মাধ্যমে
+              English শেখাকে enjoyable করা হবে।
+
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         WHAT YOU WILL LEARN
+    =================================================== -->
+
+    <section class="section learning">
+
+      <div class="container">
+
+
+        <div class="section-header">
+
+          <small>
+            WHAT KIDS WILL LEARN
+          </small>
+
+          <h2>
+
+            100 দিনে তৈরি হবে
+
+            <br>
+
+            <span>
+              English Communication Skill।
+            </span>
+
+          </h2>
+
+        </div>
+
+
+        <div class="learning-grid">
+
+
+          <div class="learning-item">
+
+            <div class="check">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Basic Spoken English
+              </h3>
+
+              <p>
+                সহজ English sentence এবং everyday conversation।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="learning-item">
+
+            <div class="check">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Vocabulary Building
+              </h3>
+
+              <p>
+                প্রয়োজনীয় English words এবং তাদের practical use।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="learning-item">
+
+            <div class="check">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Pronunciation
+              </h3>
+
+              <p>
+                সঠিক pronunciation ও clear speaking-এর practice।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="learning-item">
+
+            <div class="check">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Daily Conversation
+              </h3>
+
+              <p>
+                বাস্তব জীবনের common English conversation practice।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="learning-item">
+
+            <div class="check">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Speaking Confidence
+              </h3>
+
+              <p>
+                English বলতে hesitation কমানোর জন্য regular practice।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="learning-item">
+
+            <div class="check">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Communication Skills
+              </h3>
+
+              <p>
+                নিজের কথা English-এ সুন্দরভাবে প্রকাশ করার অভ্যাস।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="learning-item">
+
+            <div class="check">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Listening Practice
+              </h3>
+
+              <p>
+                English শুনে বুঝতে এবং respond করতে practice।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="learning-item">
+
+            <div class="check">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Interactive Activities
+              </h3>
+
+              <p>
+                Fun activities ও practice-এর মাধ্যমে শেখার সুযোগ।
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         COURSE STRUCTURE
+    =================================================== -->
+
+    <section class="section structure">
+
+      <div class="container">
+
+
+        <div class="section-header">
+
+          <small>
+            100 DAYS JOURNEY
+          </small>
+
+          <h2>
+
+            Step by Step
+
+            <br>
+
+            <span>
+              English Learning Journey।
+            </span>
+
+          </h2>
+
+          <p>
+
+            ধাপে ধাপে vocabulary থেকে speaking
+            এবং communication-এর দিকে এগিয়ে যাবে
+            শিক্ষার্থীরা।
+
+          </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-number">
+              01
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>
+                Foundation
+              </h3>
+
+              <p>
+                Basic English words, sentences,
+                pronunciation এবং everyday expressions।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-number">
+              02
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>
+                Vocabulary & Practice
+              </h3>
+
+              <p>
+                নতুন vocabulary শেখা এবং practical
+                sentence তৈরির মাধ্যমে practice।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-number">
+              03
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>
+                Conversation
+              </h3>
+
+              <p>
+                Daily life conversation এবং
+                interactive speaking practice।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-number">
+              04
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>
+                Confidence
+              </h3>
+
+              <p>
+                English-এ নিজের কথা প্রকাশ করার
+                confidence এবং communication skill develop করা।
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         ADMISSION / PRICE
+    =================================================== -->
+
+    <section class="section admission">
+
+      <div class="container">
+
+
+        <div class="admission-box">
+
+
+          <div class="admission-content">
+
+            <small>
+              SPECIAL OFFER
+            </small>
+
+            <h2>
+
+              আপনার শিশুর
+
+              <br>
+
+              <span style="color:#b7ff00;">
+                English Journey
+              </span>
+
+              শুরু হোক।
+
+            </h2>
+
+            <p>
+
+              100Days Kidz Spoken English Program-এ
+              ভর্তি হয়ে শিশুর English speaking,
+              vocabulary এবং communication skill
+              উন্নত করার journey শুরু করুন।
+
             </p>
 
           </div>
 
-        </div>
 
+          <div class="price-box">
+
+            <div class="regular">
+              Regular Price:
+              <del>
+                ৳12,500
+              </del>
+            </div>
+
+            <div class="offer-price">
+              ৳6,500
+            </div>
+
+            <div class="limited">
+              🎁 Special Offer • Limited Opportunity
+            </div>
+
+            <a
+              href="admission.html"
+              class="btn primary"
+            >
+              এখনই ভর্তি করুন →
+            </a>
+
+          </div>
+
+
+        </div>
 
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
 
-  <!-- ==========================================
-       MODULES
-  =========================================== -->
+    <!-- ===================================================
+         FAQ
+    =================================================== -->
 
-  <section class="section modules">
+    <section class="section faq">
 
-    <div class="container">
+      <div class="container">
 
 
-      <div class="section-title">
+        <div class="section-header">
+
+          <small>
+            FAQ
+          </small>
+
+          <h2>
+
+            সাধারণ কিছু
+
+            <br>
+
+            <span>
+              প্রশ্নের উত্তর।
+            </span>
+
+          </h2>
+
+        </div>
+
+
+        <div class="faq-list">
+
+
+          <div class="faq-item">
+
+            <h3>
+              01. কোর্সটির duration কত?
+            </h3>
+
+            <p>
+              Programটির duration 100 Days।
+            </p>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <h3>
+              02. এই course কার জন্য?
+            </h3>
+
+            <p>
+              English speaking এবং communication skill
+              develop করতে চায় এমন শিশুদের জন্য programটি তৈরি করা হয়েছে।
+            </p>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <h3>
+              03. কোর্সের offer price কত?
+            </h3>
+
+            <p>
+              Regular price ৳12,500 এবং current offer price ৳6,500।
+            </p>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <h3>
+              04. Program কবে শুরু হবে?
+            </h3>
+
+            <p>
+              বর্তমান schedule অনুযায়ী program start date
+              15 November।
+            </p>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <h3>
+              05. ভর্তি কীভাবে করব?
+            </h3>
+
+            <p>
+              ভর্তি হওয়ার জন্য “ভর্তি করুন” button-এ click করে
+              admission page থেকে registration process সম্পন্ন করুন।
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         CTA
+    =================================================== -->
+
+    <section class="cta">
+
+      <div class="container">
 
         <small>
-          LEARNING JOURNEY
+          100 DAYS • ONE JOURNEY • BETTER COMMUNICATION
         </small>
 
         <h2>
 
-          ধাপে ধাপে
+          Let Your Child
 
           <br>
 
           <span>
-            English শেখার যাত্রা।
+            Speak With Confidence।
           </span>
 
         </h2>
 
-      </div>
+        <p>
+
+          আজ থেকেই আপনার শিশুর English learning
+          journey শুরু করুন।
+
+        </p>
 
 
-      <div class="module-list">
+        <div class="cta-buttons">
+
+          <a
+            href="admission.html"
+            class="btn primary"
+          >
+            ভর্তি হতে চাই →
+          </a>
 
 
-        <div class="module">
-
-          <div class="module-number">
-            01 — FOUNDATION
-          </div>
-
-          <h3>
-            English Basics
-          </h3>
-
-          <p>
-            Basic words, sentences এবং
-            everyday English-এর foundation।
-          </p>
-
-        </div>
-
-
-        <div class="module">
-
-          <div class="module-number">
-            02 — VOCABULARY
-          </div>
-
-          <h3>
-            Smart Vocabulary
-          </h3>
-
-          <p>
-            প্রয়োজনীয় vocabulary এবং
-            sentence building practice।
-          </p>
+          <a
+            href="courses.html"
+            class="btn secondary"
+          >
+            সব কোর্স দেখুন
+          </a>
 
         </div>
-
-
-        <div class="module">
-
-          <div class="module-number">
-            03 — SPEAKING
-          </div>
-
-          <h3>
-            Speaking Practice
-          </h3>
-
-          <p>
-            নিয়মিত speaking practice-এর মাধ্যমে
-            English বলার অভ্যাস তৈরি।
-          </p>
-
-        </div>
-
-
-        <div class="module">
-
-          <div class="module-number">
-            04 — PRONUNCIATION
-          </div>
-
-          <h3>
-            Clear Pronunciation
-          </h3>
-
-          <p>
-            শব্দ ও বাক্যের pronunciation
-            আরও পরিষ্কার করার practice।
-          </p>
-
-        </div>
-
-
-        <div class="module">
-
-          <div class="module-number">
-            05 — CONVERSATION
-          </div>
-
-          <h3>
-            Daily Conversation
-          </h3>
-
-          <p>
-            Real-life situation অনুযায়ী
-            English conversation practice।
-          </p>
-
-        </div>
-
-
-        <div class="module">
-
-          <div class="module-number">
-            06 — CONFIDENCE
-          </div>
-
-          <h3>
-            Confidence Building
-          </h3>
-
-          <p>
-            Presentation ও communication-এর
-            মাধ্যমে confidence development।
-          </p>
-
-        </div>
-
 
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
-
-  <!-- ==========================================
-       PRICE CTA
-  =========================================== -->
-
-  <section class="price-section">
-
-    <div class="container">
-
-      <small>
-        ENROLL NOW
-      </small>
-
-      <h2>
-        100Days Kidz Spoken English
-      </h2>
-
-      <div class="price">
-
-        <del>
-          ৳12,500
-        </del>
-
-        <strong>
-          ৳6,500
-        </strong>
-
-      </div>
-
-
-      <a
-        href="index.html#contact"
-        class="btn primary"
-      >
-        এখনই ভর্তি করুন →
-      </a>
-
-    </div>
-
-  </section>
+  </main>
 
 
 
-  <!-- ==========================================
+  <!-- =====================================================
        FOOTER
-  =========================================== -->
+  ===================================================== -->
 
   <footer class="footer">
 
@@ -1421,7 +2468,9 @@
       <div>
 
         <div class="footer-brand">
+
           SNK <span>IT</span> Institute
+
         </div>
 
         <div class="footer-tagline">
@@ -1432,8 +2481,10 @@
 
 
       <div class="copyright">
+
         © 2026 SNK IT Institute.
         সর্বস্বত্ব সংরক্ষিত।
+
       </div>
 
 
