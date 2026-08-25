@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>AI-Powered Motion Graphic Design | SNK IT Institute</title>
+  <title>AI-Powered Graphic Design | SNK IT Institute</title>
 
   <style>
     *{
@@ -22,7 +22,6 @@
       background:#050505;
       color:#fff;
       line-height:1.6;
-      overflow-x:hidden;
     }
 
     a{
@@ -48,7 +47,7 @@
       z-index:9999;
       background:rgba(5,5,5,.92);
       backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid #1d1d1d;
     }
 
     .nav{
@@ -56,7 +55,7 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:22px;
+      gap:25px;
     }
 
     .brand img{
@@ -79,22 +78,6 @@
       color:#b7ff00;
     }
 
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .offer{
-      color:#b7ff00;
-      border:1px solid rgba(183,255,0,.25);
-      background:rgba(183,255,0,.06);
-      padding:9px 13px;
-      border-radius:8px;
-      font-size:12px;
-      font-weight:700;
-    }
-
     .nav-button{
       background:#b7ff00;
       color:#050505;
@@ -106,85 +89,53 @@
 
     /* ================= HERO ================= */
 
-    .course-hero{
-      position:relative;
-      padding:100px 0;
-      overflow:hidden;
-
+    .hero{
+      padding:90px 0;
       background:
         radial-gradient(
           circle at 80% 40%,
-          rgba(183,255,0,.14),
+          rgba(183,255,0,.13),
           transparent 30%
         ),
         #050505;
     }
 
-    .course-hero::before{
-      content:"";
-      position:absolute;
-      width:600px;
-      height:600px;
-      right:-280px;
-      top:50%;
-      transform:translateY(-50%);
-      border:1px solid rgba(183,255,0,.08);
-      border-radius:50%;
-    }
-
     .hero-grid{
-      position:relative;
-      z-index:2;
-
       display:grid;
-      grid-template-columns:1.1fr .9fr;
+      grid-template-columns:1fr 1fr;
       align-items:center;
       gap:70px;
     }
 
     .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-
+      display:inline-block;
+      padding:7px 14px;
+      margin-bottom:22px;
       color:#b7ff00;
-      background:rgba(183,255,0,.06);
+      background:rgba(183,255,0,.07);
       border:1px solid rgba(183,255,0,.25);
-
-      padding:8px 14px;
       border-radius:50px;
-
       font-size:11px;
       font-weight:800;
-      letter-spacing:.5px;
-
-      margin-bottom:22px;
+      letter-spacing:1px;
     }
 
-    .dot{
-      width:7px;
-      height:7px;
-      background:#b7ff00;
-      border-radius:50%;
-      box-shadow:0 0 12px #b7ff00;
-    }
-
-    .course-hero h1{
-      font-size:clamp(45px,6vw,76px);
-      line-height:1.04;
+    .hero h1{
+      font-size:clamp(42px,6vw,72px);
+      line-height:1.05;
       letter-spacing:-3px;
       margin-bottom:22px;
     }
 
-    .course-hero h1 span{
+    .hero h1 span{
       color:#b7ff00;
     }
 
-    .hero-description{
+    .hero-text{
       color:#999;
-      max-width:650px;
       font-size:17px;
       line-height:1.8;
+      max-width:600px;
       margin-bottom:30px;
     }
 
@@ -198,13 +149,10 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-
-      padding:14px 22px;
+      padding:14px 23px;
       border-radius:9px;
-
-      font-size:13px;
+      font-size:14px;
       font-weight:800;
-
       transition:.3s;
     }
 
@@ -220,7 +168,6 @@
 
     .secondary{
       border:1px solid #333;
-      color:#fff;
     }
 
     .secondary:hover{
@@ -237,21 +184,18 @@
     }
 
     .hero-image img{
-      width:min(470px,100%);
+      width:min(500px,100%);
       border-radius:22px;
-
       border:1px solid rgba(183,255,0,.2);
-
-      box-shadow:
-        0 0 70px rgba(183,255,0,.08);
+      box-shadow:0 25px 80px rgba(0,0,0,.5);
     }
 
     /* ================= INFO ================= */
 
-    .course-info-bar{
-      background:#090909;
-      border-top:1px solid #1c1c1c;
-      border-bottom:1px solid #1c1c1c;
+    .info{
+      background:#080808;
+      border-top:1px solid #1b1b1b;
+      border-bottom:1px solid #1b1b1b;
     }
 
     .info-grid{
@@ -260,9 +204,9 @@
     }
 
     .info-item{
-      padding:25px 18px;
+      padding:25px 15px;
       text-align:center;
-      border-right:1px solid #1c1c1c;
+      border-right:1px solid #1b1b1b;
     }
 
     .info-item:last-child{
@@ -272,7 +216,7 @@
     .info-item strong{
       display:block;
       color:#b7ff00;
-      font-size:18px;
+      font-size:22px;
       margin-bottom:4px;
     }
 
@@ -287,75 +231,82 @@
       padding:100px 0;
     }
 
-    .section-header{
+    .section-title{
       max-width:700px;
-      margin-bottom:45px;
+      margin-bottom:50px;
     }
 
-    .section-header small{
+    .section-title small{
       display:block;
       color:#b7ff00;
       font-size:11px;
       font-weight:800;
       letter-spacing:2px;
-      margin-bottom:13px;
+      margin-bottom:12px;
     }
 
-    .section-header h2{
-      font-size:clamp(35px,5vw,55px);
-      line-height:1.08;
+    .section-title h2{
+      font-size:clamp(34px,5vw,55px);
+      line-height:1.1;
       letter-spacing:-2px;
       margin-bottom:15px;
     }
 
-    .section-header h2 span{
+    .section-title h2 span{
       color:#b7ff00;
     }
 
-    .section-header p{
+    .section-title p{
       color:#888;
       font-size:15px;
       line-height:1.8;
     }
 
-    /* ================= COURSE CONTENT ================= */
+    /* ================= COURSE OVERVIEW ================= */
 
-    .content-grid{
+    .overview{
+      background:#050505;
+    }
+
+    .overview-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:repeat(3,1fr);
       gap:18px;
     }
 
-    .content-card{
+    .overview-card{
       padding:28px;
-      background:#0b0b0b;
-      border:1px solid #202020;
+      background:#0c0c0c;
+      border:1px solid #222;
       border-radius:17px;
       transition:.3s;
     }
 
-    .content-card:hover{
-      border-color:rgba(183,255,0,.35);
-      transform:translateY(-4px);
+    .overview-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(183,255,0,.4);
     }
 
-    .content-card h3{
+    .overview-icon{
+      width:50px;
+      height:50px;
+      display:grid;
+      place-items:center;
+      margin-bottom:18px;
+      background:rgba(183,255,0,.08);
+      border-radius:12px;
+      font-size:23px;
+    }
+
+    .overview-card h3{
       font-size:19px;
       margin-bottom:10px;
     }
 
-    .content-card p{
-      color:#858585;
+    .overview-card p{
+      color:#777;
       font-size:13px;
       line-height:1.8;
-    }
-
-    .content-number{
-      color:#b7ff00;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:1px;
-      margin-bottom:10px;
     }
 
     /* ================= SYLLABUS ================= */
@@ -367,42 +318,34 @@
     .syllabus-list{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:12px;
+      gap:15px;
     }
 
     .syllabus-item{
+      padding:20px 22px;
+      background:#101010;
+      border:1px solid #222;
+      border-radius:12px;
       display:flex;
       align-items:center;
-      gap:14px;
-
-      padding:18px 20px;
-
-      background:#101010;
-      border:1px solid #202020;
-      border-radius:11px;
+      gap:15px;
     }
 
-    .syllabus-item span:first-child{
-      width:32px;
-      height:32px;
-
+    .syllabus-number{
+      width:36px;
+      height:36px;
+      flex-shrink:0;
       display:grid;
       place-items:center;
-
-      flex-shrink:0;
-
-      background:rgba(183,255,0,.08);
-      color:#b7ff00;
-
+      background:#b7ff00;
+      color:#050505;
       border-radius:8px;
-
-      font-size:11px;
-      font-weight:800;
+      font-size:13px;
+      font-weight:900;
     }
 
-    .syllabus-item span:last-child{
-      color:#ddd;
-      font-size:13px;
+    .syllabus-item strong{
+      font-size:14px;
     }
 
     /* ================= CTA ================= */
@@ -410,30 +353,27 @@
     .cta{
       padding:100px 0;
       text-align:center;
-
       background:
         radial-gradient(
           circle at center,
-          rgba(183,255,0,.13),
+          rgba(183,255,0,.12),
           transparent 45%
         ),
         #050505;
     }
 
     .cta small{
-      display:block;
       color:#b7ff00;
       font-size:11px;
       font-weight:800;
       letter-spacing:2px;
-      margin-bottom:14px;
     }
 
     .cta h2{
       font-size:clamp(38px,6vw,65px);
       line-height:1.05;
-      letter-spacing:-2px;
-      margin-bottom:18px;
+      letter-spacing:-3px;
+      margin:15px 0 18px;
     }
 
     .cta h2 span{
@@ -450,8 +390,8 @@
     .cta-buttons{
       display:flex;
       justify-content:center;
-      flex-wrap:wrap;
       gap:12px;
+      flex-wrap:wrap;
     }
 
     /* ================= FOOTER ================= */
@@ -464,13 +404,12 @@
 
     .footer-inner{
       display:flex;
-      align-items:center;
       justify-content:space-between;
+      align-items:center;
       gap:20px;
     }
 
     .footer-brand{
-      color:#fff;
       font-size:18px;
       font-weight:800;
     }
@@ -479,23 +418,16 @@
       color:#b7ff00;
     }
 
-    .footer-tagline{
+    .footer-text{
       color:#666;
       font-size:12px;
     }
 
-    .copyright{
-      color:#666;
-      font-size:12px;
-      text-align:right;
-    }
-
-    /* ================= TABLET ================= */
+    /* ================= RESPONSIVE ================= */
 
     @media(max-width:900px){
 
-      .menu,
-      .offer{
+      .menu{
         display:none;
       }
 
@@ -504,7 +436,7 @@
         text-align:center;
       }
 
-      .hero-description{
+      .hero-text{
         margin-left:auto;
         margin-right:auto;
       }
@@ -514,11 +446,11 @@
       }
 
       .hero-image{
-        margin-top:20px;
+        order:2;
       }
 
-      .content-grid{
-        grid-template-columns:1fr;
+      .overview-grid{
+        grid-template-columns:1fr 1fr;
       }
 
       .syllabus-list{
@@ -527,13 +459,7 @@
 
     }
 
-    /* ================= MOBILE ================= */
-
     @media(max-width:600px){
-
-      .container{
-        width:90%;
-      }
 
       .nav{
         min-height:70px;
@@ -548,28 +474,24 @@
         font-size:11px;
       }
 
-      .course-hero{
+      .hero{
         padding:70px 0;
       }
 
-      .course-hero h1{
+      .hero h1{
         font-size:44px;
         letter-spacing:-2px;
       }
 
-      .hero-description{
+      .hero-text{
         font-size:14px;
       }
 
-      .hero-buttons{
-        flex-direction:column;
-      }
-
-      .hero-buttons .btn{
+      .btn{
         width:100%;
       }
 
-      .hero-image img{
+      .hero-buttons{
         width:100%;
       }
 
@@ -578,53 +500,24 @@
       }
 
       .info-item{
-        border-bottom:1px solid #1c1c1c;
+        border-bottom:1px solid #1b1b1b;
       }
 
       .info-item:nth-child(2){
         border-right:0;
       }
 
-      .info-item:nth-child(3),
-      .info-item:nth-child(4){
-        border-bottom:0;
-      }
-
-      .info-item:nth-child(4){
-        border-right:0;
+      .overview-grid{
+        grid-template-columns:1fr;
       }
 
       .section{
-        padding:70px 0;
-      }
-
-      .section-header h2{
-        font-size:35px;
-      }
-
-      .content-card{
-        padding:23px;
-      }
-
-      .cta{
         padding:75px 0;
-      }
-
-      .cta-buttons{
-        flex-direction:column;
-      }
-
-      .cta-buttons .btn{
-        width:100%;
       }
 
       .footer-inner{
         flex-direction:column;
         align-items:flex-start;
-      }
-
-      .copyright{
-        text-align:left;
       }
 
     }
@@ -649,21 +542,13 @@
       <nav class="menu">
         <a href="index.html">হোম</a>
         <a href="courses.html">কোর্সসমূহ</a>
-        <a href="about.html">আমাদের সম্পর্কে</a>
-        <a href="contact.html">যোগাযোগ</a>
+        <a href="index.html#about">আমাদের সম্পর্কে</a>
+        <a href="index.html#contact">যোগাযোগ</a>
       </nav>
 
-      <div class="header-actions">
-
-        <a href="courses.html" class="offer">
-          🎁 Special Offer
-        </a>
-
-        <a href="contact.html" class="nav-button">
-          ভর্তি করুন →
-        </a>
-
-      </div>
+      <a href="index.html#contact" class="nav-button">
+        ভর্তি করুন →
+      </a>
 
     </div>
 
@@ -672,66 +557,59 @@
 
   <!-- ================= HERO ================= -->
 
-  <section class="course-hero">
+  <section class="hero">
 
-    <div class="container">
+    <div class="container hero-grid">
 
-      <div class="hero-grid">
+      <div>
 
-        <div>
+        <span class="badge">
+          AI POWERED • CREATIVE CAREER
+        </span>
 
-          <div class="badge">
-            <span class="dot"></span>
-            AI POWERED • CREATIVE CAREER
-          </div>
+        <h1>
+          AI-Powered
+          <br>
+          <span>Graphic Design</span>
+        </h1>
 
-          <h1>
-            AI-Powered
-            <br>
-            <span>Motion Graphic Design</span>
-          </h1>
+        <p class="hero-text">
+          আধুনিক Graphic Design skill, creative
+          workflow এবং AI-powered tools ব্যবহার করে
+          professional designer হিসেবে নিজের career
+          তৈরি করুন।
+        </p>
 
-          <p class="hero-description">
+        <div class="hero-buttons">
 
-            Motion Design, Animation, Visual Storytelling
-            এবং AI-powered creative tools ব্যবহার করে
-            professional motion graphic তৈরি করা শিখুন।
-
-            Practical project-এর মাধ্যমে নিজের creative
-            career-এর জন্য প্রস্তুত হন।
-
-          </p>
-
-          <div class="hero-buttons">
-
-            <a
-              href="contact.html"
-              class="btn primary"
-            >
-              ভর্তি করুন →
-            </a>
-
-            <a
-              href="courses.html"
-              class="btn secondary"
-            >
-              সব কোর্স দেখুন
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <div class="hero-image">
-
-          <!-- আপনার Motion Graphic image এখানে -->
-          <img
-            src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg"
-            alt="AI-Powered Motion Graphic Design"
+          <a
+            href="https://forms.google.com/"
+            class="btn primary"
+            target="_blank"
           >
+            এখনই ভর্তি করুন →
+          </a>
+
+          <a
+            href="courses.html"
+            class="btn secondary"
+          >
+            সব কোর্স দেখুন
+          </a>
 
         </div>
+
+      </div>
+
+
+      <!-- COURSE 3 IMAGE = FRAME 4 -->
+
+      <div class="hero-image">
+
+        <img
+          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg"
+          alt="AI-Powered Graphic Design"
+        >
 
       </div>
 
@@ -742,32 +620,28 @@
 
   <!-- ================= INFO ================= -->
 
-  <section class="course-info-bar">
+  <section class="info">
 
-    <div class="container">
+    <div class="container info-grid">
 
-      <div class="info-grid">
+      <div class="info-item">
+        <strong>4 Months</strong>
+        <span>Course Duration</span>
+      </div>
 
-        <div class="info-item">
-          <strong>4 Months</strong>
-          <span>Course Duration</span>
-        </div>
+      <div class="info-item">
+        <strong>AI</strong>
+        <span>Powered Workflow</span>
+      </div>
 
-        <div class="info-item">
-          <strong>AI Powered</strong>
-          <span>Modern Workflow</span>
-        </div>
+      <div class="info-item">
+        <strong>৳4,500</strong>
+        <span>Offer Price</span>
+      </div>
 
-        <div class="info-item">
-          <strong>Practical</strong>
-          <span>Project Based</span>
-        </div>
-
-        <div class="info-item">
-          <strong>Career</strong>
-          <span>Creative Career Support</span>
-        </div>
-
+      <div class="info-item">
+        <strong>Career</strong>
+        <span>Creative Career Focus</span>
       </div>
 
     </div>
@@ -775,108 +649,76 @@
   </section>
 
 
-  <!-- ================= WHAT YOU LEARN ================= -->
+  <!-- ================= OVERVIEW ================= -->
 
-  <section class="section">
+  <section class="section overview">
 
     <div class="container">
 
-      <div class="section-header">
+      <div class="section-title">
 
-        <small>
-          WHAT YOU WILL LEARN
-        </small>
+        <small>COURSE OVERVIEW</small>
 
         <h2>
-          Creative Skill থেকে
+          Design শিখুন,
           <br>
-          <span>Professional Skill</span>
+          <span>Professional হন।</span>
         </h2>
 
         <p>
-          Motion graphic design-এর fundamental থেকে
-          advanced workflow পর্যন্ত structuredভাবে শেখানো হবে।
+          এই কোর্সটি এমনভাবে তৈরি করা হয়েছে যাতে
+          একজন beginner থেকে professional level-এর
+          creative designer হিসেবে skill তৈরি করতে পারেন।
         </p>
 
       </div>
 
 
-      <div class="content-grid">
+      <div class="overview-grid">
 
-        <article class="content-card">
+        <div class="overview-card">
 
-          <div class="content-number">
-            01 — FUNDAMENTALS
-          </div>
+          <div class="overview-icon">🎨</div>
 
-          <h3>
-            Motion Design Fundamentals
-          </h3>
+          <h3>Graphic Design Fundamentals</h3>
 
           <p>
-            Timing, spacing, composition, movement,
-            visual hierarchy এবং animation-এর core
-            principles শিখুন।
+            Design principles, typography, color,
+            composition এবং visual hierarchy-এর
+            strong foundation তৈরি করুন।
           </p>
 
-        </article>
+        </div>
 
 
-        <article class="content-card">
+        <div class="overview-card">
 
-          <div class="content-number">
-            02 — ANIMATION
-          </div>
+          <div class="overview-icon">🤖</div>
 
-          <h3>
-            Animation & Motion
-          </h3>
+          <h3>AI Design Tools</h3>
 
           <p>
-            Text animation, object animation,
-            transitions, smooth movement এবং
-            professional motion techniques।
+            Modern AI tools ব্যবহার করে দ্রুত
+            creative concept, visual এবং design
+            workflow তৈরি করতে শিখুন।
           </p>
 
-        </article>
+        </div>
 
 
-        <article class="content-card">
+        <div class="overview-card">
 
-          <div class="content-number">
-            03 — AI WORKFLOW
-          </div>
+          <div class="overview-icon">💼</div>
 
-          <h3>
-            AI-Powered Creative Workflow
-          </h3>
+          <h3>Career & Freelancing</h3>
 
           <p>
-            AI tools ব্যবহার করে concept, visual,
-            storyboard এবং creative production
-            workflow দ্রুত করা।
+            Portfolio তৈরি, client work এবং
+            freelancing career-এর জন্য practical
+            direction ও guidance নিন।
           </p>
 
-        </article>
-
-
-        <article class="content-card">
-
-          <div class="content-number">
-            04 — PROJECT
-          </div>
-
-          <h3>
-            Real Project Practice
-          </h3>
-
-          <p>
-            Social media ads, promotional videos,
-            typography animation এবং real-world
-            creative project তৈরি করা।
-          </p>
-
-        </article>
+        </div>
 
       </div>
 
@@ -891,16 +733,20 @@
 
     <div class="container">
 
-      <div class="section-header">
+      <div class="section-title">
 
-        <small>
-          COURSE SYLLABUS
-        </small>
+        <small>WHAT YOU WILL LEARN</small>
 
         <h2>
-          কী কী
-          <span>শিখবেন?</span>
+          Course
+          <br>
+          <span>Curriculum</span>
         </h2>
+
+        <p>
+          Practical project-এর মাধ্যমে গুরুত্বপূর্ণ
+          Graphic Design skillগুলো step-by-step শেখানো হবে।
+        </p>
 
       </div>
 
@@ -908,53 +754,43 @@
       <div class="syllabus-list">
 
         <div class="syllabus-item">
-          <span>01</span>
-          <span>Motion Design Fundamentals</span>
+          <div class="syllabus-number">01</div>
+          <strong>Graphic Design Fundamentals</strong>
         </div>
 
         <div class="syllabus-item">
-          <span>02</span>
-          <span>Timing & Spacing</span>
+          <div class="syllabus-number">02</div>
+          <strong>Color Theory & Typography</strong>
         </div>
 
         <div class="syllabus-item">
-          <span>03</span>
-          <span>Typography Animation</span>
+          <div class="syllabus-number">03</div>
+          <strong>Layout & Visual Composition</strong>
         </div>
 
         <div class="syllabus-item">
-          <span>04</span>
-          <span>Shape & Object Animation</span>
+          <div class="syllabus-number">04</div>
+          <strong>Brand & Social Media Design</strong>
         </div>
 
         <div class="syllabus-item">
-          <span>05</span>
-          <span>Transitions & Effects</span>
+          <div class="syllabus-number">05</div>
+          <strong>AI-Powered Design Workflow</strong>
         </div>
 
         <div class="syllabus-item">
-          <span>06</span>
-          <span>Visual Storytelling</span>
+          <div class="syllabus-number">06</div>
+          <strong>Professional Portfolio Project</strong>
         </div>
 
         <div class="syllabus-item">
-          <span>07</span>
-          <span>Social Media Motion Design</span>
+          <div class="syllabus-number">07</div>
+          <strong>Client & Freelancing Workflow</strong>
         </div>
 
         <div class="syllabus-item">
-          <span>08</span>
-          <span>AI-Powered Motion Workflow</span>
-        </div>
-
-        <div class="syllabus-item">
-          <span>09</span>
-          <span>Creative Ad Animation</span>
-        </div>
-
-        <div class="syllabus-item">
-          <span>10</span>
-          <span>Portfolio Project</span>
+          <div class="syllabus-number">08</div>
+          <strong>Career Preparation</strong>
         </div>
 
       </div>
@@ -970,29 +806,28 @@
 
     <div class="container">
 
-      <small>
-        START YOUR CREATIVE CAREER
-      </small>
+      <small>START YOUR CREATIVE CAREER</small>
 
       <h2>
-        Motion Design শিখে
+        Design থেকে
         <br>
-        <span>নিজের Career তৈরি করুন।</span>
+        <span>Career শুরু করুন।</span>
       </h2>
 
       <p>
-        Practical learning, AI-powered tools এবং
-        real project-এর মাধ্যমে আজ থেকেই আপনার
-        creative journey শুরু করুন।
+        AI-powered Graphic Design শেখার মাধ্যমে
+        নিজের creative skill-কে professional career-এ
+        রূপ দিন।
       </p>
 
       <div class="cta-buttons">
 
         <a
-          href="contact.html"
+          href="https://forms.google.com/"
+          target="_blank"
           class="btn primary"
         >
-          ভর্তি হতে যোগাযোগ করুন →
+          ভর্তি করুন — ৳4,500
         </a>
 
         <a
@@ -1021,13 +856,13 @@
           SNK <span>IT</span> Institute
         </div>
 
-        <div class="footer-tagline">
+        <div class="footer-text">
           Learn To Lead
         </div>
 
       </div>
 
-      <div class="copyright">
+      <div class="footer-text">
         © 2026 SNK IT Institute. সর্বস্বত্ব সংরক্ষিত।
       </div>
 
