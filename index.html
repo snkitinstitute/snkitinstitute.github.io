@@ -71,7 +71,7 @@
       top:0;
       z-index:9999;
 
-      background:rgba(5,5,5,.92);
+      background:rgba(5,5,5,.94);
 
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
@@ -174,7 +174,8 @@
       transition:.3s;
     }
 
-    .menu a:hover{
+    .menu a:hover,
+    .menu a.active{
       color:#b7ff00;
     }
 
@@ -254,14 +255,14 @@
       background:
 
         radial-gradient(
-          circle at 80% 35%,
-          rgba(183,255,0,.14),
-          transparent 28%
+          circle at 80% 40%,
+          rgba(183,255,0,.12),
+          transparent 30%
         ),
 
         radial-gradient(
-          circle at 15% 80%,
-          rgba(183,255,0,.06),
+          circle at 10% 80%,
+          rgba(183,255,0,.05),
           transparent 25%
         ),
 
@@ -274,17 +275,17 @@
 
       position:absolute;
 
-      width:600px;
-      height:600px;
+      width:650px;
+      height:650px;
 
-      right:-260px;
+      right:-320px;
       top:50%;
 
       transform:translateY(-50%);
 
       border:
         1px solid
-        rgba(183,255,0,.08);
+        rgba(183,255,0,.07);
 
       border-radius:50%;
     }
@@ -294,10 +295,10 @@
 
       position:absolute;
 
-      width:300px;
-      height:300px;
+      width:380px;
+      height:380px;
 
-      right:-100px;
+      right:-190px;
       top:50%;
 
       transform:translateY(-50%);
@@ -316,12 +317,12 @@
       display:grid;
 
       grid-template-columns:
-        1.05fr
-        .95fr;
+        .95fr
+        1.05fr;
 
       align-items:center;
 
-      gap:55px;
+      gap:45px;
 
       position:relative;
 
@@ -332,7 +333,7 @@
     /* HERO CONTENT */
 
     .hero-content{
-      padding:80px 0;
+      padding:70px 0;
     }
 
 
@@ -383,16 +384,16 @@
     .hero h1{
       font-size:
         clamp(
-          48px,
-          7vw,
-          88px
+          46px,
+          6vw,
+          78px
         );
 
-      line-height:1.02;
+      line-height:1.05;
 
       letter-spacing:-4px;
 
-      margin-bottom:26px;
+      margin-bottom:25px;
     }
 
     .hero h1 span{
@@ -403,15 +404,15 @@
     /* HERO TEXT */
 
     .hero-description{
-      max-width:680px;
+      max-width:650px;
 
       color:#a4a4a4;
 
-      font-size:18px;
+      font-size:17px;
 
-      line-height:1.8;
+      line-height:1.85;
 
-      margin-bottom:34px;
+      margin-bottom:32px;
     }
 
 
@@ -469,119 +470,54 @@
 
 
     /* =====================================================
-       HERO VISUAL
+       HERO IMAGE — FRAME 5
     ===================================================== */
 
-    .hero-image{
+    .hero-visual{
       position:relative;
 
-      min-height:520px;
+      min-height:620px;
 
       display:flex;
 
       align-items:center;
       justify-content:center;
+
+      padding:35px;
     }
 
-
-    /* HERO SVG FRAME */
-
-    .hero-frame{
-      position:absolute;
-
+    .hero-main-image{
       width:100%;
 
-      max-width:520px;
+      max-width:620px;
 
       height:auto;
 
-      opacity:.95;
+      object-fit:contain;
+
+      position:relative;
+
+      z-index:3;
 
       filter:
         drop-shadow(
-          0 0 35px
+          0 0 45px
           rgba(183,255,0,.12)
         );
+
+      transition:
+        transform .5s ease,
+        filter .5s ease;
     }
 
+    .hero-main-image:hover{
+      transform:scale(1.025);
 
-    .hero-frame-1{
-      transform:rotate(-4deg);
-    }
-
-    .hero-frame-2{
-      transform:rotate(4deg);
-      opacity:.45;
-    }
-
-    .hero-frame-3{
-      width:88%;
-      opacity:.28;
-    }
-
-    .hero-frame-4{
-      width:75%;
-      opacity:.20;
-    }
-
-
-    /* CENTER HERO */
-
-    .hero-center{
-      position:relative;
-
-      z-index:5;
-
-      width:280px;
-      height:280px;
-
-      display:flex;
-
-      flex-direction:column;
-
-      align-items:center;
-      justify-content:center;
-
-      text-align:center;
-
-      border:
-        1px solid
-        rgba(183,255,0,.28);
-
-      border-radius:50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(183,255,0,.13),
-          rgba(5,5,5,.96) 68%
+      filter:
+        drop-shadow(
+          0 0 65px
+          rgba(183,255,0,.20)
         );
-
-      box-shadow:
-
-        0 0 70px
-        rgba(183,255,0,.10),
-
-        inset 0 0 50px
-        rgba(183,255,0,.05);
-    }
-
-    .hero-center h2{
-      color:#b7ff00;
-
-      font-size:32px;
-
-      letter-spacing:4px;
-
-      margin-bottom:12px;
-    }
-
-    .hero-center p{
-      color:#999;
-
-      font-size:13px;
-
-      line-height:1.8;
     }
 
 
@@ -908,27 +844,6 @@
       border:1px solid #222;
 
       background:#080808;
-    }
-
-
-    /* COURSE ICON */
-
-    .course-icon{
-      width:52px;
-      height:52px;
-
-      display:grid;
-
-      place-items:center;
-
-      margin-bottom:18px;
-
-      background:
-        rgba(183,255,0,.09);
-
-      border-radius:13px;
-
-      font-size:24px;
     }
 
 
@@ -1271,7 +1186,11 @@
       }
 
       .hero-box{
-        gap:35px;
+        gap:30px;
+      }
+
+      .hero-visual{
+        min-height:520px;
       }
 
     }
@@ -1297,7 +1216,7 @@
 
       .hero-content{
         padding:
-          90px 0 30px;
+          90px 0 20px;
       }
 
       .hero-description{
@@ -1309,20 +1228,14 @@
         justify-content:center;
       }
 
-      .hero-image{
-        min-height:430px;
+      .hero-visual{
+        min-height:500px;
 
         padding-bottom:70px;
       }
 
-      .hero-center{
-        width:250px;
-        height:250px;
-      }
-
-      .why-grid{
-        grid-template-columns:
-          repeat(3,1fr);
+      .hero-main-image{
+        max-width:600px;
       }
 
     }
@@ -1377,7 +1290,7 @@
 
       .hero-content{
         padding:
-          75px 0 20px;
+          70px 0 15px;
       }
 
       .badge{
@@ -1388,7 +1301,7 @@
       }
 
       .hero h1{
-        font-size:48px;
+        font-size:47px;
 
         letter-spacing:-2.5px;
 
@@ -1411,26 +1324,17 @@
         width:100%;
       }
 
-      .hero-image{
-        min-height:330px;
+      .hero-visual{
+        min-height:auto;
 
         padding:
-          20px 0 65px;
+          25px 0 65px;
       }
 
-      .hero-center{
-        width:210px;
-        height:210px;
-      }
+      .hero-main-image{
+        width:100%;
 
-      .hero-center h2{
-        font-size:24px;
-
-        letter-spacing:2px;
-      }
-
-      .hero-center p{
-        font-size:11px;
+        max-width:500px;
       }
 
 
@@ -1532,7 +1436,11 @@
       }
 
       .course-image{
-        height:200px;
+        height:auto;
+
+        aspect-ratio:16/9;
+
+        object-fit:cover;
       }
 
       .course-card p{
@@ -1594,17 +1502,8 @@
         font-size:42px;
       }
 
-      .hero-center{
-        width:185px;
-        height:185px;
-      }
-
-      .hero-center h2{
-        font-size:20px;
-      }
-
       .course-image{
-        height:180px;
+        aspect-ratio:16/9;
       }
 
       .why-bottom{
@@ -1665,6 +1564,7 @@
         <span>⌕</span>
 
         <input
+          id="courseSearch"
           type="text"
           placeholder="কোর্স খুঁজুন..."
           aria-label="কোর্স খুঁজুন"
@@ -1677,7 +1577,10 @@
 
       <nav class="menu">
 
-        <a href="index.html">
+        <a
+          href="index.html"
+          class="active"
+        >
           হোম
         </a>
 
@@ -1745,7 +1648,6 @@
 
           <div class="hero-content">
 
-
             <div class="badge">
 
               <span class="badge-dot"></span>
@@ -1770,13 +1672,16 @@
 
             <p class="hero-description">
 
-              আধুনিক IT skill, AI-powered tools এবং
-              practical project-এর মাধ্যমে নিজেকে
-              ভবিষ্যতের career-এর জন্য প্রস্তুত করুন।
+              আধুনিক IT skill, AI-powered tools
+              এবং practical project-এর মাধ্যমে
+              নিজেকে ভবিষ্যতের career-এর জন্য
+              প্রস্তুত করুন।
 
-              <br>
+              <br><br>
 
-              SNK IT Institute — Learn To Lead.
+              <strong style="color:#fff;">
+                SNK IT Institute — Learn To Lead.
+              </strong>
 
             </p>
 
@@ -1800,59 +1705,20 @@
 
             </div>
 
-
           </div>
 
 
-          <!-- HERO VISUAL -->
+          <!-- =================================================
+               HERO IMAGE — FRAME 5
+          ================================================== -->
 
-          <div class="hero-image">
-
-
-            <img
-              class="hero-frame hero-frame-1"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg"
-              alt=""
-            >
-
+          <div class="hero-visual">
 
             <img
-              class="hero-frame hero-frame-2"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%202.svg"
-              alt=""
+              class="hero-main-image"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%205.svg"
+              alt="SNK IT Institute AI Powered Learning"
             >
-
-
-            <img
-              class="hero-frame hero-frame-3"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg"
-              alt=""
-            >
-
-
-            <img
-              class="hero-frame hero-frame-4"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg"
-              alt=""
-            >
-
-
-            <div class="hero-center">
-
-              <h2>
-                AI DRIVEN
-              </h2>
-
-              <p>
-                Skill শিখুন
-                <br>
-                Career গড়ুন
-                <br>
-                Future Ready হোন
-              </p>
-
-            </div>
-
 
           </div>
 
@@ -2195,15 +2061,20 @@
 
 
 
-        <div class="course-grid">
+        <div
+          class="course-grid"
+          id="courseGrid"
+        >
 
 
           <!-- =================================================
-               COURSE 01
+               COURSE 01 — UI/UX
           ================================================== -->
 
-          <article class="course-card">
-
+          <article
+            class="course-card"
+            data-course="ui ux ai powered design"
+          >
 
             <img
               class="course-image"
@@ -2271,15 +2142,17 @@
 
 
           <!-- =================================================
-               COURSE 02
+               COURSE 02 — CYBER SECURITY
           ================================================== -->
 
-          <article class="course-card">
-
+          <article
+            class="course-card"
+            data-course="cyber security ethical hacking ai"
+          >
 
             <img
               class="course-image"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%202.svg"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg"
               alt="AI-Powered Cyber Security and Ethical Hacking"
             >
 
@@ -2343,15 +2216,17 @@
 
 
           <!-- =================================================
-               COURSE 03
+               COURSE 03 — GRAPHIC DESIGN
           ================================================== -->
 
-          <article class="course-card">
-
+          <article
+            class="course-card"
+            data-course="graphic design ai powered"
+          >
 
             <img
               class="course-image"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg"
               alt="AI-Powered Graphic Design"
             >
 
@@ -2415,15 +2290,17 @@
 
 
           <!-- =================================================
-               COURSE 04
+               COURSE 04 — KIDZ SPOKEN ENGLISH
           ================================================== -->
 
-          <article class="course-card">
-
+          <article
+            class="course-card"
+            data-course="kidz spoken english kids english"
+          >
 
             <img
               class="course-image"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg"
               alt="100Days Kidz Spoken English"
             >
 
@@ -2614,6 +2491,56 @@
     </div>
 
   </footer>
+
+
+
+  <!-- =====================================================
+       SEARCH SCRIPT
+  ===================================================== -->
+
+  <script>
+
+    const searchInput =
+      document.getElementById("courseSearch");
+
+    const courseCards =
+      document.querySelectorAll(".course-card");
+
+
+    searchInput.addEventListener("input", function(){
+
+      const search =
+        this.value
+        .toLowerCase()
+        .trim();
+
+
+      courseCards.forEach(function(card){
+
+        const courseName =
+          card
+          .getAttribute("data-course")
+          .toLowerCase();
+
+
+        if(
+          search === "" ||
+          courseName.includes(search)
+        ){
+
+          card.style.display = "flex";
+
+        }else{
+
+          card.style.display = "none";
+
+        }
+
+      });
+
+    });
+
+  </script>
 
 
 </body>
