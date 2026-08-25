@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>All Courses | SNK IT Institute</title>
+
+  <style>
+
+    /* ==============================
+       RESET
+    ============================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:#050505;
+      color:#fff;
+
+      line-height:1.6;
+
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+
+    /* ==============================
+       CONTAINER
+    ============================== */
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+
+    /* ==============================
+       HEADER
+    ============================== */
+
+    .header{
+      position:sticky;
+
+      top:0;
+
+      z-index:9999;
+
+      background:
+        rgba(5,5,5,.92);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+    }
+
+    .nav{
+      min-height:82px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:25px;
+    }
+
+
+    /* LOGO */
+
+    .brand img{
+      width:120px;
+      height:auto;
+    }
+
+
+    /* MENU */
+
+    .menu{
+      display:flex;
+
+      align-items:center;
+
+      gap:28px;
+    }
+
+    .menu a{
+      color:#aaa;
+
+      font-size:14px;
+
+      transition:.3s;
+    }
+
+    .menu a:hover{
+      color:#b7ff00;
+    }
+
+
+    /* BUTTON */
+
+    .nav-button{
+      background:#b7ff00;
+
+      color:#050505;
+
+      padding:10px 17px;
+
+      border-radius:8px;
+
+      font-size:13px;
+
+      font-weight:800;
+
+      transition:.3s;
+    }
+
+    .nav-button:hover{
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 10px 30px
+        rgba(183,255,0,.20);
+    }
+
+
+    /* ==============================
+       PAGE HERO
+    ============================== */
+
+    .page-hero{
+      position:relative;
+
+      padding:100px 0 80px;
+
+      text-align:center;
+
+      overflow:hidden;
+
+      background:
+
+        radial-gradient(
+          circle at center,
+          rgba(183,255,0,.13),
+          transparent 42%
+        ),
+
+        #050505;
+    }
+
+    .page-hero::before{
+      content:"";
+
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      left:50%;
+      top:50%;
+
+      transform:
+        translate(-50%,-50%);
+
+      border:
+        1px solid
+        rgba(183,255,0,.05);
+
+      border-radius:50%;
+    }
+
+    .page-hero-content{
+      position:relative;
+
+      z-index:2;
+    }
+
+    .page-hero small{
+      display:block;
+
+      color:#b7ff00;
+
+      font-size:12px;
+
+      font-weight:800;
+
+      letter-spacing:2px;
+
+      margin-bottom:15px;
+    }
+
+    .page-hero h1{
+      font-size:
+        clamp(
+          42px,
+          6vw,
+          72px
+        );
+
+      line-height:1.05;
+
+      letter-spacing:-3px;
+
+      margin-bottom:20px;
+    }
+
+    .page-hero h1 span{
+      color:#b7ff00;
+    }
+
+    .page-hero p{
+      max-width:650px;
+
+      margin:auto;
+
+      color:#888;
+
+      font-size:16px;
+
+      line-height:1.8;
+    }
+
+
+    /* ==============================
+       COURSES
+    ============================== */
+
+    .courses{
+      padding:80px 0 110px;
+
+      background:#080808;
+    }
+
+    .course-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:22px;
+    }
+
+
+    /* ==============================
+       COURSE CARD
+    ============================== */
+
+    .course-card{
+      display:flex;
+
+      flex-direction:column;
+
+      background:#101010;
+
+      border:
+        1px solid #222;
+
+      border-radius:20px;
+
+      padding:20px;
+
+      overflow:hidden;
+
+      transition:.35s;
+    }
+
+    .course-card:hover{
+      transform:translateY(-7px);
+
+      border-color:
+        rgba(183,255,0,.45);
+
+      box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.35);
+    }
+
+
+    /* ==============================
+       IMAGE
+    ============================== */
+
+    .course-image{
+      width:100%;
+
+      height:260px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      margin-bottom:22px;
+
+      overflow:hidden;
+
+      background:#090909;
+
+      border:
+        1px solid #202020;
+
+      border-radius:15px;
+    }
+
+    .course-image img{
+      width:100%;
+
+      height:100%;
+
+      object-fit:cover;
+
+      transition:.4s;
+    }
+
+    .course-card:hover
+    .course-image img{
+      transform:scale(1.04);
+    }
+
+
+    /* ==============================
+       TAG
+    ============================== */
+
+    .course-tag{
+      align-self:flex-start;
+
+      color:#b7ff00;
+
+      background:
+        rgba(183,255,0,.07);
+
+      border:
+        1px solid
+        rgba(183,255,0,.18);
+
+      padding:6px 10px;
+
+      border-radius:6px;
+
+      font-size:9px;
+
+      font-weight:800;
+
+      letter-spacing:1px;
+
+      margin-bottom:14px;
+    }
+
+
+    /* ==============================
+       TITLE
+    ============================== */
+
+    .course-card h2{
+      font-size:24px;
+
+      line-height:1.3;
+
+      margin-bottom:12px;
+    }
+
+
+    /* ==============================
+       DESCRIPTION
+    ============================== */
+
+    .course-card p{
+      color:#858585;
+
+      font-size:14px;
+
+      line-height:1.8;
+
+      margin-bottom:20px;
+    }
+
+
+    /* ==============================
+       INFO
+    ============================== */
+
+    .course-info{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:10px;
+
+      margin-bottom:20px;
+    }
+
+    .course-info span{
+      color:#aaa;
+
+      background:#171717;
+
+      border:
+        1px solid #242424;
+
+      padding:7px 10px;
+
+      border-radius:7px;
+
+      font-size:11px;
+    }
+
+
+    /* ==============================
+       PRICE
+    ============================== */
+
+    .price{
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      margin-bottom:22px;
+    }
+
+    .price del{
+      color:#555;
+
+      font-size:14px;
+    }
+
+    .price strong{
+      color:#b7ff00;
+
+      font-size:26px;
+    }
+
+
+    /* ==============================
+       BUTTONS
+    ============================== */
+
+    .course-actions{
+      display:flex;
+
+      gap:10px;
+
+      margin-top:auto;
+    }
+
+    .course-button{
+      flex:1;
+
+      text-align:center;
+
+      padding:12px;
+
+      border:
+        1px solid #333;
+
+      border-radius:8px;
+
+      color:#fff;
+
+      font-size:12px;
+
+      font-weight:800;
+
+      transition:.3s;
+    }
+
+    .course-button:hover{
+      background:#b7ff00;
+
+      border-color:#b7ff00;
+
+      color:#050505;
+    }
+
+    .course-button.primary{
+      background:#b7ff00;
+
+      color:#050505;
+
+      border-color:#b7ff00;
+    }
+
+    .course-button.primary:hover{
+      background:#fff;
+
+      border-color:#fff;
+    }
+
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    .footer{
+      padding:40px 0;
+
+      background:#050505;
+
+      border-top:
+        1px solid #1b1b1b;
+    }
+
+    .footer-inner{
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .footer-brand{
+      font-size:18px;
+
+      font-weight:800;
+    }
+
+    .footer-brand span{
+      color:#b7ff00;
+    }
+
+    .footer-tagline{
+      color:#666;
+
+      font-size:12px;
+
+      margin-top:3px;
+    }
+
+    .copyright{
+      color:#666;
+
+      font-size:12px;
+
+      text-align:right;
+    }
+
+
+    /* ==============================
+       TABLET
+    ============================== */
+
+    @media(max-width:900px){
+
+      .menu{
+        gap:16px;
+      }
+
+      .course-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+
+    /* ==============================
+       MOBILE
+    ============================== */
+
+    @media(max-width:700px){
+
+      .nav{
+        min-height:70px;
+      }
+
+      .brand img{
+        width:105px;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      .nav-button{
+        padding:9px 13px;
+
+        font-size:11px;
+      }
+
+
+      .page-hero{
+        padding:75px 0 60px;
+      }
+
+      .page-hero h1{
+        font-size:43px;
+
+        letter-spacing:-2px;
+      }
+
+      .page-hero p{
+        font-size:14px;
+      }
+
+
+      .courses{
+        padding:60px 0 80px;
+      }
+
+
+      .course-image{
+        height:210px;
+      }
+
+      .course-card{
+        padding:16px;
+      }
+
+      .course-card h2{
+        font-size:21px;
+      }
+
+      .course-card p{
+        font-size:13px;
+      }
+
+      .course-actions{
+        flex-direction:column;
+      }
+
+      .course-button{
+        width:100%;
+      }
+
+
+      .footer-inner{
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+      .copyright{
+        text-align:left;
+      }
+
+    }
+
+
+    /* ==============================
+       SMALL MOBILE
+    ============================== */
+
+    @media(max-width:400px){
+
+      .page-hero h1{
+        font-size:38px;
+      }
+
+      .course-image{
+        height:180px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ==============================================
+       HEADER
+  =============================================== -->
+
+  <header class="header">
+
+    <div class="container nav">
+
+
+      <!-- LOGO -->
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <img
+          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
+          alt="SNK IT Institute"
+        >
+
+      </a>
+
+
+      <!-- MENU -->
+
+      <nav class="menu">
+
+        <a href="index.html">
+          হোম
+        </a>
+
+        <a href="courses.html">
+          কোর্সসমূহ
+        </a>
+
+        <a href="index.html#about">
+          আমাদের সম্পর্কে
+        </a>
+
+        <a href="index.html#contact">
+          যোগাযোগ
+        </a>
+
+      </nav>
+
+
+      <!-- BUTTON -->
+
+      <a
+        href="index.html#contact"
+        class="nav-button"
+      >
+        ভর্তি করুন →
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ==============================================
+       PAGE HERO
+  =============================================== -->
+
+  <section class="page-hero">
+
+    <div class="container page-hero-content">
+
+      <small>
+        SNK IT INSTITUTE
+      </small>
+
+      <h1>
+        আমাদের
+        <span>Courses</span>
+      </h1>
+
+      <p>
+        আপনার career-এর জন্য প্রয়োজনীয়
+        modern IT skill, AI tools এবং
+        practical knowledge একসাথে শিখুন।
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==============================================
+       ALL COURSES
+  =============================================== -->
+
+  <section class="courses">
+
+    <div class="container">
+
+      <div class="course-grid">
+
+
+        <!-- ==========================================
+             UI/UX
+        =========================================== -->
+
+        <article class="course-card">
+
+          <div class="course-image">
+
+            <img
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg"
+              alt="AI Powered UI UX Career Program"
+            >
+
+          </div>
+
+          <div class="course-tag">
+            AI POWERED
+          </div>
+
+          <h2>
+            AI-Powered UI/UX Career Program
+          </h2>
+
+          <p>
+            UI/UX Fundamentals, User Research,
+            User Flow, Wireframing, Prototyping,
+            Design System, Figma এবং AI-powered
+            design workflow শিখুন।
+          </p>
+
+          <div class="course-info">
+
+            <span>
+              ⏱ 3 Months
+            </span>
+
+            <span>
+              🎯 Career Program
+            </span>
+
+          </div>
+
+          <div class="price">
+
+            <del>
+              ৳11,500
+            </del>
+
+            <strong>
+              ৳7,490
+            </strong>
+
+          </div>
+
+          <div class="course-actions">
+
+            <a
+              href="ui-ux.html"
+              class="course-button"
+            >
+              বিস্তারিত
+            </a>
+
+            <a
+              href="index.html#contact"
+              class="course-button primary"
+            >
+              ভর্তি করুন →
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- ==========================================
+             CYBER SECURITY
+        =========================================== -->
+
+        <article class="course-card">
+
+          <div class="course-image">
+
+            <img
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%202.svg"
+              alt="AI Powered Cyber Security"
+            >
+
+          </div>
+
+          <div class="course-tag">
+            LIMITED SEATS
+          </div>
+
+          <h2>
+            AI-Powered Cyber Security
+          </h2>
+
+          <p>
+            Cyber Security fundamentals,
+            ethical hacking, security concepts
+            এবং practical cybersecurity skills
+            হাতে-কলমে শিখুন।
+          </p>
+
+          <div class="course-info">
+
+            <span>
+              ⏱ 6 Months
+            </span>
+
+            <span>
+              🎯 Ethical Hacking
+            </span>
+
+          </div>
+
+          <div class="price">
+
+            <del>
+              ৳12,500
+            </del>
+
+            <strong>
+              ৳9,500
+            </strong>
+
+          </div>
+
+          <div class="course-actions">
+
+            <a
+              href="cyber-security.html"
+              class="course-button"
+            >
+              বিস্তারিত
+            </a>
+
+            <a
+              href="index.html#contact"
+              class="course-button primary"
+            >
+              ভর্তি করুন →
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- ==========================================
+             GRAPHIC DESIGN
+        =========================================== -->
+
+        <article class="course-card">
+
+          <div class="course-image">
+
+            <img
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg"
+              alt="AI Powered Graphic Design"
+            >
+
+          </div>
+
+          <div class="course-tag">
+            AI POWERED
+          </div>
+
+          <h2>
+            AI-Powered Graphic Design
+          </h2>
+
+          <p>
+            Graphic Design fundamentals,
+            visual design, creative tools এবং
+            AI-powered design workflow-এর
+            মাধ্যমে professional skill তৈরি করুন।
+          </p>
+
+          <div class="course-info">
+
+            <span>
+              ⏱ 4 Months
+            </span>
+
+            <span>
+              🎯 Creative Career
+            </span>
+
+          </div>
+
+          <div class="price">
+
+            <del>
+              ৳7,500
+            </del>
+
+            <strong>
+              ৳4,500
+            </strong>
+
+          </div>
+
+          <div class="course-actions">
+
+            <a
+              href="graphic-design.html"
+              class="course-button"
+            >
+              বিস্তারিত
+            </a>
+
+            <a
+              href="index.html#contact"
+              class="course-button primary"
+            >
+              ভর্তি করুন →
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- ==========================================
+             KIDZ
+        =========================================== -->
+
+        <article class="course-card">
+
+          <div class="course-image">
+
+            <img
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg"
+              alt="100 Days Kidz Spoken English"
+            >
+
+          </div>
+
+          <div class="course-tag">
+            100 DAYS
+          </div>
+
+          <h2>
+            100Days Kidz Spoken English
+          </h2>
+
+          <p>
+            English speaking, vocabulary,
+            pronunciation এবং communication
+            skill development-এর জন্য
+            structured learning program।
+          </p>
+
+          <div class="course-info">
+
+            <span>
+              ⏱ 100 Days
+            </span>
+
+            <span>
+              🎯 Kids Program
+            </span>
+
+          </div>
+
+          <div class="price">
+
+            <del>
+              ৳12,500
+            </del>
+
+            <strong>
+              ৳6,500
+            </strong>
+
+          </div>
+
+          <div class="course-actions">
+
+            <a
+              href="kidz-spoken-english.html"
+              class="course-button"
+            >
+              বিস্তারিত
+            </a>
+
+            <a
+              href="index.html#contact"
+              class="course-button primary"
+            >
+              ভর্তি করুন →
+            </a>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==============================================
+       FOOTER
+  =============================================== -->
+
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <div>
+
+        <div class="footer-brand">
+          SNK <span>IT</span> Institute
+        </div>
+
+        <div class="footer-tagline">
+          Learn To Lead
+        </div>
+
+      </div>
+
+      <div class="copyright">
+
+        © 2026 SNK IT Institute.
+        সর্বস্বত্ব সংরক্ষিত।
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+</body>
+
+</html>
