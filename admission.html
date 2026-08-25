@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admission | SNK IT Institute</title>
+
+  <meta
+    name="description"
+    content="SNK IT Institute Admission Application — Learn To Lead"
+  >
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#050505;
+      color:#fff;
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1000px,92%);
+      margin:auto;
+    }
+
+
+    /* HEADER */
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+
+      background:rgba(5,5,5,.94);
+      backdrop-filter:blur(18px);
+
+      border-bottom:1px solid #1b1b1b;
+    }
+
+    .nav{
+      min-height:78px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .logo img{
+      width:120px;
+    }
+
+    .back-home{
+      padding:10px 17px;
+
+      border:1px solid #333;
+      border-radius:8px;
+
+      color:#aaa;
+
+      font-size:13px;
+      font-weight:700;
+
+      transition:.3s;
+    }
+
+    .back-home:hover{
+      color:#b7ff00;
+      border-color:#b7ff00;
+    }
+
+
+    /* HERO */
+
+    .page-hero{
+      text-align:center;
+      padding:75px 0 45px;
+    }
+
+    .badge{
+      display:inline-block;
+
+      padding:7px 14px;
+      margin-bottom:20px;
+
+      color:#b7ff00;
+
+      background:rgba(183,255,0,.06);
+
+      border:1px solid rgba(183,255,0,.25);
+
+      border-radius:50px;
+
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+
+    .page-hero h1{
+      font-size:clamp(38px,6vw,62px);
+
+      line-height:1.1;
+
+      letter-spacing:-2px;
+
+      margin-bottom:15px;
+    }
+
+    .page-hero h1 span{
+      color:#b7ff00;
+    }
+
+    .page-hero p{
+      max-width:650px;
+
+      margin:auto;
+
+      color:#888;
+
+      font-size:15px;
+    }
+
+
+    /* FORM */
+
+    .form-wrapper{
+      padding-bottom:90px;
+    }
+
+    .form-card{
+      background:#0b0b0b;
+
+      border:1px solid #222;
+
+      border-radius:20px;
+
+      padding:35px;
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.3);
+    }
+
+    .form-title{
+      margin-bottom:30px;
+
+      padding-bottom:20px;
+
+      border-bottom:1px solid #202020;
+    }
+
+    .form-title h2{
+      font-size:24px;
+      margin-bottom:5px;
+    }
+
+    .form-title p{
+      color:#777;
+      font-size:13px;
+    }
+
+    .form-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:20px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .field.full{
+      grid-column:1 / -1;
+    }
+
+    label{
+      color:#ddd;
+
+      font-size:13px;
+
+      font-weight:700;
+    }
+
+    label span{
+      color:#b7ff00;
+    }
+
+    input,
+    select,
+    textarea{
+
+      width:100%;
+
+      padding:14px 15px;
+
+      background:#111;
+
+      color:#fff;
+
+      border:1px solid #292929;
+
+      border-radius:9px;
+
+      outline:none;
+
+      font-size:14px;
+
+      transition:.3s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+
+      border-color:#b7ff00;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(183,255,0,.06);
+    }
+
+    input::placeholder,
+    textarea::placeholder{
+      color:#555;
+    }
+
+    select{
+      cursor:pointer;
+    }
+
+    textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+
+
+    /* CHECKBOX */
+
+    .agreement{
+
+      grid-column:1 / -1;
+
+      display:flex;
+
+      align-items:flex-start;
+
+      gap:10px;
+
+      padding:15px;
+
+      background:#101010;
+
+      border:1px solid #222;
+
+      border-radius:10px;
+
+      color:#777;
+
+      font-size:12px;
+    }
+
+    .agreement input{
+      width:16px;
+      height:16px;
+
+      margin-top:3px;
+
+      accent-color:#b7ff00;
+    }
+
+
+    /* SUBMIT */
+
+    .submit-area{
+
+      grid-column:1 / -1;
+
+      margin-top:5px;
+    }
+
+    .submit-button{
+
+      width:100%;
+
+      padding:16px;
+
+      border:0;
+
+      border-radius:10px;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      font-size:15px;
+
+      font-weight:900;
+
+      cursor:pointer;
+
+      transition:.3s;
+    }
+
+    .submit-button:hover{
+
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 12px 35px
+        rgba(183,255,0,.2);
+    }
+
+
+    /* INFO */
+
+    .form-info{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:12px;
+
+      margin-top:20px;
+    }
+
+    .info-box{
+
+      padding:17px;
+
+      text-align:center;
+
+      background:#090909;
+
+      border:1px solid #1d1d1d;
+
+      border-radius:10px;
+    }
+
+    .info-box strong{
+
+      display:block;
+
+      color:#b7ff00;
+
+      font-size:14px;
+
+      margin-bottom:3px;
+    }
+
+    .info-box span{
+
+      color:#666;
+
+      font-size:11px;
+    }
+
+
+    /* FOOTER */
+
+    .footer{
+
+      padding:30px 0;
+
+      border-top:1px solid #1b1b1b;
+
+      text-align:center;
+
+      color:#666;
+
+      font-size:12px;
+    }
+
+    .footer strong{
+      color:#fff;
+    }
+
+    .footer strong span{
+      color:#b7ff00;
+    }
+
+
+    /* MOBILE */
+
+    @media(max-width:700px){
+
+      .nav{
+        min-height:70px;
+      }
+
+      .logo img{
+        width:105px;
+      }
+
+      .page-hero{
+        padding:55px 0 35px;
+      }
+
+      .page-hero h1{
+        font-size:40px;
+      }
+
+      .form-card{
+        padding:22px 17px;
+        border-radius:15px;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+        gap:17px;
+      }
+
+      .field.full{
+        grid-column:auto;
+      }
+
+      .agreement{
+        grid-column:auto;
+      }
+
+      .submit-area{
+        grid-column:auto;
+      }
+
+      .form-info{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="container nav">
+
+      <a href="index.html" class="logo">
+
+        <img
+          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
+          alt="SNK IT Institute"
+        >
+
+      </a>
+
+      <a
+        href="index.html"
+        class="back-home"
+      >
+        ← হোমে ফিরে যান
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- PAGE HERO -->
+
+  <section class="page-hero">
+
+    <div class="container">
+
+      <div class="badge">
+        ADMISSION APPLICATION
+      </div>
+
+      <h1>
+        আপনার <span>Journey</span><br>
+        শুরু করুন।
+      </h1>
+
+      <p>
+        SNK IT Institute-এর যেকোনো কোর্সে ভর্তি হতে
+        নিচের ফর্মটি পূরণ করুন। আপনার তথ্য পাওয়ার পর
+        আমাদের টিম আপনার সাথে যোগাযোগ করবে।
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- FORM -->
+
+  <main class="form-wrapper">
+
+    <div class="container">
+
+      <div class="form-card">
+
+
+        <div class="form-title">
+
+          <h2>
+            Admission Application
+          </h2>
+
+          <p>
+            সঠিক তথ্য দিয়ে ফর্মটি পূরণ করুন।
+          </p>
+
+        </div>
+
+
+
+        <!-- FORM -->
+
+        <form
+          action="https://formsubmit.co/iamsnkbd@protonmail.com"
+          method="POST"
+        >
+
+
+          <!-- FORM SETTINGS -->
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="SNK IT Institute — New Admission Application"
+          >
+
+          <input
+            type="hidden"
+            name="_next"
+            value="https://snkitinstitute.github.io/thank-you.html"
+          >
+
+          <input
+            type="hidden"
+            name="_template"
+            value="table"
+          >
+
+
+
+          <div class="form-grid">
+
+
+            <!-- NAME -->
+
+            <div class="field">
+
+              <label>
+                পূর্ণ নাম <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                name="Student Name"
+                placeholder="আপনার পূর্ণ নাম"
+                required
+              >
+
+            </div>
+
+
+
+            <!-- MOBILE -->
+
+            <div class="field">
+
+              <label>
+                মোবাইল নম্বর <span>*</span>
+              </label>
+
+              <input
+                type="tel"
+                name="Mobile Number"
+                placeholder="017XXXXXXXX"
+                required
+              >
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="field">
+
+              <label>
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                name="email"
+                placeholder="example@gmail.com"
+              >
+
+            </div>
+
+
+
+            <!-- WHATSAPP -->
+
+            <div class="field">
+
+              <label>
+                WhatsApp নম্বর
+              </label>
+
+              <input
+                type="tel"
+                name="WhatsApp Number"
+                placeholder="WhatsApp নম্বর"
+              >
+
+            </div>
+
+
+
+            <!-- COURSE -->
+
+            <div class="field full">
+
+              <label>
+                কোন কোর্সে ভর্তি হতে চান? <span>*</span>
+              </label>
+
+              <select
+                name="Selected Course"
+                required
+              >
+
+                <option value="">
+                  কোর্স নির্বাচন করুন
+                </option>
+
+                <option value="AI-Powered UI/UX Career Program">
+                  AI-Powered UI/UX Career Program — ৳7,490
+                </option>
+
+                <option value="AI-Powered Cyber Security & Ethical Hacking">
+                  AI-Powered Cyber Security & Ethical Hacking — ৳9,500
+                </option>
+
+                <option value="AI-Powered Graphic Design">
+                  AI-Powered Graphic Design — ৳4,500
+                </option>
+
+                <option value="100Days Kidz Spoken English">
+                  100Days Kidz Spoken English — ৳6,500
+                </option>
+
+              </select>
+
+            </div>
+
+
+
+            <!-- STATUS -->
+
+            <div class="field">
+
+              <label>
+                আপনার বর্তমান অবস্থা
+              </label>
+
+              <select name="Current Status">
+
+                <option value="">
+                  নির্বাচন করুন
+                </option>
+
+                <option value="Student">
+                  Student
+                </option>
+
+                <option value="Job Holder">
+                  চাকরি করি
+                </option>
+
+                <option value="Freelancer">
+                  Freelancer
+                </option>
+
+                <option value="Business">
+                  Business
+                </option>
+
+                <option value="Other">
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+
+
+            <!-- EDUCATION -->
+
+            <div class="field">
+
+              <label>
+                শিক্ষাগত যোগ্যতা
+              </label>
+
+              <input
+                type="text"
+                name="Education"
+                placeholder="যেমন: HSC / Diploma / Graduate"
+              >
+
+            </div>
+
+
+
+            <!-- WHY -->
+
+            <div class="field full">
+
+              <label>
+                আপনি কেন এই কোর্সটি করতে চান?
+              </label>
+
+              <textarea
+                name="Learning Goal"
+                placeholder="আপনার লক্ষ্য বা উদ্দেশ্য সংক্ষেপে লিখুন..."
+              ></textarea>
+
+            </div>
+
+
+
+            <!-- SOURCE -->
+
+            <div class="field">
+
+              <label>
+                কীভাবে আমাদের সম্পর্কে জেনেছেন?
+              </label>
+
+              <select name="How Found Us">
+
+                <option value="">
+                  নির্বাচন করুন
+                </option>
+
+                <option value="Facebook">
+                  Facebook
+                </option>
+
+                <option value="Instagram">
+                  Instagram
+                </option>
+
+                <option value="YouTube">
+                  YouTube
+                </option>
+
+                <option value="Friend or Family">
+                  Friend / Family
+                </option>
+
+                <option value="Google">
+                  Google
+                </option>
+
+                <option value="Other">
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+
+
+            <!-- CONTACT METHOD -->
+
+            <div class="field">
+
+              <label>
+                পছন্দের যোগাযোগ মাধ্যম
+              </label>
+
+              <select name="Preferred Contact">
+
+                <option value="">
+                  নির্বাচন করুন
+                </option>
+
+                <option value="Phone">
+                  Phone Call
+                </option>
+
+                <option value="WhatsApp">
+                  WhatsApp
+                </option>
+
+                <option value="Email">
+                  Email
+                </option>
+
+              </select>
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div class="field full">
+
+              <label>
+                কোনো প্রশ্ন বা Message
+              </label>
+
+              <textarea
+                name="Message"
+                placeholder="আপনার কোনো প্রশ্ন থাকলে এখানে লিখুন..."
+              ></textarea>
+
+            </div>
+
+
+
+            <!-- AGREEMENT -->
+
+            <label class="agreement">
+
+              <input
+                type="checkbox"
+                required
+              >
+
+              <span>
+                আমি নিশ্চিত করছি যে উপরে দেওয়া তথ্যগুলো
+                সঠিক এবং SNK IT Institute-এর পক্ষ থেকে
+                যোগাযোগ করার অনুমতি দিচ্ছি।
+              </span>
+
+            </label>
+
+
+
+            <!-- SUBMIT -->
+
+            <div class="submit-area">
+
+              <button
+                type="submit"
+                class="submit-button"
+              >
+                আবেদন জমা দিন →
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </form>
+
+
+
+        <!-- INFO -->
+
+        <div class="form-info">
+
+          <div class="info-box">
+
+            <strong>
+              📩 Email
+            </strong>
+
+            <span>
+              Application Received
+            </span>
+
+          </div>
+
+          <div class="info-box">
+
+            <strong>
+              📞 Contact
+            </strong>
+
+            <span>
+              01705633700
+            </span>
+
+          </div>
+
+          <div class="info-box">
+
+            <strong>
+              🎓 Career
+            </strong>
+
+            <span>
+              Practical Learning
+            </span>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      © 2026
+      <strong>
+        SNK <span>IT</span> Institute
+      </strong>
+      — Learn To Lead
+
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
