@@ -1,1951 +1,2748 @@
-/* =========================================================
-   SNK IT INSTITUTE
-   MAIN WEBSITE STYLE
-   ========================================================= */
+```html
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SNK IT Institute | Learn To Lead</title>
 
+  <meta
+    name="description"
+    content="SNK IT Institute — AI-Powered Practical IT Education, Career Skills and Future-Ready Training."
+  >
 
-/* =========================================================
-   RESET
-   ========================================================= */
+  <style>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    /* =====================================================
+       RESET
+    ===================================================== */
 
-html {
-  scroll-behavior: smooth;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-body {
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+    html{
+      scroll-behavior:smooth;
+    }
 
-  background: #050505;
-  color: #ffffff;
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#050505;
+      color:#fff;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
 
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+    img{
+      max-width:100%;
+      display:block;
+    }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+    button,
+    input{
+      font:inherit;
+    }
 
-button,
-input {
-  font: inherit;
-}
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
 
-.container {
-  width: min(1180px, 92%);
-  margin: 0 auto;
-}
 
+    /* =====================================================
+       HEADER
+    ===================================================== */
 
-/* =========================================================
-   HEADER
-   ========================================================= */
+    .header{
+      position:sticky;
+      top:0;
+      z-index:9999;
 
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
+      background:rgba(5,5,5,.94);
 
-  background: rgba(5, 5, 5, 0.92);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
+    .nav{
+      min-height:82px;
 
-.nav {
-  min-height: 82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+      gap:22px;
+    }
 
-  gap: 22px;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      flex-shrink:0;
+    }
 
+    .brand img{
+      width:120px;
+      height:auto;
+    }
 
-/* LOGO */
 
-.brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
+    /* SEARCH */
 
-.brand img {
-  width: 120px;
-  height: auto;
-}
+    .search-box{
+      width:220px;
+      height:42px;
 
+      display:flex;
+      align-items:center;
 
-/* SEARCH */
+      gap:8px;
 
-.search-box {
-  width: 220px;
-  height: 42px;
+      padding:0 13px;
 
-  display: flex;
-  align-items: center;
+      background:#101010;
 
-  gap: 8px;
+      border:1px solid #252525;
+      border-radius:9px;
 
-  padding: 0 13px;
+      transition:.3s;
+    }
 
-  background: #101010;
+    .search-box:focus-within{
+      border-color:rgba(183,255,0,.5);
 
-  border: 1px solid #252525;
-  border-radius: 9px;
+      box-shadow:
+        0 0 0 3px rgba(183,255,0,.06);
+    }
 
-  transition: 0.3s;
-}
+    .search-box span{
+      color:#777;
+      font-size:22px;
+      line-height:1;
+    }
 
-.search-box:focus-within {
-  border-color: rgba(183, 255, 0, 0.5);
+    .search-box input{
+      width:100%;
+      border:0;
+      outline:0;
+      background:transparent;
+      color:#fff;
+      font-size:13px;
+    }
 
-  box-shadow:
-    0 0 0 3px rgba(183, 255, 0, 0.06);
-}
+    .search-box input::placeholder{
+      color:#666;
+    }
 
-.search-box span {
-  color: #777;
-  font-size: 22px;
-  line-height: 1;
-}
 
-.search-box input {
-  width: 100%;
+    /* NAVIGATION */
 
-  border: 0;
-  outline: 0;
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:25px;
+    }
 
-  background: transparent;
-  color: #fff;
+    .menu a{
+      color:#bdbdbd;
+      font-size:14px;
+      transition:.3s;
+    }
 
-  font-size: 13px;
-}
+    .menu a:hover,
+    .menu a.active{
+      color:#b7ff00;
+    }
 
-.search-box input::placeholder {
-  color: #666;
-}
 
+    /* HEADER ACTIONS */
 
-/* NAVIGATION */
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-shrink:0;
+    }
 
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
+    .offer{
+      color:#b7ff00;
 
-.menu a {
-  color: #bdbdbd;
-  font-size: 14px;
+      border:1px solid rgba(183,255,0,.25);
 
-  transition: 0.3s;
-}
+      background:rgba(183,255,0,.06);
 
-.menu a:hover {
-  color: #b7ff00;
-}
+      padding:9px 13px;
 
+      border-radius:8px;
 
-/* HEADER ACTIONS */
+      font-size:12px;
+      font-weight:700;
 
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+      transition:.3s;
+    }
 
-  flex-shrink: 0;
-}
+    .offer:hover{
+      background:rgba(183,255,0,.12);
+      border-color:#b7ff00;
+    }
 
-.offer {
-  color: #b7ff00;
+    .nav-button{
+      background:#b7ff00;
+      color:#050505;
 
-  border: 1px solid rgba(183, 255, 0, 0.25);
+      padding:10px 17px;
 
-  background: rgba(183, 255, 0, 0.06);
+      border-radius:8px;
 
-  padding: 9px 13px;
+      font-size:13px;
+      font-weight:800;
 
-  border-radius: 8px;
+      transition:.3s;
+    }
 
-  font-size: 12px;
-  font-weight: 700;
+    .nav-button:hover{
+      transform:translateY(-2px);
 
-  transition: 0.3s;
-}
+      box-shadow:
+        0 10px 30px rgba(183,255,0,.20);
+    }
 
-.offer:hover {
-  background: rgba(183, 255, 0, 0.12);
-  border-color: #b7ff00;
-}
 
-.nav-button {
-  background: #b7ff00;
-  color: #050505;
+    /* =====================================================
+       HERO
+    ===================================================== */
 
-  padding: 10px 17px;
+    .hero{
+      position:relative;
 
-  border-radius: 8px;
+      min-height:calc(100vh - 82px);
 
-  font-size: 13px;
-  font-weight: 800;
+      display:flex;
+      align-items:center;
 
-  transition: 0.3s;
-}
+      overflow:hidden;
 
-.nav-button:hover {
-  transform: translateY(-2px);
+      background:
 
-  box-shadow:
-    0 10px 30px rgba(183, 255, 0, 0.2);
-}
+        radial-gradient(
+          circle at 80% 40%,
+          rgba(183,255,0,.12),
+          transparent 30%
+        ),
 
+        radial-gradient(
+          circle at 10% 80%,
+          rgba(183,255,0,.05),
+          transparent 25%
+        ),
 
-/* =========================================================
-   HERO
-   ========================================================= */
+        #050505;
+    }
 
-.hero {
-  position: relative;
+    .hero::before{
+      content:"";
 
-  min-height: calc(100vh - 82px);
+      position:absolute;
 
-  display: flex;
-  align-items: center;
+      width:650px;
+      height:650px;
 
-  overflow: hidden;
+      right:-320px;
+      top:50%;
 
-  background:
-    radial-gradient(
-      circle at 80% 35%,
-      rgba(183, 255, 0, 0.14),
-      transparent 28%
-    ),
+      transform:translateY(-50%);
 
-    radial-gradient(
-      circle at 15% 80%,
-      rgba(183, 255, 0, 0.06),
-      transparent 25%
-    ),
+      border:1px solid rgba(183,255,0,.07);
 
-    #050505;
-}
+      border-radius:50%;
+    }
 
+    .hero::after{
+      content:"";
 
-/* HERO DECORATION */
+      position:absolute;
 
-.hero::before {
-  content: "";
+      width:380px;
+      height:380px;
 
-  position: absolute;
+      right:-190px;
+      top:50%;
 
-  width: 600px;
-  height: 600px;
+      transform:translateY(-50%);
 
-  right: -260px;
-  top: 50%;
+      border:1px solid rgba(183,255,0,.05);
 
-  transform: translateY(-50%);
+      border-radius:50%;
+    }
 
-  border:
-    1px solid rgba(183, 255, 0, 0.08);
+    .hero-box{
+      min-height:calc(100vh - 82px);
 
-  border-radius: 50%;
-}
+      display:grid;
 
-.hero::after {
-  content: "";
+      grid-template-columns:.95fr 1.05fr;
 
-  position: absolute;
+      align-items:center;
 
-  width: 300px;
-  height: 300px;
+      gap:45px;
 
-  right: -100px;
-  top: 50%;
+      position:relative;
 
-  transform: translateY(-50%);
+      z-index:2;
+    }
 
-  border:
-    1px solid rgba(183, 255, 0, 0.05);
+    .hero-content{
+      padding:70px 0;
+    }
 
-  border-radius: 50%;
-}
+    .badge{
+      display:inline-flex;
 
+      align-items:center;
+      gap:9px;
 
-/* HERO BOX */
+      padding:8px 15px;
 
-.hero-box {
-  min-height: calc(100vh - 82px);
+      margin-bottom:25px;
 
-  display: grid;
+      color:#b7ff00;
 
-  grid-template-columns:
-    1.05fr
-    0.95fr;
+      border:1px solid rgba(183,255,0,.28);
 
-  align-items: center;
+      background:rgba(183,255,0,.06);
 
-  gap: 55px;
+      border-radius:50px;
 
-  position: relative;
-  z-index: 2;
-}
+      font-size:12px;
+      font-weight:700;
+    }
 
+    .badge-dot{
+      width:7px;
+      height:7px;
 
-/* HERO CONTENT */
+      background:#b7ff00;
 
-.hero-content {
-  padding: 80px 0;
-}
+      border-radius:50%;
 
+      box-shadow:0 0 12px #b7ff00;
+    }
 
-/* BADGE */
+    .hero h1{
+      font-size:clamp(46px,6vw,78px);
 
-.badge {
-  display: inline-flex;
+      line-height:1.05;
 
-  align-items: center;
+      letter-spacing:-4px;
 
-  gap: 9px;
+      margin-bottom:25px;
+    }
 
-  padding: 8px 15px;
+    .hero h1 span{
+      color:#b7ff00;
+    }
 
-  margin-bottom: 25px;
+    .hero-description{
+      max-width:650px;
 
-  color: #b7ff00;
+      color:#a4a4a4;
 
-  border:
-    1px solid rgba(183, 255, 0, 0.28);
+      font-size:17px;
 
-  background:
-    rgba(183, 255, 0, 0.06);
+      line-height:1.85;
 
-  border-radius: 50px;
+      margin-bottom:32px;
+    }
 
-  font-size: 12px;
-  font-weight: 700;
-}
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:13px;
+    }
 
-.badge-dot {
-  width: 7px;
-  height: 7px;
+    .btn{
+      display:inline-flex;
 
-  background: #b7ff00;
+      align-items:center;
+      justify-content:center;
 
-  border-radius: 50%;
+      padding:14px 23px;
 
-  box-shadow:
-    0 0 12px #b7ff00;
-}
+      border-radius:9px;
 
+      font-weight:800;
+      font-size:14px;
 
-/* HERO TITLE */
+      transition:.3s;
+    }
 
-.hero h1 {
-  font-size:
-    clamp(48px, 7vw, 88px);
+    .primary{
+      background:#b7ff00;
+      color:#050505;
+    }
 
-  line-height: 1.02;
+    .primary:hover{
+      transform:translateY(-3px);
 
-  letter-spacing: -4px;
+      box-shadow:
+        0 12px 35px rgba(183,255,0,.20);
+    }
 
-  margin-bottom: 26px;
-}
+    .secondary{
+      border:1px solid #333;
+      color:#fff;
+    }
 
-.hero h1 span {
-  color: #b7ff00;
-}
+    .secondary:hover{
+      border-color:#b7ff00;
+      color:#b7ff00;
+    }
 
 
-/* HERO DESCRIPTION */
+    /* HERO IMAGE */
 
-.hero-description {
-  max-width: 680px;
+    .hero-visual{
+      position:relative;
 
-  color: #a4a4a4;
+      min-height:620px;
 
-  font-size: 18px;
+      display:flex;
 
-  line-height: 1.8;
+      align-items:center;
+      justify-content:center;
 
-  margin-bottom: 34px;
-}
+      padding:35px;
+    }
 
+    .hero-main-image{
+      width:100%;
+      max-width:620px;
+      height:auto;
 
-/* HERO BUTTONS */
+      object-fit:contain;
 
-.hero-buttons {
-  display: flex;
+      position:relative;
+      z-index:3;
 
-  flex-wrap: wrap;
+      filter:
+        drop-shadow(
+          0 0 45px rgba(183,255,0,.12)
+        );
 
-  gap: 13px;
-}
+      transition:
+        transform .5s ease,
+        filter .5s ease;
+    }
 
-.btn {
-  display: inline-flex;
+    .hero-main-image:hover{
+      transform:scale(1.025);
 
-  align-items: center;
-  justify-content: center;
+      filter:
+        drop-shadow(
+          0 0 65px rgba(183,255,0,.20)
+        );
+    }
 
-  padding: 14px 23px;
 
-  border-radius: 9px;
+    /* =====================================================
+       FEATURES
+    ===================================================== */
 
-  font-weight: 800;
-  font-size: 14px;
+    .features{
+      background:#080808;
 
-  transition: 0.3s;
-}
+      border-top:1px solid #181818;
+      border-bottom:1px solid #181818;
+    }
 
-.primary {
-  background: #b7ff00;
-  color: #050505;
-}
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+    }
 
-.primary:hover {
-  transform: translateY(-3px);
+    .feature{
+      padding:28px 15px;
 
-  box-shadow:
-    0 12px 35px rgba(183, 255, 0, 0.2);
-}
+      text-align:center;
 
-.secondary {
-  border: 1px solid #333;
-  color: #fff;
-}
+      border-right:1px solid #181818;
+    }
 
-.secondary:hover {
-  border-color: #b7ff00;
-  color: #b7ff00;
-}
+    .feature:last-child{
+      border-right:0;
+    }
 
+    .feature strong{
+      display:block;
 
-/* =========================================================
-   HERO IMAGE
-   ========================================================= */
+      color:#b7ff00;
 
-.hero-image {
-  position: relative;
+      font-size:25px;
 
-  min-height: 520px;
+      margin-bottom:3px;
+    }
 
-  display: flex;
+    .feature span{
+      color:#777;
+      font-size:13px;
+    }
 
-  align-items: center;
-  justify-content: center;
-}
 
+    /* =====================================================
+       FREE COURSE BUTTON
+    ===================================================== */
 
-/*
-   IMPORTANT:
-   Hero-তে এখন Frame 5.svg ব্যবহার করবেন।
-   HTML-এ class="hero-main-image" দিন।
-*/
+    .free-course-wrap{
+      padding:22px 0;
 
-.hero-main-image {
-  position: relative;
+      background:#050505;
 
-  width: 100%;
-  max-width: 560px;
+      border-top:1px solid #171717;
+      border-bottom:1px solid #171717;
+    }
 
-  height: auto;
+    .free-course-button{
+      width:100%;
 
-  z-index: 5;
+      min-height:70px;
 
-  filter:
-    drop-shadow(
-      0 0 35px rgba(183, 255, 0, 0.14)
-    );
+      display:flex;
 
-  transition: 0.5s ease;
-}
+      align-items:center;
+      justify-content:center;
 
-.hero-main-image:hover {
-  transform: scale(1.02);
+      text-align:center;
 
-  filter:
-    drop-shadow(
-      0 0 50px rgba(183, 255, 0, 0.2)
-    );
-}
+      padding:16px 25px;
 
+      background:
+        linear-gradient(
+          90deg,
+          rgba(183,255,0,.08),
+          rgba(183,255,0,.18),
+          rgba(183,255,0,.08)
+        );
 
-/*
-   যদি পুরোনো hero-frame class থেকে যায়,
-   তাহলেও যেন সমস্যা না হয়।
-*/
+      border:1px solid rgba(183,255,0,.35);
 
-.hero-frame {
-  position: absolute;
+      border-radius:12px;
 
-  width: 100%;
+      color:#b7ff00;
 
-  max-width: 520px;
+      font-size:17px;
+      font-weight:900;
 
-  height: auto;
+      transition:.3s;
+    }
 
-  opacity: 0.95;
+    .free-course-button:hover{
+      transform:translateY(-3px);
 
-  filter:
-    drop-shadow(
-      0 0 35px rgba(183, 255, 0, 0.12)
-    );
-}
+      background:#b7ff00;
+      color:#050505;
 
-.hero-frame-1 {
-  transform: rotate(-4deg);
-}
+      box-shadow:
+        0 15px 35px rgba(183,255,0,.15);
+    }
 
-.hero-frame-2 {
-  transform: rotate(4deg);
 
-  opacity: 0.45;
-}
+    /* =====================================================
+       COMMON SECTION
+    ===================================================== */
 
-.hero-frame-3 {
-  width: 88%;
-  opacity: 0.28;
-}
+    .section{
+      padding:105px 0;
+    }
 
-.hero-frame-4 {
-  width: 75%;
-  opacity: 0.20;
-}
+    .section-header{
+      max-width:730px;
+      margin-bottom:55px;
+    }
 
+    .section-header small{
+      display:block;
 
-/* =========================================================
-   HERO CENTER
-   ========================================================= */
+      color:#b7ff00;
 
-.hero-center {
-  position: relative;
+      font-size:12px;
+      font-weight:800;
 
-  z-index: 5;
+      letter-spacing:2px;
 
-  width: 280px;
-  height: 280px;
+      margin-bottom:14px;
+    }
 
-  display: flex;
+    .section-header h2{
+      font-size:clamp(36px,5vw,58px);
 
-  flex-direction: column;
+      line-height:1.08;
 
-  align-items: center;
-  justify-content: center;
+      letter-spacing:-2px;
 
-  text-align: center;
+      margin-bottom:17px;
+    }
 
-  border:
-    1px solid rgba(183, 255, 0, 0.28);
+    .section-header h2 span{
+      color:#b7ff00;
+    }
 
-  border-radius: 50%;
+    .section-header p{
+      color:#8d8d8d;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(183, 255, 0, 0.13),
-      rgba(5, 5, 5, 0.96) 68%
-    );
+      font-size:16px;
 
-  box-shadow:
+      line-height:1.8;
+    }
 
-    0 0 70px
-    rgba(183, 255, 0, 0.1),
 
-    inset 0 0 50px
-    rgba(183, 255, 0, 0.05);
-}
+    /* =====================================================
+       WHY
+    ===================================================== */
 
-.hero-center h2 {
-  color: #b7ff00;
+    .why-section{
+      background:#050505;
+    }
 
-  font-size: 32px;
+    .why-grid{
+      display:grid;
 
-  letter-spacing: 4px;
+      grid-template-columns:repeat(3,1fr);
 
-  margin-bottom: 12px;
-}
+      gap:20px;
+    }
 
-.hero-center p {
-  color: #999;
+    .why-card{
+      position:relative;
 
-  font-size: 13px;
+      padding:30px;
 
-  line-height: 1.8;
-}
+      background:#0b0b0b;
 
+      border:1px solid #202020;
 
-/* =========================================================
-   HERO FLOATING ANIMATION
-   ========================================================= */
+      border-radius:18px;
 
-@keyframes heroFloat {
-  0% {
-    transform: translateY(0);
-  }
+      transition:.35s;
 
-  50% {
-    transform: translateY(-10px);
-  }
+      overflow:hidden;
+    }
 
-  100% {
-    transform: translateY(0);
-  }
-}
+    .why-card:hover{
+      transform:translateY(-7px);
 
-.hero-main-image {
-  animation:
-    heroFloat 5s ease-in-out infinite;
-}
+      border-color:rgba(183,255,0,.45);
+    }
 
+    .why-card.featured{
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.07),
+          #0b0b0b 55%
+        );
 
-/* =========================================================
-   FEATURES
-   ========================================================= */
+      border-color:rgba(183,255,0,.25);
+    }
 
-.features {
-  background: #080808;
+    .why-icon{
+      width:55px;
+      height:55px;
 
-  border-top: 1px solid #181818;
-  border-bottom: 1px solid #181818;
-}
+      display:grid;
+      place-items:center;
 
-.feature-grid {
-  display: grid;
+      margin-bottom:20px;
 
-  grid-template-columns:
-    repeat(4, 1fr);
-}
+      background:rgba(183,255,0,.09);
 
-.feature {
-  padding: 28px 15px;
+      border-radius:14px;
 
-  text-align: center;
+      font-size:25px;
+    }
 
-  border-right: 1px solid #181818;
-}
+    .why-number{
+      color:#b7ff00;
 
-.feature:last-child {
-  border-right: 0;
-}
+      font-size:12px;
+      font-weight:800;
 
-.feature strong {
-  display: block;
+      letter-spacing:1px;
 
-  color: #b7ff00;
+      margin-bottom:12px;
+    }
 
-  font-size: 25px;
+    .why-card h3{
+      font-size:21px;
+      margin-bottom:10px;
+    }
 
-  margin-bottom: 3px;
-}
+    .why-card p{
+      color:#858585;
 
-.feature span {
-  color: #777;
+      font-size:14px;
 
-  font-size: 13px;
-}
+      line-height:1.8;
 
+      min-height:100px;
 
-/* =========================================================
-   COMMON SECTION
-   ========================================================= */
+      margin-bottom:20px;
+    }
 
-.section {
-  padding: 105px 0;
-}
+    .why-card a{
+      color:#b7ff00;
 
-.section-header {
-  max-width: 730px;
+      font-size:13px;
+      font-weight:800;
+    }
 
-  margin-bottom: 55px;
-}
+    .why-bottom{
+      margin-top:35px;
 
-.section-header small {
-  display: block;
+      display:grid;
 
-  color: #b7ff00;
+      grid-template-columns:repeat(4,1fr);
 
-  font-size: 12px;
+      border:1px solid #202020;
 
-  font-weight: 800;
+      border-radius:15px;
 
-  letter-spacing: 2px;
+      overflow:hidden;
+    }
 
-  margin-bottom: 14px;
-}
+    .why-bottom div{
+      padding:20px;
 
-.section-header h2 {
-  font-size:
-    clamp(36px, 5vw, 58px);
+      background:#090909;
 
-  line-height: 1.08;
+      border-right:1px solid #202020;
+    }
 
-  letter-spacing: -2px;
+    .why-bottom div:last-child{
+      border-right:0;
+    }
 
-  margin-bottom: 17px;
-}
+    .why-bottom strong{
+      display:block;
 
-.section-header h2 span {
-  color: #b7ff00;
-}
+      color:#fff;
 
-.section-header p {
-  color: #8d8d8d;
+      font-size:14px;
 
-  font-size: 16px;
+      margin-bottom:3px;
+    }
 
-  line-height: 1.8;
-}
+    .why-bottom span{
+      color:#666;
+      font-size:12px;
+    }
 
 
-/* =========================================================
-   WHY SECTION
-   ========================================================= */
+    /* =====================================================
+       COURSES
+    ===================================================== */
 
-.why-section {
-  background: #050505;
-}
+    .courses{
+      background:#080808;
+    }
 
-.why-grid {
-  display: grid;
+    .course-grid{
+      display:grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+      grid-template-columns:repeat(4,1fr);
 
-  gap: 20px;
-}
+      gap:18px;
+    }
 
-.why-card {
-  position: relative;
+    .course-card{
+      position:relative;
 
-  padding: 30px;
+      display:flex;
+      flex-direction:column;
 
-  background: #0b0b0b;
+      padding:20px;
 
-  border: 1px solid #202020;
+      background:#101010;
 
-  border-radius: 18px;
+      border:1px solid #222;
 
-  transition: 0.35s;
+      border-radius:18px;
 
-  overflow: hidden;
-}
+      transition:.35s;
 
-.why-card:hover {
-  transform: translateY(-7px);
+      overflow:hidden;
+    }
 
-  border-color:
-    rgba(183, 255, 0, 0.45);
-}
+    .course-card:hover{
+      transform:translateY(-7px);
 
-.why-card.featured {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(183, 255, 0, 0.07),
-      #0b0b0b 55%
-    );
+      border-color:rgba(183,255,0,.45);
 
-  border-color:
-    rgba(183, 255, 0, 0.25);
-}
+      box-shadow:
+        0 20px 45px rgba(0,0,0,.25);
+    }
 
-.why-icon {
-  width: 55px;
-  height: 55px;
+    .course-image{
+      width:100%;
 
-  display: grid;
+      height:180px;
 
-  place-items: center;
+      object-fit:cover;
 
-  margin-bottom: 20px;
+      border-radius:12px;
 
-  background:
-    rgba(183, 255, 0, 0.09);
+      margin-bottom:18px;
 
-  border-radius: 14px;
+      border:1px solid #222;
 
-  font-size: 25px;
-}
+      background:#080808;
+    }
 
-.why-number {
-  color: #b7ff00;
+    .course-tag{
+      align-self:flex-start;
 
-  font-size: 12px;
+      color:#b7ff00;
 
-  font-weight: 800;
+      background:rgba(183,255,0,.07);
 
-  letter-spacing: 1px;
+      border:1px solid rgba(183,255,0,.18);
 
-  margin-bottom: 12px;
-}
+      padding:5px 9px;
 
-.why-card h3 {
-  font-size: 21px;
+      border-radius:5px;
 
-  margin-bottom: 10px;
-}
+      font-size:9px;
 
-.why-card p {
-  color: #858585;
+      font-weight:800;
 
-  font-size: 14px;
+      letter-spacing:1px;
 
-  line-height: 1.8;
+      margin-bottom:13px;
+    }
 
-  min-height: 100px;
+    .course-card h3{
+      font-size:19px;
 
-  margin-bottom: 20px;
-}
+      line-height:1.35;
 
-.why-card a {
-  color: #b7ff00;
+      margin-bottom:10px;
+    }
 
-  font-size: 13px;
+    .course-card p{
+      color:#858585;
 
-  font-weight: 800;
-}
+      font-size:13px;
 
+      line-height:1.75;
 
-/* =========================================================
-   WHY BOTTOM
-   ========================================================= */
+      min-height:125px;
 
-.why-bottom {
-  margin-top: 35px;
+      margin-bottom:18px;
+    }
 
-  display: grid;
+    .course-info{
+      display:flex;
 
-  grid-template-columns:
-    repeat(4, 1fr);
+      flex-direction:column;
 
-  border: 1px solid #202020;
+      gap:5px;
 
-  border-radius: 15px;
+      color:#777;
 
-  overflow: hidden;
-}
+      font-size:12px;
 
-.why-bottom div {
-  padding: 20px;
+      margin-bottom:14px;
+    }
 
-  background: #090909;
+    .price{
+      display:flex;
 
-  border-right: 1px solid #202020;
-}
+      align-items:center;
 
-.why-bottom div:last-child {
-  border-right: 0;
-}
+      gap:8px;
 
-.why-bottom strong {
-  display: block;
+      margin-bottom:18px;
+    }
 
-  color: #fff;
+    .price del{
+      color:#555;
+      font-size:13px;
+    }
 
-  font-size: 14px;
+    .price strong{
+      color:#b7ff00;
+      font-size:23px;
+    }
 
-  margin-bottom: 3px;
-}
+    .course-button{
+      display:block;
 
-.why-bottom span {
-  color: #666;
+      margin-top:auto;
 
-  font-size: 12px;
-}
+      text-align:center;
 
+      padding:10px;
 
-/* =========================================================
-   COURSES
-   ========================================================= */
+      border:1px solid #333;
 
-.courses {
-  background: #080808;
-}
+      border-radius:8px;
 
-.course-grid {
-  display: grid;
+      color:#fff;
 
-  grid-template-columns:
-    repeat(4, 1fr);
+      font-size:12px;
+      font-weight:800;
 
-  gap: 18px;
-}
+      transition:.3s;
+    }
 
-.course-card {
-  position: relative;
+    .course-button:hover{
+      background:#b7ff00;
 
-  display: flex;
+      border-color:#b7ff00;
 
-  flex-direction: column;
+      color:#050505;
+    }
 
-  padding: 20px;
+    .courses-action{
+      display:flex;
 
-  background: #101010;
+      justify-content:center;
 
-  border: 1px solid #222;
+      margin-top:38px;
+    }
 
-  border-radius: 18px;
+    .all-courses-button{
+      padding:13px 24px;
 
-  transition: 0.35s;
+      border:1px solid #333;
 
-  overflow: hidden;
-}
+      border-radius:9px;
 
-.course-card:hover {
-  transform: translateY(-7px);
+      color:#fff;
 
-  border-color:
-    rgba(183, 255, 0, 0.45);
+      font-size:13px;
+      font-weight:800;
 
-  box-shadow:
-    0 20px 45px rgba(0, 0, 0, 0.25);
-}
+      transition:.3s;
+    }
 
+    .all-courses-button:hover{
+      color:#050505;
 
-/* =========================================================
-   COURSE IMAGE
-   ========================================================= */
+      background:#b7ff00;
 
-.course-image {
-  width: 100%;
+      border-color:#b7ff00;
+    }
 
-  height: 180px;
 
-  object-fit: cover;
+    /* =====================================================
+       MENTOR
+    ===================================================== */
 
-  object-position: center;
+    .mentor-section{
+      background:#050505;
+    }
 
-  border-radius: 12px;
+    .mentor-card{
+      display:flex;
 
-  margin-bottom: 18px;
+      align-items:center;
+      justify-content:space-between;
 
-  border: 1px solid #222;
+      gap:30px;
 
-  background: #080808;
+      padding:35px;
 
-  transition: 0.4s;
-}
+      background:
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.07),
+          #0b0b0b
+        );
 
-.course-card:hover .course-image {
-  transform: scale(1.025);
-}
+      border:1px solid rgba(183,255,0,.22);
 
+      border-radius:20px;
+    }
 
-/* =========================================================
-   COURSE ICON
-   ========================================================= */
+    .mentor-content small{
+      color:#b7ff00;
 
-.course-icon {
-  width: 52px;
-  height: 52px;
+      font-size:11px;
+      font-weight:800;
 
-  display: grid;
+      letter-spacing:2px;
+    }
 
-  place-items: center;
+    .mentor-content h2{
+      font-size:32px;
 
-  margin-bottom: 18px;
+      margin:10px 0;
+    }
 
-  background:
-    rgba(183, 255, 0, 0.09);
+    .mentor-content p{
+      color:#888;
 
-  border-radius: 13px;
+      max-width:650px;
 
-  font-size: 24px;
-}
+      font-size:14px;
+    }
 
+    .mentor-button{
+      flex-shrink:0;
 
-/* =========================================================
-   COURSE TAG
-   ========================================================= */
+      padding:13px 22px;
 
-.course-tag {
-  align-self: flex-start;
+      background:#b7ff00;
 
-  color: #b7ff00;
+      color:#050505;
 
-  background:
-    rgba(183, 255, 0, 0.07);
+      border-radius:9px;
 
-  border:
-    1px solid rgba(183, 255, 0, 0.18);
+      font-size:13px;
+      font-weight:800;
+    }
 
-  padding: 5px 9px;
 
-  border-radius: 5px;
+    /* =====================================================
+       CTA
+    ===================================================== */
 
-  font-size: 9px;
+    .cta{
+      position:relative;
 
-  font-weight: 800;
+      padding:110px 0;
 
-  letter-spacing: 1px;
+      text-align:center;
 
-  margin-bottom: 13px;
-}
+      overflow:hidden;
 
+      background:
 
-/* =========================================================
-   COURSE TITLE
-   ========================================================= */
+        radial-gradient(
+          circle at center,
+          rgba(183,255,0,.13),
+          transparent 45%
+        ),
 
-.course-card h3 {
-  font-size: 19px;
+        #050505;
+    }
 
-  line-height: 1.35;
+    .cta::before{
+      content:"";
 
-  margin-bottom: 10px;
-}
+      position:absolute;
 
+      width:500px;
+      height:500px;
 
-/* =========================================================
-   COURSE DESCRIPTION
-   ========================================================= */
+      left:50%;
+      top:50%;
 
-.course-card p {
-  color: #858585;
+      transform:translate(-50%,-50%);
 
-  font-size: 13px;
+      border:1px solid rgba(183,255,0,.05);
 
-  line-height: 1.75;
+      border-radius:50%;
+    }
 
-  min-height: 125px;
+    .cta-content{
+      position:relative;
+      z-index:2;
+    }
 
-  margin-bottom: 18px;
-}
+    .cta small{
+      display:block;
 
+      color:#b7ff00;
 
-/* =========================================================
-   COURSE INFO
-   ========================================================= */
+      font-size:12px;
+      font-weight:800;
 
-.course-info {
-  display: flex;
+      letter-spacing:2px;
 
-  flex-direction: column;
+      margin-bottom:15px;
+    }
 
-  gap: 5px;
+    .cta h2{
+      font-size:clamp(40px,6vw,70px);
 
-  color: #777;
+      line-height:1.05;
 
-  font-size: 12px;
+      letter-spacing:-3px;
 
-  margin-bottom: 14px;
-}
+      margin-bottom:20px;
+    }
 
+    .cta h2 span{
+      color:#b7ff00;
+    }
 
-/* =========================================================
-   PRICE
-   ========================================================= */
+    .cta p{
+      max-width:620px;
 
-.price {
-  display: flex;
+      margin:0 auto 30px;
 
-  align-items: center;
+      color:#888;
 
-  gap: 8px;
+      font-size:16px;
+    }
 
-  margin-bottom: 18px;
-}
+    .cta-buttons{
+      display:flex;
 
-.price del {
-  color: #555;
+      justify-content:center;
 
-  font-size: 13px;
-}
+      flex-wrap:wrap;
 
-.price strong {
-  color: #b7ff00;
+      gap:13px;
+    }
 
-  font-size: 23px;
-}
 
+    /* =====================================================
+       FOOTER
+    ===================================================== */
 
-/* =========================================================
-   COURSE BUTTON
-   ========================================================= */
+    .footer{
+      padding:65px 0 25px;
 
-.course-button {
-  display: block;
+      border-top:1px solid #1b1b1b;
 
-  margin-top: auto;
+      background:#050505;
 
-  text-align: center;
+      color:#666;
 
-  padding: 10px;
+      font-size:13px;
+    }
 
-  border: 1px solid #333;
+    .footer-grid{
+      display:grid;
 
-  border-radius: 8px;
+      grid-template-columns:
+        1.4fr
+        1fr
+        1fr;
 
-  color: #fff;
+      gap:45px;
 
-  font-size: 12px;
+      padding-bottom:40px;
+    }
 
-  font-weight: 800;
+    .footer-brand{
+      color:#fff;
 
-  transition: 0.3s;
-}
+      font-size:22px;
 
-.course-button:hover {
-  background: #b7ff00;
+      font-weight:800;
 
-  border-color: #b7ff00;
+      margin-bottom:3px;
+    }
 
-  color: #050505;
-}
+    .footer-brand span{
+      color:#b7ff00;
+    }
 
+    .footer-tagline{
+      color:#b7ff00;
 
-/* =========================================================
-   ALL COURSES BUTTON
-   ========================================================= */
+      font-size:12px;
 
-.courses-action {
-  display: flex;
+      font-weight:700;
 
-  justify-content: center;
+      margin-bottom:15px;
+    }
 
-  margin-top: 38px;
-}
+    .footer-description{
+      max-width:400px;
 
-.all-courses-button {
-  padding: 13px 24px;
+      color:#666;
 
-  border: 1px solid #333;
+      font-size:13px;
 
-  border-radius: 9px;
+      line-height:1.8;
+    }
 
-  color: #fff;
+    .footer-column h3{
+      color:#fff;
 
-  font-size: 13px;
+      font-size:14px;
 
-  font-weight: 800;
+      margin-bottom:17px;
+    }
 
-  transition: 0.3s;
-}
+    .social-links{
+      display:flex;
 
-.all-courses-button:hover {
-  color: #050505;
+      flex-direction:column;
 
-  background: #b7ff00;
+      gap:9px;
+    }
 
-  border-color: #b7ff00;
-}
+    .social-links a{
+      color:#888;
 
+      transition:.3s;
+    }
 
-/* =========================================================
-   CTA
-   ========================================================= */
+    .social-links a:hover{
+      color:#b7ff00;
 
-.cta {
-  position: relative;
+      transform:translateX(4px);
+    }
 
-  padding: 110px 0;
+    .payment-text{
+      color:#666;
 
-  text-align: center;
+      margin-bottom:14px;
+    }
 
-  overflow: hidden;
+    .payment-methods{
+      display:flex;
 
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(183, 255, 0, 0.13),
-      transparent 45%
-    ),
+      flex-wrap:wrap;
 
-    #050505;
-}
+      gap:10px;
+    }
 
-.cta::before {
-  content: "";
+    .payment-card{
+      min-width:120px;
 
-  position: absolute;
+      display:flex;
 
-  width: 500px;
-  height: 500px;
+      flex-direction:column;
 
-  left: 50%;
-  top: 50%;
+      gap:2px;
 
-  transform:
-    translate(-50%, -50%);
+      padding:11px 13px;
 
-  border:
-    1px solid rgba(183, 255, 0, 0.05);
+      background:#0c0c0c;
 
-  border-radius: 50%;
-}
+      border:1px solid #252525;
 
-.cta-content {
-  position: relative;
+      border-radius:9px;
 
-  z-index: 2;
-}
+      transition:.3s;
+    }
 
-.cta small {
-  display: block;
+    a.payment-card:hover{
+      transform:translateY(-3px);
 
-  color: #b7ff00;
+      border-color:#b7ff00;
+    }
 
-  font-size: 12px;
+    .payment-card strong{
+      color:#fff;
 
-  font-weight: 800;
+      font-size:13px;
+    }
 
-  letter-spacing: 2px;
+    .payment-card span{
+      color:#777;
 
-  margin-bottom: 15px;
-}
+      font-size:10px;
+    }
 
-.cta h2 {
-  font-size:
-    clamp(40px, 6vw, 70px);
+    .payment-card.bkash strong{
+      color:#e2136e;
+    }
 
-  line-height: 1.05;
+    .payment-card.visa strong{
+      color:#fff;
+      font-style:italic;
+    }
 
-  letter-spacing: -3px;
+    .payment-card.mastercard strong{
+      color:#fff;
+    }
 
-  margin-bottom: 20px;
-}
+    .footer-bottom{
+      display:flex;
 
-.cta h2 span {
-  color: #b7ff00;
-}
+      align-items:center;
+      justify-content:space-between;
 
-.cta p {
-  max-width: 620px;
+      gap:20px;
 
-  margin:
-    0 auto 30px;
+      padding-top:22px;
 
-  color: #888;
+      border-top:1px solid #181818;
 
-  font-size: 16px;
-}
+      color:#555;
 
-.cta-buttons {
-  display: flex;
+      font-size:11px;
+    }
 
-  justify-content: center;
 
-  flex-wrap: wrap;
+    /* =====================================================
+       TABLET
+    ===================================================== */
 
-  gap: 13px;
-}
+    @media(max-width:1100px){
 
+      .search-box{
+        width:180px;
+      }
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
+      .menu{
+        gap:16px;
+      }
 
-.footer {
-  padding: 42px 0;
+      .course-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
 
-  border-top: 1px solid #1b1b1b;
+      .hero-box{
+        gap:30px;
+      }
 
-  background: #050505;
+      .hero-visual{
+        min-height:520px;
+      }
 
-  color: #666;
+    }
 
-  font-size: 13px;
-}
 
-.footer-inner {
-  display: flex;
+    /* =====================================================
+       TABLET SMALL
+    ===================================================== */
 
-  justify-content: space-between;
+    @media(max-width:900px){
 
-  align-items: center;
+      .search-box{
+        display:none;
+      }
 
-  gap: 25px;
-}
+      .hero-box{
+        grid-template-columns:1fr;
 
-.footer-brand {
-  color: #fff;
+        text-align:center;
 
-  font-size: 18px;
+        min-height:auto;
+      }
 
-  font-weight: 800;
+      .hero-content{
+        padding:90px 0 20px;
+      }
 
-  margin-bottom: 3px;
-}
+      .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+      }
 
-.footer-brand span {
-  color: #b7ff00;
-}
+      .hero-buttons{
+        justify-content:center;
+      }
 
-.footer-tagline {
-  color: #666;
-}
+      .hero-visual{
+        min-height:500px;
 
-.copyright {
-  text-align: right;
-}
+        padding-bottom:70px;
+      }
 
+      .hero-main-image{
+        max-width:600px;
+      }
 
-/* =========================================================
-   TABLET
-   ========================================================= */
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
 
-@media (max-width: 1100px) {
+      .footer-brand-area{
+        grid-column:1 / -1;
+      }
 
-  .search-box {
-    width: 180px;
-  }
+    }
 
-  .menu {
-    gap: 16px;
-  }
 
-  .course-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
+    /* =====================================================
+       MOBILE
+    ===================================================== */
 
-  .hero-box {
-    gap: 35px;
-  }
+    @media(max-width:700px){
 
-}
+      .container{
+        width:90%;
+      }
 
+      .nav{
+        min-height:70px;
+      }
 
-/* =========================================================
-   TABLET SMALL
-   ========================================================= */
+      .brand img{
+        width:105px;
+      }
 
-@media (max-width: 900px) {
+      .menu,
+      .offer{
+        display:none;
+      }
 
-  .search-box {
-    display: none;
-  }
+      .header-actions{
+        margin-left:auto;
+      }
 
-  .hero-box {
-    grid-template-columns: 1fr;
+      .nav-button{
+        padding:9px 13px;
 
-    text-align: center;
+        font-size:11px;
+      }
 
-    min-height: auto;
-  }
 
-  .hero-content {
-    padding:
-      90px 0 30px;
-  }
+      /* HERO */
 
-  .hero-description {
-    margin-left: auto;
-    margin-right: auto;
-  }
+      .hero{
+        min-height:auto;
+      }
 
-  .hero-buttons {
-    justify-content: center;
-  }
+      .hero-box{
+        min-height:auto;
+      }
 
-  .hero-image {
-    min-height: 430px;
+      .hero-content{
+        padding:70px 0 15px;
+      }
 
-    padding-bottom: 70px;
-  }
+      .badge{
+        font-size:10px;
 
-  .hero-main-image {
-    max-width: 500px;
-  }
+        padding:7px 11px;
+      }
 
-  .hero-center {
-    width: 250px;
-    height: 250px;
-  }
+      .hero h1{
+        font-size:47px;
 
-  .why-grid {
-    grid-template-columns:
-      repeat(3, 1fr);
-  }
+        letter-spacing:-2.5px;
 
-}
+        margin-bottom:20px;
+      }
 
+      .hero-description{
+        font-size:15px;
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+        line-height:1.75;
+      }
 
-@media (max-width: 700px) {
+      .btn{
+        width:100%;
 
-  .container {
-    width: 90%;
-  }
+        padding:13px 20px;
+      }
 
+      .hero-buttons{
+        width:100%;
+      }
 
-  /* HEADER */
+      .hero-visual{
+        min-height:auto;
 
-  .nav {
-    min-height: 70px;
-  }
+        padding:25px 0 65px;
+      }
 
-  .brand img {
-    width: 105px;
-  }
+      .hero-main-image{
+        width:100%;
+        max-width:500px;
+      }
 
-  .menu,
-  .offer {
-    display: none;
-  }
 
-  .header-actions {
-    margin-left: auto;
-  }
+      /* FREE COURSE */
 
-  .nav-button {
-    padding: 9px 13px;
+      .free-course-button{
+        font-size:14px;
 
-    font-size: 11px;
-  }
+        min-height:62px;
 
+        padding:14px 18px;
+      }
 
-  /* HERO */
 
-  .hero {
-    min-height: auto;
-  }
+      /* FEATURES */
 
-  .hero-box {
-    min-height: auto;
-  }
+      .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
 
-  .hero-content {
-    padding:
-      75px 0 20px;
-  }
+      .feature{
+        padding:22px 10px;
+      }
 
-  .badge {
-    font-size: 10px;
+      .feature:nth-child(2){
+        border-right:0;
+      }
 
-    padding:
-      7px 11px;
-  }
+      .feature:nth-child(3){
+        border-top:1px solid #181818;
+      }
 
-  .hero h1 {
-    font-size: 48px;
+      .feature:nth-child(4){
+        border-top:1px solid #181818;
+      }
 
-    letter-spacing: -2.5px;
 
-    margin-bottom: 20px;
-  }
+      /* SECTIONS */
 
-  .hero-description {
-    font-size: 15px;
+      .section{
+        padding:75px 0;
+      }
 
-    line-height: 1.75;
-  }
+      .section-header{
+        margin-bottom:38px;
+      }
 
-  .btn {
-    width: 100%;
+      .section-header h2{
+        font-size:36px;
 
-    padding: 13px 20px;
-  }
+        letter-spacing:-1.5px;
+      }
 
-  .hero-buttons {
-    width: 100%;
-  }
+      .section-header p{
+        font-size:14px;
+      }
 
-  .hero-image {
-    min-height: 330px;
 
-    padding:
-      20px 0 65px;
-  }
+      /* WHY */
 
-  .hero-main-image {
-    width: 100%;
-    max-width: 400px;
-  }
+      .why-grid{
+        grid-template-columns:1fr;
 
-  .hero-center {
-    width: 210px;
-    height: 210px;
-  }
+        gap:15px;
+      }
 
-  .hero-center h2 {
-    font-size: 24px;
+      .why-card{
+        padding:25px;
+      }
 
-    letter-spacing: 2px;
-  }
+      .why-card p{
+        min-height:auto;
+      }
 
-  .hero-center p {
-    font-size: 11px;
-  }
+      .why-bottom{
+        grid-template-columns:repeat(2,1fr);
+      }
 
+      .why-bottom div{
+        border-bottom:1px solid #202020;
+      }
 
-  /* FEATURES */
+      .why-bottom div:nth-child(2){
+        border-right:0;
+      }
 
-  .feature-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
+      .why-bottom div:nth-child(3){
+        border-bottom:0;
+      }
 
-  .feature {
-    padding: 22px 10px;
-  }
+      .why-bottom div:nth-child(4){
+        border-right:0;
+        border-bottom:0;
+      }
 
-  .feature:nth-child(2) {
-    border-right: 0;
-  }
 
-  .feature:nth-child(3) {
-    border-top: 1px solid #181818;
-  }
+      /* COURSES */
 
-  .feature:nth-child(4) {
-    border-top: 1px solid #181818;
-  }
+      .course-grid{
+        grid-template-columns:1fr;
 
+        gap:15px;
+      }
 
-  /* SECTIONS */
+      .course-card{
+        padding:18px;
+      }
 
-  .section {
-    padding: 75px 0;
-  }
+      .course-image{
+        height:auto;
 
-  .section-header {
-    margin-bottom: 38px;
-  }
+        aspect-ratio:16/9;
 
-  .section-header h2 {
-    font-size: 36px;
+        object-fit:cover;
+      }
 
-    letter-spacing: -1.5px;
-  }
+      .course-card p{
+        min-height:auto;
+      }
 
-  .section-header p {
-    font-size: 14px;
-  }
 
+      /* MENTOR */
 
-  /* WHY */
+      .mentor-card{
+        flex-direction:column;
 
-  .why-grid {
-    grid-template-columns: 1fr;
+        align-items:flex-start;
 
-    gap: 15px;
-  }
+        padding:25px;
+      }
 
-  .why-card {
-    padding: 25px;
-  }
+      .mentor-content h2{
+        font-size:27px;
+      }
 
-  .why-card p {
-    min-height: auto;
-  }
+      .mentor-button{
+        width:100%;
 
-  .why-bottom {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
+        text-align:center;
+      }
 
-  .why-bottom div {
-    border-bottom:
-      1px solid #202020;
-  }
 
-  .why-bottom div:nth-child(2) {
-    border-right: 0;
-  }
+      /* CTA */
 
-  .why-bottom div:nth-child(3) {
-    border-bottom: 0;
-  }
+      .cta{
+        padding:80px 0;
+      }
 
-  .why-bottom div:nth-child(4) {
-    border-right: 0;
-    border-bottom: 0;
-  }
+      .cta h2{
+        font-size:43px;
 
+        letter-spacing:-2px;
+      }
 
-  /* COURSES */
+      .cta p{
+        font-size:14px;
+      }
 
-  .course-grid {
-    grid-template-columns: 1fr;
+      .cta-buttons{
+        flex-direction:column;
+      }
 
-    gap: 15px;
-  }
+      .cta-buttons .btn{
+        width:100%;
+      }
 
-  .course-card {
-    padding: 18px;
-  }
 
-  .course-image {
-    height: 200px;
-  }
+      /* FOOTER */
 
-  .course-card p {
-    min-height: auto;
-  }
+      .footer{
+        padding:45px 0 25px;
+      }
 
+      .footer-grid{
+        grid-template-columns:1fr;
 
-  /* CTA */
+        gap:35px;
+      }
 
-  .cta {
-    padding: 80px 0;
-  }
+      .footer-brand-area{
+        grid-column:auto;
+      }
 
-  .cta h2 {
-    font-size: 43px;
+      .footer-bottom{
+        flex-direction:column;
 
-    letter-spacing: -2px;
-  }
+        align-items:flex-start;
 
-  .cta p {
-    font-size: 14px;
-  }
+        gap:8px;
+      }
 
-  .cta-buttons {
-    flex-direction: column;
-  }
+    }
 
-  .cta-buttons .btn {
-    width: 100%;
-  }
 
+    /* =====================================================
+       VERY SMALL MOBILE
+    ===================================================== */
 
-  /* FOOTER */
+    @media(max-width:400px){
 
-  .footer {
-    padding: 32px 0;
-  }
+      .hero h1{
+        font-size:42px;
+      }
 
-  .footer-inner {
-    flex-direction: column;
+      .course-image{
+        aspect-ratio:16/9;
+      }
 
-    align-items: flex-start;
-  }
+      .why-bottom{
+        grid-template-columns:1fr;
+      }
 
-  .copyright {
-    text-align: left;
-  }
+      .why-bottom div,
+      .why-bottom div:nth-child(2),
+      .why-bottom div:nth-child(3),
+      .why-bottom div:nth-child(4){
+        border-right:0;
 
-}
+        border-bottom:1px solid #202020;
+      }
 
+      .why-bottom div:last-child{
+        border-bottom:0;
+      }
 
-/* =========================================================
-   VERY SMALL MOBILE
-   ========================================================= */
+      .payment-methods{
+        flex-direction:column;
+      }
 
-@media (max-width: 400px) {
+      .payment-card{
+        width:100%;
+      }
 
-  .hero h1 {
-    font-size: 42px;
-  }
+    }
 
-  .hero-main-image {
-    max-width: 340px;
-  }
+  </style>
+</head>
 
-  .hero-center {
-    width: 185px;
-    height: 185px;
-  }
 
-  .hero-center h2 {
-    font-size: 20px;
-  }
+<body>
 
-  .course-image {
-    height: 180px;
-  }
 
-  .why-bottom {
-    grid-template-columns: 1fr;
-  }
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
 
-  .why-bottom div,
-  .why-bottom div:nth-child(2),
-  .why-bottom div:nth-child(3),
-  .why-bottom div:nth-child(4) {
-    border-right: 0;
+  <header class="header">
 
-    border-bottom:
-      1px solid #202020;
-  }
+    <div class="container nav">
 
-  .why-bottom div:last-child {
-    border-bottom: 0;
-  }
+      <a
+        href="index.html"
+        class="brand"
+      >
+        <img
+          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
+          alt="SNK IT Institute"
+        >
+      </a>
 
-}
 
+      <div class="search-box">
 
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
+        <span>⌕</span>
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid #b7ff00;
+        <input
+          id="courseSearch"
+          type="text"
+          placeholder="কোর্স খুঁজুন..."
+          aria-label="কোর্স খুঁজুন"
+        >
 
-  outline-offset: 3px;
-}
+      </div>
 
 
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
+      <nav class="menu">
 
-@media (prefers-reduced-motion: reduce) {
+        <a
+          href="index.html"
+          class="active"
+        >
+          হোম
+        </a>
 
-  html {
-    scroll-behavior: auto;
-  }
+        <a href="courses.html">
+          কোর্সসমূহ
+        </a>
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+        <a href="about.html">
+          আমাদের সম্পর্কে
+        </a>
 
-}
+        <a href="contact.html">
+          যোগাযোগ
+        </a>
 
-/* =====================================================
-   FOOTER NEW
-===================================================== */
+      </nav>
 
-.footer{
-  padding:65px 0 25px;
 
-  background:#050505;
+      <div class="header-actions">
 
-  border-top:1px solid #1b1b1b;
-}
+        <a
+          href="courses.html"
+          class="offer"
+        >
+          🎁 Special Offer
+        </a>
 
+        <a
+          href="admission.html"
+          class="nav-button"
+        >
+          ভর্তি করুন →
+        </a>
 
-.footer-grid{
-  display:grid;
+      </div>
 
-  grid-template-columns:
-    1.4fr
-    1fr
-    1fr;
+    </div>
 
-  gap:60px;
+  </header>
 
-  padding-bottom:50px;
-}
 
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
 
-/* BRAND */
+  <main>
 
-.footer-brand-area{
-  max-width:380px;
-}
 
-.footer-brand{
-  color:#fff;
+    <!-- HERO -->
 
-  font-size:22px;
+    <section class="hero" id="home">
 
-  font-weight:900;
+      <div class="container">
 
-  letter-spacing:-.5px;
-}
+        <div class="hero-box">
 
-.footer-brand span{
-  color:#b7ff00;
-}
+          <div class="hero-content">
 
-.footer-tagline{
-  color:#b7ff00;
+            <div class="badge">
 
-  font-size:12px;
+              <span class="badge-dot"></span>
 
-  margin-top:2px;
+              AI-Powered • Practical • Career Focused
 
-  font-weight:700;
+            </div>
 
-  letter-spacing:1px;
-}
 
-.footer-description{
-  color:#666;
+            <h1>
 
-  font-size:13px;
+              দক্ষতা শিখুন,
 
-  line-height:1.8;
+              <br>
 
-  max-width:340px;
+              <span>
+                ক্যারিয়ার গড়ুন।
+              </span>
 
-  margin-top:18px;
-}
+            </h1>
 
 
-/* FOOTER COLUMNS */
+            <p class="hero-description">
 
-.footer-column h3{
-  color:#fff;
+              আধুনিক IT skill, AI-powered tools
+              এবং practical project-এর মাধ্যমে
+              নিজেকে ভবিষ্যতের career-এর জন্য
+              প্রস্তুত করুন।
 
-  font-size:14px;
+              <br><br>
 
-  margin-bottom:18px;
-}
+              <strong style="color:#fff;">
+                SNK IT Institute — Learn To Lead.
+              </strong>
 
-.social-links{
-  display:flex;
+            </p>
 
-  flex-direction:column;
 
-  gap:9px;
-}
+            <div class="hero-buttons">
 
-.social-links a{
-  color:#777;
+              <a
+                href="courses.html"
+                class="btn primary"
+              >
+                শেখা শুরু করুন →
+              </a>
 
-  font-size:13px;
+              <a
+                href="contact.html"
+                class="btn secondary"
+              >
+                যোগাযোগ করুন
+              </a>
 
-  transition:.3s;
-}
+            </div>
 
-.social-links a:hover{
-  color:#b7ff00;
+          </div>
 
-  transform:translateX(4px);
-}
 
+          <div class="hero-visual">
 
-.payment-card{
-  min-width:95px;
+            <img
+              class="hero-main-image"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%205.svg"
+              alt="SNK IT Institute AI Powered Learning"
+            >
 
-  padding:10px 12px;
+          </div>
 
-  background:#0d0d0d;
+        </div>
 
-  border:1px solid #222;
+      </div>
 
-  border-radius:8px;
+    </section>
 
-  display:flex;
 
-  flex-direction:column;
+    <!-- FEATURES -->
 
-  gap:2px;
+    <section class="features">
 
-  transition:.3s;
-}
+      <div class="container">
 
-.payment-card:hover{
-  border-color:rgba(183,255,0,.35);
-  transform:translateY(-2px);
-}
+        <div class="feature-grid">
 
-.payment-card.bkash{
-  border-color:rgba(226,19,110,.25);
-}
+          <div class="feature">
+            <strong>100%</strong>
+            <span>Practical Learning</span>
+          </div>
 
-.payment-card.bkash strong{
-  color:#e2136e;
-}
+          <div class="feature">
+            <strong>AI</strong>
+            <span>Powered Skills</span>
+          </div>
 
-.payment-card.bkash span{
-  color:#e2136e;
+          <div class="feature">
+            <strong>Expert</strong>
+            <span>Instructor Support</span>
+          </div>
 
-  font-size:11px;
+          <div class="feature">
+            <strong>Career</strong>
+            <span>Guidance</span>
+          </div>
 
-  font-weight:700;
-}
+        </div>
 
-.payment-card.visa strong,
-.payment-card.mastercard strong{
-  color:#fff;
-}
+      </div>
 
-.payment-card span{
-  font-size:9px;
-}
-/* FOOTER BOTTOM */
+    </section>
 
-.footer-bottom{
-  display:flex;
 
-  align-items:center;
+    <!-- =====================================================
+         FREE COURSE BUTTON
+         পরে snkacademy.github.io তৈরি করবেন
+    ===================================================== -->
 
-  justify-content:space-between;
+    <section class="free-course-wrap">
 
-  gap:20px;
+      <div class="container">
 
-  padding-top:22px;
+        <a
+          href="https://snkacademy.github.io"
+          class="free-course-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          🚀 যাত্রা শুরু হলো — FREE COURSE
+          <span style="margin-left:10px;">→</span>
+        </a>
 
-  border-top:1px solid #1b1b1b;
-}
+      </div>
 
-.footer-bottom-left,
-.footer-bottom-right{
-  color:#555;
+    </section>
 
-  font-size:11px;
-}
 
-.footer-bottom-right{
-  text-align:right;
-}
+    <!-- WHY -->
 
+    <section
+      class="section why-section"
+      id="about"
+    >
 
-/* =====================================================
-   FOOTER MOBILE
-===================================================== */
+      <div class="container">
 
-@media(max-width:700px){
+        <div class="section-header">
 
-  .footer{
-    padding:50px 0 22px;
-  }
+          <small>
+            WHY SNK IT INSTITUTE
+          </small>
 
-  .footer-grid{
-    grid-template-columns:1fr;
+          <h2>
 
-    gap:38px;
+            শুধু কোর্স নয়,
 
-    padding-bottom:35px;
-  }
+            <br>
 
-  .footer-brand-area{
-    max-width:100%;
-  }
+            <span>
+              Career-এর জন্য প্রস্তুতি।
+            </span>
 
-  .footer-description{
-    max-width:100%;
-  }
+          </h2>
 
-  .social-links{
-    display:grid;
+          <p>
 
-    grid-template-columns:
-      repeat(2,1fr);
+            আমরা শুধু certificate দেওয়ার জন্য
+            শেখাই না।
 
-    gap:10px;
-  }
+            Practical skill, modern technology
+            এবং career guidance-এর মাধ্যমে
+            শিক্ষার্থীদের বাস্তব কাজের জন্য
+            প্রস্তুত করি।
 
- .payment-card.bkash span{
-  color:#e2136e;
-  font-size:11px;
-  font-weight:700;
-}
+          </p>
 
-.payment-card.bkash{
-  border-color:rgba(226,19,110,.25);
-}
+        </div>
+
+
+        <div class="why-grid">
+
+          <article class="why-card">
+
+            <div class="why-icon">
+              🎯
+            </div>
+
+            <div class="why-number">
+              01 — PRACTICAL
+            </div>
+
+            <h3>
+              Practical Learning
+            </h3>
+
+            <p>
+
+              প্রতিটি কোর্সে hands-on practice,
+              real project এবং practical
+              assignment-এর মাধ্যমে শেখানো হয়।
+
+            </p>
+
+            <a href="courses.html">
+              কোর্স দেখুন →
+            </a>
+
+          </article>
+
+
+          <article class="why-card featured">
+
+            <div class="why-icon">
+              🤖
+            </div>
+
+            <div class="why-number">
+              02 — AI POWERED
+            </div>
+
+            <h3>
+              AI-Powered Training
+            </h3>
+
+            <p>
+
+              আধুনিক AI tools এবং workflow
+              ব্যবহার করে শিক্ষার্থীদের
+              future-ready skill তৈরি করতে
+              সাহায্য করা হয়।
+
+            </p>
+
+            <a href="courses.html">
+              AI Courses দেখুন →
+            </a>
+
+          </article>
+
+
+          <article class="why-card">
+
+            <div class="why-icon">
+              💼
+            </div>
+
+            <div class="why-number">
+              03 — CAREER
+            </div>
+
+            <h3>
+              Career Support
+            </h3>
+
+            <p>
+
+              Course শেষ করার পর freelancing,
+              portfolio, job preparation এবং
+              career direction নিয়ে guidance
+              দেওয়া হয়।
+
+            </p>
+
+            <a href="contact.html">
+              Support নিন →
+            </a>
+
+          </article>
+
+        </div>
+
+
+        <div class="why-bottom">
+
+          <div>
+            <strong>Practical</strong>
+            <span>Project Based Learning</span>
+          </div>
+
+          <div>
+            <strong>Modern</strong>
+            <span>AI & Technology</span>
+          </div>
+
+          <div>
+            <strong>Support</strong>
+            <span>Career Guidance</span>
+          </div>
+
+          <div>
+            <strong>Certificate</strong>
+            <span>Course Completion</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- COURSES -->
+
+    <section
+      class="section courses"
+      id="courses"
+    >
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <small>
+            OUR COURSES
+          </small>
+
+          <h2>
+
+            আপনার ভবিষ্যতের জন্য
+
+            <br>
+
+            <span>
+              সঠিক Skill বেছে নিন।
+            </span>
+
+          </h2>
+
+          <p>
+
+            Industry-focused practical training,
+            modern technology এবং AI-powered
+            tools-এর মাধ্যমে career-ready skill
+            তৈরি করুন।
+
+          </p>
+
+        </div>
+
+
+        <div
+          class="course-grid"
+          id="courseGrid"
+        >
+
+
+          <!-- COURSE 01 -->
+
+          <article
+            class="course-card"
+            data-course="ui ux ai powered design"
+          >
+
+            <img
+              class="course-image"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg"
+              alt="AI-Powered UI/UX Career Program"
+            >
+
+            <div class="course-tag">
+              AI POWERED
+            </div>
+
+            <h3>
+              AI-Powered UI/UX Career Program
+            </h3>
+
+            <p>
+
+              UI/UX Fundamentals, User Research,
+              User Flow, Wireframing, Prototyping,
+              Design System, Figma এবং AI-powered
+              design workflow শিখুন।
+
+            </p>
+
+            <div class="course-info">
+
+              <span>
+                ⏱ 3 Months
+              </span>
+
+              <span>
+                🎯 Career Program
+              </span>
+
+            </div>
+
+            <div class="price">
+
+              <del>
+                ৳11,500
+              </del>
+
+              <strong>
+                ৳7,490
+              </strong>
+
+            </div>
+
+            <a
+              href="ui-ux.html"
+              class="course-button"
+            >
+              কোর্স সম্পর্কে জানুন →
+            </a>
+
+          </article>
+
+
+          <!-- COURSE 02 -->
+
+          <article
+            class="course-card"
+            data-course="cyber security ethical hacking ai"
+          >
+
+            <img
+              class="course-image"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg"
+              alt="AI-Powered Cyber Security and Ethical Hacking"
+            >
+
+            <div class="course-tag">
+              LIMITED SEATS
+            </div>
+
+            <h3>
+              AI-Powered Cyber Security & Ethical Hacking
+            </h3>
+
+            <p>
+
+              Cyber Security fundamentals,
+              ethical hacking, security concepts
+              এবং practical cybersecurity skills
+              হাতে-কলমে শিখুন।
+
+            </p>
+
+            <div class="course-info">
+
+              <span>
+                ⏱ 6 Months
+              </span>
+
+              <span>
+                🎯 Ethical Hacking
+              </span>
+
+            </div>
+
+            <div class="price">
+
+              <del>
+                ৳12,500
+              </del>
+
+              <strong>
+                ৳9,500
+              </strong>
+
+            </div>
+
+            <a
+              href="cyber-security.html"
+              class="course-button"
+            >
+              কোর্স সম্পর্কে জানুন →
+            </a>
+
+          </article>
+
+
+          <!-- COURSE 03 -->
+
+          <article
+            class="course-card"
+            data-course="graphic design ai powered"
+          >
+
+            <img
+              class="course-image"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg"
+              alt="AI-Powered Graphic Design"
+            >
+
+            <div class="course-tag">
+              AI POWERED
+            </div>
+
+            <h3>
+              AI-Powered Graphic Design
+            </h3>
+
+            <p>
+
+              Graphic Design fundamentals,
+              visual design, creative tools এবং
+              AI-powered design workflow-এর
+              মাধ্যমে professional skill তৈরি করুন।
+
+            </p>
+
+            <div class="course-info">
+
+              <span>
+                ⏱ 4 Months
+              </span>
+
+              <span>
+                🎯 Creative Career
+              </span>
+
+            </div>
+
+            <div class="price">
+
+              <del>
+                ৳7,500
+              </del>
+
+              <strong>
+                ৳4,500
+              </strong>
+
+            </div>
+
+            <a
+              href="graphic-design.html"
+              class="course-button"
+            >
+              কোর্স সম্পর্কে জানুন →
+            </a>
+
+          </article>
+
+
+          <!-- COURSE 04 -->
+
+          <article
+            class="course-card"
+            data-course="kidz spoken english kids english"
+          >
+
+            <img
+              class="course-image"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg"
+              alt="100Days Kidz Spoken English"
+            >
+
+            <div class="course-tag">
+              100 DAYS
+            </div>
+
+            <h3>
+              100Days Kidz Spoken English
+            </h3>
+
+            <p>
+
+              English speaking, vocabulary,
+              pronunciation এবং communication
+              skill development-এর জন্য
+              structured learning program।
+
+            </p>
+
+            <div class="course-info">
+
+              <span>
+                ⏱ 100 Days
+              </span>
+
+              <span>
+                🎯 Kids Program
+              </span>
+
+            </div>
+
+            <div class="price">
+
+              <del>
+                ৳12,500
+              </del>
+
+              <strong>
+                ৳6,500
+              </strong>
+
+            </div>
+
+            <a
+              href="kidz-spoken-english.html"
+              class="course-button"
+            >
+              কোর্স সম্পর্কে জানুন →
+            </a>
+
+          </article>
+
+
+        </div>
+
+
+        <div class="courses-action">
+
+          <a
+            href="courses.html"
+            class="all-courses-button"
+          >
+            সব কোর্স দেখুন →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MENTOR PROFILE
+         আলাদা mentor.html page পরে তৈরি করবেন
+    ===================================================== -->
+
+    <section class="section mentor-section">
+
+      <div class="container">
+
+        <div class="mentor-card">
+
+          <div class="mentor-content">
+
+            <small>
+              MEET OUR MENTOR
+            </small>
+
+            <h2>
+              Expert Mentor থেকে শিখুন
+            </h2>
+
+            <p>
+              আমাদের mentor profile, experience,
+              expertise এবং teaching journey সম্পর্কে
+              বিস্তারিত জানতে দেখুন।
+            </p>
+
+          </div>
+
+          <a
+            href="mentor.html"
+            class="mentor-button"
+          >
+            Mentor Profile দেখুন →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section
+      class="cta"
+      id="contact"
+    >
+
+      <div class="container cta-content">
+
+        <small>
+          START YOUR JOURNEY
+        </small>
+
+        <h2>
+
+          আপনার Skill-এর
+
+          <br>
+
+          <span>
+            পরবর্তী ধাপ শুরু করুন।
+          </span>
+
+        </h2>
+
+        <p>
+
+          আজ থেকেই practical skill শেখা শুরু করুন
+          এবং নিজের future career-এর জন্য
+          প্রস্তুতি নিন।
+
+        </p>
+
+        <div class="cta-buttons">
+
+          <a
+            href="admission.html"
+            class="btn primary"
+          >
+            ভর্তি হতে চাই →
+          </a>
+
+          <a
+            href="contact.html"
+            class="btn secondary"
+          >
+            যোগাযোগ করুন
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+
+      <div class="footer-grid">
+
+
+        <!-- BRAND -->
+
+        <div class="footer-brand-area">
+
+          <div class="footer-brand">
+            SNK <span>IT</span> Institute
+          </div>
+
+          <div class="footer-tagline">
+            Learn To Lead
+          </div>
+
+          <p class="footer-description">
+
+            Practical skills, AI-powered learning
+            এবং career-focused training-এর মাধ্যমে
+            আপনার ভবিষ্যৎ গড়ে তুলুন।
+
+          </p>
+
+        </div>
+
+
+        <!-- SOCIAL -->
+
+        <div class="footer-column">
+
+          <h3>
+            Follow Us
+          </h3>
+
+          <div class="social-links">
+
+            <a
+              href="https://www.facebook.com/snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Facebook
+            </a>
+
+            <a
+              href="https://www.instagram.com/snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+
+            <a
+              href="https://www.youtube.com/@snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              YouTube
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              TikTok
+            </a>
+
+            <a
+              href="https://www.linkedin.com/company/snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- PAYMENT -->
+
+        <div class="footer-column">
+
+          <h3>
+            Payment Methods
+          </h3>
+
+          <p class="payment-text">
+            নিরাপদ ও সহজ পেমেন্ট সুবিধা
+          </p>
+
+          <div class="payment-methods">
+
+
+            <!-- bKash -->
+
+            <a
+              href="tel:01705633700"
+              class="payment-card bkash"
+            >
+
+              <strong>
+                bKash
+              </strong>
+
+              <span>
+                01705633700
+              </span>
+
+            </a>
+
+
+            <!-- VISA -->
+
+            <div class="payment-card visa">
+
+              <strong>
+                VISA
+              </strong>
+
+              <span>
+                Accepted
+              </span>
+
+            </div>
+
+
+            <!-- MASTERCARD -->
+
+            <div class="payment-card mastercard">
+
+              <strong>
+                Mastercard
+              </strong>
+
+              <span>
+                Accepted
+              </span>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- FOOTER BOTTOM -->
+
+      <div class="footer-bottom">
+
+        <div class="footer-bottom-left">
+
+          © 2026 SNK IT Institute.
+          সর্বস্বত্ব সংরক্ষিত।
+
+        </div>
+
+        <div class="footer-bottom-right">
+
+          Learn To Lead • Moulvibazar
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       SEARCH SCRIPT
+  ===================================================== -->
+
+  <script>
+
+    const searchInput =
+      document.getElementById("courseSearch");
+
+    const courseCards =
+      document.querySelectorAll(".course-card");
+
+
+    searchInput.addEventListener("input", function(){
+
+      const search =
+        this.value
+        .toLowerCase()
+        .trim();
+
+
+      courseCards.forEach(function(card){
+
+        const courseName =
+          card
+          .getAttribute("data-course")
+          .toLowerCase();
+
+
+        if(
+          search === "" ||
+          courseName.includes(search)
+        ){
+
+          card.style.display = "flex";
+
+        }else{
+
+          card.style.display = "none";
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+
+</body>
+</html>
+```
