@@ -23,14 +23,9 @@
     }
 
     body{
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+      font-family:Arial, Helvetica, sans-serif;
       background:#050505;
-      color:#ffffff;
-
+      color:#fff;
       line-height:1.6;
       overflow-x:hidden;
     }
@@ -81,7 +76,6 @@
     .brand{
       display:flex;
       align-items:center;
-
       flex-shrink:0;
     }
 
@@ -97,15 +91,19 @@
     }
 
     .menu a{
-      color:#bdbdbd;
-
+      color:#aaa;
       font-size:14px;
-
       transition:.3s;
     }
 
     .menu a:hover{
       color:#b7ff00;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
 
     .nav-button{
@@ -127,7 +125,7 @@
 
       box-shadow:
         0 10px 30px
-        rgba(183,255,0,.20);
+        rgba(183,255,0,.2);
     }
 
 
@@ -138,20 +136,19 @@
     .course-hero{
       position:relative;
 
+      padding:100px 0 90px;
+
       overflow:hidden;
 
-      padding:110px 0 90px;
-
       background:
-
         radial-gradient(
           circle at 80% 30%,
-          rgba(183,255,0,.14),
+          rgba(183,255,0,.13),
           transparent 30%
         ),
 
         radial-gradient(
-          circle at 15% 80%,
+          circle at 10% 80%,
           rgba(183,255,0,.06),
           transparent 25%
         ),
@@ -159,47 +156,19 @@
         #050505;
     }
 
-    .course-hero::before{
-      content:"";
-
-      position:absolute;
-
-      width:550px;
-      height:550px;
-
-      right:-250px;
-      top:50%;
-
-      transform:translateY(-50%);
-
-      border:
-        1px solid
-        rgba(183,255,0,.06);
-
-      border-radius:50%;
-    }
-
     .course-hero-grid{
-      position:relative;
-      z-index:2;
-
       display:grid;
 
       grid-template-columns:
         1.1fr
         .9fr;
 
-      align-items:center;
-
       gap:70px;
+
+      align-items:center;
     }
 
-
-    /* =====================================================
-       HERO CONTENT
-    ===================================================== */
-
-    .badge{
+    .course-badge{
       display:inline-flex;
       align-items:center;
 
@@ -207,18 +176,17 @@
 
       padding:8px 14px;
 
-      margin-bottom:23px;
+      margin-bottom:22px;
 
-      color:#b7ff00;
+      border:1px solid
+        rgba(183,255,0,.25);
 
       background:
         rgba(183,255,0,.06);
 
-      border:
-        1px solid
-        rgba(183,255,0,.25);
-
       border-radius:50px;
+
+      color:#b7ff00;
 
       font-size:11px;
       font-weight:800;
@@ -226,26 +194,21 @@
       letter-spacing:1px;
     }
 
-    .badge-dot{
+    .course-badge span{
       width:7px;
       height:7px;
 
-      background:#b7ff00;
-
       border-radius:50%;
 
+      background:#b7ff00;
+
       box-shadow:
-        0 0 12px
-        #b7ff00;
+        0 0 12px #b7ff00;
     }
 
     .course-hero h1{
       font-size:
-        clamp(
-          42px,
-          6vw,
-          72px
-        );
+        clamp(42px,6vw,76px);
 
       line-height:1.05;
 
@@ -258,28 +221,21 @@
       color:#b7ff00;
     }
 
-    .course-hero p{
-      max-width:650px;
+    .course-hero-text{
+      max-width:680px;
 
       color:#999;
 
       font-size:17px;
 
-      line-height:1.8;
+      line-height:1.85;
 
       margin-bottom:30px;
     }
 
-
-    /* =====================================================
-       BUTTONS
-    ===================================================== */
-
     .hero-buttons{
       display:flex;
-
       flex-wrap:wrap;
-
       gap:12px;
     }
 
@@ -309,45 +265,127 @@
 
       box-shadow:
         0 12px 35px
-        rgba(183,255,0,.20);
+        rgba(183,255,0,.2);
     }
 
     .secondary{
       border:1px solid #333;
-
       color:#fff;
     }
 
     .secondary:hover{
-      color:#b7ff00;
-
       border-color:#b7ff00;
+      color:#b7ff00;
     }
 
 
     /* =====================================================
-       HERO IMAGE
+       HERO VISUAL
     ===================================================== */
 
-    .hero-image{
+    .course-visual{
+      position:relative;
+
+      min-height:420px;
+
       display:flex;
 
       align-items:center;
       justify-content:center;
     }
 
-    .hero-image img{
-      width:min(500px,100%);
+    .course-visual-card{
+      width:min(430px,100%);
 
-      border-radius:20px;
+      aspect-ratio:1/1;
+
+      display:flex;
+      flex-direction:column;
+
+      align-items:center;
+      justify-content:center;
+
+      text-align:center;
+
+      position:relative;
 
       border:
         1px solid
-        rgba(183,255,0,.20);
+        rgba(183,255,0,.25);
+
+      border-radius:28px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(183,255,0,.14),
+          #0b0b0b 65%
+        );
 
       box-shadow:
-        0 0 80px
-        rgba(183,255,0,.08);
+        0 30px 80px
+        rgba(0,0,0,.4);
+    }
+
+    .course-visual-card::before{
+      content:"";
+
+      position:absolute;
+
+      width:72%;
+      height:72%;
+
+      border:
+        1px solid
+        rgba(183,255,0,.12);
+
+      border-radius:50%;
+    }
+
+    .course-visual-icon{
+      position:relative;
+      z-index:2;
+
+      width:90px;
+      height:90px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:24px;
+
+      background:
+        rgba(183,255,0,.1);
+
+      border:
+        1px solid
+        rgba(183,255,0,.2);
+
+      font-size:45px;
+
+      margin-bottom:22px;
+    }
+
+    .course-visual-card h2{
+      position:relative;
+      z-index:2;
+
+      color:#b7ff00;
+
+      font-size:28px;
+
+      letter-spacing:2px;
+
+      margin-bottom:8px;
+    }
+
+    .course-visual-card p{
+      position:relative;
+      z-index:2;
+
+      color:#888;
+
+      font-size:13px;
     }
 
 
@@ -355,14 +393,13 @@
        COURSE INFO
     ===================================================== */
 
-    .course-info-bar{
+    .course-info-section{
+      padding:35px 0;
+
       background:#090909;
 
-      border-top:
-        1px solid #1d1d1d;
-
-      border-bottom:
-        1px solid #1d1d1d;
+      border-top:1px solid #181818;
+      border-bottom:1px solid #181818;
     }
 
     .info-grid{
@@ -372,30 +409,27 @@
         repeat(4,1fr);
     }
 
-    .info-item{
-      padding:25px 20px;
+    .info-box{
+      padding:18px 20px;
 
-      text-align:center;
-
-      border-right:
-        1px solid #1d1d1d;
+      border-right:1px solid #202020;
     }
 
-    .info-item:last-child{
+    .info-box:last-child{
       border-right:0;
     }
 
-    .info-item strong{
+    .info-box strong{
       display:block;
 
       color:#b7ff00;
 
-      font-size:22px;
+      font-size:18px;
 
       margin-bottom:3px;
     }
 
-    .info-item span{
+    .info-box span{
       color:#777;
 
       font-size:12px;
@@ -411,7 +445,7 @@
     }
 
     .section-header{
-      max-width:730px;
+      max-width:720px;
 
       margin-bottom:50px;
     }
@@ -427,22 +461,18 @@
 
       letter-spacing:2px;
 
-      margin-bottom:12px;
+      margin-bottom:13px;
     }
 
     .section-header h2{
       font-size:
-        clamp(
-          34px,
-          5vw,
-          55px
-        );
+        clamp(34px,5vw,55px);
 
       line-height:1.1;
 
       letter-spacing:-2px;
 
-      margin-bottom:15px;
+      margin-bottom:17px;
     }
 
     .section-header h2 span{
@@ -459,126 +489,72 @@
 
 
     /* =====================================================
-       LEARNING SECTION
+       LEARNING
     ===================================================== */
 
-    .learn-section{
-      background:#080808;
+    .learning{
+      background:#050505;
     }
 
-    .learn-grid{
+    .learning-grid{
       display:grid;
 
       grid-template-columns:
         repeat(2,1fr);
 
-      gap:16px;
+      gap:15px;
     }
 
-    .learn-card{
-      padding:26px;
+    .learning-card{
+      display:flex;
 
-      background:#101010;
+      gap:18px;
 
-      border:
-        1px solid #222;
+      padding:24px;
+
+      background:#0b0b0b;
+
+      border:1px solid #202020;
 
       border-radius:15px;
 
       transition:.3s;
     }
 
-    .learn-card:hover{
-      transform:translateY(-5px);
+    .learning-card:hover{
+      transform:translateY(-4px);
 
       border-color:
         rgba(183,255,0,.4);
     }
 
-    .learn-number{
-      color:#b7ff00;
+    .learning-number{
+      width:42px;
+      height:42px;
 
-      font-size:12px;
-
-      font-weight:800;
-
-      letter-spacing:1px;
-
-      margin-bottom:10px;
-    }
-
-    .learn-card h3{
-      font-size:19px;
-
-      margin-bottom:8px;
-    }
-
-    .learn-card p{
-      color:#777;
-
-      font-size:13px;
-
-      line-height:1.75;
-    }
-
-
-    /* =====================================================
-       CYBER TOPICS
-    ===================================================== */
-
-    .topics-grid{
-      display:grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap:16px;
-    }
-
-    .topic-card{
-      padding:25px;
-
-      background:#0c0c0c;
-
-      border:
-        1px solid #202020;
-
-      border-radius:15px;
-
-      transition:.3s;
-    }
-
-    .topic-card:hover{
-      border-color:
-        rgba(183,255,0,.35);
-
-      transform:translateY(-5px);
-    }
-
-    .topic-icon{
-      width:50px;
-      height:50px;
+      flex-shrink:0;
 
       display:grid;
       place-items:center;
 
-      margin-bottom:17px;
-
       background:
-        rgba(183,255,0,.08);
+        rgba(183,255,0,.09);
 
-      border-radius:12px;
+      color:#b7ff00;
 
-      font-size:23px;
+      border-radius:10px;
+
+      font-size:13px;
+      font-weight:800;
     }
 
-    .topic-card h3{
+    .learning-card h3{
       font-size:17px;
 
-      margin-bottom:8px;
+      margin-bottom:5px;
     }
 
-    .topic-card p{
+    .learning-card p{
       color:#777;
 
       font-size:13px;
@@ -592,11 +568,15 @@
     ===================================================== */
 
     .syllabus{
-      display:flex;
+      background:#080808;
+    }
 
-      flex-direction:column;
+    .syllabus-list{
+      display:grid;
 
-      gap:12px;
+      gap:10px;
+
+      max-width:850px;
     }
 
     .syllabus-item{
@@ -604,64 +584,163 @@
 
       align-items:center;
 
-      gap:18px;
+      gap:15px;
 
-      padding:20px;
+      padding:18px 20px;
 
-      background:#0c0c0c;
+      background:#101010;
 
-      border:
-        1px solid #202020;
+      border:1px solid #222;
 
-      border-radius:12px;
+      border-radius:10px;
 
       transition:.3s;
     }
 
     .syllabus-item:hover{
       border-color:
-        rgba(183,255,0,.3);
+        rgba(183,255,0,.35);
+
+      transform:translateX(4px);
     }
 
-    .syllabus-number{
-      width:42px;
-      height:42px;
-
-      flex-shrink:0;
-
-      display:grid;
-
-      place-items:center;
-
+    .syllabus-item span{
       color:#b7ff00;
 
-      background:
-        rgba(183,255,0,.08);
-
-      border-radius:10px;
+      font-size:12px;
 
       font-weight:800;
+
+      min-width:28px;
     }
 
-    .syllabus-item h3{
-      font-size:16px;
-
-      margin-bottom:3px;
-    }
-
-    .syllabus-item p{
-      color:#777;
-
-      font-size:12px;
+    .syllabus-item strong{
+      font-size:14px;
     }
 
 
     /* =====================================================
-       CAREER SECTION
+       SECURITY LAB
     ===================================================== */
 
-    .career-section{
+    .security-lab{
+      background:#050505;
+    }
+
+    .security-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:18px;
+    }
+
+    .security-card{
+      padding:28px;
+
+      background:#0b0b0b;
+
+      border:1px solid #202020;
+
+      border-radius:16px;
+
+      transition:.3s;
+    }
+
+    .security-card:hover{
+      transform:translateY(-5px);
+
+      border-color:
+        rgba(183,255,0,.4);
+    }
+
+    .security-icon{
+      width:52px;
+      height:52px;
+
+      display:grid;
+      place-items:center;
+
+      margin-bottom:17px;
+
+      border-radius:13px;
+
+      background:
+        rgba(183,255,0,.09);
+
+      font-size:24px;
+    }
+
+    .security-card h3{
+      font-size:18px;
+
+      margin-bottom:9px;
+    }
+
+    .security-card p{
+      color:#777;
+
+      font-size:13px;
+
+      line-height:1.8;
+    }
+
+
+    /* =====================================================
+       TOOLS
+    ===================================================== */
+
+    .tools{
       background:#080808;
+    }
+
+    .tools-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:15px;
+    }
+
+    .tool-card{
+      padding:25px;
+
+      background:#101010;
+
+      border:1px solid #222;
+
+      border-radius:15px;
+    }
+
+    .tool-card-icon{
+      font-size:25px;
+
+      margin-bottom:15px;
+    }
+
+    .tool-card h3{
+      font-size:16px;
+
+      margin-bottom:8px;
+    }
+
+    .tool-card p{
+      color:#777;
+
+      font-size:12px;
+
+      line-height:1.7;
+    }
+
+
+    /* =====================================================
+       CAREER
+    ===================================================== */
+
+    .career{
+      background:#050505;
     }
 
     .career-grid{
@@ -676,28 +755,17 @@
     .career-card{
       padding:28px;
 
-      background:#101010;
+      background:#0b0b0b;
 
-      border:
-        1px solid #222;
+      border:1px solid #202020;
 
       border-radius:16px;
     }
 
-    .career-card strong{
-      display:block;
-
-      color:#b7ff00;
-
-      font-size:25px;
-
-      margin-bottom:8px;
-    }
-
     .career-card h3{
-      font-size:18px;
+      font-size:19px;
 
-      margin-bottom:8px;
+      margin-bottom:10px;
     }
 
     .career-card p{
@@ -705,47 +773,45 @@
 
       font-size:13px;
 
-      line-height:1.75;
+      line-height:1.8;
     }
 
 
     /* =====================================================
-       PRICE / ADMISSION
+       ADMISSION
     ===================================================== */
 
-    .price-section{
-      padding:105px 0;
-
-      text-align:center;
+    .admission{
+      padding:100px 0;
 
       background:
-
         radial-gradient(
           circle at center,
-          rgba(183,255,0,.13),
+          rgba(183,255,0,.11),
           transparent 45%
         ),
 
         #050505;
     }
 
-    .price-box{
-      max-width:720px;
+    .admission-box{
+      max-width:850px;
 
       margin:auto;
 
-      padding:50px 35px;
+      padding:45px;
+
+      text-align:center;
 
       background:#0b0b0b;
 
-      border:
-        1px solid
-        rgba(183,255,0,.25);
+      border:1px solid
+        rgba(183,255,0,.22);
 
       border-radius:22px;
     }
 
-    .price-box small{
+    .admission-box small{
       color:#b7ff00;
 
       font-size:11px;
@@ -755,41 +821,53 @@
       letter-spacing:2px;
     }
 
-    .price-box h2{
+    .admission-box h2{
       font-size:
-        clamp(32px,5vw,48px);
+        clamp(34px,5vw,52px);
 
       line-height:1.1;
 
-      margin:15px 0;
+      margin:14px 0;
+    }
+
+    .admission-box h2 span{
+      color:#b7ff00;
     }
 
     .old-price{
       color:#555;
 
-      font-size:18px;
+      font-size:17px;
 
-      text-decoration:line-through;
+      margin-right:10px;
     }
 
     .new-price{
       color:#b7ff00;
 
-      font-size:42px;
+      font-size:35px;
 
       font-weight:900;
-
-      margin-left:10px;
     }
 
-    .price-box p{
-      max-width:540px;
+    .admission-box p{
+      max-width:620px;
 
-      margin:15px auto 28px;
+      margin:15px auto 25px;
 
       color:#888;
 
       font-size:14px;
+    }
+
+    .admission-buttons{
+      display:flex;
+
+      justify-content:center;
+
+      flex-wrap:wrap;
+
+      gap:12px;
     }
 
 
@@ -800,14 +878,9 @@
     .footer{
       padding:42px 0;
 
+      border-top:1px solid #1b1b1b;
+
       background:#050505;
-
-      border-top:
-        1px solid #1b1b1b;
-
-      color:#666;
-
-      font-size:13px;
     }
 
     .footer-inner{
@@ -826,12 +899,24 @@
       font-size:18px;
 
       font-weight:800;
-
-      margin-bottom:3px;
     }
 
     .footer-brand span{
       color:#b7ff00;
+    }
+
+    .footer-tagline{
+      color:#666;
+
+      font-size:12px;
+    }
+
+    .copyright{
+      color:#666;
+
+      font-size:12px;
+
+      text-align:right;
     }
 
 
@@ -839,37 +924,17 @@
        TABLET
     ===================================================== */
 
-    @media(max-width:900px){
+    @media(max-width:1000px){
 
       .menu{
-        display:none;
+        gap:15px;
       }
 
       .course-hero-grid{
-        grid-template-columns:1fr;
-
-        text-align:center;
+        gap:40px;
       }
 
-      .course-hero p{
-        margin-left:auto;
-        margin-right:auto;
-      }
-
-      .hero-buttons{
-        justify-content:center;
-      }
-
-      .hero-image{
-        order:-1;
-      }
-
-      .topics-grid{
-        grid-template-columns:
-          repeat(2,1fr);
-      }
-
-      .career-grid{
+      .tools-grid{
         grid-template-columns:
           repeat(2,1fr);
       }
@@ -881,11 +946,7 @@
        MOBILE
     ===================================================== */
 
-    @media(max-width:650px){
-
-      .container{
-        width:90%;
-      }
+    @media(max-width:800px){
 
       .nav{
         min-height:70px;
@@ -895,130 +956,88 @@
         width:105px;
       }
 
-      .nav-button{
-        padding:9px 13px;
-
-        font-size:11px;
+      .menu{
+        display:none;
       }
 
       .course-hero{
-        padding:70px 0;
+        padding:70px 0 60px;
       }
 
-      .course-hero h1{
-        font-size:43px;
+      .course-hero-grid{
+        grid-template-columns:1fr;
 
-        letter-spacing:-2px;
+        text-align:center;
       }
 
-      .course-hero p{
-        font-size:14px;
+      .course-hero-text{
+        margin-left:auto;
+        margin-right:auto;
       }
 
       .hero-buttons{
-        width:100%;
+        justify-content:center;
       }
 
-      .btn{
-        width:100%;
+      .course-visual{
+        min-height:330px;
       }
 
-
-      /* INFO */
+      .course-visual-card{
+        width:310px;
+      }
 
       .info-grid{
         grid-template-columns:
           repeat(2,1fr);
       }
 
-      .info-item{
-        padding:20px 10px;
-      }
-
-      .info-item:nth-child(2){
+      .info-box:nth-child(2){
         border-right:0;
       }
 
-      .info-item:nth-child(3),
-      .info-item:nth-child(4){
-        border-top:
-          1px solid #1d1d1d;
+      .info-box:nth-child(3),
+      .info-box:nth-child(4){
+        border-top:1px solid #202020;
       }
-
-
-      /* SECTION */
 
       .section{
         padding:75px 0;
       }
 
-      .section-header{
-        margin-bottom:35px;
-      }
-
-      .section-header h2{
-        font-size:36px;
-
-        letter-spacing:-1.5px;
-      }
-
-      .section-header p{
-        font-size:14px;
-      }
-
-
-      /* LEARN */
-
-      .learn-grid{
+      .learning-grid{
         grid-template-columns:1fr;
       }
 
-
-      /* TOPICS */
-
-      .topics-grid{
+      .security-grid{
         grid-template-columns:1fr;
       }
 
-
-      /* CAREER */
+      .tools-grid{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
 
       .career-grid{
         grid-template-columns:1fr;
       }
 
-
-      /* PRICE */
-
-      .price-section{
+      .admission{
         padding:75px 0;
       }
 
-      .price-box{
-        padding:35px 20px;
-      }
-
-      .old-price{
-        display:block;
-      }
-
-      .new-price{
-        display:block;
-
-        margin:3px 0 0;
-      }
-
-
-      /* FOOTER */
-
-      .footer{
-        padding:32px 0;
+      .admission-box{
+        padding:30px 20px;
       }
 
       .footer-inner{
         flex-direction:column;
 
         align-items:flex-start;
+      }
+
+      .copyright{
+        text-align:left;
       }
 
     }
@@ -1028,1031 +1047,1119 @@
        SMALL MOBILE
     ===================================================== */
 
-    @media(max-width:400px){
+    @media(max-width:500px){
+
+      .header-actions .nav-button{
+        padding:9px 12px;
+
+        font-size:11px;
+      }
 
       .course-hero h1{
-        font-size:39px;
+        font-size:42px;
+
+        letter-spacing:-2px;
       }
 
-      .hero-image img{
-        border-radius:15px;
+      .course-hero-text{
+        font-size:14px;
       }
 
-      .syllabus-item{
-        align-items:flex-start;
+      .btn{
+        width:100%;
       }
 
-      .syllabus-number{
-        width:38px;
-        height:38px;
+      .hero-buttons{
+        width:100%;
+      }
+
+      .course-visual-card{
+        width:270px;
+      }
+
+      .course-visual-card h2{
+        font-size:23px;
+      }
+
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .info-box,
+      .info-box:nth-child(2),
+      .info-box:nth-child(3),
+      .info-box:nth-child(4){
+        border-right:0;
+
+        border-top:1px solid #202020;
+      }
+
+      .info-box:first-child{
+        border-top:0;
+      }
+
+      .tools-grid{
+        grid-template-columns:1fr;
+      }
+
+      .new-price{
+        font-size:30px;
       }
 
     }
 
   </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
 
-<header class="header">
+  <header class="header">
 
-  <div class="container nav">
+    <div class="container nav">
 
+      <a href="index.html" class="brand">
 
-    <!-- LOGO -->
-
-    <a
-      href="index.html"
-      class="brand"
-    >
-
-      <img
-        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
-        alt="SNK IT Institute"
-      >
-
-    </a>
-
-
-    <!-- NAVIGATION -->
-
-    <nav class="menu">
-
-      <a href="index.html">
-        হোম
-      </a>
-
-      <a href="courses.html">
-        কোর্সসমূহ
-      </a>
-
-      <a href="index.html#about">
-        আমাদের সম্পর্কে
-      </a>
-
-      <a href="index.html#contact">
-        যোগাযোগ
-      </a>
-
-    </nav>
-
-
-    <!-- BUTTON -->
-
-    <a
-      href="#admission"
-      class="nav-button"
-    >
-      ভর্তি করুন →
-    </a>
-
-
-  </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="course-hero">
-
-  <div class="container course-hero-grid">
-
-
-    <!-- HERO CONTENT -->
-
-    <div>
-
-      <div class="badge">
-
-        <span class="badge-dot"></span>
-
-        AI POWERED • CYBER SECURITY
-
-      </div>
-
-
-      <h1>
-
-        AI-Powered
-
-        <br>
-
-        <span>
-          Cyber Security
-        </span>
-
-      </h1>
-
-
-      <p>
-
-        Cyber Security fundamentals,
-        Ethical Hacking, security concepts
-        এবং practical cybersecurity skills
-        হাতে-কলমে শিখে future-ready career
-        তৈরি করুন।
-
-      </p>
-
-
-      <div class="hero-buttons">
-
-        <a
-          href="#admission"
-          class="btn primary"
+        <img
+          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
+          alt="SNK IT Institute"
         >
-          এখনই ভর্তি করুন →
+
+      </a>
+
+
+      <nav class="menu">
+
+        <a href="index.html">
+          হোম
         </a>
 
+        <a href="courses.html">
+          কোর্সসমূহ
+        </a>
+
+        <a href="about.html">
+          আমাদের সম্পর্কে
+        </a>
+
+        <a href="contact.html">
+          যোগাযোগ
+        </a>
+
+      </nav>
+
+
+      <div class="header-actions">
+
         <a
-          href="#syllabus"
-          class="btn secondary"
+          href="admission.html"
+          class="nav-button"
         >
-          Syllabus দেখুন
+          ভর্তি করুন →
         </a>
 
       </div>
 
     </div>
 
+  </header>
 
-    <!-- HERO IMAGE -->
 
-    <div class="hero-image">
 
-      <img
-        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%202.svg"
-        alt="AI Powered Cyber Security"
-      >
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
 
-    </div>
+  <main>
 
 
-  </div>
+    <!-- ===================================================
+         HERO
+    =================================================== -->
 
-</section>
+    <section class="course-hero">
 
+      <div class="container">
 
+        <div class="course-hero-grid">
 
-<!-- =====================================================
-     COURSE INFO
-===================================================== -->
 
-<section class="course-info-bar">
+          <div>
 
-  <div class="container info-grid">
+            <div class="course-badge">
 
+              <span></span>
 
-    <div class="info-item">
+              AI POWERED • CYBER SECURITY
 
-      <strong>
-        6 Months
-      </strong>
+            </div>
 
-      <span>
-        Course Duration
-      </span>
 
-    </div>
+            <h1>
 
+              AI-Powered
 
-    <div class="info-item">
+              <br>
 
-      <strong>
-        AI
-      </strong>
+              <span>Cyber Security</span>
 
-      <span>
-        Powered Learning
-      </span>
+            </h1>
 
-    </div>
 
+            <p class="course-hero-text">
 
-    <div class="info-item">
+              Cyber Security fundamentals, ethical
+              hacking, network security, web security
+              এবং AI-assisted security workflow-এর
+              মাধ্যমে বাস্তব cybersecurity career-এর
+              জন্য নিজেকে প্রস্তুত করুন।
 
-      <strong>
-        10
-      </strong>
+            </p>
 
-      <span>
-        Limited Seats
-      </span>
 
-    </div>
+            <div class="hero-buttons">
 
+              <a
+                href="admission.html"
+                class="btn primary"
+              >
+                ভর্তি করুন →
+              </a>
 
-    <div class="info-item">
+              <a
+                href="courses.html"
+                class="btn secondary"
+              >
+                ← সব কোর্স
+              </a>
 
-      <strong>
-        Career
-      </strong>
+            </div>
 
-      <span>
-        Focused Program
-      </span>
+          </div>
 
-    </div>
 
 
-  </div>
+          <div class="course-visual">
 
-</section>
+            <div class="course-visual-card">
 
+              <div class="course-visual-icon">
+                🛡️
+              </div>
 
+              <h2>
+                CYBER SECURITY
+              </h2>
 
-<!-- =====================================================
-     WHAT YOU WILL LEARN
-===================================================== -->
+              <p>
+                Security • Ethical Hacking • AI
+              </p>
 
-<section class="section learn-section">
+            </div>
 
-  <div class="container">
+          </div>
 
-
-    <div class="section-header">
-
-      <small>
-        WHAT YOU WILL LEARN
-      </small>
-
-      <h2>
-
-        Cyber Security থেকে
-
-        <br>
-
-        <span>
-          Professional Skill
-        </span>
-
-      </h2>
-
-      <p>
-
-        Beginner level থেকে practical
-        cybersecurity knowledge তৈরি করার
-        জন্য structured learning program।
-
-      </p>
-
-    </div>
-
-
-    <div class="learn-grid">
-
-
-      <!-- 01 -->
-
-      <article class="learn-card">
-
-        <div class="learn-number">
-          01 — FUNDAMENTALS
-        </div>
-
-        <h3>
-          Cyber Security Fundamentals
-        </h3>
-
-        <p>
-
-          Cyber Security কী, common threats,
-          vulnerabilities এবং security
-          fundamentals সম্পর্কে শিখুন।
-
-        </p>
-
-      </article>
-
-
-      <!-- 02 -->
-
-      <article class="learn-card">
-
-        <div class="learn-number">
-          02 — NETWORK
-        </div>
-
-        <h3>
-          Networking & Security
-        </h3>
-
-        <p>
-
-          Networking concepts, protocols,
-          ports এবং network security
-          fundamentals বুঝুন।
-
-        </p>
-
-      </article>
-
-
-      <!-- 03 -->
-
-      <article class="learn-card">
-
-        <div class="learn-number">
-          03 — ETHICAL HACKING
-        </div>
-
-        <h3>
-          Ethical Hacking
-        </h3>
-
-        <p>
-
-          Ethical hacking methodology এবং
-          authorized security testing-এর
-          fundamentals শিখুন।
-
-        </p>
-
-      </article>
-
-
-      <!-- 04 -->
-
-      <article class="learn-card">
-
-        <div class="learn-number">
-          04 — WEB SECURITY
-        </div>
-
-        <h3>
-          Web Application Security
-        </h3>
-
-        <p>
-
-          Web application-এর common security
-          risks এবং defensive security
-          concepts সম্পর্কে জানুন।
-
-        </p>
-
-      </article>
-
-
-      <!-- 05 -->
-
-      <article class="learn-card">
-
-        <div class="learn-number">
-          05 — TOOLS
-        </div>
-
-        <h3>
-          Security Tools
-        </h3>
-
-        <p>
-
-          Cybersecurity professionals ব্যবহৃত
-          বিভিন্ন security tools-এর practical
-          workflow শিখুন।
-
-        </p>
-
-      </article>
-
-
-      <!-- 06 -->
-
-      <article class="learn-card">
-
-        <div class="learn-number">
-          06 — AI
-        </div>
-
-        <h3>
-          AI-Powered Cyber Security
-        </h3>
-
-        <p>
-
-          AI tools ব্যবহার করে security
-          research, analysis এবং workflow
-          আরও efficient করার পদ্ধতি শিখুন।
-
-        </p>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CYBER SECURITY TOPICS
-===================================================== -->
-
-<section class="section">
-
-  <div class="container">
-
-
-    <div class="section-header">
-
-      <small>
-        CORE TOPICS
-      </small>
-
-      <h2>
-
-        Security-এর
-
-        <span>
-          গুরুত্বপূর্ণ বিষয়
-        </span>
-
-      </h2>
-
-      <p>
-
-        Course-এর মধ্যে বিভিন্ন গুরুত্বপূর্ণ
-        cybersecurity concepts cover করা হবে।
-
-      </p>
-
-    </div>
-
-
-    <div class="topics-grid">
-
-
-      <article class="topic-card">
-
-        <div class="topic-icon">
-          🌐
-        </div>
-
-        <h3>
-          Network Security
-        </h3>
-
-        <p>
-          Network architecture, protocols,
-          threats এবং security concepts।
-        </p>
-
-      </article>
-
-
-      <article class="topic-card">
-
-        <div class="topic-icon">
-          🛡️
-        </div>
-
-        <h3>
-          Vulnerability Assessment
-        </h3>
-
-        <p>
-          Security weaknesses identify এবং
-          assess করার fundamentals।
-        </p>
-
-      </article>
-
-
-      <article class="topic-card">
-
-        <div class="topic-icon">
-          🔐
-        </div>
-
-        <h3>
-          Web Security
-        </h3>
-
-        <p>
-          Web applications-এর security
-          concepts এবং defensive practices।
-        </p>
-
-      </article>
-
-
-      <article class="topic-card">
-
-        <div class="topic-icon">
-          🧪
-        </div>
-
-        <h3>
-          Security Testing
-        </h3>
-
-        <p>
-          Authorized testing methodology এবং
-          security assessment workflow।
-        </p>
-
-      </article>
-
-
-      <article class="topic-card">
-
-        <div class="topic-icon">
-          🤖
-        </div>
-
-        <h3>
-          AI Security Workflow
-        </h3>
-
-        <p>
-          AI-powered research এবং security
-          analysis workflow।
-        </p>
-
-      </article>
-
-
-      <article class="topic-card">
-
-        <div class="topic-icon">
-          💼
-        </div>
-
-        <h3>
-          Career Preparation
-        </h3>
-
-        <p>
-          Portfolio, practical projects এবং
-          cybersecurity career preparation।
-        </p>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SYLLABUS
-===================================================== -->
-
-<section
-  class="section learn-section"
-  id="syllabus"
->
-
-  <div class="container">
-
-
-    <div class="section-header">
-
-      <small>
-        COURSE SYLLABUS
-      </small>
-
-      <h2>
-
-        আপনার
-
-        <span>
-          Learning Roadmap
-        </span>
-
-      </h2>
-
-      <p>
-        Step-by-step structured cybersecurity
-        learning path।
-      </p>
-
-    </div>
-
-
-    <div class="syllabus">
-
-
-      <!-- 01 -->
-
-      <div class="syllabus-item">
-
-        <div class="syllabus-number">
-          01
-        </div>
-
-        <div>
-
-          <h3>
-            Cyber Security Fundamentals
-          </h3>
-
-          <p>
-            Security concepts, threats,
-            vulnerabilities এবং security mindset।
-          </p>
 
         </div>
 
       </div>
 
-
-      <!-- 02 -->
-
-      <div class="syllabus-item">
-
-        <div class="syllabus-number">
-          02
-        </div>
-
-        <div>
-
-          <h3>
-            Networking Fundamentals
-          </h3>
-
-          <p>
-            Network, TCP/IP, protocols,
-            ports এবং network security।
-          </p>
-
-        </div>
-
-      </div>
+    </section>
 
 
-      <!-- 03 -->
 
-      <div class="syllabus-item">
+    <!-- ===================================================
+         INFO
+    =================================================== -->
 
-        <div class="syllabus-number">
-          03
-        </div>
+    <section class="course-info-section">
 
-        <div>
+      <div class="container">
 
-          <h3>
-            Linux & Security Environment
-          </h3>
-
-          <p>
-            Linux fundamentals এবং
-            cybersecurity learning environment।
-          </p>
-
-        </div>
-
-      </div>
+        <div class="info-grid">
 
 
-      <!-- 04 -->
+          <div class="info-box">
 
-      <div class="syllabus-item">
+            <strong>
+              6 Months
+            </strong>
 
-        <div class="syllabus-number">
-          04
-        </div>
+            <span>
+              Course Duration
+            </span>
 
-        <div>
-
-          <h3>
-            Ethical Hacking Fundamentals
-          </h3>
-
-          <p>
-            Ethical hacking methodology এবং
-            authorized security testing concepts।
-          </p>
-
-        </div>
-
-      </div>
+          </div>
 
 
-      <!-- 05 -->
+          <div class="info-box">
 
-      <div class="syllabus-item">
+            <strong>
+              ৳9,500
+            </strong>
 
-        <div class="syllabus-number">
-          05
-        </div>
+            <span>
+              Offer Price
+            </span>
 
-        <div>
+          </div>
 
-          <h3>
-            Web Application Security
-          </h3>
 
-          <p>
-            Web security risks এবং defensive
-            security practices।
-          </p>
+          <div class="info-box">
+
+            <strong>
+              ৳12,500
+            </strong>
+
+            <span>
+              Regular Price
+            </span>
+
+          </div>
+
+
+          <div class="info-box">
+
+            <strong>
+              10 Seats
+            </strong>
+
+            <span>
+              Limited Seats
+            </span>
+
+          </div>
+
 
         </div>
 
       </div>
 
+    </section>
 
-      <!-- 06 -->
 
-      <div class="syllabus-item">
 
-        <div class="syllabus-number">
-          06
-        </div>
+    <!-- ===================================================
+         LEARNING
+    =================================================== -->
 
-        <div>
+    <section class="section learning">
 
-          <h3>
-            Vulnerability Assessment
-          </h3>
+      <div class="container">
+
+
+        <div class="section-header">
+
+          <small>
+            WHAT YOU WILL LEARN
+          </small>
+
+          <h2>
+
+            Cyber Security-এর
+
+            <br>
+
+            <span>Core Skills</span> শিখুন।
+
+          </h2>
 
           <p>
-            Vulnerability identification,
-            assessment এবং reporting।
+
+            Beginner level থেকে practical
+            cybersecurity knowledge তৈরি করে
+            ethical security testing এবং
+            defensive security-এর ভিত্তি গড়ে তুলুন।
+
           </p>
+
+        </div>
+
+
+
+        <div class="learning-grid">
+
+
+          <article class="learning-card">
+
+            <div class="learning-number">
+              01
+            </div>
+
+            <div>
+
+              <h3>
+                Cyber Security Fundamentals
+              </h3>
+
+              <p>
+                Cyber threats, security principles,
+                CIA Triad এবং basic security concepts।
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="learning-card">
+
+            <div class="learning-number">
+              02
+            </div>
+
+            <div>
+
+              <h3>
+                Networking Fundamentals
+              </h3>
+
+              <p>
+                Network, TCP/IP, DNS, HTTP এবং
+                networking security concepts।
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="learning-card">
+
+            <div class="learning-number">
+              03
+            </div>
+
+            <div>
+
+              <h3>
+                Linux Fundamentals
+              </h3>
+
+              <p>
+                Linux environment, terminal,
+                permissions এবং security-focused workflow।
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="learning-card">
+
+            <div class="learning-number">
+              04
+            </div>
+
+            <div>
+
+              <h3>
+                Ethical Hacking
+              </h3>
+
+              <p>
+                Authorized security testing এবং
+                ethical hacking methodology।
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="learning-card">
+
+            <div class="learning-number">
+              05
+            </div>
+
+            <div>
+
+              <h3>
+                Web Security
+              </h3>
+
+              <p>
+                Web application security এবং
+                common vulnerability concepts।
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="learning-card">
+
+            <div class="learning-number">
+              06
+            </div>
+
+            <div>
+
+              <h3>
+                Vulnerability Assessment
+              </h3>
+
+              <p>
+                Security weakness identify,
+                analyze এবং report করার ধারণা।
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="learning-card">
+
+            <div class="learning-number">
+              07
+            </div>
+
+            <div>
+
+              <h3>
+                Security Tools
+              </h3>
+
+              <p>
+                Security testing এবং defensive
+                analysis-এর জন্য industry tools পরিচিতি।
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="learning-card">
+
+            <div class="learning-number">
+              08
+            </div>
+
+            <div>
+
+              <h3>
+                AI-Assisted Security
+              </h3>
+
+              <p>
+                AI ব্যবহার করে security research,
+                analysis এবং productivity workflow।
+              </p>
+
+            </div>
+
+          </article>
+
 
         </div>
 
       </div>
 
+    </section>
 
-      <!-- 07 -->
 
-      <div class="syllabus-item">
 
-        <div class="syllabus-number">
-          07
-        </div>
+    <!-- ===================================================
+         SYLLABUS
+    =================================================== -->
 
-        <div>
+    <section class="section syllabus">
 
-          <h3>
-            AI-Powered Security Workflow
-          </h3>
+      <div class="container">
+
+
+        <div class="section-header">
+
+          <small>
+            COURSE SYLLABUS
+          </small>
+
+          <h2>
+
+            6 Months
+
+            <br>
+
+            <span>Cyber Security Roadmap</span>
+
+          </h2>
 
           <p>
-            AI tools ব্যবহার করে research,
-            analysis এবং productivity।
+            Structured modules এবং practical
+            exercises-এর মাধ্যমে cybersecurity
+            knowledge তৈরি করা হবে।
           </p>
+
+        </div>
+
+
+
+        <div class="syllabus-list">
+
+
+          <div class="syllabus-item">
+            <span>01</span>
+            <strong>Cyber Security Fundamentals</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>02</span>
+            <strong>Networking & TCP/IP</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>03</span>
+            <strong>Linux & Security Environment</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>04</span>
+            <strong>Information Gathering & Reconnaissance</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>05</span>
+            <strong>Vulnerability Assessment</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>06</span>
+            <strong>Web Application Security</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>07</span>
+            <strong>Ethical Hacking Methodology</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>08</span>
+            <strong>Authentication & Access Security</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>09</span>
+            <strong>Security Monitoring & Defensive Concepts</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>10</span>
+            <strong>Security Testing Tools</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>11</span>
+            <strong>AI-Powered Security Workflow</strong>
+          </div>
+
+
+          <div class="syllabus-item">
+            <span>12</span>
+            <strong>Final Practical Security Project</strong>
+          </div>
+
 
         </div>
 
       </div>
 
+    </section>
 
-      <!-- 08 -->
 
-      <div class="syllabus-item">
 
-        <div class="syllabus-number">
-          08
-        </div>
+    <!-- ===================================================
+         SECURITY PRACTICE
+    =================================================== -->
 
-        <div>
+    <section class="section security-lab">
 
-          <h3>
-            Practical Project & Career
-          </h3>
+      <div class="container">
+
+
+        <div class="section-header">
+
+          <small>
+            PRACTICAL LEARNING
+          </small>
+
+          <h2>
+
+            শুধু Theory নয়,
+
+            <br>
+
+            <span>Hands-on Practice</span>
+
+          </h2>
 
           <p>
-            Practical project, portfolio এবং
-            career preparation।
+
+            নিরাপদ এবং অনুমোদিত learning environment-এ
+            practical security concepts বুঝে কাজ করার
+            সুযোগ থাকবে।
+
           </p>
+
+        </div>
+
+
+
+        <div class="security-grid">
+
+
+          <div class="security-card">
+
+            <div class="security-icon">
+              🌐
+            </div>
+
+            <h3>
+              Network Security
+            </h3>
+
+            <p>
+              Network architecture এবং security
+              controls সম্পর্কে practical ধারণা।
+            </p>
+
+          </div>
+
+
+          <div class="security-card">
+
+            <div class="security-icon">
+              🔐
+            </div>
+
+            <h3>
+              Web Security
+            </h3>
+
+            <p>
+              Web application security concepts
+              এবং vulnerability analysis শেখা।
+            </p>
+
+          </div>
+
+
+          <div class="security-card">
+
+            <div class="security-icon">
+              🧪
+            </div>
+
+            <h3>
+              Security Lab
+            </h3>
+
+            <p>
+              Controlled lab environment-এ
+              security testing methodology practice।
+            </p>
+
+          </div>
+
+
+          <div class="security-card">
+
+            <div class="security-icon">
+              📊
+            </div>
+
+            <h3>
+              Security Analysis
+            </h3>
+
+            <p>
+              Security findings analyze এবং
+              professional report তৈরির ধারণা।
+            </p>
+
+          </div>
+
+
+          <div class="security-card">
+
+            <div class="security-icon">
+              🤖
+            </div>
+
+            <h3>
+              AI Assistance
+            </h3>
+
+            <p>
+              Security research ও analysis-এ
+              responsible AI-assisted workflow।
+            </p>
+
+          </div>
+
+
+          <div class="security-card">
+
+            <div class="security-icon">
+              🎯
+            </div>
+
+            <h3>
+              Final Project
+            </h3>
+
+            <p>
+              Course-এর শেখা concepts ব্যবহার করে
+              একটি structured security project।
+            </p>
+
+          </div>
+
 
         </div>
 
       </div>
 
-
-    </div>
-
-  </div>
-
-</section>
+    </section>
 
 
 
-<!-- =====================================================
-     CAREER
-===================================================== -->
+    <!-- ===================================================
+         TOOLS
+    =================================================== -->
 
-<section class="section career-section">
+    <section class="section tools">
 
-  <div class="container">
-
-
-    <div class="section-header">
-
-      <small>
-        CAREER PATH
-      </small>
-
-      <h2>
-
-        Skill-এর সাথে
-
-        <span>
-          Career Direction
-        </span>
-
-      </h2>
-
-      <p>
-
-        Cybersecurity skill ব্যবহার করে
-        বিভিন্ন career path-এর জন্য
-        নিজেকে প্রস্তুত করুন।
-
-      </p>
-
-    </div>
+      <div class="container">
 
 
-    <div class="career-grid">
+        <div class="section-header">
 
+          <small>
+            SECURITY TOOLKIT
+          </small>
 
-      <article class="career-card">
+          <h2>
 
-        <strong>
-          01
-        </strong>
+            Modern
 
-        <h3>
-          Cyber Security Analyst
-        </h3>
+            <br>
 
-        <p>
-          Security monitoring, analysis এবং
-          incident-related workflow-এর
-          fundamentals।
-        </p>
+            <span>Security Tools</span>
 
-      </article>
+          </h2>
 
+          <p>
+            Course-এর অংশ হিসেবে security
+            environment এবং commonly used
+            tools সম্পর্কে পরিচিতি দেওয়া হবে।
+          </p>
 
-      <article class="career-card">
-
-        <strong>
-          02
-        </strong>
-
-        <h3>
-          Ethical Hacking
-        </h3>
-
-        <p>
-          Authorized security testing এবং
-          vulnerability assessment-এর
-          career foundation।
-        </p>
-
-      </article>
-
-
-      <article class="career-card">
-
-        <strong>
-          03
-        </strong>
-
-        <h3>
-          Security Support
-        </h3>
-
-        <p>
-          IT security এবং cybersecurity
-          support-related role-এর জন্য
-          practical foundation।
-        </p>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
+        </div>
 
 
 
-<!-- =====================================================
-     ADMISSION / PRICE
-===================================================== -->
-
-<section
-  class="price-section"
-  id="admission"
->
-
-  <div class="container">
+        <div class="tools-grid">
 
 
-    <div class="price-box">
+          <div class="tool-card">
 
-      <small>
-        LIMITED SEATS • SPECIAL OFFER
-      </small>
+            <div class="tool-card-icon">
+              🐧
+            </div>
 
-      <h2>
-        Cyber Security Career শুরু করুন
-      </h2>
+            <h3>
+              Linux
+            </h3>
+
+            <p>
+              Security-focused Linux environment
+              এবং command-line workflow।
+            </p>
+
+          </div>
+
+
+          <div class="tool-card">
+
+            <div class="tool-card-icon">
+              🔎
+            </div>
+
+            <h3>
+              Recon Tools
+            </h3>
+
+            <p>
+              Authorized information gathering
+              এবং reconnaissance concepts।
+            </p>
+
+          </div>
+
+
+          <div class="tool-card">
+
+            <div class="tool-card-icon">
+              🛡️
+            </div>
+
+            <h3>
+              Security Testing
+            </h3>
+
+            <p>
+              Vulnerability assessment ও
+              security testing workflow।
+            </p>
+
+          </div>
+
+
+          <div class="tool-card">
+
+            <div class="tool-card-icon">
+              🤖
+            </div>
+
+            <h3>
+              AI Tools
+            </h3>
+
+            <p>
+              Security research এবং productivity
+              বাড়াতে responsible AI workflow।
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         CAREER
+    =================================================== -->
+
+    <section class="section career">
+
+      <div class="container">
+
+
+        <div class="section-header">
+
+          <small>
+            CAREER PATH
+          </small>
+
+          <h2>
+
+            Cyber Security শিখে
+
+            <br>
+
+            <span>ক্যারিয়ার তৈরি করুন।</span>
+
+          </h2>
+
+        </div>
+
+
+
+        <div class="career-grid">
+
+
+          <div class="career-card">
+
+            <h3>
+              Cyber Security Analyst
+            </h3>
+
+            <p>
+              Security monitoring, analysis এবং
+              threat awareness-এর foundation তৈরি করুন।
+            </p>
+
+          </div>
+
+
+          <div class="career-card">
+
+            <h3>
+              Ethical Hacker
+            </h3>
+
+            <p>
+              Authorized security testing এবং
+              ethical hacking methodology সম্পর্কে
+              practical knowledge তৈরি করুন।
+            </p>
+
+          </div>
+
+
+          <div class="career-card">
+
+            <h3>
+              Security Freelancer
+            </h3>
+
+            <p>
+              Security-related services ও
+              practical portfolio তৈরির জন্য
+              foundation তৈরি করুন।
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         ADMISSION CTA
+    =================================================== -->
+
+    <section class="admission">
+
+      <div class="container">
+
+        <div class="admission-box">
+
+
+          <small>
+            LIMITED SEATS • 1ST BATCH
+          </small>
+
+
+          <h2>
+
+            আপনার Cyber Security
+
+            <br>
+
+            <span>Journey শুরু করুন।</span>
+
+          </h2>
+
+
+          <div>
+
+            <del class="old-price">
+              ৳12,500
+            </del>
+
+            <strong class="new-price">
+              ৳9,500
+            </strong>
+
+          </div>
+
+
+          <p>
+
+            ৬ মাসের AI-Powered Cyber Security &
+            Ethical Hacking Program।
+            Practical learning এবং career-focused training।
+
+          </p>
+
+
+          <div class="admission-buttons">
+
+            <a
+              href="admission.html"
+              class="btn primary"
+            >
+              ভর্তি করুন →
+            </a>
+
+
+            <a
+              href="contact.html"
+              class="btn secondary"
+            >
+              যোগাযোগ করুন
+            </a>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+
+  <footer class="footer">
+
+    <div class="container footer-inner">
 
 
       <div>
 
-        <span class="old-price">
-          ৳12,500
-        </span>
+        <div class="footer-brand">
 
-        <span class="new-price">
-          ৳9,500
-        </span>
+          SNK <span>IT</span> Institute
+
+        </div>
+
+        <div class="footer-tagline">
+          Learn To Lead
+        </div>
+
+      </div>
+
+
+      <div class="copyright">
+
+        © 2026 SNK IT Institute.
+        সর্বস্বত্ব সংরক্ষিত।
 
       </div>
 
 
-      <p>
-
-        ৬ মাসের AI-Powered Cyber Security &
-        Ethical Hacking Program।
-
-        Limited seats: মাত্র ১০টি।
-
-      </p>
-
-
-      <a
-        href="tel:+8801705633700"
-        class="btn primary"
-      >
-        📞 ভর্তি হতে যোগাযোগ করুন →
-      </a>
-
-
     </div>
 
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="footer">
-
-  <div class="container footer-inner">
-
-
-    <div>
-
-      <div class="footer-brand">
-
-        SNK <span>IT</span> Institute
-
-      </div>
-
-      <div>
-        Learn To Lead
-      </div>
-
-    </div>
-
-
-    <div>
-
-      © 2026 SNK IT Institute.
-      সর্বস্বত্ব সংরক্ষিত।
-
-    </div>
-
-
-  </div>
-
-</footer>
+  </footer>
 
 
 </body>
