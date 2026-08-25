@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -8,14 +9,14 @@
 
   <meta
     name="description"
-    content="SNK IT Institute Admission Form — Apply for your preferred course."
+    content="SNK IT Institute Admission Form — Apply for your selected course."
   >
 
   <style>
 
-    /* =====================================================
+    /* ==============================
        RESET
-    ===================================================== */
+    ============================== */
 
     *{
       margin:0;
@@ -29,13 +30,10 @@
 
     body{
       font-family:Arial, Helvetica, sans-serif;
-
       background:#050505;
       color:#fff;
-
       line-height:1.6;
-
-      min-height:100vh;
+      overflow-x:hidden;
     }
 
     a{
@@ -50,27 +48,27 @@
       font:inherit;
     }
 
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
 
-    /* =====================================================
+
+    /* ==============================
        HEADER
-    ===================================================== */
+    ============================== */
 
     .header{
       position:sticky;
       top:0;
-      z-index:999;
+      z-index:9999;
 
       background:rgba(5,5,5,.94);
 
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
 
-      border-bottom:1px solid #1b1b1b;
-    }
-
-    .container{
-      width:min(1180px,92%);
-      margin:auto;
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
 
     .nav{
@@ -80,12 +78,13 @@
       align-items:center;
       justify-content:space-between;
 
-      gap:20px;
+      gap:22px;
     }
 
     .brand{
       display:flex;
       align-items:center;
+      flex-shrink:0;
     }
 
     .brand img{
@@ -93,8 +92,661 @@
       height:auto;
     }
 
-    .back-home{
-      padding:10px 15px;
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:25px;
+    }
+
+    .menu a{
+      color:#bdbdbd;
+      font-size:14px;
+      transition:.3s;
+    }
+
+    .menu a:hover,
+    .menu a.active{
+      color:#b7ff00;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-shrink:0;
+    }
+
+    .login-button{
+      background:#b7ff00;
+      color:#050505;
+
+      padding:10px 17px;
+
+      border-radius:8px;
+
+      font-size:13px;
+      font-weight:800;
+
+      transition:.3s;
+    }
+
+    .login-button:hover{
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 10px 30px
+        rgba(183,255,0,.20);
+    }
+
+
+    /* ==============================
+       PAGE HERO
+    ============================== */
+
+    .page-hero{
+      position:relative;
+
+      padding:90px 0 55px;
+
+      text-align:center;
+
+      overflow:hidden;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(183,255,0,.10),
+          transparent 40%
+        ),
+
+        #050505;
+    }
+
+    .page-hero::before{
+      content:"";
+
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      left:50%;
+      top:50%;
+
+      transform:translate(-50%,-50%);
+
+      border:1px solid
+        rgba(183,255,0,.05);
+
+      border-radius:50%;
+    }
+
+    .page-hero-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .page-badge{
+      display:inline-flex;
+
+      align-items:center;
+      gap:8px;
+
+      color:#b7ff00;
+
+      padding:8px 15px;
+
+      border:1px solid
+        rgba(183,255,0,.25);
+
+      background:
+        rgba(183,255,0,.06);
+
+      border-radius:50px;
+
+      font-size:11px;
+      font-weight:800;
+
+      letter-spacing:1px;
+
+      margin-bottom:20px;
+    }
+
+    .page-badge-dot{
+      width:7px;
+      height:7px;
+
+      background:#b7ff00;
+
+      border-radius:50%;
+
+      box-shadow:
+        0 0 12px #b7ff00;
+    }
+
+    .page-hero h1{
+      font-size:
+        clamp(40px,6vw,68px);
+
+      line-height:1.05;
+
+      letter-spacing:-3px;
+
+      margin-bottom:18px;
+    }
+
+    .page-hero h1 span{
+      color:#b7ff00;
+    }
+
+    .page-hero p{
+      max-width:650px;
+
+      margin:auto;
+
+      color:#888;
+
+      font-size:16px;
+    }
+
+
+    /* ==============================
+       ADMISSION AREA
+    ============================== */
+
+    .admission-section{
+      padding:50px 0 100px;
+
+      background:#050505;
+    }
+
+    .admission-grid{
+      display:grid;
+
+      grid-template-columns:
+        .72fr
+        1.28fr;
+
+      gap:25px;
+
+      align-items:start;
+    }
+
+
+    /* ==============================
+       LEFT INFO
+    ============================== */
+
+    .admission-info{
+      position:sticky;
+      top:110px;
+
+      padding:30px;
+
+      background:#0b0b0b;
+
+      border:1px solid #202020;
+
+      border-radius:18px;
+    }
+
+    .admission-info h2{
+      font-size:27px;
+
+      line-height:1.25;
+
+      margin-bottom:15px;
+    }
+
+    .admission-info h2 span{
+      color:#b7ff00;
+    }
+
+    .admission-info > p{
+      color:#858585;
+
+      font-size:14px;
+
+      line-height:1.8;
+
+      margin-bottom:25px;
+    }
+
+    .info-item{
+      display:flex;
+
+      gap:13px;
+
+      padding:15px 0;
+
+      border-top:1px solid #1d1d1d;
+    }
+
+    .info-icon{
+      width:40px;
+      height:40px;
+
+      flex-shrink:0;
+
+      display:grid;
+      place-items:center;
+
+      background:
+        rgba(183,255,0,.08);
+
+      border-radius:10px;
+
+      font-size:18px;
+    }
+
+    .info-item strong{
+      display:block;
+
+      color:#fff;
+
+      font-size:13px;
+
+      margin-bottom:2px;
+    }
+
+    .info-item span{
+      color:#707070;
+
+      font-size:12px;
+    }
+
+
+    /* ==============================
+       FORM CARD
+    ============================== */
+
+    .form-card{
+      padding:32px;
+
+      background:#0b0b0b;
+
+      border:1px solid #202020;
+
+      border-radius:18px;
+
+      box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.20);
+    }
+
+    .form-title{
+      margin-bottom:28px;
+    }
+
+    .form-title small{
+      color:#b7ff00;
+
+      font-size:11px;
+
+      font-weight:800;
+
+      letter-spacing:2px;
+    }
+
+    .form-title h2{
+      font-size:30px;
+
+      margin-top:7px;
+
+      margin-bottom:7px;
+    }
+
+    .form-title p{
+      color:#777;
+
+      font-size:13px;
+    }
+
+
+    /* ==============================
+       FORM
+    ============================== */
+
+    .form-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:18px;
+    }
+
+    .form-group{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:7px;
+    }
+
+    .form-group.full{
+      grid-column:1/-1;
+    }
+
+    .form-group label{
+      color:#ddd;
+
+      font-size:13px;
+
+      font-weight:700;
+    }
+
+    .required{
+      color:#b7ff00;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+
+      width:100%;
+
+      border:1px solid #292929;
+
+      outline:none;
+
+      background:#101010;
+
+      color:#fff;
+
+      border-radius:9px;
+
+      padding:13px 14px;
+
+      font-size:13px;
+
+      transition:.3s;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder{
+      color:#555;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus{
+
+      border-color:
+        rgba(183,255,0,.55);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(183,255,0,.05);
+    }
+
+    .form-group select{
+      cursor:pointer;
+    }
+
+    .form-group textarea{
+      min-height:110px;
+
+      resize:vertical;
+    }
+
+    .form-help{
+      color:#5f5f5f;
+
+      font-size:11px;
+
+      line-height:1.5;
+    }
+
+
+    /* ==============================
+       RADIO
+    ============================== */
+
+    .radio-options{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:10px;
+    }
+
+    .radio-option{
+      position:relative;
+
+      cursor:pointer;
+    }
+
+    .radio-option input{
+      position:absolute;
+
+      opacity:0;
+
+      pointer-events:none;
+    }
+
+    .radio-option span{
+      display:block;
+
+      padding:10px 16px;
+
+      background:#101010;
+
+      border:1px solid #292929;
+
+      border-radius:8px;
+
+      color:#999;
+
+      font-size:12px;
+
+      transition:.3s;
+    }
+
+    .radio-option input:checked + span{
+      color:#b7ff00;
+
+      border-color:#b7ff00;
+
+      background:
+        rgba(183,255,0,.06);
+    }
+
+
+    /* ==============================
+       FILE UPLOAD
+    ============================== */
+
+    .file-box{
+      position:relative;
+
+      border:1px dashed #333;
+
+      background:#101010;
+
+      border-radius:10px;
+
+      padding:20px;
+
+      text-align:center;
+
+      transition:.3s;
+    }
+
+    .file-box:hover{
+      border-color:
+        rgba(183,255,0,.5);
+    }
+
+    .file-box input{
+      padding:10px;
+
+      cursor:pointer;
+    }
+
+
+    /* ==============================
+       NOTICE
+    ============================== */
+
+    .notice{
+      margin-top:22px;
+
+      padding:15px;
+
+      border:1px solid
+        rgba(183,255,0,.15);
+
+      background:
+        rgba(183,255,0,.04);
+
+      border-radius:10px;
+
+      color:#999;
+
+      font-size:12px;
+
+      line-height:1.7;
+    }
+
+    .notice strong{
+      color:#b7ff00;
+    }
+
+
+    /* ==============================
+       SUBMIT
+    ============================== */
+
+    .submit-button{
+      width:100%;
+
+      margin-top:22px;
+
+      padding:15px;
+
+      border:0;
+
+      border-radius:9px;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      font-size:14px;
+
+      font-weight:900;
+
+      cursor:pointer;
+
+      transition:.3s;
+    }
+
+    .submit-button:hover{
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 12px 35px
+        rgba(183,255,0,.20);
+    }
+
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    .footer{
+      padding:45px 0 25px;
+
+      border-top:1px solid #1b1b1b;
+
+      background:#050505;
+    }
+
+    .footer-top{
+      display:grid;
+
+      grid-template-columns:
+        1.3fr 1fr 1fr;
+
+      gap:40px;
+
+      padding-bottom:35px;
+    }
+
+    .footer-brand{
+      color:#fff;
+
+      font-size:21px;
+
+      font-weight:800;
+
+      margin-bottom:5px;
+    }
+
+    .footer-brand span{
+      color:#b7ff00;
+    }
+
+    .footer-tagline{
+      color:#666;
+
+      margin-bottom:14px;
+    }
+
+    .footer-description{
+      max-width:350px;
+
+      color:#666;
+
+      font-size:13px;
+
+      line-height:1.8;
+    }
+
+    .footer-column h3{
+      color:#fff;
+
+      font-size:14px;
+
+      margin-bottom:15px;
+    }
+
+    .footer-links{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:9px;
+    }
+
+    .footer-links a{
+      color:#777;
+
+      font-size:12px;
+
+      transition:.3s;
+    }
+
+    .footer-links a:hover{
+      color:#b7ff00;
+    }
+
+    .social-links{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:8px;
+    }
+
+    .social-links a{
+      width:36px;
+      height:36px;
+
+      display:grid;
+
+      place-items:center;
 
       border:1px solid #292929;
 
@@ -107,609 +759,56 @@
       transition:.3s;
     }
 
-    .back-home:hover{
+    .social-links a:hover{
       color:#b7ff00;
 
       border-color:#b7ff00;
     }
 
-
-    /* =====================================================
-       PAGE
-    ===================================================== */
-
-    .admission-section{
-      position:relative;
-
-      padding:80px 0 100px;
-
-      overflow:hidden;
-
-      background:
-
-        radial-gradient(
-          circle at 50% 10%,
-          rgba(183,255,0,.10),
-          transparent 35%
-        ),
-
-        #050505;
-    }
-
-
-    .admission-section::before{
-      content:"";
-
-      position:absolute;
-
-      width:600px;
-      height:600px;
-
-      left:50%;
-      top:250px;
-
-      transform:translateX(-50%);
-
-      border:1px solid
-        rgba(183,255,0,.04);
-
-      border-radius:50%;
-
-      pointer-events:none;
-    }
-
-
-    /* =====================================================
-       PAGE HEADER
-    ===================================================== */
-
-    .page-header{
-      position:relative;
-
-      z-index:2;
-
-      max-width:720px;
-
-      margin:0 auto 45px;
-
-      text-align:center;
-    }
-
-    .page-header small{
-      display:block;
-
-      color:#b7ff00;
-
-      font-size:11px;
-
-      font-weight:800;
-
-      letter-spacing:2px;
-
-      margin-bottom:12px;
-    }
-
-    .page-header h1{
-      font-size:
-        clamp(38px,5vw,58px);
-
-      line-height:1.1;
-
-      letter-spacing:-2px;
-
-      margin-bottom:15px;
-    }
-
-    .page-header h1 span{
-      color:#b7ff00;
-    }
-
-    .page-header p{
-      color:#858585;
-
-      font-size:15px;
-
-      line-height:1.8;
-    }
-
-
-    /* =====================================================
-       FORM CARD
-    ===================================================== */
-
-    .form-card{
-      position:relative;
-
-      z-index:2;
-
-      width:100%;
-
-      max-width:850px;
-
-      margin:auto;
-
-      padding:40px;
-
-      background:#0d0d0d;
-
-      border:1px solid #242424;
-
-      border-radius:20px;
-
-      box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.35);
-    }
-
-
-    /* =====================================================
-       FORM SECTION
-    ===================================================== */
-
-    .form-section{
-      margin-bottom:35px;
-    }
-
-    .form-section:last-child{
-      margin-bottom:0;
-    }
-
-    .form-section-title{
-      display:flex;
-
-      align-items:center;
-
-      gap:10px;
-
-      padding-bottom:13px;
-
-      margin-bottom:22px;
-
-      border-bottom:1px solid #222;
-
-      color:#fff;
-
-      font-size:17px;
-
-      font-weight:800;
-    }
-
-    .form-section-title span{
-      display:grid;
-
-      place-items:center;
-
-      width:28px;
-      height:28px;
-
-      background:
-        rgba(183,255,0,.10);
-
-      border:1px solid
-        rgba(183,255,0,.20);
-
-      border-radius:7px;
-
-      color:#b7ff00;
-
-      font-size:12px;
-    }
-
-
-    /* =====================================================
-       GRID
-    ===================================================== */
-
-    .form-grid{
-      display:grid;
-
-      grid-template-columns:
-        repeat(2,1fr);
-
-      gap:20px;
-    }
-
-    .full{
-      grid-column:1/-1;
-    }
-
-
-    /* =====================================================
-       FORM GROUP
-    ===================================================== */
-
-    .form-group{
-      display:flex;
-
-      flex-direction:column;
-    }
-
-    .form-group label{
-      color:#ddd;
-
-      font-size:13px;
-
-      font-weight:700;
-
-      margin-bottom:8px;
-    }
-
-    .required{
-      color:#b7ff00;
-    }
-
-
-    /* =====================================================
-       INPUT
-    ===================================================== */
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea{
-
-      width:100%;
-
-      background:#080808;
-
-      color:#fff;
-
-      border:1px solid #292929;
-
-      border-radius:9px;
-
-      outline:none;
-
-      transition:.3s;
-
-    }
-
-    .form-group input,
-    .form-group select{
-
-      height:48px;
-
-      padding:0 14px;
-
-      font-size:13px;
-
-    }
-
-    .form-group textarea{
-
-      min-height:120px;
-
-      padding:13px 14px;
-
-      resize:vertical;
-
-      font-size:13px;
-
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder{
-      color:#555;
-    }
-
-    .form-group select{
-      cursor:pointer;
-    }
-
-    .form-group select option{
-      background:#111;
-
-      color:#fff;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus{
-
-      border-color:#b7ff00;
-
-      box-shadow:
-        0 0 0 3px
-        rgba(183,255,0,.06);
-
-    }
-
-
-    /* =====================================================
-       RADIO / OPTIONS
-    ===================================================== */
-
-    .option-grid{
-      display:grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap:10px;
-    }
-
-    .option{
-      position:relative;
-    }
-
-    .option input{
-      position:absolute;
-
-      opacity:0;
-
-      pointer-events:none;
-    }
-
-    .option label{
-
-      display:flex;
-
-      align-items:center;
-      justify-content:center;
-
-      min-height:48px;
-
-      padding:10px;
-
-      text-align:center;
-
-      color:#888;
-
-      background:#080808;
-
-      border:1px solid #292929;
-
-      border-radius:9px;
-
-      font-size:12px;
-
-      cursor:pointer;
-
-      transition:.3s;
-
-    }
-
-    .option label:hover{
-      border-color:#555;
-
-      color:#fff;
-    }
-
-    .option input:checked + label{
-
-      color:#b7ff00;
-
-      background:
-        rgba(183,255,0,.06);
-
-      border-color:#b7ff00;
-
-    }
-
-
-    /* =====================================================
-       FILE UPLOAD
-    ===================================================== */
-
-    .upload-box{
-
-      padding:20px;
-
-      background:#080808;
-
-      border:1px dashed #333;
-
-      border-radius:10px;
-
-      transition:.3s;
-
-    }
-
-    .upload-box:hover{
-
-      border-color:
-        rgba(183,255,0,.5);
-
-    }
-
-    .upload-box input{
-
-      height:auto;
-
-      padding:10px;
-
-      border:0;
-
-      background:transparent;
-
-    }
-
-    .upload-help{
-
-      color:#666;
-
-      font-size:11px;
-
-      line-height:1.6;
-
-      margin-top:8px;
-
-    }
-
-
-    /* =====================================================
-       AGREEMENT
-    ===================================================== */
-
-    .agreement{
-
-      display:flex;
-
-      align-items:flex-start;
-
-      gap:10px;
-
-      padding:15px;
-
-      background:
-        rgba(183,255,0,.035);
-
-      border:1px solid
-        rgba(183,255,0,.10);
-
-      border-radius:9px;
-
-      margin-bottom:25px;
-
-    }
-
-    .agreement input{
-
-      width:16px;
-      height:16px;
-
-      margin-top:3px;
-
-      accent-color:#b7ff00;
-
-      flex-shrink:0;
-
-    }
-
-    .agreement label{
-
-      color:#777;
-
-      font-size:12px;
-
-      line-height:1.7;
-
-      cursor:pointer;
-
-    }
-
-    .agreement strong{
-      color:#b7ff00;
-    }
-
-
-    /* =====================================================
-       SUBMIT BUTTON
-    ===================================================== */
-
-    .submit-button{
-
-      width:100%;
-
-      min-height:54px;
-
-      border:0;
-
-      border-radius:10px;
-
-      background:#b7ff00;
-
-      color:#050505;
-
-      font-size:15px;
-
-      font-weight:900;
-
-      cursor:pointer;
-
-      transition:.3s;
-
-    }
-
-    .submit-button:hover{
-
-      transform:translateY(-2px);
-
-      box-shadow:
-        0 15px 35px
-        rgba(183,255,0,.20);
-
-    }
-
-    .submit-button:active{
-      transform:translateY(0);
-    }
-
-
-    /* =====================================================
-       FORM NOTE
-    ===================================================== */
-
-    .form-note{
-
-      margin-top:15px;
-
-      color:#555;
-
-      text-align:center;
-
-      font-size:11px;
-
-      line-height:1.7;
-
-    }
-
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
-
-    .footer{
-
-      padding:30px 0;
+    .footer-bottom{
+      padding-top:22px;
 
       border-top:1px solid #1b1b1b;
 
-      background:#050505;
-
-    }
-
-    .footer-inner{
-
       display:flex;
-
-      align-items:center;
 
       justify-content:space-between;
 
       gap:20px;
 
-    }
-
-    .footer-brand{
-
-      color:#fff;
-
-      font-size:16px;
-
-      font-weight:800;
-
-    }
-
-    .footer-brand span{
-      color:#b7ff00;
-    }
-
-    .footer-copy{
-
       color:#555;
 
       font-size:11px;
+    }
 
-      text-align:right;
+
+    /* ==============================
+       MOBILE
+    ============================== */
+
+    @media(max-width:900px){
+
+      .menu{
+        display:none;
+      }
+
+      .admission-grid{
+        grid-template-columns:1fr;
+      }
+
+      .admission-info{
+        position:static;
+      }
+
+      .footer-top{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
 
     }
 
 
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    @media(max-width:700px){
+    @media(max-width:600px){
 
       .container{
         width:90%;
@@ -723,58 +822,52 @@
         width:105px;
       }
 
-      .back-home{
-        padding:8px 11px;
+      .login-button{
+        padding:9px 12px;
 
         font-size:11px;
       }
 
+      .page-hero{
+        padding:70px 0 40px;
+      }
+
+      .page-hero h1{
+        font-size:42px;
+
+        letter-spacing:-2px;
+      }
+
+      .page-hero p{
+        font-size:14px;
+      }
+
       .admission-section{
-        padding:55px 0 70px;
-      }
-
-      .page-header{
-        margin-bottom:30px;
-      }
-
-      .page-header h1{
-        font-size:38px;
-
-        letter-spacing:-1.5px;
-      }
-
-      .page-header p{
-        font-size:13px;
+        padding:30px 0 70px;
       }
 
       .form-card{
-        padding:25px 18px;
-
-        border-radius:15px;
+        padding:22px;
       }
 
       .form-grid{
         grid-template-columns:1fr;
 
-        gap:17px;
+        gap:16px;
       }
 
-      .full{
+      .form-group.full{
         grid-column:auto;
       }
 
-      .option-grid{
+      .footer-top{
         grid-template-columns:1fr;
+
+        gap:28px;
       }
 
-      .footer-inner{
+      .footer-bottom{
         flex-direction:column;
-
-        align-items:center;
-      }
-
-      .footer-copy{
-        text-align:center;
       }
 
     }
@@ -786,18 +879,15 @@
 <body>
 
 
-  <!-- =====================================================
+  <!-- ==============================
        HEADER
-  ===================================================== -->
+  ============================== -->
 
   <header class="header">
 
     <div class="container nav">
 
-      <a
-        href="index.html"
-        class="brand"
-      >
+      <a href="index.html" class="brand">
 
         <img
           src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
@@ -807,12 +897,37 @@
       </a>
 
 
-      <a
-        href="index.html"
-        class="back-home"
-      >
-        ← হোমে ফিরে যান
-      </a>
+      <nav class="menu">
+
+        <a href="index.html">
+          হোম
+        </a>
+
+        <a href="courses.html">
+          কোর্সসমূহ
+        </a>
+
+        <a href="about.html">
+          আমাদের সম্পর্কে
+        </a>
+
+        <a href="contact.html">
+          যোগাযোগ
+        </a>
+
+      </nav>
+
+
+      <div class="header-actions">
+
+        <a
+          href="login.html"
+          class="login-button"
+        >
+          Login / Sign Up →
+        </a>
+
+      </div>
 
     </div>
 
@@ -820,91 +935,229 @@
 
 
 
-  <!-- =====================================================
+  <!-- ==============================
+       PAGE HERO
+  ============================== -->
+
+  <section class="page-hero">
+
+    <div class="container page-hero-content">
+
+      <div class="page-badge">
+
+        <span class="page-badge-dot"></span>
+
+        ADMISSION OPEN
+
+      </div>
+
+      <h1>
+
+        আপনার যাত্রা
+
+        <span>
+          শুরু করুন।
+        </span>
+
+      </h1>
+
+      <p>
+
+        আপনার পছন্দের কোর্স নির্বাচন করে
+        Admission Form পূরণ করুন।
+        তথ্য যাচাই করার পর আমাদের team
+        আপনার সাথে যোগাযোগ করবে।
+
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==============================
        ADMISSION
-  ===================================================== -->
+  ============================== -->
 
-  <main class="admission-section">
+  <section class="admission-section">
+
+    <div class="container admission-grid">
 
 
-    <div class="container">
+      <!-- ============================
+           INFO
+      ============================= -->
 
+      <div class="admission-info">
 
-      <!-- PAGE HEADER -->
+        <h2>
 
-      <div class="page-header">
+          SNK IT Institute-এর
 
-        <small>
-          ADMISSION APPLICATION
-        </small>
+          <span>
+            সাথে শুরু করুন।
+          </span>
 
-        <h1>
-          আপনার <span>Journey</span> শুরু করুন
-        </h1>
+        </h2>
 
         <p>
-          নিচের ফর্মটি সঠিক তথ্য দিয়ে পূরণ করুন।
-          আপনার তথ্য যাচাই করার পর আমাদের টিম
-          আপনার সাথে যোগাযোগ করবে।
+
+          আপনার তথ্য সঠিকভাবে প্রদান করুন।
+          Admission request submit করার পর
+          আমাদের team আপনার তথ্য যাচাই করে
+          পরবর্তী নির্দেশনা দেবে।
+
         </p>
+
+
+        <div class="info-item">
+
+          <div class="info-icon">
+            🎓
+          </div>
+
+          <div>
+
+            <strong>
+              Practical Learning
+            </strong>
+
+            <span>
+              Project-based training
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+          <div class="info-icon">
+            🤖
+          </div>
+
+          <div>
+
+            <strong>
+              AI-Powered Skills
+            </strong>
+
+            <span>
+              Modern tools & workflow
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+          <div class="info-icon">
+            💼
+          </div>
+
+          <div>
+
+            <strong>
+              Career Support
+            </strong>
+
+            <span>
+              Career-focused guidance
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+          <div class="info-icon">
+            📱
+          </div>
+
+          <div>
+
+            <strong>
+              Contact
+            </strong>
+
+            <span>
+              01705633700
+            </span>
+
+          </div>
+
+        </div>
 
       </div>
 
 
 
-      <!-- FORM -->
+      <!-- ============================
+           FORM
+      ============================= -->
 
-      <form
-        class="form-card"
-        action="https://formsubmit.co/iamsnkbd@protonmail.com"
-        method="POST"
-        enctype="multipart/form-data"
-      >
+      <div class="form-card">
 
 
-        <!-- FORMSUBMIT SETTINGS -->
+        <div class="form-title">
 
-        <input
-          type="hidden"
-          name="_subject"
-          value="New Admission Application - SNK IT Institute"
-        >
+          <small>
+            ADMISSION FORM
+          </small>
 
-        <input
-          type="hidden"
-          name="_captcha"
-          value="false"
-        >
+          <h2>
+            ভর্তি আবেদন করুন
+          </h2>
 
-        <input
-          type="hidden"
-          name="_template"
-          value="table"
-        >
+          <p>
+            * চিহ্নিত তথ্যগুলো অবশ্যই পূরণ করতে হবে।
+          </p>
 
-        <input
-          type="hidden"
-          name="_next"
-          value="https://snkitinstitute.github.io/admission-success.html"
+        </div>
+
+
+
+        <!-- FORM -->
+
+        <form
+          action="https://formsubmit.co/iamsnkbd@protonmail.com"
+          method="POST"
+          enctype="multipart/form-data"
         >
 
 
+          <!-- FORM SETTINGS -->
 
-        <!-- =================================================
-             PERSONAL INFORMATION
-        ================================================== -->
+          <input
+            type="hidden"
+            name="_subject"
+            value="SNK IT Institute — New Admission Application"
+          >
 
-        <section class="form-section">
+          <input
+            type="hidden"
+            name="_template"
+            value="table"
+          >
 
-          <div class="form-section-title">
+          <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+          >
 
-            <span>
-              01
-            </span>
+          <input
+            type="hidden"
+            name="_next"
+            value="https://snkitinstitute.github.io/admission-success.html"
+          >
 
-            Personal Information
-
-          </div>
 
 
           <div class="form-grid">
@@ -914,13 +1167,12 @@
 
             <div class="form-group">
 
-              <label for="name">
+              <label>
                 পূর্ণ নাম <span class="required">*</span>
               </label>
 
               <input
                 type="text"
-                id="name"
                 name="Full Name"
                 placeholder="আপনার পূর্ণ নাম"
                 required
@@ -930,20 +1182,18 @@
 
 
 
-            <!-- MOBILE -->
+            <!-- PHONE -->
 
             <div class="form-group">
 
-              <label for="mobile">
-                Mobile Number <span class="required">*</span>
+              <label>
+                মোবাইল নম্বর <span class="required">*</span>
               </label>
 
               <input
                 type="tel"
-                id="mobile"
-                name="Mobile Number"
+                name="Phone"
                 placeholder="01XXXXXXXXX"
-                pattern="01[0-9]{9}"
                 required
               >
 
@@ -955,14 +1205,13 @@
 
             <div class="form-group">
 
-              <label for="email">
+              <label>
                 Email Address <span class="required">*</span>
               </label>
 
               <input
                 type="email"
-                id="email"
-                name="Email Address"
+                name="Email"
                 placeholder="example@email.com"
                 required
               >
@@ -971,297 +1220,58 @@
 
 
 
-            <!-- DOB -->
-
-            <div class="form-group">
-
-              <label for="dob">
-                জন্ম তারিখ
-              </label>
-
-              <input
-                type="date"
-                id="dob"
-                name="Date of Birth"
-              >
-
-            </div>
-
-
-
-            <!-- GENDER -->
+            <!-- AGE -->
 
             <div class="form-group">
 
               <label>
-                Gender <span class="required">*</span>
+                বয়স <span class="required">*</span>
               </label>
 
-              <div class="option-grid">
-
-
-                <div class="option">
-
-                  <input
-                    type="radio"
-                    id="male"
-                    name="Gender"
-                    value="Male"
-                    required
-                  >
-
-                  <label for="male">
-                    Male
-                  </label>
-
-                </div>
-
-
-                <div class="option">
-
-                  <input
-                    type="radio"
-                    id="female"
-                    name="Gender"
-                    value="Female"
-                  >
-
-                  <label for="female">
-                    Female
-                  </label>
-
-                </div>
-
-
-                <div class="option">
-
-                  <input
-                    type="radio"
-                    id="other"
-                    name="Gender"
-                    value="Other"
-                  >
-
-                  <label for="other">
-                    Other
-                  </label>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-
-            <!-- EDUCATION -->
-
-            <div class="form-group">
-
-              <label for="education">
-                শিক্ষাগত যোগ্যতা
-              </label>
-
-              <select
-                id="education"
-                name="Educational Qualification"
+              <input
+                type="number"
+                name="Age"
+                min="5"
+                max="100"
+                placeholder="আপনার বয়স"
+                required
               >
 
-                <option value="">
-                  নির্বাচন করুন
-                </option>
-
-                <option>
-                  SSC / Equivalent
-                </option>
-
-                <option>
-                  HSC / Equivalent
-                </option>
-
-                <option>
-                  Diploma
-                </option>
-
-                <option>
-                  Undergraduate
-                </option>
-
-                <option>
-                  Graduate
-                </option>
-
-                <option>
-                  Other
-                </option>
-
-              </select>
-
             </div>
 
-
-
-            <!-- ADDRESS -->
-
-            <div class="form-group full">
-
-              <label for="address">
-                ঠিকানা <span class="required">*</span>
-              </label>
-
-              <textarea
-                id="address"
-                name="Address"
-                placeholder="আপনার বর্তমান ঠিকানা লিখুন"
-                required
-              ></textarea>
-
-            </div>
-
-
-          </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             DEVICE
-        ================================================== -->
-
-        <section class="form-section">
-
-          <div class="form-section-title">
-
-            <span>
-              02
-            </span>
-
-            Learning Setup
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>
-              আপনার কি PC বা Laptop আছে?
-              <span class="required">*</span>
-            </label>
-
-
-            <div class="option-grid">
-
-
-              <div class="option">
-
-                <input
-                  type="radio"
-                  id="deviceYes"
-                  name="PC or Laptop"
-                  value="Yes"
-                  required
-                >
-
-                <label for="deviceYes">
-                  Yes
-                </label>
-
-              </div>
-
-
-              <div class="option">
-
-                <input
-                  type="radio"
-                  id="deviceNo"
-                  name="PC or Laptop"
-                  value="No"
-                >
-
-                <label for="deviceNo">
-                  No
-                </label>
-
-              </div>
-
-
-              <div class="option">
-
-                <input
-                  type="radio"
-                  id="deviceOther"
-                  name="PC or Laptop"
-                  value="Others Device"
-                >
-
-                <label for="deviceOther">
-                  অন্যের ব্যবহার করি
-                </label>
-
-              </div>
-
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             COURSE INFORMATION
-        ================================================== -->
-
-        <section class="form-section">
-
-          <div class="form-section-title">
-
-            <span>
-              03
-            </span>
-
-            Course Information
-
-          </div>
-
-
-          <div class="form-grid">
 
 
             <!-- COURSE -->
 
-            <div class="form-group">
+            <div class="form-group full">
 
-              <label for="course">
-                কোন Course-এ ভর্তি হতে চান?
+              <label>
+                কোন কোর্সে ভর্তি হতে চান?
                 <span class="required">*</span>
               </label>
 
               <select
-                id="course"
                 name="Selected Course"
                 required
               >
 
                 <option value="">
-                  Course নির্বাচন করুন
+                  — কোর্স নির্বাচন করুন —
                 </option>
 
-                <option>
+                <option value="AI-Powered UI/UX Career Program">
                   AI-Powered UI/UX Career Program
                 </option>
 
-                <option>
+                <option value="AI-Powered Cyber Security & Ethical Hacking">
                   AI-Powered Cyber Security & Ethical Hacking
                 </option>
 
-                <option>
+                <option value="AI-Powered Graphic Design">
                   AI-Powered Graphic Design
                 </option>
 
-                <option>
+                <option value="100Days Kidz Spoken English">
                   100Days Kidz Spoken English
                 </option>
 
@@ -1271,318 +1281,364 @@
 
 
 
-            <!-- SOURCE -->
+            <!-- EDUCATION -->
 
             <div class="form-group">
 
-              <label for="source">
-                Course সম্পর্কে কীভাবে জানলেন?
-              </label>
-
-              <select
-                id="source"
-                name="How did you hear about us"
-              >
-
-                <option value="">
-                  নির্বাচন করুন
-                </option>
-
-                <option>
-                  Facebook
-                </option>
-
-                <option>
-                  Instagram
-                </option>
-
-                <option>
-                  YouTube
-                </option>
-
-                <option>
-                  TikTok
-                </option>
-
-                <option>
-                  Friend / Student
-                </option>
-
-                <option>
-                  Google
-                </option>
-
-                <option>
-                  Other
-                </option>
-
-              </select>
-
-            </div>
-
-
-          </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             PAYMENT
-        ================================================== -->
-
-        <section class="form-section">
-
-          <div class="form-section-title">
-
-            <span>
-              04
-            </span>
-
-            Payment Information
-
-          </div>
-
-
-          <div class="form-grid">
-
-
-            <!-- PAYMENT METHOD -->
-
-            <div class="form-group">
-
-              <label for="payment">
-                Payment Method
-                <span class="required">*</span>
-              </label>
-
-              <select
-                id="payment"
-                name="Payment Method"
-                required
-              >
-
-                <option value="">
-                  নির্বাচন করুন
-                </option>
-
-                <option>
-                  bKash
-                </option>
-
-                <option>
-                  Visa
-                </option>
-
-                <option>
-                  Mastercard
-                </option>
-
-                <option>
-                  Other
-                </option>
-
-              </select>
-
-            </div>
-
-
-
-            <!-- TRANSACTION -->
-
-            <div class="form-group">
-
-              <label for="transaction">
-                Transaction ID
+              <label>
+                শিক্ষাগত যোগ্যতা
                 <span class="required">*</span>
               </label>
 
               <input
                 type="text"
-                id="transaction"
-                name="Transaction ID"
-                placeholder="আপনার Transaction ID"
+                name="Educational Qualification"
+                placeholder="যেমন: SSC / HSC / Graduate"
                 required
               >
 
             </div>
 
 
-          </div>
 
-        </section>
+            <!-- PROFESSION -->
 
+            <div class="form-group">
 
-
-        <!-- =================================================
-             SCREENSHOT
-        ================================================== -->
-
-        <section class="form-section">
-
-          <div class="form-section-title">
-
-            <span>
-              05
-            </span>
-
-            Verification
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="nidScreenshot">
-
-              NID Submission Confirmation Screenshot
-
-              <span class="required">*</span>
-
-            </label>
-
-
-            <div class="upload-box">
+              <label>
+                বর্তমানে কী করেন?
+              </label>
 
               <input
-                type="file"
-                id="nidScreenshot"
-                name="NID Submission Confirmation Screenshot"
-                accept="image/*"
-                required
+                type="text"
+                name="Current Profession"
+                placeholder="Student / Job / Business / Other"
               >
 
-              <div class="upload-help">
+            </div>
 
-                আপনার NID-এর ছবি নয়।
-                শুধুমাত্র NID Submission/Verification
-                Confirmation-এর Screenshot দিন।
+
+
+            <!-- PC -->
+
+            <div class="form-group full">
+
+              <label>
+                আপনার কি PC বা Laptop আছে?
+                <span class="required">*</span>
+              </label>
+
+              <div class="radio-options">
+
+
+                <label class="radio-option">
+
+                  <input
+                    type="radio"
+                    name="PC or Laptop"
+                    value="Yes"
+                    required
+                  >
+
+                  <span>
+                    হ্যাঁ, আছে
+                  </span>
+
+                </label>
+
+
+                <label class="radio-option">
+
+                  <input
+                    type="radio"
+                    name="PC or Laptop"
+                    value="No"
+                  >
+
+                  <span>
+                    না, নেই
+                  </span>
+
+                </label>
+
+
+                <label class="radio-option">
+
+                  <input
+                    type="radio"
+                    name="PC or Laptop"
+                    value="Can use shared device"
+                  >
+
+                  <span>
+                    Shared device ব্যবহার করব
+                  </span>
+
+                </label>
 
               </div>
 
             </div>
 
+
+
+            <!-- NID / SCREENSHOT -->
+
+            <div class="form-group full">
+
+              <label>
+                NID / প্রয়োজনীয় Document Screenshot
+                <span class="required">*</span>
+              </label>
+
+              <div class="file-box">
+
+                <input
+                  type="file"
+                  name="Document Screenshot"
+                  accept="image/*,.pdf"
+                  required
+                >
+
+                <div class="form-help">
+                  JPG, PNG অথবা PDF ফাইল আপলোড করুন।
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- ADDRESS -->
+
+            <div class="form-group full">
+
+              <label>
+                ঠিকানা
+              </label>
+
+              <input
+                type="text"
+                name="Address"
+                placeholder="আপনার বর্তমান ঠিকানা"
+              >
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div class="form-group full">
+
+              <label>
+                অতিরিক্ত তথ্য / আপনার প্রশ্ন
+              </label>
+
+              <textarea
+                name="Additional Information"
+                placeholder="আপনার কোনো প্রশ্ন বা অতিরিক্ত তথ্য থাকলে লিখুন..."
+              ></textarea>
+
+            </div>
+
+
           </div>
 
-        </section>
 
 
+          <!-- NOTICE -->
 
-        <!-- =================================================
-             EXTRA INFORMATION
-        ================================================== -->
-
-        <section class="form-section">
-
-          <div class="form-section-title">
-
-            <span>
-              06
-            </span>
-
-            Additional Information
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="message">
-              অতিরিক্ত তথ্য
-            </label>
-
-            <textarea
-              id="message"
-              name="Additional Information"
-              placeholder="আপনার কোনো প্রশ্ন বা অতিরিক্ত তথ্য থাকলে লিখুন..."
-            ></textarea>
-
-          </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             AGREEMENT
-        ================================================== -->
-
-        <div class="agreement">
-
-          <input
-            type="checkbox"
-            id="agree"
-            required
-          >
-
-          <label for="agree">
-
-            আমি নিশ্চিত করছি যে উপরের তথ্যগুলো
-            সঠিক এবং SNK IT Institute-এর
-            Admission Team আমার দেওয়া তথ্য
-            যাচাই করার জন্য আমার সাথে যোগাযোগ
-            করতে পারবে।
+          <div class="notice">
 
             <strong>
-              *
+              গুরুত্বপূর্ণ:
             </strong>
 
-          </label>
+            Form submit করার পর আপনার তথ্য
+            আমাদের Admission Team-এর কাছে যাবে।
+            তথ্য যাচাই করার পর আপনার সাথে
+            যোগাযোগ করা হবে।
+
+          </div>
+
+
+
+          <!-- SUBMIT -->
+
+          <button
+            type="submit"
+            class="submit-button"
+          >
+
+            Admission Request Submit করুন →
+
+          </button>
+
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==============================
+       FOOTER
+  ============================== -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+
+      <div class="footer-top">
+
+
+        <!-- BRAND -->
+
+        <div>
+
+          <div class="footer-brand">
+
+            SNK <span>IT</span> Institute
+
+          </div>
+
+          <div class="footer-tagline">
+            Learn To Lead
+          </div>
+
+          <p class="footer-description">
+
+            Practical skills, AI-powered learning
+            এবং career-focused training-এর মাধ্যমে
+            আপনার ভবিষ্যৎ গড়ে তুলুন।
+
+          </p>
 
         </div>
 
 
 
-        <!-- SUBMIT -->
+        <!-- QUICK LINKS -->
 
-        <button
-          type="submit"
-          class="submit-button"
-        >
+        <div class="footer-column">
 
-          Admission Application Submit করুন →
+          <h3>
+            Quick Links
+          </h3>
 
-        </button>
+          <div class="footer-links">
+
+            <a href="index.html">
+              হোম
+            </a>
+
+            <a href="courses.html">
+              কোর্সসমূহ
+            </a>
+
+            <a href="admission.html">
+              Admission
+            </a>
+
+            <a href="login.html">
+              Login / Sign Up
+            </a>
+
+            <a href="contact.html">
+              যোগাযোগ
+            </a>
+
+          </div>
+
+        </div>
 
 
-        <p class="form-note">
 
-          Submit করার পর আপনার তথ্য আমাদের
-          Admission Team-এর কাছে পাঠানো হবে।
-          যাচাই শেষে আপনার সাথে যোগাযোগ করা হবে।
+        <!-- SOCIAL -->
 
-        </p>
+        <div class="footer-column">
 
+          <h3>
+            Follow Us
+          </h3>
 
-      </form>
+          <div class="social-links">
 
-    </div>
+            <a
+              href="https://www.facebook.com/snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              f
+            </a>
 
-  </main>
+            <a
+              href="https://www.instagram.com/snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              ◎
+            </a>
 
+            <a
+              href="https://www.youtube.com/@snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              ▶
+            </a>
 
+            <a
+              href="https://www.tiktok.com/@snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+            >
+              ♪
+            </a>
 
-  <!-- =====================================================
-       FOOTER
-  ===================================================== -->
+            <a
+              href="https://www.linkedin.com/company/snkitinstitute"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              in
+            </a>
 
-  <footer class="footer">
+          </div>
 
-    <div class="container footer-inner">
+        </div>
 
-      <div class="footer-brand">
-
-        SNK <span>IT</span> Institute
 
       </div>
 
 
-      <div class="footer-copy">
 
-        © 2026 SNK IT Institute.
-        সর্বস্বত্ব সংরক্ষিত।
+      <!-- FOOTER BOTTOM -->
+
+      <div class="footer-bottom">
+
+        <div>
+          © 2026 SNK IT Institute. সর্বস্বত্ব সংরক্ষিত।
+        </div>
+
+        <div>
+          Learn To Lead • Moulvibazar
+        </div>
 
       </div>
+
 
     </div>
 
@@ -1591,3 +1647,4 @@
 
 </body>
 </html>
+```
