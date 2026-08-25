@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sign In | SNK IT Institute</title>
+  <title>Admission | SNK IT Institute</title>
 
   <meta
     name="description"
-    content="Sign in to SNK IT Institute Student Portal."
+    content="SNK IT Institute Admission Form — Apply for your preferred course."
   >
 
   <style>
@@ -28,18 +28,14 @@
     }
 
     body{
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+      font-family:Arial, Helvetica, sans-serif;
 
       background:#050505;
       color:#fff;
 
-      min-height:100vh;
+      line-height:1.6;
 
-      display:flex;
-      flex-direction:column;
+      min-height:100vh;
     }
 
     a{
@@ -48,7 +44,9 @@
     }
 
     button,
-    input{
+    input,
+    select,
+    textarea{
       font:inherit;
     }
 
@@ -58,14 +56,16 @@
     ===================================================== */
 
     .header{
-      width:100%;
+      position:sticky;
+      top:0;
+      z-index:999;
 
       background:rgba(5,5,5,.94);
 
-      border-bottom:1px solid #1b1b1b;
-
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
+
+      border-bottom:1px solid #1b1b1b;
     }
 
     .container{
@@ -79,10 +79,9 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
+
+      gap:20px;
     }
-
-
-    /* LOGO */
 
     .brand{
       display:flex;
@@ -94,19 +93,16 @@
       height:auto;
     }
 
-
-    /* BACK HOME */
-
     .back-home{
-      color:#aaa;
-
-      font-size:13px;
-
       padding:10px 15px;
 
       border:1px solid #292929;
 
       border-radius:8px;
+
+      color:#aaa;
+
+      font-size:13px;
 
       transition:.3s;
     }
@@ -119,27 +115,20 @@
 
 
     /* =====================================================
-       LOGIN AREA
+       PAGE
     ===================================================== */
 
-    .login-section{
-      flex:1;
-
-      display:flex;
-
-      align-items:center;
-      justify-content:center;
-
-      padding:70px 20px;
-
+    .admission-section{
       position:relative;
+
+      padding:80px 0 100px;
 
       overflow:hidden;
 
       background:
 
         radial-gradient(
-          circle at 50% 30%,
+          circle at 50% 10%,
           rgba(183,255,0,.10),
           transparent 35%
         ),
@@ -148,114 +137,45 @@
     }
 
 
-    /* GLOW CIRCLES */
-
-    .login-section::before{
+    .admission-section::before{
       content:"";
 
       position:absolute;
 
-      width:550px;
-      height:550px;
+      width:600px;
+      height:600px;
 
-      border:1px solid
-        rgba(183,255,0,.05);
-
-      border-radius:50%;
-
-      top:50%;
       left:50%;
+      top:250px;
 
-      transform:
-        translate(-50%,-50%);
-
-      pointer-events:none;
-    }
-
-    .login-section::after{
-      content:"";
-
-      position:absolute;
-
-      width:360px;
-      height:360px;
+      transform:translateX(-50%);
 
       border:1px solid
         rgba(183,255,0,.04);
 
       border-radius:50%;
 
-      top:50%;
-      left:50%;
-
-      transform:
-        translate(-50%,-50%);
-
       pointer-events:none;
     }
 
 
     /* =====================================================
-       LOGIN CARD
+       PAGE HEADER
     ===================================================== */
 
-    .login-card{
+    .page-header{
       position:relative;
 
       z-index:2;
 
-      width:100%;
+      max-width:720px;
 
-      max-width:450px;
+      margin:0 auto 45px;
 
-      padding:40px;
-
-      background:
-        rgba(13,13,13,.96);
-
-      border:1px solid #252525;
-
-      border-radius:20px;
-
-      box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.45);
-    }
-
-
-    /* TOP BADGE */
-
-    .login-badge{
-      width:58px;
-      height:58px;
-
-      display:grid;
-
-      place-items:center;
-
-      margin:0 auto 22px;
-
-      background:
-        rgba(183,255,0,.09);
-
-      border:1px solid
-        rgba(183,255,0,.22);
-
-      border-radius:15px;
-
-      font-size:25px;
-    }
-
-
-    /* TITLE */
-
-    .login-header{
       text-align:center;
-
-      margin-bottom:30px;
     }
 
-    .login-header small{
+    .page-header small{
       display:block;
 
       color:#b7ff00;
@@ -266,43 +186,145 @@
 
       letter-spacing:2px;
 
-      margin-bottom:10px;
+      margin-bottom:12px;
     }
 
-    .login-header h1{
-      font-size:34px;
+    .page-header h1{
+      font-size:
+        clamp(38px,5vw,58px);
 
-      line-height:1.15;
+      line-height:1.1;
 
-      letter-spacing:-1px;
+      letter-spacing:-2px;
 
-      margin-bottom:10px;
+      margin-bottom:15px;
     }
 
-    .login-header h1 span{
+    .page-header h1 span{
       color:#b7ff00;
     }
 
-    .login-header p{
-      color:#777;
+    .page-header p{
+      color:#858585;
 
-      font-size:13px;
+      font-size:15px;
 
-      line-height:1.7;
+      line-height:1.8;
     }
 
 
     /* =====================================================
-       FORM
+       FORM CARD
+    ===================================================== */
+
+    .form-card{
+      position:relative;
+
+      z-index:2;
+
+      width:100%;
+
+      max-width:850px;
+
+      margin:auto;
+
+      padding:40px;
+
+      background:#0d0d0d;
+
+      border:1px solid #242424;
+
+      border-radius:20px;
+
+      box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.35);
+    }
+
+
+    /* =====================================================
+       FORM SECTION
+    ===================================================== */
+
+    .form-section{
+      margin-bottom:35px;
+    }
+
+    .form-section:last-child{
+      margin-bottom:0;
+    }
+
+    .form-section-title{
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      padding-bottom:13px;
+
+      margin-bottom:22px;
+
+      border-bottom:1px solid #222;
+
+      color:#fff;
+
+      font-size:17px;
+
+      font-weight:800;
+    }
+
+    .form-section-title span{
+      display:grid;
+
+      place-items:center;
+
+      width:28px;
+      height:28px;
+
+      background:
+        rgba(183,255,0,.10);
+
+      border:1px solid
+        rgba(183,255,0,.20);
+
+      border-radius:7px;
+
+      color:#b7ff00;
+
+      font-size:12px;
+    }
+
+
+    /* =====================================================
+       GRID
+    ===================================================== */
+
+    .form-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:20px;
+    }
+
+    .full{
+      grid-column:1/-1;
+    }
+
+
+    /* =====================================================
+       FORM GROUP
     ===================================================== */
 
     .form-group{
-      margin-bottom:18px;
+      display:flex;
+
+      flex-direction:column;
     }
 
     .form-group label{
-      display:block;
-
       color:#ddd;
 
       font-size:13px;
@@ -312,33 +334,20 @@
       margin-bottom:8px;
     }
 
-    .input-wrapper{
-      position:relative;
+    .required{
+      color:#b7ff00;
     }
 
-    .input-icon{
-      position:absolute;
 
-      left:14px;
-      top:50%;
+    /* =====================================================
+       INPUT
+    ===================================================== */
 
-      transform:
-        translateY(-50%);
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
 
-      color:#666;
-
-      font-size:16px;
-
-      pointer-events:none;
-    }
-
-    .form-group input{
       width:100%;
-
-      height:48px;
-
-      padding:
-        0 14px 0 43px;
 
       background:#080808;
 
@@ -350,232 +359,298 @@
 
       outline:none;
 
-      font-size:13px;
-
       transition:.3s;
+
     }
 
-    .form-group input::placeholder{
+    .form-group input,
+    .form-group select{
+
+      height:48px;
+
+      padding:0 14px;
+
+      font-size:13px;
+
+    }
+
+    .form-group textarea{
+
+      min-height:120px;
+
+      padding:13px 14px;
+
+      resize:vertical;
+
+      font-size:13px;
+
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder{
       color:#555;
     }
 
-    .form-group input:focus{
+    .form-group select{
+      cursor:pointer;
+    }
+
+    .form-group select option{
+      background:#111;
+
+      color:#fff;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus{
+
       border-color:#b7ff00;
 
       box-shadow:
         0 0 0 3px
         rgba(183,255,0,.06);
+
     }
 
 
-    /* PASSWORD */
+    /* =====================================================
+       RADIO / OPTIONS
+    ===================================================== */
 
-    .password-wrapper input{
-      padding-right:50px;
+    .option-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:10px;
     }
 
-    .password-toggle{
+    .option{
+      position:relative;
+    }
+
+    .option input{
       position:absolute;
 
-      right:13px;
-      top:50%;
+      opacity:0;
 
-      transform:
-        translateY(-50%);
+      pointer-events:none;
+    }
+
+    .option label{
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      min-height:48px;
+
+      padding:10px;
+
+      text-align:center;
+
+      color:#888;
+
+      background:#080808;
+
+      border:1px solid #292929;
+
+      border-radius:9px;
+
+      font-size:12px;
+
+      cursor:pointer;
+
+      transition:.3s;
+
+    }
+
+    .option label:hover{
+      border-color:#555;
+
+      color:#fff;
+    }
+
+    .option input:checked + label{
+
+      color:#b7ff00;
+
+      background:
+        rgba(183,255,0,.06);
+
+      border-color:#b7ff00;
+
+    }
+
+
+    /* =====================================================
+       FILE UPLOAD
+    ===================================================== */
+
+    .upload-box{
+
+      padding:20px;
+
+      background:#080808;
+
+      border:1px dashed #333;
+
+      border-radius:10px;
+
+      transition:.3s;
+
+    }
+
+    .upload-box:hover{
+
+      border-color:
+        rgba(183,255,0,.5);
+
+    }
+
+    .upload-box input{
+
+      height:auto;
+
+      padding:10px;
 
       border:0;
 
       background:transparent;
 
-      color:#777;
-
-      cursor:pointer;
-
-      font-size:16px;
-
-      padding:5px;
     }
 
-    .password-toggle:hover{
-      color:#b7ff00;
+    .upload-help{
+
+      color:#666;
+
+      font-size:11px;
+
+      line-height:1.6;
+
+      margin-top:8px;
+
     }
 
 
     /* =====================================================
-       FORM OPTIONS
+       AGREEMENT
     ===================================================== */
 
-    .form-options{
+    .agreement{
+
       display:flex;
 
-      justify-content:space-between;
+      align-items:flex-start;
 
-      align-items:center;
+      gap:10px;
 
-      gap:15px;
+      padding:15px;
 
-      margin:
-        5px 0 22px;
+      background:
+        rgba(183,255,0,.035);
+
+      border:1px solid
+        rgba(183,255,0,.10);
+
+      border-radius:9px;
+
+      margin-bottom:25px;
+
     }
 
-    .remember{
-      display:flex;
+    .agreement input{
 
-      align-items:center;
+      width:16px;
+      height:16px;
 
-      gap:7px;
+      margin-top:3px;
 
-      color:#777;
-
-      font-size:12px;
-
-      cursor:pointer;
-    }
-
-    .remember input{
       accent-color:#b7ff00;
 
-      width:14px;
-      height:14px;
+      flex-shrink:0;
+
     }
 
-    .forgot{
-      color:#b7ff00;
+    .agreement label{
+
+      color:#777;
 
       font-size:12px;
 
-      font-weight:700;
+      line-height:1.7;
+
+      cursor:pointer;
+
     }
 
-    .forgot:hover{
-      text-decoration:underline;
+    .agreement strong{
+      color:#b7ff00;
     }
 
 
     /* =====================================================
-       SIGN IN BUTTON
+       SUBMIT BUTTON
     ===================================================== */
 
-    .signin-button{
+    .submit-button{
+
       width:100%;
 
-      height:50px;
+      min-height:54px;
 
       border:0;
 
-      border-radius:9px;
+      border-radius:10px;
 
       background:#b7ff00;
 
       color:#050505;
 
-      font-size:14px;
+      font-size:15px;
 
       font-weight:900;
 
       cursor:pointer;
 
       transition:.3s;
+
     }
 
-    .signin-button:hover{
+    .submit-button:hover{
+
       transform:translateY(-2px);
 
       box-shadow:
-        0 12px 30px
+        0 15px 35px
         rgba(183,255,0,.20);
+
     }
 
-    .signin-button:active{
+    .submit-button:active{
       transform:translateY(0);
     }
 
 
     /* =====================================================
-       DIVIDER
+       FORM NOTE
     ===================================================== */
 
-    .divider{
-      display:flex;
+    .form-note{
 
-      align-items:center;
+      margin-top:15px;
 
-      gap:12px;
-
-      margin:25px 0;
-    }
-
-    .divider::before,
-    .divider::after{
-      content:"";
-
-      flex:1;
-
-      height:1px;
-
-      background:#252525;
-    }
-
-    .divider span{
       color:#555;
 
-      font-size:11px;
-    }
-
-
-    /* =====================================================
-       CREATE ACCOUNT
-    ===================================================== */
-
-    .signup-text{
       text-align:center;
-
-      color:#777;
-
-      font-size:13px;
-
-      line-height:1.6;
-    }
-
-    .signup-text a{
-      color:#b7ff00;
-
-      font-weight:800;
-    }
-
-    .signup-text a:hover{
-      text-decoration:underline;
-    }
-
-
-    /* =====================================================
-       NOTICE
-    ===================================================== */
-
-    .login-notice{
-      margin-top:22px;
-
-      padding:12px 14px;
-
-      background:
-        rgba(183,255,0,.04);
-
-      border:1px solid
-        rgba(183,255,0,.12);
-
-      border-radius:9px;
-
-      color:#777;
 
       font-size:11px;
 
       line-height:1.7;
 
-      text-align:center;
-    }
-
-    .login-notice strong{
-      color:#b7ff00;
     }
 
 
@@ -584,14 +659,17 @@
     ===================================================== */
 
     .footer{
-      padding:25px 0;
+
+      padding:30px 0;
 
       border-top:1px solid #1b1b1b;
 
       background:#050505;
+
     }
 
     .footer-inner{
+
       display:flex;
 
       align-items:center;
@@ -599,14 +677,17 @@
       justify-content:space-between;
 
       gap:20px;
+
     }
 
     .footer-brand{
+
       color:#fff;
 
-      font-size:15px;
+      font-size:16px;
 
       font-weight:800;
+
     }
 
     .footer-brand span{
@@ -614,11 +695,13 @@
     }
 
     .footer-copy{
+
       color:#555;
 
       font-size:11px;
 
       text-align:right;
+
     }
 
 
@@ -626,7 +709,7 @@
        MOBILE
     ===================================================== */
 
-    @media(max-width:600px){
+    @media(max-width:700px){
 
       .container{
         width:90%;
@@ -646,56 +729,52 @@
         font-size:11px;
       }
 
-      .login-section{
-        padding:
-          45px 15px;
+      .admission-section{
+        padding:55px 0 70px;
       }
 
-      .login-card{
-        padding:30px 22px;
-
-        border-radius:16px;
+      .page-header{
+        margin-bottom:30px;
       }
 
-      .login-header h1{
-        font-size:30px;
+      .page-header h1{
+        font-size:38px;
+
+        letter-spacing:-1.5px;
       }
 
-      .form-options{
-        align-items:flex-start;
+      .page-header p{
+        font-size:13px;
+      }
+
+      .form-card{
+        padding:25px 18px;
+
+        border-radius:15px;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+
+        gap:17px;
+      }
+
+      .full{
+        grid-column:auto;
+      }
+
+      .option-grid{
+        grid-template-columns:1fr;
       }
 
       .footer-inner{
         flex-direction:column;
 
         align-items:center;
-
-        text-align:center;
       }
 
       .footer-copy{
         text-align:center;
-      }
-
-    }
-
-
-    @media(max-width:380px){
-
-      .login-card{
-        padding:27px 18px;
-      }
-
-      .login-header h1{
-        font-size:27px;
-      }
-
-      .form-options{
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:10px;
       }
 
     }
@@ -715,8 +794,6 @@
 
     <div class="container nav">
 
-      <!-- LOGO -->
-
       <a
         href="index.html"
         class="brand"
@@ -729,8 +806,6 @@
 
       </a>
 
-
-      <!-- HOME -->
 
       <a
         href="index.html"
@@ -746,35 +821,31 @@
 
 
   <!-- =====================================================
-       LOGIN
+       ADMISSION
   ===================================================== -->
 
-  <main class="login-section">
-
-    <div class="login-card">
+  <main class="admission-section">
 
 
-      <!-- ICON -->
-
-      <div class="login-badge">
-        🔐
-      </div>
+    <div class="container">
 
 
-      <!-- HEADER -->
+      <!-- PAGE HEADER -->
 
-      <div class="login-header">
+      <div class="page-header">
 
         <small>
-          STUDENT PORTAL
+          ADMISSION APPLICATION
         </small>
 
         <h1>
-          Welcome <span>Back!</span>
+          আপনার <span>Journey</span> শুরু করুন
         </h1>
 
         <p>
-          আপনার Student Account-এ Sign In করুন
+          নিচের ফর্মটি সঠিক তথ্য দিয়ে পূরণ করুন।
+          আপনার তথ্য যাচাই করার পর আমাদের টিম
+          আপনার সাথে যোগাযোগ করবে।
         </p>
 
       </div>
@@ -784,160 +855,706 @@
       <!-- FORM -->
 
       <form
-        id="loginForm"
-        onsubmit="handleLogin(event)"
+        class="form-card"
+        action="https://formsubmit.co/iamsnkbd@protonmail.com"
+        method="POST"
+        enctype="multipart/form-data"
       >
 
 
-        <!-- EMAIL / MOBILE -->
+        <!-- FORMSUBMIT SETTINGS -->
 
-        <div class="form-group">
+        <input
+          type="hidden"
+          name="_subject"
+          value="New Admission Application - SNK IT Institute"
+        >
 
-          <label for="loginId">
-            Email অথবা Mobile Number
-          </label>
+        <input
+          type="hidden"
+          name="_captcha"
+          value="false"
+        >
 
-          <div class="input-wrapper">
+        <input
+          type="hidden"
+          name="_template"
+          value="table"
+        >
 
-            <span class="input-icon">
-              👤
+        <input
+          type="hidden"
+          name="_next"
+          value="https://snkitinstitute.github.io/admission-success.html"
+        >
+
+
+
+        <!-- =================================================
+             PERSONAL INFORMATION
+        ================================================== -->
+
+        <section class="form-section">
+
+          <div class="form-section-title">
+
+            <span>
+              01
             </span>
 
-            <input
-              type="text"
-              id="loginId"
-              name="loginId"
-              placeholder="Email অথবা Mobile Number"
-              autocomplete="username"
-              required
-            >
+            Personal Information
 
           </div>
 
-        </div>
+
+          <div class="form-grid">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+              <label for="name">
+                পূর্ণ নাম <span class="required">*</span>
+              </label>
+
+              <input
+                type="text"
+                id="name"
+                name="Full Name"
+                placeholder="আপনার পূর্ণ নাম"
+                required
+              >
+
+            </div>
 
 
 
-        <!-- PASSWORD -->
+            <!-- MOBILE -->
 
-        <div class="form-group">
+            <div class="form-group">
 
-          <label for="password">
-            Password
-          </label>
+              <label for="mobile">
+                Mobile Number <span class="required">*</span>
+              </label>
 
-          <div class="input-wrapper password-wrapper">
+              <input
+                type="tel"
+                id="mobile"
+                name="Mobile Number"
+                placeholder="01XXXXXXXXX"
+                pattern="01[0-9]{9}"
+                required
+              >
 
-            <span class="input-icon">
-              🔒
-            </span>
+            </div>
 
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="আপনার Password লিখুন"
-              autocomplete="current-password"
-              required
-            >
 
-            <button
-              type="button"
-              class="password-toggle"
-              onclick="togglePassword()"
-              aria-label="Show password"
-            >
-              👁
-            </button>
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+              <label for="email">
+                Email Address <span class="required">*</span>
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                name="Email Address"
+                placeholder="example@email.com"
+                required
+              >
+
+            </div>
+
+
+
+            <!-- DOB -->
+
+            <div class="form-group">
+
+              <label for="dob">
+                জন্ম তারিখ
+              </label>
+
+              <input
+                type="date"
+                id="dob"
+                name="Date of Birth"
+              >
+
+            </div>
+
+
+
+            <!-- GENDER -->
+
+            <div class="form-group">
+
+              <label>
+                Gender <span class="required">*</span>
+              </label>
+
+              <div class="option-grid">
+
+
+                <div class="option">
+
+                  <input
+                    type="radio"
+                    id="male"
+                    name="Gender"
+                    value="Male"
+                    required
+                  >
+
+                  <label for="male">
+                    Male
+                  </label>
+
+                </div>
+
+
+                <div class="option">
+
+                  <input
+                    type="radio"
+                    id="female"
+                    name="Gender"
+                    value="Female"
+                  >
+
+                  <label for="female">
+                    Female
+                  </label>
+
+                </div>
+
+
+                <div class="option">
+
+                  <input
+                    type="radio"
+                    id="other"
+                    name="Gender"
+                    value="Other"
+                  >
+
+                  <label for="other">
+                    Other
+                  </label>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- EDUCATION -->
+
+            <div class="form-group">
+
+              <label for="education">
+                শিক্ষাগত যোগ্যতা
+              </label>
+
+              <select
+                id="education"
+                name="Educational Qualification"
+              >
+
+                <option value="">
+                  নির্বাচন করুন
+                </option>
+
+                <option>
+                  SSC / Equivalent
+                </option>
+
+                <option>
+                  HSC / Equivalent
+                </option>
+
+                <option>
+                  Diploma
+                </option>
+
+                <option>
+                  Undergraduate
+                </option>
+
+                <option>
+                  Graduate
+                </option>
+
+                <option>
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+
+
+            <!-- ADDRESS -->
+
+            <div class="form-group full">
+
+              <label for="address">
+                ঠিকানা <span class="required">*</span>
+              </label>
+
+              <textarea
+                id="address"
+                name="Address"
+                placeholder="আপনার বর্তমান ঠিকানা লিখুন"
+                required
+              ></textarea>
+
+            </div>
+
 
           </div>
 
-        </div>
+        </section>
 
 
 
-        <!-- OPTIONS -->
+        <!-- =================================================
+             DEVICE
+        ================================================== -->
 
-        <div class="form-options">
+        <section class="form-section">
 
-          <label class="remember">
+          <div class="form-section-title">
 
-            <input
-              type="checkbox"
-              id="remember"
-            >
+            <span>
+              02
+            </span>
 
-            আমাকে মনে রাখুন
+            Learning Setup
 
-          </label>
+          </div>
 
 
-          <a
-            href="#"
-            class="forgot"
-            onclick="showMessage('Forgot Password feature পরে যুক্ত করা হবে।'); return false;"
+          <div class="form-group">
+
+            <label>
+              আপনার কি PC বা Laptop আছে?
+              <span class="required">*</span>
+            </label>
+
+
+            <div class="option-grid">
+
+
+              <div class="option">
+
+                <input
+                  type="radio"
+                  id="deviceYes"
+                  name="PC or Laptop"
+                  value="Yes"
+                  required
+                >
+
+                <label for="deviceYes">
+                  Yes
+                </label>
+
+              </div>
+
+
+              <div class="option">
+
+                <input
+                  type="radio"
+                  id="deviceNo"
+                  name="PC or Laptop"
+                  value="No"
+                >
+
+                <label for="deviceNo">
+                  No
+                </label>
+
+              </div>
+
+
+              <div class="option">
+
+                <input
+                  type="radio"
+                  id="deviceOther"
+                  name="PC or Laptop"
+                  value="Others Device"
+                >
+
+                <label for="deviceOther">
+                  অন্যের ব্যবহার করি
+                </label>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             COURSE INFORMATION
+        ================================================== -->
+
+        <section class="form-section">
+
+          <div class="form-section-title">
+
+            <span>
+              03
+            </span>
+
+            Course Information
+
+          </div>
+
+
+          <div class="form-grid">
+
+
+            <!-- COURSE -->
+
+            <div class="form-group">
+
+              <label for="course">
+                কোন Course-এ ভর্তি হতে চান?
+                <span class="required">*</span>
+              </label>
+
+              <select
+                id="course"
+                name="Selected Course"
+                required
+              >
+
+                <option value="">
+                  Course নির্বাচন করুন
+                </option>
+
+                <option>
+                  AI-Powered UI/UX Career Program
+                </option>
+
+                <option>
+                  AI-Powered Cyber Security & Ethical Hacking
+                </option>
+
+                <option>
+                  AI-Powered Graphic Design
+                </option>
+
+                <option>
+                  100Days Kidz Spoken English
+                </option>
+
+              </select>
+
+            </div>
+
+
+
+            <!-- SOURCE -->
+
+            <div class="form-group">
+
+              <label for="source">
+                Course সম্পর্কে কীভাবে জানলেন?
+              </label>
+
+              <select
+                id="source"
+                name="How did you hear about us"
+              >
+
+                <option value="">
+                  নির্বাচন করুন
+                </option>
+
+                <option>
+                  Facebook
+                </option>
+
+                <option>
+                  Instagram
+                </option>
+
+                <option>
+                  YouTube
+                </option>
+
+                <option>
+                  TikTok
+                </option>
+
+                <option>
+                  Friend / Student
+                </option>
+
+                <option>
+                  Google
+                </option>
+
+                <option>
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PAYMENT
+        ================================================== -->
+
+        <section class="form-section">
+
+          <div class="form-section-title">
+
+            <span>
+              04
+            </span>
+
+            Payment Information
+
+          </div>
+
+
+          <div class="form-grid">
+
+
+            <!-- PAYMENT METHOD -->
+
+            <div class="form-group">
+
+              <label for="payment">
+                Payment Method
+                <span class="required">*</span>
+              </label>
+
+              <select
+                id="payment"
+                name="Payment Method"
+                required
+              >
+
+                <option value="">
+                  নির্বাচন করুন
+                </option>
+
+                <option>
+                  bKash
+                </option>
+
+                <option>
+                  Visa
+                </option>
+
+                <option>
+                  Mastercard
+                </option>
+
+                <option>
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+
+
+            <!-- TRANSACTION -->
+
+            <div class="form-group">
+
+              <label for="transaction">
+                Transaction ID
+                <span class="required">*</span>
+              </label>
+
+              <input
+                type="text"
+                id="transaction"
+                name="Transaction ID"
+                placeholder="আপনার Transaction ID"
+                required
+              >
+
+            </div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SCREENSHOT
+        ================================================== -->
+
+        <section class="form-section">
+
+          <div class="form-section-title">
+
+            <span>
+              05
+            </span>
+
+            Verification
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="nidScreenshot">
+
+              NID Submission Confirmation Screenshot
+
+              <span class="required">*</span>
+
+            </label>
+
+
+            <div class="upload-box">
+
+              <input
+                type="file"
+                id="nidScreenshot"
+                name="NID Submission Confirmation Screenshot"
+                accept="image/*"
+                required
+              >
+
+              <div class="upload-help">
+
+                আপনার NID-এর ছবি নয়।
+                শুধুমাত্র NID Submission/Verification
+                Confirmation-এর Screenshot দিন।
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXTRA INFORMATION
+        ================================================== -->
+
+        <section class="form-section">
+
+          <div class="form-section-title">
+
+            <span>
+              06
+            </span>
+
+            Additional Information
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="message">
+              অতিরিক্ত তথ্য
+            </label>
+
+            <textarea
+              id="message"
+              name="Additional Information"
+              placeholder="আপনার কোনো প্রশ্ন বা অতিরিক্ত তথ্য থাকলে লিখুন..."
+            ></textarea>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AGREEMENT
+        ================================================== -->
+
+        <div class="agreement">
+
+          <input
+            type="checkbox"
+            id="agree"
+            required
           >
-            Password ভুলে গেছেন?
-          </a>
+
+          <label for="agree">
+
+            আমি নিশ্চিত করছি যে উপরের তথ্যগুলো
+            সঠিক এবং SNK IT Institute-এর
+            Admission Team আমার দেওয়া তথ্য
+            যাচাই করার জন্য আমার সাথে যোগাযোগ
+            করতে পারবে।
+
+            <strong>
+              *
+            </strong>
+
+          </label>
 
         </div>
 
 
 
-        <!-- SIGN IN -->
+        <!-- SUBMIT -->
 
         <button
           type="submit"
-          class="signin-button"
+          class="submit-button"
         >
-          Sign In →
+
+          Admission Application Submit করুন →
+
         </button>
 
 
+        <p class="form-note">
+
+          Submit করার পর আপনার তথ্য আমাদের
+          Admission Team-এর কাছে পাঠানো হবে।
+          যাচাই শেষে আপনার সাথে যোগাযোগ করা হবে।
+
+        </p>
+
+
       </form>
-
-
-
-      <!-- DIVIDER -->
-
-      <div class="divider">
-
-        <span>
-          অথবা
-        </span>
-
-      </div>
-
-
-
-      <!-- SIGN UP -->
-
-      <div class="signup-text">
-
-        নতুন Student?
-
-        <a
-          href="#"
-          onclick="showMessage('Create Account / Sign Up feature পরে যুক্ত করা হবে।'); return false;"
-        >
-          Create Account
-        </a>
-
-      </div>
-
-
-
-      <!-- NOTICE -->
-
-      <div class="login-notice">
-
-        <strong>নোট:</strong>
-        Student Login System বর্তমানে প্রস্তুত করা হচ্ছে।
-        খুব শীঘ্রই এখানে আপনার Course, Class,
-        Payment এবং Student Dashboard যুক্ত করা হবে।
-
-      </div>
-
 
     </div>
 
@@ -953,7 +1570,6 @@
 
     <div class="container footer-inner">
 
-
       <div class="footer-brand">
 
         SNK <span>IT</span> Institute
@@ -968,77 +1584,9 @@
 
       </div>
 
-
     </div>
 
   </footer>
-
-
-
-  <!-- =====================================================
-       JAVASCRIPT
-  ===================================================== -->
-
-  <script>
-
-    /* =====================================================
-       PASSWORD SHOW / HIDE
-    ===================================================== */
-
-    function togglePassword(){
-
-      const password =
-        document.getElementById("password");
-
-      const button =
-        document.querySelector(".password-toggle");
-
-
-      if(password.type === "password"){
-
-        password.type = "text";
-
-        button.textContent = "🙈";
-
-      }else{
-
-        password.type = "password";
-
-        button.textContent = "👁";
-
-      }
-
-    }
-
-
-
-    /* =====================================================
-       CURRENT LOGIN — DEMO ONLY
-    ===================================================== */
-
-    function handleLogin(event){
-
-      event.preventDefault();
-
-      showMessage(
-        "Login System এখনো চালু করা হয়নি। পরে এখানে Student Authentication যুক্ত করা হবে।"
-      );
-
-    }
-
-
-
-    /* =====================================================
-       MESSAGE
-    ===================================================== */
-
-    function showMessage(message){
-
-      alert(message);
-
-    }
-
-  </script>
 
 
 </body>
