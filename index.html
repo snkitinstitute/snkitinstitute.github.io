@@ -28,7 +28,11 @@
     }
 
     body{
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background:#050505;
       color:#fff;
       line-height:1.6;
@@ -64,19 +68,27 @@
       position:sticky;
       top:0;
       z-index:9999;
+
       background:rgba(5,5,5,.94);
+
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
+
       border-bottom:1px solid rgba(255,255,255,.08);
     }
 
     .nav{
       min-height:82px;
+
       display:flex;
       align-items:center;
       justify-content:space-between;
+
       gap:22px;
     }
+
+
+    /* LOGO */
 
     .brand{
       display:flex;
@@ -89,35 +101,49 @@
       height:auto;
     }
 
+
+    /* SEARCH */
+
     .search-box{
-      width:220px;
+      width:210px;
       height:42px;
+
       display:flex;
       align-items:center;
+
       gap:8px;
+
       padding:0 13px;
+
       background:#101010;
+
       border:1px solid #252525;
       border-radius:9px;
+
       transition:.3s;
     }
 
     .search-box:focus-within{
       border-color:rgba(183,255,0,.5);
-      box-shadow:0 0 0 3px rgba(183,255,0,.06);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(183,255,0,.06);
     }
 
     .search-box span{
       color:#777;
-      font-size:22px;
-      line-height:1;
+      font-size:21px;
     }
 
     .search-box input{
       width:100%;
+
       border:0;
       outline:0;
+
       background:transparent;
+
       color:#fff;
       font-size:13px;
     }
@@ -126,10 +152,13 @@
       color:#666;
     }
 
+
+    /* MENU */
+
     .menu{
       display:flex;
       align-items:center;
-      gap:25px;
+      gap:23px;
     }
 
     .menu a{
@@ -143,42 +172,58 @@
       color:#b7ff00;
     }
 
+
+    /* HEADER ACTIONS */
+
     .header-actions{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:9px;
       flex-shrink:0;
     }
 
     .offer{
       color:#b7ff00;
+
       border:1px solid rgba(183,255,0,.25);
+
       background:rgba(183,255,0,.06);
+
       padding:9px 13px;
+
       border-radius:8px;
-      font-size:12px;
+
+      font-size:11px;
       font-weight:700;
+
       transition:.3s;
     }
 
     .offer:hover{
-      background:rgba(183,255,0,.12);
+      background:rgba(183,255,0,.13);
       border-color:#b7ff00;
     }
 
     .nav-button{
       background:#b7ff00;
       color:#050505;
-      padding:10px 17px;
+
+      padding:10px 15px;
+
       border-radius:8px;
-      font-size:13px;
+
+      font-size:12px;
       font-weight:800;
+
       transition:.3s;
     }
 
     .nav-button:hover{
       transform:translateY(-2px);
-      box-shadow:0 10px 30px rgba(183,255,0,.20);
+
+      box-shadow:
+        0 10px 30px
+        rgba(183,255,0,.20);
     }
 
 
@@ -188,55 +233,84 @@
 
     .hero{
       position:relative;
+
       min-height:calc(100vh - 82px);
+
       display:flex;
       align-items:center;
+
       overflow:hidden;
 
       background:
+
         radial-gradient(
           circle at 80% 40%,
           rgba(183,255,0,.12),
           transparent 30%
         ),
+
         radial-gradient(
           circle at 10% 80%,
           rgba(183,255,0,.05),
           transparent 25%
         ),
+
         #050505;
     }
 
     .hero::before{
       content:"";
+
       position:absolute;
+
       width:650px;
       height:650px;
+
       right:-320px;
       top:50%;
+
       transform:translateY(-50%);
-      border:1px solid rgba(183,255,0,.07);
+
+      border:
+        1px solid
+        rgba(183,255,0,.07);
+
       border-radius:50%;
     }
 
     .hero::after{
       content:"";
+
       position:absolute;
+
       width:380px;
       height:380px;
+
       right:-190px;
       top:50%;
+
       transform:translateY(-50%);
-      border:1px solid rgba(183,255,0,.05);
+
+      border:
+        1px solid
+        rgba(183,255,0,.05);
+
       border-radius:50%;
     }
 
     .hero-box{
       min-height:calc(100vh - 82px);
+
       display:grid;
-      grid-template-columns:.95fr 1.05fr;
+
+      grid-template-columns:
+        .95fr
+        1.05fr;
+
       align-items:center;
+
       gap:45px;
+
       position:relative;
       z-index:2;
     }
@@ -245,16 +319,29 @@
       padding:70px 0;
     }
 
+
+    /* BADGE */
+
     .badge{
       display:inline-flex;
+
       align-items:center;
       gap:9px;
+
       padding:8px 15px;
       margin-bottom:25px;
+
       color:#b7ff00;
-      border:1px solid rgba(183,255,0,.28);
-      background:rgba(183,255,0,.06);
+
+      border:
+        1px solid
+        rgba(183,255,0,.28);
+
+      background:
+        rgba(183,255,0,.06);
+
       border-radius:50px;
+
       font-size:12px;
       font-weight:700;
     }
@@ -262,15 +349,26 @@
     .badge-dot{
       width:7px;
       height:7px;
+
       background:#b7ff00;
+
       border-radius:50%;
-      box-shadow:0 0 12px #b7ff00;
+
+      box-shadow:
+        0 0 12px #b7ff00;
     }
 
+
+    /* HERO TITLE */
+
     .hero h1{
-      font-size:clamp(46px,6vw,78px);
+      font-size:
+        clamp(46px,6vw,78px);
+
       line-height:1.05;
+
       letter-spacing:-4px;
+
       margin-bottom:25px;
     }
 
@@ -280,11 +378,18 @@
 
     .hero-description{
       max-width:650px;
+
       color:#a4a4a4;
+
       font-size:17px;
+
       line-height:1.85;
+
       margin-bottom:32px;
     }
+
+
+    /* BUTTONS */
 
     .hero-buttons{
       display:flex;
@@ -294,12 +399,17 @@
 
     .btn{
       display:inline-flex;
+
       align-items:center;
       justify-content:center;
+
       padding:14px 23px;
+
       border-radius:9px;
+
       font-weight:800;
       font-size:14px;
+
       transition:.3s;
     }
 
@@ -310,7 +420,10 @@
 
     .primary:hover{
       transform:translateY(-3px);
-      box-shadow:0 12px 35px rgba(183,255,0,.20);
+
+      box-shadow:
+        0 12px 35px
+        rgba(183,255,0,.20);
     }
 
     .secondary{
@@ -323,29 +436,49 @@
       color:#b7ff00;
     }
 
+
+    /* HERO IMAGE */
+
     .hero-visual{
       position:relative;
+
       min-height:620px;
+
       display:flex;
+
       align-items:center;
       justify-content:center;
+
       padding:35px;
     }
 
     .hero-main-image{
       width:100%;
+
       max-width:620px;
+
       height:auto;
-      object-fit:contain;
+
       position:relative;
       z-index:3;
-      filter:drop-shadow(0 0 45px rgba(183,255,0,.12));
-      transition:transform .5s ease,filter .5s ease;
+
+      filter:
+        drop-shadow(
+          0 0 45px
+          rgba(183,255,0,.12)
+        );
+
+      transition:.5s;
     }
 
     .hero-main-image:hover{
       transform:scale(1.025);
-      filter:drop-shadow(0 0 65px rgba(183,255,0,.20));
+
+      filter:
+        drop-shadow(
+          0 0 65px
+          rgba(183,255,0,.20)
+        );
     }
 
 
@@ -355,6 +488,7 @@
 
     .features{
       background:#080808;
+
       border-top:1px solid #181818;
       border-bottom:1px solid #181818;
     }
@@ -366,7 +500,9 @@
 
     .feature{
       padding:28px 15px;
+
       text-align:center;
+
       border-right:1px solid #181818;
     }
 
@@ -376,8 +512,11 @@
 
     .feature strong{
       display:block;
+
       color:#b7ff00;
+
       font-size:25px;
+
       margin-bottom:3px;
     }
 
@@ -402,17 +541,26 @@
 
     .section-header small{
       display:block;
+
       color:#b7ff00;
+
       font-size:12px;
+
       font-weight:800;
+
       letter-spacing:2px;
+
       margin-bottom:14px;
     }
 
     .section-header h2{
-      font-size:clamp(36px,5vw,58px);
+      font-size:
+        clamp(36px,5vw,58px);
+
       line-height:1.08;
+
       letter-spacing:-2px;
+
       margin-bottom:17px;
     }
 
@@ -422,8 +570,116 @@
 
     .section-header p{
       color:#8d8d8d;
+
       font-size:16px;
+
       line-height:1.8;
+    }
+
+
+    /* =====================================================
+       FREE COURSE STRIP
+    ===================================================== */
+
+    .free-course{
+      background:#080808;
+
+      padding:28px 0;
+
+      border-top:1px solid #191919;
+      border-bottom:1px solid #191919;
+    }
+
+    .free-course-button{
+      min-height:90px;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:space-between;
+
+      gap:25px;
+
+      padding:20px 30px;
+
+      background:
+        linear-gradient(
+          100deg,
+          rgba(183,255,0,.12),
+          rgba(183,255,0,.035)
+        );
+
+      border:
+        1px solid
+        rgba(183,255,0,.28);
+
+      border-radius:16px;
+
+      transition:.35s;
+    }
+
+    .free-course-button:hover{
+      transform:translateY(-3px);
+
+      border-color:#b7ff00;
+
+      box-shadow:
+        0 15px 40px
+        rgba(183,255,0,.10);
+    }
+
+    .free-course-left{
+      display:flex;
+      align-items:center;
+      gap:17px;
+    }
+
+    .free-icon{
+      width:52px;
+      height:52px;
+
+      display:grid;
+      place-items:center;
+
+      flex-shrink:0;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      border-radius:13px;
+
+      font-size:24px;
+    }
+
+    .free-course-text small{
+      display:block;
+
+      color:#b7ff00;
+
+      font-size:10px;
+
+      font-weight:800;
+
+      letter-spacing:1.5px;
+
+      margin-bottom:3px;
+    }
+
+    .free-course-text strong{
+      display:block;
+
+      color:#fff;
+
+      font-size:20px;
+    }
+
+    .free-arrow{
+      color:#b7ff00;
+
+      font-size:25px;
+
+      font-weight:800;
     }
 
 
@@ -437,23 +693,34 @@
 
     .why-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+
+      grid-template-columns:
+        repeat(3,1fr);
+
       gap:20px;
     }
 
     .why-card{
       position:relative;
+
       padding:30px;
+
       background:#0b0b0b;
+
       border:1px solid #202020;
+
       border-radius:18px;
+
       transition:.35s;
+
       overflow:hidden;
     }
 
     .why-card:hover{
       transform:translateY(-7px);
-      border-color:rgba(183,255,0,.45);
+
+      border-color:
+        rgba(183,255,0,.45);
     }
 
     .why-card.featured{
@@ -463,25 +730,37 @@
           rgba(183,255,0,.07),
           #0b0b0b 55%
         );
-      border-color:rgba(183,255,0,.25);
+
+      border-color:
+        rgba(183,255,0,.25);
     }
 
     .why-icon{
       width:55px;
       height:55px;
+
       display:grid;
       place-items:center;
+
       margin-bottom:20px;
-      background:rgba(183,255,0,.09);
+
+      background:
+        rgba(183,255,0,.09);
+
       border-radius:14px;
+
       font-size:25px;
     }
 
     .why-number{
       color:#b7ff00;
+
       font-size:12px;
+
       font-weight:800;
+
       letter-spacing:1px;
+
       margin-bottom:12px;
     }
 
@@ -492,30 +771,44 @@
 
     .why-card p{
       color:#858585;
+
       font-size:14px;
+
       line-height:1.8;
+
       min-height:100px;
+
       margin-bottom:20px;
     }
 
     .why-card a{
       color:#b7ff00;
+
       font-size:13px;
+
       font-weight:800;
     }
 
     .why-bottom{
       margin-top:35px;
+
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+
+      grid-template-columns:
+        repeat(4,1fr);
+
       border:1px solid #202020;
+
       border-radius:15px;
+
       overflow:hidden;
     }
 
     .why-bottom div{
       padding:20px;
+
       background:#090909;
+
       border-right:1px solid #202020;
     }
 
@@ -525,13 +818,17 @@
 
     .why-bottom strong{
       display:block;
+
       color:#fff;
+
       font-size:14px;
+
       margin-bottom:3px;
     }
 
     .why-bottom span{
       color:#666;
+
       font-size:12px;
     }
 
@@ -546,78 +843,124 @@
 
     .course-grid{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+
+      grid-template-columns:
+        repeat(4,1fr);
+
       gap:18px;
     }
 
     .course-card{
-      position:relative;
       display:flex;
+
       flex-direction:column;
+
       padding:20px;
+
       background:#101010;
+
       border:1px solid #222;
+
       border-radius:18px;
+
       transition:.35s;
+
       overflow:hidden;
     }
 
     .course-card:hover{
       transform:translateY(-7px);
-      border-color:rgba(183,255,0,.45);
-      box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+      border-color:
+        rgba(183,255,0,.45);
+
+      box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.25);
     }
 
     .course-image{
       width:100%;
+
       height:180px;
+
       object-fit:cover;
+
       border-radius:12px;
+
       margin-bottom:18px;
+
       border:1px solid #222;
+
       background:#080808;
     }
 
     .course-tag{
       align-self:flex-start;
+
       color:#b7ff00;
-      background:rgba(183,255,0,.07);
-      border:1px solid rgba(183,255,0,.18);
+
+      background:
+        rgba(183,255,0,.07);
+
+      border:
+        1px solid
+        rgba(183,255,0,.18);
+
       padding:5px 9px;
+
       border-radius:5px;
+
       font-size:9px;
+
       font-weight:800;
+
       letter-spacing:1px;
+
       margin-bottom:13px;
     }
 
     .course-card h3{
       font-size:19px;
+
       line-height:1.35;
+
       margin-bottom:10px;
     }
 
     .course-card p{
       color:#858585;
+
       font-size:13px;
+
       line-height:1.75;
+
       min-height:125px;
+
       margin-bottom:18px;
     }
 
     .course-info{
       display:flex;
+
       flex-direction:column;
+
       gap:5px;
+
       color:#777;
+
       font-size:12px;
+
       margin-bottom:14px;
     }
 
     .price{
       display:flex;
+
       align-items:center;
+
       gap:8px;
+
       margin-bottom:18px;
     }
 
@@ -633,42 +976,63 @@
 
     .course-button{
       display:block;
+
       margin-top:auto;
+
       text-align:center;
+
       padding:10px;
+
       border:1px solid #333;
+
       border-radius:8px;
+
       color:#fff;
+
       font-size:12px;
+
       font-weight:800;
+
       transition:.3s;
     }
 
     .course-button:hover{
       background:#b7ff00;
+
       border-color:#b7ff00;
+
       color:#050505;
     }
 
     .courses-action{
       display:flex;
+
       justify-content:center;
+
       margin-top:38px;
     }
 
     .all-courses-button{
       padding:13px 24px;
+
       border:1px solid #333;
+
       border-radius:9px;
+
       color:#fff;
+
       font-size:13px;
+
       font-weight:800;
+
       transition:.3s;
     }
 
     .all-courses-button:hover{
       color:#050505;
+
       background:#b7ff00;
+
       border-color:#b7ff00;
     }
 
@@ -679,29 +1043,22 @@
 
     .cta{
       position:relative;
+
       padding:110px 0;
+
       text-align:center;
+
       overflow:hidden;
 
       background:
+
         radial-gradient(
           circle at center,
           rgba(183,255,0,.13),
           transparent 45%
         ),
-        #050505;
-    }
 
-    .cta::before{
-      content:"";
-      position:absolute;
-      width:500px;
-      height:500px;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      border:1px solid rgba(183,255,0,.05);
-      border-radius:50%;
+        #050505;
     }
 
     .cta-content{
@@ -711,17 +1068,26 @@
 
     .cta small{
       display:block;
+
       color:#b7ff00;
+
       font-size:12px;
+
       font-weight:800;
+
       letter-spacing:2px;
+
       margin-bottom:15px;
     }
 
     .cta h2{
-      font-size:clamp(40px,6vw,70px);
+      font-size:
+        clamp(40px,6vw,70px);
+
       line-height:1.05;
+
       letter-spacing:-3px;
+
       margin-bottom:20px;
     }
 
@@ -731,80 +1097,23 @@
 
     .cta p{
       max-width:620px;
-      margin:0 auto 30px;
+
+      margin:
+        0 auto 30px;
+
       color:#888;
+
       font-size:16px;
     }
 
     .cta-buttons{
       display:flex;
+
       justify-content:center;
+
       flex-wrap:wrap;
+
       gap:13px;
-    }
-
-
-    /* =====================================================
-       FREE COURSE BUTTON — FOOTER এর উপরে
-    ===================================================== */
-
-    .free-course-section{
-      padding:35px 0;
-      background:#080808;
-      border-top:1px solid #171717;
-      border-bottom:1px solid #171717;
-    }
-
-    .free-course-button{
-      width:100%;
-      min-height:82px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:15px;
-
-      padding:18px 25px;
-
-      border:1px solid rgba(183,255,0,.35);
-      border-radius:16px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(183,255,0,.13),
-          rgba(183,255,0,.03)
-        );
-
-      color:#fff;
-
-      font-size:20px;
-      font-weight:800;
-
-      text-align:center;
-
-      transition:.35s;
-    }
-
-    .free-course-button span{
-      color:#b7ff00;
-    }
-
-    .free-course-button:hover{
-      transform:translateY(-3px);
-
-      border-color:#b7ff00;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(183,255,0,.20),
-          rgba(183,255,0,.05)
-        );
-
-      box-shadow:
-        0 15px 40px
-        rgba(183,255,0,.10);
     }
 
 
@@ -813,13 +1122,11 @@
     ===================================================== */
 
     .footer{
-      padding:65px 0 25px;
-
-      background:#050505;
+      padding:70px 0 25px;
 
       border-top:1px solid #1b1b1b;
 
-      color:#777;
+      background:#050505;
     }
 
     .footer-grid{
@@ -828,23 +1135,24 @@
       grid-template-columns:
         1.4fr
         1fr
+        1fr
         1.2fr;
 
-      gap:50px;
+      gap:45px;
 
       padding-bottom:45px;
 
-      border-bottom:1px solid #1b1b1b;
+      border-bottom:1px solid #1c1c1c;
     }
 
     .footer-brand{
       color:#fff;
 
-      font-size:23px;
+      font-size:22px;
 
       font-weight:800;
 
-      margin-bottom:2px;
+      margin-bottom:3px;
     }
 
     .footer-brand span{
@@ -856,29 +1164,25 @@
 
       font-size:12px;
 
-      font-weight:700;
-
-      letter-spacing:1px;
-
-      margin-bottom:18px;
+      margin-bottom:17px;
     }
 
     .footer-description{
-      max-width:360px;
-
       color:#707070;
 
       font-size:13px;
 
       line-height:1.8;
+
+      max-width:320px;
     }
 
     .footer-column h3{
       color:#fff;
 
-      font-size:15px;
+      font-size:14px;
 
-      margin-bottom:18px;
+      margin-bottom:17px;
     }
 
     .social-links{
@@ -886,11 +1190,11 @@
 
       flex-direction:column;
 
-      gap:9px;
+      gap:10px;
     }
 
     .social-links a{
-      color:#888;
+      color:#777;
 
       font-size:13px;
 
@@ -900,15 +1204,38 @@
     .social-links a:hover{
       color:#b7ff00;
 
-      transform:translateX(4px);
+      transform:translateX(3px);
     }
 
+    .footer-links{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:10px;
+    }
+
+    .footer-links a{
+      color:#777;
+
+      font-size:13px;
+
+      transition:.3s;
+    }
+
+    .footer-links a:hover{
+      color:#b7ff00;
+    }
+
+
+    /* PAYMENT */
+
     .payment-text{
-      color:#707070;
+      color:#777;
 
       font-size:12px;
 
-      margin-bottom:15px;
+      margin-bottom:14px;
     }
 
     .payment-methods{
@@ -916,13 +1243,13 @@
 
       flex-wrap:wrap;
 
-      gap:10px;
+      gap:9px;
     }
 
     .payment-card{
-      min-width:125px;
+      min-width:105px;
 
-      padding:13px 14px;
+      padding:12px;
 
       display:flex;
 
@@ -930,9 +1257,9 @@
 
       gap:2px;
 
-      border:1px solid #242424;
+      border:1px solid #282828;
 
-      border-radius:10px;
+      border-radius:9px;
 
       background:#0b0b0b;
 
@@ -946,19 +1273,17 @@
     }
 
     .payment-card strong{
-      color:#fff;
-
-      font-size:14px;
+      font-size:13px;
     }
 
     .payment-card span{
-      color:#666;
+      color:#777;
 
-      font-size:11px;
+      font-size:10px;
     }
 
     .payment-card.bkash strong{
-      color:#ff4f9a;
+      color:#e2136e;
     }
 
     .payment-card.visa strong{
@@ -970,12 +1295,13 @@
       color:#fff;
     }
 
+
+    /* FOOTER BOTTOM */
+
     .footer-bottom{
-      padding-top:22px;
+      padding-top:23px;
 
       display:flex;
-
-      align-items:center;
 
       justify-content:space-between;
 
@@ -992,37 +1318,31 @@
 
 
     /* =====================================================
-       TABLET
+       RESPONSIVE
     ===================================================== */
 
     @media(max-width:1100px){
 
       .search-box{
-        width:180px;
+        width:170px;
       }
 
       .menu{
-        gap:16px;
+        gap:15px;
       }
 
       .course-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
-      .hero-box{
-        gap:30px;
-      }
-
-      .hero-visual{
-        min-height:520px;
+      .footer-grid{
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
     }
 
-
-    /* =====================================================
-       TABLET SMALL
-    ===================================================== */
 
     @media(max-width:900px){
 
@@ -1032,12 +1352,13 @@
 
       .hero-box{
         grid-template-columns:1fr;
+
         text-align:center;
-        min-height:auto;
       }
 
       .hero-content{
-        padding:90px 0 20px;
+        padding:
+          90px 0 20px;
       }
 
       .hero-description{
@@ -1051,23 +1372,10 @@
 
       .hero-visual{
         min-height:500px;
-        padding-bottom:70px;
-      }
-
-      .hero-main-image{
-        max-width:600px;
-      }
-
-      .footer-grid{
-        grid-template-columns:1fr 1fr;
       }
 
     }
 
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
 
     @media(max-width:700px){
 
@@ -1083,7 +1391,10 @@
         width:105px;
       }
 
-      .menu,
+      .menu{
+        display:none;
+      }
+
       .offer{
         display:none;
       }
@@ -1093,20 +1404,20 @@
       }
 
       .nav-button{
-        padding:9px 13px;
-        font-size:11px;
+        padding:9px 12px;
+        font-size:10px;
       }
+
+
+      /* HERO */
 
       .hero{
         min-height:auto;
       }
 
-      .hero-box{
-        min-height:auto;
-      }
-
       .hero-content{
-        padding:70px 0 15px;
+        padding:
+          70px 0 15px;
       }
 
       .badge{
@@ -1116,7 +1427,9 @@
 
       .hero h1{
         font-size:47px;
+
         letter-spacing:-2.5px;
+
         margin-bottom:20px;
       }
 
@@ -1125,27 +1438,28 @@
         line-height:1.75;
       }
 
+      .hero-buttons{
+        width:100%;
+      }
+
       .btn{
         width:100%;
         padding:13px 20px;
       }
 
-      .hero-buttons{
-        width:100%;
-      }
-
       .hero-visual{
         min-height:auto;
-        padding:25px 0 65px;
+
+        padding:
+          25px 0 65px;
       }
 
-      .hero-main-image{
-        width:100%;
-        max-width:500px;
-      }
+
+      /* FEATURES */
 
       .feature-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
       .feature{
@@ -1160,6 +1474,36 @@
       .feature:nth-child(4){
         border-top:1px solid #181818;
       }
+
+
+      /* FREE COURSE */
+
+      .free-course-button{
+        padding:18px;
+
+        min-height:80px;
+      }
+
+      .free-course-left{
+        gap:12px;
+      }
+
+      .free-icon{
+        width:45px;
+        height:45px;
+        font-size:20px;
+      }
+
+      .free-course-text strong{
+        font-size:16px;
+      }
+
+      .free-arrow{
+        font-size:20px;
+      }
+
+
+      /* SECTIONS */
 
       .section{
         padding:75px 0;
@@ -1178,6 +1522,9 @@
         font-size:14px;
       }
 
+
+      /* WHY */
+
       .why-grid{
         grid-template-columns:1fr;
         gap:15px;
@@ -1192,7 +1539,8 @@
       }
 
       .why-bottom{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
       .why-bottom div{
@@ -1203,14 +1551,8 @@
         border-right:0;
       }
 
-      .why-bottom div:nth-child(3){
-        border-bottom:0;
-      }
 
-      .why-bottom div:nth-child(4){
-        border-right:0;
-        border-bottom:0;
-      }
+      /* COURSES */
 
       .course-grid{
         grid-template-columns:1fr;
@@ -1224,12 +1566,14 @@
       .course-image{
         height:auto;
         aspect-ratio:16/9;
-        object-fit:cover;
       }
 
       .course-card p{
         min-height:auto;
       }
+
+
+      /* CTA */
 
       .cta{
         padding:80px 0;
@@ -1248,34 +1592,20 @@
         flex-direction:column;
       }
 
-      .cta-buttons .btn{
-        width:100%;
-      }
 
-      .free-course-button{
-        min-height:70px;
-
-        padding:15px;
-
-        font-size:16px;
-
-        line-height:1.5;
-      }
+      /* FOOTER */
 
       .footer{
-        padding:45px 0 22px;
+        padding:50px 0 22px;
       }
 
       .footer-grid{
         grid-template-columns:1fr;
-
-        gap:35px;
+        gap:32px;
       }
 
       .footer-bottom{
         flex-direction:column;
-
-        align-items:flex-start;
       }
 
       .footer-bottom-right{
@@ -1285,18 +1615,10 @@
     }
 
 
-    /* =====================================================
-       VERY SMALL MOBILE
-    ===================================================== */
-
     @media(max-width:400px){
 
       .hero h1{
         font-size:42px;
-      }
-
-      .course-image{
-        aspect-ratio:16/9;
       }
 
       .why-bottom{
@@ -1304,24 +1626,8 @@
       }
 
       .why-bottom div,
-      .why-bottom div:nth-child(2),
-      .why-bottom div:nth-child(3),
-      .why-bottom div:nth-child(4){
+      .why-bottom div:nth-child(2){
         border-right:0;
-
-        border-bottom:1px solid #202020;
-      }
-
-      .why-bottom div:last-child{
-        border-bottom:0;
-      }
-
-      .payment-methods{
-        flex-direction:column;
-      }
-
-      .payment-card{
-        width:100%;
       }
 
     }
@@ -1341,6 +1647,9 @@
 
     <div class="container nav">
 
+
+      <!-- LOGO -->
+
       <a href="index.html" class="brand">
 
         <img
@@ -1350,6 +1659,8 @@
 
       </a>
 
+
+      <!-- SEARCH -->
 
       <div class="search-box">
 
@@ -1365,35 +1676,45 @@
       </div>
 
 
+      <!-- MENU -->
+
       <nav class="menu">
 
-        <a href="index.html" class="active">
+        <a href="#home" class="active">
           হোম
         </a>
 
-        <a href="courses.html">
+        <a href="#courses">
           কোর্সসমূহ
         </a>
 
-        <a href="about.html">
+        <a href="#about">
           আমাদের সম্পর্কে
         </a>
 
-        <a href="contact.html">
+        <a href="#contact">
           যোগাযোগ
         </a>
 
       </nav>
 
 
+      <!-- ACTIONS -->
+
       <div class="header-actions">
 
-        <a href="courses.html" class="offer">
+        <a
+          href="#courses"
+          class="offer"
+        >
           🎁 Special Offer
         </a>
 
-        <a href="admission.html" class="nav-button">
-          ভর্তি করুন →
+        <a
+          href="login.html"
+          class="nav-button"
+        >
+          Login / Sign Up →
         </a>
 
       </div>
@@ -1415,11 +1736,15 @@
          HERO
     =================================================== -->
 
-    <section class="hero" id="home">
+    <section
+      class="hero"
+      id="home"
+    >
 
       <div class="container">
 
         <div class="hero-box">
+
 
           <div class="hero-content">
 
@@ -1463,11 +1788,17 @@
 
             <div class="hero-buttons">
 
-              <a href="courses.html" class="btn primary">
+              <a
+                href="#courses"
+                class="btn primary"
+              >
                 শেখা শুরু করুন →
               </a>
 
-              <a href="contact.html" class="btn secondary">
+              <a
+                href="#contact"
+                class="btn secondary"
+              >
                 যোগাযোগ করুন
               </a>
 
@@ -1475,6 +1806,9 @@
 
           </div>
 
+
+
+          <!-- HERO IMAGE -->
 
           <div class="hero-visual">
 
@@ -1556,12 +1890,16 @@
 
 
     <!-- ===================================================
-         WHY SNK IT INSTITUTE
+         SECTION 2 — WHY SNK
     =================================================== -->
 
-    <section class="section why-section" id="about">
+    <section
+      class="section why-section"
+      id="about"
+    >
 
       <div class="container">
+
 
         <div class="section-header">
 
@@ -1596,6 +1934,7 @@
         </div>
 
 
+
         <div class="why-grid">
 
 
@@ -1615,17 +1954,18 @@
 
             <p>
 
-              প্রতিটি কোর্সে hands-on practice,
-              real project এবং practical
-              assignment-এর মাধ্যমে শেখানো হয়।
+              Hands-on practice, real project
+              এবং practical assignment-এর
+              মাধ্যমে শেখানো হয়।
 
             </p>
 
-            <a href="courses.html">
+            <a href="#courses">
               কোর্স দেখুন →
             </a>
 
           </article>
+
 
 
           <article class="why-card featured">
@@ -1646,16 +1986,16 @@
 
               আধুনিক AI tools এবং workflow
               ব্যবহার করে শিক্ষার্থীদের
-              future-ready skill তৈরি করতে
-              সাহায্য করা হয়।
+              future-ready skill তৈরি করা হয়।
 
             </p>
 
-            <a href="courses.html">
+            <a href="#courses">
               AI Courses দেখুন →
             </a>
 
           </article>
+
 
 
           <article class="why-card">
@@ -1674,20 +2014,20 @@
 
             <p>
 
-              Course শেষ করার পর freelancing,
-              portfolio, job preparation এবং
-              career direction নিয়ে guidance
-              দেওয়া হয়।
+              Portfolio, freelancing, job
+              preparation এবং career direction
+              নিয়ে guidance দেওয়া হয়।
 
             </p>
 
-            <a href="contact.html">
+            <a href="#contact">
               Support নিন →
             </a>
 
           </article>
 
         </div>
+
 
 
         <div class="why-bottom">
@@ -1752,12 +2092,64 @@
 
 
     <!-- ===================================================
+         FREE COURSE
+         SECTION 2 এর ঠিক নিচে
+    =================================================== -->
+
+    <section class="free-course">
+
+      <div class="container">
+
+        <a
+          href="https://snkacademy.github.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="free-course-button"
+        >
+
+          <div class="free-course-left">
+
+            <div class="free-icon">
+              🎓
+            </div>
+
+            <div class="free-course-text">
+
+              <small>
+                FREE LEARNING PLATFORM
+              </small>
+
+              <strong>
+                যাত্রা শুরু হলো — Free Course
+              </strong>
+
+            </div>
+
+          </div>
+
+          <div class="free-arrow">
+            →
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
          COURSES
     =================================================== -->
 
-    <section class="section courses" id="courses">
+    <section
+      class="section courses"
+      id="courses"
+    >
 
       <div class="container">
+
 
         <div class="section-header">
 
@@ -1789,7 +2181,11 @@
         </div>
 
 
-        <div class="course-grid" id="courseGrid">
+
+        <div
+          class="course-grid"
+          id="courseGrid"
+        >
 
 
           <!-- COURSE 01 -->
@@ -1802,7 +2198,7 @@
             <img
               class="course-image"
               src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg"
-              alt="AI-Powered UI/UX Career Program"
+              alt="AI-Powered UI UX Career Program"
             >
 
             <div class="course-tag">
@@ -1847,7 +2243,7 @@
             </div>
 
             <a
-              href="ui-ux.html"
+              href="#contact"
               class="course-button"
             >
               কোর্স সম্পর্কে জানুন →
@@ -1867,7 +2263,7 @@
             <img
               class="course-image"
               src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg"
-              alt="AI-Powered Cyber Security and Ethical Hacking"
+              alt="AI-Powered Cyber Security"
             >
 
             <div class="course-tag">
@@ -1912,7 +2308,7 @@
             </div>
 
             <a
-              href="cyber-security.html"
+              href="#contact"
               class="course-button"
             >
               কোর্স সম্পর্কে জানুন →
@@ -1977,7 +2373,7 @@
             </div>
 
             <a
-              href="graphic-design.html"
+              href="#contact"
               class="course-button"
             >
               কোর্স সম্পর্কে জানুন →
@@ -2042,26 +2438,13 @@
             </div>
 
             <a
-              href="kidz-spoken-english.html"
+              href="#contact"
               class="course-button"
             >
               কোর্স সম্পর্কে জানুন →
             </a>
 
           </article>
-
-
-        </div>
-
-
-        <div class="courses-action">
-
-          <a
-            href="courses.html"
-            class="all-courses-button"
-          >
-            সব কোর্স দেখুন →
-          </a>
 
         </div>
 
@@ -2075,10 +2458,11 @@
          CTA
     =================================================== -->
 
-    <section class="cta" id="contact">
-<a href="login.html" class="btn primary">
-  Login / Sign Up →
-</a>
+    <section
+      class="cta"
+      id="contact"
+    >
+
       <div class="container cta-content">
 
         <small>
@@ -2108,17 +2492,19 @@
         <div class="cta-buttons">
 
           <a
-            href="admission.html"
+            href="login.html"
             class="btn primary"
           >
-            ভর্তি হতে চাই →
+            Login / Sign Up →
           </a>
 
           <a
-            href="contact.html"
+            href="https://snkacademy.github.io"
+            target="_blank"
+            rel="noopener noreferrer"
             class="btn secondary"
           >
-            যোগাযোগ করুন
+            Free Course →
           </a>
 
         </div>
@@ -2126,38 +2512,6 @@
       </div>
 
     </section>
-
-
-
-    <!-- ===================================================
-         FREE COURSE — FOOTER এর ঠিক উপরে
-    =================================================== -->
-
-    <section class="free-course-section">
-
-      <div class="container">
-
-        <a
-          href="https://snkacademy.github.io"
-          class="free-course-button"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          🚀
-
-          <span>
-            যাত্রা শুরু হলো — FREE COURSE
-          </span>
-
-          →
-
-        </a>
-
-      </div>
-
-    </section>
-
 
   </main>
 
@@ -2177,12 +2531,10 @@
 
         <!-- BRAND -->
 
-        <div class="footer-brand-area">
+        <div>
 
           <div class="footer-brand">
-
             SNK <span>IT</span> Institute
-
           </div>
 
           <div class="footer-tagline">
@@ -2201,7 +2553,7 @@
 
 
 
-        <!-- SOCIAL LINKS -->
+        <!-- SOCIAL -->
 
         <div class="footer-column">
 
@@ -2216,7 +2568,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              Facebook — @snkitinstitute
+              Facebook
             </a>
 
             <a
@@ -2224,7 +2576,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              Instagram — @snkitinstitute
+              Instagram
             </a>
 
             <a
@@ -2232,7 +2584,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              YouTube — @snkitinstitute
+              YouTube
             </a>
 
             <a
@@ -2240,7 +2592,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              TikTok — @snkitinstitute
+              TikTok
             </a>
 
             <a
@@ -2248,7 +2600,47 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn — SNK IT Institute
+              LinkedIn
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- QUICK LINKS -->
+
+        <div class="footer-column">
+
+          <h3>
+            Quick Links
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="#home">
+              হোম
+            </a>
+
+            <a href="#courses">
+              কোর্সসমূহ
+            </a>
+
+            <a href="#about">
+              আমাদের সম্পর্কে
+            </a>
+
+            <a href="#contact">
+              যোগাযোগ
+            </a>
+
+            <a
+              href="https://snkacademy.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Free Courses
             </a>
 
           </div>
@@ -2266,9 +2658,7 @@
           </h3>
 
           <p class="payment-text">
-
             নিরাপদ ও সহজ পেমেন্ট সুবিধা
-
           </p>
 
           <div class="payment-methods">
@@ -2279,7 +2669,6 @@
             <a
               href="tel:01705633700"
               class="payment-card bkash"
-              aria-label="Call bKash number 01705633700"
             >
 
               <strong>
@@ -2322,11 +2711,9 @@
 
             </div>
 
-
           </div>
 
         </div>
-
 
       </div>
 
@@ -2336,21 +2723,16 @@
 
       <div class="footer-bottom">
 
-        <div class="footer-bottom-left">
-
+        <div>
           © 2026 SNK IT Institute.
           সর্বস্বত্ব সংরক্ষিত।
-
         </div>
 
         <div class="footer-bottom-right">
-
           Learn To Lead • Moulvibazar
-
         </div>
 
       </div>
-
 
     </div>
 
