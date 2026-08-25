@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI-Powered UI/UX Career Program | SNK IT Institute</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#050505;
+      color:#fff;
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+
+      background:rgba(5,5,5,.92);
+      backdrop-filter:blur(18px);
+
+      border-bottom:1px solid #1d1d1d;
+    }
+
+    .nav{
+      min-height:80px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:25px;
+    }
+
+    .brand img{
+      width:120px;
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:25px;
+    }
+
+    .menu a{
+      color:#aaa;
+      font-size:14px;
+      transition:.3s;
+    }
+
+    .menu a:hover{
+      color:#b7ff00;
+    }
+
+    .nav-button{
+      background:#b7ff00;
+      color:#050505;
+
+      padding:10px 17px;
+
+      border-radius:8px;
+
+      font-size:13px;
+      font-weight:800;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .course-hero{
+      position:relative;
+      overflow:hidden;
+
+      padding:110px 0 90px;
+
+      background:
+        radial-gradient(
+          circle at 80% 30%,
+          rgba(183,255,0,.14),
+          transparent 30%
+        ),
+        #050505;
+    }
+
+    .course-hero-grid{
+      display:grid;
+
+      grid-template-columns:1.1fr .9fr;
+
+      align-items:center;
+
+      gap:70px;
+    }
+
+    .badge{
+      display:inline-block;
+
+      padding:7px 13px;
+
+      margin-bottom:22px;
+
+      color:#b7ff00;
+
+      border:1px solid rgba(183,255,0,.25);
+
+      background:rgba(183,255,0,.06);
+
+      border-radius:50px;
+
+      font-size:11px;
+      font-weight:800;
+
+      letter-spacing:1px;
+    }
+
+    .course-hero h1{
+      font-size:clamp(42px,6vw,72px);
+
+      line-height:1.05;
+
+      letter-spacing:-3px;
+
+      margin-bottom:25px;
+    }
+
+    .course-hero h1 span{
+      color:#b7ff00;
+    }
+
+    .course-hero p{
+      max-width:650px;
+
+      color:#999;
+
+      font-size:17px;
+
+      line-height:1.8;
+
+      margin-bottom:30px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+
+      align-items:center;
+      justify-content:center;
+
+      padding:14px 22px;
+
+      border-radius:9px;
+
+      font-size:14px;
+      font-weight:800;
+
+      transition:.3s;
+    }
+
+    .primary{
+      background:#b7ff00;
+      color:#050505;
+    }
+
+    .primary:hover{
+      transform:translateY(-3px);
+
+      box-shadow:
+        0 12px 30px rgba(183,255,0,.2);
+    }
+
+    .secondary{
+      border:1px solid #333;
+    }
+
+    .secondary:hover{
+      color:#b7ff00;
+      border-color:#b7ff00;
+    }
+
+
+    /* =========================
+       HERO IMAGE
+    ========================= */
+
+    .hero-image{
+      position:relative;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .hero-image img{
+      width:min(500px,100%);
+
+      border-radius:20px;
+
+      border:1px solid rgba(183,255,0,.2);
+
+      box-shadow:
+        0 0 70px rgba(183,255,0,.08);
+    }
+
+
+    /* =========================
+       COURSE INFO
+    ========================= */
+
+    .course-info-bar{
+      background:#090909;
+
+      border-top:1px solid #1d1d1d;
+      border-bottom:1px solid #1d1d1d;
+    }
+
+    .info-grid{
+      display:grid;
+
+      grid-template-columns:repeat(4,1fr);
+    }
+
+    .info-item{
+      padding:25px 20px;
+
+      text-align:center;
+
+      border-right:1px solid #1d1d1d;
+    }
+
+    .info-item:last-child{
+      border-right:0;
+    }
+
+    .info-item strong{
+      display:block;
+
+      color:#b7ff00;
+
+      font-size:22px;
+
+      margin-bottom:3px;
+    }
+
+    .info-item span{
+      color:#777;
+
+      font-size:12px;
+    }
+
+
+    /* =========================
+       COMMON SECTION
+    ========================= */
+
+    .section{
+      padding:100px 0;
+    }
+
+    .section-header{
+      max-width:720px;
+
+      margin-bottom:50px;
+    }
+
+    .section-header small{
+      color:#b7ff00;
+
+      font-size:11px;
+
+      font-weight:800;
+
+      letter-spacing:2px;
+
+      display:block;
+
+      margin-bottom:12px;
+    }
+
+    .section-header h2{
+      font-size:clamp(34px,5vw,55px);
+
+      line-height:1.1;
+
+      letter-spacing:-2px;
+
+      margin-bottom:15px;
+    }
+
+    .section-header h2 span{
+      color:#b7ff00;
+    }
+
+    .section-header p{
+      color:#888;
+
+      font-size:15px;
+    }
+
+
+    /* =========================
+       WHAT YOU WILL LEARN
+    ========================= */
+
+    .learn-section{
+      background:#080808;
+    }
+
+    .learn-grid{
+      display:grid;
+
+      grid-template-columns:repeat(2,1fr);
+
+      gap:16px;
+    }
+
+    .learn-card{
+      padding:25px;
+
+      background:#101010;
+
+      border:1px solid #222;
+
+      border-radius:15px;
+
+      transition:.3s;
+    }
+
+    .learn-card:hover{
+      border-color:rgba(183,255,0,.4);
+
+      transform:translateY(-4px);
+    }
+
+    .learn-number{
+      color:#b7ff00;
+
+      font-size:12px;
+
+      font-weight:800;
+
+      margin-bottom:10px;
+    }
+
+    .learn-card h3{
+      font-size:18px;
+
+      margin-bottom:7px;
+    }
+
+    .learn-card p{
+      color:#777;
+
+      font-size:13px;
+
+      line-height:1.7;
+    }
+
+
+    /* =========================
+       SYLLABUS
+    ========================= */
+
+    .syllabus{
+      display:flex;
+      flex-direction:column;
+
+      gap:12px;
+    }
+
+    .syllabus-item{
+      display:flex;
+      align-items:center;
+
+      gap:18px;
+
+      padding:20px;
+
+      background:#0c0c0c;
+
+      border:1px solid #202020;
+
+      border-radius:12px;
+    }
+
+    .syllabus-number{
+      width:42px;
+      height:42px;
+
+      flex-shrink:0;
+
+      display:grid;
+      place-items:center;
+
+      background:rgba(183,255,0,.08);
+
+      color:#b7ff00;
+
+      border-radius:10px;
+
+      font-weight:800;
+    }
+
+    .syllabus-item h3{
+      font-size:16px;
+
+      margin-bottom:3px;
+    }
+
+    .syllabus-item p{
+      color:#777;
+
+      font-size:12px;
+    }
+
+
+    /* =========================
+       PRICE CTA
+    ========================= */
+
+    .price-section{
+      padding:100px 0;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(183,255,0,.12),
+          transparent 45%
+        ),
+        #050505;
+    }
+
+    .price-box{
+      max-width:700px;
+
+      margin:auto;
+
+      padding:50px 35px;
+
+      text-align:center;
+
+      background:#0b0b0b;
+
+      border:1px solid rgba(183,255,0,.25);
+
+      border-radius:22px;
+    }
+
+    .price-box small{
+      color:#b7ff00;
+
+      font-weight:800;
+
+      letter-spacing:2px;
+    }
+
+    .price-box h2{
+      font-size:45px;
+
+      margin:15px 0;
+    }
+
+    .old-price{
+      color:#555;
+
+      text-decoration:line-through;
+
+      font-size:18px;
+    }
+
+    .new-price{
+      color:#b7ff00;
+
+      font-size:42px;
+
+      font-weight:900;
+
+      margin-left:10px;
+    }
+
+    .price-box p{
+      color:#888;
+
+      margin:15px auto 25px;
+
+      max-width:520px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer{
+      padding:40px 0;
+
+      border-top:1px solid #1b1b1b;
+
+      color:#666;
+
+      font-size:13px;
+    }
+
+    .footer-inner{
+      display:flex;
+
+      align-items:center;
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .footer-brand{
+      color:#fff;
+
+      font-size:18px;
+
+      font-weight:800;
+    }
+
+    .footer-brand span{
+      color:#b7ff00;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:850px){
+
+      .menu{
+        display:none;
+      }
+
+      .course-hero-grid{
+        grid-template-columns:1fr;
+
+        text-align:center;
+      }
+
+      .course-hero p{
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+      .hero-buttons{
+        justify-content:center;
+      }
+
+      .hero-image{
+        order:-1;
+      }
+
+      .info-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .info-item:nth-child(2){
+        border-right:0;
+      }
+
+      .info-item:nth-child(3),
+      .info-item:nth-child(4){
+        border-top:1px solid #1d1d1d;
+      }
+
+      .learn-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+
+    @media(max-width:550px){
+
+      .nav{
+        min-height:70px;
+      }
+
+      .brand img{
+        width:105px;
+      }
+
+      .nav-button{
+        padding:9px 12px;
+
+        font-size:11px;
+      }
+
+      .course-hero{
+        padding:70px 0;
+      }
+
+      .course-hero h1{
+        font-size:43px;
+
+        letter-spacing:-2px;
+      }
+
+      .course-hero p{
+        font-size:14px;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-buttons{
+        width:100%;
+      }
+
+      .section{
+        padding:70px 0;
+      }
+
+      .section-header h2{
+        font-size:35px;
+      }
+
+      .price-box{
+        padding:35px 20px;
+      }
+
+      .old-price{
+        display:block;
+      }
+
+      .new-price{
+        display:block;
+
+        margin:5px 0 0;
+      }
+
+      .footer-inner{
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+
+      <img
+        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
+        alt="SNK IT Institute"
+      >
+
+    </a>
+
+    <nav class="menu">
+
+      <a href="index.html">
+        হোম
+      </a>
+
+      <a href="courses.html">
+        কোর্সসমূহ
+      </a>
+
+      <a href="index.html#about">
+        আমাদের সম্পর্কে
+      </a>
+
+      <a href="index.html#contact">
+        যোগাযোগ
+      </a>
+
+    </nav>
+
+    <a
+      href="#admission"
+      class="nav-button"
+    >
+      ভর্তি করুন →
+    </a>
+
+  </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="course-hero">
+
+  <div class="container course-hero-grid">
+
+
+    <div>
+
+      <div class="badge">
+        AI POWERED • CAREER PROGRAM
+      </div>
+
+      <h1>
+
+        AI-Powered
+
+        <br>
+
+        <span>UI/UX Career Program</span>
+
+      </h1>
+
+      <p>
+
+        আধুনিক UI/UX Design, Figma এবং
+        AI-powered design workflow শিখে
+        professional career-এর জন্য প্রস্তুত হোন।
+
+      </p>
+
+      <div class="hero-buttons">
+
+        <a
+          href="#admission"
+          class="btn primary"
+        >
+          এখনই ভর্তি করুন →
+        </a>
+
+        <a
+          href="#syllabus"
+          class="btn secondary"
+        >
+          Syllabus দেখুন
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-image">
+
+      <img
+        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg"
+        alt="AI Powered UI UX Career Program"
+      >
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     COURSE INFO
+========================= -->
+
+<section class="course-info-bar">
+
+  <div class="container info-grid">
+
+    <div class="info-item">
+
+      <strong>
+        3 Months
+      </strong>
+
+      <span>
+        Course Duration
+      </span>
+
+    </div>
+
+    <div class="info-item">
+
+      <strong>
+        AI
+      </strong>
+
+      <span>
+        Powered Workflow
+      </span>
+
+    </div>
+
+    <div class="info-item">
+
+      <strong>
+        Figma
+      </strong>
+
+      <span>
+        Industry Tool
+      </span>
+
+    </div>
+
+    <div class="info-item">
+
+      <strong>
+        Career
+      </strong>
+
+      <span>
+        Focused Program
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     LEARNING
+========================= -->
+
+<section class="section learn-section">
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <small>
+        WHAT YOU WILL LEARN
+      </small>
+
+      <h2>
+
+        UI/UX Design থেকে
+
+        <br>
+
+        <span>Career-ready Skill</span>
+
+      </h2>
+
+      <p>
+
+        Beginner থেকে professional level পর্যন্ত
+        structured learning-এর মাধ্যমে UI/UX
+        design-এর গুরুত্বপূর্ণ skillগুলো শিখুন।
+
+      </p>
+
+    </div>
+
+
+    <div class="learn-grid">
+
+
+      <article class="learn-card">
+
+        <div class="learn-number">
+          01
+        </div>
+
+        <h3>
+          UI/UX Fundamentals
+        </h3>
+
+        <p>
+          UI এবং UX-এর core concepts,
+          design principles এবং user-centered
+          design সম্পর্কে শিখুন।
+        </p>
+
+      </article>
+
+
+      <article class="learn-card">
+
+        <div class="learn-number">
+          02
+        </div>
+
+        <h3>
+          User Research
+        </h3>
+
+        <p>
+          User needs, problem identification,
+          research এবং persona তৈরি করার
+          practical process শিখুন।
+        </p>
+
+      </article>
+
+
+      <article class="learn-card">
+
+        <div class="learn-number">
+          03
+        </div>
+
+        <h3>
+          User Flow
+        </h3>
+
+        <p>
+          User journey এবং logical user flow
+          তৈরি করে better experience design
+          করতে শিখুন।
+        </p>
+
+      </article>
+
+
+      <article class="learn-card">
+
+        <div class="learn-number">
+          04
+        </div>
+
+        <h3>
+          Wireframing
+        </h3>
+
+        <p>
+          Low-fidelity থেকে high-fidelity
+          wireframe তৈরি করার practical
+          workflow শিখুন।
+        </p>
+
+      </article>
+
+
+      <article class="learn-card">
+
+        <div class="learn-number">
+          05
+        </div>
+
+        <h3>
+          Prototyping
+        </h3>
+
+        <p>
+          Interactive prototype তৈরি এবং
+          user interaction design করার
+          পদ্ধতি শিখুন।
+        </p>
+
+      </article>
+
+
+      <article class="learn-card">
+
+        <div class="learn-number">
+          06
+        </div>
+
+        <h3>
+          Design System
+        </h3>
+
+        <p>
+          Professional design system,
+          components, typography এবং
+          consistency তৈরি করতে শিখুন।
+        </p>
+
+      </article>
+
+
+      <article class="learn-card">
+
+        <div class="learn-number">
+          07
+        </div>
+
+        <h3>
+          Figma
+        </h3>
+
+        <p>
+          Industry-standard Figma workflow
+          ব্যবহার করে professional interface
+          design করুন।
+        </p>
+
+      </article>
+
+
+      <article class="learn-card">
+
+        <div class="learn-number">
+          08
+        </div>
+
+        <h3>
+          AI-Powered Design
+        </h3>
+
+        <p>
+          AI tools ব্যবহার করে research,
+          ideation, design এবং workflow
+          দ্রুত ও smart করুন।
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SYLLABUS
+========================= -->
+
+<section
+  class="section"
+  id="syllabus"
+>
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <small>
+        COURSE SYLLABUS
+      </small>
+
+      <h2>
+
+        সম্পূর্ণ
+
+        <span>
+          Learning Roadmap
+        </span>
+
+      </h2>
+
+      <p>
+        Step-by-step structured curriculum।
+      </p>
+
+    </div>
+
+
+    <div class="syllabus">
+
+
+      <div class="syllabus-item">
+
+        <div class="syllabus-number">
+          01
+        </div>
+
+        <div>
+
+          <h3>
+            UI/UX Fundamentals
+          </h3>
+
+          <p>
+            Design principles, UX mindset এবং
+            user-centered design।
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="syllabus-item">
+
+        <div class="syllabus-number">
+          02
+        </div>
+
+        <div>
+
+          <h3>
+            User Research & Persona
+          </h3>
+
+          <p>
+            User research, problem discovery
+            এবং persona development।
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="syllabus-item">
+
+        <div class="syllabus-number">
+          03
+        </div>
+
+        <div>
+
+          <h3>
+            User Flow & Wireframe
+          </h3>
+
+          <p>
+            User journey, information architecture
+            এবং wireframing।
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="syllabus-item">
+
+        <div class="syllabus-number">
+          04
+        </div>
+
+        <div>
+
+          <h3>
+            Figma & Interface Design
+          </h3>
+
+          <p>
+            Professional UI design এবং Figma
+            workflow।
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="syllabus-item">
+
+        <div class="syllabus-number">
+          05
+        </div>
+
+        <div>
+
+          <h3>
+            Prototype & Interaction
+          </h3>
+
+          <p>
+            Interactive prototype এবং
+            interaction design।
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="syllabus-item">
+
+        <div class="syllabus-number">
+          06
+        </div>
+
+        <div>
+
+          <h3>
+            Design System
+          </h3>
+
+          <p>
+            Components, typography, colors
+            এবং reusable design system।
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="syllabus-item">
+
+        <div class="syllabus-number">
+          07
+        </div>
+
+        <div>
+
+          <h3>
+            AI-Powered UI/UX Workflow
+          </h3>
+
+          <p>
+            Modern AI tools ব্যবহার করে
+            faster design workflow।
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="syllabus-item">
+
+        <div class="syllabus-number">
+          08
+        </div>
+
+        <div>
+
+          <h3>
+            Portfolio & Career Preparation
+          </h3>
+
+          <p>
+            Portfolio project, presentation এবং
+            career preparation।
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PRICE / ADMISSION
+========================= -->
+
+<section
+  class="price-section"
+  id="admission"
+>
+
+  <div class="container">
+
+    <div class="price-box">
+
+      <small>
+        SPECIAL OFFER
+      </small>
+
+      <h2>
+        Start Your UI/UX Journey
+      </h2>
+
+      <div>
+
+        <span class="old-price">
+          ৳11,500
+        </span>
+
+        <span class="new-price">
+          ৳7,490
+        </span>
+
+      </div>
+
+      <p>
+
+        ৩ মাসের AI-Powered UI/UX Career Program।
+        Limited-time offer-এ আজই ভর্তি করুন।
+
+      </p>
+
+      <a
+        href="tel:+8801705633700"
+        class="btn primary"
+      >
+        📞 ভর্তি হতে যোগাযোগ করুন →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <div>
+
+      <div class="footer-brand">
+
+        SNK <span>IT</span> Institute
+
+      </div>
+
+      Learn To Lead
+
+    </div>
+
+    <div>
+
+      © 2026 SNK IT Institute.
+      সর্বস্বত্ব সংরক্ষিত।
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+</body>
+</html>
