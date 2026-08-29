@@ -1807,23 +1807,25 @@
         <a
           href="index.html"
           class="active"
+          data-bn="হোম"
+          data-en="Home"
         >
           হোম
         </a>
 
-        <a href="courses.html">
+        <a href="courses.html" data-bn="কোর্সসমূহ" data-en="Courses">
           কোর্সসমূহ
         </a>
 
-        <a href="about.html">
+        <a href="about.html" data-bn="আমাদের সম্পর্কে" data-en="About Us">
           আমাদের সম্পর্কে
         </a>
 
-        <a href="blog.html">
+        <a href="blog.html" data-bn="ব্লগ" data-en="Blog">
           ব্লগ
         </a>
 
-        <a href="contact.html">
+        <a href="contact.html" data-bn="যোগাযোগ" data-en="Contact">
           যোগাযোগ
         </a>
 
@@ -1853,6 +1855,8 @@
         <a
           href="courses.html"
           class="offer"
+          data-bn="🎁 বিশেষ অফার"
+          data-en="🎁 Special Offer"
         >
           🎁 Special Offer
         </a>
@@ -1860,6 +1864,8 @@
         <a
           href="admission.html"
           class="nav-button"
+          data-bn="ভর্তি করুন →"
+          data-en="Apply Now →"
         >
           ভর্তি করুন →
         </a>
@@ -2845,6 +2851,49 @@
       applyTheme(newTheme);
 
       localStorage.setItem("snk-theme", newTheme);
+
+    });
+
+
+    /* ==============================
+       LANGUAGE TOGGLE (EN/Bangla)
+    ============================== */
+
+    const langToggleBtn =
+      document.getElementById("langToggle");
+
+
+    function applyLang(lang){
+
+      document.querySelectorAll("[data-bn]").forEach(function(el){
+
+        el.textContent =
+          (lang === "bn")
+            ? el.getAttribute("data-bn")
+            : el.getAttribute("data-en");
+
+      });
+
+      langToggleBtn.textContent =
+        (lang === "bn") ? "EN" : "বাংলা";
+
+    }
+
+
+    applyLang(localStorage.getItem("snk-lang") || "bn");
+
+
+    langToggleBtn.addEventListener("click", function(){
+
+      const current =
+        localStorage.getItem("snk-lang") || "bn";
+
+      const next =
+        (current === "bn") ? "en" : "bn";
+
+      applyLang(next);
+
+      localStorage.setItem("snk-lang", next);
 
     });
 
