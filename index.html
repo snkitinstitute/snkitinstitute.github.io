@@ -27,12 +27,37 @@
       scroll-behavior:smooth;
     }
 
+    :root{
+      --bg:#050505;
+      --bg-alt:#080808;
+      --bg-card:#0b0b0b;
+      --bg-input:#101010;
+      --text:#fff;
+      --text-muted:#a4a4a4;
+      --text-dim:#777;
+      --border:#181818;
+      --border-2:#222;
+    }
+
+    html.light-mode{
+      --bg:#f7f7f2;
+      --bg-alt:#f0f0ea;
+      --bg-card:#ffffff;
+      --bg-input:#ffffff;
+      --text:#111;
+      --text-muted:#555;
+      --text-dim:#777;
+      --border:#e2e2da;
+      --border-2:#dcdcd2;
+    }
+
     body{
       font-family:Arial, Helvetica, sans-serif;
-      background:#050505;
-      color:#fff;
+      background:var(--bg);
+      color:var(--text);
       line-height:1.6;
       overflow-x:hidden;
+      transition:background .3s ease, color .3s ease;
     }
 
     a{
@@ -64,18 +89,63 @@
       position:sticky;
       top:0;
       z-index:9999;
-      background:rgba(5,5,5,.95);
+
+      background:var(--bg);
+      opacity:.98;
+
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(255,255,255,.08);
+
+      border-bottom:1px solid var(--border);
+
+      transition:background .3s ease, border-color .3s ease;
+    }
+
+    .theme-toggle,
+    .lang-toggle{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      width:40px;
+      height:40px;
+
+      border:1px solid var(--border-2);
+
+      border-radius:8px;
+
+      background:var(--bg-input);
+
+      color:var(--text);
+
+      font-size:15px;
+      font-weight:800;
+
+      cursor:pointer;
+
+      transition:.3s;
+    }
+
+    .lang-toggle{
+      width:auto;
+      padding:0 12px;
+      font-size:12px;
+    }
+
+    .theme-toggle:hover,
+    .lang-toggle:hover{
+      border-color:#b7ff00;
+      color:#b7ff00;
     }
 
     .nav{
       min-height:82px;
+
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
+
+      gap:22px;
     }
 
     .brand{
@@ -93,17 +163,19 @@
     /* SEARCH */
 
     .search-box{
-      width:210px;
+      width:220px;
       height:42px;
 
       display:flex;
       align-items:center;
+
       gap:8px;
 
       padding:0 13px;
 
-      background:#101010;
-      border:1px solid #252525;
+      background:var(--bg-input);
+
+      border:1px solid var(--border-2);
       border-radius:9px;
 
       transition:.3s;
@@ -111,12 +183,15 @@
 
     .search-box:focus-within{
       border-color:rgba(183,255,0,.5);
-      box-shadow:0 0 0 3px rgba(183,255,0,.06);
+
+      box-shadow:
+        0 0 0 3px rgba(183,255,0,.06);
     }
 
     .search-box span{
-      color:#777;
-      font-size:21px;
+      color:var(--text-dim);
+      font-size:22px;
+      line-height:1;
     }
 
     .search-box input{
@@ -124,28 +199,27 @@
       border:0;
       outline:0;
       background:transparent;
-      color:#fff;
+      color:var(--text);
       font-size:13px;
     }
 
     .search-box input::placeholder{
-      color:#666;
+      color:var(--text-dim);
     }
 
 
-    /* MENU */
+    /* NAVIGATION */
 
     .menu{
       display:flex;
       align-items:center;
-      gap:22px;
+      gap:25px;
     }
 
     .menu a{
-      color:#bdbdbd;
-      font-size:13px;
+      color:var(--text-muted);
+      font-size:14px;
       transition:.3s;
-      white-space:nowrap;
     }
 
     .menu a:hover,
@@ -154,23 +228,29 @@
     }
 
 
-    /* HEADER ACTION */
+    /* HEADER ACTIONS */
 
     .header-actions{
       display:flex;
       align-items:center;
-      gap:9px;
+      gap:10px;
       flex-shrink:0;
     }
 
     .offer{
       color:#b7ff00;
+
       border:1px solid rgba(183,255,0,.25);
+
       background:rgba(183,255,0,.06);
-      padding:9px 12px;
+
+      padding:9px 13px;
+
       border-radius:8px;
-      font-size:11px;
+
+      font-size:12px;
       font-weight:700;
+
       transition:.3s;
     }
 
@@ -179,20 +259,25 @@
       border-color:#b7ff00;
     }
 
-    .login-button{
+    .nav-button{
       background:#b7ff00;
       color:#050505;
-      padding:10px 13px;
+
+      padding:10px 17px;
+
       border-radius:8px;
-      font-size:11px;
+
+      font-size:13px;
       font-weight:800;
+
       transition:.3s;
-      white-space:nowrap;
     }
 
-    .login-button:hover{
+    .nav-button:hover{
       transform:translateY(-2px);
-      box-shadow:0 10px 30px rgba(183,255,0,.2);
+
+      box-shadow:
+        0 10px 30px rgba(183,255,0,.20);
     }
 
 
@@ -202,6 +287,7 @@
 
     .hero{
       position:relative;
+
       min-height:calc(100vh - 82px);
 
       display:flex;
@@ -210,21 +296,25 @@
       overflow:hidden;
 
       background:
+
         radial-gradient(
           circle at 80% 40%,
           rgba(183,255,0,.12),
           transparent 30%
         ),
+
         radial-gradient(
           circle at 10% 80%,
           rgba(183,255,0,.05),
           transparent 25%
         ),
+
         #050505;
     }
 
     .hero::before{
       content:"";
+
       position:absolute;
 
       width:650px;
@@ -236,11 +326,13 @@
       transform:translateY(-50%);
 
       border:1px solid rgba(183,255,0,.07);
+
       border-radius:50%;
     }
 
     .hero::after{
       content:"";
+
       position:absolute;
 
       width:380px;
@@ -252,6 +344,7 @@
       transform:translateY(-50%);
 
       border:1px solid rgba(183,255,0,.05);
+
       border-radius:50%;
     }
 
@@ -259,12 +352,15 @@
       min-height:calc(100vh - 82px);
 
       display:grid;
+
       grid-template-columns:.95fr 1.05fr;
 
       align-items:center;
+
       gap:45px;
 
       position:relative;
+
       z-index:2;
     }
 
@@ -274,15 +370,18 @@
 
     .badge{
       display:inline-flex;
+
       align-items:center;
       gap:9px;
 
       padding:8px 15px;
+
       margin-bottom:25px;
 
       color:#b7ff00;
 
       border:1px solid rgba(183,255,0,.28);
+
       background:rgba(183,255,0,.06);
 
       border-radius:50px;
@@ -294,15 +393,21 @@
     .badge-dot{
       width:7px;
       height:7px;
+
       background:#b7ff00;
+
       border-radius:50%;
+
       box-shadow:0 0 12px #b7ff00;
     }
 
     .hero h1{
       font-size:clamp(46px,6vw,78px);
+
       line-height:1.05;
+
       letter-spacing:-4px;
+
       margin-bottom:25px;
     }
 
@@ -312,9 +417,13 @@
 
     .hero-description{
       max-width:650px;
-      color:#a4a4a4;
+
+      color:var(--text-muted);
+
       font-size:17px;
+
       line-height:1.85;
+
       margin-bottom:32px;
     }
 
@@ -326,6 +435,7 @@
 
     .btn{
       display:inline-flex;
+
       align-items:center;
       justify-content:center;
 
@@ -346,12 +456,14 @@
 
     .primary:hover{
       transform:translateY(-3px);
-      box-shadow:0 12px 35px rgba(183,255,0,.2);
+
+      box-shadow:
+        0 12px 35px rgba(183,255,0,.20);
     }
 
     .secondary{
-      border:1px solid #333;
-      color:#fff;
+      border:1px solid var(--border-2);
+      color:var(--text);
     }
 
     .secondary:hover{
@@ -364,9 +476,11 @@
 
     .hero-visual{
       position:relative;
+
       min-height:620px;
 
       display:flex;
+
       align-items:center;
       justify-content:center;
 
@@ -376,23 +490,30 @@
     .hero-main-image{
       width:100%;
       max-width:620px;
+      height:auto;
+
+      object-fit:contain;
 
       position:relative;
       z-index:3;
 
-      filter:drop-shadow(
-        0 0 45px rgba(183,255,0,.12)
-      );
+      filter:
+        drop-shadow(
+          0 0 45px rgba(183,255,0,.12)
+        );
 
-      transition:.5s ease;
+      transition:
+        transform .5s ease,
+        filter .5s ease;
     }
 
     .hero-main-image:hover{
       transform:scale(1.025);
 
-      filter:drop-shadow(
-        0 0 65px rgba(183,255,0,.20)
-      );
+      filter:
+        drop-shadow(
+          0 0 65px rgba(183,255,0,.20)
+        );
     }
 
 
@@ -401,9 +522,12 @@
     ===================================================== */
 
     .features{
-      background:#080808;
-      border-top:1px solid #181818;
-      border-bottom:1px solid #181818;
+      background:var(--bg-alt);
+
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+
+      transition:background .3s ease, border-color .3s ease;
     }
 
     .feature-grid{
@@ -413,8 +537,10 @@
 
     .feature{
       padding:28px 15px;
+
       text-align:center;
-      border-right:1px solid #181818;
+
+      border-right:1px solid var(--border);
     }
 
     .feature:last-child{
@@ -423,14 +549,77 @@
 
     .feature strong{
       display:block;
+
       color:#b7ff00;
+
       font-size:25px;
+
       margin-bottom:3px;
     }
 
     .feature span{
-      color:#777;
+      color:var(--text-dim);
       font-size:13px;
+    }
+
+
+    /* =====================================================
+       FREE COURSE BUTTON
+    ===================================================== */
+
+    .free-course-wrap{
+      padding:22px 0;
+
+      background:var(--bg);
+
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+
+      transition:background .3s ease, border-color .3s ease;
+    }
+
+    .free-course-button{
+      width:100%;
+
+      min-height:70px;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      text-align:center;
+
+      padding:16px 25px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(183,255,0,.08),
+          rgba(183,255,0,.18),
+          rgba(183,255,0,.08)
+        );
+
+      border:1px solid rgba(183,255,0,.35);
+
+      border-radius:12px;
+
+      color:#b7ff00;
+
+      font-size:17px;
+      font-weight:900;
+
+      transition:.3s;
+    }
+
+    .free-course-button:hover{
+      transform:translateY(-3px);
+
+      background:#b7ff00;
+      color:#050505;
+
+      box-shadow:
+        0 15px 35px rgba(183,255,0,.15);
     }
 
 
@@ -462,8 +651,11 @@
 
     .section-header h2{
       font-size:clamp(36px,5vw,58px);
+
       line-height:1.08;
+
       letter-spacing:-2px;
+
       margin-bottom:17px;
     }
 
@@ -472,8 +664,10 @@
     }
 
     .section-header p{
-      color:#8d8d8d;
+      color:var(--text-muted);
+
       font-size:16px;
+
       line-height:1.8;
     }
 
@@ -483,12 +677,16 @@
     ===================================================== */
 
     .why-section{
-      background:#050505;
+      background:var(--bg);
+
+      transition:background .3s ease;
     }
 
     .why-grid{
       display:grid;
+
       grid-template-columns:repeat(3,1fr);
+
       gap:20px;
     }
 
@@ -497,9 +695,10 @@
 
       padding:30px;
 
-      background:#0b0b0b;
+      background:var(--bg-card);
 
-      border:1px solid #202020;
+      border:1px solid var(--border-2);
+
       border-radius:18px;
 
       transition:.35s;
@@ -509,6 +708,7 @@
 
     .why-card:hover{
       transform:translateY(-7px);
+
       border-color:rgba(183,255,0,.45);
     }
 
@@ -517,7 +717,7 @@
         linear-gradient(
           145deg,
           rgba(183,255,0,.07),
-          #0b0b0b 55%
+          var(--bg-card) 55%
         );
 
       border-color:rgba(183,255,0,.25);
@@ -533,6 +733,7 @@
       margin-bottom:20px;
 
       background:rgba(183,255,0,.09);
+
       border-radius:14px;
 
       font-size:25px;
@@ -555,8 +756,10 @@
     }
 
     .why-card p{
-      color:#858585;
+      color:var(--text-muted);
+
       font-size:14px;
+
       line-height:1.8;
 
       min-height:100px;
@@ -566,103 +769,20 @@
 
     .why-card a{
       color:#b7ff00;
+
       font-size:13px;
       font-weight:800;
     }
-
-
-    /* =====================================================
-       FREE COURSE BUTTON
-    ===================================================== */
-
-    .free-course-box{
-      margin-top:35px;
-    }
-
-    .free-course-button{
-      width:100%;
-
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-
-      gap:20px;
-
-      padding:20px 25px;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(183,255,0,.12),
-          rgba(183,255,0,.04)
-        );
-
-      border:1px solid rgba(183,255,0,.28);
-      border-radius:14px;
-
-      transition:.3s;
-    }
-
-    .free-course-button:hover{
-      border-color:#b7ff00;
-      transform:translateY(-3px);
-
-      box-shadow:
-        0 15px 40px
-        rgba(183,255,0,.08);
-    }
-
-    .free-course-left{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
-
-    .free-icon{
-      width:48px;
-      height:48px;
-
-      display:grid;
-      place-items:center;
-
-      background:#b7ff00;
-      color:#050505;
-
-      border-radius:12px;
-
-      font-size:22px;
-      flex-shrink:0;
-    }
-
-    .free-course-text strong{
-      display:block;
-      color:#fff;
-      font-size:16px;
-      margin-bottom:2px;
-    }
-
-    .free-course-text span{
-      color:#888;
-      font-size:12px;
-    }
-
-    .free-arrow{
-      color:#b7ff00;
-      font-size:22px;
-    }
-
-
-    /* =====================================================
-       WHY BOTTOM
-    ===================================================== */
 
     .why-bottom{
       margin-top:35px;
 
       display:grid;
+
       grid-template-columns:repeat(4,1fr);
 
-      border:1px solid #202020;
+      border:1px solid var(--border-2);
+
       border-radius:15px;
 
       overflow:hidden;
@@ -671,9 +791,9 @@
     .why-bottom div{
       padding:20px;
 
-      background:#090909;
+      background:var(--bg-alt);
 
-      border-right:1px solid #202020;
+      border-right:1px solid var(--border-2);
     }
 
     .why-bottom div:last-child{
@@ -682,13 +802,16 @@
 
     .why-bottom strong{
       display:block;
-      color:#fff;
+
+      color:var(--text);
+
       font-size:14px;
+
       margin-bottom:3px;
     }
 
     .why-bottom span{
-      color:#666;
+      color:var(--text-dim);
       font-size:12px;
     }
 
@@ -698,12 +821,16 @@
     ===================================================== */
 
     .courses{
-      background:#080808;
+      background:var(--bg-alt);
+
+      transition:background .3s ease;
     }
 
     .course-grid{
       display:grid;
+
       grid-template-columns:repeat(4,1fr);
+
       gap:18px;
     }
 
@@ -715,9 +842,10 @@
 
       padding:20px;
 
-      background:#101010;
+      background:var(--bg-input);
 
-      border:1px solid #222;
+      border:1px solid var(--border-2);
+
       border-radius:18px;
 
       transition:.35s;
@@ -731,12 +859,12 @@
       border-color:rgba(183,255,0,.45);
 
       box-shadow:
-        0 20px 45px
-        rgba(0,0,0,.25);
+        0 20px 45px rgba(0,0,0,.25);
     }
 
     .course-image{
       width:100%;
+
       height:180px;
 
       object-fit:cover;
@@ -745,9 +873,9 @@
 
       margin-bottom:18px;
 
-      border:1px solid #222;
+      border:1px solid var(--border-2);
 
-      background:#080808;
+      background:var(--bg-alt);
     }
 
     .course-tag{
@@ -764,6 +892,7 @@
       border-radius:5px;
 
       font-size:9px;
+
       font-weight:800;
 
       letter-spacing:1px;
@@ -773,14 +902,17 @@
 
     .course-card h3{
       font-size:19px;
+
       line-height:1.35;
+
       margin-bottom:10px;
     }
 
     .course-card p{
-      color:#858585;
+      color:var(--text-muted);
 
       font-size:13px;
+
       line-height:1.75;
 
       min-height:125px;
@@ -790,10 +922,13 @@
 
     .course-info{
       display:flex;
+
       flex-direction:column;
+
       gap:5px;
 
-      color:#777;
+      color:var(--text-dim);
+
       font-size:12px;
 
       margin-bottom:14px;
@@ -801,14 +936,16 @@
 
     .price{
       display:flex;
+
       align-items:center;
+
       gap:8px;
 
       margin-bottom:18px;
     }
 
     .price del{
-      color:#555;
+      color:var(--text-dim);
       font-size:13px;
     }
 
@@ -826,10 +963,11 @@
 
       padding:10px;
 
-      border:1px solid #333;
+      border:1px solid var(--border-2);
+
       border-radius:8px;
 
-      color:#fff;
+      color:var(--text);
 
       font-size:12px;
       font-weight:800;
@@ -839,23 +977,28 @@
 
     .course-button:hover{
       background:#b7ff00;
+
       border-color:#b7ff00;
+
       color:#050505;
     }
 
     .courses-action{
       display:flex;
+
       justify-content:center;
+
       margin-top:38px;
     }
 
     .all-courses-button{
       padding:13px 24px;
 
-      border:1px solid #333;
+      border:1px solid var(--border-2);
+
       border-radius:9px;
 
-      color:#fff;
+      color:var(--text);
 
       font-size:13px;
       font-weight:800;
@@ -865,8 +1008,81 @@
 
     .all-courses-button:hover{
       color:#050505;
+
       background:#b7ff00;
+
       border-color:#b7ff00;
+    }
+
+
+    /* =====================================================
+       MENTOR
+    ===================================================== */
+
+    .mentor-section{
+      background:var(--bg);
+
+      transition:background .3s ease;
+    }
+
+    .mentor-card{
+      display:flex;
+
+      align-items:center;
+      justify-content:space-between;
+
+      gap:30px;
+
+      padding:35px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.07),
+          var(--bg-card)
+        );
+
+      border:1px solid rgba(183,255,0,.22);
+
+      border-radius:20px;
+    }
+
+    .mentor-content small{
+      color:#b7ff00;
+
+      font-size:11px;
+      font-weight:800;
+
+      letter-spacing:2px;
+    }
+
+    .mentor-content h2{
+      font-size:32px;
+
+      margin:10px 0;
+    }
+
+    .mentor-content p{
+      color:var(--text-muted);
+
+      max-width:650px;
+
+      font-size:14px;
+    }
+
+    .mentor-button{
+      flex-shrink:0;
+
+      padding:13px 22px;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      border-radius:9px;
+
+      font-size:13px;
+      font-weight:800;
     }
 
 
@@ -884,12 +1100,34 @@
       overflow:hidden;
 
       background:
+
         radial-gradient(
           circle at center,
           rgba(183,255,0,.13),
           transparent 45%
         ),
-        #050505;
+
+        var(--bg);
+
+      transition:background .3s ease;
+    }
+
+    .cta::before{
+      content:"";
+
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      left:50%;
+      top:50%;
+
+      transform:translate(-50%,-50%);
+
+      border:1px solid rgba(183,255,0,.05);
+
+      border-radius:50%;
     }
 
     .cta-content{
@@ -914,6 +1152,7 @@
       font-size:clamp(40px,6vw,70px);
 
       line-height:1.05;
+
       letter-spacing:-3px;
 
       margin-bottom:20px;
@@ -928,15 +1167,18 @@
 
       margin:0 auto 30px;
 
-      color:#888;
+      color:var(--text-muted);
 
       font-size:16px;
     }
 
     .cta-buttons{
       display:flex;
+
       justify-content:center;
+
       flex-wrap:wrap;
+
       gap:13px;
     }
 
@@ -948,9 +1190,15 @@
     .footer{
       padding:65px 0 25px;
 
-      border-top:1px solid #1b1b1b;
+      border-top:1px solid var(--border);
 
-      background:#050505;
+      background:var(--bg);
+
+      color:var(--text-dim);
+
+      font-size:13px;
+
+      transition:background .3s ease, border-color .3s ease;
     }
 
     .footer-grid{
@@ -967,12 +1215,13 @@
     }
 
     .footer-brand{
-      color:#fff;
+      color:var(--text);
 
-      font-size:23px;
+      font-size:22px;
+
       font-weight:800;
 
-      margin-bottom:2px;
+      margin-bottom:3px;
     }
 
     .footer-brand span{
@@ -981,108 +1230,101 @@
 
     .footer-tagline{
       color:#b7ff00;
-      font-size:13px;
+
+      font-size:12px;
+
+      font-weight:700;
+
       margin-bottom:15px;
     }
 
     .footer-description{
-      max-width:330px;
+      max-width:400px;
 
-      color:#777;
+      color:var(--text-dim);
 
       font-size:13px;
+
       line-height:1.8;
     }
 
     .footer-column h3{
-      color:#fff;
+      color:var(--text);
 
       font-size:14px;
 
-      margin-bottom:18px;
+      margin-bottom:17px;
     }
-
-
-    /* SOCIAL */
 
     .social-links{
       display:flex;
-      flex-wrap:wrap;
+
+      flex-direction:column;
+
       gap:9px;
     }
 
     .social-links a{
-      width:38px;
-      height:38px;
-
-      display:grid;
-      place-items:center;
-
-      background:#101010;
-
-      border:1px solid #242424;
-
-      border-radius:9px;
-
-      font-size:12px;
-      font-weight:700;
-
-      color:#aaa;
+      color:var(--text-muted);
 
       transition:.3s;
     }
 
     .social-links a:hover{
-      color:#050505;
-      background:#b7ff00;
-      border-color:#b7ff00;
-      transform:translateY(-3px);
+      color:#b7ff00;
+
+      transform:translateX(4px);
     }
 
-
-    /* PAYMENT */
-
     .payment-text{
-      color:#777;
-      font-size:12px;
-      margin-bottom:15px;
+      color:var(--text-dim);
+
+      margin-bottom:14px;
     }
 
     .payment-methods{
       display:flex;
+
       flex-wrap:wrap;
+
       gap:10px;
     }
 
     .payment-card{
-      min-width:115px;
-
-      padding:13px 14px;
+      min-width:120px;
 
       display:flex;
+
       flex-direction:column;
+
       gap:2px;
 
-      background:#101010;
+      padding:11px 13px;
 
-      border:1px solid #242424;
+      background:var(--bg-input);
 
-      border-radius:10px;
+      border:1px solid var(--border-2);
+
+      border-radius:9px;
 
       transition:.3s;
     }
 
-    .payment-card:hover{
+    a.payment-card:hover{
       transform:translateY(-3px);
-      border-color:#444;
+
+      border-color:#b7ff00;
     }
 
     .payment-card strong{
-      font-size:14px;
+      color:var(--text);
+
+      font-size:13px;
     }
 
     .payment-card span{
-      color:#777;
+      color:var(--text-dim);
+
       font-size:10px;
     }
 
@@ -1091,21 +1333,15 @@
     }
 
     .payment-card.visa strong{
-      color:#1a73e8;
+      color:#fff;
+      font-style:italic;
     }
 
     .payment-card.mastercard strong{
-      color:#ff8a00;
+      color:#fff;
     }
 
-
-    /* FOOTER BOTTOM */
-
     .footer-bottom{
-      padding-top:22px;
-
-      border-top:1px solid #181818;
-
       display:flex;
 
       align-items:center;
@@ -1113,13 +1349,13 @@
 
       gap:20px;
 
-      color:#555;
+      padding-top:22px;
+
+      border-top:1px solid var(--border);
+
+      color:var(--text-dim);
 
       font-size:11px;
-    }
-
-    .footer-bottom-right{
-      text-align:right;
     }
 
 
@@ -1130,11 +1366,11 @@
     @media(max-width:1100px){
 
       .search-box{
-        width:170px;
+        width:180px;
       }
 
       .menu{
-        gap:14px;
+        gap:16px;
       }
 
       .course-grid{
@@ -1164,7 +1400,9 @@
 
       .hero-box{
         grid-template-columns:1fr;
+
         text-align:center;
+
         min-height:auto;
       }
 
@@ -1183,6 +1421,7 @@
 
       .hero-visual{
         min-height:500px;
+
         padding-bottom:70px;
       }
 
@@ -1211,8 +1450,6 @@
         width:90%;
       }
 
-      /* HEADER */
-
       .nav{
         min-height:70px;
       }
@@ -1221,7 +1458,8 @@
         width:105px;
       }
 
-      .menu{
+      .menu,
+      .offer{
         display:none;
       }
 
@@ -1229,13 +1467,10 @@
         margin-left:auto;
       }
 
-      .offer{
-        display:none;
-      }
+      .nav-button{
+        padding:9px 13px;
 
-      .login-button{
-        padding:9px 12px;
-        font-size:10px;
+        font-size:11px;
       }
 
 
@@ -1245,28 +1480,37 @@
         min-height:auto;
       }
 
+      .hero-box{
+        min-height:auto;
+      }
+
       .hero-content{
         padding:70px 0 15px;
       }
 
       .badge{
         font-size:10px;
+
         padding:7px 11px;
       }
 
       .hero h1{
         font-size:47px;
+
         letter-spacing:-2.5px;
+
         margin-bottom:20px;
       }
 
       .hero-description{
         font-size:15px;
+
         line-height:1.75;
       }
 
       .btn{
         width:100%;
+
         padding:13px 20px;
       }
 
@@ -1276,12 +1520,24 @@
 
       .hero-visual{
         min-height:auto;
+
         padding:25px 0 65px;
       }
 
       .hero-main-image{
         width:100%;
         max-width:500px;
+      }
+
+
+      /* FREE COURSE */
+
+      .free-course-button{
+        font-size:14px;
+
+        min-height:62px;
+
+        padding:14px 18px;
       }
 
 
@@ -1299,7 +1555,10 @@
         border-right:0;
       }
 
-      .feature:nth-child(3),
+      .feature:nth-child(3){
+        border-top:1px solid #181818;
+      }
+
       .feature:nth-child(4){
         border-top:1px solid #181818;
       }
@@ -1317,6 +1576,7 @@
 
       .section-header h2{
         font-size:36px;
+
         letter-spacing:-1.5px;
       }
 
@@ -1329,6 +1589,7 @@
 
       .why-grid{
         grid-template-columns:1fr;
+
         gap:15px;
       }
 
@@ -1352,25 +1613,13 @@
         border-right:0;
       }
 
-
-      /* FREE COURSE */
-
-      .free-course-button{
-        padding:16px;
+      .why-bottom div:nth-child(3){
+        border-bottom:0;
       }
 
-      .free-course-text strong{
-        font-size:14px;
-      }
-
-      .free-course-text span{
-        font-size:10px;
-      }
-
-      .free-icon{
-        width:42px;
-        height:42px;
-        font-size:18px;
+      .why-bottom div:nth-child(4){
+        border-right:0;
+        border-bottom:0;
       }
 
 
@@ -1378,6 +1627,7 @@
 
       .course-grid{
         grid-template-columns:1fr;
+
         gap:15px;
       }
 
@@ -1387,11 +1637,35 @@
 
       .course-image{
         height:auto;
+
         aspect-ratio:16/9;
+
+        object-fit:cover;
       }
 
       .course-card p{
         min-height:auto;
+      }
+
+
+      /* MENTOR */
+
+      .mentor-card{
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        padding:25px;
+      }
+
+      .mentor-content h2{
+        font-size:27px;
+      }
+
+      .mentor-button{
+        width:100%;
+
+        text-align:center;
       }
 
 
@@ -1403,6 +1677,7 @@
 
       .cta h2{
         font-size:43px;
+
         letter-spacing:-2px;
       }
 
@@ -1422,11 +1697,12 @@
       /* FOOTER */
 
       .footer{
-        padding:45px 0 22px;
+        padding:45px 0 25px;
       }
 
       .footer-grid{
         grid-template-columns:1fr;
+
         gap:35px;
       }
 
@@ -1436,11 +1712,10 @@
 
       .footer-bottom{
         flex-direction:column;
-        align-items:flex-start;
-      }
 
-      .footer-bottom-right{
-        text-align:left;
+        align-items:flex-start;
+
+        gap:8px;
       }
 
     }
@@ -1456,17 +1731,33 @@
         font-size:42px;
       }
 
+      .course-image{
+        aspect-ratio:16/9;
+      }
+
       .why-bottom{
         grid-template-columns:1fr;
       }
 
-      .why-bottom div{
+      .why-bottom div,
+      .why-bottom div:nth-child(2),
+      .why-bottom div:nth-child(3),
+      .why-bottom div:nth-child(4){
         border-right:0;
+
         border-bottom:1px solid #202020;
       }
 
       .why-bottom div:last-child{
         border-bottom:0;
+      }
+
+      .payment-methods{
+        flex-direction:column;
+      }
+
+      .payment-card{
+        width:100%;
       }
 
     }
@@ -1486,19 +1777,16 @@
 
     <div class="container nav">
 
-      <!-- LOGO -->
-
-      <a href="index.html" class="brand">
-
+      <a
+        href="index.html"
+        class="brand"
+      >
         <img
-          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
+          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
           alt="SNK IT Institute"
         >
-
       </a>
 
-
-      <!-- SEARCH -->
 
       <div class="search-box">
 
@@ -1514,11 +1802,12 @@
       </div>
 
 
-      <!-- MENU -->
-
       <nav class="menu">
 
-        <a href="index.html" class="active">
+        <a
+          href="index.html"
+          class="active"
+        >
           হোম
         </a>
 
@@ -1530,6 +1819,10 @@
           আমাদের সম্পর্কে
         </a>
 
+        <a href="blog.html">
+          ব্লগ
+        </a>
+
         <a href="contact.html">
           যোগাযোগ
         </a>
@@ -1537,9 +1830,25 @@
       </nav>
 
 
-      <!-- ACTIONS -->
-
       <div class="header-actions">
+
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle dark/light mode"
+        >
+          🌙
+        </button>
+
+        <button
+          id="langToggle"
+          class="lang-toggle"
+          type="button"
+          aria-label="Toggle language"
+        >
+          EN
+        </button>
 
         <a
           href="courses.html"
@@ -1549,10 +1858,10 @@
         </a>
 
         <a
-          href="login.html"
-          class="login-button"
+          href="admission.html"
+          class="nav-button"
         >
-          Login / Sign Up →
+          ভর্তি করুন →
         </a>
 
       </div>
@@ -1562,7 +1871,6 @@
   </header>
 
 
-
   <!-- =====================================================
        MAIN
   ===================================================== -->
@@ -1570,16 +1878,13 @@
   <main>
 
 
-    <!-- ===================================================
-         HERO
-    =================================================== -->
+    <!-- HERO -->
 
     <section class="hero" id="home">
 
       <div class="container">
 
         <div class="hero-box">
-
 
           <div class="hero-content">
 
@@ -1614,7 +1919,7 @@
 
               <br><br>
 
-              <strong style="color:#fff;">
+              <strong style="color:var(--text);">
                 SNK IT Institute — Learn To Lead.
               </strong>
 
@@ -1652,7 +1957,6 @@
 
           </div>
 
-
         </div>
 
       </div>
@@ -1660,10 +1964,7 @@
     </section>
 
 
-
-    <!-- ===================================================
-         FEATURES
-    =================================================== -->
+    <!-- FEATURES -->
 
     <section class="features">
 
@@ -1672,54 +1973,23 @@
         <div class="feature-grid">
 
           <div class="feature">
-
-            <strong>
-              100%
-            </strong>
-
-            <span>
-              Practical Learning
-            </span>
-
+            <strong>100%</strong>
+            <span>Practical Learning</span>
           </div>
 
-
           <div class="feature">
-
-            <strong>
-              AI
-            </strong>
-
-            <span>
-              Powered Skills
-            </span>
-
+            <strong>AI</strong>
+            <span>Powered Skills</span>
           </div>
 
-
           <div class="feature">
-
-            <strong>
-              Expert
-            </strong>
-
-            <span>
-              Instructor Support
-            </span>
-
+            <strong>Expert</strong>
+            <span>Instructor Support</span>
           </div>
 
-
           <div class="feature">
-
-            <strong>
-              Career
-            </strong>
-
-            <span>
-              Guidance
-            </span>
-
+            <strong>Career</strong>
+            <span>Guidance</span>
           </div>
 
         </div>
@@ -1729,10 +1999,31 @@
     </section>
 
 
+    <!-- =====================================================
+         FREE COURSE BUTTON
+         পরে snkacademy.github.io তৈরি করবেন
+    ===================================================== -->
 
-    <!-- ===================================================
-         WHY
-    =================================================== -->
+    <section class="free-course-wrap">
+
+      <div class="container">
+
+        <a
+          href="https://snkacademy.github.io"
+          class="free-course-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          🚀 যাত্রা শুরু হলো — FREE COURSE
+          <span style="margin-left:10px;">→</span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- WHY -->
 
     <section
       class="section why-section"
@@ -1740,7 +2031,6 @@
     >
 
       <div class="container">
-
 
         <div class="section-header">
 
@@ -1775,9 +2065,7 @@
         </div>
 
 
-
         <div class="why-grid">
-
 
           <article class="why-card">
 
@@ -1806,7 +2094,6 @@
             </a>
 
           </article>
-
 
 
           <article class="why-card featured">
@@ -1839,7 +2126,6 @@
           </article>
 
 
-
           <article class="why-card">
 
             <div class="why-icon">
@@ -1869,117 +2155,39 @@
 
           </article>
 
-
         </div>
 
-
-
-        <!-- FREE COURSE LONG BUTTON -->
-
-        <div class="free-course-box">
-
-          <a
-            href="https://snkacademy.github.io"
-            class="free-course-button"
-          >
-
-            <div class="free-course-left">
-
-              <div class="free-icon">
-                🎓
-              </div>
-
-              <div class="free-course-text">
-
-                <strong>
-                  যাত্রা শুরু হলো — Free Course
-                </strong>
-
-                <span>
-                  বিনামূল্যে শেখার মাধ্যমে আপনার journey শুরু করুন
-                </span>
-
-              </div>
-
-            </div>
-
-            <div class="free-arrow">
-              →
-            </div>
-
-          </a>
-
-        </div>
-
-
-
-        <!-- TRUST -->
 
         <div class="why-bottom">
 
           <div>
-
-            <strong>
-              Practical
-            </strong>
-
-            <span>
-              Project Based Learning
-            </span>
-
+            <strong>Practical</strong>
+            <span>Project Based Learning</span>
           </div>
 
-
           <div>
-
-            <strong>
-              Modern
-            </strong>
-
-            <span>
-              AI & Technology
-            </span>
-
+            <strong>Modern</strong>
+            <span>AI & Technology</span>
           </div>
 
-
           <div>
-
-            <strong>
-              Support
-            </strong>
-
-            <span>
-              Career Guidance
-            </span>
-
+            <strong>Support</strong>
+            <span>Career Guidance</span>
           </div>
 
-
           <div>
-
-            <strong>
-              Certificate
-            </strong>
-
-            <span>
-              Course Completion
-            </span>
-
+            <strong>Certificate</strong>
+            <span>Course Completion</span>
           </div>
 
         </div>
-
 
       </div>
 
     </section>
 
 
-
-    <!-- ===================================================
-         COURSES
-    =================================================== -->
+    <!-- COURSES -->
 
     <section
       class="section courses"
@@ -1987,7 +2195,6 @@
     >
 
       <div class="container">
-
 
         <div class="section-header">
 
@@ -2017,7 +2224,6 @@
           </p>
 
         </div>
-
 
 
         <div
@@ -2090,7 +2296,6 @@
           </article>
 
 
-
           <!-- COURSE 02 -->
 
           <article
@@ -2155,7 +2360,6 @@
           </article>
 
 
-
           <!-- COURSE 03 -->
 
           <article
@@ -2218,7 +2422,6 @@
             </a>
 
           </article>
-
 
 
           <!-- COURSE 04 -->
@@ -2288,7 +2491,6 @@
         </div>
 
 
-
         <div class="courses-action">
 
           <a
@@ -2300,16 +2502,55 @@
 
         </div>
 
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MENTOR PROFILE
+         আলাদা mentor.html page পরে তৈরি করবেন
+    ===================================================== -->
+
+    <section class="section mentor-section">
+
+      <div class="container">
+
+        <div class="mentor-card">
+
+          <div class="mentor-content">
+
+            <small>
+              MEET OUR MENTOR
+            </small>
+
+            <h2>
+              Expert Mentor থেকে শিখুন
+            </h2>
+
+            <p>
+              আমাদের mentor profile, experience,
+              expertise এবং teaching journey সম্পর্কে
+              বিস্তারিত জানতে দেখুন।
+            </p>
+
+          </div>
+
+          <a
+            href="mentor.html"
+            class="mentor-button"
+          >
+            Mentor Profile দেখুন →
+          </a>
+
+        </div>
 
       </div>
 
     </section>
 
 
-
-    <!-- ===================================================
-         CTA
-    =================================================== -->
+    <!-- CTA -->
 
     <section
       class="cta"
@@ -2364,9 +2605,7 @@
 
     </section>
 
-
   </main>
-
 
 
   <!-- =====================================================
@@ -2397,12 +2636,11 @@
 
             Practical skills, AI-powered learning
             এবং career-focused training-এর মাধ্যমে
-            আপনার ভবিষ্যৎ গড়ে তুলুন।
+            আপনার ভবিষ্যৎ গড়ে তুলুন।
 
           </p>
 
         </div>
-
 
 
         <!-- SOCIAL -->
@@ -2419,51 +2657,45 @@
               href="https://www.facebook.com/snkitinstitute"
               target="_blank"
               rel="noopener noreferrer"
-              title="Facebook"
             >
-              f
+              Facebook
             </a>
 
             <a
               href="https://www.instagram.com/snkitinstitute"
               target="_blank"
               rel="noopener noreferrer"
-              title="Instagram"
             >
-              ◎
+              Instagram
             </a>
 
             <a
               href="https://www.youtube.com/@snkitinstitute"
               target="_blank"
               rel="noopener noreferrer"
-              title="YouTube"
             >
-              ▶
+              YouTube
             </a>
 
             <a
               href="https://www.tiktok.com/@snkitinstitute"
               target="_blank"
               rel="noopener noreferrer"
-              title="TikTok"
             >
-              ♪
+              TikTok
             </a>
 
             <a
               href="https://www.linkedin.com/company/snkitinstitute"
               target="_blank"
               rel="noopener noreferrer"
-              title="LinkedIn"
             >
-              in
+              LinkedIn
             </a>
 
           </div>
 
         </div>
-
 
 
         <!-- PAYMENT -->
@@ -2481,12 +2713,11 @@
           <div class="payment-methods">
 
 
-            <!-- BKASH -->
+            <!-- bKash -->
 
             <a
               href="tel:01705633700"
               class="payment-card bkash"
-              title="bKash: 01705633700"
             >
 
               <strong>
@@ -2538,18 +2769,21 @@
       </div>
 
 
-
       <!-- FOOTER BOTTOM -->
 
       <div class="footer-bottom">
 
-        <div>
+        <div class="footer-bottom-left">
+
           © 2026 SNK IT Institute.
           সর্বস্বত্ব সংরক্ষিত।
+
         </div>
 
         <div class="footer-bottom-right">
+
           Learn To Lead • Moulvibazar
+
         </div>
 
       </div>
@@ -2560,12 +2794,60 @@
   </footer>
 
 
-
   <!-- =====================================================
        SEARCH SCRIPT
   ===================================================== -->
 
   <script>
+
+    /* ==============================
+       THEME TOGGLE (Dark/Light)
+    ============================== */
+
+    const themeToggleBtn =
+      document.getElementById("themeToggle");
+
+    const htmlEl =
+      document.documentElement;
+
+
+    function applyTheme(theme){
+
+      if(theme === "light"){
+
+        htmlEl.classList.add("light-mode");
+        themeToggleBtn.textContent = "☀️";
+
+      }else{
+
+        htmlEl.classList.remove("light-mode");
+        themeToggleBtn.textContent = "🌙";
+
+      }
+
+    }
+
+
+    const savedTheme =
+      localStorage.getItem("snk-theme") || "dark";
+
+    applyTheme(savedTheme);
+
+
+    themeToggleBtn.addEventListener("click", function(){
+
+      const isLight =
+        htmlEl.classList.contains("light-mode");
+
+      const newTheme =
+        isLight ? "dark" : "light";
+
+      applyTheme(newTheme);
+
+      localStorage.setItem("snk-theme", newTheme);
+
+    });
+
 
     const searchInput =
       document.getElementById("courseSearch");
@@ -2574,42 +2856,38 @@
       document.querySelectorAll(".course-card");
 
 
-    if(searchInput){
+    searchInput.addEventListener("input", function(){
 
-      searchInput.addEventListener("input", function(){
-
-        const search =
-          this.value
-          .toLowerCase()
-          .trim();
+      const search =
+        this.value
+        .toLowerCase()
+        .trim();
 
 
-        courseCards.forEach(function(card){
+      courseCards.forEach(function(card){
 
-          const courseName =
-            card
-            .getAttribute("data-course")
-            .toLowerCase();
+        const courseName =
+          card
+          .getAttribute("data-course")
+          .toLowerCase();
 
 
-          if(
-            search === "" ||
-            courseName.includes(search)
-          ){
+        if(
+          search === "" ||
+          courseName.includes(search)
+        ){
 
-            card.style.display = "flex";
+          card.style.display = "flex";
 
-          }else{
+        }else{
 
-            card.style.display = "none";
+          card.style.display = "none";
 
-          }
-
-        });
+        }
 
       });
 
-    }
+    });
 
   </script>
 
