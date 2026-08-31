@@ -539,11 +539,33 @@
     }
 
     .feature{
-      padding:28px 15px;
+      padding:30px 15px;
 
       text-align:center;
 
       border-right:1px solid var(--border);
+
+      transition:.3s;
+    }
+
+    .feature:hover{
+      background:rgba(183,255,0,.03);
+    }
+
+    .feature-icon{
+      width:46px;
+      height:46px;
+
+      margin:0 auto 12px;
+
+      display:grid;
+      place-items:center;
+
+      background:rgba(183,255,0,.08);
+
+      border-radius:12px;
+
+      font-size:20px;
     }
 
     .feature:last-child{
@@ -555,9 +577,9 @@
 
       color:#b7ff00;
 
-      font-size:25px;
+      font-size:26px;
 
-      margin-bottom:3px;
+      margin-bottom:4px;
     }
 
     .feature span{
@@ -1959,70 +1981,11 @@
 
           <div class="hero-visual">
 
-            <svg
+            <img
               class="hero-main-image"
-              viewBox="0 0 600 600"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="AI Powered Learning Illustration"
+              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%205.svg"
+              alt="SNK IT Institute AI Powered Learning"
             >
-
-              <defs>
-                <radialGradient id="glowGrad" cx="50%" cy="45%" r="55%">
-                  <stop offset="0%" stop-color="#b7ff00" stop-opacity="0.22"/>
-                  <stop offset="100%" stop-color="#b7ff00" stop-opacity="0"/>
-                </radialGradient>
-                <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#141414"/>
-                  <stop offset="100%" stop-color="#0a0a0a"/>
-                </linearGradient>
-              </defs>
-
-              <!-- glow backdrop -->
-              <circle cx="300" cy="300" r="260" fill="url(#glowGrad)"/>
-
-              <!-- orbit rings -->
-              <circle cx="300" cy="300" r="220" fill="none" stroke="#b7ff00" stroke-opacity="0.12" stroke-width="1"/>
-              <circle cx="300" cy="300" r="170" fill="none" stroke="#b7ff00" stroke-opacity="0.18" stroke-width="1"/>
-
-              <!-- connecting lines -->
-              <line x1="300" y1="300" x2="120" y2="180" stroke="#b7ff00" stroke-opacity="0.35" stroke-width="1.5"/>
-              <line x1="300" y1="300" x2="480" y2="170" stroke="#b7ff00" stroke-opacity="0.35" stroke-width="1.5"/>
-              <line x1="300" y1="300" x2="130" y2="430" stroke="#b7ff00" stroke-opacity="0.35" stroke-width="1.5"/>
-              <line x1="300" y1="300" x2="470" y2="440" stroke="#b7ff00" stroke-opacity="0.35" stroke-width="1.5"/>
-
-              <!-- orbit nodes -->
-              <circle cx="120" cy="180" r="8" fill="#b7ff00"/>
-              <circle cx="480" cy="170" r="6" fill="#b7ff00" fill-opacity="0.7"/>
-              <circle cx="130" cy="430" r="6" fill="#b7ff00" fill-opacity="0.7"/>
-              <circle cx="470" cy="440" r="9" fill="#b7ff00"/>
-
-              <!-- laptop base -->
-              <path d="M180 470 L420 470 L440 495 L160 495 Z" fill="#141414" stroke="#2a2a2a" stroke-width="1.5"/>
-
-              <!-- laptop screen -->
-              <rect x="170" y="205" width="260" height="270" rx="16" fill="url(#screenGrad)" stroke="#2a2a2a" stroke-width="2"/>
-              <rect x="188" y="223" width="224" height="196" rx="8" fill="#050505" stroke="#b7ff00" stroke-opacity="0.25" stroke-width="1"/>
-
-              <!-- code icon </> -->
-              <text x="300" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="46" font-weight="800" fill="#b7ff00">&lt;/&gt;</text>
-
-              <!-- code lines -->
-              <rect x="205" y="240" width="90" height="6" rx="3" fill="#333"/>
-              <rect x="205" y="255" width="140" height="6" rx="3" fill="#242424"/>
-              <rect x="205" y="385" width="70" height="6" rx="3" fill="#242424"/>
-              <rect x="285" y="385" width="110" height="6" rx="3" fill="#333"/>
-
-              <!-- AI badge chip on screen -->
-              <rect x="252" y="440" width="96" height="24" rx="12" fill="#b7ff00" fill-opacity="0.12" stroke="#b7ff00" stroke-opacity="0.5" stroke-width="1"/>
-              <text x="300" y="456" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="800" fill="#b7ff00">AI POWERED</text>
-
-              <!-- small floating dots -->
-              <circle cx="90" cy="300" r="4" fill="#b7ff00" fill-opacity="0.6"/>
-              <circle cx="510" cy="300" r="4" fill="#b7ff00" fill-opacity="0.6"/>
-              <circle cx="300" cy="90" r="4" fill="#b7ff00" fill-opacity="0.6"/>
-
-            </svg>
 
           </div>
 
@@ -2042,23 +2005,27 @@
         <div class="feature-grid">
 
           <div class="feature">
+            <div class="feature-icon">🎯</div>
             <strong>100%</strong>
             <span>Practical Learning</span>
           </div>
 
           <div class="feature">
+            <div class="feature-icon">🤖</div>
             <strong>AI</strong>
             <span>Powered Skills</span>
           </div>
 
           <div class="feature">
+            <div class="feature-icon">👨‍🏫</div>
             <strong>Expert</strong>
             <span>Instructor Support</span>
           </div>
 
           <div class="feature">
+            <div class="feature-icon">💼</div>
             <strong>Career</strong>
-            <span>Guidance</span>
+            <span>Guidance & Support</span>
           </div>
 
         </div>
