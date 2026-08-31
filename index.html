@@ -1092,7 +1092,6 @@
       display:flex;
 
       align-items:center;
-      justify-content:space-between;
 
       gap:30px;
 
@@ -1108,6 +1107,28 @@
       border:1px solid rgba(183,255,0,.22);
 
       border-radius:20px;
+    }
+
+    .mentor-avatar{
+      flex-shrink:0;
+
+      width:88px;
+      height:88px;
+
+      display:grid;
+      place-items:center;
+
+      background:rgba(183,255,0,.1);
+
+      border:1px solid rgba(183,255,0,.3);
+
+      border-radius:50%;
+
+      font-size:34px;
+    }
+
+    .mentor-content{
+      flex:1;
     }
 
     .mentor-content small{
@@ -1136,6 +1157,8 @@
     .mentor-button{
       flex-shrink:0;
 
+      margin-left:auto;
+
       padding:13px 22px;
 
       background:#b7ff00;
@@ -1146,6 +1169,14 @@
 
       font-size:13px;
       font-weight:800;
+
+      transition:.3s;
+    }
+
+    .mentor-button:hover{
+      transform:translateY(-2px);
+
+      box-shadow:0 12px 30px rgba(183,255,0,.20);
     }
 
 
@@ -2600,6 +2631,10 @@
 
         <div class="mentor-card">
 
+          <div class="mentor-avatar">
+            👨‍🏫
+          </div>
+
           <div class="mentor-content">
 
             <small>
@@ -2619,7 +2654,7 @@
           </div>
 
           <a
-            href="mentor.html"
+            href="coming-soon.html"
             class="mentor-button"
           >
             Mentor Profile দেখুন →
