@@ -894,6 +894,16 @@
         0 20px 45px rgba(0,0,0,.25);
     }
 
+    .course-image-wrap{
+      overflow:hidden;
+
+      border-radius:12px;
+
+      margin-bottom:18px;
+
+      border:1px solid var(--border-2);
+    }
+
     .course-image{
       width:100%;
 
@@ -901,13 +911,15 @@
 
       object-fit:cover;
 
-      border-radius:12px;
-
-      margin-bottom:18px;
-
-      border:1px solid var(--border-2);
+      display:block;
 
       background:var(--bg-alt);
+
+      transition:transform .5s ease;
+    }
+
+    .course-card:hover .course-image{
+      transform:scale(1.08);
     }
 
     .course-tag{
@@ -930,6 +942,22 @@
       letter-spacing:1px;
 
       margin-bottom:13px;
+    }
+
+    .course-tag.urgent{
+      color:#ff9d5c;
+
+      background:rgba(255,157,92,.08);
+
+      border-color:rgba(255,157,92,.25);
+    }
+
+    .course-tag.info{
+      color:#5cc8ff;
+
+      background:rgba(92,200,255,.08);
+
+      border-color:rgba(92,200,255,.25);
     }
 
     .course-card h3{
@@ -971,9 +999,11 @@
 
       align-items:center;
 
-      gap:8px;
+      gap:10px;
 
       margin-bottom:18px;
+
+      padding:10px 0;
     }
 
     .price del{
@@ -983,7 +1013,8 @@
 
     .price strong{
       color:#b7ff00;
-      font-size:23px;
+      font-size:25px;
+      font-weight:900;
     }
 
     .course-button{
@@ -2282,11 +2313,13 @@
             data-course="ui ux ai powered design"
           >
 
-            <img
-              class="course-image"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg"
-              alt="AI-Powered UI/UX Career Program"
-            >
+            <div class="course-image-wrap">
+              <img
+                class="course-image"
+                src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg"
+                alt="AI-Powered UI/UX Career Program"
+              >
+            </div>
 
             <div class="course-tag">
               AI POWERED
@@ -2346,13 +2379,15 @@
             data-course="cyber security ethical hacking ai"
           >
 
-            <img
-              class="course-image"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg"
-              alt="AI-Powered Cyber Security and Ethical Hacking"
-            >
+            <div class="course-image-wrap">
+              <img
+                class="course-image"
+                src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg"
+                alt="AI-Powered Cyber Security and Ethical Hacking"
+              >
+            </div>
 
-            <div class="course-tag">
+            <div class="course-tag urgent">
               LIMITED SEATS
             </div>
 
@@ -2410,11 +2445,13 @@
             data-course="graphic design ai powered"
           >
 
-            <img
-              class="course-image"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg"
-              alt="AI-Powered Graphic Design"
-            >
+            <div class="course-image-wrap">
+              <img
+                class="course-image"
+                src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg"
+                alt="AI-Powered Graphic Design"
+              >
+            </div>
 
             <div class="course-tag">
               AI POWERED
@@ -2474,13 +2511,15 @@
             data-course="kidz spoken english kids english"
           >
 
-            <img
-              class="course-image"
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg"
-              alt="100Days Kidz Spoken English"
-            >
+            <div class="course-image-wrap">
+              <img
+                class="course-image"
+                src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg"
+                alt="100Days Kidz Spoken English"
+              >
+            </div>
 
-            <div class="course-tag">
+            <div class="course-tag info">
               100 DAYS
             </div>
 
