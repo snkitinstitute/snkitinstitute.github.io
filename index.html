@@ -1299,13 +1299,34 @@
       display:grid;
 
       grid-template-columns:
-        1.4fr
-        1fr
-        1fr;
+        1.3fr
+        0.9fr
+        0.9fr
+        0.9fr;
 
-      gap:45px;
+      gap:35px;
 
       padding-bottom:40px;
+    }
+
+    .footer-links{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:9px;
+    }
+
+    .footer-links a{
+      color:var(--text-dim);
+
+      font-size:12px;
+
+      transition:.3s;
+    }
+
+    .footer-links a:hover{
+      color:#b7ff00;
     }
 
     .footer-brand{
@@ -2030,14 +2051,16 @@
             <div class="hero-buttons">
 
               <a
-                href="courses.html"
+                href="#courses"
                 class="btn primary"
               >
                 শেখা শুরু করুন →
               </a>
 
               <a
-                href="contact.html"
+                href="https://wa.me/8801705633700?text=আমি%20SNK%20IT%20Institute%20সম্পর্কে%20জানতে%20চাই"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="btn secondary"
               >
                 যোগাযোগ করুন
@@ -2710,7 +2733,9 @@
           </a>
 
           <a
-            href="contact.html"
+            href="https://wa.me/8801705633700?text=আমি%20SNK%20IT%20Institute%20সম্পর্কে%20জানতে%20চাই"
+            target="_blank"
+            rel="noopener noreferrer"
             class="btn secondary"
           >
             যোগাযোগ করুন
@@ -2756,6 +2781,26 @@
             আপনার ভবিষ্যৎ গড়ে তুলুন।
 
           </p>
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+
+        <div class="footer-column">
+
+          <h3>
+            Quick Links
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="index.html">হোম</a>
+            <a href="admission.html">Admission</a>
+            <a href="blog.html">ব্লগ</a>
+            <a href="coming-soon.html">Login / Sign Up</a>
+
+          </div>
 
         </div>
 
