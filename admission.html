@@ -379,11 +379,23 @@
     .info-item{
       display:flex;
 
+      align-items:center;
+
       gap:13px;
 
-      padding:15px 0;
+      padding:15px 5px;
 
       border-top:1px solid var(--border);
+
+      border-radius:8px;
+
+      transition:.3s;
+    }
+
+    .info-item:hover{
+      background:rgba(183,255,0,.03);
+
+      padding-left:10px;
     }
 
     .info-icon{
@@ -401,6 +413,12 @@
       border-radius:10px;
 
       font-size:18px;
+
+      transition:.3s;
+    }
+
+    .info-item:hover .info-icon{
+      background:rgba(183,255,0,.15);
     }
 
     .info-item strong{
@@ -464,6 +482,35 @@
       color:var(--text-dim);
 
       font-size:13px;
+    }
+
+    .process-strip{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      align-items:center;
+
+      gap:8px;
+
+      margin-top:16px;
+
+      padding:12px 14px;
+
+      background:var(--bg-input);
+
+      border:1px solid var(--border-2);
+
+      border-radius:9px;
+
+      font-size:11.5px;
+
+      color:var(--text-muted);
+    }
+
+    .process-arrow{
+      color:#b7ff00;
+      font-weight:800;
     }
 
 
@@ -1265,6 +1312,16 @@
           <p>
             * চিহ্নিত তথ্যগুলো অবশ্যই পূরণ করতে হবে।
           </p>
+
+          <div class="process-strip">
+
+            <span>১. ফর্ম পূরণ করুন</span>
+            <span class="process-arrow">→</span>
+            <span>২. তথ্য যাচাই হবে</span>
+            <span class="process-arrow">→</span>
+            <span>৩. WhatsApp-এ যোগাযোগ</span>
+
+          </div>
 
         </div>
 
