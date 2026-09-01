@@ -1,1169 +1,332 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>আমাদের সম্পর্কে | SNK IT Institute</title>
 
-  <title>About Us | SNK IT Institute</title>
-  <meta name="description" content="Learn more about SNK IT Institute — a modern, practical and career-focused training institute. Learn Skills. Build Your Future. Lead Your Career.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="SNK IT Institute-এর গল্প, লক্ষ্য এবং কেন আমরা AI-powered practical training-এ বিশ্বাস করি।">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #b7ff00;
-      --primary-dark: #8dcc00;
-      --black: #080808;
-      --dark: #111111;
-      --dark-2: #181818;
-      --white: #ffffff;
-      --text: #bdbdbd;
-      --border: rgba(255,255,255,0.09);
-    }
-
-    body {
-      font-family: "Poppins", sans-serif;
-      background: var(--black);
-      color: var(--white);
-      line-height: 1.7;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      width: min(1180px, 92%);
-      margin: auto;
-    }
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8,8,8,0.92);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      font-size: 20px;
-    }
-
-    .brand img {
-      width: 46px;
-      height: 46px;
-      object-fit: contain;
-    }
-
-    .brand span {
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #ddd;
-      font-size: 14px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--primary);
-    }
-
-    .nav-btn {
-      background: var(--primary);
-      color: #000 !important;
-      padding: 11px 20px;
-      border-radius: 8px;
-      font-weight: 700 !important;
-    }
-
-    /* =========================
-       PAGE HERO
-    ========================= */
-
-    .page-hero {
-      padding: 110px 0 90px;
-      text-align: center;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(183,255,0,0.10), transparent 35%),
-        var(--black);
-    }
-
-    .small-title {
-      color: var(--primary);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .page-hero h1 {
-      font-family: "Montserrat", sans-serif;
-      font-size: clamp(40px, 6vw, 70px);
-      line-height: 1.1;
-      font-weight: 800;
-      margin-bottom: 22px;
-    }
-
-    .page-hero h1 span {
-      color: var(--primary);
-    }
-
-    .page-hero p {
-      max-width: 720px;
-      margin: auto;
-      color: var(--text);
-      font-size: 17px;
-    }
-
-    /* =========================
-       COMMON SECTION
-    ========================= */
-
-    section {
-      padding: 90px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 55px;
-    }
-
-    .section-heading .label {
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .section-heading h2 {
-      font-family: "Montserrat", sans-serif;
-      font-size: clamp(30px, 4vw, 46px);
-      line-height: 1.2;
-      margin-bottom: 15px;
-    }
-
-    .section-heading p {
-      max-width: 700px;
-      margin: auto;
-      color: var(--text);
-    }
-
-    /* =========================
-       ABOUT INTRO
-    ========================= */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .about-content h2 {
-      font-family: "Montserrat", sans-serif;
-      font-size: 40px;
-      line-height: 1.25;
-      margin-bottom: 20px;
-    }
-
-    .about-content h2 span {
-      color: var(--primary);
-    }
-
-    .about-content p {
-      color: var(--text);
-      margin-bottom: 18px;
-    }
-
-    .about-visual {
-      min-height: 420px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 50% 40%, rgba(183,255,0,0.15), transparent 35%),
-        linear-gradient(145deg, #151515, #090909);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
 
-    .about-visual::before {
-      content: "";
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      border: 1px solid rgba(183,255,0,0.25);
-      border-radius: 50%;
-    }
-
-    .about-logo {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-
-    .about-logo img {
-      width: 150px;
-      max-width: 60%;
-      margin-bottom: 20px;
-    }
-
-    .about-logo h3 {
-      font-family: "Montserrat", sans-serif;
-      font-size: 22px;
-    }
-
-    .about-logo p {
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    /* =========================
-       MISSION / VISION
-    ========================= */
-
-    .mission-section {
-      background: #0d0d0d;
-    }
-
-    .mission-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
-    }
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
 
-    .mission-card {
-      background: var(--dark);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 38px;
-      transition: 0.3s;
+    :root{
+      --bg:#050505; --bg-alt:#080808; --bg-card:#0b0b0b; --bg-input:#101010;
+      --text:#fff; --text-muted:#a4a4a4; --text-dim:#777;
+      --border:#181818; --border-2:#292929;
     }
 
-    .mission-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(183,255,0,0.4);
+    html.light-mode{
+      --bg:#f7f7f2; --bg-alt:#f0f0ea; --bg-card:#ffffff; --bg-input:#ffffff;
+      --text:#111; --text-muted:#555; --text-dim:#777;
+      --border:#e2e2da; --border-2:#dcdcd2;
     }
 
-    .mission-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      background: rgba(183,255,0,0.10);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin-bottom: 20px;
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6;
+      overflow-x:hidden; transition:background .3s ease, color .3s ease;
     }
 
-    .mission-card h3 {
-      font-size: 23px;
-      margin-bottom: 12px;
-    }
-
-    .mission-card p {
-      color: var(--text);
-    }
-
-    /* =========================
-       WHY SNK
-    ========================= */
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .feature-card {
-      padding: 32px 28px;
-      background: #101010;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      transition: 0.3s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(183,255,0,0.35);
-    }
-
-    .feature-number {
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    .feature-card h3 {
-      font-size: 19px;
-      margin-bottom: 10px;
-    }
-
-    .feature-card p {
-      color: var(--text);
-      font-size: 14px;
-    }
+    a{ text-decoration:none; color:inherit; }
+    img{ max-width:100%; display:block; }
+    button{ font:inherit; }
 
-    /* =========================
-       LEARNING PROGRAMS
-    ========================= */
+    .container{ width:min(1000px,92%); margin:auto; }
 
-    .program-section {
-      background: #0d0d0d;
-    }
+    /* HEADER */
 
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
+    .header{
+      position:sticky; top:0; z-index:9999;
+      background:var(--bg); opacity:.98;
+      backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border);
+      transition:background .3s ease, border-color .3s ease;
     }
 
-    .program-card {
-      background: var(--dark);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 25px 20px;
-      transition: 0.3s;
-    }
+    .nav{ min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand{ display:flex; align-items:center; flex-shrink:0; }
+    .brand img{ width:120px; height:auto; }
 
-    .program-card:hover {
-      border-color: rgba(183,255,0,0.4);
-      transform: translateY(-5px);
-    }
+    .menu{ display:flex; align-items:center; gap:25px; }
+    .menu a{ color:var(--text-muted); font-size:14px; transition:.3s; }
+    .menu a:hover, .menu a.active{ color:#b7ff00; }
 
-    .program-card .icon {
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
+    .header-actions{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
 
-    .program-card h3 {
-      font-size: 17px;
-      line-height: 1.4;
-      margin-bottom: 10px;
+    .theme-toggle, .lang-toggle{
+      display:flex; align-items:center; justify-content:center;
+      width:40px; height:40px; border:1px solid var(--border-2); border-radius:8px;
+      background:var(--bg-input); color:var(--text);
+      font-size:15px; font-weight:800; cursor:pointer; transition:.3s;
     }
+    .lang-toggle{ width:auto; padding:0 12px; font-size:12px; }
+    .theme-toggle:hover, .lang-toggle:hover{ border-color:#b7ff00; color:#b7ff00; }
 
-    .program-card p {
-      color: var(--text);
-      font-size: 13px;
+    .login-button{
+      background:#b7ff00; color:#050505; padding:10px 17px; border-radius:8px;
+      font-size:13px; font-weight:800; transition:.3s;
     }
+    .login-button:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(183,255,0,.20); }
 
-    /* =========================
-       VALUES
-    ========================= */
-
-    .values-list {
-      max-width: 850px;
-      margin: auto;
-      display: grid;
-      gap: 15px;
+    @media(max-width:900px){ .menu{ display:none; } }
+    @media(max-width:600px){
+      .nav{ min-height:70px; } .brand img{ width:105px; }
+      .login-button{ padding:9px 12px; font-size:11px; }
     }
 
-    .value-item {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 20px 24px;
-      background: #111;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
+    /* PAGE HERO */
 
-    .check {
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
+    .page-hero{
+      position:relative; padding:70px 0 40px; text-align:center; overflow:hidden;
+      background: radial-gradient(circle at center, rgba(183,255,0,.10), transparent 40%), var(--bg);
+      transition:background .3s ease;
     }
 
-    .value-item span {
-      color: #ddd;
+    .page-badge{
+      display:inline-flex; align-items:center; gap:8px; color:#b7ff00;
+      padding:8px 15px; border:1px solid rgba(183,255,0,.25); background:rgba(183,255,0,.06);
+      border-radius:50px; font-size:11px; font-weight:800; letter-spacing:1px; margin-bottom:20px;
     }
 
-    /* =========================
-       CTA
-    ========================= */
+    .page-hero h1{ font-size:clamp(34px,5vw,52px); line-height:1.15; letter-spacing:-2px; margin-bottom:14px; }
+    .page-hero h1 span{ color:#b7ff00; }
+    .page-hero p{ max-width:600px; margin:auto; color:var(--text-muted); font-size:15px; }
 
-    .cta {
-      padding: 100px 0;
-      text-align: center;
-    }
+    /* CONTENT */
 
-    .cta-box {
-      padding: 65px 30px;
-      border-radius: 25px;
-      border: 1px solid rgba(183,255,0,0.25);
-      background:
-        radial-gradient(circle at center, rgba(183,255,0,0.12), transparent 50%),
-        #101010;
-    }
+    .about-section{ padding:20px 0 90px; }
 
-    .cta h2 {
-      font-family: "Montserrat", sans-serif;
-      font-size: clamp(30px, 5vw, 48px);
-      margin-bottom: 15px;
+    .about-block{
+      background:var(--bg-card); border:1px solid var(--border-2); border-radius:18px;
+      padding:32px; margin-bottom:22px;
     }
 
-    .cta h2 span {
-      color: var(--primary);
-    }
+    .about-block h2{ font-size:22px; margin-bottom:14px; }
+    .about-block h2 span{ color:#b7ff00; }
+    .about-block p{ color:var(--text-muted); font-size:14.5px; line-height:1.9; margin-bottom:14px; }
+    .about-block p:last-child{ margin-bottom:0; }
 
-    .cta p {
-      max-width: 650px;
-      margin: 0 auto 30px;
-      color: var(--text);
-    }
+    /* VALUES GRID */
 
-    .cta-btn {
-      display: inline-block;
-      padding: 14px 28px;
-      border-radius: 9px;
-      background: var(--primary);
-      color: #000;
-      font-weight: 800;
-      transition: 0.3s;
-    }
+    .values-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:10px; }
 
-    .cta-btn:hover {
-      transform: translateY(-3px);
-      background: #d1ff66;
+    .value-card{
+      background:var(--bg-input); border:1px solid var(--border-2); border-radius:14px;
+      padding:24px; transition:.3s;
     }
+    .value-card:hover{ border-color:rgba(183,255,0,.35); transform:translateY(-4px); }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: #050505;
-      border-top: 1px solid var(--border);
-      padding: 60px 0 25px;
+    .value-icon{
+      width:48px; height:48px; display:grid; place-items:center;
+      background:rgba(183,255,0,.09); border-radius:12px; font-size:22px; margin-bottom:14px;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 45px;
-    }
+    .value-card h3{ font-size:15px; margin-bottom:8px; }
+    .value-card p{ color:var(--text-muted); font-size:12.5px; line-height:1.7; margin:0; }
 
-    .footer-brand p {
-      color: var(--text);
-      font-size: 14px;
-      max-width: 320px;
-      margin-top: 15px;
-    }
+    /* STATS */
 
-    .footer-title {
-      font-size: 16px;
-      margin-bottom: 18px;
+    .about-stats{
+      display:grid; grid-template-columns:repeat(4,1fr);
+      border:1px solid var(--border-2); border-radius:15px; overflow:hidden; margin-top:6px;
     }
+    .about-stats div{ padding:22px 16px; text-align:center; background:var(--bg-alt); border-right:1px solid var(--border-2); }
+    .about-stats div:last-child{ border-right:0; }
+    .about-stats strong{ display:block; color:#b7ff00; font-size:22px; margin-bottom:4px; }
+    .about-stats span{ color:var(--text-dim); font-size:11.5px; }
 
-    .footer-links {
-      list-style: none;
-    }
+    /* CONTACT STRIP */
 
-    .footer-links li {
-      margin-bottom: 10px;
+    .contact-strip{
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+      padding:26px 30px; background:linear-gradient(135deg, rgba(183,255,0,.07), var(--bg-card));
+      border:1px solid rgba(183,255,0,.22); border-radius:18px;
     }
-
-    .footer-links a {
-      color: #999;
-      font-size: 14px;
-      transition: 0.3s;
+    .contact-strip p{ color:var(--text-muted); font-size:13.5px; max-width:420px; margin:0; }
+    .contact-strip h3{ font-size:18px; margin-bottom:6px; }
+    .contact-btn{
+      flex-shrink:0; padding:12px 20px; background:#b7ff00; color:#050505;
+      border-radius:9px; font-size:13px; font-weight:800; transition:.3s;
     }
+    .contact-btn:hover{ transform:translateY(-2px); box-shadow:0 12px 30px rgba(183,255,0,.20); }
 
-    .footer-links a:hover {
-      color: var(--primary);
-    }
+    /* FOOTER */
 
-    .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding-top: 20px;
-      text-align: center;
-      color: #777;
-      font-size: 13px;
+    .footer{
+      padding:35px 0; border-top:1px solid var(--border); background:var(--bg);
+      text-align:center; color:var(--text-dim); font-size:12px;
+      transition:background .3s ease, border-color .3s ease;
     }
+    .footer a{ color:#b7ff00; }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* MOBILE */
 
-    @media (max-width: 900px) {
-
-      .nav-links {
-        display: none;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .mission-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .program-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    @media(max-width:700px){
+      .container{ width:90%; }
+      .nav{ min-height:70px; } .brand img{ width:105px; }
+      .page-hero{ padding:50px 0 30px; }
+      .about-block{ padding:22px; }
+      .values-grid{ grid-template-columns:1fr; }
+      .about-stats{ grid-template-columns:repeat(2,1fr); }
+      .about-stats div:nth-child(2){ border-right:0; }
+      .about-stats div:nth-child(1), .about-stats div:nth-child(2){ border-bottom:1px solid var(--border-2); }
+      .contact-strip{ flex-direction:column; align-items:flex-start; }
+      .contact-btn{ width:100%; text-align:center; }
     }
-
-    @media (max-width: 600px) {
 
-      section {
-        padding: 65px 0;
-      }
-
-      .page-hero {
-        padding: 80px 0 65px;
-      }
-
-      .about-content h2 {
-        font-size: 30px;
-      }
-
-      .about-visual {
-        min-height: 320px;
-      }
-
-      .features-grid,
-      .program-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .mission-card {
-        padding: 28px;
-      }
-
-      .cta {
-        padding: 65px 0;
-      }
-
-      .cta-box {
-        padding: 45px 20px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVBAR
-  ========================== -->
-
-  <header>
-    <div class="container navbar">
-
+  <header class="header">
+    <div class="container nav">
       <a href="index.html" class="brand">
-        <img src="logo.svg" alt="SNK IT Institute Logo">
-        <div>SNK <span>IT Institute</span></div>
+        <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
       </a>
-
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li>
-          <a href="admission.html" class="nav-btn">Admission</a>
-        </li>
-      </ul>
-
+      <nav class="menu">
+        <a href="index.html" data-bn="হোম" data-en="Home">হোম</a>
+        <a href="courses.html" data-bn="কোর্সসমূহ" data-en="Courses">কোর্সসমূহ</a>
+        <a href="about.html" class="active" data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</a>
+        <a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
+        <a href="contact.html" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark/light mode">🌙</button>
+        <button id="langToggle" class="lang-toggle" type="button" aria-label="Toggle language">EN</button>
+        <a href="coming-soon.html" class="login-button" data-bn="Login / Sign Up →" data-en="Login / Sign Up →">Login / Sign Up →</a>
+      </div>
     </div>
   </header>
 
 
-  <!-- =========================
-       PAGE HERO
-  ========================== -->
-
   <section class="page-hero">
-
     <div class="container">
-
-      <div class="small-title">
-        About SNK IT Institute
-      </div>
-
-      <h1>
-        Learn Skills.<br>
-        Build Your <span>Future.</span>
-      </h1>
-
-      <p>
-        A modern, practical and career-focused learning institute
-        designed to help learners build real-world skills and lead
-        their professional journey.
-      </p>
-
+      <div class="page-badge"><span>🏫</span> ABOUT US</div>
+      <h1>আমাদের <span>সম্পর্কে</span></h1>
+      <p>Moulvibazar থেকে শুরু, লক্ষ্য সারা বাংলাদেশের তরুণদের হাতে-কলমে skill তুলে দেওয়া।</p>
     </div>
-
   </section>
 
 
-  <!-- =========================
-       ABOUT INTRO
-  ========================== -->
-
-  <section>
-
-    <div class="container about-grid">
-
-      <div class="about-content">
-
-        <div class="small-title">
-          Who We Are
-        </div>
-
-        <h2>
-          More Than Just a
-          <span>Training Institute.</span>
-        </h2>
-
-        <p>
-          <strong>SNK IT Institute</strong> is a modern, practical and
-          career-focused training institute where our goal is not only
-          to teach courses, but to help learners develop real skills
-          for the future.
-        </p>
-
-        <p>
-          We believe that in today's technology-driven world,
-          certificates alone are not enough. Learners need practical
-          skills, creativity, problem-solving ability and a mindset
-          for continuous learning.
-        </p>
-
-        <p>
-          That's why our programs combine hands-on practice,
-          real-world projects, modern technology and AI-powered
-          learning workflows.
-        </p>
-
-      </div>
-
-
-      <div class="about-visual">
-
-        <div class="about-logo">
-
-          <img src="logo.svg" alt="SNK IT Institute">
-
-          <h3>SNK IT Institute</h3>
-
-          <p>LEARN TO LEAD</p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       MISSION & VISION
-  ========================== -->
-
-  <section class="mission-section">
-
+  <section class="about-section">
     <div class="container">
 
-      <div class="section-heading">
-
-        <div class="label">
-          Our Direction
-        </div>
-
-        <h2>
-          Mission & Vision
-        </h2>
-
+      <div class="about-block">
+        <h2>আমাদের <span>গল্প</span></h2>
         <p>
-          We are committed to creating a learning environment where
-          students can learn, practice, create and grow.
+          SNK IT Institute শুরু হয়েছিল একটা সাধারণ বিশ্বাস থেকে —
+          সঠিক গাইডলাইন আর হাতে-কলমে practice পেলে যে কেউ
+          প্রযুক্তির জগতে নিজের জায়গা করে নিতে পারে। Moulvibazar-এ
+          বসে আমরা এমন একটা প্রতিষ্ঠান গড়ে তুলছি, যেখানে theory-এর
+          চেয়ে practical কাজের ওপর বেশি জোর দেওয়া হয়।
         </p>
-
-      </div>
-
-
-      <div class="mission-grid">
-
-        <div class="mission-card">
-
-          <div class="mission-icon">🎯</div>
-
-          <h3>Our Mission</h3>
-
-          <p>
-            To provide practical, accessible and career-focused
-            education that helps learners develop job-ready skills,
-            understand modern technology and confidently apply their
-            knowledge in real-world situations.
-          </p>
-
-        </div>
-
-
-        <div class="mission-card">
-
-          <div class="mission-icon">🚀</div>
-
-          <h3>Our Vision</h3>
-
-          <p>
-            To build a future-ready learning community where students
-            can discover their potential, develop valuable skills and
-            use technology to create better career opportunities.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       WHY SNK
-  ========================== -->
-
-  <section>
-
-    <div class="container">
-
-      <div class="section-heading">
-
-        <div class="label">
-          Why Choose Us
-        </div>
-
-        <h2>
-          Why SNK IT Institute?
-        </h2>
-
         <p>
-          We focus on learning that can actually be used in the real
-          world.
+          আমাদের প্রতিটা কোর্স ডিজাইন করা হয়েছে বর্তমান job market
+          আর freelancing industry-এর বাস্তব চাহিদা মাথায় রেখে।
+          AI-powered tools ব্যবহার শেখানো হয় প্রতিটা কোর্সেই, যাতে
+          শিক্ষার্থীরা শুধু আজকের জন্য না, আগামী দিনের জন্যও প্রস্তুত থাকে।
         </p>
-
       </div>
 
+      <div class="about-block">
+        <h2>আমাদের <span>মূল্যবোধ</span></h2>
 
-      <div class="features-grid">
+        <div class="values-grid">
 
-        <div class="feature-card">
-          <div class="feature-number">01 —</div>
-          <h3>Practical Learning</h3>
-          <p>
-            Learn through hands-on practice, real projects and
-            practical assignments instead of theory alone.
-          </p>
+          <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <h3>Practical First</h3>
+            <p>শুধু theory নয়, প্রতিটা ক্লাসে হাতে-কলমে কাজ শেখানো হয়।</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">🤖</div>
+            <h3>AI-Powered</h3>
+            <p>আধুনিক AI tools প্রতিটা কোর্সের workflow-এর অংশ।</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">💼</div>
+            <h3>Career Focused</h3>
+            <p>Portfolio, job preparation এবং freelancing guidance দেওয়া হয়।</p>
+          </div>
+
         </div>
-
-
-        <div class="feature-card">
-          <div class="feature-number">02 —</div>
-          <h3>AI-Powered Education</h3>
-          <p>
-            Explore modern AI tools and workflows that are becoming
-            essential in today's digital careers.
-          </p>
-        </div>
-
-
-        <div class="feature-card">
-          <div class="feature-number">03 —</div>
-          <h3>Industry-Focused Skills</h3>
-          <p>
-            Our learning programs are designed around practical skills
-            relevant to today's professional environment.
-          </p>
-        </div>
-
-
-        <div class="feature-card">
-          <div class="feature-number">04 —</div>
-          <h3>Career Guidance</h3>
-          <p>
-            Get direction on portfolio building, skill development
-            and using your knowledge for career growth.
-          </p>
-        </div>
-
-
-        <div class="feature-card">
-          <div class="feature-number">05 —</div>
-          <h3>Beginner Friendly</h3>
-          <p>
-            Structured learning helps beginners start from the basics
-            and gradually develop professional-level skills.
-          </p>
-        </div>
-
-
-        <div class="feature-card">
-          <div class="feature-number">06 —</div>
-          <h3>Continuous Growth</h3>
-          <p>
-            We encourage learners to keep learning, practicing and
-            improving beyond the classroom.
-          </p>
-        </div>
-
       </div>
 
-    </div>
+      <div class="about-block">
+        <h2>এক নজরে <span>SNK IT Institute</span></h2>
 
-  </section>
-
-
-  <!-- =========================
-       LEARNING PROGRAMS
-  ========================== -->
-
-  <section class="program-section">
-
-    <div class="container">
-
-      <div class="section-heading">
-
-        <div class="label">
-          What We Teach
+        <div class="about-stats">
+          <div><strong>4+</strong><span>Career Courses</span></div>
+          <div><strong>100%</strong><span>Practical Training</span></div>
+          <div><strong>AI</strong><span>Powered Curriculum</span></div>
+          <div><strong>✓</strong><span>Certificate on Completion</span></div>
         </div>
-
-        <h2>
-          Learning Programs
-        </h2>
-
-        <p>
-          Career-focused programs designed for the modern digital
-          world.
-        </p>
-
       </div>
 
-
-      <div class="program-grid">
-
-        <div class="program-card">
-          <div class="icon">🎨</div>
-          <h3>AI-Powered UI/UX</h3>
-          <p>
-            UI/UX fundamentals, research, wireframing, prototyping,
-            Figma and AI-powered design workflows.
-          </p>
+      <div class="contact-strip">
+        <div>
+          <h3>প্রশ্ন আছে?</h3>
+          <p>আমাদের team-এর সাথে সরাসরি WhatsApp-এ কথা বলুন — দ্রুত রিপ্লাই পাবেন।</p>
         </div>
-
-
-        <div class="program-card">
-          <div class="icon">🔐</div>
-          <h3>Cyber Security</h3>
-          <p>
-            Cyber security fundamentals, ethical hacking, networking
-            and practical security skills.
-          </p>
-        </div>
-
-
-        <div class="program-card">
-          <div class="icon">✏️</div>
-          <h3>Graphic Design</h3>
-          <p>
-            Visual design, branding, creative tools and modern
-            AI-powered graphic design workflows.
-          </p>
-        </div>
-
-
-        <div class="program-card">
-          <div class="icon">🎬</div>
-          <h3>Motion Design</h3>
-          <p>
-            Motion graphics, animation, typography, timing, spacing
-            and modern motion workflows.
-          </p>
-        </div>
-
-
-        <div class="program-card">
-          <div class="icon">🗣️</div>
-          <h3>Kidz Spoken English</h3>
-          <p>
-            Speaking, vocabulary, pronunciation and communication
-            skills for young learners.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       OUR VALUES
-  ========================== -->
-
-  <section>
-
-    <div class="container">
-
-      <div class="section-heading">
-
-        <div class="label">
-          Our Values
-        </div>
-
-        <h2>
-          Learn. Practice. Create. Grow.
-        </h2>
-
-        <p>
-          Everything we do is built around helping learners become
-          more confident and capable.
-        </p>
-
-      </div>
-
-
-      <div class="values-list">
-
-        <div class="value-item">
-          <div class="check">✓</div>
-          <span>
-            Learn with curiosity and an open mind.
-          </span>
-        </div>
-
-        <div class="value-item">
-          <div class="check">✓</div>
-          <span>
-            Practice skills through real-world projects.
-          </span>
-        </div>
-
-        <div class="value-item">
-          <div class="check">✓</div>
-          <span>
-            Create meaningful work and build your portfolio.
-          </span>
-        </div>
-
-        <div class="value-item">
-          <div class="check">✓</div>
-          <span>
-            Grow through continuous learning and improvement.
-          </span>
-        </div>
-
-        <div class="value-item">
-          <div class="check">✓</div>
-          <span>
-            Lead your career with confidence.
-          </span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       CTA
-  ========================== -->
-
-  <section class="cta">
-
-    <div class="container">
-
-      <div class="cta-box">
-
-        <h2>
-          Ready to <span>Learn To Lead?</span>
-        </h2>
-
-        <p>
-          Start your learning journey with SNK IT Institute and
-          develop the skills you need for your future.
-        </p>
-
-        <a href="courses.html" class="cta-btn">
-          Explore Our Courses →
+        <a
+          href="https://wa.me/8801705633700?text=আমি%20SNK%20IT%20Institute%20সম্পর্কে%20জানতে%20চাই"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-btn"
+        >
+          WhatsApp-এ কথা বলুন →
         </a>
-
       </div>
 
     </div>
-
   </section>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer>
-
+  <footer class="footer">
     <div class="container">
-
-      <div class="footer-grid">
-
-        <div class="footer-brand">
-
-          <a href="index.html" class="brand">
-            <img src="logo.svg" alt="SNK IT Institute Logo">
-            <div>SNK <span>IT Institute</span></div>
-          </a>
-
-          <p>
-            Learn Skills. Build Your Future. Lead Your Career.
-          </p>
-
-        </div>
-
-
-        <div>
-
-          <h3 class="footer-title">
-            Quick Links
-          </h3>
-
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="courses.html">Courses</a></li>
-            <li><a href="admission.html">Admission</a></li>
-          </ul>
-
-        </div>
-
-
-        <div>
-
-          <h3 class="footer-title">
-            Programs
-          </h3>
-
-          <ul class="footer-links">
-            <li><a href="courses.html">UI/UX Design</a></li>
-            <li><a href="courses.html">Cyber Security</a></li>
-            <li><a href="courses.html">Graphic Design</a></li>
-            <li><a href="courses.html">Spoken English</a></li>
-          </ul>
-
-        </div>
-
-
-        <div>
-
-          <h3 class="footer-title">
-            Contact
-          </h3>
-
-          <ul class="footer-links">
-            <li>
-              <a href="mailto:iamsnkbd@protonmail.com">
-                iamsnkbd@protonmail.com
-              </a>
-            </li>
-
-            <li>
-              <a href="tel:+8801705633700">
-                01705-633700
-              </a>
-            </li>
-
-            <li>
-              <a href="#">
-                Moulvibazar-3200, Bangladesh
-              </a>
-            </li>
-          </ul>
-
-        </div>
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        © 2026 SNK IT Institute. All Rights Reserved.
-        <br>
-        Learn To Lead.
-
-      </div>
-
+      © 2026 SNK IT Institute • Learn To Lead • Moulvibazar •
+      <a href="index.html">হোমে ফিরে যান</a>
     </div>
-
   </footer>
+
+
+  <script>
+    const themeToggleBtn = document.getElementById("themeToggle");
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme){
+      if(theme === "light"){ htmlEl.classList.add("light-mode"); themeToggleBtn.textContent = "☀️"; }
+      else{ htmlEl.classList.remove("light-mode"); themeToggleBtn.textContent = "🌙"; }
+    }
+    applyTheme(localStorage.getItem("snk-theme") || "dark");
+    themeToggleBtn.addEventListener("click", function(){
+      const isLight = htmlEl.classList.contains("light-mode");
+      const newTheme = isLight ? "dark" : "light";
+      applyTheme(newTheme);
+      localStorage.setItem("snk-theme", newTheme);
+    });
+
+    const langToggleBtn = document.getElementById("langToggle");
+    function applyLang(lang){
+      document.querySelectorAll("[data-bn]").forEach(function(el){
+        el.textContent = (lang === "bn") ? el.getAttribute("data-bn") : el.getAttribute("data-en");
+      });
+      langToggleBtn.textContent = (lang === "bn") ? "EN" : "বাংলা";
+    }
+    applyLang(localStorage.getItem("snk-lang") || "bn");
+    langToggleBtn.addEventListener("click", function(){
+      const current = localStorage.getItem("snk-lang") || "bn";
+      const next = (current === "bn") ? "en" : "bn";
+      applyLang(next);
+      localStorage.setItem("snk-lang", next);
+    });
+  </script>
 
 </body>
 </html>
