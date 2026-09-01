@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100Days Kidz Spoken English | SNK IT Institute</title>
+
+  <meta name="description" content="100Days Kidz Spoken English — SNK IT Institute-এর AI-Powered practical কোর্স।">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --bg:#050505;
+      --bg-alt:#080808;
+      --bg-card:#0b0b0b;
+      --bg-input:#101010;
+      --text:#fff;
+      --text-muted:#a4a4a4;
+      --text-dim:#777;
+      --border:#181818;
+      --border-2:#292929;
+    }
+
+    html.light-mode{
+      --bg:#f7f7f2;
+      --bg-alt:#f0f0ea;
+      --bg-card:#ffffff;
+      --bg-input:#ffffff;
+      --text:#111;
+      --text-muted:#555;
+      --text-dim:#777;
+      --border:#e2e2da;
+      --border-2:#dcdcd2;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+      transition:background .3s ease, color .3s ease;
+    }
+
+    a{ text-decoration:none; color:inherit; }
+    img{ max-width:100%; display:block; }
+    button{ font:inherit; }
+
+    .container{
+      width:min(1080px,92%);
+      margin:auto;
+    }
+
+    /* HEADER */
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      background:var(--bg);
+      opacity:.98;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border);
+      transition:background .3s ease, border-color .3s ease;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+    }
+
+    .brand{ display:flex; align-items:center; flex-shrink:0; }
+    .brand img{ width:120px; height:auto; }
+
+    .menu{ display:flex; align-items:center; gap:25px; }
+    .menu a{ color:var(--text-muted); font-size:14px; transition:.3s; }
+    .menu a:hover, .menu a.active{ color:#b7ff00; }
+
+    .header-actions{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+
+    .theme-toggle, .lang-toggle{
+      display:flex; align-items:center; justify-content:center;
+      width:40px; height:40px;
+      border:1px solid var(--border-2);
+      border-radius:8px;
+      background:var(--bg-input);
+      color:var(--text);
+      font-size:15px; font-weight:800;
+      cursor:pointer; transition:.3s;
+    }
+    .lang-toggle{ width:auto; padding:0 12px; font-size:12px; }
+    .theme-toggle:hover, .lang-toggle:hover{ border-color:#b7ff00; color:#b7ff00; }
+
+    .login-button{
+      background:#b7ff00; color:#050505;
+      padding:10px 17px; border-radius:8px;
+      font-size:13px; font-weight:800; transition:.3s;
+    }
+    .login-button:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(183,255,0,.20); }
+
+    @media(max-width:900px){ .menu{ display:none; } }
+
+    @media(max-width:600px){
+      .nav{ min-height:70px; }
+      .brand img{ width:105px; }
+      .login-button{ padding:9px 12px; font-size:11px; }
+    }
+
+    /* PAGE HERO BANNER */
+
+    .course-hero{
+      position:relative;
+      padding:45px 0 30px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(183,255,0,.10), transparent 35%),
+        var(--bg);
+      transition:background .3s ease;
+    }
+
+    .breadcrumb{
+      font-size:12px;
+      color:var(--text-dim);
+      margin-bottom:16px;
+    }
+
+    .breadcrumb a{ color:var(--text-dim); }
+    .breadcrumb a:hover{ color:#b7ff00; }
+
+    .course-tag{
+      display:inline-block;
+      color:#b7ff00;
+      background:rgba(183,255,0,.07);
+      border:1px solid rgba(183,255,0,.18);
+      padding:6px 12px;
+      border-radius:6px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:1px;
+      margin-bottom:16px;
+    }
+
+    .course-tag.urgent{
+      color:#ff9d5c;
+      background:rgba(255,157,92,.08);
+      border-color:rgba(255,157,92,.25);
+    }
+
+    .course-tag.info{
+      color:#5cc8ff;
+      background:rgba(92,200,255,.08);
+      border-color:rgba(92,200,255,.25);
+    }
+
+    .course-hero h1{
+      font-size:clamp(28px,4.2vw,42px);
+      line-height:1.25;
+      max-width:700px;
+      margin-bottom:16px;
+    }
+
+    .course-hero-desc{
+      max-width:650px;
+      color:var(--text-muted);
+      font-size:15px;
+      line-height:1.85;
+      margin-bottom:22px;
+    }
+
+    .course-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .meta-chip{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 14px;
+      background:var(--bg-card);
+      border:1px solid var(--border-2);
+      border-radius:8px;
+      color:var(--text-muted);
+      font-size:12.5px;
+    }
+
+    /* LAYOUT */
+
+    .course-body{
+      padding:40px 0 90px;
+    }
+
+    .course-grid{
+      display:grid;
+      grid-template-columns:1.6fr 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .content-block{
+      background:var(--bg-card);
+      border:1px solid var(--border-2);
+      border-radius:16px;
+      padding:28px;
+      margin-bottom:22px;
+    }
+
+    .content-block h2{
+      font-size:20px;
+      margin-bottom:18px;
+    }
+
+    .learn-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .learn-item{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      font-size:13.5px;
+      color:var(--text-muted);
+      line-height:1.6;
+    }
+
+    .learn-check{
+      flex-shrink:0;
+      width:20px;
+      height:20px;
+      display:grid;
+      place-items:center;
+      background:rgba(183,255,0,.12);
+      color:#b7ff00;
+      border-radius:50%;
+      font-size:11px;
+      font-weight:800;
+      margin-top:1px;
+    }
+
+    .module-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .module-item{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:14px 16px;
+      background:var(--bg-input);
+      border:1px solid var(--border-2);
+      border-radius:10px;
+      font-size:13.5px;
+      color:var(--text-muted);
+      transition:.3s;
+    }
+
+    .module-item:hover{
+      border-color:rgba(183,255,0,.35);
+    }
+
+    .module-number{
+      flex-shrink:0;
+      width:30px;
+      height:30px;
+      display:grid;
+      place-items:center;
+      background:rgba(183,255,0,.1);
+      color:#b7ff00;
+      border-radius:8px;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .module-item strong{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar{
+      position:sticky;
+      top:100px;
+    }
+
+    .price-card{
+      background:var(--bg-card);
+      border:1px solid rgba(183,255,0,.25);
+      border-radius:16px;
+      padding:26px;
+      margin-bottom:16px;
+    }
+
+    .price-box{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .price-box del{ color:var(--text-dim); font-size:16px; }
+    .price-box strong{ color:#b7ff00; font-size:30px; font-weight:900; }
+
+    .action-buttons{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .btn{
+      display:block;
+      text-align:center;
+      padding:14px 18px;
+      border-radius:9px;
+      font-size:14px;
+      font-weight:800;
+      transition:.3s;
+    }
+
+    .btn-payment{ background:#b7ff00; color:#050505; }
+    .btn-payment:hover{ transform:translateY(-2px); box-shadow:0 12px 35px rgba(183,255,0,.20); }
+
+    .btn-talk{ border:1px solid var(--border-2); color:var(--text); }
+    .btn-talk:hover{ border-color:#b7ff00; color:#b7ff00; }
+
+    .whatsapp-box{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:16px;
+      background:var(--bg-input);
+      border:1px solid var(--border-2);
+      border-radius:12px;
+    }
+
+    .whatsapp-icon{
+      width:42px; height:42px; flex-shrink:0;
+      display:grid; place-items:center;
+      background:rgba(37,211,102,.12);
+      border-radius:10px;
+      font-size:20px;
+    }
+
+    .whatsapp-text strong{ display:block; font-size:13px; color:var(--text); }
+    .whatsapp-text span{ color:var(--text-muted); font-size:11.5px; }
+
+    /* FOOTER */
+
+    .footer{
+      padding:35px 0;
+      border-top:1px solid var(--border);
+      background:var(--bg);
+      text-align:center;
+      color:var(--text-dim);
+      font-size:12px;
+      transition:background .3s ease, border-color .3s ease;
+    }
+
+    .footer a{ color:#b7ff00; }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+      .course-grid{ grid-template-columns:1fr; }
+      .sidebar{ position:static; }
+      .learn-grid{ grid-template-columns:1fr; }
+    }
+
+    @media(max-width:600px){
+      .container{ width:90%; }
+      .nav{ min-height:70px; }
+      .brand img{ width:105px; }
+      .course-hero{ padding:30px 0 22px; }
+      .content-block{ padding:20px; }
+      .price-card{ padding:20px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+        <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
+      </a>
+
+      <nav class="menu">
+        <a href="index.html" data-bn="হোম" data-en="Home">হোম</a>
+        <a href="courses.html" data-bn="কোর্সসমূহ" data-en="Courses">কোর্সসমূহ</a>
+        <a href="about.html" data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</a>
+        <a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
+        <a href="contact.html" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark/light mode">🌙</button>
+        <button id="langToggle" class="lang-toggle" type="button" aria-label="Toggle language">EN</button>
+        <a href="coming-soon.html" class="login-button" data-bn="Login / Sign Up →" data-en="Login / Sign Up →">Login / Sign Up →</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <section class="course-hero">
+    <div class="container">
+
+      <div class="breadcrumb">
+        <a href="index.html">হোম</a> / <a href="index.html#courses">কোর্সসমূহ</a> / 100Days Kidz Spoken English
+      </div>
+
+      <div class="course-tag info">100 DAYS</div>
+
+      <h1>100Days Kidz Spoken English</h1>
+
+      <p class="course-hero-desc">English speaking, vocabulary, pronunciation এবং communication skill development-এর জন্য structured ১০০ দিনের learning program।</p>
+
+      <div class="course-meta">
+        <div class="meta-chip"><span>⏱</span> 100 Days</div>
+        <div class="meta-chip"><span>🎯</span> Kids Program</div>
+        <div class="meta-chip"><span>📜</span> Certificate</div>
+        <div class="meta-chip"><span>👨‍👩‍👧</span> Parent Updates</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="course-body">
+    <div class="container course-grid">
+
+      <div class="main-content">
+
+        <div class="content-block">
+          <h2>আপনি যা শিখবেন</h2>
+          <div class="learn-grid">
+            <div class="learn-item"><span class="learn-check">✓</span><span>Basic Vocabulary ও Pronunciation</span></div>
+            <div class="learn-item"><span class="learn-check">✓</span><span>Everyday Conversation Practice</span></div>
+            <div class="learn-item"><span class="learn-check">✓</span><span>Grammar Made Simple</span></div>
+            <div class="learn-item"><span class="learn-check">✓</span><span>Confidence Building Activities</span></div>
+            <div class="learn-item"><span class="learn-check">✓</span><span>Interactive Speaking Sessions</span></div>
+            <div class="learn-item"><span class="learn-check">✓</span><span>Weekly Progress Assessment</span></div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>কোর্স মডিউল</h2>
+          <div class="module-list">
+            <div class="module-item">
+              <div class="module-number">1</div>
+              <div><strong>Alphabet & Basic Words</strong> — Foundation বিল্ড করা</div>
+            </div>
+            <div class="module-item">
+              <div class="module-number">2</div>
+              <div><strong>Simple Sentences</strong> — সহজ বাক্য গঠন</div>
+            </div>
+            <div class="module-item">
+              <div class="module-number">3</div>
+              <div><strong>Daily Conversation</strong> — রোজকার কথোপকথন practice</div>
+            </div>
+            <div class="module-item">
+              <div class="module-number">4</div>
+              <div><strong>Grammar Basics</strong> — সহজভাবে grammar শেখা</div>
+            </div>
+            <div class="module-item">
+              <div class="module-number">5</div>
+              <div><strong>Storytelling & Confidence</strong> — গল্প বলা ও confidence তৈরি</div>
+            </div>
+            <div class="module-item">
+              <div class="module-number">6</div>
+              <div><strong>Final Assessment</strong> — মূল্যায়ন ও certificate</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sidebar">
+
+        <div class="price-card">
+
+          <div class="price-box">
+            <del>৳12,500</del>
+            <strong>৳6,500</strong>
+          </div>
+
+          <div class="action-buttons">
+
+            <a href="https://yourdocuments.github.io/" class="btn btn-payment">
+              Payment করতে চাই →
+            </a>
+
+            <a
+              href="https://wa.me/8801705633700?text=আমি%20Kidz%20Spoken%20English%20কোর্স%20সম্পর্কে%20কথা%20বলতে%20চাই"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-talk"
+            >
+              কথা বলতে চাই
+            </a>
+
+          </div>
+
+          <div class="whatsapp-box">
+            <div class="whatsapp-icon">💬</div>
+            <div class="whatsapp-text">
+              <strong>WhatsApp: 01705633700</strong>
+              <span>সরাসরি মেসেজ করুন, দ্রুত রিপ্লাই পাবেন</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 SNK IT Institute • Learn To Lead • Moulvibazar •
+      <a href="index.html">হোমে ফিরে যান</a>
+    </div>
+  </footer>
+
+
+  <script>
+    const themeToggleBtn = document.getElementById("themeToggle");
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme){
+      if(theme === "light"){
+        htmlEl.classList.add("light-mode");
+        themeToggleBtn.textContent = "☀️";
+      }else{
+        htmlEl.classList.remove("light-mode");
+        themeToggleBtn.textContent = "🌙";
+      }
+    }
+
+    applyTheme(localStorage.getItem("snk-theme") || "dark");
+
+    themeToggleBtn.addEventListener("click", function(){
+      const isLight = htmlEl.classList.contains("light-mode");
+      const newTheme = isLight ? "dark" : "light";
+      applyTheme(newTheme);
+      localStorage.setItem("snk-theme", newTheme);
+    });
+
+    const langToggleBtn = document.getElementById("langToggle");
+
+    function applyLang(lang){
+      document.querySelectorAll("[data-bn]").forEach(function(el){
+        el.textContent = (lang === "bn") ? el.getAttribute("data-bn") : el.getAttribute("data-en");
+      });
+      langToggleBtn.textContent = (lang === "bn") ? "EN" : "বাংলা";
+    }
+
+    applyLang(localStorage.getItem("snk-lang") || "bn");
+
+    langToggleBtn.addEventListener("click", function(){
+      const current = localStorage.getItem("snk-lang") || "bn";
+      const next = (current === "bn") ? "en" : "bn";
+      applyLang(next);
+      localStorage.setItem("snk-lang", next);
+    });
+  </script>
+
+</body>
+</html>
