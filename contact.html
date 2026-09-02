@@ -1,1256 +1,338 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>যোগাযোগ | SNK IT Institute</title>
 
-  <title>যোগাযোগ ও ভর্তি | SNK IT Institute</title>
+  <meta name="description" content="SNK IT Institute-এর সাথে যোগাযোগ করুন — WhatsApp, phone অথবা মেসেজ পাঠিয়ে।">
 
   <style>
 
-    /* =====================================================
-       RESET
-    ===================================================== */
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    :root{
+      --bg:#050505; --bg-alt:#080808; --bg-card:#0b0b0b; --bg-input:#101010;
+      --text:#fff; --text-muted:#a4a4a4; --text-dim:#777;
+      --border:#181818; --border-2:#292929;
     }
 
-    html{
-      scroll-behavior:smooth;
+    html.light-mode{
+      --bg:#f7f7f2; --bg-alt:#f0f0ea; --bg-card:#ffffff; --bg-input:#ffffff;
+      --text:#111; --text-muted:#555; --text-dim:#777;
+      --border:#e2e2da; --border-2:#dcdcd2;
     }
 
     body{
       font-family:Arial, Helvetica, sans-serif;
-      background:#050505;
-      color:#fff;
-      line-height:1.6;
+      background:var(--bg); color:var(--text); line-height:1.6;
+      overflow-x:hidden; transition:background .3s ease, color .3s ease;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
+    a{ text-decoration:none; color:inherit; }
+    img{ max-width:100%; display:block; }
+    button, input, textarea{ font:inherit; }
 
-    button,
-    input,
-    select,
-    textarea{
-      font:inherit;
-    }
+    .container{ width:min(1000px,92%); margin:auto; }
 
-    .container{
-      width:min(1150px,92%);
-      margin:auto;
-    }
-
-
-    /* =====================================================
-       HEADER
-    ===================================================== */
+    /* HEADER */
 
     .header{
-      position:sticky;
-      top:0;
-      z-index:9999;
-
-      background:rgba(5,5,5,.93);
-
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
-
-      border-bottom:1px solid #1d1d1d;
+      position:sticky; top:0; z-index:9999;
+      background:var(--bg); opacity:.98;
+      backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border);
+      transition:background .3s ease, border-color .3s ease;
     }
 
-    .nav{
-      min-height:78px;
+    .nav{ min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand{ display:flex; align-items:center; flex-shrink:0; }
+    .brand img{ width:120px; height:auto; }
 
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+    .menu{ display:flex; align-items:center; gap:25px; }
+    .menu a{ color:var(--text-muted); font-size:14px; transition:.3s; }
+    .menu a:hover, .menu a.active{ color:#b7ff00; }
 
-      gap:20px;
+    .header-actions{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+
+    .theme-toggle, .lang-toggle{
+      display:flex; align-items:center; justify-content:center;
+      width:40px; height:40px; border:1px solid var(--border-2); border-radius:8px;
+      background:var(--bg-input); color:var(--text);
+      font-size:15px; font-weight:800; cursor:pointer; transition:.3s;
+    }
+    .lang-toggle{ width:auto; padding:0 12px; font-size:12px; }
+    .theme-toggle:hover, .lang-toggle:hover{ border-color:#b7ff00; color:#b7ff00; }
+
+    .login-button{
+      background:#b7ff00; color:#050505; padding:10px 17px; border-radius:8px;
+      font-size:13px; font-weight:800; transition:.3s;
+    }
+    .login-button:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(183,255,0,.20); }
+
+    @media(max-width:900px){ .menu{ display:none; } }
+    @media(max-width:600px){
+      .nav{ min-height:70px; } .brand img{ width:105px; }
+      .login-button{ padding:9px 12px; font-size:11px; }
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
+    /* PAGE HERO */
+
+    .page-hero{
+      position:relative; padding:70px 0 40px; text-align:center; overflow:hidden;
+      background: radial-gradient(circle at center, rgba(183,255,0,.10), transparent 40%), var(--bg);
+      transition:background .3s ease;
     }
 
-    .brand img{
-      width:115px;
-      height:auto;
-      display:block;
+    .page-badge{
+      display:inline-flex; align-items:center; gap:8px; color:#b7ff00;
+      padding:8px 15px; border:1px solid rgba(183,255,0,.25); background:rgba(183,255,0,.06);
+      border-radius:50px; font-size:11px; font-weight:800; letter-spacing:1px; margin-bottom:20px;
     }
 
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:25px;
-    }
+    .page-hero h1{ font-size:clamp(34px,5vw,52px); line-height:1.15; letter-spacing:-2px; margin-bottom:14px; }
+    .page-hero h1 span{ color:#b7ff00; }
+    .page-hero p{ max-width:600px; margin:auto; color:var(--text-muted); font-size:15px; }
 
-    .menu a{
-      color:#aaa;
-      font-size:14px;
-      transition:.3s;
-    }
+    /* CONTENT */
 
-    .menu a:hover{
-      color:#b7ff00;
-    }
+    .contact-section{ padding:20px 0 90px; }
 
-    .nav-button{
-      background:#b7ff00;
-      color:#050505;
+    .contact-grid{ display:grid; grid-template-columns:1fr 1.2fr; gap:24px; align-items:start; }
 
-      padding:10px 17px;
-
-      border-radius:8px;
-
-      font-size:13px;
-      font-weight:800;
-
-      transition:.3s;
-    }
-
-    .nav-button:hover{
-      transform:translateY(-2px);
-      box-shadow:0 10px 25px rgba(183,255,0,.18);
-    }
-
-
-    /* =====================================================
-       HERO
-    ===================================================== */
-
-    .contact-hero{
-      position:relative;
-      overflow:hidden;
-
-      padding:90px 0 70px;
-
-      text-align:center;
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(183,255,0,.12),
-          transparent 42%
-        ),
-
-        #050505;
-    }
-
-    .contact-hero small{
-      display:block;
-
-      color:#b7ff00;
-
-      font-size:11px;
-
-      font-weight:800;
-
-      letter-spacing:2px;
-
-      margin-bottom:14px;
-    }
-
-    .contact-hero h1{
-      font-size:clamp(42px,6vw,68px);
-
-      line-height:1.05;
-
-      letter-spacing:-3px;
-
-      margin-bottom:18px;
-    }
-
-    .contact-hero h1 span{
-      color:#b7ff00;
-    }
-
-    .contact-hero p{
-      max-width:650px;
-
-      margin:auto;
-
-      color:#888;
-
-      font-size:16px;
-
-      line-height:1.8;
-    }
-
-
-    /* =====================================================
-       CONTACT SECTION
-    ===================================================== */
-
-    .contact-section{
-      padding:80px 0 100px;
-
-      background:#080808;
-    }
-
-    .contact-grid{
-      display:grid;
-
-      grid-template-columns:
-        .75fr 1.25fr;
-
-      gap:25px;
-
-      align-items:start;
-    }
-
-
-    /* =====================================================
-       CONTACT INFO
-    ===================================================== */
-
-    .contact-info{
-      display:flex;
-
-      flex-direction:column;
-
-      gap:15px;
-    }
+    /* INFO CARDS */
 
     .info-card{
-      padding:25px;
+      display:flex; align-items:center; gap:16px;
+      background:var(--bg-card); border:1px solid var(--border-2); border-radius:16px;
+      padding:22px; margin-bottom:16px; transition:.3s;
+    }
+    .info-card:hover{ border-color:rgba(183,255,0,.35); }
 
-      background:#101010;
-
-      border:1px solid #222;
-
-      border-radius:16px;
-
-      transition:.3s;
+    .info-card-icon{
+      width:50px; height:50px; flex-shrink:0; display:grid; place-items:center;
+      background:rgba(183,255,0,.09); border-radius:12px; font-size:22px;
     }
 
-    .info-card:hover{
-      border-color:rgba(183,255,0,.35);
+    .info-card strong{ display:block; font-size:14px; margin-bottom:3px; }
+    .info-card span{ color:var(--text-muted); font-size:12.5px; }
 
-      transform:translateY(-3px);
+    .info-card.whatsapp .info-card-icon{ background:rgba(37,211,102,.12); }
+
+    /* SOCIAL ROW */
+
+    .social-row{ display:flex; gap:10px; margin-top:6px; }
+    .social-row a{
+      width:44px; height:44px; display:grid; place-items:center;
+      border:1px solid var(--border-2); border-radius:10px; color:var(--text-muted);
+      font-size:15px; transition:.3s;
     }
+    .social-row a:hover{ color:#b7ff00; border-color:#b7ff00; }
 
-    .info-icon{
-      width:48px;
-      height:48px;
-
-      display:grid;
-      place-items:center;
-
-      margin-bottom:15px;
-
-      background:rgba(183,255,0,.08);
-
-      border-radius:12px;
-
-      font-size:21px;
-    }
-
-    .info-card h3{
-      font-size:17px;
-
-      margin-bottom:5px;
-    }
-
-    .info-card p{
-      color:#777;
-
-      font-size:13px;
-
-      line-height:1.7;
-    }
-
-    .info-card a{
-      color:#b7ff00;
-
-      font-size:13px;
-
-      font-weight:700;
-    }
-
-
-    /* =====================================================
-       FORM
-    ===================================================== */
+    /* FORM CARD */
 
     .form-card{
-      padding:35px;
-
-      background:#101010;
-
-      border:1px solid #222;
-
-      border-radius:18px;
+      background:var(--bg-card); border:1px solid var(--border-2); border-radius:18px;
+      padding:32px;
     }
 
-    .form-header{
-      margin-bottom:25px;
+    .form-card h2{ font-size:22px; margin-bottom:8px; }
+    .form-card > p{ color:var(--text-dim); font-size:13px; margin-bottom:24px; }
+
+    .form-group{ display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
+    .form-group label{ color:#ddd; font-size:13px; font-weight:700; }
+
+    .form-group input, .form-group textarea{
+      width:100%; border:1px solid var(--border-2); outline:none;
+      background:var(--bg-input); color:var(--text); border-radius:9px;
+      padding:13px 14px; font-size:13px; transition:.3s;
     }
-
-    .form-header small{
-      color:#b7ff00;
-
-      font-size:10px;
-
-      font-weight:800;
-
-      letter-spacing:2px;
+    .form-group input::placeholder, .form-group textarea::placeholder{ color:var(--text-dim); }
+    .form-group input:focus, .form-group textarea:focus{
+      border-color:rgba(183,255,0,.55); box-shadow:0 0 0 3px rgba(183,255,0,.05);
     }
-
-    .form-header h2{
-      font-size:28px;
-
-      margin:7px 0;
-    }
-
-    .form-header p{
-      color:#777;
-
-      font-size:13px;
-    }
-
-    .form-row{
-      display:grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap:15px;
-    }
-
-    .form-group{
-      margin-bottom:17px;
-    }
-
-    .form-group.full{
-      grid-column:1/-1;
-    }
-
-    .form-group label{
-      display:block;
-
-      color:#bbb;
-
-      font-size:12px;
-
-      font-weight:700;
-
-      margin-bottom:7px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea{
-      width:100%;
-
-      padding:13px 14px;
-
-      background:#080808;
-
-      color:#fff;
-
-      border:1px solid #292929;
-
-      border-radius:9px;
-
-      outline:none;
-
-      transition:.3s;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder{
-      color:#555;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus{
-      border-color:#b7ff00;
-
-      box-shadow:
-        0 0 0 3px
-        rgba(183,255,0,.06);
-    }
-
-    .form-group textarea{
-      min-height:120px;
-
-      resize:vertical;
-    }
+    .form-group textarea{ min-height:110px; resize:vertical; }
 
     .submit-button{
-      width:100%;
-
-      padding:14px;
-
-      border:0;
-
-      border-radius:9px;
-
-      background:#b7ff00;
-
-      color:#050505;
-
-      font-size:14px;
-
-      font-weight:900;
-
-      cursor:pointer;
-
-      transition:.3s;
+      width:100%; margin-top:8px; padding:15px; border:0; border-radius:9px;
+      background:#b7ff00; color:#050505; font-size:14px; font-weight:900;
+      cursor:pointer; transition:.3s;
     }
+    .submit-button:hover{ transform:translateY(-2px); box-shadow:0 12px 35px rgba(183,255,0,.20); }
 
-    .submit-button:hover{
-      transform:translateY(-2px);
-
-      box-shadow:
-        0 12px 30px
-        rgba(183,255,0,.2);
-    }
-
-
-    /* =====================================================
-       ADMISSION PROCESS
-    ===================================================== */
-
-    .process-section{
-      padding:90px 0;
-
-      background:#050505;
-    }
-
-    .section-title{
-      max-width:700px;
-
-      margin-bottom:40px;
-    }
-
-    .section-title small{
-      color:#b7ff00;
-
-      font-size:11px;
-
-      font-weight:800;
-
-      letter-spacing:2px;
-    }
-
-    .section-title h2{
-      font-size:clamp(34px,5vw,50px);
-
-      line-height:1.1;
-
-      letter-spacing:-2px;
-
-      margin:10px 0 14px;
-    }
-
-    .section-title h2 span{
-      color:#b7ff00;
-    }
-
-    .section-title p{
-      color:#888;
-
-      font-size:14px;
-
-      line-height:1.8;
-    }
-
-    .process-grid{
-      display:grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:15px;
-    }
-
-    .process-card{
-      padding:25px;
-
-      background:#0c0c0c;
-
-      border:1px solid #202020;
-
-      border-radius:15px;
-    }
-
-    .process-number{
-      color:#b7ff00;
-
-      font-size:12px;
-
-      font-weight:900;
-
-      margin-bottom:15px;
-    }
-
-    .process-card h3{
-      font-size:17px;
-
-      margin-bottom:7px;
-    }
-
-    .process-card p{
-      color:#777;
-
-      font-size:12px;
-
-      line-height:1.7;
-    }
-
-
-    /* =====================================================
-       WHATSAPP CTA
-    ===================================================== */
-
-    .whatsapp-section{
-      padding:80px 0;
-
-      text-align:center;
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(183,255,0,.09),
-          transparent 45%
-        );
-
-      border-top:1px solid #181818;
-    }
-
-    .whatsapp-section h2{
-      font-size:38px;
-
-      margin-bottom:12px;
-    }
-
-    .whatsapp-section h2 span{
-      color:#b7ff00;
-    }
-
-    .whatsapp-section p{
-      color:#777;
-
-      max-width:580px;
-
-      margin:0 auto 25px;
-
-      font-size:14px;
-    }
-
-    .whatsapp-button{
-      display:inline-flex;
-
-      align-items:center;
-      justify-content:center;
-
-      gap:8px;
-
-      padding:14px 25px;
-
-      background:#b7ff00;
-
-      color:#050505;
-
-      border-radius:9px;
-
-      font-size:14px;
-
-      font-weight:900;
-
-      transition:.3s;
-    }
-
-    .whatsapp-button:hover{
-      transform:translateY(-3px);
-
-      box-shadow:
-        0 12px 35px
-        rgba(183,255,0,.2);
-    }
-
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
+    /* FOOTER */
 
     .footer{
-      padding:35px 0;
+      padding:35px 0; border-top:1px solid var(--border); background:var(--bg);
+      text-align:center; color:var(--text-dim); font-size:12px;
+      transition:background .3s ease, border-color .3s ease;
+    }
+    .footer a{ color:#b7ff00; }
 
-      background:#050505;
+    /* MOBILE */
 
-      border-top:1px solid #1b1b1b;
+    @media(max-width:800px){
+      .contact-grid{ grid-template-columns:1fr; }
     }
 
-    .footer-inner{
-      display:flex;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      gap:20px;
-    }
-
-    .footer-brand{
-      font-size:18px;
-
-      font-weight:800;
-    }
-
-    .footer-brand span{
-      color:#b7ff00;
-    }
-
-    .footer p{
-      color:#666;
-
-      font-size:12px;
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
-
-    @media(max-width:900px){
-
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
-
-      .process-grid{
-        grid-template-columns:
-          repeat(2,1fr);
-      }
-
-    }
-
-
-    @media(max-width:700px){
-
-      .nav{
-        min-height:68px;
-      }
-
-      .brand img{
-        width:100px;
-      }
-
-      .menu{
-        display:none;
-      }
-
-      .nav-button{
-        padding:9px 12px;
-
-        font-size:11px;
-      }
-
-      .contact-hero{
-        padding:65px 0 55px;
-      }
-
-      .contact-hero h1{
-        font-size:43px;
-
-        letter-spacing:-2px;
-      }
-
-      .contact-hero p{
-        font-size:14px;
-      }
-
-      .contact-section{
-        padding:60px 0 75px;
-      }
-
-      .form-card{
-        padding:25px 20px;
-      }
-
-      .form-row{
-        grid-template-columns:1fr;
-      }
-
-      .form-group.full{
-        grid-column:auto;
-      }
-
-      .process-grid{
-        grid-template-columns:1fr;
-      }
-
-      .whatsapp-section{
-        padding:70px 0;
-      }
-
-      .whatsapp-section h2{
-        font-size:32px;
-      }
-
-      .footer-inner{
-        flex-direction:column;
-
-        align-items:flex-start;
-      }
-
+    @media(max-width:600px){
+      .container{ width:90%; }
+      .nav{ min-height:70px; } .brand img{ width:105px; }
+      .page-hero{ padding:50px 0 30px; }
+      .form-card{ padding:22px; }
     }
 
   </style>
-
 </head>
-
 
 <body>
 
-
-  <!-- =====================================================
-       HEADER
-  ===================================================== -->
-
   <header class="header">
-
     <div class="container nav">
-
-
       <a href="index.html" class="brand">
-
-        <img
-          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
-          alt="SNK IT Institute"
-        >
-
+        <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
       </a>
-
-
       <nav class="menu">
-
-        <a href="index.html">
-          হোম
-        </a>
-
-        <a href="courses.html">
-          কোর্সসমূহ
-        </a>
-
-        <a href="index.html#about">
-          আমাদের সম্পর্কে
-        </a>
-
-        <a href="contact.html">
-          যোগাযোগ
-        </a>
-
+        <a href="index.html" data-bn="হোম" data-en="Home">হোম</a>
+        <a href="courses.html" data-bn="কোর্সসমূহ" data-en="Courses">কোর্সসমূহ</a>
+        <a href="about.html" data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</a>
+        <a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
+        <a href="contact.html" class="active" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
       </nav>
-
-
-      <a
-        href="#admission"
-        class="nav-button"
-      >
-        ভর্তি করুন →
-      </a>
-
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark/light mode">🌙</button>
+        <button id="langToggle" class="lang-toggle" type="button" aria-label="Toggle language">EN</button>
+        <a href="coming-soon.html" class="login-button" data-bn="Login / Sign Up →" data-en="Login / Sign Up →">Login / Sign Up →</a>
+      </div>
     </div>
-
   </header>
 
 
-
-  <!-- =====================================================
-       HERO
-  ===================================================== -->
-
-  <section class="contact-hero">
-
+  <section class="page-hero">
     <div class="container">
-
-      <small>
-        CONTACT & ADMISSION
-      </small>
-
-      <h1>
-
-        আপনার প্রশ্নের
-
-        <br>
-
-        <span>
-          উত্তর এখানেই।
-        </span>
-
-      </h1>
-
-      <p>
-
-        কোর্স সম্পর্কে জানতে, ভর্তি হতে অথবা
-        যেকোনো তথ্যের জন্য আমাদের সাথে যোগাযোগ করুন।
-
-      </p>
-
+      <div class="page-badge"><span>📞</span> GET IN TOUCH</div>
+      <h1>আমাদের সাথে <span>যোগাযোগ করুন</span></h1>
+      <p>প্রশ্ন থাকলে সরাসরি WhatsApp-এ মেসেজ করুন, অথবা নিচের ফর্মটি পূরণ করুন — আমরা দ্রুত রিপ্লাই দিব।</p>
     </div>
-
   </section>
 
 
+  <section class="contact-section">
+    <div class="container contact-grid">
 
-  <!-- =====================================================
-       CONTACT + FORM
-  ===================================================== -->
+      <div class="contact-info">
 
-  <section
-    class="contact-section"
-    id="admission"
-  >
-
-    <div class="container">
-
-      <div class="contact-grid">
-
-
-        <!-- CONTACT INFO -->
-
-        <div class="contact-info">
-
-
-          <div class="info-card">
-
-            <div class="info-icon">
-              📞
-            </div>
-
-            <h3>
-              ফোন করুন
-            </h3>
-
-            <p>
-              ভর্তি ও কোর্স সংক্রান্ত তথ্যের জন্য
-              সরাসরি আমাদের সাথে কথা বলুন।
-            </p>
-
-            <a href="tel:+8801705633700">
-              01705-633700
-            </a>
-
+        <div class="info-card whatsapp">
+          <div class="info-card-icon">💬</div>
+          <div>
+            <strong>WhatsApp</strong>
+            <span>01705633700</span>
           </div>
-
-
-          <div class="info-card">
-
-            <div class="info-icon">
-              💬
-            </div>
-
-            <h3>
-              WhatsApp
-            </h3>
-
-            <p>
-              WhatsApp-এ মেসেজ করে
-              কোর্স সম্পর্কে বিস্তারিত জানতে পারেন।
-            </p>
-
-            <a
-              href="https://wa.me/8801705633700"
-              target="_blank"
-            >
-              WhatsApp এ মেসেজ করুন →
-            </a>
-
-          </div>
-
-
-          <div class="info-card">
-
-            <div class="info-icon">
-              📍
-            </div>
-
-            <h3>
-              আমাদের ঠিকানা
-            </h3>
-
-            <p>
-              SNK IT Institute<br>
-              Moulvibazar-3200, Bangladesh
-            </p>
-
-          </div>
-
-
-          <div class="info-card">
-
-            <div class="info-icon">
-              🎓
-            </div>
-
-            <h3>
-              Course Support
-            </h3>
-
-            <p>
-              Course selection, admission process
-              এবং schedule সম্পর্কে guidance পাবেন।
-            </p>
-
-          </div>
-
-
         </div>
 
-
-
-        <!-- FORM -->
-
-        <div class="form-card">
-
-          <div class="form-header">
-
-            <small>
-              ADMISSION FORM
-            </small>
-
-            <h2>
-              ভর্তি সম্পর্কে জানতে
-              ফর্মটি পূরণ করুন।
-            </h2>
-
-            <p>
-              আপনার তথ্য দিলে আমাদের team
-              আপনার সাথে যোগাযোগ করবে।
-            </p>
-
+        <div class="info-card">
+          <div class="info-card-icon">📍</div>
+          <div>
+            <strong>ঠিকানা</strong>
+            <span>Moulvibazar, Sylhet, বাংলাদেশ</span>
           </div>
-
-
-          <form
-            action="https://formsubmit.co/"
-            method="POST"
-          >
-
-
-            <div class="form-row">
-
-
-              <div class="form-group">
-
-                <label>
-                  আপনার নাম *
-                </label>
-
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="আপনার পূর্ণ নাম"
-                  required
-                >
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label>
-                  মোবাইল নম্বর *
-                </label>
-
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="01XXXXXXXXX"
-                  required
-                >
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label>
-                  Email
-                </label>
-
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="example@email.com"
-                >
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label>
-                  কোন কোর্সে আগ্রহী? *
-                </label>
-
-                <select
-                  name="course"
-                  required
-                >
-
-                  <option value="">
-                    কোর্স নির্বাচন করুন
-                  </option>
-
-                  <option value="AI-Powered UI/UX">
-                    AI-Powered UI/UX Career Program
-                  </option>
-
-                  <option value="Cyber Security">
-                    AI-Powered Cyber Security
-                  </option>
-
-                  <option value="Motion Graphic Design">
-                    Motion Graphic Design
-                  </option>
-
-                  <option value="Kidz Spoken English">
-                    100Days Kidz Spoken English
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="form-group full">
-
-                <label>
-                  আপনার মেসেজ
-                </label>
-
-                <textarea
-                  name="message"
-                  placeholder="আপনার প্রশ্ন বা প্রয়োজনীয় তথ্য লিখুন..."
-                ></textarea>
-
-              </div>
-
-
-            </div>
-
-
-            <button
-              type="submit"
-              class="submit-button"
-            >
-              তথ্য পাঠান →
-            </button>
-
-
-          </form>
-
         </div>
 
+        <div class="info-card">
+          <div class="info-card-icon">✉️</div>
+          <div>
+            <strong>ইমেইল</strong>
+            <span>iamsnkbd@protonmail.com</span>
+          </div>
+        </div>
 
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       ADMISSION PROCESS
-  ===================================================== -->
-
-  <section class="process-section">
-
-    <div class="container">
-
-
-      <div class="section-title">
-
-        <small>
-          ADMISSION PROCESS
-        </small>
-
-        <h2>
-
-          ভর্তি প্রক্রিয়া
-
-          <br>
-
-          <span>
-            সহজ ও পরিষ্কার।
-          </span>
-
-        </h2>
-
-        <p>
-          মাত্র কয়েকটি ধাপেই আপনার admission
-          process সম্পন্ন করতে পারবেন।
-        </p>
+        <div class="social-row">
+          <a href="https://www.facebook.com/snkitinstitute" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/snkitinstitute" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎</a>
+          <a href="https://www.youtube.com/@snkitinstitute" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+          <a href="https://www.tiktok.com/@snkitinstitute" target="_blank" rel="noopener noreferrer" aria-label="TikTok">♪</a>
+          <a href="https://www.linkedin.com/company/snkitinstitute" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+        </div>
 
       </div>
 
 
-      <div class="process-grid">
+      <div class="form-card">
 
+        <h2>মেসেজ পাঠান</h2>
+        <p>ফর্ম পূরণ করলে সরাসরি আমাদের ইমেইলে চলে যাবে।</p>
 
-        <div class="process-card">
+        <form action="https://formsubmit.co/iamsnkbd@protonmail.com" method="POST">
 
-          <div class="process-number">
-            01
+          <input type="hidden" name="_subject" value="SNK IT Institute — New Contact Message">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+
+          <div class="form-group">
+            <label>নাম</label>
+            <input type="text" name="Name" placeholder="আপনার নাম" required>
           </div>
 
-          <h3>
-            Course নির্বাচন
-          </h3>
-
-          <p>
-            আপনার পছন্দের course নির্বাচন করুন।
-          </p>
-
-        </div>
-
-
-        <div class="process-card">
-
-          <div class="process-number">
-            02
+          <div class="form-group">
+            <label>মোবাইল নম্বর</label>
+            <input type="tel" name="Phone" placeholder="01XXXXXXXXX" required>
           </div>
 
-          <h3>
-            তথ্য প্রদান
-          </h3>
-
-          <p>
-            Admission form-এ আপনার তথ্য দিন।
-          </p>
-
-        </div>
-
-
-        <div class="process-card">
-
-          <div class="process-number">
-            03
+          <div class="form-group">
+            <label>মেসেজ</label>
+            <textarea name="Message" placeholder="আপনার প্রশ্ন বা মেসেজ লিখুন..." required></textarea>
           </div>
 
-          <h3>
-            যোগাযোগ
-          </h3>
+          <button type="submit" class="submit-button">মেসেজ পাঠান →</button>
 
-          <p>
-            আমাদের team আপনার সাথে যোগাযোগ করবে।
-          </p>
-
-        </div>
-
-
-        <div class="process-card">
-
-          <div class="process-number">
-            04
-          </div>
-
-          <h3>
-            Admission Confirm
-          </h3>
-
-          <p>
-            Payment ও verification শেষে
-            আপনার admission confirm হবে।
-          </p>
-
-        </div>
-
+        </form>
 
       </div>
 
     </div>
-
   </section>
 
-
-
-  <!-- =====================================================
-       WHATSAPP CTA
-  ===================================================== -->
-
-  <section class="whatsapp-section">
-
-    <div class="container">
-
-      <h2>
-
-        সরাসরি
-
-        <span>
-          কথা বলতে চান?
-        </span>
-
-      </h2>
-
-      <p>
-
-        Course সম্পর্কে দ্রুত জানতে WhatsApp-এ
-        আমাদের সাথে যোগাযোগ করুন।
-
-      </p>
-
-
-      <a
-        href="https://wa.me/8801705633700"
-        target="_blank"
-        class="whatsapp-button"
-      >
-        💬 WhatsApp করুন →
-      </a>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       FOOTER
-  ===================================================== -->
 
   <footer class="footer">
-
-    <div class="container footer-inner">
-
-
-      <div>
-
-        <div class="footer-brand">
-          SNK <span>IT</span> Institute
-        </div>
-
-        <p>
-          Learn To Lead
-        </p>
-
-      </div>
-
-
-      <p>
-        © 2026 SNK IT Institute.
-        সর্বস্বত্ব সংরক্ষিত।
-      </p>
-
-
+    <div class="container">
+      © 2026 SNK IT Institute • Learn To Lead • Moulvibazar •
+      <a href="index.html">হোমে ফিরে যান</a>
     </div>
-
   </footer>
 
+
+  <script>
+    const themeToggleBtn = document.getElementById("themeToggle");
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme){
+      if(theme === "light"){ htmlEl.classList.add("light-mode"); themeToggleBtn.textContent = "☀️"; }
+      else{ htmlEl.classList.remove("light-mode"); themeToggleBtn.textContent = "🌙"; }
+    }
+    applyTheme(localStorage.getItem("snk-theme") || "dark");
+    themeToggleBtn.addEventListener("click", function(){
+      const isLight = htmlEl.classList.contains("light-mode");
+      const newTheme = isLight ? "dark" : "light";
+      applyTheme(newTheme);
+      localStorage.setItem("snk-theme", newTheme);
+    });
+
+    const langToggleBtn = document.getElementById("langToggle");
+    function applyLang(lang){
+      document.querySelectorAll("[data-bn]").forEach(function(el){
+        el.textContent = (lang === "bn") ? el.getAttribute("data-bn") : el.getAttribute("data-en");
+      });
+      langToggleBtn.textContent = (lang === "bn") ? "EN" : "বাংলা";
+    }
+    applyLang(localStorage.getItem("snk-lang") || "bn");
+    langToggleBtn.addEventListener("click", function(){
+      const current = localStorage.getItem("snk-lang") || "bn";
+      const next = (current === "bn") ? "en" : "bn";
+      applyLang(next);
+      localStorage.setItem("snk-lang", next);
+    });
+  </script>
 
 </body>
 </html>
