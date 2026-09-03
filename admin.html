@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | SNK IT Institute</title>
+
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#050505;
+      color:#fff;
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:25px;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .login-box{
+      width:100%;
+      max-width:380px;
+
+      background:#0b0b0b;
+      border:1px solid #202020;
+      border-radius:18px;
+
+      padding:36px 32px;
+
+      box-shadow:0 25px 70px rgba(0,0,0,.3);
+    }
+
+    .logo{
+      width:110px;
+      margin:0 auto 24px;
+    }
+
+    .login-box h1{
+      font-size:22px;
+      text-align:center;
+      margin-bottom:6px;
+    }
+
+    .login-box p.sub{
+      color:#777;
+      font-size:13px;
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+      margin-bottom:16px;
+    }
+
+    .form-group label{
+      color:#ddd;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .form-group input{
+      width:100%;
+      border:1px solid #292929;
+      outline:none;
+      background:#101010;
+      color:#fff;
+      border-radius:9px;
+      padding:13px 14px;
+      font-size:13px;
+      transition:.3s;
+    }
+
+    .form-group input:focus{
+      border-color:rgba(183,255,0,.55);
+      box-shadow:0 0 0 3px rgba(183,255,0,.05);
+    }
+
+    .login-button{
+      width:100%;
+      margin-top:8px;
+      padding:14px;
+      border:0;
+      border-radius:9px;
+      background:#b7ff00;
+      color:#050505;
+      font-size:14px;
+      font-weight:900;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .login-button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 35px rgba(183,255,0,.20);
+    }
+
+    .login-button:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+      transform:none;
+      box-shadow:none;
+    }
+
+    .error-box{
+      display:none;
+      margin-bottom:16px;
+      padding:12px 14px;
+      background:rgba(255,80,80,.08);
+      border:1px solid rgba(255,80,80,.3);
+      border-radius:9px;
+      color:#ff8080;
+      font-size:12.5px;
+      line-height:1.6;
+    }
+
+    .error-box.show{
+      display:block;
+    }
+
+    .back-link{
+      display:block;
+      text-align:center;
+      margin-top:22px;
+      color:#777;
+      font-size:12.5px;
+    }
+
+    .back-link:hover{
+      color:#b7ff00;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <img class="logo" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
+
+    <h1>Admin Login</h1>
+    <p class="sub">শুধুমাত্র SNK IT Institute Admin-দের জন্য</p>
+
+    <div class="error-box" id="errorBox"></div>
+
+    <form id="loginForm">
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="admin@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="login-button" id="loginBtn">
+        Login →
+      </button>
+
+    </form>
+
+    <a href="index.html" class="back-link">← হোমে ফিরে যান</a>
+
+  </div>
+
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
+      authDomain: "snk-it-institute.firebaseapp.com",
+      projectId: "snk-it-institute",
+      storageBucket: "snk-it-institute.firebasestorage.app",
+      messagingSenderId: "948436125833",
+      appId: "1:948436125833:web:36788463d4dd3ef20bde58"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    const loginForm = document.getElementById("loginForm");
+    const loginBtn = document.getElementById("loginBtn");
+    const errorBox = document.getElementById("errorBox");
+
+    function showError(message){
+      errorBox.textContent = message;
+      errorBox.classList.add("show");
+    }
+
+    function hideError(){
+      errorBox.classList.remove("show");
+    }
+
+    // If already logged in, go straight to dashboard
+    auth.onAuthStateChanged(function(user){
+      if(user){
+        window.location.href = "admin-dashboard.html";
+      }
+    });
+
+    loginForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      hideError();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      loginBtn.disabled = true;
+      loginBtn.textContent = "Logging in...";
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(function(){
+          window.location.href = "admin-dashboard.html";
+        })
+        .catch(function(error){
+          loginBtn.disabled = false;
+          loginBtn.textContent = "Login →";
+
+          if(error.code === "auth/invalid-credential" || error.code === "auth/wrong-password" || error.code === "auth/user-not-found"){
+            showError("Email অথবা Password ভুল হয়েছে। আবার চেষ্টা করুন।");
+          }else if(error.code === "auth/invalid-email"){
+            showError("সঠিক Email address দিন।");
+          }else if(error.code === "auth/too-many-requests"){
+            showError("অনেকবার ভুল চেষ্টা হয়েছে। কিছুক্ষণ পর আবার চেষ্টা করুন।");
+          }else{
+            showError("Login করতে সমস্যা হয়েছে: " + error.message);
+          }
+        });
+    });
+
+  </script>
+
+</body>
+</html>
