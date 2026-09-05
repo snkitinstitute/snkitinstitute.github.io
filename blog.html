@@ -4,49 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ব্লগ | SNK IT Institute</title>
+  <title>Blog | SNK IT Institute</title>
+  <meta name="description" content="SNK IT Institute Blog - Technology, AI, Cyber Security, UI/UX, Graphic Design and Career Tips">
 
-  <meta
-    name="description"
-    content="SNK IT Institute Blog — IT, Career এবং Skill Development নিয়ে লেখা।"
-  >
-
-  <!-- Favicon -->
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-  >
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="ব্লগ | SNK IT Institute">
-  <meta
-    property="og:description"
-    content="SNK IT Institute Blog — IT, Career এবং Skill Development নিয়ে লেখা।"
-  >
-  <meta
-    property="og:image"
-    content="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-  >
-  <meta property="og:type" content="website">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="ব্লগ | SNK IT Institute">
-  <meta
-    name="twitter:description"
-    content="SNK IT Institute Blog — IT, Career এবং Skill Development নিয়ে লেখা।"
-  >
-  <meta
-    name="twitter:image"
-    content="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* =====================================================
+    /* =========================
        RESET
-    ===================================================== */
-
+    ========================== */
     * {
       margin: 0;
       padding: 0;
@@ -57,51 +25,16 @@
       scroll-behavior: smooth;
     }
 
-    :root {
-      --bg: #050505;
-      --bg-alt: #080808;
-      --bg-card: #0b0b0b;
-      --bg-input: #101010;
-
-      --text: #ffffff;
-      --text-muted: #a4a4a4;
-      --text-dim: #777777;
-
-      --border: #181818;
-      --border-2: #292929;
-
-      --accent: #b7ff00;
-    }
-
-    html.light-mode {
-      --bg: #f7f7f2;
-      --bg-alt: #f0f0ea;
-      --bg-card: #ffffff;
-      --bg-input: #ffffff;
-
-      --text: #111111;
-      --text-muted: #555555;
-      --text-dim: #777777;
-
-      --border: #e2e2da;
-      --border-2: #dcdcd2;
-    }
-
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-
-      transition:
-        background 0.3s ease,
-        color 0.3s ease;
+      font-family: "Montserrat", "Noto Sans Bengali", sans-serif;
+      background: #f7f8f6;
+      color: #111;
+      line-height: 1.7;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     img {
@@ -110,881 +43,874 @@
     }
 
     button {
-      font: inherit;
+      font-family: inherit;
     }
 
-    .container {
-      width: min(1000px, 92%);
-      margin: auto;
-    }
-
-
-    /* =====================================================
+    /* =========================
        HEADER
-    ===================================================== */
-
-    .header {
+    ========================== */
+    header {
       position: sticky;
       top: 0;
-      z-index: 9999;
-
-      background: var(--bg);
-      opacity: 0.98;
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      border-bottom: 1px solid var(--border);
-
-      transition:
-        background 0.3s ease,
-        border-color 0.3s ease;
+      z-index: 1000;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e8e8e8;
     }
 
-    .nav {
-      min-height: 82px;
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      min-height: 75px;
+      padding: 0 20px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      gap: 22px;
+      gap: 30px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      flex-shrink: 0;
-    }
-
-    .brand img {
-      width: 120px;
-      height: auto;
-    }
-
-    .menu {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .menu a {
-      color: var(--text-muted);
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    .menu a:hover,
-    .menu a.active {
-      color: var(--accent);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
       gap: 10px;
-      flex-shrink: 0;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -.5px;
     }
 
-    .theme-toggle,
-    .lang-toggle {
-      width: 40px;
-      height: 40px;
+    .brand span {
+      color: #9cff00;
+      background: #111;
+      padding: 4px 7px;
+      border-radius: 6px;
+    }
 
+    .nav-links {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 28px;
+      list-style: none;
+    }
 
-      border: 1px solid var(--border-2);
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      transition: .25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #72b900;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: #111;
+      color: #fff;
+      width: 42px;
+      height: 42px;
       border-radius: 8px;
-
-      background: var(--bg-input);
-      color: var(--text);
-
-      font-size: 15px;
-      font-weight: 800;
-
+      font-size: 20px;
       cursor: pointer;
-
-      transition: 0.3s;
     }
 
-    .lang-toggle {
-      width: auto;
-      padding: 0 12px;
-      font-size: 12px;
+    /* =========================
+       HERO
+    ========================== */
+    .blog-hero {
+      background: #111;
+      color: #fff;
+      padding: 90px 20px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .theme-toggle:hover,
-    .lang-toggle:hover {
-      border-color: var(--accent);
-      color: var(--accent);
+    .blog-hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      border: 1px solid rgba(156,255,0,.15);
+      right: -100px;
+      top: -180px;
     }
 
-    .login-button {
-      background: var(--accent);
-      color: #050505;
+    .blog-hero::after {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(156,255,0,.08);
+      left: -100px;
+      bottom: -150px;
+      filter: blur(20px);
+    }
 
-      padding: 10px 17px;
+    .hero-content {
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
 
-      border-radius: 8px;
-
+    .hero-tag {
+      display: inline-block;
+      color: #9cff00;
       font-size: 13px;
       font-weight: 800;
-
-      transition: 0.3s;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
     }
 
-    .login-button:hover {
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 10px 30px rgba(183, 255, 0, 0.20);
-    }
-
-
-    /* =====================================================
-       PAGE HERO
-    ===================================================== */
-
-    .page-hero {
-      position: relative;
-
-      padding: 70px 0 45px;
-
-      text-align: center;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(183, 255, 0, 0.10),
-          transparent 40%
-        ),
-        var(--bg);
-
-      transition: background 0.3s ease;
-    }
-
-    .page-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      color: var(--accent);
-
-      padding: 8px 15px;
-
-      border: 1px solid rgba(183, 255, 0, 0.25);
-
-      background: rgba(183, 255, 0, 0.06);
-
-      border-radius: 50px;
-
-      font-size: 11px;
-      font-weight: 800;
-
-      letter-spacing: 1px;
-
+    .blog-hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.05;
       margin-bottom: 20px;
+      font-weight: 800;
     }
 
-    .page-hero h1 {
-      font-size: clamp(34px, 5vw, 52px);
-
-      line-height: 1.15;
-
-      letter-spacing: -2px;
-
-      margin-bottom: 14px;
+    .blog-hero h1 span {
+      color: #9cff00;
     }
 
-    .page-hero h1 span {
-      color: var(--accent);
+    .blog-hero p {
+      max-width: 650px;
+      color: #c9c9c9;
+      font-size: 16px;
     }
 
-    .page-hero p {
-      max-width: 600px;
-
+    /* =========================
+       BLOG SECTION
+    ========================== */
+    .blog-section {
+      max-width: 1200px;
       margin: auto;
+      padding: 70px 20px 100px;
+    }
 
-      color: var(--text-muted);
+    .section-heading {
+      margin-bottom: 35px;
+    }
 
+    .section-heading h2 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: #666;
       font-size: 15px;
     }
 
-
-    /* =====================================================
-       BLOG SECTION
-    ===================================================== */
-
-    .blog-section {
-      padding: 50px 0 90px;
-    }
-
+    /* =========================
+       BLOG GRID
+    ========================== */
     .blog-grid {
       display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 22px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
     }
 
     .blog-card {
-      background: var(--bg-card);
-
-      border: 1px solid var(--border-2);
-
-      border-radius: 16px;
-
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 18px;
       overflow: hidden;
-
-      transition: 0.3s;
+      transition: .3s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .blog-card:hover {
-      border-color: rgba(183, 255, 0, 0.35);
-
-      transform: translateY(-4px);
+      transform: translateY(-7px);
+      box-shadow: 0 18px 45px rgba(0,0,0,.09);
     }
 
     .blog-image {
       width: 100%;
-      height: 190px;
-
+      height: 220px;
       object-fit: cover;
+      background: #111;
+    }
 
-      background: var(--bg-alt);
+    .blog-image.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9cff00;
+      font-size: 42px;
+      font-weight: 800;
     }
 
     .blog-body {
-      padding: 22px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .blog-date {
-      display: block;
-
-      color: var(--accent);
-
-      font-size: 11px;
-      font-weight: 800;
-
-      letter-spacing: 1px;
-
+      font-size: 12px;
+      color: #78b800;
+      font-weight: 700;
       margin-bottom: 10px;
     }
 
-    .blog-card h2 {
-      font-size: 19px;
-
-      line-height: 1.4;
-
-      margin-bottom: 10px;
+    .blog-title {
+      font-size: 21px;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      font-weight: 700;
     }
 
     .blog-excerpt {
-      color: var(--text-muted);
-
-      font-size: 13.5px;
-
+      color: #666;
+      font-size: 14px;
       line-height: 1.8;
-
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
-    .read-more-btn {
+    .read-more {
+      margin-top: auto;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-
-      padding: 0;
-
-      background: none;
-      border: 0;
-
-      color: var(--accent);
-
+      gap: 7px;
       font-size: 13px;
       font-weight: 800;
-
-      cursor: pointer;
+      color: #111;
     }
 
-    .read-more-btn:hover {
-      text-decoration: underline;
+    .read-more:hover {
+      color: #78b800;
     }
 
-    .blog-full {
-      display: none;
-
-      margin-top: 18px;
-      padding-top: 18px;
-
-      border-top: 1px solid var(--border-2);
-
-      color: var(--text-muted);
-
-      font-size: 14px;
-
-      line-height: 1.9;
-    }
-
-    .blog-full.open {
-      display: block;
-    }
-
-    .blog-full p {
-      margin-bottom: 18px;
-    }
-
-    .blog-full p:last-child {
-      margin-bottom: 0;
-    }
-
-
-    /* =====================================================
+    /* =========================
        EMPTY STATE
-    ===================================================== */
-
+    ========================== */
     .empty-state {
-      display: none;
-
       text-align: center;
+      background: #fff;
+      border: 1px dashed #ccc;
+      border-radius: 18px;
+      padding: 70px 20px;
+      grid-column: 1 / -1;
+    }
 
-      padding: 60px 20px;
+    .empty-icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
 
-      color: var(--text-dim);
+    .empty-state h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
 
+    .empty-state p {
+      color: #777;
       font-size: 14px;
     }
 
+    /* =========================
+       LOADING
+    ========================== */
+    .loading {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px;
+      color: #777;
+    }
 
-    /* =====================================================
-       MOBILE
-    ===================================================== */
+    .loader {
+      width: 42px;
+      height: 42px;
+      border: 4px solid #ddd;
+      border-top-color: #8bd600;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      margin: 0 auto 15px;
+    }
 
-    @media (max-width: 900px) {
-      .menu {
-        display: none;
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
       }
     }
 
-    @media (max-width: 700px) {
-      .container {
-        width: 90%;
+    /* =========================
+       FOOTER
+    ========================== */
+    footer {
+      background: #111;
+      color: #fff;
+      padding: 65px 20px 25px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 45px;
+      padding-bottom: 45px;
+    }
+
+    .footer-brand {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .footer-brand span {
+      color: #9cff00;
+    }
+
+    .footer-about {
+      color: #aaa;
+      font-size: 14px;
+      max-width: 350px;
+    }
+
+    .footer-col h3 {
+      font-size: 15px;
+      margin-bottom: 18px;
+      color: #9cff00;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 9px;
+    }
+
+    .footer-col a,
+    .footer-col p {
+      color: #aaa;
+      font-size: 13px;
+      transition: .2s;
+    }
+
+    .footer-col a:hover {
+      color: #9cff00;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #292929;
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #888;
+      font-size: 12px;
+    }
+
+    .bkash {
+      color: #9cff00 !important;
+      font-weight: 700;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 900px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .nav {
-        min-height: 70px;
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .brand img {
-        width: 105px;
+      .nav-links {
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .navbar {
+        min-height: 65px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .blog-hero {
+        padding: 65px 20px;
+      }
+
+      .blog-section {
+        padding-top: 50px;
       }
 
       .blog-grid {
         grid-template-columns: 1fr;
       }
 
-      .page-hero {
-        padding: 55px 0 35px;
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
       }
 
-      .header-actions {
-        gap: 6px;
-      }
-
-      .login-button {
-        padding: 9px 12px;
-        font-size: 12px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .theme-toggle {
-        width: 36px;
-        height: 36px;
-      }
-
-      .lang-toggle {
-        height: 36px;
-        padding: 0 10px;
-      }
-
-      .login-button {
-        font-size: 11px;
-        padding: 8px 10px;
-      }
-
-      .blog-body {
-        padding: 18px;
-      }
-
-      .blog-image {
-        height: 180px;
+      .footer-bottom {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 
-
 <body>
 
-  <!-- =====================================================
+  <!-- =========================
        HEADER
-  ===================================================== -->
-
-  <header class="header">
-
-    <div class="container nav">
+  ========================== -->
+  <header>
+    <nav class="navbar">
 
       <a href="index.html" class="brand">
-        <img
-          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-          alt="SNK IT Institute"
-        >
+        <span>SNK</span> IT Institute
       </a>
 
-      <nav class="menu">
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">
+        ☰
+      </button>
 
-        <a
-          href="index.html"
-          data-bn="হোম"
-          data-en="Home"
-        >
-          হোম
-        </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
 
-        <a
-          href="courses.html"
-          data-bn="কোর্সসমূহ"
-          data-en="Courses"
-        >
-          কোর্সসমূহ
-        </a>
-
-        <a
-          href="about.html"
-          data-bn="আমাদের সম্পর্কে"
-          data-en="About Us"
-        >
-          আমাদের সম্পর্কে
-        </a>
-
-        <!-- FINAL BLOG LINK -->
-        <a
-          href="blog.html"
-          class="active"
-          data-bn="ব্লগ"
-          data-en="Blog"
-        >
-          ব্লগ
-        </a>
-
-        <a
-          href="contact.html"
-          data-bn="যোগাযোগ"
-          data-en="Contact"
-        >
-          যোগাযোগ
-        </a>
-
-      </nav>
-
-
-      <div class="header-actions">
-
-        <button
-          id="themeToggle"
-          class="theme-toggle"
-          type="button"
-          aria-label="Toggle dark/light mode"
-        >
-          🌙
-        </button>
-
-        <button
-          id="langToggle"
-          class="lang-toggle"
-          type="button"
-          aria-label="Toggle language"
-        >
-          EN
-        </button>
-
-        <a
-          href="coming-soon.html"
-          class="login-button"
-          data-bn="Login / Sign Up →"
-          data-en="Login / Sign Up →"
-        >
-          Login / Sign Up →
-        </a>
-
-      </div>
-
-    </div>
-
+    </nav>
   </header>
 
 
-  <!-- =====================================================
-       PAGE HERO
-  ===================================================== -->
+  <!-- =========================
+       HERO
+  ========================== -->
+  <section class="blog-hero">
+    <div class="hero-content">
 
-  <section class="page-hero">
-
-    <div class="container">
-
-      <div class="page-badge">
-        <span>📝</span>
-        SNK IT INSTITUTE BLOG
-      </div>
+      <span class="hero-tag">SNK IT Institute</span>
 
       <h1>
-        আমাদের <span>ব্লগ</span>
+        Learn. <span>Grow.</span> Lead.
       </h1>
 
       <p>
-        IT skill, career guidance এবং industry news নিয়ে
-        নিয়মিত লেখা পাবেন এখানে।
+        AI, Cyber Security, UI/UX, Graphic Design,
+        Technology এবং Career-এর গুরুত্বপূর্ণ
+        টিপস ও আপডেট পড়ুন আমাদের Blog থেকে।
       </p>
 
     </div>
-
   </section>
 
 
-  <!-- =====================================================
-       BLOG POSTS
-  ===================================================== -->
+  <!-- =========================
+       BLOG
+  ========================== -->
+  <main class="blog-section">
 
-  <section class="blog-section">
+    <div class="section-heading">
+      <h2>Latest Articles</h2>
+      <p>আমাদের সর্বশেষ Blog ও Technology Updates</p>
+    </div>
 
-    <div class="container">
+    <div class="blog-grid" id="blogGrid">
 
-      <div class="blog-grid" id="blogGrid">
-
-
-        <!-- =================================================
-             POST 1
-        ================================================= -->
-
-        <article class="blog-card">
-
-          <img
-            class="blog-image"
-            src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/blog-placeholder-1.jpg"
-            alt="AI Powered Skill Blog"
-          >
-
-          <div class="blog-body">
-
-            <span class="blog-date">
-              ২৯ আগস্ট, ২০২৬
-            </span>
-
-            <h2>
-              কেন AI-Powered Skill শেখা এখন জরুরি?
-            </h2>
-
-            <p class="blog-excerpt">
-              প্রযুক্তির দুনিয়া দ্রুত বদলাচ্ছে।
-              AI-powered tools এখন প্রায় প্রতিটা IT ক্ষেত্রে
-              ব্যবহার হচ্ছে...
-            </p>
-
-            <button
-              class="read-more-btn"
-              type="button"
-              onclick="toggleBlogPost('post-1', this)"
-            >
-              পুরোটা পড়ুন →
-            </button>
-
-            <div
-              class="blog-full"
-              id="post-1"
-            >
-
-              <p>
-                প্রযুক্তির দুনিয়া প্রতিনিয়ত বদলাচ্ছে, আর এই
-                পরিবর্তনের সবচেয়ে বড় চালিকাশক্তি হলো Artificial
-                Intelligence। যারা এখন IT ক্ষেত্রে ক্যারিয়ার গড়তে
-                চান, তাদের জন্য শুধু traditional skill শেখাই যথেষ্ট নয়।
-              </p>
-
-              <p>
-                UI/UX ডিজাইন থেকে শুরু করে Cyber Security,
-                Graphic Design পর্যন্ত—প্রতিটা সেক্টরেই AI tools
-                কাজের গতি ও মান দুটোই বাড়িয়ে দিচ্ছে। যারা এই
-                টুলগুলো ব্যবহার করতে জানেন, তারা চাকরির বাজারে
-                এগিয়ে থাকছেন।
-              </p>
-
-              <p>
-                SNK IT Institute-এর প্রতিটা কোর্স এই বাস্তবতা মাথায়
-                রেখেই সাজানো হয়েছে, যাতে শিক্ষার্থীরা শুধু থিওরি না
-                শিখে, বাস্তব কাজের জন্য প্রস্তুত হয়ে বের হতে পারেন।
-              </p>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- =================================================
-             POST 2
-        ================================================= -->
-
-        <article class="blog-card">
-
-          <img
-            class="blog-image"
-            src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/blog-placeholder-2.jpg"
-            alt="Freelancing Blog"
-          >
-
-          <div class="blog-body">
-
-            <span class="blog-date">
-              ২৫ আগস্ট, ২০২৬
-            </span>
-
-            <h2>
-              Freelancing শুরু করার আগে যা জানা দরকার
-            </h2>
-
-            <p class="blog-excerpt">
-              কোর্স শেষ করার পর অনেকেই freelancing দিয়ে
-              ক্যারিয়ার শুরু করতে চান। কিন্তু কিছু বিষয়
-              আগে থেকে জানা থাকলে সহজ হয়ে যায়...
-            </p>
-
-            <button
-              class="read-more-btn"
-              type="button"
-              onclick="toggleBlogPost('post-2', this)"
-            >
-              পুরোটা পড়ুন →
-            </button>
-
-            <div
-              class="blog-full"
-              id="post-2"
-            >
-
-              <p>
-                Freelancing শুরু করার আগে সবচেয়ে গুরুত্বপূর্ণ
-                বিষয় হলো একটা শক্তিশালী portfolio তৈরি করা।
-                ক্লায়েন্ট আপনার কাজ দেখেই বিশ্বাস করে, কথায় নয়।
-              </p>
-
-              <p>
-                এরপর আসে সঠিক platform বেছে নেওয়া—Fiverr, Upwork
-                নাকি সরাসরি local client, সেটা নির্ভর করে আপনার
-                skill এবং target market-এর ওপর।
-              </p>
-
-              <p>
-                সবশেষে, ধৈর্য ধরা জরুরি। শুরুতে কাজ কম আসতে পারে,
-                কিন্তু ধারাবাহিকভাবে ভালো কাজ করে গেলে reputation
-                তৈরি হয়, আর তখন কাজ নিজে থেকেই আসতে শুরু করে।
-              </p>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-      </div>
-
-
-      <!-- Empty State -->
-
-      <div
-        class="empty-state"
-        id="emptyState"
-      >
-        এখনো কোনো ব্লগ পোস্ট যোগ করা হয়নি।
-        শীঘ্রই আসছে!
+      <div class="loading">
+        <div class="loader"></div>
+        Blog loading...
       </div>
 
     </div>
 
-  </section>
+  </main>
 
 
-  <!-- =====================================================
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer>
+
+    <div class="footer-inner">
+
+      <div class="footer-grid">
+
+        <div class="footer-col">
+          <div class="footer-brand">
+            <span>SNK</span> IT Institute
+          </div>
+
+          <p class="footer-about">
+            Learn To Lead — Practical, Career-focused
+            technology training for the next generation.
+          </p>
+        </div>
+
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+
+        <div class="footer-col">
+          <h3>Courses</h3>
+
+          <ul>
+            <li><a href="courses.html">AI Powered UI/UX</a></li>
+            <li><a href="courses.html">Cyber Security</a></li>
+            <li><a href="courses.html">Graphic Design</a></li>
+            <li><a href="courses.html">100Days Kidz</a></li>
+          </ul>
+        </div>
+
+
+        <div class="footer-col">
+          <h3>Contact</h3>
+
+          <p>Moulvibazar-3200, Bangladesh</p>
+
+          <p style="margin-top:8px;">
+            Email:
+            <a href="mailto:iamsnkbd@protonmail.com">
+              iamsnkbd@protonmail.com
+            </a>
+          </p>
+
+          <p style="margin-top:8px;">
+            bKash:
+            <a href="tel:01705633700" class="bkash">
+              01705633700
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <p>
+          © <span id="year"></span>
+          SNK IT Institute. All Rights Reserved.
+        </p>
+
+        <p>
+          Learn To Lead.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
        JAVASCRIPT
-  ===================================================== -->
-
+  ========================== -->
   <script>
 
-    /* =====================================================
-       THEME TOGGLE
-    ===================================================== */
+    /* =========================
+       MOBILE MENU
+    ========================== */
 
-    const themeToggleBtn =
-      document.getElementById("themeToggle");
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
 
-    const htmlEl =
-      document.documentElement;
+    menuBtn.addEventListener("click", function () {
+      navLinks.classList.toggle("show");
+    });
 
 
-    function applyTheme(theme) {
+    /* =========================
+       YEAR
+    ========================== */
 
-      if (theme === "light") {
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-        htmlEl.classList.add("light-mode");
 
-        themeToggleBtn.textContent = "☀️";
+    /* =========================
+       BLOG DATA
+       Admin Dashboard থেকে
+       এই key-তে data save হবে
+    ========================== */
 
-      } else {
+    const STORAGE_KEY = "snk_blog_posts";
 
-        htmlEl.classList.remove("light-mode");
 
-        themeToggleBtn.textContent = "🌙";
+    /* =========================
+       HTML SECURITY
+    ========================== */
 
+    function escapeHTML(value) {
+
+      if (!value) return "";
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    /* =========================
+       DATE FORMAT
+    ========================== */
+
+    function formatDate(dateValue) {
+
+      if (!dateValue) return "";
+
+      const date = new Date(dateValue);
+
+      if (isNaN(date.getTime())) {
+        return dateValue;
       }
 
+      return date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
     }
 
 
-    applyTheme(
-      localStorage.getItem("snk-theme") || "dark"
+    /* =========================
+       LOAD BLOGS
+    ========================== */
+
+    function loadBlogs() {
+
+      const blogGrid = document.getElementById("blogGrid");
+
+      let posts = [];
+
+      try {
+
+        posts =
+          JSON.parse(
+            localStorage.getItem(STORAGE_KEY)
+          ) || [];
+
+      } catch (error) {
+
+        console.error("Blog data error:", error);
+
+        posts = [];
+      }
+
+
+      /* newest first */
+
+      posts.sort(function(a, b) {
+
+        const dateA =
+          new Date(a.createdAt || a.date || 0);
+
+        const dateB =
+          new Date(b.createdAt || b.date || 0);
+
+        return dateB - dateA;
+
+      });
+
+
+      /* no posts */
+
+      if (!posts.length) {
+
+        blogGrid.innerHTML = `
+
+          <div class="empty-state">
+
+            <div class="empty-icon">
+              📝
+            </div>
+
+            <h3>
+              কোনো Blog Post পাওয়া যায়নি
+            </h3>
+
+            <p>
+              Admin Dashboard থেকে নতুন Blog Post প্রকাশ করুন।
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+      }
+
+
+      /* create cards */
+
+      blogGrid.innerHTML = posts.map(function(post, index) {
+
+        const title =
+          escapeHTML(post.title || "Untitled Blog");
+
+        const excerpt =
+          escapeHTML(
+            post.excerpt ||
+            post.description ||
+            "এই Blog সম্পর্কে বিস্তারিত জানতে পড়ুন।"
+          );
+
+        const date =
+          formatDate(
+            post.date ||
+            post.createdAt
+          );
+
+        const image =
+          post.image ||
+          post.imageUrl ||
+          post.image_url ||
+          "";
+
+
+        let imageHTML = "";
+
+        if (image) {
+
+          imageHTML = `
+            <img
+              class="blog-image"
+              src="${escapeHTML(image)}"
+              alt="${title}"
+              loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            >
+
+            <div
+              class="blog-image placeholder"
+              style="display:none;"
+            >
+              SNK
+            </div>
+          `;
+
+        } else {
+
+          imageHTML = `
+            <div class="blog-image placeholder">
+              SNK
+            </div>
+          `;
+
+        }
+
+
+        return `
+
+          <article class="blog-card">
+
+            ${imageHTML}
+
+            <div class="blog-body">
+
+              <div class="blog-date">
+                ${date}
+              </div>
+
+              <h2 class="blog-title">
+                ${title}
+              </h2>
+
+              <p class="blog-excerpt">
+                ${excerpt}
+              </p>
+
+              <a
+                href="blog-details.html?id=${index}"
+                class="read-more"
+              >
+                Read More →
+              </a>
+
+            </div>
+
+          </article>
+
+        `;
+
+      }).join("");
+
+    }
+
+
+    /* =========================
+       INITIAL LOAD
+    ========================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      loadBlogs
     );
 
 
-    themeToggleBtn.addEventListener(
-      "click",
-      function () {
+    /* =========================
+       AUTO REFRESH
+       অন্য tab থেকে Blog add করলে
+       এই page update হবে
+    ========================== */
 
-        const isLight =
-          htmlEl.classList.contains("light-mode");
+    window.addEventListener(
+      "storage",
+      function(event) {
 
-        const newTheme =
-          isLight ? "dark" : "light";
-
-        applyTheme(newTheme);
-
-        localStorage.setItem(
-          "snk-theme",
-          newTheme
-        );
+        if (event.key === STORAGE_KEY) {
+          loadBlogs();
+        }
 
       }
     );
-
-
-    /* =====================================================
-       LANGUAGE TOGGLE
-    ===================================================== */
-
-    const langToggleBtn =
-      document.getElementById("langToggle");
-
-
-    function applyLang(lang) {
-
-      document
-        .querySelectorAll("[data-bn]")
-        .forEach(function (el) {
-
-          el.textContent =
-            lang === "bn"
-              ? el.getAttribute("data-bn")
-              : el.getAttribute("data-en");
-
-        });
-
-
-      langToggleBtn.textContent =
-        lang === "bn"
-          ? "EN"
-          : "বাংলা";
-
-    }
-
-
-    applyLang(
-      localStorage.getItem("snk-lang") || "bn"
-    );
-
-
-    langToggleBtn.addEventListener(
-      "click",
-      function () {
-
-        const current =
-          localStorage.getItem("snk-lang") || "bn";
-
-        const next =
-          current === "bn"
-            ? "en"
-            : "bn";
-
-        applyLang(next);
-
-        localStorage.setItem(
-          "snk-lang",
-          next
-        );
-
-      }
-    );
-
-
-    /* =====================================================
-       BLOG READ MORE
-    ===================================================== */
-
-    function toggleBlogPost(id, button) {
-
-      const post =
-        document.getElementById(id);
-
-      if (!post) return;
-
-      const isOpen =
-        post.classList.toggle("open");
-
-
-      button.textContent =
-        isOpen
-          ? "লেখাটি বন্ধ করুন ↑"
-          : "পুরোটা পড়ুন →";
-
-    }
-
-
-    /* =====================================================
-       EMPTY STATE
-    ===================================================== */
-
-    const blogGrid =
-      document.getElementById("blogGrid");
-
-    const emptyState =
-      document.getElementById("emptyState");
-
-
-    if (
-      blogGrid &&
-      blogGrid.querySelectorAll(".blog-card").length === 0
-    ) {
-
-      emptyState.style.display = "block";
-
-    }
 
   </script>
 
 </body>
 </html>
-```
