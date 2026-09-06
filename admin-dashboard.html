@@ -227,13 +227,16 @@
           <input type="hidden" id="postId">
 
           <div class="form-row">
-            <label>টাইটেল *</label>
-            <input type="text" id="postTitle" required placeholder="যেমন: কেন AI Skill শেখা জরুরি">
+            <label>পোস্টের ছবি</label>
+            <input type="file" id="postImageFile" accept="image/*">
+            <input type="hidden" id="postImageData">
+            <span class="hint">ছবি আপলোড করলে ছোট করে (compressed) সেভ হবে। খালি রাখলে default ছবি দেখাবে।</span>
+            <img id="imagePreview" style="display:none; margin-top:10px; max-width:180px; border-radius:8px; border:1px solid #292929;">
           </div>
 
           <div class="form-row">
-            <label>ছবির লিংক</label>
-            <input type="text" id="postImage" placeholder="https://... (খালি রাখলে default দেখাবে)">
+            <label>টাইটেল *</label>
+            <input type="text" id="postTitle" required placeholder="যেমন: কেন AI Skill শেখা জরুরি">
           </div>
 
           <div class="form-row">
@@ -340,10 +343,15 @@
     function resetForm(){
       document.getElementById("postId").value = "";
       document.getElementById("postTitle").value = "";
-      document.getElementById("postImage").value = "";
+      document.getElementById("postImageData").value = "";
+      document.getElementById("postImageFile").value = "";
       document.getElementById("postExcerpt").value = "";
       document.getElementById("postContent").value = "";
       document.getElementById("savePostBtn").textContent = "পোস্ট সেভ করুন";
+
+      const preview = document.getElementById("imagePreview");
+      preview.style.display = "none";
+      preview.src = "";
     }
 
     newPostBtn.addEventListener("click", function(){
@@ -356,6 +364,51 @@
       resetForm();
     });
 
+    // IMAGE UPLOAD: compress and convert to base64 data URL
+    document.getElementById("postImageFile").addEventListener("change", function(e){
+      const file = e.target.files[0];
+      if(!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt){
+        const img = new Image();
+        img.onload = function(){
+          const maxWidth = 800;
+          const scale = Math.min(1, maxWidth / img.width);
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          let quality = 0.7;
+          let compressedData = canvas.toDataURL("image/jpeg", quality);
+
+          // Firestore field limit is ~1MB; keep well under that.
+          // Reduce quality further if the result is still too large.
+          while(compressedData.length > 700000 && quality > 0.2){
+            quality -= 0.15;
+            compressedData = canvas.toDataURL("image/jpeg", quality);
+          }
+
+          if(compressedData.length > 900000){
+            alert("ছবিটা এখনো অনেক বড় হয়ে যাচ্ছে। দয়া করে ছোট সাইজের একটা ছবি বেছে নিন।");
+            document.getElementById("postImageFile").value = "";
+            return;
+          }
+
+          document.getElementById("postImageData").value = compressedData;
+
+          const preview = document.getElementById("imagePreview");
+          preview.src = compressedData;
+          preview.style.display = "block";
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
     // SAVE POST (create or update)
     document.getElementById("postForm").addEventListener("submit", function(e){
       e.preventDefault();
@@ -363,7 +416,7 @@
       const id = document.getElementById("postId").value;
       const data = {
         title: document.getElementById("postTitle").value.trim(),
-        image: document.getElementById("postImage").value.trim(),
+        image: document.getElementById("postImageData").value.trim(),
         excerpt: document.getElementById("postExcerpt").value.trim(),
         content: document.getElementById("postContent").value.trim(),
       };
@@ -435,10 +488,19 @@
               const post = doc.data();
               document.getElementById("postId").value = id;
               document.getElementById("postTitle").value = post.title || "";
-              document.getElementById("postImage").value = post.image || "";
+              document.getElementById("postImageData").value = post.image || "";
               document.getElementById("postExcerpt").value = post.excerpt || "";
               document.getElementById("postContent").value = post.content || "";
               document.getElementById("savePostBtn").textContent = "আপডেট করুন";
+
+              const preview = document.getElementById("imagePreview");
+              if(post.image){
+                preview.src = post.image;
+                preview.style.display = "block";
+              }else{
+                preview.style.display = "none";
+              }
+
               postForm.classList.add("open");
               window.scrollTo({top:0, behavior:"smooth"});
             });
