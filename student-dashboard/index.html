@@ -149,7 +149,7 @@
 
     auth.onAuthStateChanged(function(user){
       if(!user){
-        window.location.href = "student-login.html";
+        window.location.href = "/student-login/";
         return;
       }
 
@@ -169,7 +169,7 @@
                   জমা দেওয়া হয়নি, অথবা ভিন্ন email দিয়ে জমা দিয়েছেন।
                   Admission Form-এ ঠিক এই email ব্যবহার করে আবার জমা দিন।
                 </p>
-                <a href="admission.html" class="cta-btn">Admission Form পূরণ করুন →</a>
+                <a href="/admission/" class="cta-btn">Admission Form পূরণ করুন →</a>
               </div>
             `;
             return;
@@ -246,7 +246,7 @@
 
     document.getElementById("logoutBtn").addEventListener("click", function(){
       auth.signOut().then(function(){
-        window.location.href = "student-login.html";
+        window.location.href = "/student-login/";
       });
     });
 
