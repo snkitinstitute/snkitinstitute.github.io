@@ -408,6 +408,47 @@
       .price-card{ padding:20px; }
     }
 
+  
+    /* FLOATING WHATSAPP BUTTON */
+
+    .whatsapp-float{
+      position:fixed;
+      bottom:22px;
+      right:22px;
+      z-index:9998;
+
+      width:56px;
+      height:56px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      background:#25D366;
+      border-radius:50%;
+
+      box-shadow:0 8px 24px rgba(0,0,0,.3);
+
+      font-size:28px;
+
+      transition:.3s;
+    }
+
+    .whatsapp-float:hover{
+      transform:scale(1.1);
+      box-shadow:0 10px 30px rgba(37,211,102,.4);
+    }
+
+    @media(max-width:600px){
+      .whatsapp-float{
+        width:50px;
+        height:50px;
+        bottom:16px;
+        right:16px;
+        font-size:24px;
+      }
+    }
+
   </style>
 </head>
 
@@ -416,22 +457,22 @@
   <header class="header">
     <div class="container nav">
 
-      <a href="index.html" class="brand">
+      <a href="/" class="brand">
         <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
       </a>
 
       <nav class="menu">
-        <a href="index.html" data-bn="হোম" data-en="Home">হোম</a>
-        <a href="courses.html" data-bn="কোর্সসমূহ" data-en="Courses">কোর্সসমূহ</a>
-        <a href="about.html" data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</a>
-        <a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
-        <a href="contact.html" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
+        <a href="/" data-bn="হোম" data-en="Home">হোম</a>
+        <a href="/courses/" data-bn="কোর্সসমূহ" data-en="Courses">কোর্সসমূহ</a>
+        <a href="/about/" data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</a>
+        <a href="/blog/" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
+        <a href="/contact/" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
       </nav>
 
       <div class="header-actions">
         <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark/light mode">🌙</button>
         <button id="langToggle" class="lang-toggle" type="button" aria-label="Toggle language">EN</button>
-        <a href="coming-soon.html" class="login-button" data-bn="Login / Sign Up →" data-en="Login / Sign Up →">Login / Sign Up →</a>
+        <a href="/coming-soon/" class="login-button" data-bn="Login / Sign Up →" data-en="Login / Sign Up →">Login / Sign Up →</a>
       </div>
 
     </div>
@@ -442,7 +483,7 @@
     <div class="container">
 
       <div class="breadcrumb">
-        <a href="index.html">হোম</a> / <a href="index.html#courses">কোর্সসমূহ</a> / AI-Powered UI/UX Career Program
+        <a href="/">হোম</a> / <a href="/#courses">কোর্সসমূহ</a> / AI-Powered UI/UX Career Program
       </div>
 
       <div class="course-tag ">AI POWERED</div>
@@ -556,7 +597,7 @@
   <footer class="footer">
     <div class="container">
       © 2026 SNK IT Institute • Learn To Lead • Moulvibazar •
-      <a href="index.html">হোমে ফিরে যান</a>
+      <a href="/">হোমে ফিরে যান</a>
     </div>
   </footer>
 
@@ -602,6 +643,17 @@
       localStorage.setItem("snk-lang", next);
     });
   </script>
+
+
+  <a
+    href="https://wa.me/8801705633700?text=আমি%20SNK%20IT%20Institute%20সম্পর্কে%20জানতে%20চাই"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float"
+    aria-label="WhatsApp এ যোগাযোগ করুন"
+  >
+    💬
+  </a>
 
 </body>
 </html>
