@@ -315,13 +315,13 @@
         loadPosts();
         loadStudents();
       }else{
-        window.location.href = "admin.html";
+        window.location.href = "/admin/";
       }
     });
 
     document.getElementById("logoutBtn").addEventListener("click", function(){
       auth.signOut().then(function(){
-        window.location.href = "admin.html";
+        window.location.href = "/admin/";
       });
     });
 
