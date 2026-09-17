@@ -1,59 +1,54 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Our Mentor | SNK IT Institute</title>
+  <title>Mentor | SNK IT Institute</title>
 
-  <meta name="description"
-        content="Meet the mentor behind SNK IT Institute — practical IT education, UI/UX, design, development and future-ready digital skills.">
+  <meta
+    name="description"
+    content="Meet the mentor of SNK IT Institute."
+  >
 
-  <link rel="icon"
-        href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+  <link
+    rel="icon"
+    href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
+  >
 
   <style>
-    /* =====================================================
-       SNK IT INSTITUTE — MENTOR PAGE
-       ===================================================== */
-
     :root {
       --bg: #050505;
       --bg-alt: #090909;
       --card: #0d0d0d;
-      --card-2: #111111;
+      --card-hover: #111111;
 
       --text: #ffffff;
-      --muted: #a3a3a3;
+      --muted: #a0a0a0;
       --dim: #707070;
 
       --border: #1c1c1c;
-      --border-2: #292929;
+      --border-2: #2b2b2b;
 
       --accent: #b7ff00;
-      --accent-dark: #91cc00;
-
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --accent-dark: #94d000;
     }
 
     html.light-mode {
       --bg: #f7f7f2;
       --bg-alt: #eeeeE8;
       --card: #ffffff;
-      --card-2: #f4f4ee;
+      --card-hover: #f4f4ee;
 
       --text: #111111;
       --muted: #555555;
       --dim: #777777;
 
-      --border: #e1e1da;
-      --border-2: #d2d2c9;
+      --border: #deded7;
+      --border-2: #ccccC3;
 
-      --accent: #79a900;
-      --accent-dark: #608800;
-
-      --shadow: 0 20px 50px rgba(0,0,0,.08);
+      --accent: #719e00;
+      --accent-dark: #5c8200;
     }
 
     * {
@@ -95,28 +90,28 @@
     }
 
     .container {
-      width: min(1180px, calc(100% - 36px));
+      width: min(1180px, calc(100% - 32px));
       margin: auto;
     }
 
-    /* =====================================================
+    /* =========================
        HEADER
-       ===================================================== */
+    ========================= */
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
 
-      background: color-mix(
-        in srgb,
-        var(--bg) 90%,
-        transparent
-      );
+      background: rgba(5, 5, 5, .88);
 
       backdrop-filter: blur(18px);
 
       border-bottom: 1px solid var(--border);
+    }
+
+    html.light-mode header {
+      background: rgba(247, 247, 242, .90);
     }
 
     .nav {
@@ -132,34 +127,32 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 10px;
 
+      font-size: 17px;
       font-weight: 800;
-      font-size: 18px;
     }
 
     .logo img {
       width: 43px;
       height: 43px;
-      object-fit: contain;
-    }
 
-    .logo span {
-      letter-spacing: -.4px;
+      object-fit: contain;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 25px;
+      gap: 24px;
     }
 
     .nav-links a {
       color: var(--muted);
+
       font-size: 14px;
       font-weight: 600;
 
-      transition: color .2s ease;
+      transition: .2s ease;
     }
 
     .nav-links a:hover,
@@ -173,11 +166,12 @@
       gap: 9px;
     }
 
-    .icon-btn {
+    .theme-btn {
       width: 40px;
       height: 40px;
 
       border: 1px solid var(--border-2);
+
       border-radius: 12px;
 
       background: var(--card);
@@ -188,13 +182,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      transition: .2s ease;
-    }
-
-    .icon-btn:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
     }
 
     .admission-btn {
@@ -213,15 +200,17 @@
 
     .admission-btn:hover {
       transform: translateY(-2px);
-      background: var(--accent-dark);
     }
 
-    /* =====================================================
+    /* =========================
        HERO
-       ===================================================== */
+    ========================= */
 
     .hero {
-      padding: 95px 0 70px;
+      padding: 90px 0 55px;
+
+      text-align: center;
+
       position: relative;
       overflow: hidden;
     }
@@ -231,8 +220,8 @@
 
       position: absolute;
 
-      width: 420px;
-      height: 420px;
+      width: 400px;
+      height: 400px;
 
       border-radius: 50%;
 
@@ -240,62 +229,53 @@
 
       opacity: .05;
 
-      filter: blur(80px);
+      filter: blur(90px);
 
-      top: -160px;
+      top: -200px;
       left: 50%;
 
       transform: translateX(-50%);
     }
 
     .hero-content {
-      text-align: center;
-      max-width: 850px;
-      margin: auto;
-
       position: relative;
-      z-index: 1;
+      z-index: 2;
+
+      max-width: 800px;
+      margin: auto;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-block;
 
-      padding: 7px 12px;
+      padding: 7px 13px;
 
       border: 1px solid var(--border-2);
+
       border-radius: 999px;
 
       background: var(--card);
 
       color: var(--accent);
 
-      font-size: 12px;
-      font-weight: 800;
+      font-size: 11px;
+      font-weight: 900;
 
-      letter-spacing: .5px;
       text-transform: uppercase;
 
-      margin-bottom: 22px;
-    }
+      letter-spacing: 1px;
 
-    .eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-
-      background: var(--accent);
-      border-radius: 50%;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 1.02;
+      font-size: clamp(42px, 7vw, 72px);
+
+      line-height: 1.03;
 
       letter-spacing: -3px;
 
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .hero h1 span {
@@ -303,30 +283,31 @@
     }
 
     .hero p {
-      max-width: 690px;
-      margin: auto;
-
       color: var(--muted);
 
-      font-size: 17px;
+      font-size: 16px;
+
+      max-width: 650px;
+
+      margin: auto;
     }
 
-    /* =====================================================
-       MENTOR PROFILE
-       ===================================================== */
+    /* =========================
+       PROFILE
+    ========================= */
 
-    .mentor-section {
-      padding: 20px 0 90px;
+    .profile-section {
+      padding: 20px 0 80px;
     }
 
-    .mentor-card {
+    .profile-card {
       display: grid;
 
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 350px 1fr;
 
-      gap: 45px;
+      gap: 50px;
 
-      padding: 35px;
+      padding: 32px;
 
       border: 1px solid var(--border);
 
@@ -336,56 +317,61 @@
         linear-gradient(
           145deg,
           var(--card),
-          var(--card-2)
+          var(--bg-alt)
         );
-
-      box-shadow: var(--shadow);
     }
 
-    .mentor-image {
+    /* =========================
+       PROFILE IMAGE
+    ========================= */
+
+    .profile-image {
+      position: relative;
+
       min-height: 430px;
 
       border-radius: 22px;
+
+      overflow: hidden;
 
       border: 1px solid var(--border-2);
 
       background:
         linear-gradient(
           145deg,
-          var(--card-2),
-          var(--bg)
+          #151515,
+          #080808
         );
 
       display: flex;
+
       align-items: center;
       justify-content: center;
-
-      overflow: hidden;
-
-      position: relative;
     }
 
-    .mentor-image::after {
-      content: "";
+    html.light-mode .profile-image {
+      background:
+        linear-gradient(
+          145deg,
+          #eeeeE8,
+          #ffffff
+        );
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
 
       position: absolute;
 
-      width: 220px;
-      height: 220px;
-
-      border-radius: 50%;
-
-      border: 1px solid var(--border-2);
-
-      opacity: .7;
+      inset: 0;
     }
 
-    .mentor-placeholder {
-      position: relative;
-      z-index: 2;
-
-      width: 190px;
-      height: 190px;
+    .image-placeholder {
+      width: 180px;
+      height: 180px;
 
       border-radius: 50%;
 
@@ -393,195 +379,236 @@
 
       background: var(--bg);
 
+      color: var(--accent);
+
       display: flex;
       align-items: center;
       justify-content: center;
 
-      text-align: center;
+      font-size: 45px;
 
-      color: var(--accent);
-
-      font-size: 52px;
       font-weight: 900;
+
+      letter-spacing: -2px;
+
+      position: relative;
+
+      z-index: 2;
     }
 
-    .mentor-info {
+    .photo-label {
+      position: absolute;
+
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+
+      padding: 10px 13px;
+
+      border-radius: 12px;
+
+      background: rgba(0,0,0,.65);
+
+      backdrop-filter: blur(10px);
+
+      color: #ffffff;
+
+      font-size: 11px;
+
+      text-align: center;
+
+      z-index: 3;
+    }
+
+    /* =========================
+       PROFILE CONTENT
+    ========================= */
+
+    .profile-content {
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
     }
 
-    .mentor-label {
+    .profile-label {
       color: var(--accent);
 
-      font-size: 12px;
+      font-size: 11px;
+
       font-weight: 900;
 
       text-transform: uppercase;
+
       letter-spacing: 1px;
 
-      margin-bottom: 10px;
+      margin-bottom: 9px;
     }
 
-    .mentor-info h2 {
-      font-size: clamp(32px, 5vw, 52px);
+    .profile-content h2 {
+      font-size: clamp(34px, 5vw, 52px);
 
       line-height: 1.05;
 
       letter-spacing: -2px;
 
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
-    .mentor-role {
+    .role {
       color: var(--muted);
 
-      font-size: 17px;
+      font-size: 16px;
+
       font-weight: 600;
 
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
-    .mentor-description {
+    .bio {
       color: var(--muted);
 
-      max-width: 680px;
-
       font-size: 15px;
+
+      max-width: 680px;
 
       margin-bottom: 28px;
     }
 
-    .mentor-description strong {
+    .bio strong {
       color: var(--text);
     }
 
-    .mentor-actions {
-      display: flex;
-      flex-wrap: wrap;
+    /* =========================
+       INFO GRID
+    ========================= */
+
+    .info-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
       gap: 12px;
+
+      margin-bottom: 25px;
     }
 
-    .primary-btn,
-    .secondary-btn {
+    .info-box {
+      padding: 15px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 15px;
+
+      background: var(--bg);
+    }
+
+    .info-box span {
+      display: block;
+
+      color: var(--dim);
+
+      font-size: 11px;
+
+      margin-bottom: 4px;
+    }
+
+    .info-box strong {
+      font-size: 14px;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 11px;
+    }
+
+    .btn {
+      min-height: 46px;
+
+      padding: 0 18px;
+
       display: inline-flex;
 
       align-items: center;
       justify-content: center;
 
-      min-height: 46px;
-
-      padding: 0 18px;
-
       border-radius: 13px;
 
-      font-size: 14px;
+      font-size: 13px;
+
       font-weight: 800;
 
       transition: .2s ease;
     }
 
-    .primary-btn {
+    .btn-primary {
       background: var(--accent);
+
       color: #050505;
     }
 
-    .secondary-btn {
+    .btn-secondary {
       border: 1px solid var(--border-2);
+
       background: var(--card);
+
       color: var(--text);
     }
 
-    .primary-btn:hover,
-    .secondary-btn:hover {
+    .btn:hover {
       transform: translateY(-2px);
     }
 
-    /* =====================================================
-       STATS
-       ===================================================== */
-
-    .stats {
-      margin-top: 25px;
-
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 14px;
-    }
-
-    .stat {
-      padding: 18px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 16px;
-
-      background: var(--bg);
-
-      text-align: center;
-    }
-
-    .stat strong {
-      display: block;
-
-      font-size: 25px;
-
-      color: var(--text);
-
-      margin-bottom: 3px;
-    }
-
-    .stat span {
-      color: var(--dim);
-
-      font-size: 12px;
-    }
-
-    /* =====================================================
+    /* =========================
        EXPERTISE
-       ===================================================== */
+    ========================= */
+
+    .section {
+      padding: 10px 0 85px;
+    }
 
     .section-heading {
       text-align: center;
 
       max-width: 700px;
 
-      margin: 0 auto 40px;
+      margin: 0 auto 38px;
     }
 
-    .section-heading .small {
+    .section-heading small {
       color: var(--accent);
 
-      font-size: 12px;
-      font-weight: 900;
+      font-size: 11px;
 
-      letter-spacing: 1px;
+      font-weight: 900;
 
       text-transform: uppercase;
 
-      margin-bottom: 8px;
+      letter-spacing: 1px;
     }
 
     .section-heading h2 {
-      font-size: clamp(30px, 5vw, 46px);
+      font-size: clamp(30px, 5vw, 45px);
 
-      line-height: 1.08;
+      line-height: 1.1;
 
       letter-spacing: -1.5px;
 
-      margin-bottom: 12px;
+      margin: 8px 0 12px;
     }
 
     .section-heading p {
       color: var(--muted);
 
-      font-size: 15px;
-    }
-
-    .expertise {
-      padding: 20px 0 90px;
+      font-size: 14px;
     }
 
     .expertise-grid {
@@ -589,108 +616,183 @@
 
       grid-template-columns: repeat(4, 1fr);
 
-      gap: 15px;
+      gap: 14px;
     }
 
     .expertise-card {
-      padding: 25px 20px;
+      padding: 23px 20px;
 
       border: 1px solid var(--border);
 
-      border-radius: 20px;
+      border-radius: 19px;
 
       background: var(--card);
 
-      transition: .25s ease;
+      transition: .2s ease;
     }
 
     .expertise-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
 
       border-color: var(--border-2);
     }
 
-    .expertise-icon {
-      width: 45px;
-      height: 45px;
+    .icon {
+      width: 44px;
+      height: 44px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      border-radius: 13px;
-
-      background: var(--card-2);
+      border-radius: 12px;
 
       border: 1px solid var(--border-2);
 
-      font-size: 21px;
+      background: var(--card-hover);
 
-      margin-bottom: 18px;
+      font-size: 20px;
+
+      margin-bottom: 15px;
     }
 
     .expertise-card h3 {
-      font-size: 17px;
+      font-size: 16px;
 
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
 
     .expertise-card p {
       color: var(--muted);
 
       font-size: 13px;
-
-      line-height: 1.6;
     }
 
-    /* =====================================================
+    /* =========================
+       EXPERIENCE
+    ========================= */
+
+    .experience {
+      padding: 10px 0 85px;
+    }
+
+    .experience-box {
+      max-width: 800px;
+
+      margin: auto;
+
+      padding: 30px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      background: var(--card);
+    }
+
+    .timeline-item {
+      position: relative;
+
+      padding-left: 28px;
+
+      padding-bottom: 28px;
+
+      border-left: 1px solid var(--border-2);
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+
+      position: absolute;
+
+      left: -5px;
+      top: 4px;
+
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+
+      background: var(--accent);
+    }
+
+    .timeline-item h3 {
+      font-size: 17px;
+
+      margin-bottom: 4px;
+    }
+
+    .timeline-item span {
+      display: block;
+
+      color: var(--accent);
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      margin-bottom: 7px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    /* =========================
        CTA
-       ===================================================== */
+    ========================= */
 
     .cta {
-      padding: 20px 0 100px;
+      padding: 10px 0 95px;
     }
 
     .cta-box {
-      padding: 55px 35px;
+      text-align: center;
 
-      border-radius: 28px;
+      padding: 55px 25px;
 
       border: 1px solid var(--border-2);
 
+      border-radius: 26px;
+
       background:
         linear-gradient(
-          135deg,
+          145deg,
           var(--card),
           var(--bg-alt)
         );
-
-      text-align: center;
     }
 
     .cta-box h2 {
-      font-size: clamp(30px, 5vw, 48px);
+      font-size: clamp(30px, 5vw, 46px);
 
       line-height: 1.05;
 
       letter-spacing: -1.5px;
 
-      margin-bottom: 13px;
+      margin-bottom: 12px;
     }
 
     .cta-box p {
-      max-width: 600px;
-
-      margin: 0 auto 25px;
-
       color: var(--muted);
 
-      font-size: 15px;
+      max-width: 600px;
+
+      margin: 0 auto 23px;
+
+      font-size: 14px;
     }
 
-    /* =====================================================
+    /* =========================
        WHATSAPP
-       ===================================================== */
+    ========================= */
 
     .whatsapp {
       position: fixed;
@@ -707,31 +809,26 @@
 
       background: #25d366;
 
-      color: white;
+      color: #ffffff;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      font-size: 25px;
+      font-size: 22px;
 
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
-
-      transition: .2s ease;
     }
 
-    .whatsapp:hover {
-      transform: scale(1.07);
-    }
-
-    /* =====================================================
+    /* =========================
        FOOTER
-       ===================================================== */
+    ========================= */
 
     footer {
       border-top: 1px solid var(--border);
 
-      padding: 30px 0 35px;
+      padding: 30px 0;
 
       background: var(--bg-alt);
     }
@@ -740,41 +837,38 @@
       display: flex;
 
       align-items: center;
-
       justify-content: space-between;
 
       gap: 20px;
     }
 
-    .footer-brand {
+    .copyright {
       color: var(--muted);
 
-      font-size: 13px;
-    }
-
-    .footer-brand strong {
-      color: var(--text);
+      font-size: 12px;
     }
 
     .footer-links {
       display: flex;
+
       gap: 18px;
+
       flex-wrap: wrap;
     }
 
     .footer-links a {
       color: var(--muted);
 
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .footer-links a:hover {
       color: var(--text);
     }
 
-    /* =====================================================
+    /* =========================
        MOBILE
-       ===================================================== */
+    ========================= */
 
     @media (max-width: 900px) {
 
@@ -782,12 +876,14 @@
         display: none;
       }
 
-      .mentor-card {
+      .profile-card {
         grid-template-columns: 1fr;
+
+        gap: 30px;
       }
 
-      .mentor-image {
-        min-height: 330px;
+      .profile-image {
+        min-height: 360px;
       }
 
       .expertise-grid {
@@ -806,7 +902,7 @@
       }
 
       .logo span {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       .admission-btn {
@@ -814,7 +910,7 @@
       }
 
       .hero {
-        padding: 70px 0 45px;
+        padding: 65px 0 40px;
       }
 
       .hero h1 {
@@ -822,33 +918,20 @@
       }
 
       .hero p {
-        font-size: 15px;
+        font-size: 14px;
       }
 
-      .mentor-card {
-        padding: 18px;
+      .profile-card {
+        padding: 17px;
 
         border-radius: 22px;
-
-        gap: 25px;
       }
 
-      .mentor-image {
-        min-height: 300px;
+      .profile-image {
+        min-height: 310px;
       }
 
-      .mentor-placeholder {
-        width: 145px;
-        height: 145px;
-
-        font-size: 42px;
-      }
-
-      .mentor-info h2 {
-        letter-spacing: -1.3px;
-      }
-
-      .stats {
+      .info-grid {
         grid-template-columns: 1fr;
       }
 
@@ -856,10 +939,12 @@
         grid-template-columns: 1fr;
       }
 
-      .cta-box {
-        padding: 40px 20px;
+      .experience-box {
+        padding: 22px;
+      }
 
-        border-radius: 22px;
+      .cta-box {
+        padding: 42px 20px;
       }
 
       .footer-inner {
@@ -869,11 +954,11 @@
       }
 
       .whatsapp {
-        width: 50px;
-        height: 50px;
-
         right: 15px;
         bottom: 15px;
+
+        width: 50px;
+        height: 50px;
       }
     }
   </style>
@@ -881,9 +966,9 @@
 
 <body>
 
-  <!-- =====================================================
+  <!-- =========================
        HEADER
-       ===================================================== -->
+  ========================== -->
 
   <header>
 
@@ -893,7 +978,7 @@
 
         <img
           src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-          alt="SNK IT Institute Logo"
+          alt="SNK IT Institute"
         >
 
         <span>SNK IT Institute</span>
@@ -920,8 +1005,8 @@
 
         <button
           id="themeToggle"
-          class="icon-btn"
-          aria-label="Toggle Theme"
+          class="theme-btn"
+          type="button"
         >
           🌙
         </button>
@@ -940,11 +1025,13 @@
   </header>
 
 
-  <!-- =====================================================
-       HERO
-       ===================================================== -->
+  <!-- =========================
+       MAIN
+  ========================== -->
 
   <main>
+
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -953,18 +1040,17 @@
         <div class="hero-content">
 
           <div class="eyebrow">
-            Meet Our Mentor
+            SNK IT Institute
           </div>
 
           <h1>
-            Learn from someone<br>
-            who <span>builds.</span>
+            Meet Our <span>Mentor</span>
           </h1>
 
           <p>
-            Practical guidance, real-world experience and
-            future-ready digital skills — helping learners
-            move from learning to building.
+            Get to know the person behind the learning,
+            guidance and practical training at
+            SNK IT Institute.
           </p>
 
         </div>
@@ -974,28 +1060,40 @@
     </section>
 
 
-    <!-- ===================================================
-         MENTOR PROFILE
-         =================================================== -->
+    <!-- PROFILE -->
 
-    <section class="mentor-section">
+    <section class="profile-section">
 
       <div class="container">
 
-        <div class="mentor-card">
+        <div class="profile-card">
 
-          <div class="mentor-image">
+          <!-- PROFILE PHOTO -->
 
-            <div class="mentor-placeholder">
+          <div class="profile-image">
+
+            <!--
+              FUTURE ADMIN PHOTO:
+              এই img tag-এ পরে Admin Dashboard
+              থেকে Mentor-এর ছবি বসানো যাবে।
+            -->
+
+            <div class="image-placeholder">
               SNK
+            </div>
+
+            <div class="photo-label">
+              Mentor Profile Photo
             </div>
 
           </div>
 
 
-          <div class="mentor-info">
+          <!-- PROFILE INFORMATION -->
 
-            <div class="mentor-label">
+          <div class="profile-content">
+
+            <div class="profile-label">
               Founder & Mentor
             </div>
 
@@ -1003,31 +1101,91 @@
               Shah Neil Khan
             </h2>
 
-            <div class="mentor-role">
-              UX/UI • Digital Design • Technology • AI-Powered Learning
+            <div class="role">
+              UX/UI • Digital Design • Technology • AI
             </div>
 
-            <p class="mentor-description">
+            <p class="bio">
 
-              SNK IT Institute is built around a practical
-              learning philosophy — <strong>Learn, Design,
-              Develop & Grow.</strong>
+              Welcome to the official mentor profile of
+              <strong>SNK IT Institute</strong>.
 
               <br><br>
 
-              The goal is not only to teach software or tools,
-              but to help learners understand how digital
-              products are planned, designed and built for
-              real-world use.
+              This profile is designed to introduce the
+              mentor behind the institute and provide
+              learners with a clear idea about the
+              experience, skills and areas of guidance
+              available through SNK IT Institute.
 
             </p>
 
 
-            <div class="mentor-actions">
+            <!-- BASIC INFORMATION -->
+
+            <div class="info-grid">
+
+              <div class="info-box">
+
+                <span>
+                  Role
+                </span>
+
+                <strong>
+                  Founder & Mentor
+                </strong>
+
+              </div>
+
+
+              <div class="info-box">
+
+                <span>
+                  Focus
+                </span>
+
+                <strong>
+                  Digital Skills
+                </strong>
+
+              </div>
+
+
+              <div class="info-box">
+
+                <span>
+                  Specialization
+                </span>
+
+                <strong>
+                  UI/UX & Design
+                </strong>
+
+              </div>
+
+
+              <div class="info-box">
+
+                <span>
+                  Location
+                </span>
+
+                <strong>
+                  Moulvibazar, Bangladesh
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="actions">
 
               <a
                 href="/courses/"
-                class="primary-btn"
+                class="btn btn-primary"
               >
                 Explore Courses →
               </a>
@@ -1036,30 +1194,10 @@
                 href="https://wa.me/8801705633700"
                 target="_blank"
                 rel="noopener"
-                class="secondary-btn"
+                class="btn btn-secondary"
               >
-                Talk on WhatsApp
+                Contact Mentor
               </a>
-
-            </div>
-
-
-            <div class="stats">
-
-              <div class="stat">
-                <strong>UX/UI</strong>
-                <span>Design Focus</span>
-              </div>
-
-              <div class="stat">
-                <strong>AI</strong>
-                <span>Future Workflow</span>
-              </div>
-
-              <div class="stat">
-                <strong>Practical</strong>
-                <span>Learning Approach</span>
-              </div>
 
             </div>
 
@@ -1072,29 +1210,25 @@
     </section>
 
 
-    <!-- ===================================================
-         EXPERTISE
-         =================================================== -->
+    <!-- EXPERTISE -->
 
-    <section class="expertise">
+    <section class="section">
 
       <div class="container">
 
         <div class="section-heading">
 
-          <div class="small">
-            Areas of Focus
-          </div>
+          <small>
+            Expertise
+          </small>
 
           <h2>
-            Skills that connect<br>
-            learning with real work.
+            Areas of Knowledge
           </h2>
 
           <p>
-            SNK IT Institute focuses on practical digital
-            skills that learners can continue developing
-            through projects and hands-on practice.
+            Key areas that can be highlighted in the
+            mentor profile and updated later from Admin.
           </p>
 
         </div>
@@ -1104,7 +1238,7 @@
 
           <div class="expertise-card">
 
-            <div class="expertise-icon">
+            <div class="icon">
               🎨
             </div>
 
@@ -1113,8 +1247,8 @@
             </h3>
 
             <p>
-              User-centered design, wireframes, prototypes,
-              design systems and practical product thinking.
+              User interface, user experience, wireframing,
+              prototyping and digital product design.
             </p>
 
           </div>
@@ -1122,7 +1256,7 @@
 
           <div class="expertise-card">
 
-            <div class="expertise-icon">
+            <div class="icon">
               🤖
             </div>
 
@@ -1131,8 +1265,8 @@
             </h3>
 
             <p>
-              Modern AI tools and workflows that support
-              research, ideation, design and productivity.
+              Modern AI-assisted workflows for learning,
+              design and digital productivity.
             </p>
 
           </div>
@@ -1140,7 +1274,7 @@
 
           <div class="expertise-card">
 
-            <div class="expertise-icon">
+            <div class="icon">
               💻
             </div>
 
@@ -1149,8 +1283,8 @@
             </h3>
 
             <p>
-              Practical understanding of digital products,
-              development concepts and technology workflows.
+              Practical digital tools, technology concepts
+              and real-world workflows.
             </p>
 
           </div>
@@ -1158,17 +1292,17 @@
 
           <div class="expertise-card">
 
-            <div class="expertise-icon">
+            <div class="icon">
               🚀
             </div>
 
             <h3>
-              Career Growth
+              Career Development
             </h3>
 
             <p>
-              Portfolio development, project practice and
-              building skills for a changing digital world.
+              Portfolio building, practical projects and
+              developing future-ready skills.
             </p>
 
           </div>
@@ -1180,9 +1314,95 @@
     </section>
 
 
-    <!-- ===================================================
-         CTA
-         =================================================== -->
+    <!-- EXPERIENCE -->
+
+    <section class="experience">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <small>
+            Professional Journey
+          </small>
+
+          <h2>
+            Experience & Journey
+          </h2>
+
+          <p>
+            This section can later be fully managed
+            from the Admin Mentor Profile editor.
+          </p>
+
+        </div>
+
+
+        <div class="experience-box">
+
+          <div class="timeline-item">
+
+            <h3>
+              SNK IT Institute
+            </h3>
+
+            <span>
+              Founder & Mentor
+            </span>
+
+            <p>
+              Building a practical learning environment
+              focused on design, technology and digital
+              career skills.
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <h3>
+              UI/UX & Digital Design
+            </h3>
+
+            <span>
+              Professional Focus
+            </span>
+
+            <p>
+              Working with digital product design,
+              user experience and modern design workflows.
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <h3>
+              AI & Modern Digital Workflow
+            </h3>
+
+            <span>
+              Current Focus
+            </span>
+
+            <p>
+              Exploring practical ways to combine AI,
+              design and technology for more effective
+              digital work.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
 
     <section class="cta">
 
@@ -1195,15 +1415,15 @@
           </h2>
 
           <p>
-            Explore our practical training programs and
-            choose the skill you want to build next.
+            Explore SNK IT Institute courses and start
+            building practical digital skills.
           </p>
 
           <a
             href="/admission/"
-            class="primary-btn"
+            class="btn btn-primary"
           >
-            Start Your Journey →
+            Apply for Admission →
           </a>
 
         </div>
@@ -1215,9 +1435,9 @@
   </main>
 
 
-  <!-- =====================================================
+  <!-- =========================
        WHATSAPP
-       ===================================================== -->
+  ========================== -->
 
   <a
     href="https://wa.me/8801705633700"
@@ -1230,22 +1450,21 @@
   </a>
 
 
-  <!-- =====================================================
+  <!-- =========================
        FOOTER
-       ===================================================== -->
+  ========================== -->
 
   <footer>
 
     <div class="container footer-inner">
 
-      <div class="footer-brand">
+      <div class="copyright">
 
         © 2026
         <strong>SNK IT Institute</strong>.
         All rights reserved.
 
       </div>
-
 
       <div class="footer-links">
 
@@ -1276,9 +1495,9 @@
   </footer>
 
 
-  <!-- =====================================================
+  <!-- =========================
        JAVASCRIPT
-       ===================================================== -->
+  ========================== -->
 
   <script>
 
