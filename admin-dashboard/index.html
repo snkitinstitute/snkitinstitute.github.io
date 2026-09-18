@@ -129,6 +129,22 @@
 
     .form-actions{ display:flex; gap:10px; margin-top:6px; }
 
+    .module-row{
+      display:flex; gap:8px; margin-bottom:8px; align-items:flex-start;
+    }
+    .module-row input{
+      border:1px solid #292929; outline:none; background:#101010; color:#fff;
+      border-radius:9px; padding:10px 12px; font-size:12.5px;
+    }
+    .module-row .mod-title{ flex:0.9; }
+    .module-row .mod-desc{ flex:1.4; }
+    .module-row .remove-module-btn{
+      flex-shrink:0; width:34px; height:38px;
+      border:1px solid #292929; background:#101010; color:#999;
+      border-radius:8px; cursor:pointer; font-size:14px; transition:.3s;
+    }
+    .module-row .remove-module-btn:hover{ border-color:#ff8080; color:#ff8080; }
+
     .secondary-btn{
       padding:11px 18px;
       background:none; color:#999;
@@ -271,13 +287,15 @@
         <div class="section-head">
           <div>
             <h2>কোর্স ম্যানেজ</h2>
-            <span>ছবি, দাম, বিবরণ, মডিউল — সব এখান থেকে বদলাতে পারবেন</span>
+            <span>ছবি, দাম, বিবরণ, মডিউল — সব এখান থেকে বদলাতে বা নতুন কোর্স যোগ করতে পারবেন</span>
           </div>
+          <button type="button" class="primary-btn" id="newCourseBtn">+ নতুন কোর্স</button>
         </div>
 
         <form class="post-form" id="courseForm">
 
           <input type="hidden" id="courseId">
+          <input type="hidden" id="courseIsNew">
 
           <div class="form-row">
             <label>কোর্সের ছবি</label>
@@ -335,9 +353,9 @@
           </div>
 
           <div class="form-row">
-            <label>কোর্স মডিউল (ফরম্যাট: টাইটেল :: বিবরণ, প্রতিটা নতুন লাইনে)</label>
-            <textarea id="courseModules" style="min-height:140px;" placeholder="Design Basics :: Color theory ও composition
-Photoshop Mastery :: Photo editing ও manipulation"></textarea>
+            <label>কোর্স মডিউল</label>
+            <div id="moduleRows"></div>
+            <button type="button" class="secondary-btn" id="addModuleRowBtn" style="margin-top:6px; align-self:flex-start;">+ মডিউল যোগ করুন</button>
           </div>
 
           <div class="form-actions">
@@ -669,16 +687,61 @@ Photoshop Mastery :: Photo editing ও manipulation"></textarea>
 
     const courseForm = document.getElementById("courseForm");
     const cancelCourseBtn = document.getElementById("cancelCourseBtn");
+    const newCourseBtn = document.getElementById("newCourseBtn");
+    const moduleRowsEl = document.getElementById("moduleRows");
+    const addModuleRowBtn = document.getElementById("addModuleRowBtn");
+
+    function addModuleRow(title, desc){
+      const row = document.createElement("div");
+      row.className = "module-row";
+      row.innerHTML = `
+        <input type="text" class="mod-title" placeholder="মডিউলের নাম" value="${(title || "").replace(/"/g,'&quot;')}">
+        <input type="text" class="mod-desc" placeholder="ছোট বিবরণ" value="${(desc || "").replace(/"/g,'&quot;')}">
+        <button type="button" class="remove-module-btn" title="মুছে ফেলুন">✕</button>
+      `;
+      row.querySelector(".remove-module-btn").addEventListener("click", function(){
+        row.remove();
+      });
+      moduleRowsEl.appendChild(row);
+    }
+
+    addModuleRowBtn.addEventListener("click", function(){
+      addModuleRow("", "");
+    });
+
+    function clearModuleRows(){
+      moduleRowsEl.innerHTML = "";
+    }
 
     function resetCourseForm(){
       courseForm.classList.remove("open");
+      document.getElementById("courseId").value = "";
+      document.getElementById("courseIsNew").value = "";
+      document.getElementById("courseTitle").value = "";
+      document.getElementById("courseTagText").value = "";
+      document.getElementById("courseTagClass").value = "";
+      document.getElementById("courseDesc").value = "";
+      document.getElementById("courseMeta").value = "";
+      document.getElementById("coursePriceOld").value = "";
+      document.getElementById("coursePriceNew").value = "";
+      document.getElementById("courseLearnItems").value = "";
       document.getElementById("courseImageFile").value = "";
+      document.getElementById("courseImageData").value = "";
       document.getElementById("courseImagePreview").style.display = "none";
+      clearModuleRows();
     }
 
     cancelCourseBtn.addEventListener("click", resetCourseForm);
 
-    // image upload + compression (same approach as blog posts)
+    newCourseBtn.addEventListener("click", function(){
+      resetCourseForm();
+      document.getElementById("courseIsNew").value = "1";
+      addModuleRow("", "");
+      courseForm.classList.add("open");
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+
+    // image upload + compression
     document.getElementById("courseImageFile").addEventListener("change", function(e){
       const file = e.target.files[0];
       if(!file) return;
@@ -718,6 +781,7 @@ Photoshop Mastery :: Photo editing ও manipulation"></textarea>
     });
 
     function openCourseEditor(slug, data){
+      resetCourseForm();
       document.getElementById("courseId").value = slug;
       document.getElementById("courseTitle").value = data.title || "";
       document.getElementById("courseTagText").value = data.tagText || "";
@@ -727,8 +791,15 @@ Photoshop Mastery :: Photo editing ও manipulation"></textarea>
       document.getElementById("coursePriceOld").value = data.priceOld || "";
       document.getElementById("coursePriceNew").value = data.priceNew || "";
       document.getElementById("courseLearnItems").value = (data.learnItems || []).join("\n");
-      document.getElementById("courseModules").value = (data.modules || []).map(m => m[0] + " :: " + m[1]).join("\n");
       document.getElementById("courseImageData").value = data.image || "";
+
+      clearModuleRows();
+      (data.modules || []).forEach(function(m){
+        addModuleRow(m[0], m[1]);
+      });
+      if(!data.modules || data.modules.length === 0){
+        addModuleRow("", "");
+      }
 
       const preview = document.getElementById("courseImagePreview");
       if(data.image){
@@ -746,74 +817,156 @@ Photoshop Mastery :: Photo editing ও manipulation"></textarea>
       const courseList = document.getElementById("courseList");
       courseList.innerHTML = "";
 
-      COURSE_SLUGS.forEach(function(slug){
-        db.collection("courses").doc(slug).get().then(function(doc){
-          const data = doc.exists ? doc.data() : courseSeeds[slug];
-          const seedTitle = courseSeeds[slug].title;
+      db.collection("courses").get().then(function(snapshot){
+        const foundSlugs = new Set();
+        const rows = [];
 
-          const item = document.createElement("div");
-          item.className = "post-item";
-          const imgSrc = data.image || "https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/blog-placeholder-1.jpg";
-          item.innerHTML = `
-            <img src="${imgSrc}" alt="">
-            <div class="post-info">
-              <h3>${escapeHtml(data.title || seedTitle)}</h3>
-              <p>${escapeHtml(data.priceOld || "")} → ${escapeHtml(data.priceNew || "")}</p>
-            </div>
-            <div class="post-actions">
-              <button class="icon-btn" data-edit-course="${slug}" title="Edit">✎</button>
-            </div>
-          `;
-          courseList.appendChild(item);
+        snapshot.forEach(function(doc){
+          foundSlugs.add(doc.id);
+          rows.push({ id: doc.id, data: doc.data(), isFixed: COURSE_SLUGS.includes(doc.id) });
+        });
 
-          item.querySelector("[data-edit-course]").addEventListener("click", function(){
-            openCourseEditor(slug, data);
-          });
+        // Add the 4 fixed courses using seed data if they don't have a Firestore doc yet
+        COURSE_SLUGS.forEach(function(slug){
+          if(!foundSlugs.has(slug)){
+            rows.push({ id: slug, data: courseSeeds[slug], isFixed: true });
+          }
+        });
+
+        renderCourseList(rows);
+      }).catch(function(error){
+        courseList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+        console.error("loadCourses error:", error);
+      });
+    }
+
+    function renderCourseList(rows){
+      const courseList = document.getElementById("courseList");
+      courseList.innerHTML = "";
+
+      rows.forEach(function(row){
+        const data = row.data;
+        const item = document.createElement("div");
+        item.className = "post-item";
+        const imgSrc = data.image || "https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/blog-placeholder-1.jpg";
+
+        item.innerHTML = `
+          <img src="${imgSrc}" alt="">
+          <div class="post-info">
+            <h3>${escapeHtml(data.title || "(নাম নেই)")}</h3>
+            <p>${escapeHtml(data.priceOld || "")} → ${escapeHtml(data.priceNew || "")}${row.isFixed ? "" : " • কাস্টম কোর্স"}</p>
+          </div>
+          <div class="post-actions">
+            <button class="icon-btn" data-edit-course="1" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete-course="1" title="Delete">🗑</button>
+          </div>
+        `;
+        courseList.appendChild(item);
+
+        item.querySelector("[data-edit-course]").addEventListener("click", function(){
+          openCourseEditor(row.id, data);
+        });
+
+        item.querySelector("[data-delete-course]").addEventListener("click", function(){
+          const msg = row.isFixed
+            ? "এই কোর্সের ডাটা ডিলিট করলে পেজটা আগের ডিফল্ট তথ্য দেখাবে। ডিলিট করতে চান?"
+            : "এই কোর্সটি সম্পূর্ণ ডিলিট করতে চান?";
+          if(confirm(msg)){
+            db.collection("courses").doc(row.id).delete().then(loadCourses).catch(function(error){
+              alert("ডিলিট করতে সমস্যা হয়েছে: " + error.message);
+            });
+          }
         });
       });
+    }
+
+    function slugify(text){
+      return (text || "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\u0980-\u09FF]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 60) || ("course-" + Date.now());
     }
 
     courseForm.addEventListener("submit", function(e){
       e.preventDefault();
 
-      const slug = document.getElementById("courseId").value;
-      const metaLines = document.getElementById("courseMeta").value.split("\n").map(s => s.trim()).filter(Boolean);
-      const learnLines = document.getElementById("courseLearnItems").value.split("\n").map(s => s.trim()).filter(Boolean);
-      const moduleLines = document.getElementById("courseModules").value.split("\n").map(s => s.trim()).filter(Boolean).map(function(line){
-        const parts = line.split("::");
-        return [ (parts[0]||"").trim(), (parts[1]||"").trim() ];
-      });
+      try{
+        const isNew = document.getElementById("courseIsNew").value === "1";
+        let slug = document.getElementById("courseId").value;
 
-      const data = {
-        title: document.getElementById("courseTitle").value.trim(),
-        tagText: document.getElementById("courseTagText").value.trim(),
-        tagClass: document.getElementById("courseTagClass").value,
-        image: document.getElementById("courseImageData").value.trim(),
-        desc: document.getElementById("courseDesc").value.trim(),
-        meta: metaLines,
-        priceOld: document.getElementById("coursePriceOld").value.trim(),
-        priceNew: document.getElementById("coursePriceNew").value.trim(),
-        learnItems: learnLines,
-        modules: moduleLines,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-      };
+        const moduleRows = Array.from(moduleRowsEl.querySelectorAll(".module-row"));
+        const modules = moduleRows.map(function(row){
+          const t = row.querySelector(".mod-title").value.trim();
+          const d = row.querySelector(".mod-desc").value.trim();
+          return [t, d];
+        }).filter(function(m){ return m[0] || m[1]; });
 
-      const saveBtn = document.getElementById("saveCourseBtn");
-      saveBtn.disabled = true;
-      saveBtn.textContent = "সেভ হচ্ছে...";
+        const metaLines = document.getElementById("courseMeta").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
+        const learnLines = document.getElementById("courseLearnItems").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
 
-      db.collection("courses").doc(slug).set(data, { merge: true })
-        .then(function(){
-          saveBtn.disabled = false;
-          saveBtn.textContent = "সেভ করুন";
-          resetCourseForm();
-          loadCourses();
-        })
-        .catch(function(error){
-          saveBtn.disabled = false;
-          saveBtn.textContent = "সেভ করুন";
-          alert("সমস্যা হয়েছে: " + error.message);
-        });
+        const title = document.getElementById("courseTitle").value.trim();
+
+        const data = {
+          title: title,
+          tagText: document.getElementById("courseTagText").value.trim(),
+          tagClass: document.getElementById("courseTagClass").value,
+          image: document.getElementById("courseImageData").value.trim(),
+          desc: document.getElementById("courseDesc").value.trim(),
+          meta: metaLines,
+          priceOld: document.getElementById("coursePriceOld").value.trim(),
+          priceNew: document.getElementById("coursePriceNew").value.trim(),
+          learnItems: learnLines,
+          modules: modules,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        const saveBtn = document.getElementById("saveCourseBtn");
+        saveBtn.disabled = true;
+        saveBtn.textContent = "সেভ হচ্ছে...";
+
+        if(isNew){
+          if(!slug){
+            slug = slugify(title);
+          }
+          data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+          db.collection("courses").doc(slug).set(data)
+            .then(function(){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              resetCourseForm();
+              loadCourses();
+              alert("নতুন কোর্স তৈরি হয়েছে। এটা এখন courses.html-এ যোগ করে দিতে বলুন Claude-কে, তাহলে সবাই দেখতে পারবে।");
+            })
+            .catch(function(error){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              alert("সমস্যা হয়েছে: " + error.message);
+              console.error("Save (new) error:", error);
+            });
+        }else{
+          db.collection("courses").doc(slug).set(data, { merge: true })
+            .then(function(){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              resetCourseForm();
+              loadCourses();
+            })
+            .catch(function(error){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              alert("সমস্যা হয়েছে: " + error.message);
+              console.error("Save (update) error:", error);
+            });
+        }
+      }catch(err){
+        alert("একটা সমস্যা হয়েছে: " + err.message);
+        console.error("courseForm submit handler crashed:", err);
+        const saveBtn = document.getElementById("saveCourseBtn");
+        saveBtn.disabled = false;
+        saveBtn.textContent = "সেভ করুন";
+      }
     });
 
     // LOAD STUDENTS
