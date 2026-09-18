@@ -449,6 +449,21 @@
       }
     }
 
+  
+    .course-hero-image-wrap{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border-2);
+      margin-bottom:20px;
+      max-width:700px;
+    }
+    .course-hero-image-wrap img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      display:block;
+    }
+
   </style>
 </head>
 
@@ -486,9 +501,13 @@
         <a href="/">হোম</a> / <a href="/#courses">কোর্সসমূহ</a> / 100Days Kidz Spoken English
       </div>
 
-      <div class="course-tag info">100 DAYS</div>
+            <div class="course-hero-image-wrap">
+        <img id="courseHeroImage" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg" alt="Course image">
+      </div>
 
-      <h1>100Days Kidz Spoken English</h1>
+<div class="course-tag info">100 DAYS</div>
+
+      <h1 id="courseTitleHeading">100Days Kidz Spoken English</h1>
 
       <p class="course-hero-desc">English speaking, vocabulary, pronunciation এবং communication skill development-এর জন্য structured ১০০ দিনের learning program।</p>
 
@@ -654,6 +673,81 @@
   >
     💬
   </a>
+
+
+  <!-- Firebase: load dynamic course content (falls back to the text above if unavailable) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
+      authDomain: "snk-it-institute.firebaseapp.com",
+      projectId: "snk-it-institute",
+      storageBucket: "snk-it-institute.firebasestorage.app",
+      messagingSenderId: "948436125833",
+      appId: "1:948436125833:web:36788463d4dd3ef20bde58"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const courseDb = firebase.firestore();
+    const COURSE_SLUG = "kidz-spoken-english";
+
+    courseDb.collection("courses").doc(COURSE_SLUG).get().then(function(doc){
+      if(!doc.exists) return;
+      const data = doc.data();
+
+      if(data.image){
+        document.getElementById("courseHeroImage").src = data.image;
+      }
+
+      if(data.tagText){
+        const tagEl = document.querySelector(".course-tag");
+        tagEl.className = "course-tag" + (data.tagClass ? " " + data.tagClass : "");
+        tagEl.textContent = data.tagText;
+      }
+
+      if(data.title){
+        document.getElementById("courseTitleHeading").textContent = data.title;
+        document.title = data.title + " | SNK IT Institute";
+      }
+
+      if(data.desc){
+        document.querySelector(".course-hero-desc").textContent = data.desc;
+      }
+
+      if(data.meta && data.meta.length){
+        const metaEl = document.querySelector(".course-meta");
+        metaEl.innerHTML = data.meta.map(function(line){
+          return '<div class="meta-chip">' + line + '</div>';
+        }).join("");
+      }
+
+      const delEl = document.querySelector(".price-box del");
+      const strongEl = document.querySelector(".price-box strong");
+      if(data.priceOld){ delEl.textContent = data.priceOld; delEl.style.display = ""; }
+      if(data.priceNew){ strongEl.textContent = data.priceNew; }
+
+      if(data.learnItems && data.learnItems.length){
+        const learnEl = document.querySelector(".learn-grid");
+        learnEl.innerHTML = data.learnItems.map(function(item){
+          return '<div class="learn-item"><span class="learn-check">✓</span><span>' + item + '</span></div>';
+        }).join("");
+      }
+
+      if(data.modules && data.modules.length){
+        const modEl = document.querySelector(".module-list");
+        modEl.innerHTML = data.modules.map(function(mod, i){
+          return '<div class="module-item"><div class="module-number">' + (i+1) + '</div><div><strong>' + mod[0] + '</strong> — ' + mod[1] + '</div></div>';
+        }).join("");
+      }
+
+    }).catch(function(error){
+      console.error("Course data load failed, showing static fallback content.", error);
+    });
+
+  </script>
 
 </body>
 </html>
