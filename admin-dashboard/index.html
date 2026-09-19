@@ -54,6 +54,48 @@
     }
     .logout-btn:hover{ border-color:#ff8080; color:#ff8080; }
 
+    /* TOAST NOTIFICATION */
+
+    .toast{
+      position:fixed;
+      top:20px;
+      right:20px;
+      z-index:99999;
+      padding:14px 20px;
+      border-radius:10px;
+      font-size:13px;
+      font-weight:700;
+      box-shadow:0 15px 40px rgba(0,0,0,.35);
+      transform:translateX(120%);
+      transition:transform .35s ease;
+      max-width:320px;
+    }
+
+    .toast.show{
+      transform:translateX(0);
+    }
+
+    .toast.success{
+      background:#0f2e0f;
+      border:1px solid #4ade80;
+      color:#4ade80;
+    }
+
+    .toast.error{
+      background:#2e0f0f;
+      border:1px solid #ff8080;
+      color:#ff8080;
+    }
+
+    @media(max-width:600px){
+      .toast{
+        left:16px;
+        right:16px;
+        top:16px;
+        max-width:none;
+      }
+    }
+
     /* LOADING GATE */
 
     .auth-gate{
@@ -203,6 +245,8 @@
 </head>
 
 <body>
+
+  <div class="toast" id="toast"></div>
 
   <div class="auth-gate" id="authGate">লোড হচ্ছে...</div>
 
@@ -414,6 +458,18 @@
     const authGate = document.getElementById("authGate");
     const dashboardBody = document.getElementById("dashboardBody");
 
+    // TOAST NOTIFICATION
+    let toastTimer = null;
+    function showToast(message, type){
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = "toast show " + (type || "success");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function(){
+        toast.classList.remove("show");
+      }, 3200);
+    }
+
     // AUTH GUARD
     auth.onAuthStateChanged(function(user){
       if(user){
@@ -534,6 +590,7 @@
       saveBtn.textContent = "সেভ হচ্ছে...";
 
       let promise;
+      const wasEdit = !!id;
       if(id){
         promise = db.collection("posts").doc(id).update(data);
       }else{
@@ -546,10 +603,11 @@
         postForm.classList.remove("open");
         resetForm();
         loadPosts();
+        showToast(wasEdit ? "✅ পোস্ট আপডেট হয়েছে" : "✅ নতুন পোস্ট যোগ হয়েছে", "success");
       }).catch(function(error){
         saveBtn.disabled = false;
         saveBtn.textContent = "পোস্ট সেভ করুন";
-        alert("সমস্যা হয়েছে: " + error.message);
+        showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
       });
     });
 
@@ -619,7 +677,12 @@
           btn.addEventListener("click", function(){
             const id = btn.getAttribute("data-delete");
             if(confirm("এই পোস্টটি ডিলিট করতে চান?")){
-              db.collection("posts").doc(id).delete().then(loadPosts);
+              db.collection("posts").doc(id).delete().then(function(){
+                loadPosts();
+                showToast("🗑 পোস্ট ডিলিট হয়েছে", "success");
+              }).catch(function(error){
+                showToast("❌ ডিলিট করতে সমস্যা: " + error.message, "error");
+              });
             }
           });
         });
@@ -872,8 +935,11 @@
             ? "এই কোর্সের ডাটা ডিলিট করলে পেজটা আগের ডিফল্ট তথ্য দেখাবে। ডিলিট করতে চান?"
             : "এই কোর্সটি সম্পূর্ণ ডিলিট করতে চান?";
           if(confirm(msg)){
-            db.collection("courses").doc(row.id).delete().then(loadCourses).catch(function(error){
-              alert("ডিলিট করতে সমস্যা হয়েছে: " + error.message);
+            db.collection("courses").doc(row.id).delete().then(function(){
+              loadCourses();
+              showToast("🗑 কোর্স ডিলিট হয়েছে", "success");
+            }).catch(function(error){
+              showToast("❌ ডিলিট করতে সমস্যা: " + error.message, "error");
             });
           }
         });
@@ -937,12 +1003,12 @@
               saveBtn.textContent = "সেভ করুন";
               resetCourseForm();
               loadCourses();
-              alert("নতুন কোর্স তৈরি হয়েছে। এটা এখন courses.html-এ যোগ করে দিতে বলুন Claude-কে, তাহলে সবাই দেখতে পারবে।");
+              showToast("✅ নতুন কোর্স তৈরি হয়েছে (courses.html-এ দেখাতে হলে জানান)", "success");
             })
             .catch(function(error){
               saveBtn.disabled = false;
               saveBtn.textContent = "সেভ করুন";
-              alert("সমস্যা হয়েছে: " + error.message);
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
               console.error("Save (new) error:", error);
             });
         }else{
@@ -952,11 +1018,12 @@
               saveBtn.textContent = "সেভ করুন";
               resetCourseForm();
               loadCourses();
+              showToast("✅ কোর্স আপডেট হয়েছে", "success");
             })
             .catch(function(error){
               saveBtn.disabled = false;
               saveBtn.textContent = "সেভ করুন";
-              alert("সমস্যা হয়েছে: " + error.message);
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
               console.error("Save (update) error:", error);
             });
         }
