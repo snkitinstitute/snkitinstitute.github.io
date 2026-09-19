@@ -630,7 +630,7 @@
           const item = document.createElement("div");
           item.className = "post-item";
 
-          const imgSrc = post.image || "https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/blog-placeholder-1.jpg";
+          const imgSrc = post.image || "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='60' viewBox='0 0 80 60'%3E%3Crect width='80' height='60' fill='%23161616'/%3E%3Ctext x='40' y='34' font-family='Arial' font-size='24' fill='%23444' text-anchor='middle'%3E%F0%9F%96%BC%EF%B8%8F%3C/text%3E%3C/svg%3E";
 
           item.innerHTML = `
             <img src="${imgSrc}" alt="">
@@ -708,7 +708,7 @@
         priceOld: "৳11,500",
         priceNew: "৳7,490",
         learnItems: ["UI/UX Fundamentals ও Design Thinking", "User Research ও User Flow তৈরি", "Wireframing ও Prototyping (Figma)", "Design System তৈরি করা", "AI-powered design tools ব্যবহার", "Portfolio-ready real project"],
-        modules: [["Design Fundamentals","Color, typography ও layout basics"], ["User Research","User persona ও user flow"], ["Wireframing & Prototyping","Figma দিয়ে হাতে-কলমে"], ["Design Systems","Reusable component তৈরি"], ["AI Tools in Design","AI দিয়ে দ্রুত design workflow"], ["Career & Portfolio","Portfolio তৈরি ও job preparation"]]
+        modules: [{title:"Design Fundamentals",desc:"Color, typography ও layout basics"}, {title:"User Research",desc:"User persona ও user flow"}, {title:"Wireframing & Prototyping",desc:"Figma দিয়ে হাতে-কলমে"}, {title:"Design Systems",desc:"Reusable component তৈরি"}, {title:"AI Tools in Design",desc:"AI দিয়ে দ্রুত design workflow"}, {title:"Career & Portfolio",desc:"Portfolio তৈরি ও job preparation"}]
       },
       "cyber-security": {
         title: "AI-Powered Cyber Security & Ethical Hacking",
@@ -720,7 +720,7 @@
         priceOld: "৳12,500",
         priceNew: "৳9,500",
         learnItems: ["Networking ও Security Fundamentals", "Ethical Hacking Techniques", "Vulnerability Assessment", "Penetration Testing Basics", "AI-powered Security Tools", "Real-world Security Project"],
-        modules: [["Networking Basics","Network fundamentals ও protocols"], ["Security Fundamentals","Core security concepts"], ["Ethical Hacking Tools","Kali Linux ও essential tools"], ["Penetration Testing","হাতে-কলমে vulnerability testing"], ["AI in Cybersecurity","AI-powered threat detection"], ["Career & Certification","Job preparation ও certification guidance"]]
+        modules: [{title:"Networking Basics",desc:"Network fundamentals ও protocols"}, {title:"Security Fundamentals",desc:"Core security concepts"}, {title:"Ethical Hacking Tools",desc:"Kali Linux ও essential tools"}, {title:"Penetration Testing",desc:"হাতে-কলমে vulnerability testing"}, {title:"AI in Cybersecurity",desc:"AI-powered threat detection"}, {title:"Career & Certification",desc:"Job preparation ও certification guidance"}]
       },
       "graphic-design": {
         title: "AI-Powered Graphic Design",
@@ -732,7 +732,7 @@
         priceOld: "৳7,500",
         priceNew: "৳4,500",
         learnItems: ["Design Fundamentals ও Color Theory", "Adobe Photoshop ও Illustrator", "Branding ও Logo Design", "Social Media Design", "AI-powered Design Tools", "Portfolio Building"],
-        modules: [["Design Basics","Color theory ও composition"], ["Photoshop Mastery","Photo editing ও manipulation"], ["Illustrator & Branding","Logo ও brand identity design"], ["Social Media Design","Post, banner ও ad creative"], ["AI Design Tools","AI দিয়ে দ্রুত creative workflow"], ["Portfolio & Freelancing","Portfolio তৈরি ও freelancing শুরু"]]
+        modules: [{title:"Design Basics",desc:"Color theory ও composition"}, {title:"Photoshop Mastery",desc:"Photo editing ও manipulation"}, {title:"Illustrator & Branding",desc:"Logo ও brand identity design"}, {title:"Social Media Design",desc:"Post, banner ও ad creative"}, {title:"AI Design Tools",desc:"AI দিয়ে দ্রুত creative workflow"}, {title:"Portfolio & Freelancing",desc:"Portfolio তৈরি ও freelancing শুরু"}]
       },
       "kidz-spoken-english": {
         title: "100Days Kidz Spoken English",
@@ -744,7 +744,7 @@
         priceOld: "৳12,500",
         priceNew: "৳6,500",
         learnItems: ["Basic Vocabulary ও Pronunciation", "Everyday Conversation Practice", "Grammar Made Simple", "Confidence Building Activities", "Interactive Speaking Sessions", "Weekly Progress Assessment"],
-        modules: [["Alphabet & Basic Words","Foundation বিল্ড করা"], ["Simple Sentences","সহজ বাক্য গঠন"], ["Daily Conversation","রোজকার কথোপকথন practice"], ["Grammar Basics","সহজভাবে grammar শেখা"], ["Storytelling & Confidence","গল্প বলা ও confidence তৈরি"], ["Final Assessment","মূল্যায়ন ও certificate"]]
+        modules: [{title:"Alphabet & Basic Words",desc:"Foundation বিল্ড করা"}, {title:"Simple Sentences",desc:"সহজ বাক্য গঠন"}, {title:"Daily Conversation",desc:"রোজকার কথোপকথন practice"}, {title:"Grammar Basics",desc:"সহজভাবে grammar শেখা"}, {title:"Storytelling & Confidence",desc:"গল্প বলা ও confidence তৈরি"}, {title:"Final Assessment",desc:"মূল্যায়ন ও certificate"}]
       }
     };
 
@@ -858,7 +858,7 @@
 
       clearModuleRows();
       (data.modules || []).forEach(function(m){
-        addModuleRow(m[0], m[1]);
+        addModuleRow(m.title, m.desc);
       });
       if(!data.modules || data.modules.length === 0){
         addModuleRow("", "");
@@ -911,7 +911,7 @@
         const data = row.data;
         const item = document.createElement("div");
         item.className = "post-item";
-        const imgSrc = data.image || "https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/blog-placeholder-1.jpg";
+        const imgSrc = data.image || "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='60' viewBox='0 0 80 60'%3E%3Crect width='80' height='60' fill='%23161616'/%3E%3Ctext x='40' y='34' font-family='Arial' font-size='24' fill='%23444' text-anchor='middle'%3E%F0%9F%96%BC%EF%B8%8F%3C/text%3E%3C/svg%3E";
 
         item.innerHTML = `
           <img src="${imgSrc}" alt="">
@@ -966,8 +966,8 @@
         const modules = moduleRows.map(function(row){
           const t = row.querySelector(".mod-title").value.trim();
           const d = row.querySelector(".mod-desc").value.trim();
-          return [t, d];
-        }).filter(function(m){ return m[0] || m[1]; });
+          return { title: t, desc: d };
+        }).filter(function(m){ return m.title || m.desc; });
 
         const metaLines = document.getElementById("courseMeta").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
         const learnLines = document.getElementById("courseLearnItems").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
