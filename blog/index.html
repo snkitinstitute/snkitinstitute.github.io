@@ -387,6 +387,44 @@
       text-decoration:underline;
     }
 
+    .blog-actions{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:4px;
+    }
+
+    .share-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+
+      background:none;
+      border:1px solid var(--border-2);
+
+      color:var(--text-muted);
+
+      font-size:12px;
+      font-weight:700;
+
+      padding:6px 12px;
+      border-radius:7px;
+
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .share-btn:hover{
+      border-color:#b7ff00;
+      color:#b7ff00;
+    }
+
+    .share-btn.copied{
+      border-color:#4ade80;
+      color:#4ade80;
+    }
+
     .blog-full{
       display:none;
 
@@ -757,7 +795,7 @@
         const post = doc.data();
         const postId = "post-" + doc.id;
 
-        const imgSrc = post.image || "https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/blog-placeholder-1.jpg";
+        const imgSrc = post.image || "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='190' viewBox='0 0 400 190'%3E%3Crect width='400' height='190' fill='%23161616'/%3E%3Ctext x='200' y='105' font-family='Arial' font-size='40' fill='%23444' text-anchor='middle'%3E%F0%9F%96%BC%EF%B8%8F%3C/text%3E%3C/svg%3E";
 
         const paragraphs = (post.content || "")
           .split(/\n\s*\n/)
@@ -767,18 +805,38 @@
 
         const card = document.createElement("article");
         card.className = "blog-card";
+        card.setAttribute("data-doc-id", doc.id);
         card.innerHTML = `
           <img class="blog-image" src="${imgSrc}" alt="Blog Post Image">
           <div class="blog-body">
             <span class="blog-date">${formatDate(post.createdAt)}</span>
             <h2>${escapeHtml(post.title)}</h2>
             <p class="blog-excerpt">${escapeHtml(post.excerpt)}</p>
-            <button class="read-more-btn" onclick="toggleBlogPost('${postId}')">পুরোটা পড়ুন →</button>
+            <div class="blog-actions">
+              <button class="read-more-btn" onclick="toggleBlogPost('${postId}')">পুরোটা পড়ুন →</button>
+              <button class="share-btn" onclick="copyPostLink('${doc.id}', this)">🔗 লিংক কপি করুন</button>
+            </div>
             <div class="blog-full" id="${postId}">${paragraphs}</div>
           </div>
         `;
         blogGrid.appendChild(card);
       });
+
+      // If the URL has ?post=<id>, open and scroll to that specific post
+      const params = new URLSearchParams(window.location.search);
+      const sharedPostId = params.get("post");
+      if(sharedPostId){
+        const targetCard = blogGrid.querySelector('[data-doc-id="' + sharedPostId + '"]');
+        if(targetCard){
+          const fullEl = targetCard.querySelector(".blog-full");
+          const btn = targetCard.querySelector(".read-more-btn");
+          fullEl.classList.add("open");
+          btn.textContent = "লেখাটি বন্ধ করুন ↑";
+          setTimeout(function(){
+            targetCard.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 200);
+        }
+      }
 
     }).catch(function(error){
       blogGrid.innerHTML = "";
@@ -786,6 +844,28 @@
       emptyState.textContent = "পোস্ট লোড করতে সমস্যা হয়েছে।";
       console.error(error);
     });
+
+    function copyPostLink(docId, btnEl){
+      const url = window.location.origin + window.location.pathname + "?post=" + docId;
+
+      function showCopied(){
+        const original = btnEl.textContent;
+        btnEl.textContent = "✅ কপি হয়েছে!";
+        btnEl.classList.add("copied");
+        setTimeout(function(){
+          btnEl.textContent = original;
+          btnEl.classList.remove("copied");
+        }, 2000);
+      }
+
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(showCopied).catch(function(){
+          prompt("লিংকটি কপি করুন:", url);
+        });
+      }else{
+        prompt("লিংকটি কপি করুন:", url);
+      }
+    }
 
   </script>
 
