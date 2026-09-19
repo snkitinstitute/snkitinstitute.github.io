@@ -739,7 +739,7 @@
       if(data.modules && data.modules.length){
         const modEl = document.querySelector(".module-list");
         modEl.innerHTML = data.modules.map(function(mod, i){
-          return '<div class="module-item"><div class="module-number">' + (i+1) + '</div><div><strong>' + mod[0] + '</strong> — ' + mod[1] + '</div></div>';
+          return '<div class="module-item"><div class="module-number">' + (i+1) + '</div><div><strong>' + mod.title + '</strong> — ' + mod.desc + '</div></div>';
         }).join("");
       }
 
