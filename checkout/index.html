@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment | SNK IT Institute</title>
+
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+
+  <style>
+
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
+    :root{
+      --bg:#050505; --bg-alt:#080808; --bg-card:#0b0b0b; --bg-input:#101010;
+      --text:#fff; --text-muted:#a4a4a4; --text-dim:#777;
+      --border:#181818; --border-2:#292929;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    a{ text-decoration:none; color:inherit; }
+    button, input{ font:inherit; }
+
+    .container{ width:min(560px,92%); margin:auto; padding:50px 0 80px; }
+
+    .top-nav{
+      display:flex; align-items:center; gap:10px; margin-bottom:30px;
+    }
+    .top-nav img{ width:36px; height:36px; }
+    .top-nav span{ font-weight:800; font-size:15px; }
+
+    .checkout-card{
+      background:var(--bg-card); border:1px solid var(--border-2); border-radius:18px;
+      padding:28px; margin-bottom:20px;
+    }
+
+    .course-summary{
+      display:flex; align-items:center; gap:14px;
+      padding-bottom:20px; margin-bottom:20px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .course-summary img{
+      width:64px; height:64px; border-radius:10px; object-fit:cover; background:var(--bg-input); flex-shrink:0;
+    }
+
+    .course-summary h2{ font-size:16px; margin-bottom:4px; line-height:1.4; }
+    .course-summary .price-row{ display:flex; align-items:baseline; gap:8px; }
+    .course-summary .price-row del{ color:var(--text-dim); font-size:13px; }
+    .course-summary .price-row strong{ color:#b7ff00; font-size:20px; }
+
+    .step-title{
+      display:flex; align-items:center; gap:8px;
+      font-size:14px; font-weight:800; margin-bottom:14px;
+    }
+    .step-num{
+      width:22px; height:22px; border-radius:50%; background:#b7ff00; color:#050505;
+      display:grid; place-items:center; font-size:12px; font-weight:900; flex-shrink:0;
+    }
+
+    .bkash-box{
+      background:linear-gradient(135deg, rgba(226,19,110,.12), var(--bg-input));
+      border:1px solid rgba(226,19,110,.3);
+      border-radius:14px;
+      padding:20px;
+      margin-bottom:26px;
+    }
+
+    .bkash-box .bkash-label{
+      color:#e2136e; font-weight:900; font-size:17px; margin-bottom:10px;
+    }
+
+    .bkash-number{
+      display:flex; align-items:center; justify-content:space-between;
+      background:var(--bg-input); border:1px solid var(--border-2); border-radius:10px;
+      padding:12px 16px; margin-bottom:12px;
+    }
+    .bkash-number strong{ font-size:18px; letter-spacing:1px; }
+    .copy-num-btn{
+      background:none; border:1px solid var(--border-2); color:var(--text-muted);
+      padding:6px 12px; border-radius:7px; font-size:11.5px; font-weight:700; cursor:pointer; transition:.3s;
+    }
+    .copy-num-btn:hover{ border-color:#b7ff00; color:#b7ff00; }
+
+    .bkash-box ol{
+      margin:0 0 0 18px; color:var(--text-muted); font-size:13px; line-height:2;
+    }
+    .bkash-box ol b{ color:#fff; }
+
+    .form-group{ display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
+    .form-group label{ color:#ddd; font-size:13px; font-weight:700; }
+
+    .form-group input{
+      width:100%; border:1px solid var(--border-2); outline:none;
+      background:var(--bg-input); color:var(--text); border-radius:9px;
+      padding:13px 14px; font-size:13px; transition:.3s;
+    }
+    .form-group input:focus{
+      border-color:rgba(183,255,0,.55); box-shadow:0 0 0 3px rgba(183,255,0,.05);
+    }
+    .form-group .hint{ color:var(--text-dim); font-size:11px; }
+
+    .submit-button{
+      width:100%; margin-top:8px; padding:15px; border:0; border-radius:9px;
+      background:#b7ff00; color:#050505; font-size:14px; font-weight:900;
+      cursor:pointer; transition:.3s;
+    }
+    .submit-button:hover{ transform:translateY(-2px); box-shadow:0 12px 35px rgba(183,255,0,.20); }
+    .submit-button:disabled{ opacity:.6; cursor:not-allowed; transform:none; box-shadow:none; }
+
+    .help-note{
+      text-align:center; color:var(--text-dim); font-size:12px; margin-top:16px;
+    }
+    .help-note a{ color:#b7ff00; font-weight:700; }
+
+    /* SUCCESS STATE */
+
+    .success-box{
+      display:none;
+      text-align:center;
+      padding:20px 0;
+    }
+    .success-box .icon{
+      width:64px; height:64px; margin:0 auto 18px;
+      display:grid; place-items:center;
+      background:rgba(183,255,0,.1); border:1px solid rgba(183,255,0,.3);
+      border-radius:50%; font-size:28px;
+    }
+    .success-box h2{ font-size:20px; margin-bottom:10px; }
+    .success-box p{ color:var(--text-muted); font-size:13.5px; line-height:1.8; margin-bottom:20px; }
+
+    .error-box{
+      display:none; margin-bottom:16px; padding:12px 14px;
+      background:rgba(255,80,80,.08); border:1px solid rgba(255,80,80,.3);
+      border-radius:9px; color:#ff8080; font-size:12.5px; line-height:1.6;
+    }
+    .error-box.show{ display:block; }
+
+    @media(max-width:480px){
+      .container{ padding:30px 0 50px; }
+      .checkout-card{ padding:20px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <a href="/" class="top-nav">
+      <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
+      <span>SNK IT Institute</span>
+    </a>
+
+    <div class="checkout-card" id="checkoutCard">
+
+      <div class="course-summary">
+        <img id="courseImg" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="">
+        <div>
+          <h2 id="courseName">কোর্স নির্বাচন করুন</h2>
+          <div class="price-row">
+            <del id="coursePriceOld" style="display:none;"></del>
+            <strong id="coursePrice">—</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-title"><span class="step-num">১</span> bKash-এ Payment করুন</div>
+
+      <div class="bkash-box">
+        <div class="bkash-label">bKash Payment</div>
+
+        <div class="bkash-number">
+          <strong>01705633700</strong>
+          <button class="copy-num-btn" id="copyNumBtn" type="button">নাম্বার কপি করুন</button>
+        </div>
+
+        <ol>
+          <li>bKash App খুলে <b>Send Money</b> সিলেক্ট করুন</li>
+          <li>নাম্বার দিন: <b>01705633700</b></li>
+          <li>Amount হিসেবে উপরের কোর্সের দাম পাঠান</li>
+          <li>Payment সম্পন্ন হলে <b>Transaction ID (TrxID)</b> কপি করে নিচে বসান</li>
+        </ol>
+      </div>
+
+      <div class="step-title"><span class="step-num">২</span> Transaction তথ্য দিন</div>
+
+      <div class="error-box" id="errorBox"></div>
+
+      <form id="paymentForm">
+
+        <div class="form-group">
+          <label>আপনার নাম *</label>
+          <input type="text" id="payerName" required placeholder="আপনার পূর্ণ নাম">
+        </div>
+
+        <div class="form-group">
+          <label>মোবাইল নম্বর *</label>
+          <input type="tel" id="payerPhone" required placeholder="01XXXXXXXXX">
+        </div>
+
+        <div class="form-group">
+          <label>যেই bKash নম্বর থেকে পাঠিয়েছেন *</label>
+          <input type="tel" id="payerBkashNumber" required placeholder="01XXXXXXXXX">
+        </div>
+
+        <div class="form-group">
+          <label>Transaction ID (TrxID) *</label>
+          <input type="text" id="trxId" required placeholder="যেমন: 8N7A6B5C4D">
+          <span class="hint">bKash-এর SMS/History-তে এই ID পাবেন</span>
+        </div>
+
+        <button type="submit" class="submit-button" id="submitBtn">
+          Payment তথ্য জমা দিন →
+        </button>
+
+      </form>
+
+      <div class="success-box" id="successBox">
+        <div class="icon">✓</div>
+        <h2>জমা হয়েছে!</h2>
+        <p>
+          আপনার Payment তথ্য পাওয়া গেছে। আমাদের team যাচাই করে
+          শীঘ্রই WhatsApp-এ কনফার্ম করবে।
+        </p>
+        <a href="/" style="color:#b7ff00; font-weight:800; font-size:13.5px;">হোমে ফিরে যান →</a>
+      </div>
+
+      <p class="help-note">
+        কোনো সমস্যা হলে সরাসরি
+        <a href="https://wa.me/8801705633700" target="_blank" rel="noopener noreferrer">WhatsApp-এ যোগাযোগ করুন</a>
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
+      authDomain: "snk-it-institute.firebaseapp.com",
+      projectId: "snk-it-institute",
+      storageBucket: "snk-it-institute.firebasestorage.app",
+      messagingSenderId: "948436125833",
+      appId: "1:948436125833:web:36788463d4dd3ef20bde58"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Read course name/price from URL: /checkout/?course=NAME&price=NEW&old=OLD&slug=SLUG
+    const params = new URLSearchParams(window.location.search);
+    const courseName = params.get("course") || "কোর্স";
+    const priceNew = params.get("price") || "—";
+    const priceOld = params.get("old") || "";
+    const slug = params.get("slug") || "";
+
+    document.getElementById("courseName").textContent = courseName;
+    document.getElementById("coursePrice").textContent = priceNew;
+    if(priceOld){
+      const delEl = document.getElementById("coursePriceOld");
+      delEl.textContent = priceOld;
+      delEl.style.display = "inline";
+    }
+
+    document.getElementById("copyNumBtn").addEventListener("click", function(){
+      const btn = this;
+      navigator.clipboard.writeText("01705633700").then(function(){
+        const original = btn.textContent;
+        btn.textContent = "কপি হয়েছে!";
+        setTimeout(function(){ btn.textContent = original; }, 1800);
+      }).catch(function(){
+        prompt("নাম্বারটি কপি করুন:", "01705633700");
+      });
+    });
+
+    const paymentForm = document.getElementById("paymentForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const errorBox = document.getElementById("errorBox");
+
+    paymentForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      errorBox.classList.remove("show");
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "জমা হচ্ছে...";
+
+      const data = {
+        courseName: courseName,
+        price: priceNew,
+        slug: slug,
+        payerName: document.getElementById("payerName").value.trim(),
+        payerPhone: document.getElementById("payerPhone").value.trim(),
+        payerBkashNumber: document.getElementById("payerBkashNumber").value.trim(),
+        trxId: document.getElementById("trxId").value.trim(),
+        status: "pending",
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      db.collection("payments").add(data)
+        .then(function(){
+          document.getElementById("paymentForm").style.display = "none";
+          document.querySelectorAll(".step-title, .bkash-box").forEach(function(el){ el.style.display = "none"; });
+          document.getElementById("successBox").style.display = "block";
+        })
+        .catch(function(error){
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Payment তথ্য জমা দিন →";
+          errorBox.textContent = "সমস্যা হয়েছে: " + error.message;
+          errorBox.classList.add("show");
+        });
+    });
+
+  </script>
+
+</body>
+</html>
