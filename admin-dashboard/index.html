@@ -241,6 +241,34 @@
       .student-card{ grid-template-columns:1fr 1fr; }
     }
 
+    /* PAYMENTS */
+
+    .payment-card{
+      background:#0b0b0b; border:1px solid #202020; border-radius:14px;
+      padding:16px 18px;
+      display:grid; grid-template-columns:1.1fr 1.1fr 0.9fr 0.8fr auto; gap:14px; align-items:center;
+    }
+
+    .payment-card .p-actions{ display:flex; gap:8px; align-items:center; }
+
+    .status-pill{
+      display:inline-block; padding:5px 11px; border-radius:50px;
+      font-size:11px; font-weight:800;
+    }
+    .status-pill.pending{ background:rgba(255,157,92,.1); color:#ff9d5c; border:1px solid rgba(255,157,92,.3); }
+    .status-pill.confirmed{ background:rgba(74,222,128,.1); color:#4ade80; border:1px solid rgba(74,222,128,.3); }
+
+    .confirm-btn{
+      padding:8px 12px; border-radius:7px; border:1px solid rgba(74,222,128,.4);
+      background:rgba(74,222,128,.08); color:#4ade80; font-size:11px; font-weight:800;
+      cursor:pointer; transition:.3s;
+    }
+    .confirm-btn:hover{ background:rgba(74,222,128,.18); }
+
+    @media(max-width:900px){
+      .payment-card{ grid-template-columns:1fr 1fr; }
+    }
+
   </style>
 </head>
 
@@ -268,6 +296,7 @@
         <button class="tab-btn active" data-tab="posts">ব্লগ পোস্ট</button>
         <button class="tab-btn" data-tab="courses">কোর্স ম্যানেজ</button>
         <button class="tab-btn" data-tab="students">Admission তালিকা</button>
+        <button class="tab-btn" data-tab="payments">Payments</button>
       </div>
 
 
@@ -430,6 +459,23 @@
 
       </div>
 
+
+      <!-- PAYMENTS TAB -->
+
+      <div class="tab-panel" id="tab-payments">
+
+        <div class="section-head">
+          <div>
+            <h2>Payments</h2>
+            <span>Checkout পেজ থেকে জমা হওয়া bKash Transaction তথ্য — যাচাই করে Confirm করুন</span>
+          </div>
+        </div>
+
+        <div class="student-list" id="paymentList"></div>
+        <div class="empty-note" id="paymentsEmpty" style="display:none;">এখনো কোনো Payment জমা হয়নি।</div>
+
+      </div>
+
     </div>
 
   </div>
@@ -478,6 +524,7 @@
         loadPosts();
         loadCourses();
         loadStudents();
+        loadPayments();
       }else{
         window.location.href = "/admin/";
       }
@@ -1077,6 +1124,73 @@
         });
       }).catch(function(error){
         studentList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+      });
+    }
+
+    // LOAD PAYMENTS
+    function loadPayments(){
+      const paymentList = document.getElementById("paymentList");
+      const paymentsEmpty = document.getElementById("paymentsEmpty");
+
+      db.collection("payments").orderBy("createdAt", "desc").get().then(function(snapshot){
+        paymentList.innerHTML = "";
+
+        if(snapshot.empty){
+          paymentsEmpty.style.display = "block";
+          return;
+        }
+        paymentsEmpty.style.display = "none";
+
+        snapshot.forEach(function(doc){
+          const p = doc.data();
+          const isConfirmed = p.status === "confirmed";
+
+          const card = document.createElement("div");
+          card.className = "payment-card";
+          card.innerHTML = `
+            <div>
+              <div class="s-name">${escapeHtml(p.payerName || "-")}</div>
+              <div class="s-sub">${escapeHtml(p.payerPhone || "-")}</div>
+            </div>
+            <div class="s-field"><span>Course</span>${escapeHtml(p.courseName || "-")} (${escapeHtml(p.price || "-")})</div>
+            <div class="s-field"><span>bKash নম্বর</span>${escapeHtml(p.payerBkashNumber || "-")}</div>
+            <div class="s-field"><span>TrxID</span>${escapeHtml(p.trxId || "-")}</div>
+            <div class="p-actions">
+              <span class="status-pill ${isConfirmed ? 'confirmed' : 'pending'}">${isConfirmed ? '✓ Confirmed' : 'Pending'}</span>
+              ${!isConfirmed ? `<button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>` : ""}
+              <button class="icon-btn danger" data-del-payment="${doc.id}" title="Delete">🗑</button>
+            </div>
+          `;
+          paymentList.appendChild(card);
+        });
+
+        paymentList.querySelectorAll("[data-confirm-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-confirm-payment");
+            db.collection("payments").doc(id).update({ status: "confirmed" }).then(function(){
+              loadPayments();
+              showToast("✅ Payment Confirmed হয়েছে", "success");
+            }).catch(function(error){
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+            });
+          });
+        });
+
+        paymentList.querySelectorAll("[data-del-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-del-payment");
+            if(confirm("এই Payment তথ্য ডিলিট করতে চান?")){
+              db.collection("payments").doc(id).delete().then(function(){
+                loadPayments();
+                showToast("🗑 ডিলিট হয়েছে", "success");
+              }).catch(function(error){
+                showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+              });
+            }
+          });
+        });
+      }).catch(function(error){
+        paymentList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
       });
     }
 
