@@ -408,10 +408,9 @@
       .price-card{ padding:20px; }
     }
 
-  
-    /* FLOATING WHATSAPP BUTTON */
+    /* CAREER COUNSELOR FLOATING WIDGET */
 
-    .whatsapp-float{
+    .counselor-trigger{
       position:fixed;
       bottom:22px;
       right:22px;
@@ -425,29 +424,135 @@
       justify-content:center;
 
       background:#25D366;
+      border:0;
       border-radius:50%;
 
       box-shadow:0 8px 24px rgba(0,0,0,.3);
 
-      font-size:28px;
+      font-size:26px;
+      cursor:pointer;
 
       transition:.3s;
     }
 
-    .whatsapp-float:hover{
-      transform:scale(1.1);
+    .counselor-trigger:hover{
+      transform:scale(1.08);
       box-shadow:0 10px 30px rgba(37,211,102,.4);
     }
 
+    .counselor-popup{
+      display:none;
+      position:fixed;
+      bottom:90px;
+      right:22px;
+      z-index:9999;
+
+      width:260px;
+      background:var(--bg-card, #0b0b0b);
+      border:1px solid var(--border-2, #292929);
+      border-radius:16px;
+      padding:20px;
+
+      box-shadow:0 20px 50px rgba(0,0,0,.4);
+
+      text-align:center;
+    }
+
+    .counselor-popup.open{
+      display:block;
+      animation:counselorFadeIn .25s ease;
+    }
+
+    @keyframes counselorFadeIn{
+      from{ opacity:0; transform:translateY(8px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    .counselor-close{
+      position:absolute;
+      top:10px;
+      right:12px;
+      background:none;
+      border:0;
+      color:var(--text-dim, #777);
+      font-size:16px;
+      cursor:pointer;
+      line-height:1;
+    }
+    .counselor-close:hover{ color:var(--text, #fff); }
+
+    .counselor-avatar{
+      width:56px;
+      height:56px;
+      margin:0 auto 12px;
+      display:grid;
+      place-items:center;
+      background:rgba(183,255,0,.1);
+      border:1px solid rgba(183,255,0,.3);
+      border-radius:50%;
+      font-size:26px;
+    }
+
+    .counselor-popup h4{
+      font-size:14px;
+      color:var(--text, #fff);
+      margin-bottom:4px;
+      line-height:1.4;
+    }
+
+    .counselor-popup .counselor-hours{
+      display:block;
+      color:var(--text-dim, #777);
+      font-size:11px;
+      margin-bottom:16px;
+    }
+
+    .counselor-actions{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .counselor-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px;
+      border-radius:9px;
+      font-size:13px;
+      font-weight:800;
+      transition:.3s;
+    }
+
+    .counselor-btn.whatsapp{
+      background:#25D366;
+      color:#fff;
+    }
+    .counselor-btn.whatsapp:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(37,211,102,.3); }
+
+    .counselor-btn.call{
+      background:#b7ff00;
+      color:#050505;
+    }
+    .counselor-btn.call:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(183,255,0,.25); }
+
     @media(max-width:600px){
-      .whatsapp-float{
+      .counselor-trigger{
         width:50px;
         height:50px;
         bottom:16px;
         right:16px;
-        font-size:24px;
+        font-size:22px;
+      }
+      .counselor-popup{
+        bottom:82px;
+        right:16px;
+        left:16px;
+        width:auto;
       }
     }
+
 
   
     .course-hero-image-wrap{
@@ -582,7 +687,7 @@
 
           <div class="action-buttons">
 
-            <a href="https://yourdocuments.github.io/" class="btn btn-payment">
+            <a href="#" id="paymentBtn" class="btn btn-payment">
               Payment করতে চাই →
             </a>
 
@@ -663,16 +768,34 @@
     });
   </script>
 
+  <div class="counselor-popup" id="counselorPopup">
+    <button class="counselor-close" id="counselorClose" aria-label="Close">✕</button>
+    <div class="counselor-avatar">🎧</div>
+    <h4>একজন Career Counselor-এর সাথে কথা বলুন</h4>
+    <span class="counselor-hours">সকাল ১০টা থেকে রাত ১০টা</span>
+    <div class="counselor-actions">
+      <a href="https://wa.me/8801705633700?text=আমি%20একজন%20counselor-এর%20সাথে%20কথা%20বলতে%20চাই" target="_blank" rel="noopener noreferrer" class="counselor-btn whatsapp">
+        💬 WhatsApp
+      </a>
+      <a href="tel:+8801705633700" class="counselor-btn call">
+        📞 Call
+      </a>
+    </div>
+  </div>
 
-  <a
-    href="https://wa.me/8801705633700?text=আমি%20SNK%20IT%20Institute%20সম্পর্কে%20জানতে%20চাই"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-float"
-    aria-label="WhatsApp এ যোগাযোগ করুন"
-  >
+  <button class="counselor-trigger" id="counselorTrigger" aria-label="Talk to a counselor">
     💬
-  </a>
+  </button>
+
+  <script>
+    document.getElementById("counselorTrigger").addEventListener("click", function(){
+      document.getElementById("counselorPopup").classList.toggle("open");
+    });
+    document.getElementById("counselorClose").addEventListener("click", function(){
+      document.getElementById("counselorPopup").classList.remove("open");
+    });
+  </script>
+
 
 
   <!-- Firebase: load dynamic course content (falls back to the text above if unavailable) -->
@@ -693,6 +816,20 @@
     firebase.initializeApp(firebaseConfig);
     const courseDb = firebase.firestore();
     const COURSE_SLUG = "ui-ux";
+
+    function updatePaymentLink(){
+      const title = document.getElementById("courseTitleHeading").textContent.trim();
+      const priceNew = document.querySelector(".price-box strong").textContent.trim();
+      const priceOldEl = document.querySelector(".price-box del");
+      const priceOld = priceOldEl ? priceOldEl.textContent.trim() : "";
+      const url = "/checkout/?course=" + encodeURIComponent(title) +
+        "&price=" + encodeURIComponent(priceNew) +
+        "&old=" + encodeURIComponent(priceOld) +
+        "&slug=" + encodeURIComponent(COURSE_SLUG);
+      document.getElementById("paymentBtn").href = url;
+    }
+
+    updatePaymentLink();
 
     courseDb.collection("courses").doc(COURSE_SLUG).get().then(function(doc){
       if(!doc.exists) return;
@@ -742,6 +879,8 @@
           return '<div class="module-item"><div class="module-number">' + (i+1) + '</div><div><strong>' + mod.title + '</strong> — ' + mod.desc + '</div></div>';
         }).join("");
       }
+
+      updatePaymentLink();
 
     }).catch(function(error){
       console.error("Course data load failed, showing static fallback content.", error);

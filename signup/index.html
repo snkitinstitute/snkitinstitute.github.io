@@ -3,159 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Student Sign Up | SNK IT Institute</title>
 
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-  >
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
 
   <style>
 
-    :root{
-      --bg:#050505;
-      --card:#0b0b0b;
-      --input:#101010;
-      --text:#fff;
-      --text-secondary:#ddd;
-      --muted:#777;
-      --muted-dark:#666;
-      --border:#202020;
-      --border-input:#292929;
-      --accent:#b7ff00;
-      --error:#ff8080;
-    }
-
-    html.light-mode{
-      --bg:#f7f7f2;
-      --card:#ffffff;
-      --input:#ffffff;
-      --text:#111;
-      --text-secondary:#333;
-      --muted:#666;
-      --muted-dark:#777;
-      --border:#deded6;
-      --border-input:#d2d2ca;
-      --accent:#78a900;
-      --error:#d93030;
-    }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+    *{ margin:0; padding:0; box-sizing:border-box; }
 
     body{
       font-family:Arial, Helvetica, sans-serif;
-      background:var(--bg);
-      color:var(--text);
+      background:#050505;
+      color:#fff;
       min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
       padding:25px;
-      transition:.3s ease;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    .top-actions{
-      position:fixed;
-      top:18px;
-      right:18px;
-      display:flex;
-      gap:8px;
-      z-index:10;
-    }
-
-    .top-btn{
-      border:1px solid var(--border);
-      background:var(--card);
-      color:var(--text);
-      border-radius:9px;
-      min-width:42px;
-      height:38px;
-      padding:0 10px;
-      cursor:pointer;
-      font-size:12px;
-      font-weight:700;
-      transition:.2s;
-    }
-
-    .top-btn:hover{
-      border-color:var(--accent);
-    }
+    a{ text-decoration:none; color:inherit; }
 
     .box{
       width:100%;
       max-width:400px;
-      background:var(--card);
-      border:1px solid var(--border);
+      background:#0b0b0b;
+      border:1px solid #202020;
       border-radius:18px;
       padding:36px 32px;
       box-shadow:0 25px 70px rgba(0,0,0,.3);
-      transition:.3s ease;
     }
 
-    .logo{
-      display:block;
-      width:110px;
-      height:auto;
-      margin:0 auto 24px;
-    }
+    .logo{ width:110px; margin:0 auto 24px; }
 
-    .box h1{
-      color:var(--text);
-      font-size:22px;
-      text-align:center;
-      margin-bottom:6px;
-    }
+    .box h1{ font-size:22px; text-align:center; margin-bottom:6px; }
+    .box p.sub{ color:#777; font-size:13px; text-align:center; margin-bottom:28px; line-height:1.7; }
 
-    .box p.sub{
-      color:var(--muted);
-      font-size:13px;
-      text-align:center;
-      margin-bottom:28px;
-      line-height:1.7;
-    }
-
-    .box p.sub strong{
-      color:var(--text-secondary);
-    }
-
-    .form-group{
-      display:flex;
-      flex-direction:column;
-      gap:7px;
-      margin-bottom:16px;
-    }
-
-    .form-group label{
-      color:var(--text-secondary);
-      font-size:13px;
-      font-weight:700;
-    }
+    .form-group{ display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
+    .form-group label{ color:#ddd; font-size:13px; font-weight:700; }
 
     .form-group input{
       width:100%;
-      border:1px solid var(--border-input);
+      border:1px solid #292929;
       outline:none;
-      background:var(--input);
-      color:var(--text);
+      background:#101010;
+      color:#fff;
       border-radius:9px;
       padding:13px 14px;
       font-size:13px;
       transition:.3s;
-    }
-
-    .form-group input::placeholder{
-      color:var(--muted-dark);
     }
 
     .form-group input:focus{
@@ -163,11 +59,7 @@
       box-shadow:0 0 0 3px rgba(183,255,0,.05);
     }
 
-    .form-group .hint{
-      color:var(--muted-dark);
-      font-size:11px;
-      line-height:1.5;
-    }
+    .form-group .hint{ color:#666; font-size:11px; line-height:1.5; }
 
     .submit-button{
       width:100%;
@@ -175,7 +67,7 @@
       padding:14px;
       border:0;
       border-radius:9px;
-      background:var(--accent);
+      background:#b7ff00;
       color:#050505;
       font-size:14px;
       font-weight:900;
@@ -195,8 +87,7 @@
       box-shadow:none;
     }
 
-    .error-box,
-    .success-box{
+    .error-box, .success-box{
       display:none;
       margin-bottom:16px;
       padding:12px 14px;
@@ -208,275 +99,82 @@
     .error-box{
       background:rgba(255,80,80,.08);
       border:1px solid rgba(255,80,80,.3);
-      color:var(--error);
+      color:#ff8080;
     }
 
     .success-box{
       background:rgba(183,255,0,.06);
       border:1px solid rgba(183,255,0,.3);
-      color:var(--accent);
+      color:#b7ff00;
     }
 
-    .error-box.show,
-    .success-box.show{
-      display:block;
-    }
+    .error-box.show, .success-box.show{ display:block; }
 
     .bottom-link{
       display:block;
       text-align:center;
       margin-top:22px;
-      color:var(--muted);
+      color:#777;
       font-size:12.5px;
     }
 
-    .bottom-link a{
-      color:var(--accent);
-      font-weight:700;
-    }
-
-    .bottom-link a:hover{
-      text-decoration:underline;
-    }
-
-    .home-link{
-      display:block;
-      text-align:center;
-      margin-top:13px;
-      color:var(--muted-dark);
-      font-size:12px;
-    }
-
-    .home-link:hover{
-      color:var(--text);
-    }
-
-    .whatsapp{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      width:48px;
-      height:48px;
-      border-radius:50%;
-      background:#25D366;
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:22px;
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
-    }
-
-    @media(max-width:500px){
-
-      body{
-        padding:18px;
-      }
-
-      .box{
-        padding:30px 22px;
-      }
-
-      .top-actions{
-        top:12px;
-        right:12px;
-      }
-
-      .whatsapp{
-        right:14px;
-        bottom:14px;
-      }
-
-    }
+    .bottom-link a{ color:#b7ff00; font-weight:700; }
 
   </style>
 </head>
 
 <body>
 
-  <!-- TOP ACTIONS -->
-
-  <div class="top-actions">
-
-    <button
-      type="button"
-      class="top-btn"
-      id="themeToggle"
-      aria-label="Theme"
-    >
-      🌙
-    </button>
-
-  </div>
-
-
-  <!-- SIGNUP BOX -->
-
   <div class="box">
 
-    <img
-      class="logo"
-      src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-      alt="SNK IT Institute"
-    >
+    <img class="logo" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
 
     <h1>Student Account তৈরি করুন</h1>
-
     <p class="sub">
       ⚠️ Admission Form-এ যেই Email ব্যবহার করেছেন,
       ঠিক <strong>সেই একই Email</strong> দিয়ে account বানান —
       তাহলেই আপনার ভর্তির তথ্য Dashboard-এ দেখতে পাবেন।
     </p>
 
-
-    <!-- ERROR -->
-
-    <div
-      class="error-box"
-      id="errorBox"
-    ></div>
-
-
-    <!-- SUCCESS -->
-
-    <div
-      class="success-box"
-      id="successBox"
-    ></div>
-
-
-    <!-- FORM -->
+    <div class="error-box" id="errorBox"></div>
+    <div class="success-box" id="successBox"></div>
 
     <form id="signupForm">
 
-      <!-- EMAIL -->
-
       <div class="form-group">
-
-        <label for="email">
-          Email
-        </label>
-
-        <input
-          type="email"
-          id="email"
-          placeholder="admission form-এ যেই email দিয়েছেন"
-          autocomplete="email"
-          required
-        >
-
-        <span class="hint">
-          Admission form-এ ব্যবহার করা email-টাই দিন
-        </span>
-
+        <label>Email</label>
+        <input type="email" id="email" placeholder="admission form-এ যেই email দিয়েছেন" required>
+        <span class="hint">Admission form-এ ব্যবহার করা email-টাই দিন</span>
       </div>
 
-
-      <!-- PASSWORD -->
-
       <div class="form-group">
-
-        <label for="password">
-          Password
-        </label>
-
-        <input
-          type="password"
-          id="password"
-          placeholder="কমপক্ষে ৬ ডিজিট/অক্ষর"
-          minlength="6"
-          autocomplete="new-password"
-          required
-        >
-
+        <label>Password</label>
+        <input type="password" id="password" placeholder="কমপক্ষে ৬ ডিজিট/অক্ষর" minlength="6" required>
       </div>
 
-
-      <!-- CONFIRM PASSWORD -->
-
       <div class="form-group">
-
-        <label for="confirmPassword">
-          Password আবার লিখুন
-        </label>
-
-        <input
-          type="password"
-          id="confirmPassword"
-          placeholder="••••••••"
-          minlength="6"
-          autocomplete="new-password"
-          required
-        >
-
+        <label>Password আবার লিখুন</label>
+        <input type="password" id="confirmPassword" placeholder="••••••••" minlength="6" required>
       </div>
 
-
-      <!-- SUBMIT -->
-
-      <button
-        type="submit"
-        class="submit-button"
-        id="signupBtn"
-      >
+      <button type="submit" class="submit-button" id="signupBtn">
         Account তৈরি করুন →
       </button>
 
     </form>
 
-
-    <!-- LOGIN -->
-
     <span class="bottom-link">
-
-      আগে থেকেই account আছে?
-
-      <a href="/student-login/">
-        Login করুন
-      </a>
-
+      আগে থেকেই account আছে? <a href="/student-login/">Login করুন</a>
     </span>
-
-
-    <!-- HOME -->
-
-    <a
-      href="/"
-      class="home-link"
-    >
-      ← Homepage-এ ফিরে যান
-    </a>
 
   </div>
 
 
-  <!-- WHATSAPP -->
-
-  <a
-    class="whatsapp"
-    href="https://wa.me/8801705633700"
-    target="_blank"
-    rel="noopener"
-    aria-label="WhatsApp"
-  >
-    ☎
-  </a>
-
-
-  <!-- FIREBASE -->
-
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
-
   <script>
-
-    /* =====================================================
-       FIREBASE CONFIG
-       ===================================================== */
 
     const firebaseConfig = {
       apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
@@ -487,304 +185,64 @@
       appId: "1:948436125833:web:36788463d4dd3ef20bde58"
     };
 
-
     firebase.initializeApp(firebaseConfig);
-
-
     const auth = firebase.auth();
 
-    const db = firebase.firestore();
-
-
-    /* =====================================================
-       ELEMENTS
-       ===================================================== */
-
-    const signupForm =
-      document.getElementById("signupForm");
-
-    const signupBtn =
-      document.getElementById("signupBtn");
-
-    const errorBox =
-      document.getElementById("errorBox");
-
-    const successBox =
-      document.getElementById("successBox");
-
-
-    /* =====================================================
-       MESSAGE FUNCTIONS
-       ===================================================== */
+    const signupForm = document.getElementById("signupForm");
+    const signupBtn = document.getElementById("signupBtn");
+    const errorBox = document.getElementById("errorBox");
+    const successBox = document.getElementById("successBox");
 
     function showError(msg){
-
       errorBox.textContent = msg;
-
       errorBox.classList.add("show");
-
       successBox.classList.remove("show");
-
     }
-
 
     function showSuccess(msg){
-
       successBox.textContent = msg;
-
       successBox.classList.add("show");
-
       errorBox.classList.remove("show");
-
     }
 
-
-    function clearMessages(){
-
+    signupForm.addEventListener("submit", function(e){
+      e.preventDefault();
       errorBox.classList.remove("show");
-
       successBox.classList.remove("show");
 
-      errorBox.textContent = "";
-
-      successBox.textContent = "";
-
-    }
-
-
-    /* =====================================================
-       SIGNUP
-       ===================================================== */
-
-    signupForm.addEventListener("submit", async function(e){
-
-      e.preventDefault();
-
-      clearMessages();
-
-
-      const email =
-        document.getElementById("email").value
-        .trim()
-        .toLowerCase();
-
-
-      const password =
-        document.getElementById("password").value;
-
-
-      const confirmPassword =
-        document.getElementById("confirmPassword").value;
-
-
-      /* PASSWORD CHECK */
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
 
       if(password !== confirmPassword){
-
-        showError(
-          "দুইটা Password মিলছে না। আবার চেষ্টা করুন।"
-        );
-
+        showError("দুইটা Password মিলছে না। আবার চেষ্টা করুন।");
         return;
-
       }
-
-
-      if(password.length < 6){
-
-        showError(
-          "Password কমপক্ষে ৬ অক্ষরের হতে হবে।"
-        );
-
-        return;
-
-      }
-
-
-      /* BUTTON */
 
       signupBtn.disabled = true;
+      signupBtn.textContent = "তৈরি হচ্ছে...";
 
-      signupBtn.textContent = "যাচাই হচ্ছে...";
-
-
-      try{
-
-        /* =================================================
-           CHECK ADMISSION EMAIL
-           ================================================= */
-
-        const snapshot =
-          await db
-            .collection("students")
-            .where("email", "==", email)
-            .limit(1)
-            .get();
-
-
-        if(snapshot.empty){
-
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(function(){
+          showSuccess("Account তৈরি হয়ে গেছে! Dashboard-এ নিয়ে যাওয়া হচ্ছে...");
+          setTimeout(function(){
+            window.location.href = "/student-dashboard/";
+          }, 1200);
+        })
+        .catch(function(error){
           signupBtn.disabled = false;
-
-          signupBtn.textContent =
-            "Account তৈরি করুন →";
-
-
-          showError(
-            "এই Email দিয়ে কোনো Admission তথ্য পাওয়া যায়নি। Admission Form-এ যে Email দিয়েছিলেন, ঠিক সেই Email ব্যবহার করুন।"
-          );
-
-          return;
-
-        }
-
-
-        /* =================================================
-           CREATE FIREBASE AUTH ACCOUNT
-           ================================================= */
-
-        signupBtn.textContent =
-          "Account তৈরি হচ্ছে...";
-
-
-        await auth.createUserWithEmailAndPassword(
-          email,
-          password
-        );
-
-
-        /* =================================================
-           SUCCESS
-           ================================================= */
-
-        showSuccess(
-          "Account তৈরি হয়ে গেছে! Dashboard-এ নিয়ে যাওয়া হচ্ছে..."
-        );
-
-
-        setTimeout(function(){
-
-          window.location.href =
-            "/student-dashboard/";
-
-        },1200);
-
-
-      }catch(error){
-
-        console.error(error);
-
-
-        signupBtn.disabled = false;
-
-        signupBtn.textContent =
-          "Account তৈরি করুন →";
-
-
-        /* =================================================
-           FIREBASE ERRORS
-           ================================================= */
-
-        if(error.code === "auth/email-already-in-use"){
-
-          showError(
-            "এই Email দিয়ে আগেই একটি account আছে। Student Login করুন।"
-          );
-
-        }
-
-        else if(error.code === "auth/invalid-email"){
-
-          showError(
-            "সঠিক Email address দিন।"
-          );
-
-        }
-
-        else if(error.code === "auth/weak-password"){
-
-          showError(
-            "Password কমপক্ষে ৬ অক্ষরের হতে হবে।"
-          );
-
-        }
-
-        else if(error.code === "permission-denied"){
-
-          showError(
-            "Admission তথ্য যাচাই করা যাচ্ছে না। Firebase Firestore Rules চেক করুন।"
-          );
-
-        }
-
-        else{
-
-          showError(
-            "সমস্যা হয়েছে: " + error.message
-          );
-
-        }
-
-      }
-
-    });
-
-
-    /* =====================================================
-       THEME
-       ===================================================== */
-
-    const themeToggle =
-      document.getElementById("themeToggle");
-
-    const htmlEl =
-      document.documentElement;
-
-
-    function applyTheme(theme){
-
-      if(theme === "light"){
-
-        htmlEl.classList.add("light-mode");
-
-        themeToggle.textContent = "☀️";
-
-      }else{
-
-        htmlEl.classList.remove("light-mode");
-
-        themeToggle.textContent = "🌙";
-
-      }
-
-    }
-
-
-    const savedTheme =
-      localStorage.getItem("snk-theme") || "dark";
-
-
-    applyTheme(savedTheme);
-
-
-    themeToggle.addEventListener("click", function(){
-
-      const isLight =
-        htmlEl.classList.contains("light-mode");
-
-
-      const newTheme =
-        isLight ? "dark" : "light";
-
-
-      applyTheme(newTheme);
-
-
-      localStorage.setItem(
-        "snk-theme",
-        newTheme
-      );
-
+          signupBtn.textContent = "Account তৈরি করুন →";
+
+          if(error.code === "auth/email-already-in-use"){
+            showError("এই Email দিয়ে আগেই একটা account আছে। Login করুন।");
+          }else if(error.code === "auth/invalid-email"){
+            showError("সঠিক Email address দিন।");
+          }else if(error.code === "auth/weak-password"){
+            showError("Password কমপক্ষে ৬ ডিজিট/অক্ষরের হতে হবে।");
+          }else{
+            showError("সমস্যা হয়েছে: " + error.message);
+          }
+        });
     });
 
   </script>
