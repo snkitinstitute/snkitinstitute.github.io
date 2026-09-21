@@ -266,6 +266,31 @@
     }
     .confirm-btn.cancel-variant:hover{ background:rgba(255,128,128,.18); }
 
+    .contact-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      padding:8px 12px;
+      border-radius:7px;
+      font-size:11px;
+      font-weight:800;
+      text-decoration:none;
+      transition:.3s;
+    }
+    .contact-btn.whatsapp{
+      background:rgba(37,211,102,.1);
+      border:1px solid rgba(37,211,102,.4);
+      color:#25D366;
+    }
+    .contact-btn.whatsapp:hover{ background:rgba(37,211,102,.2); }
+
+    .contact-btn.call{
+      background:rgba(183,255,0,.1);
+      border:1px solid rgba(183,255,0,.4);
+      color:#b7ff00;
+    }
+    .contact-btn.call:hover{ background:rgba(183,255,0,.2); }
+
     .confirm-btn{
       padding:8px 12px; border-radius:7px; border:1px solid rgba(74,222,128,.4);
       background:rgba(74,222,128,.08); color:#4ade80; font-size:11px; font-weight:800;
@@ -1140,48 +1165,24 @@
           const s = doc.data();
           const card = document.createElement("div");
           card.className = "student-card";
-
-          const profileStatus = s.profileCreated
-            ? '<span style="color:#4ade80;font-size:11px;">✓ Profile Created</span>'
-            : '<span style="color:#ff9d5c;font-size:11px;">Profile Pending</span>';
-
           card.innerHTML = `
             <div>
               <div class="s-name">${escapeHtml(s.name || "-")}</div>
               <div class="s-sub">${escapeHtml(s.phone || "-")}</div>
-              <div style="margin-top:4px;">${profileStatus}</div>
             </div>
             <div class="s-field"><span>Course</span>${escapeHtml(s.course || "-")}</div>
             <div class="s-field"><span>Email</span>${escapeHtml(s.email || "-")}</div>
             <div class="s-field"><span>Education</span>${escapeHtml(s.education || "-")}</div>
-            <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap;">
-              <button class="primary-btn" style="padding:8px 11px;font-size:11px;"
-                data-create-profile="${doc.id}">
-                ${s.profileCreated ? "Edit Profile" : "Create Profile"}
-              </button>
-              <button class="icon-btn danger" data-del-student="${doc.id}" title="Delete">🗑</button>
-            </div>
+            <button class="icon-btn danger" data-del-student="${doc.id}" title="Delete">🗑</button>
           `;
           studentList.appendChild(card);
-        });
-
-        studentList.querySelectorAll("[data-create-profile]").forEach(function(btn){
-          btn.addEventListener("click", function(){
-            const id = btn.getAttribute("data-create-profile");
-            window.location.href = "/create-profile/?studentId=" + encodeURIComponent(id);
-          });
         });
 
         studentList.querySelectorAll("[data-del-student]").forEach(function(btn){
           btn.addEventListener("click", function(){
             const id = btn.getAttribute("data-del-student");
             if(confirm("এই আবেদনটি ডিলিট করতে চান?")){
-              db.collection("students").doc(id).delete().then(function(){
-                loadStudents();
-                showToast("🗑 আবেদন ডিলিট হয়েছে", "success");
-              }).catch(function(error){
-                showToast("❌ ডিলিট করতে সমস্যা: " + error.message, "error");
-              });
+              db.collection("students").doc(id).delete().then(loadStudents);
             }
           });
         });
@@ -1266,13 +1267,23 @@
           const status = p.status || "pending";
 
           let pillHtml, actionButtons;
+          const phoneDigits = (p.payerPhone || "").replace(/[^0-9]/g, "");
+          const waPhone = phoneDigits.startsWith("0") ? "880" + phoneDigits.slice(1) : phoneDigits;
+          const callPhone = phoneDigits.startsWith("0") ? "+880" + phoneDigits.slice(1) : "+" + phoneDigits;
+          const contactButtons = phoneDigits ? `
+              <a class="contact-btn whatsapp" href="https://wa.me/${waPhone}?text=আমি%20SNK%20IT%20Institute%20থেকে%20আপনার%20Payment%20নিয়ে%20কথা%20বলতে%20চাই" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+              <a class="contact-btn call" href="tel:${callPhone}">📞 Call</a>
+          ` : "";
 
           if(status === "confirmed"){
             pillHtml = `<span class="status-pill confirmed">✓ Confirmed</span>`;
             actionButtons = `<button class="confirm-btn cancel-variant" data-cancel-payment="${doc.id}">Cancel</button>`;
           }else if(status === "cancelled"){
             pillHtml = `<span class="status-pill cancelled">✕ Cancelled</span>`;
-            actionButtons = `<button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>`;
+            actionButtons = `
+              <button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>
+              ${contactButtons}
+            `;
           }else{
             pillHtml = `<span class="status-pill pending">Pending</span>`;
             actionButtons = `
