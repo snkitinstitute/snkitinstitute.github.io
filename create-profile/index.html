@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create Student Profile | SNK IT Institute</title>
+
+  <link rel="icon" type="image/svg+xml"
+    href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#050505;
+      color:#fff;
+      line-height:1.6;
+    }
+
+    .container{
+      width:min(700px,92%);
+      margin:auto;
+    }
+
+    .header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 0;
+      border-bottom:1px solid #202020;
+      margin-bottom:28px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .brand img{
+      width:38px;
+      height:38px;
+    }
+
+    .brand span{
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .back-btn{
+      color:#b7ff00;
+      font-size:13px;
+      text-decoration:none;
+    }
+
+    .auth-gate{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#888;
+    }
+
+    .page-body{
+      display:none;
+      padding-bottom:60px;
+    }
+
+    .page-title{
+      margin-bottom:22px;
+    }
+
+    .page-title h1{
+      font-size:25px;
+      margin-bottom:5px;
+    }
+
+    .page-title p{
+      color:#888;
+      font-size:13px;
+    }
+
+    .card{
+      background:#0b0b0b;
+      border:1px solid #222;
+      border-radius:16px;
+      padding:25px;
+    }
+
+    .student-preview{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      padding-bottom:22px;
+      margin-bottom:22px;
+      border-bottom:1px solid #222;
+    }
+
+    .student-avatar{
+      width:65px;
+      height:65px;
+      border-radius:50%;
+      background:#181818;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:27px;
+      overflow:hidden;
+      flex-shrink:0;
+    }
+
+    .student-avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .student-preview h2{
+      font-size:17px;
+      margin-bottom:3px;
+    }
+
+    .student-preview p{
+      color:#888;
+      font-size:12px;
+    }
+
+    .form-row{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+      margin-bottom:17px;
+    }
+
+    label{
+      font-size:12.5px;
+      color:#ddd;
+      font-weight:700;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      padding:12px 13px;
+      border:1px solid #303030;
+      border-radius:9px;
+      outline:none;
+      background:#101010;
+      color:#fff;
+      font-size:13px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:#b7ff00;
+    }
+
+    textarea{
+      min-height:90px;
+      resize:vertical;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+
+    .save-btn{
+      width:100%;
+      padding:13px;
+      border:0;
+      border-radius:9px;
+      background:#b7ff00;
+      color:#050505;
+      font-size:14px;
+      font-weight:800;
+      cursor:pointer;
+      margin-top:8px;
+    }
+
+    .save-btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+
+    .message{
+      display:none;
+      padding:12px;
+      border-radius:8px;
+      margin-bottom:18px;
+      font-size:13px;
+    }
+
+    .message.success{
+      display:block;
+      background:#102c16;
+      color:#4ade80;
+      border:1px solid #246b3b;
+    }
+
+    .message.error{
+      display:block;
+      background:#301313;
+      color:#ff8080;
+      border:1px solid #733333;
+    }
+
+    @media(max-width:550px){
+      .grid{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+
+      .card{
+        padding:20px;
+      }
+
+      .page-title h1{
+        font-size:22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="auth-gate" id="authGate">
+    যাচাই করা হচ্ছে...
+  </div>
+
+  <div class="page-body" id="pageBody">
+
+    <div class="container">
+
+      <div class="header">
+        <div class="brand">
+          <img
+            src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
+            alt="SNK">
+          <span>Create Student Profile</span>
+        </div>
+
+        <a href="/admin-dashboard/" class="back-btn">
+          ← Dashboard
+        </a>
+      </div>
+
+      <div class="page-title">
+        <h1>শিক্ষার্থীর Profile তৈরি করুন</h1>
+        <p>Admission তথ্য যাচাই করে Profile তৈরি করুন</p>
+      </div>
+
+      <div class="message" id="messageBox"></div>
+
+      <div class="card">
+
+        <div class="student-preview">
+          <div class="student-avatar" id="studentAvatar">👤</div>
+
+          <div>
+            <h2 id="studentNamePreview">লোড হচ্ছে...</h2>
+            <p id="studentEmailPreview">Email লোড হচ্ছে...</p>
+          </div>
+        </div>
+
+        <form id="profileForm">
+
+          <div class="grid">
+
+            <div class="form-row">
+              <label for="studentName">শিক্ষার্থীর নাম *</label>
+              <input type="text" id="studentName" required>
+            </div>
+
+            <div class="form-row">
+              <label for="studentPhone">মোবাইল নম্বর *</label>
+              <input type="text" id="studentPhone" required>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+            <label for="studentEmail">Email *</label>
+            <input type="email" id="studentEmail" required>
+          </div>
+
+          <div class="grid">
+
+            <div class="form-row">
+              <label for="studentCourse">নির্বাচিত কোর্স *</label>
+              <input type="text" id="studentCourse" required>
+            </div>
+
+            <div class="form-row">
+              <label for="studentIdNumber">Student ID</label>
+              <input type="text" id="studentIdNumber"
+                placeholder="যেমন: SNK-1001">
+            </div>
+
+          </div>
+
+          <div class="grid">
+
+            <div class="form-row">
+              <label for="admissionStatus">Admission Status</label>
+              <select id="admissionStatus">
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="active">Active</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="paymentStatus">Payment Status</label>
+              <select id="paymentStatus">
+                <option value="unpaid">Unpaid</option>
+                <option value="partial">Partial</option>
+                <option value="paid">Paid</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+            <label for="profileImage">Profile Image URL</label>
+            <input type="url" id="profileImage"
+              placeholder="https://example.com/student-image.jpg">
+          </div>
+
+          <div class="form-row">
+            <label for="studentAddress">ঠিকানা</label>
+            <textarea id="studentAddress"
+              placeholder="শিক্ষার্থীর ঠিকানা লিখুন"></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="profileNote">Admin Note</label>
+            <textarea id="profileNote"
+              placeholder="অতিরিক্ত তথ্য বা নোট লিখুন"></textarea>
+          </div>
+
+          <button type="submit" class="save-btn" id="saveBtn">
+            Profile তৈরি করুন
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
+      authDomain: "snk-it-institute.firebaseapp.com",
+      projectId: "snk-it-institute",
+      storageBucket: "snk-it-institute.firebasestorage.app",
+      messagingSenderId: "948436125833",
+      appId: "1:948436125833:web:36788463d4dd3ef20bde58"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    const authGate = document.getElementById("authGate");
+    const pageBody = document.getElementById("pageBody");
+    const profileForm = document.getElementById("profileForm");
+    const messageBox = document.getElementById("messageBox");
+
+    const studentId =
+      new URLSearchParams(window.location.search).get("studentId");
+
+    let originalStudentData = {};
+
+    function escapeHtml(str){
+      const div = document.createElement("div");
+      div.textContent = str || "";
+      return div.innerHTML;
+    }
+
+    function showMessage(text, type){
+      messageBox.textContent = text;
+      messageBox.className = "message " + type;
+    }
+
+    function loadStudent(){
+
+      if(!studentId){
+        showMessage("Student ID পাওয়া যায়নি।", "error");
+        return;
+      }
+
+      db.collection("students").doc(studentId).get()
+        .then(function(doc){
+
+          if(!doc.exists){
+            showMessage("এই শিক্ষার্থীর তথ্য পাওয়া যায়নি।", "error");
+            return;
+          }
+
+          originalStudentData = doc.data();
+
+          document.getElementById("studentName").value =
+            originalStudentData.name || "";
+
+          document.getElementById("studentPhone").value =
+            originalStudentData.phone || "";
+
+          document.getElementById("studentEmail").value =
+            originalStudentData.email || "";
+
+          document.getElementById("studentCourse").value =
+            originalStudentData.course || "";
+
+          document.getElementById("studentAddress").value =
+            originalStudentData.address || "";
+
+          document.getElementById("studentNamePreview").textContent =
+            originalStudentData.name || "শিক্ষার্থী";
+
+          document.getElementById("studentEmailPreview").textContent =
+            originalStudentData.email || "Email নেই";
+
+          document.getElementById("studentIdNumber").value =
+            originalStudentData.studentId || "";
+
+          document.getElementById("admissionStatus").value =
+            originalStudentData.admissionStatus || "pending";
+
+          document.getElementById("paymentStatus").value =
+            originalStudentData.paymentStatus || "unpaid";
+
+          document.getElementById("profileImage").value =
+            originalStudentData.profileImage || "";
+
+          document.getElementById("profileNote").value =
+            originalStudentData.profileNote || "";
+
+          if(originalStudentData.profileImage){
+            document.getElementById("studentAvatar").innerHTML =
+              `<img src="${escapeHtml(originalStudentData.profileImage)}"
+                    alt="Student Image">`;
+          }
+
+        })
+        .catch(function(error){
+          showMessage("তথ্য লোড করতে সমস্যা হয়েছে: " + error.message, "error");
+        });
+    }
+
+    auth.onAuthStateChanged(function(user){
+
+      if(!user){
+        window.location.href = "/admin/";
+        return;
+      }
+
+      authGate.style.display = "none";
+      pageBody.style.display = "block";
+
+      loadStudent();
+
+    });
+
+    profileForm.addEventListener("submit", function(event){
+
+      event.preventDefault();
+
+      if(!studentId){
+        showMessage("Student ID পাওয়া যায়নি।", "error");
+        return;
+      }
+
+      const saveBtn = document.getElementById("saveBtn");
+
+      const updatedData = {
+
+        name: document.getElementById("studentName").value.trim(),
+
+        phone: document.getElementById("studentPhone").value.trim(),
+
+        email: document.getElementById("studentEmail").value.trim(),
+
+        course: document.getElementById("studentCourse").value.trim(),
+
+        studentId: document.getElementById("studentIdNumber").value.trim(),
+
+        admissionStatus: document.getElementById("admissionStatus").value,
+
+        paymentStatus: document.getElementById("paymentStatus").value,
+
+        profileImage: document.getElementById("profileImage").value.trim(),
+
+        address: document.getElementById("studentAddress").value.trim(),
+
+        profileNote: document.getElementById("profileNote").value.trim(),
+
+        profileCreated: true,
+
+        profileCreatedAt:
+          firebase.firestore.FieldValue.serverTimestamp(),
+
+        profileUpdatedAt:
+          firebase.firestore.FieldValue.serverTimestamp()
+
+      };
+
+      saveBtn.disabled = true;
+      saveBtn.textContent = "সেভ হচ্ছে...";
+
+      db.collection("students").doc(studentId)
+        .set(updatedData, { merge:true })
+
+        .then(function(){
+
+          showMessage(
+            "✅ শিক্ষার্থীর Profile সফলভাবে তৈরি হয়েছে।",
+            "success"
+          );
+
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Profile আপডেট করুন";
+
+        })
+
+        .catch(function(error){
+
+          showMessage(
+            "❌ Profile সেভ করতে সমস্যা হয়েছে: " + error.message,
+            "error"
+          );
+
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Profile তৈরি করুন";
+
+        });
+
+    });
+
+  </script>
+
+</body>
+</html>
