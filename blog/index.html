@@ -1,2101 +1,3730 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ব্লগ | SNK IT Institute</title>
+  <title>Blog | SNK IT Institute — Learn To Lead</title>
 
-  <meta name="description" content="SNK IT Institute Blog — AI, IT, Career, Technology এবং Skill Development নিয়ে নিয়মিত লেখা।">
-  <meta name="theme-color" content="#050505">
+  <meta name="description"
+        content="SNK IT Institute Blog — AI, UI/UX, Cyber Security, Technology and Career insights.">
 
-  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+  <meta name="theme-color" content="#070908">
 
-  <meta property="og:title" content="ব্লগ | SNK IT Institute">
-  <meta property="og:description" content="AI, IT, Career, Technology এবং Skill Development নিয়ে SNK IT Institute-এর ব্লগ।">
-  <meta property="og:image" content="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
-  <meta property="og:type" content="website">
+  <link rel="icon"
+        href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
   <style>
+
     /* =========================================================
-       SNK IT INSTITUTE — BLOG FINAL
-       Firebase-powered / Single HTML File
+       SNK IT INSTITUTE — PREMIUM BLOG
        ========================================================= */
 
-    :root{
-      --bg:#050505;
-      --bg-soft:#080808;
-      --card:#0c0c0c;
-      --card-2:#101010;
-      --input:#111;
-      --text:#fff;
-      --muted:#a1a1a1;
-      --dim:#686868;
-      --line:#1d1d1d;
-      --line-2:#2a2a2a;
-      --lime:#b7ff00;
-      --lime-soft:rgba(183,255,0,.10);
-      --lime-border:rgba(183,255,0,.28);
-      --green:#25d366;
-      --danger:#ff6262;
-      --shadow:0 20px 60px rgba(0,0,0,.28);
+    :root {
+      --bg: #070908;
+      --bg-soft: #0b0e0c;
+      --surface: #101411;
+      --surface-2: #141914;
+      --card: #111612;
+
+      --text: #f4f7f3;
+      --muted: #98a39b;
+
+      --line: rgba(255,255,255,.08);
+      --line-strong: rgba(255,255,255,.14);
+
+      --lime: #b7ff00;
+      --lime-light: #d2ff66;
+      --lime-soft: rgba(183,255,0,.10);
+
+      --danger: #ff5c5c;
+
+      --shadow:
+        0 25px 80px rgba(0,0,0,.38);
+
+      --max-width: 1240px;
     }
 
-    html.light-mode{
-      --bg:#f7f7f2;
-      --bg-soft:#f0f0ea;
-      --card:#fff;
-      --card-2:#fafaf6;
-      --input:#fff;
-      --text:#111;
-      --muted:#555;
-      --dim:#777;
-      --line:#e4e4dc;
-      --line-2:#d7d7ce;
-      --lime-soft:rgba(120,170,0,.09);
-      --lime-border:rgba(100,145,0,.25);
-      --shadow:0 20px 50px rgba(0,0,0,.08);
+    [data-theme="light"] {
+
+      --bg: #f4f7f2;
+      --bg-soft: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f1f5ef;
+      --card: #ffffff;
+
+      --text: #101510;
+      --muted: #657066;
+
+      --line: rgba(15,25,15,.10);
+      --line-strong: rgba(15,25,15,.16);
+
+      --lime: #78b600;
+      --lime-light: #8dca19;
+      --lime-soft: rgba(120,182,0,.10);
+
+      --shadow:
+        0 25px 70px rgba(30,50,30,.12);
     }
 
-    *{margin:0;padding:0;box-sizing:border-box}
-
-    html{scroll-behavior:smooth}
-
-    body{
-      font-family:"Inter","Hind Siliguri",Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
-      transition:background .3s ease,color .3s ease;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    body.bn{font-family:"Hind Siliguri","Inter",Arial,sans-serif}
-
-    body::selection{
-      background:var(--lime);
-      color:#050505;
+    html {
+      scroll-behavior: smooth;
     }
 
-    a{text-decoration:none;color:inherit}
+    body {
+      font-family: "Hind Siliguri", sans-serif;
+      background:
+        radial-gradient(
+          circle at 10% 5%,
+          rgba(183,255,0,.07),
+          transparent 28%
+        ),
+        var(--bg);
 
-    button,input{font:inherit}
-
-    button{cursor:pointer}
-
-    img{display:block;max-width:100%}
-
-    .container{
-      width:min(1120px,92%);
-      margin:auto;
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
     }
 
-    .no-scroll{overflow:hidden}
+    body.lock {
+      overflow: hidden;
+    }
+
+    ::selection {
+      background: var(--lime);
+      color: #081006;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(
+        var(--max-width),
+        calc(100% - 40px)
+      );
+
+      margin: auto;
+    }
+
+    /* =========================================================
+       TOP BAR
+       ========================================================= */
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+
+      background:
+        rgba(7,9,8,.72);
+
+      backdrop-filter: blur(18px);
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    [data-theme="light"] .topbar {
+      background: rgba(255,255,255,.85);
+    }
+
+    .topbar-inner {
+      min-height: 36px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar strong {
+      color: var(--lime);
+    }
+
+    .top-links {
+      display: flex;
+      gap: 18px;
+    }
 
     /* =========================================================
        HEADER
        ========================================================= */
 
-    .header{
-      position:sticky;
-      top:0;
-      z-index:10000;
-      background:color-mix(in srgb,var(--bg) 88%,transparent);
-      border-bottom:1px solid var(--line);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      border-bottom: 1px solid var(--line);
+
+      background:
+        rgba(7,9,8,.80);
+
+      backdrop-filter: blur(22px);
     }
 
-    .nav{
-      min-height:76px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:22px;
+    [data-theme="light"] .header {
+      background: rgba(255,255,255,.86);
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      flex-shrink:0;
+    .nav {
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
     }
 
-    .brand img{
-      width:122px;
-      height:auto;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .menu{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:25px;
-      flex:1;
+    .brand img {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
     }
 
-    .menu a{
-      position:relative;
-      color:var(--muted);
-      font-size:13px;
-      font-weight:600;
-      padding:28px 0;
-      transition:.25s ease;
+    .brand strong {
+      display: block;
+
+      font-family: Inter, sans-serif;
+
+      font-size: 15px;
+
+      letter-spacing: .7px;
     }
 
-    .menu a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:19px;
-      width:0;
-      height:2px;
-      border-radius:10px;
-      background:var(--lime);
-      transition:.25s ease;
+    .brand span {
+      display: block;
+
+      color: var(--lime);
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
     }
 
-    .menu a:hover,
-    .menu a.active{
-      color:var(--lime);
+    .navlinks {
+      display: flex;
+      gap: 4px;
     }
 
-    .menu a.active::after,
-    .menu a:hover::after{
-      width:100%;
+    .navlinks a {
+      padding: 10px 13px;
+
+      border-radius: 12px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      transition: .25s;
     }
 
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex-shrink:0;
+    .navlinks a:hover,
+    .navlinks a.active {
+      color: var(--text);
+      background: var(--lime-soft);
     }
 
-    .icon-btn,
-    .lang-toggle{
-      width:38px;
-      height:38px;
-      display:grid;
-      place-items:center;
-      border:1px solid var(--line-2);
-      border-radius:9px;
-      background:var(--input);
-      color:var(--text);
-      transition:.25s ease;
+    .nav-actions {
+      display: flex;
+      gap: 8px;
     }
 
-    .lang-toggle{
-      width:auto;
-      min-width:52px;
-      padding:0 10px;
-      font-size:11px;
-      font-weight:800;
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+
+      border: 1px solid var(--line);
+
+      background: var(--surface);
+
+      color: var(--text);
+
+      border-radius: 12px;
+
+      transition: .25s;
     }
 
-    .icon-btn:hover,
-    .lang-toggle:hover{
-      border-color:var(--lime);
-      color:var(--lime);
-      transform:translateY(-1px);
+    .icon-btn:hover {
+      border-color: var(--lime);
+      color: var(--lime);
     }
 
-    .login-button{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:38px;
-      padding:0 14px;
-      border-radius:9px;
-      background:var(--lime);
-      color:#050505;
-      font-size:12px;
-      font-weight:800;
-      transition:.25s ease;
+    .menu-btn {
+      display: none;
     }
-
-    .login-button:hover{
-      transform:translateY(-2px);
-      box-shadow:0 10px 30px rgba(183,255,0,.18);
-    }
-
-    .mobile-menu-btn{display:none}
 
     /* =========================================================
        HERO
        ========================================================= */
 
-    .page-hero{
-      position:relative;
-      overflow:hidden;
-      padding:92px 0 65px;
-      text-align:center;
-      border-bottom:1px solid var(--line);
+    .hero {
+      padding: 90px 0 65px;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.05fr
+        .95fr;
+
+      gap: 60px;
+
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      padding: 7px 13px;
+
+      border: 1px solid
+        rgba(183,255,0,.22);
+
+      background: var(--lime-soft);
+
+      border-radius: 999px;
+
+      color: var(--lime);
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      letter-spacing: 1.3px;
+
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+
+      background: var(--lime);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 17px var(--lime);
+    }
+
+    .hero h1 {
+      margin: 20px 0;
+
+      font-family: Inter, sans-serif;
+
+      font-size:
+        clamp(48px, 7vw, 84px);
+
+      line-height: 1;
+
+      letter-spacing: -4px;
+    }
+
+    .hero h1 span {
+      color: var(--lime);
+
+      text-shadow:
+        0 0 35px
+        rgba(183,255,0,.15);
+    }
+
+    .hero-description {
+      max-width: 660px;
+
+      color: var(--muted);
+
+      font-size: 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+
+      gap: 22px;
+
+      flex-wrap: wrap;
+
+      margin-top: 28px;
+    }
+
+    .hero-meta-item {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    .hero-meta-item b {
+      color: var(--text);
+    }
+
+    /* =========================================================
+       HERO ORBIT
+       ========================================================= */
+
+    .hero-orbit {
+      min-height: 440px;
+
+      display: grid;
+
+      place-items: center;
+
+      position: relative;
+    }
+
+    .orb {
+      width: min(390px,75vw);
+
+      aspect-ratio: 1;
+
+      border-radius: 50%;
+
       background:
-        radial-gradient(circle at 50% 10%,rgba(183,255,0,.12),transparent 32%),
-        radial-gradient(circle at 10% 50%,rgba(183,255,0,.035),transparent 25%),
-        var(--bg);
+        radial-gradient(
+          circle at 35% 30%,
+          rgba(255,255,255,.15),
+          transparent 14%
+        ),
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.20),
+          transparent 54%
+        ),
+        linear-gradient(
+          145deg,
+          #182016,
+          #090c0a
+        );
+
+      border: 1px solid
+        rgba(183,255,0,.22);
+
+      box-shadow:
+        0 0 100px
+        rgba(183,255,0,.09),
+
+        inset 0 0 70px
+        rgba(183,255,0,.05);
+
+      display: grid;
+
+      place-items: center;
+
+      position: relative;
+
+      animation:
+        floating 7s ease-in-out infinite;
     }
 
-    .hero-grid{
-      position:absolute;
-      inset:0;
-      opacity:.18;
-      pointer-events:none;
-      background-image:
-        linear-gradient(var(--line) 1px,transparent 1px),
-        linear-gradient(90deg,var(--line) 1px,transparent 1px);
-      background-size:60px 60px;
-      mask-image:linear-gradient(to bottom,black,transparent 85%);
-      -webkit-mask-image:linear-gradient(to bottom,black,transparent 85%);
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+
     }
 
-    .hero-orb{
-      position:absolute;
-      width:300px;
-      height:300px;
-      border-radius:50%;
-      background:rgba(183,255,0,.06);
-      filter:blur(70px);
-      top:-130px;
-      left:50%;
-      transform:translateX(-50%);
-      pointer-events:none;
+    .orb::before,
+    .orb::after {
+      content: "";
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      border: 1px solid
+        rgba(183,255,0,.15);
     }
 
-    .page-badge{
-      position:relative;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
-      border:1px solid var(--lime-border);
-      background:var(--lime-soft);
-      color:var(--lime);
-      border-radius:999px;
-      font-size:10px;
-      font-weight:800;
-      letter-spacing:1.2px;
-      margin-bottom:20px;
+    .orb::before {
+      inset: -35px;
     }
 
-    .page-hero h1{
-      position:relative;
-      max-width:850px;
-      margin:auto;
-      font-size:clamp(40px,7vw,72px);
-      line-height:1.05;
-      letter-spacing:-3px;
-      font-weight:800;
+    .orb::after {
+      inset: -70px;
+
+      border-style: dashed;
+
+      animation:
+        rotate 18s linear infinite;
     }
 
-    .page-hero h1 span{color:var(--lime)}
-
-    .page-hero p{
-      position:relative;
-      max-width:650px;
-      margin:18px auto 0;
-      color:var(--muted);
-      font-size:15px;
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
     }
 
-    .hero-meta{
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:9px;
-      margin-top:23px;
-      color:var(--dim);
-      font-size:11px;
+    .orb-core {
+      width: 135px;
+      height: 135px;
+
+      border-radius: 38px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #d0ff55,
+          #79a800
+        );
+
+      color: #091005;
+
+      display: grid;
+
+      place-items: center;
+
+      font-family: Inter, sans-serif;
+
+      font-weight: 900;
+
+      font-size: 27px;
+
+      line-height: 1.05;
+
+      text-align: center;
+
+      transform: rotate(-8deg);
+
+      box-shadow:
+        0 0 65px
+        rgba(183,255,0,.30);
     }
 
-    .hero-meta strong{color:var(--text)}
+    .float-tag {
+      position: absolute;
+
+      padding: 10px 13px;
+
+      border: 1px solid var(--line);
+
+      background:
+        rgba(15,20,16,.82);
+
+      backdrop-filter: blur(15px);
+
+      border-radius: 14px;
+
+      font-size: 12px;
+
+      box-shadow: var(--shadow);
+
+      z-index: 5;
+    }
+
+    [data-theme="light"] .float-tag {
+      background: rgba(255,255,255,.88);
+    }
+
+    .tag-1 {
+      top: 9%;
+      right: 3%;
+    }
+
+    .tag-2 {
+      bottom: 14%;
+      left: 2%;
+    }
+
+    .tag-3 {
+      top: 52%;
+      right: -4%;
+    }
 
     /* =========================================================
-       TOOLBAR
+       TOOLBOX
        ========================================================= */
 
-    .toolbar-wrap{
-      padding:28px 0 5px;
+    .toolbox {
+      padding: 22px 0;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
-    .toolbar{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
+    .search {
+      position: relative;
     }
 
-    .search-box{
-      position:relative;
-      flex:1;
-      min-width:230px;
+    .search input {
+      width: 100%;
+
+      height: 54px;
+
+      padding:
+        0 52px 0 18px;
+
+      border-radius: 15px;
+
+      border: 1px solid var(--line);
+
+      background: var(--surface);
+
+      color: var(--text);
+
+      outline: none;
+
+      transition: .25s;
     }
 
-    .search-box span{
-      position:absolute;
-      left:15px;
-      top:50%;
-      transform:translateY(-50%);
-      color:var(--dim);
-      font-size:15px;
-      pointer-events:none;
+    .search input::placeholder {
+      color: var(--muted);
     }
 
-    .search-box input{
-      width:100%;
-      height:46px;
-      padding:0 16px 0 42px;
-      border:1px solid var(--line-2);
-      border-radius:11px;
-      outline:none;
-      background:var(--input);
-      color:var(--text);
-      font-size:13px;
-      transition:.25s;
+    .search input:focus {
+      border-color:
+        rgba(183,255,0,.5);
+
+      box-shadow:
+        0 0 0 4px
+        var(--lime-soft);
     }
 
-    .search-box input::placeholder{color:var(--dim)}
+    .search-icon {
+      position: absolute;
 
-    .search-box input:focus{
-      border-color:var(--lime-border);
-      box-shadow:0 0 0 3px var(--lime-soft);
+      right: 18px;
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      color: var(--muted);
+
+      font-size: 20px;
     }
 
-    .filter-list{
-      display:flex;
-      gap:7px;
-      flex-wrap:wrap;
+    .category-scroll {
+      display: flex;
+
+      gap: 8px;
+
+      overflow-x: auto;
+
+      padding-top: 12px;
+
+      scrollbar-width: none;
     }
 
-    .filter-btn{
-      height:42px;
-      padding:0 14px;
-      border:1px solid var(--line-2);
-      border-radius:9px;
-      background:var(--input);
-      color:var(--muted);
-      font-size:11px;
-      font-weight:700;
-      transition:.25s;
+    .category-scroll::-webkit-scrollbar {
+      display: none;
     }
 
-    .filter-btn:hover,
-    .filter-btn.active{
-      background:var(--lime);
-      border-color:var(--lime);
-      color:#050505;
+    .chip {
+      white-space: nowrap;
+
+      border: 1px solid var(--line);
+
+      background: var(--surface);
+
+      color: var(--muted);
+
+      padding: 10px 15px;
+
+      border-radius: 999px;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      transition: .25s;
+    }
+
+    .chip:hover,
+    .chip.active {
+      background: var(--lime);
+
+      border-color: var(--lime);
+
+      color: #091005;
     }
 
     /* =========================================================
-       BLOG AREA
+       SECTIONS
        ========================================================= */
 
-    .blog-section{
-      padding:25px 0 90px;
+    .section {
+      padding: 78px 0;
     }
 
-    .section-heading{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:20px;
-      margin:30px 0 18px;
+    .section-head {
+      display: flex;
+
+      align-items: end;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 28px;
     }
 
-    .section-heading h2{
-      font-size:23px;
-      line-height:1.2;
+    .section-kicker {
+      color: var(--lime);
+
+      font-size: 12px;
+
+      letter-spacing: 2px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
     }
 
-    .section-heading p{
-      color:var(--dim);
-      font-size:11px;
+    .section-title {
+      margin-top: 5px;
+
+      font-family: Inter, sans-serif;
+
+      font-size: 33px;
+
+      letter-spacing: -1.5px;
     }
 
-    /* Featured */
-    .featured-card{
-      position:relative;
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      min-height:350px;
-      overflow:hidden;
-      border:1px solid var(--line-2);
-      border-radius:20px;
-      background:linear-gradient(135deg,var(--card),var(--card-2));
-      box-shadow:var(--shadow);
+    .section-note {
+      color: var(--muted);
+
+      font-size: 14px;
     }
 
-    .featured-image-wrap{
-      position:relative;
-      min-height:350px;
-      overflow:hidden;
-      background:var(--bg-soft);
+    /* =========================================================
+       FEATURED
+       ========================================================= */
+
+    .featured {
+      display: grid;
+
+      grid-template-columns:
+        1.2fr
+        .8fr;
+
+      min-height: 500px;
+
+      overflow: hidden;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 30px;
+
+      background: var(--card);
+
+      box-shadow: var(--shadow);
+
+      cursor: pointer;
     }
 
-    .featured-image{
-      width:100%;
-      height:100%;
-      min-height:350px;
-      object-fit:cover;
-      transition:transform .6s ease;
+    .feature-media {
+      min-height: 500px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: #0b100d;
     }
 
-    .featured-card:hover .featured-image{transform:scale(1.045)}
+    .feature-media img {
+      width: 100%;
+      height: 100%;
 
-    .image-overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg,transparent 55%,rgba(5,5,5,.72));
+      object-fit: cover;
+
+      transition: .7s;
     }
 
-    .featured-content{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      padding:42px;
+    .featured:hover
+    .feature-media img {
+      transform: scale(1.05);
     }
 
-    .featured-label{
-      display:inline-flex;
-      width:max-content;
-      padding:6px 10px;
-      border:1px solid var(--lime-border);
-      border-radius:6px;
-      color:var(--lime);
-      background:var(--lime-soft);
-      font-size:9px;
-      font-weight:800;
-      letter-spacing:1px;
-      margin-bottom:15px;
+    .feature-media::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent 35%,
+          rgba(0,0,0,.45)
+        );
     }
 
-    .post-meta{
-      display:flex;
-      align-items:center;
-      gap:9px;
-      color:var(--dim);
-      font-size:10px;
-      margin-bottom:12px;
+    .feature-badge {
+      position: absolute;
+
+      top: 22px;
+      left: 22px;
+
+      z-index: 5;
+
+      padding: 8px 12px;
+
+      background: var(--lime);
+
+      color: #081005;
+
+      border-radius: 999px;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
     }
 
-    .post-meta .dot{
-      width:3px;
-      height:3px;
-      border-radius:50%;
-      background:var(--dim);
+    .feature-content {
+      padding: 50px 45px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
     }
 
-    .featured-content h2{
-      font-size:clamp(25px,3vw,38px);
-      line-height:1.2;
-      letter-spacing:-1px;
-      margin-bottom:12px;
+    .post-category {
+      color: var(--lime);
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
     }
 
-    .featured-content p{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.85;
-      display:-webkit-box;
-      -webkit-line-clamp:4;
-      -webkit-box-orient:vertical;
-      overflow:hidden;
+    .feature-content h2 {
+      margin: 14px 0;
+
+      font-family: Inter, sans-serif;
+
+      font-size:
+        clamp(28px, 3vw, 46px);
+
+      line-height: 1.08;
+
+      letter-spacing: -2px;
     }
 
-    .featured-actions{
-      display:flex;
-      gap:9px;
-      margin-top:23px;
-      flex-wrap:wrap;
+    .feature-content p {
+      color: var(--muted);
+
+      font-size: 15px;
     }
 
-    .primary-btn,
-    .secondary-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:7px;
-      min-height:42px;
-      padding:0 15px;
-      border-radius:9px;
-      font-size:11px;
-      font-weight:800;
-      transition:.25s;
+    .post-info {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      margin: 20px 0;
+
+      color: var(--muted);
+
+      font-size: 13px;
     }
 
-    .primary-btn{
-      border:1px solid var(--lime);
-      background:var(--lime);
-      color:#050505;
+    .read-btn {
+      width: max-content;
+
+      padding: 13px 19px;
+
+      border: none;
+
+      border-radius: 13px;
+
+      background: var(--lime);
+
+      color: #091005;
+
+      font-weight: 800;
+
+      transition: .25s;
     }
 
-    .secondary-btn{
-      border:1px solid var(--line-2);
-      background:transparent;
-      color:var(--muted);
+    .read-btn:hover {
+      transform: translateY(-2px);
+
+      filter: brightness(1.08);
     }
 
-    .primary-btn:hover,
-    .secondary-btn:hover{
-      transform:translateY(-2px);
+    /* =========================================================
+       POSTS
+       ========================================================= */
+
+    .posts-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap: 20px;
     }
 
-    .secondary-btn:hover{
-      color:var(--lime);
-      border-color:var(--lime-border);
+    .post-card {
+      overflow: hidden;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 22px;
+
+      background: var(--card);
+
+      cursor: pointer;
+
+      transition: .28s;
     }
 
-    /* Grid */
-    .blog-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
+    .post-card:hover {
+      transform: translateY(-6px);
+
+      border-color:
+        rgba(183,255,0,.32);
+
+      box-shadow: var(--shadow);
     }
 
-    .blog-card{
-      overflow:hidden;
-      border:1px solid var(--line-2);
-      border-radius:15px;
-      background:var(--card);
-      transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+    .post-image {
+      height: 225px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: var(--surface);
     }
 
-    .blog-card:hover{
-      transform:translateY(-5px);
-      border-color:var(--lime-border);
-      box-shadow:var(--shadow);
+    .post-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: .55s;
     }
 
-    .blog-image-wrap{
-      position:relative;
-      height:190px;
-      overflow:hidden;
-      background:var(--bg-soft);
+    .post-card:hover
+    .post-image img {
+      transform: scale(1.06);
     }
 
-    .blog-image{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .55s ease;
+    .image-fallback {
+      height: 100%;
+
+      display: grid;
+
+      place-items: center;
+
+      font-family: Inter, sans-serif;
+
+      font-weight: 900;
+
+      font-size: 42px;
+
+      color:
+        rgba(183,255,0,.30);
     }
 
-    .blog-card:hover .blog-image{transform:scale(1.055)}
+    .card-category {
+      position: absolute;
 
-    .category-badge{
-      position:absolute;
-      top:12px;
-      left:12px;
-      padding:5px 8px;
-      border-radius:6px;
-      background:rgba(5,5,5,.78);
-      color:var(--lime);
-      border:1px solid rgba(183,255,0,.2);
-      backdrop-filter:blur(8px);
-      font-size:9px;
-      font-weight:800;
-      letter-spacing:.5px;
+      top: 14px;
+      left: 14px;
+
+      padding: 6px 9px;
+
+      border:
+        1px solid rgba(255,255,255,.1);
+
+      border-radius: 9px;
+
+      background:
+        rgba(7,10,8,.82);
+
+      backdrop-filter: blur(10px);
+
+      color: var(--lime);
+
+      font-size: 10px;
+
+      font-weight: 800;
     }
 
-    .blog-body{padding:20px}
-
-    .blog-date{
-      display:block;
-      color:var(--dim);
-      font-size:10px;
-      margin-bottom:8px;
+    .post-body {
+      padding: 22px;
     }
 
-    .blog-card h3{
-      font-size:18px;
-      line-height:1.4;
-      margin-bottom:9px;
+    .post-body h3 {
+      margin: 8px 0 10px;
+
+      font-size: 21px;
+
+      line-height: 1.25;
     }
 
-    .blog-excerpt{
-      color:var(--muted);
-      font-size:12.5px;
-      line-height:1.8;
-      display:-webkit-box;
-      -webkit-line-clamp:3;
-      -webkit-box-orient:vertical;
-      overflow:hidden;
-      min-height:67px;
+    .post-body p {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      display: -webkit-box;
+
+      -webkit-line-clamp: 3;
+
+      -webkit-box-orient: vertical;
+
+      overflow: hidden;
     }
 
-    .card-footer{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-top:17px;
-      padding-top:14px;
-      border-top:1px solid var(--line);
+    .card-bottom {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-top: 17px;
+
+      padding-top: 15px;
+
+      border-top:
+        1px solid var(--line);
+
+      color: var(--muted);
+
+      font-size: 12px;
     }
 
-    .read-more-btn,
-    .share-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:5px;
-      background:none;
-      border:0;
-      font-size:11px;
-      font-weight:800;
+    .arrow {
+      color: var(--lime);
+
+      font-size: 18px;
     }
-
-    .read-more-btn{color:var(--lime)}
-
-    .share-btn{
-      padding:5px 8px;
-      border:1px solid var(--line-2);
-      border-radius:6px;
-      color:var(--dim);
-      transition:.2s;
-    }
-
-    .share-btn:hover{
-      color:var(--lime);
-      border-color:var(--lime-border);
-    }
-
-    .share-btn.copied{
-      color:#4ade80;
-      border-color:#4ade80;
-    }
-
-    .blog-full{
-      display:none;
-      margin-top:17px;
-      padding-top:17px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.95;
-    }
-
-    .blog-full.open{display:block}
-
-    .blog-full p{margin-bottom:13px}
 
     /* =========================================================
        STATES
        ========================================================= */
 
-    .loading-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
+    .state {
+      grid-column: 1 / -1;
+
+      padding: 75px 20px;
+
+      border:
+        1px dashed var(--line);
+
+      border-radius: 22px;
+
+      text-align: center;
+
+      color: var(--muted);
     }
 
-    .skeleton{
-      height:330px;
-      border-radius:15px;
-      border:1px solid var(--line);
+    .spinner {
+      width: 36px;
+      height: 36px;
+
+      margin:
+        0 auto 15px;
+
+      border:
+        3px solid var(--line);
+
+      border-top-color:
+        var(--lime);
+
+      border-radius: 50%;
+
+      animation:
+        spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================================================
+       CTA
+       ========================================================= */
+
+    .cta {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 58px;
+
+      border:
+        1px solid
+        rgba(183,255,0,.18);
+
+      border-radius: 28px;
+
       background:
-        linear-gradient(100deg,
-          transparent 20%,
-          rgba(255,255,255,.055) 35%,
-          transparent 50%
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.11),
+          transparent 65%
         ),
-        var(--card);
-      background-size:250% 100%;
-      animation:shimmer 1.3s infinite;
+        var(--surface);
     }
 
-    @keyframes shimmer{
-      to{background-position:-250% 0}
+    .cta::after {
+      content: "SNK";
+
+      position: absolute;
+
+      right: -15px;
+      bottom: -55px;
+
+      font-family: Inter, sans-serif;
+
+      font-size: 180px;
+
+      font-weight: 900;
+
+      color:
+        rgba(183,255,0,.035);
+
+      pointer-events: none;
     }
 
-    .empty-state,
-    .error-state{
-      display:none;
-      text-align:center;
-      padding:70px 20px;
-      border:1px dashed var(--line-2);
-      border-radius:16px;
-      color:var(--muted);
+    .cta h2 {
+      max-width: 700px;
+
+      font-family: Inter, sans-serif;
+
+      font-size:
+        clamp(28px, 4vw, 45px);
+
+      line-height: 1.08;
+
+      letter-spacing: -2px;
     }
 
-    .empty-state strong,
-    .error-state strong{
-      display:block;
-      color:var(--text);
-      font-size:18px;
-      margin-bottom:6px;
+    .cta p {
+      max-width: 650px;
+
+      margin: 12px 0 25px;
+
+      color: var(--muted);
+    }
+
+    .cta-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+    }
+
+    .outline-btn {
+      display: inline-flex;
+
+      align-items: center;
+
+      padding: 12px 18px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 13px;
+
+      font-weight: 700;
+
+      transition: .25s;
+    }
+
+    .outline-btn:hover {
+      border-color: var(--lime);
+
+      color: var(--lime);
     }
 
     /* =========================================================
        FOOTER
        ========================================================= */
 
-    .footer{
-      border-top:1px solid var(--line);
-      background:var(--bg-soft);
-      padding:55px 0 25px;
+    footer {
+      padding: 60px 0 25px;
+
+      border-top:
+        1px solid var(--line);
+
+      background: var(--bg-soft);
     }
 
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1.5fr 1fr 1fr 1fr;
-      gap:35px;
+    .footer-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.4fr
+        repeat(3,1fr);
+
+      gap: 40px;
     }
 
-    .footer-brand img{
-      width:125px;
-      margin-bottom:15px;
+    .footer-brand p {
+      max-width: 330px;
+
+      margin-top: 15px;
+
+      color: var(--muted);
     }
 
-    .footer-brand p{
-      max-width:310px;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.8;
+    .footer h4 {
+      margin-bottom: 13px;
+
+      font-size: 14px;
     }
 
-    .footer h4{
-      font-size:12px;
-      margin-bottom:14px;
+    .footer a {
+      display: block;
+
+      margin: 8px 0;
+
+      color: var(--muted);
+
+      font-size: 13px;
     }
 
-    .footer-links{
-      display:flex;
-      flex-direction:column;
-      gap:9px;
+    .footer a:hover {
+      color: var(--lime);
     }
 
-    .footer-links a{
-      color:var(--muted);
-      font-size:11px;
-      transition:.2s;
+    .footer-bottom {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-top: 40px;
+
+      padding-top: 20px;
+
+      border-top:
+        1px solid var(--line);
+
+      color: var(--muted);
+
+      font-size: 12px;
     }
 
-    .footer-links a:hover{color:var(--lime)}
+    /* =========================================================
+       MOBILE DRAWER
+       ========================================================= */
 
-    .footer-bottom{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:15px;
-      margin-top:40px;
-      padding-top:20px;
-      border-top:1px solid var(--line);
-      color:var(--dim);
-      font-size:10px;
+    .overlay {
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 1200;
+
+      background:
+        rgba(0,0,0,.65);
     }
 
-    .footer-bottom span{color:var(--lime)}
+    .overlay.open {
+      display: block;
+    }
+
+    .drawer {
+      position: fixed;
+
+      top: 0;
+      right: -330px;
+
+      width: 320px;
+
+      height: 100vh;
+
+      z-index: 1300;
+
+      padding: 25px;
+
+      border-left:
+        1px solid var(--line);
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+
+      transition: .3s;
+    }
+
+    .drawer.open {
+      right: 0;
+    }
+
+    .drawer-head {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 28px;
+    }
+
+    .drawer a {
+      display: block;
+
+      padding: 14px 0;
+
+      border-bottom:
+        1px solid var(--line);
+
+      color: var(--muted);
+    }
+
+    .drawer a:hover {
+      color: var(--lime);
+    }
+
+    /* =========================================================
+       ARTICLE MODAL
+       ========================================================= */
+
+    .article-modal {
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 2000;
+
+      overflow-y: auto;
+
+      padding: 30px 15px;
+
+      background:
+        rgba(0,0,0,.80);
+
+      backdrop-filter: blur(13px);
+    }
+
+    .article-modal.open {
+      display: block;
+    }
+
+    .article-shell {
+      width: min(920px,100%);
+
+      margin: auto;
+
+      overflow: hidden;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 28px;
+
+      background: var(--card);
+
+      box-shadow:
+        0 35px 100px rgba(0,0,0,.55);
+    }
+
+    .article-cover {
+      height:
+        min(500px,55vw);
+
+      min-height: 270px;
+
+      position: relative;
+
+      background: var(--surface);
+    }
+
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .article-close {
+      position: absolute;
+
+      top: 18px;
+      right: 18px;
+
+      width: 44px;
+      height: 44px;
+
+      z-index: 5;
+
+      border:
+        1px solid
+        rgba(255,255,255,.18);
+
+      border-radius: 50%;
+
+      background:
+        rgba(0,0,0,.58);
+
+      color: #fff;
+
+      font-size: 20px;
+    }
+
+    .article-inner {
+      padding: 44px;
+    }
+
+    .article-inner h1 {
+      margin: 10px 0 15px;
+
+      font-family: Inter, sans-serif;
+
+      font-size:
+        clamp(32px,5vw,56px);
+
+      line-height: 1.07;
+
+      letter-spacing: -2.5px;
+    }
+
+    .article-meta {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      margin-bottom: 30px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .article-content {
+      font-size: 17px;
+    }
+
+    .article-content p {
+      margin-bottom: 17px;
+    }
+
+    .article-content h2,
+    .article-content h3 {
+      margin: 30px 0 12px;
+
+      line-height: 1.25;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin:
+        10px 0 20px 25px;
+    }
+
+    .article-content img {
+      margin: 25px 0;
+
+      border-radius: 17px;
+    }
+
+    .share-row {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 35px;
+
+      padding-top: 20px;
+
+      border-top:
+        1px solid var(--line);
+    }
+
+    .share-btn {
+      padding: 10px 14px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 11px;
+
+      background: var(--surface);
+
+      color: var(--text);
+
+      font-size: 12px;
+    }
+
+    .share-btn:hover {
+      border-color: var(--lime);
+
+      color: var(--lime);
+    }
 
     /* =========================================================
        COUNSELOR
        ========================================================= */
 
-    .counselor-trigger{
-      position:fixed;
-      right:22px;
-      bottom:22px;
-      z-index:9998;
-      width:55px;
-      height:55px;
-      display:grid;
-      place-items:center;
-      border:0;
-      border-radius:50%;
-      background:var(--green);
-      color:#fff;
-      font-size:24px;
-      box-shadow:0 10px 30px rgba(0,0,0,.3);
-      transition:.25s;
+    .counselor {
+      position: fixed;
+
+      right: 22px;
+      bottom: 22px;
+
+      z-index: 900;
     }
 
-    .counselor-trigger:hover{transform:scale(1.08)}
+    .counselor-panel {
+      position: absolute;
 
-    .counselor-popup{
-      display:none;
-      position:fixed;
-      right:22px;
-      bottom:88px;
-      z-index:9999;
-      width:285px;
-      padding:21px;
-      border:1px solid var(--line-2);
-      border-radius:16px;
-      background:var(--card);
-      box-shadow:0 25px 70px rgba(0,0,0,.45);
-      text-align:center;
+      right: 0;
+      bottom: 66px;
+
+      width: 290px;
+
+      padding: 18px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 20px;
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      transform:
+        translateY(10px);
+
+      transition: .25s;
     }
 
-    .counselor-popup.open{
-      display:block;
-      animation:popupIn .22s ease;
+    .counselor:hover
+    .counselor-panel,
+    .counselor:focus-within
+    .counselor-panel {
+      opacity: 1;
+
+      visibility: visible;
+
+      transform: none;
     }
 
-    @keyframes popupIn{
-      from{opacity:0;transform:translateY(8px)}
-      to{opacity:1;transform:translateY(0)}
+    .counselor-panel p {
+      margin: 4px 0 13px;
+
+      color: var(--muted);
+
+      font-size: 12px;
     }
 
-    .counselor-close{
-      position:absolute;
-      top:9px;
-      right:11px;
-      border:0;
-      background:none;
-      color:var(--dim);
-      font-size:16px;
+    .counselor-panel a {
+      display: block;
+
+      margin-top: 7px;
+
+      padding: 10px 12px;
+
+      border-radius: 10px;
+
+      background: var(--lime);
+
+      color: #091005;
+
+      text-align: center;
+
+      font-size: 13px;
+
+      font-weight: 800;
     }
 
-    .counselor-avatar{
-      width:55px;
-      height:55px;
-      margin:0 auto 11px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      border:1px solid var(--lime-border);
-      background:var(--lime-soft);
-      font-size:25px;
+    .counselor-main {
+      width: 57px;
+      height: 57px;
+
+      border: none;
+
+      border-radius: 18px;
+
+      background: var(--lime);
+
+      color: #091005;
+
+      font-size: 21px;
+
+      box-shadow:
+        0 10px 35px
+        rgba(183,255,0,.22);
     }
-
-    .counselor-popup h4{
-      font-size:14px;
-      margin-bottom:3px;
-    }
-
-    .counselor-hours{
-      display:block;
-      color:var(--dim);
-      font-size:10px;
-      margin-bottom:15px;
-    }
-
-    .counselor-actions{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-
-    .counselor-btn{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:7px;
-      min-height:42px;
-      border-radius:8px;
-      font-size:12px;
-      font-weight:800;
-    }
-
-    .counselor-btn.whatsapp{
-      background:var(--green);
-      color:#fff;
-    }
-
-    .counselor-btn.call{
-      background:var(--lime);
-      color:#050505;
-    }
-
-    /* =========================================================
-       MOBILE MENU
-       ========================================================= */
-
-    .mobile-drawer{
-      display:none;
-      position:fixed;
-      inset:76px 0 0;
-      z-index:9997;
-      padding:22px;
-      background:var(--bg);
-      border-top:1px solid var(--line);
-    }
-
-    .mobile-drawer.open{display:block}
-
-    .mobile-drawer a{
-      display:block;
-      padding:15px 0;
-      border-bottom:1px solid var(--line);
-      color:var(--muted);
-      font-size:15px;
-      font-weight:700;
-    }
-
-    .mobile-drawer a.active{color:var(--lime)}
 
     /* =========================================================
        RESPONSIVE
        ========================================================= */
 
-    @media(max-width:980px){
-      .menu{gap:15px}
-      .menu a{font-size:12px}
-      .featured-content{padding:30px}
-      .blog-grid,
-      .loading-grid{grid-template-columns:repeat(2,1fr)}
-      .footer-grid{grid-template-columns:1.4fr 1fr 1fr}
-    }
+    @media (max-width: 1050px) {
 
-    @media(max-width:800px){
-      .menu{display:none}
-      .mobile-menu-btn{display:grid}
-      .featured-card{grid-template-columns:1fr}
-      .featured-image-wrap{min-height:260px}
-      .featured-image{min-height:260px}
-      .image-overlay{
-        background:linear-gradient(0deg,rgba(5,5,5,.55),transparent 60%);
-      }
-      .footer-grid{grid-template-columns:1fr 1fr}
-    }
-
-    @media(max-width:600px){
-      .container{width:91%}
-
-      .nav{min-height:70px}
-
-      .brand img{width:105px}
-
-      .header-actions{gap:5px}
-
-      .login-button{display:none}
-
-      .page-hero{
-        padding:70px 0 48px;
+      .navlinks {
+        display: none;
       }
 
-      .page-hero h1{
-        font-size:43px;
-        letter-spacing:-2px;
+      .menu-btn {
+        display: block;
       }
 
-      .page-hero p{font-size:13px}
-
-      .hero-meta{font-size:10px}
-
-      .toolbar{
-        flex-direction:column;
-        align-items:stretch;
+      .hero-grid {
+        grid-template-columns: 1fr;
       }
 
-      .search-box{min-width:0}
-
-      .filter-list{
-        overflow-x:auto;
-        flex-wrap:nowrap;
-        padding-bottom:4px;
-        scrollbar-width:none;
+      .hero-orbit {
+        min-height: 350px;
       }
 
-      .filter-list::-webkit-scrollbar{display:none}
-
-      .filter-btn{white-space:nowrap}
-
-      .section-heading{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:5px;
+      .featured {
+        grid-template-columns: 1fr;
       }
 
-      .featured-card{
-        border-radius:15px;
+      .feature-media {
+        min-height: 360px;
       }
 
-      .featured-content{
-        padding:25px 20px;
+      .posts-grid {
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
-      .featured-content h2{
-        font-size:24px;
-      }
-
-      .blog-grid,
-      .loading-grid{
-        grid-template-columns:1fr;
-      }
-
-      .blog-image-wrap{height:210px}
-
-      .footer-grid{grid-template-columns:1fr 1fr}
-
-      .footer-bottom{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .counselor-trigger{
-        width:50px;
-        height:50px;
-        right:16px;
-        bottom:16px;
-      }
-
-      .counselor-popup{
-        left:16px;
-        right:16px;
-        bottom:78px;
-        width:auto;
+      .footer-grid {
+        grid-template-columns:
+          1.4fr 1fr 1fr;
       }
     }
 
-    @media(max-width:420px){
-      .footer-grid{grid-template-columns:1fr}
-      .page-hero h1{font-size:38px}
-    }
+    @media (max-width: 700px) {
 
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{
-        scroll-behavior:auto!important;
-        animation:none!important;
-        transition:none!important;
+      .container {
+        width:
+          calc(100% - 26px);
+      }
+
+      .top-links {
+        display: none;
+      }
+
+      .topbar-inner {
+        justify-content: center;
+      }
+
+      .nav {
+        min-height: 67px;
+      }
+
+      .brand strong {
+        font-size: 13px;
+      }
+
+      .brand img {
+        width: 42px;
+        height: 42px;
+      }
+
+      .hero {
+        padding:
+          55px 0 35px;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+
+        letter-spacing:
+          -2.7px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .hero-orbit {
+        min-height: 290px;
+      }
+
+      .orb {
+        width: 235px;
+      }
+
+      .orb-core {
+        width: 90px;
+        height: 90px;
+
+        border-radius: 25px;
+
+        font-size: 20px;
+      }
+
+      .float-tag {
+        padding: 7px 9px;
+
+        font-size: 10px;
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-note {
+        margin-top: 5px;
+      }
+
+      .feature-media {
+        min-height: 270px;
+      }
+
+      .feature-content {
+        padding: 30px 23px;
+      }
+
+      .posts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .post-image {
+        height: 235px;
+      }
+
+      .cta {
+        padding: 35px 23px;
+      }
+
+      .footer-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        display: block;
+      }
+
+      .article-inner {
+        padding: 28px 20px;
+      }
+
+      .article-cover {
+        height: 270px;
+      }
+
+      .article-content {
+        font-size: 16px;
+      }
+
+      .counselor {
+        right: 14px;
+        bottom: 14px;
       }
     }
+
   </style>
 </head>
 
-<body class="bn">
+<body>
 
-  <!-- =======================================================
-       HEADER
-       ======================================================= -->
-  <header class="header">
-    <div class="container nav">
+<!-- =========================================================
+     TOP BAR
+========================================================= -->
 
-      <a href="/" class="brand" aria-label="SNK IT Institute Home">
-        <img
-          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-          alt="SNK IT Institute"
-        >
+<div class="topbar">
+
+  <div class="container topbar-inner">
+
+    <div>
+      Learn To Lead —
+      <strong>Skill. Practice. Career.</strong>
+    </div>
+
+    <div class="top-links">
+
+      <a href="tel:+8801705633700">
+        01705-633700
       </a>
 
-      <nav class="menu" aria-label="Main Navigation">
-        <a href="/" data-bn="হোম" data-en="Home">হোম</a>
-        <a href="/courses/" data-bn="কোর্সসমূহ" data-en="Courses">কোর্সসমূহ</a>
-        <a href="/about/" data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</a>
-        <a href="/blog/" class="active" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
-        <a href="/contact/" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
-      </nav>
-
-      <div class="header-actions">
-        <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle theme">🌙</button>
-        <button id="langToggle" class="lang-toggle" type="button" aria-label="Toggle language">EN</button>
-
-        <a
-          href="/coming-soon/"
-          class="login-button"
-          data-bn="Login / Sign Up →"
-          data-en="Login / Sign Up →"
-        >Login / Sign Up →</a>
-
-        <button id="mobileMenuBtn" class="icon-btn mobile-menu-btn" type="button" aria-label="Open menu">☰</button>
-      </div>
+      <a
+        href="https://wa.me/8801705633700"
+        target="_blank"
+      >
+        WhatsApp
+      </a>
 
     </div>
-  </header>
 
-  <!-- MOBILE DRAWER -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <div class="container">
-      <a href="/" data-bn="হোম" data-en="Home">হোম</a>
-      <a href="/courses/" data-bn="কোর্সসমূহ" data-en="Courses">কোর্সসমূহ</a>
-      <a href="/about/" data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</a>
-      <a href="/blog/" class="active" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
-      <a href="/contact/" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
-      <a href="/coming-soon/" data-bn="Login / Sign Up →" data-en="Login / Sign Up →">Login / Sign Up →</a>
-    </div>
   </div>
 
-  <!-- =======================================================
-       HERO
-       ======================================================= -->
-  <section class="page-hero">
-    <div class="hero-grid"></div>
-    <div class="hero-orb"></div>
+</div>
 
-    <div class="container">
-      <div class="page-badge">✦ SNK IT INSTITUTE BLOG</div>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+  <div class="container nav">
+
+    <a class="brand" href="/">
+
+      <img
+        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
+        alt="SNK IT Institute"
+      >
+
+      <div>
+
+        <strong>
+          SNK IT INSTITUTE
+        </strong>
+
+        <span>
+          Learn To Lead
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <nav class="navlinks">
+
+      <a href="/">
+        Home
+      </a>
+
+      <a href="/courses/">
+        Courses
+      </a>
+
+      <a href="/about/">
+        About
+      </a>
+
+      <a
+        href="/blog/"
+        class="active"
+      >
+        Blog
+      </a>
+
+      <a href="/contact/">
+        Contact
+      </a>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-btn"
+        id="langBtn"
+        title="Language"
+      >
+        বাংলা
+      </button>
+
+      <button
+        class="icon-btn"
+        id="themeBtn"
+        title="Theme"
+      >
+        ☾
+      </button>
+
+      <button
+        class="icon-btn menu-btn"
+        id="menuBtn"
+        title="Menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+
+    <div>
+
+      <div class="eyebrow">
+
+        <span class="dot"></span>
+
+        SNK Knowledge Hub
+
+      </div>
+
 
       <h1>
-        আমাদের <span>ব্লগ</span>
+
+        Think.<br>
+
+        <span>Learn.</span><br>
+
+        Lead.
+
       </h1>
 
-      <p
-        data-bn="AI, IT, Career, Technology এবং Skill Development নিয়ে গুরুত্বপূর্ণ লেখা, গাইড ও আপডেট পড়ুন।"
-        data-en="Read practical insights, guides and updates on AI, IT, careers, technology and skill development."
-      >
-        AI, IT, Career, Technology এবং Skill Development নিয়ে গুরুত্বপূর্ণ লেখা, গাইড ও আপডেট পড়ুন।
+
+      <p class="hero-description">
+
+        AI, UI/UX, Cyber Security,
+        Technology & Career নিয়ে
+        practical ideas, guides এবং
+        insights — আপনার next skill-এর জন্য।
+
       </p>
 
+
       <div class="hero-meta">
-        <strong id="heroPostCount">0</strong>
-        <span data-bn="টি আর্টিকেল" data-en="articles">টি আর্টিকেল</span>
-        <span>•</span>
-        <span data-bn="নিয়মিত আপডেট" data-en="Regularly updated">নিয়মিত আপডেট</span>
-      </div>
-    </div>
-  </section>
 
-  <!-- =======================================================
-       SEARCH + FILTER
-       ======================================================= -->
-  <section class="toolbar-wrap">
-    <div class="container">
-
-      <div class="toolbar">
-
-        <div class="search-box">
-          <span>⌕</span>
-          <input
-            id="searchInput"
-            type="search"
-            autocomplete="off"
-            placeholder="ব্লগ খুঁজুন..."
-            aria-label="Search blog"
-          >
+        <div class="hero-meta-item">
+          ✦ <b>Practical</b> Learning
         </div>
 
-        <div class="filter-list" id="filterList">
-          <button class="filter-btn active" data-filter="all">সব</button>
-          <button class="filter-btn" data-filter="ai">AI</button>
-          <button class="filter-btn" data-filter="uiux">UI/UX</button>
-          <button class="filter-btn" data-filter="cyber">Cyber Security</button>
-          <button class="filter-btn" data-filter="career">Career</button>
-          <button class="filter-btn" data-filter="technology">Technology</button>
+        <div class="hero-meta-item">
+          ◈ <b>Future</b> Skills
+        </div>
+
+        <div class="hero-meta-item">
+          ∞ <b>Career</b> Focused
         </div>
 
       </div>
 
     </div>
-  </section>
 
-  <!-- =======================================================
-       BLOG CONTENT
-       ======================================================= -->
-  <main class="blog-section">
-    <div class="container">
 
-      <!-- Loading -->
-      <div id="loadingState">
-        <div class="loading-grid">
-          <div class="skeleton"></div>
-          <div class="skeleton"></div>
-          <div class="skeleton"></div>
-        </div>
-      </div>
+    <div class="hero-orbit">
 
-      <!-- Featured -->
-      <section id="featuredSection" style="display:none">
-        <div class="section-heading">
-          <div>
-            <h2>Featured Article</h2>
-          </div>
-          <p>সর্বশেষ প্রকাশিত লেখা</p>
+      <div class="orb">
+
+        <div class="orb-core">
+          SNK<br>
+          AI
         </div>
 
-        <article class="featured-card" id="featuredCard"></article>
-      </section>
 
-      <!-- All Posts -->
-      <section id="allPostsSection" style="display:none">
-        <div class="section-heading">
-          <div>
-            <h2 id="allPostsTitle">সর্বশেষ লেখা</h2>
-          </div>
-          <p id="resultCount">0 টি পোস্ট</p>
+        <div class="float-tag tag-1">
+          AI • Future Skills
         </div>
 
-        <div class="blog-grid" id="blogGrid"></div>
-      </section>
+        <div class="float-tag tag-2">
+          UI/UX • Design
+        </div>
 
-      <!-- Empty -->
-      <div class="empty-state" id="emptyState">
-        <strong>কোনো পোস্ট পাওয়া যায়নি</strong>
-        <span>অন্য keyword বা category দিয়ে আবার চেষ্টা করুন।</span>
-      </div>
+        <div class="float-tag tag-3">
+          Cyber • Security
+        </div>
 
-      <!-- Error -->
-      <div class="error-state" id="errorState">
-        <strong>পোস্ট লোড করা যায়নি</strong>
-        <span>ইন্টারনেট সংযোগ বা Firebase configuration পরীক্ষা করুন।</span>
       </div>
 
     </div>
-  </main>
 
-  <!-- =======================================================
-       FOOTER
-       ======================================================= -->
-  <footer class="footer">
-    <div class="container">
 
-      <div class="footer-grid">
+  </div>
 
-        <div class="footer-brand">
+</section>
+
+
+<!-- =========================================================
+     SEARCH
+========================================================= -->
+
+<section class="toolbox">
+
+  <div class="container">
+
+
+    <div class="search">
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search articles, skills, topics..."
+      >
+
+      <span class="search-icon">
+        ⌕
+      </span>
+
+    </div>
+
+
+    <div
+      class="category-scroll"
+      id="categoryList"
+    >
+
+      <button
+        class="chip active"
+        data-category="all"
+      >
+        All Articles
+      </button>
+
+      <button
+        class="chip"
+        data-category="ai"
+      >
+        AI
+      </button>
+
+      <button
+        class="chip"
+        data-category="ui/ux"
+      >
+        UI/UX
+      </button>
+
+      <button
+        class="chip"
+        data-category="cyber security"
+      >
+        Cyber Security
+      </button>
+
+      <button
+        class="chip"
+        data-category="career"
+      >
+        Career
+      </button>
+
+      <button
+        class="chip"
+        data-category="technology"
+      >
+        Technology
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURED
+========================================================= -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="section-kicker">
+          Editor's Pick
+        </div>
+
+        <h2 class="section-title">
+          Featured Insight
+        </h2>
+
+      </div>
+
+      <div class="section-note">
+        Latest knowledge, carefully presented.
+      </div>
+
+    </div>
+
+
+    <div id="featuredArea">
+
+      <div class="state">
+        <div class="spinner"></div>
+        Loading featured article...
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     ARTICLES
+========================================================= -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="section-kicker">
+          Fresh From SNK
+        </div>
+
+        <h2 class="section-title">
+          Latest Articles
+        </h2>
+
+      </div>
+
+      <div
+        class="section-note"
+        id="resultCount"
+      >
+        Loading...
+      </div>
+
+    </div>
+
+
+    <div
+      class="posts-grid"
+      id="postsGrid"
+    >
+
+      <div class="state">
+
+        <div class="spinner"></div>
+
+        Articles loading...
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="cta">
+
+      <div class="section-kicker">
+        Build Your Future
+      </div>
+
+
+      <h2>
+        Certificate নয় —
+        এমন skill শিখুন
+        যা বাস্তবে কাজে লাগে।
+      </h2>
+
+
+      <p>
+        SNK IT Institute-এর
+        career-focused programs,
+        practical learning এবং
+        AI-powered training সম্পর্কে
+        জানতে আমাদের সাথে কথা বলুন।
+      </p>
+
+
+      <div class="cta-actions">
+
+        <a
+          class="read-btn"
+          href="/courses/"
+        >
+          Explore Courses →
+        </a>
+
+        <a
+          class="outline-btn"
+          href="https://wa.me/8801705633700?text=Hello%20SNK%20IT%20Institute,%20I%20want%20to%20know%20about%20your%20courses."
+          target="_blank"
+        >
+          Talk to Counselor
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+
+      <div class="footer-brand">
+
+        <div class="brand">
+
           <img
             src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
             alt="SNK IT Institute"
           >
-          <p
-            data-bn="স্কিল শিখুন, ক্যারিয়ার গড়ুন। AI-powered skill-based training এবং practical learning-এর মাধ্যমে নিজেকে প্রস্তুত করুন।"
-            data-en="Learn skills. Build your career. Prepare yourself through AI-powered, skill-based and practical learning."
-          >
-            স্কিল শিখুন, ক্যারিয়ার গড়ুন। AI-powered skill-based training এবং practical learning-এর মাধ্যমে নিজেকে প্রস্তুত করুন।
-          </p>
+
+          <div>
+
+            <strong>
+              SNK IT INSTITUTE
+            </strong>
+
+            <span>
+              Learn To Lead
+            </span>
+
+          </div>
+
         </div>
 
-        <div>
-          <h4 data-bn="দ্রুত লিংক" data-en="Quick Links">দ্রুত লিংক</h4>
-          <div class="footer-links">
-            <a href="/">হোম</a>
-            <a href="/courses/">কোর্সসমূহ</a>
-            <a href="/about/">আমাদের সম্পর্কে</a>
-            <a href="/blog/">ব্লগ</a>
-          </div>
-        </div>
 
-        <div>
-          <h4 data-bn="সহায়তা" data-en="Support">সহায়তা</h4>
-          <div class="footer-links">
-            <a href="/contact/">যোগাযোগ</a>
-            <a href="https://wa.me/8801705633700" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="tel:+8801705633700">01705-633700</a>
-          </div>
-        </div>
-
-        <div>
-          <h4 data-bn="কানেক্ট" data-en="Connect">কানেক্ট</h4>
-          <div class="footer-links">
-            <a href="https://snkitinstitute.github.io/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-          </div>
-        </div>
+        <p>
+          AI powered skill-based training
+          center focused on practical
+          technology and career skills.
+        </p>
 
       </div>
 
-      <div class="footer-bottom">
-        <div>© <span id="currentYear"></span> SNK IT Institute. All rights reserved.</div>
-        <div>Learn To Lead • <span>Skills First</span></div>
+
+      <div>
+
+        <h4>
+          Explore
+        </h4>
+
+        <a href="/">
+          Home
+        </a>
+
+        <a href="/courses/">
+          Courses
+        </a>
+
+        <a href="/blog/">
+          Blog
+        </a>
+
+        <a href="/about/">
+          About
+        </a>
+
       </div>
 
+
+      <div>
+
+        <h4>
+          Programs
+        </h4>
+
+        <a href="/courses/">
+          UI/UX Design
+        </a>
+
+        <a href="/courses/">
+          Cyber Security
+        </a>
+
+        <a href="/courses/">
+          Graphic Design
+        </a>
+
+        <a href="/courses/">
+          AI Courses
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Contact
+        </h4>
+
+        <a href="tel:+8801705633700">
+          01705-633700
+        </a>
+
+        <a
+          href="https://wa.me/8801705633700"
+          target="_blank"
+        >
+          WhatsApp
+        </a>
+
+        <a href="/contact/">
+          Contact Page
+        </a>
+
+        <a
+          href="https://snkitinstitute.github.io"
+          target="_blank"
+        >
+          Website
+        </a>
+
+      </div>
+
+
     </div>
-  </footer>
 
-  <!-- =======================================================
-       COUNSELOR
-       ======================================================= -->
-  <div class="counselor-popup" id="counselorPopup">
 
-    <button class="counselor-close" id="counselorClose" aria-label="Close">✕</button>
+    <div class="footer-bottom">
 
-    <div class="counselor-avatar">🎧</div>
+      <span>
 
-    <h4>একজন Career Counselor-এর সাথে কথা বলুন</h4>
+        ©
+        <span id="year"></span>
 
-    <span class="counselor-hours">
-      সকাল ১০টা থেকে রাত ১০টা
-    </span>
+        <b>
+          SNK IT Institute
+        </b>.
 
-    <div class="counselor-actions">
+        All rights reserved.
 
-      <a
-        href="https://wa.me/8801705633700?text=আমি%20একজন%20counselor-এর%20সাথে%20কথা%20বলতে%20চাই"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="counselor-btn whatsapp"
-      >
-        💬 WhatsApp
-      </a>
+      </span>
 
-      <a href="tel:+8801705633700" class="counselor-btn call">
-        📞 Call
-      </a>
+
+      <span>
+        Learn To Lead •
+        Moulvibazar, Bangladesh
+      </span>
 
     </div>
+
   </div>
 
-  <button
-    class="counselor-trigger"
-    id="counselorTrigger"
-    aria-label="Talk to a counselor"
-  >💬</button>
+</footer>
 
 
-  <!-- =======================================================
-       FIREBASE
-       ======================================================= -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<!-- =========================================================
+     MOBILE DRAWER
+========================================================= -->
 
-  <script>
-    /* =========================================================
-       BASIC UI
-       ========================================================= */
+<div
+  class="overlay"
+  id="overlay"
+></div>
 
-    const htmlEl = document.documentElement;
-    const bodyEl = document.body;
 
-    const themeToggle = document.getElementById("themeToggle");
-    const langToggle = document.getElementById("langToggle");
-    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-    const mobileDrawer = document.getElementById("mobileDrawer");
+<aside
+  class="drawer"
+  id="drawer"
+>
 
-    function applyTheme(theme){
-      const isLight = theme === "light";
+  <div class="drawer-head">
 
-      htmlEl.classList.toggle("light-mode", isLight);
-      themeToggle.textContent = isLight ? "☀️" : "🌙";
-      themeToggle.setAttribute(
-        "aria-label",
-        isLight ? "Switch to dark mode" : "Switch to light mode"
+    <strong>
+      SNK IT INSTITUTE
+    </strong>
+
+    <button
+      class="icon-btn"
+      id="drawerClose"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <a href="/">
+    Home
+  </a>
+
+  <a href="/courses/">
+    Courses
+  </a>
+
+  <a href="/about/">
+    About
+  </a>
+
+  <a href="/blog/">
+    Blog
+  </a>
+
+  <a href="/contact/">
+    Contact
+  </a>
+
+</aside>
+
+
+<!-- =========================================================
+     ARTICLE MODAL
+========================================================= -->
+
+<div
+  class="article-modal"
+  id="articleModal"
+>
+
+  <div class="article-shell">
+
+
+    <div
+      class="article-cover"
+      id="articleCover"
+    >
+
+      <button
+        class="article-close"
+        onclick="closeArticle()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <article class="article-inner">
+
+      <div
+        class="post-category"
+        id="articleCategory"
+      >
+        ARTICLE
+      </div>
+
+
+      <h1 id="articleTitle"></h1>
+
+
+      <div class="article-meta">
+
+        <span id="articleDate"></span>
+
+        <span id="articleRead"></span>
+
+        <span>
+          SNK IT Institute
+        </span>
+
+      </div>
+
+
+      <div
+        class="article-content"
+        id="articleContent"
+      ></div>
+
+
+      <div class="share-row">
+
+        <button
+          class="share-btn"
+          id="copyBtn"
+        >
+          Copy Link
+        </button>
+
+        <button
+          class="share-btn"
+          id="waShare"
+        >
+          WhatsApp
+        </button>
+
+        <button
+          class="share-btn"
+          id="fbShare"
+        >
+          Facebook
+        </button>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     COUNSELOR
+========================================================= -->
+
+<div class="counselor">
+
+  <div class="counselor-panel">
+
+    <strong>
+      Need guidance?
+    </strong>
+
+    <p>
+      Course, admission বা career
+      সম্পর্কে জানতে আমাদের সাথে
+      কথা বলুন।
+    </p>
+
+
+    <a
+      href="https://wa.me/8801705633700?text=Hello%20SNK%20IT%20Institute,%20I%20need%20course%20guidance."
+      target="_blank"
+    >
+      WhatsApp Counselor
+    </a>
+
+
+    <a href="tel:+8801705633700">
+      Call 01705-633700
+    </a>
+
+  </div>
+
+
+  <button class="counselor-main">
+    ✦
+  </button>
+
+</div>
+
+
+<!-- =========================================================
+     FIREBASE
+========================================================= -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+
+<script>
+
+  /* =========================================================
+     FIREBASE CONFIG
+  ========================================================= */
+
+  const firebaseConfig = {
+
+    apiKey:
+      "AIzaSyDapm0z0sAMJjKhEOWO7NlQKyjY0HgmXYA",
+
+    authDomain:
+      "snk-it-institute.firebaseapp.com",
+
+    projectId:
+      "snk-it-institute",
+
+    storageBucket:
+      "snk-it-institute.firebasestorage.app",
+
+    messagingSenderId:
+      "948436125833",
+
+    appId:
+      "1:948436125833:web:36788463d4dd3ef20bde58"
+
+  };
+
+
+  firebase.initializeApp(firebaseConfig);
+
+  const db =
+    firebase.firestore();
+
+
+  /* =========================================================
+     GLOBAL DATA
+  ========================================================= */
+
+  let posts = [];
+
+  let filteredPosts = [];
+
+  let currentCategory = "all";
+
+
+  /* =========================================================
+     HELPERS
+  ========================================================= */
+
+  const $ = id =>
+    document.getElementById(id);
+
+
+  function escapeHTML(value) {
+
+    return String(value ?? "")
+      .replace(
+        /[&<>"']/g,
+        char => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
+        }[char])
       );
-    }
 
-    applyTheme(localStorage.getItem("snk-theme") || "dark");
-
-    themeToggle.addEventListener("click", () => {
-      const next =
-        htmlEl.classList.contains("light-mode")
-          ? "dark"
-          : "light";
-
-      applyTheme(next);
-      localStorage.setItem("snk-theme", next);
-    });
+  }
 
 
-    function applyLang(lang){
-      bodyEl.classList.toggle("bn", lang === "bn");
+  function stripHTML(value) {
 
-      document.querySelectorAll("[data-bn]").forEach(el => {
-        const value =
-          lang === "bn"
-            ? el.getAttribute("data-bn")
-            : el.getAttribute("data-en");
+    const div =
+      document.createElement("div");
 
-        if(value !== null) el.textContent = value;
-      });
+    div.innerHTML =
+      String(value || "");
 
-      langToggle.textContent =
-        lang === "bn" ? "EN" : "বাংলা";
+    return div.textContent || "";
 
-      document.documentElement.lang = lang;
-    }
-
-    applyLang(localStorage.getItem("snk-lang") || "bn");
-
-    langToggle.addEventListener("click", () => {
-      const current = localStorage.getItem("snk-lang") || "bn";
-      const next = current === "bn" ? "en" : "bn";
-
-      applyLang(next);
-      localStorage.setItem("snk-lang", next);
-    });
+  }
 
 
-    /* Mobile menu */
+  function safeURL(value) {
 
-    mobileMenuBtn.addEventListener("click", () => {
-      const isOpen = mobileDrawer.classList.toggle("open");
+    try {
 
-      mobileMenuBtn.textContent = isOpen ? "✕" : "☰";
-      bodyEl.classList.toggle("no-scroll", isOpen);
-    });
+      const parsed =
+        new URL(String(value));
 
-    mobileDrawer.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileDrawer.classList.remove("open");
-        mobileMenuBtn.textContent = "☰";
-        bodyEl.classList.remove("no-scroll");
-      });
-    });
+      if (
+        parsed.protocol === "http:" ||
+        parsed.protocol === "https:"
+      ) {
 
+        return parsed.href;
 
-    /* Year */
+      }
 
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
+    } catch (error) {}
 
+    return "";
 
-    /* =========================================================
-       FIREBASE CONFIG
-       ========================================================= */
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
-      authDomain: "snk-it-institute.firebaseapp.com",
-      projectId: "snk-it-institute",
-      storageBucket: "snk-it-institute.firebasestorage.app",
-      messagingSenderId: "948436125833",
-      appId: "1:948436125833:web:36788463d4dd3ef20bde58"
-    };
-
-    /* Use the known project values from the existing page. */
-    firebaseConfig.apiKey = "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA";
+  }
 
 
-    /* =========================================================
-       BLOG STATE
-       ========================================================= */
+  function formatDate(value) {
 
-    let allPosts = [];
-    let currentFilter = "all";
-    let searchTerm = "";
+    try {
 
-    const loadingState = document.getElementById("loadingState");
-    const featuredSection = document.getElementById("featuredSection");
-    const featuredCard = document.getElementById("featuredCard");
-    const allPostsSection = document.getElementById("allPostsSection");
-    const blogGrid = document.getElementById("blogGrid");
-    const emptyState = document.getElementById("emptyState");
-    const errorState = document.getElementById("errorState");
-    const searchInput = document.getElementById("searchInput");
-    const resultCount = document.getElementById("resultCount");
-    const heroPostCount = document.getElementById("heroPostCount");
+      let date;
+
+      if (
+        value &&
+        typeof value.toDate === "function"
+      ) {
+
+        date = value.toDate();
+
+      } else {
+
+        date = new Date(value);
+
+      }
 
 
-    /* =========================================================
-       HELPERS
-       ========================================================= */
+      if (isNaN(date.getTime())) {
 
-    function escapeHtml(str){
-      const div = document.createElement("div");
-      div.textContent = str || "";
-      return div.innerHTML;
-    }
+        return "Recently";
 
-    function safeUrl(url){
-      if(!url) return "";
+      }
 
-      try{
-        const parsed = new URL(url, window.location.href);
 
-        if(
-          parsed.protocol === "http:" ||
-          parsed.protocol === "https:" ||
-          parsed.protocol === "data:"
-        ){
-          return parsed.href;
+      return date.toLocaleDateString(
+        "en-GB",
+        {
+          day: "2-digit",
+          month: "short",
+          year: "numeric"
         }
-      }catch(e){}
-
-      return "";
-    }
-
-    function getImage(post){
-      return safeUrl(post.image) ||
-        "data:image/svg+xml;charset=UTF-8," +
-        "%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E" +
-        "%3Crect width='800' height='500' fill='%23101010'/%3E" +
-        "%3Ctext x='400' y='250' font-family='Arial' font-size='55' fill='%23404040' text-anchor='middle' dominant-baseline='middle'%3ESNK%3C/text%3E" +
-        "%3C/svg%3E";
-    }
-
-    function formatDate(timestamp){
-      if(!timestamp || !timestamp.toDate) return "";
-
-      const d = timestamp.toDate();
-
-      const months = [
-        "জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল",
-        "মে","জুন","জুলাই","আগস্ট",
-        "সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"
-      ];
-
-      return (
-        d.getDate() + " " +
-        months[d.getMonth()] + ", " +
-        d.getFullYear()
       );
+
+    } catch (error) {
+
+      return "Recently";
+
     }
 
-    function getCategory(post){
-      const raw = (
-        post.category ||
-        post.categories ||
-        post.tags ||
-        post.title ||
-        ""
-      ).toString().toLowerCase();
+  }
 
-      if(raw.includes("cyber") || raw.includes("security") || raw.includes("ethical")){
-        return "cyber";
-      }
 
-      if(raw.includes("ui") || raw.includes("ux") || raw.includes("design")){
-        return "uiux";
-      }
+  function getCategory(post) {
 
-      if(raw.includes("career") || raw.includes("job") || raw.includes("skill")){
-        return "career";
-      }
+    const text =
+      (
+        (post.category || "") +
+        " " +
+        (post.title || "") +
+        " " +
+        (post.excerpt || "")
+      ).toLowerCase();
 
-      if(raw.includes("ai") || raw.includes("artificial")){
-        return "ai";
-      }
 
-      return "technology";
+    if (
+      text.includes("cyber") ||
+      text.includes("ethical hacking") ||
+      text.includes("security")
+    ) {
+
+      return "Cyber Security";
+
     }
 
-    function categoryLabel(category){
-      const labels = {
-        all:"All",
-        ai:"AI",
-        uiux:"UI/UX",
-        cyber:"Cyber Security",
-        career:"Career",
-        technology:"Technology"
-      };
 
-      return labels[category] || "Technology";
+    if (
+      text.includes("ui/ux") ||
+      text.includes("ux") ||
+      text.includes("ui design")
+    ) {
+
+      return "UI/UX";
+
     }
 
-    function getSearchText(post){
-      return [
-        post.title,
-        post.excerpt,
-        post.content,
-        post.category,
-        post.tags
-      ]
+
+    if (
+      text.includes("career") ||
+      text.includes("job") ||
+      text.includes("freelance")
+    ) {
+
+      return "Career";
+
+    }
+
+
+    if (
+      text.includes("ai") ||
+      text.includes("artificial intelligence") ||
+      text.includes("machine learning")
+    ) {
+
+      return "AI";
+
+    }
+
+
+    return post.category ||
+      "Technology";
+
+  }
+
+
+  function getReadingTime(post) {
+
+    const words =
+      stripHTML(
+        `${post.title || ""}
+         ${post.excerpt || ""}
+         ${post.content || ""}`
+      )
+      .trim()
+      .split(/\s+/)
       .filter(Boolean)
-      .join(" ")
-      .toLowerCase();
-    }
-
-    function getParagraphs(content){
-      return (content || "")
-        .split(/\n\s*\n/)
-        .filter(p => p.trim() !== "")
-        .map(p => "<p>" + escapeHtml(p.trim()) + "</p>")
-        .join("");
-    }
-
-    function estimateReadingTime(content){
-      const words = (content || "")
-        .trim()
-        .split(/\s+/)
-        .filter(Boolean).length;
-
-      const minutes = Math.max(1, Math.ceil(words / 180));
-
-      return minutes + " min read";
-    }
-
-    function filteredPosts(){
-      return allPosts.filter(post => {
-        const category = getCategory(post);
-
-        const matchesCategory =
-          currentFilter === "all" ||
-          category === currentFilter;
-
-        const matchesSearch =
-          !searchTerm ||
-          getSearchText(post).includes(searchTerm);
-
-        return matchesCategory && matchesSearch;
-      });
-    }
+      .length;
 
 
-    /* =========================================================
-       RENDER FEATURED
-       ========================================================= */
+    return Math.max(
+      1,
+      Math.ceil(words / 180)
+    ) + " min read";
 
-    function renderFeatured(post){
-      if(!post){
-        featuredSection.style.display = "none";
-        return;
-      }
+  }
 
-      const category = getCategory(post);
 
-      featuredCard.innerHTML = `
-        <div class="featured-image-wrap">
-          <img
-            class="featured-image"
-            src="${getImage(post)}"
-            alt="${escapeHtml(post.title || "SNK Blog")}"
-            loading="eager"
-            onerror="this.src='${getImage({}).replace(/'/g,"&#39;")}'"
-          >
-          <div class="image-overlay"></div>
+  function getImage(post) {
+
+    return safeURL(
+      post.image ||
+      post.imageUrl ||
+      post.coverImage ||
+      ""
+    );
+
+  }
+
+
+  function imageHTML(src, alt) {
+
+    if (!src) {
+
+      return `
+        <div class="image-fallback">
+          SNK
         </div>
+      `;
 
-        <div class="featured-content">
+    }
 
-          <span class="featured-label">
-            FEATURED ARTICLE
-          </span>
 
-          <div class="post-meta">
-            <span>${escapeHtml(formatDate(post.createdAt))}</span>
-            <span class="dot"></span>
-            <span>${categoryLabel(category)}</span>
-            <span class="dot"></span>
-            <span>${estimateReadingTime(post.content)}</span>
-          </div>
+    return `
+      <img
+        src="${escapeHTML(src)}"
+        alt="${escapeHTML(alt)}"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      >
+    `;
 
-          <h2>${escapeHtml(post.title || "Untitled Post")}</h2>
+  }
 
-          <p>${escapeHtml(post.excerpt || "")}</p>
 
-          <div class="featured-actions">
-            <button
-              class="primary-btn"
-              onclick="openPost('${post.id}')"
-            >
-              পুরোটা পড়ুন →
-            </button>
+  /* =========================================================
+     RENDER
+  ========================================================= */
 
-            <button
-              class="secondary-btn"
-              onclick="copyPostLink('${post.id}', this)"
-            >
-              🔗 লিংক কপি
-            </button>
-          </div>
+  function renderPosts() {
+
+    const featured =
+      $("featuredArea");
+
+    const grid =
+      $("postsGrid");
+
+
+    $("resultCount").textContent =
+      filteredPosts.length +
+      " article" +
+      (
+        filteredPosts.length === 1
+          ? ""
+          : "s"
+      );
+
+
+    if (!filteredPosts.length) {
+
+      featured.innerHTML = `
+        <div class="state">
+          No featured article found.
+        </div>
+      `;
+
+
+      grid.innerHTML = `
+        <div class="state">
+
+          <strong>
+            No articles found.
+          </strong>
+
+          <br>
+
+          Try another keyword
+          or category.
 
         </div>
       `;
 
-      featuredSection.style.display = "block";
+      return;
+
     }
 
 
-    /* =========================================================
-       RENDER POSTS
-       ========================================================= */
+    /* ---------------------------------------------------------
+       FEATURED ARTICLE
+    --------------------------------------------------------- */
 
-    function renderPosts(){
-      const posts = filteredPosts();
+    const first =
+      filteredPosts[0];
 
-      blogGrid.innerHTML = "";
+    const firstImage =
+      getImage(first);
 
-      resultCount.textContent = posts.length + " টি পোস্ট";
 
-      if(!posts.length){
-        allPostsSection.style.display = "none";
-        emptyState.style.display = "block";
-        return;
-      }
+    featured.innerHTML = `
 
-      emptyState.style.display = "none";
-      allPostsSection.style.display = "block";
+      <article
+        class="featured"
+        onclick="openArticle('${escapeHTML(first.id)}')"
+      >
 
-      posts.forEach(post => {
+        <div class="feature-media">
 
-        const category = getCategory(post);
-        const postId = "post-" + post.id;
+          <span class="feature-badge">
+            Featured
+          </span>
 
-        const card = document.createElement("article");
+          ${
+            imageHTML(
+              firstImage,
+              first.title
+            )
+          }
 
-        card.className = "blog-card";
-        card.setAttribute("data-doc-id", post.id);
+        </div>
 
-        card.innerHTML = `
-          <div class="blog-image-wrap">
 
-            <img
-              class="blog-image"
-              src="${getImage(post)}"
-              alt="${escapeHtml(post.title || "Blog Post")}"
-              loading="lazy"
+        <div class="feature-content">
+
+          <div class="post-category">
+            ${escapeHTML(
+              getCategory(first)
+            )}
+          </div>
+
+
+          <h2>
+            ${escapeHTML(
+              first.title ||
+              "Untitled Article"
+            )}
+          </h2>
+
+
+          <p>
+            ${escapeHTML(
+              first.excerpt ||
+              stripHTML(
+                first.content
+              ).slice(0,280)
+            )}
+          </p>
+
+
+          <div class="post-info">
+
+            ${formatDate(first.createdAt)}
+
+            •
+
+            ${getReadingTime(first)}
+
+          </div>
+
+
+          <button class="read-btn">
+            Read Article →
+          </button>
+
+        </div>
+
+      </article>
+
+    `;
+
+
+    /* ---------------------------------------------------------
+       ARTICLE CARDS
+    --------------------------------------------------------- */
+
+    grid.innerHTML =
+      filteredPosts
+        .map(post => {
+
+          const postImage =
+            getImage(post);
+
+
+          return `
+
+            <article
+              class="post-card"
+              onclick="openArticle('${escapeHTML(post.id)}')"
             >
 
-            <span class="category-badge">
-              ${categoryLabel(category)}
-            </span>
+              <div class="post-image">
 
-          </div>
-
-          <div class="blog-body">
-
-            <span class="blog-date">
-              ${escapeHtml(formatDate(post.createdAt))}
-              ${post.content ? " • " + estimateReadingTime(post.content) : ""}
-            </span>
-
-            <h3>
-              ${escapeHtml(post.title || "Untitled Post")}
-            </h3>
-
-            <p class="blog-excerpt">
-              ${escapeHtml(post.excerpt || "")}
-            </p>
-
-            <div class="card-footer">
-
-              <button
-                class="read-more-btn"
-                onclick="toggleBlogPost('${postId}', this)"
-              >
-                পুরোটা পড়ুন →
-              </button>
-
-              <button
-                class="share-btn"
-                onclick="copyPostLink('${post.id}', this)"
-              >
-                🔗 Share
-              </button>
-
-            </div>
-
-            <div class="blog-full" id="${postId}">
-              ${getParagraphs(post.content)}
-            </div>
-
-          </div>
-        `;
-
-        blogGrid.appendChild(card);
-      });
-    }
+                ${
+                  imageHTML(
+                    postImage,
+                    post.title
+                  )
+                }
 
 
-    /* =========================================================
-       LOAD FIREBASE POSTS
-       ========================================================= */
+                <span class="card-category">
 
-    function loadPosts(){
+                  ${escapeHTML(
+                    getCategory(post)
+                  )}
 
-      try{
-        if(!firebase.apps.length){
-          firebase.initializeApp(firebaseConfig);
-        }
+                </span>
 
-        const db = firebase.firestore();
-
-        db.collection("posts")
-          .orderBy("createdAt", "desc")
-          .get()
-          .then(snapshot => {
-
-            loadingState.style.display = "none";
-
-            if(snapshot.empty){
-              heroPostCount.textContent = "0";
-              featuredSection.style.display = "none";
-              allPostsSection.style.display = "none";
-              emptyState.style.display = "block";
-              return;
-            }
-
-            allPosts = [];
-
-            snapshot.forEach(doc => {
-              allPosts.push({
-                id:doc.id,
-                ...doc.data()
-              });
-            });
-
-            heroPostCount.textContent = allPosts.length;
-
-            renderFeatured(allPosts[0]);
-            renderPosts();
-
-            openSharedPostIfNeeded();
-
-          })
-          .catch(error => {
-
-            console.error("Firebase blog error:", error);
-
-            loadingState.style.display = "none";
-            featuredSection.style.display = "none";
-            allPostsSection.style.display = "none";
-            emptyState.style.display = "none";
-            errorState.style.display = "block";
-
-          });
-
-      }catch(error){
-
-        console.error("Firebase initialization error:", error);
-
-        loadingState.style.display = "none";
-        errorState.style.display = "block";
-      }
-    }
+              </div>
 
 
-    /* =========================================================
-       SEARCH
-       ========================================================= */
+              <div class="post-body">
 
-    searchInput.addEventListener("input", () => {
+                <div class="post-category">
 
-      searchTerm =
-        searchInput.value
-          .trim()
-          .toLowerCase();
+                  ${escapeHTML(
+                    getCategory(post)
+                  )}
 
-      renderPosts();
-
-    });
+                </div>
 
 
-    /* =========================================================
-       FILTER
-       ========================================================= */
+                <h3>
 
-    document.querySelectorAll(".filter-btn").forEach(button => {
+                  ${escapeHTML(
+                    post.title ||
+                    "Untitled Article"
+                  )}
 
-      button.addEventListener("click", () => {
-
-        document.querySelectorAll(".filter-btn")
-          .forEach(btn => btn.classList.remove("active"));
-
-        button.classList.add("active");
-
-        currentFilter =
-          button.getAttribute("data-filter");
-
-        renderPosts();
-
-      });
-
-    });
+                </h3>
 
 
-    /* =========================================================
-       READ MORE
-       ========================================================= */
+                <p>
 
-    function toggleBlogPost(id, button){
+                  ${escapeHTML(
+                    post.excerpt ||
+                    stripHTML(
+                      post.content
+                    ).slice(0,180)
+                  )}
 
-      const el = document.getElementById(id);
-
-      if(!el) return;
-
-      const isOpen =
-        el.classList.toggle("open");
-
-      button.textContent =
-        isOpen
-          ? "লেখাটি বন্ধ করুন ↑"
-          : "পুরোটা পড়ুন →";
-
-    }
+                </p>
 
 
-    function openPost(docId){
+                <div class="card-bottom">
 
-      const card =
-        document.querySelector(
-          '[data-doc-id="' + docId + '"]'
+                  <span>
+
+                    ${formatDate(
+                      post.createdAt
+                    )}
+
+                    ·
+
+                    ${getReadingTime(post)}
+
+                  </span>
+
+
+                  <span class="arrow">
+                    →
+                  </span>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          `;
+
+        })
+        .join("");
+
+  }
+
+
+  /* =========================================================
+     FILTER
+  ========================================================= */
+
+  function filterPosts() {
+
+    const query =
+      $("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    filteredPosts =
+      posts.filter(post => {
+
+        const category =
+          getCategory(post)
+            .toLowerCase();
+
+
+        const searchable =
+          `
+            ${post.title || ""}
+            ${post.excerpt || ""}
+            ${post.content || ""}
+            ${category}
+          `.toLowerCase();
+
+
+        const categoryMatch =
+          currentCategory === "all" ||
+          category.includes(
+            currentCategory
+          );
+
+
+        const searchMatch =
+          !query ||
+          searchable.includes(query);
+
+
+        return (
+          categoryMatch &&
+          searchMatch
         );
 
-      if(card){
+      });
 
-        const full =
-          card.querySelector(".blog-full");
 
-        const btn =
-          card.querySelector(".read-more-btn");
+    renderPosts();
 
-        if(full && btn){
+  }
 
-          full.classList.add("open");
-          btn.textContent = "লেখাটি বন্ধ করুন ↑";
 
-        }
+  /* =========================================================
+     LOAD FIRESTORE
+  ========================================================= */
 
-        card.scrollIntoView({
-          behavior:"smooth",
-          block:"start"
-        });
+  async function loadPosts() {
 
-        return;
+    try {
+
+      const snapshot =
+        await db
+          .collection("posts")
+          .orderBy(
+            "createdAt",
+            "desc"
+          )
+          .get();
+
+
+      posts =
+        snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+
+
+      filterPosts();
+
+
+      const articleID =
+        new URLSearchParams(
+          window.location.search
+        ).get("post");
+
+
+      if (articleID) {
+
+        openArticle(
+          articleID,
+          false
+        );
+
       }
 
-      const post =
-        allPosts.find(p => p.id === docId);
 
-      if(post){
-        const url =
-          window.location.pathname +
-          "?post=" +
-          encodeURIComponent(docId);
+    } catch (error) {
 
-        window.history.pushState({}, "", url);
+      console.error(
+        "Firebase Error:",
+        error
+      );
 
-        renderPosts();
 
-        setTimeout(() => {
-          const target =
-            document.querySelector(
-              '[data-doc-id="' + docId + '"]'
-            );
+      $("featuredArea").innerHTML = `
 
-          if(target){
-            target.scrollIntoView({
-              behavior:"smooth",
-              block:"start"
-            });
-          }
-        },100);
-      }
+        <div class="state">
+
+          Unable to load
+          featured article.
+
+        </div>
+
+      `;
+
+
+      $("postsGrid").innerHTML = `
+
+        <div class="state">
+
+          <strong>
+            Articles could not be loaded.
+          </strong>
+
+          <br>
+
+          Please check your
+          Firebase / Firestore
+          configuration.
+
+        </div>
+
+      `;
+
+    }
+
+  }
+
+
+  /* =========================================================
+     OPEN ARTICLE
+  ========================================================= */
+
+  function openArticle(
+    id,
+    updateHistory = true
+  ) {
+
+    const post =
+      posts.find(
+        item => item.id === id
+      );
+
+
+    if (!post) {
+
+      return;
+
     }
 
 
-    /* =========================================================
-       COPY SHARE LINK
-       ========================================================= */
+    const image =
+      getImage(post);
 
-    function copyPostLink(docId, button){
 
-      const url =
-        window.location.origin +
-        window.location.pathname +
-        "?post=" +
-        encodeURIComponent(docId);
+    $("articleCategory")
+      .textContent =
+      getCategory(post);
 
-      const copied = () => {
 
-        const original =
-          button.textContent;
+    $("articleTitle")
+      .textContent =
+      post.title ||
+      "Untitled Article";
 
-        button.textContent = "✓ কপি হয়েছে";
-        button.classList.add("copied");
 
-        setTimeout(() => {
-          button.textContent = original;
-          button.classList.remove("copied");
-        },1800);
+    $("articleDate")
+      .textContent =
+      formatDate(
+        post.createdAt
+      );
+
+
+    $("articleRead")
+      .textContent =
+      getReadingTime(post);
+
+
+    $("articleCover").innerHTML = `
+
+      <button
+        class="article-close"
+        onclick="closeArticle()"
+      >
+        ×
+      </button>
+
+      ${
+        image
+          ? `
+            <img
+              src="${escapeHTML(image)}"
+              alt="${escapeHTML(post.title)}"
+            >
+          `
+          : `
+            <div class="image-fallback">
+              SNK
+            </div>
+          `
+      }
+
+    `;
+
+
+    $("articleContent")
+      .innerHTML =
+      post.content ||
+      `
+        <p>
+          ${escapeHTML(
+            post.excerpt ||
+            "No full article content available."
+          )}
+        </p>
+      `;
+
+
+    $("articleModal")
+      .classList.add("open");
+
+
+    document.body
+      .classList.add("lock");
+
+
+    const articleURL =
+      window.location.origin +
+      window.location.pathname +
+      "?post=" +
+      encodeURIComponent(id);
+
+
+    $("copyBtn").onclick =
+      async function () {
+
+        try {
+
+          await navigator.clipboard
+            .writeText(articleURL);
+
+
+          this.textContent =
+            "Copied ✓";
+
+
+          setTimeout(() => {
+
+            this.textContent =
+              "Copy Link";
+
+          }, 1500);
+
+
+        } catch (error) {
+
+          alert(
+            "Copy failed."
+          );
+
+        }
 
       };
 
-      if(
-        navigator.clipboard &&
-        navigator.clipboard.writeText
-      ){
 
-        navigator.clipboard
-          .writeText(url)
-          .then(copied)
-          .catch(() => {
-            prompt("লিংকটি কপি করুন:",url);
-          });
+    $("waShare").onclick =
+      function () {
 
-      }else{
-
-        prompt("লিংকটি কপি করুন:",url);
-
-      }
-    }
-
-
-    /* =========================================================
-       OPEN SHARED POST
-       ========================================================= */
-
-    function openSharedPostIfNeeded(){
-
-      const params =
-        new URLSearchParams(
-          window.location.search
+        window.open(
+          "https://wa.me/?text=" +
+          encodeURIComponent(
+            (post.title ||
+              "SNK Article") +
+            " — " +
+            articleURL
+          ),
+          "_blank"
         );
 
-      const sharedPostId =
-        params.get("post");
+      };
 
-      if(!sharedPostId) return;
 
-      setTimeout(() => {
+    $("fbShare").onclick =
+      function () {
 
-        const target =
-          document.querySelector(
-            '[data-doc-id="' +
-            sharedPostId +
-            '"]'
-          );
+        window.open(
+          "https://www.facebook.com/sharer/sharer.php?u=" +
+          encodeURIComponent(
+            articleURL
+          ),
+          "_blank"
+        );
 
-        if(target){
+      };
 
-          const full =
-            target.querySelector(".blog-full");
 
-          const btn =
-            target.querySelector(".read-more-btn");
+    if (updateHistory) {
 
-          if(full) full.classList.add("open");
+      history.pushState(
+        { post: id },
+        "",
+        "?post=" +
+        encodeURIComponent(id)
+      );
 
-          if(btn)
-            btn.textContent =
-              "লেখাটি বন্ধ করুন ↑";
-
-          target.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-          });
-
-        }
-
-      },350);
     }
 
+  }
 
-    /* =========================================================
-       COUNSELOR
-       ========================================================= */
 
-    const counselorTrigger =
-      document.getElementById(
-        "counselorTrigger"
+  window.openArticle =
+    openArticle;
+
+
+  /* =========================================================
+     CLOSE ARTICLE
+  ========================================================= */
+
+  function closeArticle() {
+
+    $("articleModal")
+      .classList.remove("open");
+
+
+    document.body
+      .classList.remove("lock");
+
+
+    if (window.location.search) {
+
+      history.pushState(
+        {},
+        "",
+        window.location.pathname
       );
 
-    const counselorPopup =
-      document.getElementById(
-        "counselorPopup"
-      );
+    }
 
-    const counselorClose =
-      document.getElementById(
-        "counselorClose"
-      );
+  }
 
-    counselorTrigger.addEventListener(
-      "click",
-      () => {
-        counselorPopup.classList.toggle("open");
-      }
+
+  window.closeArticle =
+    closeArticle;
+
+
+  /* =========================================================
+     SEARCH
+  ========================================================= */
+
+  $("searchInput")
+    .addEventListener(
+      "input",
+      filterPosts
     );
 
-    counselorClose.addEventListener(
-      "click",
-      () => {
-        counselorPopup.classList.remove("open");
-      }
-    );
 
-    document.addEventListener("click", event => {
+  /* =========================================================
+     CATEGORY
+  ========================================================= */
 
-      if(
-        counselorPopup.classList.contains("open") &&
-        !counselorPopup.contains(event.target) &&
-        !counselorTrigger.contains(event.target)
-      ){
-        counselorPopup.classList.remove("open");
-      }
+  document
+    .querySelectorAll(".chip")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          document
+            .querySelectorAll(".chip")
+            .forEach(
+              item =>
+                item.classList.remove(
+                  "active"
+                )
+            );
+
+
+          this.classList.add(
+            "active"
+          );
+
+
+          currentCategory =
+            this.dataset.category;
+
+
+          filterPosts();
+
+        }
+      );
 
     });
 
 
-    /* =========================================================
-       START
-       ========================================================= */
+  /* =========================================================
+     THEME
+  ========================================================= */
 
-    loadPosts();
+  $("themeBtn")
+    .addEventListener(
+      "click",
+      function () {
 
-  </script>
+        const next =
+          document.documentElement
+            .dataset.theme === "dark"
+            ? "light"
+            : "dark";
+
+
+        document.documentElement
+          .dataset.theme =
+          next;
+
+
+        this.textContent =
+          next === "dark"
+            ? "☾"
+            : "☀";
+
+
+        localStorage.setItem(
+          "snk-theme",
+          next
+        );
+
+      }
+    );
+
+
+  const savedTheme =
+    localStorage.getItem(
+      "snk-theme"
+    );
+
+
+  if (savedTheme) {
+
+    document.documentElement
+      .dataset.theme =
+      savedTheme;
+
+
+    $("themeBtn")
+      .textContent =
+      savedTheme === "dark"
+        ? "☾"
+        : "☀";
+
+  }
+
+
+  /* =========================================================
+     LANGUAGE BUTTON
+  ========================================================= */
+
+  $("langBtn")
+    .addEventListener(
+      "click",
+      function () {
+
+        this.textContent =
+          this.textContent === "বাংলা"
+            ? "EN"
+            : "বাংলা";
+
+      }
+    );
+
+
+  /* =========================================================
+     MOBILE DRAWER
+  ========================================================= */
+
+  function toggleDrawer(open) {
+
+    $("drawer")
+      .classList.toggle(
+        "open",
+        open
+      );
+
+
+    $("overlay")
+      .classList.toggle(
+        "open",
+        open
+      );
+
+
+    document.body
+      .classList.toggle(
+        "lock",
+        open
+      );
+
+  }
+
+
+  $("menuBtn")
+    .addEventListener(
+      "click",
+      () => toggleDrawer(true)
+    );
+
+
+  $("drawerClose")
+    .addEventListener(
+      "click",
+      () => toggleDrawer(false)
+    );
+
+
+  $("overlay")
+    .addEventListener(
+      "click",
+      () => toggleDrawer(false)
+    );
+
+
+  /* =========================================================
+     MODAL EVENTS
+  ========================================================= */
+
+  $("articleModal")
+    .addEventListener(
+      "click",
+      function (event) {
+
+        if (
+          event.target ===
+          $("articleModal")
+        ) {
+
+          closeArticle();
+
+        }
+
+      }
+    );
+
+
+  window.addEventListener(
+    "popstate",
+    function () {
+
+      const id =
+        new URLSearchParams(
+          window.location.search
+        ).get("post");
+
+
+      if (id) {
+
+        openArticle(
+          id,
+          false
+        );
+
+      } else {
+
+        $("articleModal")
+          .classList.remove("open");
+
+        document.body
+          .classList.remove("lock");
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     YEAR
+  ========================================================= */
+
+  $("year")
+    .textContent =
+    new Date().getFullYear();
+
+
+  /* =========================================================
+     START
+  ========================================================= */
+
+  loadPosts();
+
+</script>
 
 </body>
 </html>
