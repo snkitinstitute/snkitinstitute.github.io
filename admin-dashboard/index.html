@@ -1,4516 +1,1430 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | SNK IT Institute</title>
 
-<title>Admin Dashboard | SNK IT Institute</title>
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
 
-<meta name="description" content="SNK IT Institute Admin Dashboard">
+  <style>
 
-<link rel="icon" type="image/svg+xml"
-href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+    *{ margin:0; padding:0; box-sizing:border-box; }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-:root{
-    --bg:#070707;
-    --panel:#101010;
-    --panel2:#151515;
-    --border:#252525;
-    --text:#f5f5f5;
-    --muted:#9b9b9b;
-    --lime:#b7ff00;
-    --lime-dark:#8bc700;
-    --danger:#ff4d4d;
-    --warning:#ffb800;
-    --success:#27d17f;
-    --blue:#4da3ff;
-    --shadow:0 20px 50px rgba(0,0,0,.35);
-    --radius:18px;
-}
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:"Hind Siliguri","Inter",sans-serif;
-    min-height:100vh;
-}
-
-button,
-input,
-textarea,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-img{
-    max-width:100%;
-    display:block;
-}
-
-/* =========================
-   AUTH
-========================= */
-
-.auth-gate{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    background:#050505;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.auth-box{
-    width:100%;
-    max-width:420px;
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:24px;
-    padding:35px;
-    text-align:center;
-    box-shadow:var(--shadow);
-}
-
-.auth-box img{
-    width:75px;
-    height:75px;
-    object-fit:contain;
-    margin:0 auto 20px;
-}
-
-.auth-box h2{
-    font-size:28px;
-    margin-bottom:8px;
-}
-
-.auth-box p{
-    color:var(--muted);
-}
-
-/* =========================
-   APP
-========================= */
-
-.app{
-    display:none;
-    min-height:100vh;
-}
-
-.sidebar{
-    position:fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    width:255px;
-    background:#090909;
-    border-right:1px solid var(--border);
-    padding:22px 15px;
-    z-index:1000;
-    overflow-y:auto;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:8px 10px 25px;
-    border-bottom:1px solid var(--border);
-    margin-bottom:20px;
-}
-
-.brand img{
-    width:45px;
-    height:45px;
-    object-fit:contain;
-}
-
-.brand-text strong{
-    display:block;
-    font-size:17px;
-}
-
-.brand-text span{
-    display:block;
-    font-size:12px;
-    color:var(--muted);
-}
-
-.nav-title{
-    color:#666;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:1px;
-    padding:0 12px 8px;
-    text-transform:uppercase;
-}
-
-.nav{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-}
-
-.nav button{
-    width:100%;
-    border:0;
-    background:transparent;
-    color:#aaa;
-    padding:12px 13px;
-    border-radius:12px;
-    text-align:left;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    transition:.2s;
-}
-
-.nav button:hover{
-    background:#151515;
-    color:#fff;
-}
-
-.nav button.active{
-    background:rgba(183,255,0,.11);
-    color:var(--lime);
-}
-
-.nav-icon{
-    width:24px;
-    text-align:center;
-    font-size:17px;
-}
-
-.sidebar-bottom{
-    margin-top:25px;
-    border-top:1px solid var(--border);
-    padding-top:18px;
-}
-
-.main{
-    margin-left:255px;
-    min-height:100vh;
-}
-
-.topbar{
-    height:76px;
-    border-bottom:1px solid var(--border);
-    background:rgba(7,7,7,.92);
-    backdrop-filter:blur(15px);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 30px;
-    position:sticky;
-    top:0;
-    z-index:900;
-}
-
-.page-title h1{
-    font-size:23px;
-}
-
-.page-title p{
-    color:var(--muted);
-    font-size:13px;
-}
-
-.top-actions{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.mobile-menu{
-    display:none;
-}
-
-.content{
-    padding:30px;
-    max-width:1700px;
-    margin:auto;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.btn{
-    border:1px solid var(--border);
-    background:#161616;
-    color:#fff;
-    border-radius:11px;
-    padding:10px 15px;
-    transition:.2s;
-}
-
-.btn:hover{
-    border-color:#444;
-    transform:translateY(-1px);
-}
-
-.btn-primary{
-    background:var(--lime);
-    color:#050505;
-    border-color:var(--lime);
-    font-weight:700;
-}
-
-.btn-primary:hover{
-    background:#c5ff35;
-    border-color:#c5ff35;
-}
-
-.btn-danger{
-    background:rgba(255,77,77,.1);
-    color:#ff6d6d;
-    border-color:rgba(255,77,77,.25);
-}
-
-.btn-success{
-    background:rgba(39,209,127,.1);
-    color:#52e49b;
-    border-color:rgba(39,209,127,.25);
-}
-
-.btn-warning{
-    background:rgba(255,184,0,.1);
-    color:#ffc83d;
-    border-color:rgba(255,184,0,.25);
-}
-
-.btn-blue{
-    background:rgba(77,163,255,.1);
-    color:#6db5ff;
-    border-color:rgba(77,163,255,.25);
-}
-
-.btn-small{
-    padding:7px 10px;
-    font-size:12px;
-}
-
-/* =========================
-   SECTIONS
-========================= */
-
-.page-section{
-    display:none;
-}
-
-.page-section.active{
-    display:block;
-}
-
-.section-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-    margin-bottom:20px;
-}
-
-.section-head h2{
-    font-size:22px;
-}
-
-.section-head p{
-    color:var(--muted);
-    font-size:13px;
-}
-
-/* =========================
-   STATS
-========================= */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:15px;
-    margin-bottom:25px;
-}
-
-.stat{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:20px;
-    position:relative;
-    overflow:hidden;
-}
-
-.stat::after{
-    content:"";
-    position:absolute;
-    width:80px;
-    height:80px;
-    background:rgba(183,255,0,.07);
-    border-radius:50%;
-    right:-25px;
-    top:-25px;
-}
-
-.stat-icon{
-    font-size:22px;
-    margin-bottom:13px;
-}
-
-.stat-label{
-    color:var(--muted);
-    font-size:13px;
-}
-
-.stat-value{
-    font-size:31px;
-    font-weight:800;
-    margin-top:3px;
-}
-
-/* =========================
-   DASHBOARD GRID
-========================= */
-
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:1.3fr .7fr;
-    gap:20px;
-}
-
-.panel{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:20px;
-}
-
-.panel-title{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:18px;
-}
-
-.panel-title h3{
-    font-size:17px;
-}
-
-.panel-title span{
-    color:var(--muted);
-    font-size:12px;
-}
-
-/* =========================
-   ACTIVITY
-========================= */
-
-.activity{
-    display:flex;
-    flex-direction:column;
-}
-
-.activity-item{
-    display:flex;
-    gap:12px;
-    padding:13px 0;
-    border-bottom:1px solid #1d1d1d;
-}
-
-.activity-item:last-child{
-    border-bottom:0;
-}
-
-.activity-dot{
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    background:var(--lime);
-    margin-top:7px;
-    flex-shrink:0;
-}
-
-.activity-main{
-    flex:1;
-}
-
-.activity-main strong{
-    display:block;
-    font-size:14px;
-}
-
-.activity-main span{
-    color:var(--muted);
-    font-size:12px;
-}
-
-/* =========================
-   TABLE / FILTER
-========================= */
-
-.toolbar{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:18px;
-}
-
-.search-box{
-    position:relative;
-    flex:1;
-    min-width:230px;
-}
-
-.search-box span{
-    position:absolute;
-    left:13px;
-    top:50%;
-    transform:translateY(-50%);
-    color:#777;
-}
-
-.search-box input{
-    padding-left:40px;
-}
-
-input,
-textarea,
-select{
-    width:100%;
-    background:#0b0b0b;
-    color:#fff;
-    border:1px solid var(--border);
-    border-radius:11px;
-    padding:11px 13px;
-    outline:none;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-    border-color:rgba(183,255,0,.55);
-}
-
-select option{
-    background:#111;
-}
-
-.table-wrap{
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:850px;
-}
-
-th{
-    color:#777;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.6px;
-    text-align:left;
-    padding:13px 12px;
-    border-bottom:1px solid var(--border);
-}
-
-td{
-    padding:14px 12px;
-    border-bottom:1px solid #1b1b1b;
-    vertical-align:middle;
-    font-size:13px;
-}
-
-tbody tr:hover{
-    background:#131313;
-}
-
-.user-name{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.avatar{
-    width:36px;
-    height:36px;
-    border-radius:50%;
-    background:#1c1c1c;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--lime);
-    font-weight:700;
-}
-
-.muted{
-    color:var(--muted);
-}
-
-.actions{
-    display:flex;
-    gap:6px;
-    flex-wrap:wrap;
-}
-
-.badge{
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-    padding:5px 9px;
-    border-radius:50px;
-    font-size:11px;
-    font-weight:600;
-}
-
-.badge-pending{
-    background:rgba(255,184,0,.1);
-    color:#ffc83d;
-}
-
-.badge-approved,
-.badge-confirmed{
-    background:rgba(39,209,127,.1);
-    color:#50df99;
-}
-
-.badge-rejected,
-.badge-cancelled{
-    background:rgba(255,77,77,.1);
-    color:#ff6d6d;
-}
-
-/* =========================
-   COURSE GRID
-========================= */
-
-.course-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.course-card{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    overflow:hidden;
-}
-
-.course-image{
-    height:160px;
-    background:#171717;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-}
-
-.course-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.course-placeholder{
-    font-size:40px;
-    color:#444;
-}
-
-.course-body{
-    padding:18px;
-}
-
-.course-tag{
-    display:inline-block;
-    color:var(--lime);
-    background:rgba(183,255,0,.08);
-    padding:4px 9px;
-    border-radius:50px;
-    font-size:11px;
-    margin-bottom:9px;
-}
-
-.course-body h3{
-    font-size:18px;
-    margin-bottom:8px;
-}
-
-.course-desc{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.6;
-    min-height:45px;
-}
-
-.course-price{
-    display:flex;
-    align-items:end;
-    gap:9px;
-    margin:15px 0;
-}
-
-.old-price{
-    color:#666;
-    text-decoration:line-through;
-    font-size:13px;
-}
-
-.new-price{
-    color:var(--lime);
-    font-size:23px;
-    font-weight:800;
-}
-
-.course-meta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin-bottom:15px;
-}
-
-.meta-chip{
-    background:#171717;
-    border:1px solid #222;
-    color:#aaa;
-    padding:5px 8px;
-    border-radius:7px;
-    font-size:10px;
-}
-
-.course-actions{
-    display:flex;
-    gap:7px;
-}
-
-/* =========================
-   BLOG
-========================= */
-
-.blog-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.blog-card{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    overflow:hidden;
-}
-
-.blog-image{
-    height:180px;
-    background:#151515;
-}
-
-.blog-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.blog-body{
-    padding:17px;
-}
-
-.blog-body h3{
-    font-size:17px;
-    margin-bottom:7px;
-}
-
-.blog-body p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.5;
-    display:-webkit-box;
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
-}
-
-.blog-actions{
-    display:flex;
-    gap:7px;
-    margin-top:15px;
-}
-
-/* =========================
-   EMPTY
-========================= */
-
-.empty{
-    text-align:center;
-    padding:50px 20px;
-    color:#666;
-}
-
-.empty-icon{
-    font-size:40px;
-    margin-bottom:10px;
-}
-
-/* =========================
-   MODAL
-========================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.78);
-    backdrop-filter:blur(8px);
-    z-index:5000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:760px;
-    max-height:90vh;
-    overflow-y:auto;
-    background:#101010;
-    border:1px solid #292929;
-    border-radius:22px;
-    box-shadow:var(--shadow);
-}
-
-.modal-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px;
-    border-bottom:1px solid var(--border);
-    position:sticky;
-    top:0;
-    background:#101010;
-    z-index:2;
-}
-
-.modal-head h3{
-    font-size:19px;
-}
-
-.close{
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    border:1px solid var(--border);
-    background:#181818;
-    color:#fff;
-}
-
-.modal-body{
-    padding:20px;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-}
-
-.form-group{
-    margin-bottom:14px;
-}
-
-.form-group.full{
-    grid-column:1/-1;
-}
-
-.form-group label{
-    display:block;
-    font-size:12px;
-    color:#aaa;
-    margin-bottom:6px;
-}
-
-.modal-footer{
-    padding:17px 20px;
-    border-top:1px solid var(--border);
-    display:flex;
-    justify-content:flex-end;
-    gap:8px;
-    position:sticky;
-    bottom:0;
-    background:#101010;
-}
-
-/* =========================
-   TOAST
-========================= */
-
-.toast-container{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    z-index:10000;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.toast{
-    min-width:260px;
-    max-width:370px;
-    background:#171717;
-    border:1px solid #292929;
-    border-left:3px solid var(--lime);
-    border-radius:12px;
-    padding:13px 15px;
-    box-shadow:var(--shadow);
-    animation:toastIn .25s ease;
-    font-size:13px;
-}
-
-.toast.error{
-    border-left-color:var(--danger);
-}
-
-.toast.success{
-    border-left-color:var(--success);
-}
-
-@keyframes toastIn{
-    from{
-        transform:translateY(15px);
-        opacity:0;
-    }
-    to{
-        transform:translateY(0);
-        opacity:1;
-    }
-}
-
-/* =========================
-   LOADER
-========================= */
-
-.loading{
-    text-align:center;
-    padding:30px;
-    color:#777;
-}
-
-.spinner{
-    width:25px;
-    height:25px;
-    border:3px solid #292929;
-    border-top-color:var(--lime);
-    border-radius:50%;
-    animation:spin .7s linear infinite;
-    margin:0 auto 10px;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:1200px){
-    .stats{
-        grid-template-columns:repeat(3,1fr);
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#050505;
+      color:#fff;
+      line-height:1.6;
     }
 
-    .course-grid,
-    .blog-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
+    a{ text-decoration:none; color:inherit; }
+    button, input, textarea{ font:inherit; }
 
-@media(max-width:900px){
-    .sidebar{
-        transform:translateX(-100%);
-        transition:.25s;
-        width:270px;
-    }
+    .container{ width:min(1100px,94%); margin:auto; }
 
-    .sidebar.open{
-        transform:translateX(0);
+    /* HEADER */
+
+    .admin-header{
+      position:sticky; top:0; z-index:999;
+      background:rgba(5,5,5,.96);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid #181818;
+      padding:16px 0;
     }
 
-    .main{
-        margin-left:0;
+    .admin-header .container{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
     }
 
-    .mobile-menu{
-        display:flex;
-        width:38px;
-        height:38px;
-        align-items:center;
-        justify-content:center;
-        border:1px solid var(--border);
-        background:#151515;
-        color:#fff;
-        border-radius:10px;
+    .admin-brand{ display:flex; align-items:center; gap:10px; }
+    .admin-brand img{ width:36px; height:36px; }
+    .admin-brand span{ font-weight:800; font-size:15px; }
+
+    .logout-btn{
+      padding:9px 16px;
+      border:1px solid #292929;
+      border-radius:8px;
+      background:#101010;
+      color:#fff;
+      font-size:12.5px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.3s;
+    }
+    .logout-btn:hover{ border-color:#ff8080; color:#ff8080; }
+
+    /* TOAST NOTIFICATION */
+
+    .toast{
+      position:fixed;
+      top:20px;
+      right:20px;
+      z-index:99999;
+      padding:14px 20px;
+      border-radius:10px;
+      font-size:13px;
+      font-weight:700;
+      box-shadow:0 15px 40px rgba(0,0,0,.35);
+      transform:translateX(120%);
+      transition:transform .35s ease;
+      max-width:320px;
     }
 
-    .topbar{
-        padding:0 17px;
+    .toast.show{
+      transform:translateX(0);
     }
 
-    .topbar-left{
-        display:flex;
-        align-items:center;
-        gap:10px;
+    .toast.success{
+      background:#0f2e0f;
+      border:1px solid #4ade80;
+      color:#4ade80;
     }
 
-    .content{
-        padding:20px 15px;
+    .toast.error{
+      background:#2e0f0f;
+      border:1px solid #ff8080;
+      color:#ff8080;
     }
 
-    .dashboard-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-@media(max-width:650px){
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .stat{
-        padding:15px;
+    @media(max-width:600px){
+      .toast{
+        left:16px;
+        right:16px;
+        top:16px;
+        max-width:none;
+      }
     }
 
-    .stat-value{
-        font-size:25px;
+    /* LOADING GATE */
+
+    .auth-gate{
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      color:#777; font-size:14px;
     }
 
-    .course-grid,
-    .blog-grid{
-        grid-template-columns:1fr;
+    .dashboard-body{ display:none; padding:30px 0 80px; }
+
+    /* TABS */
+
+    .tabs{
+      display:flex; gap:10px; margin-bottom:26px;
+      border-bottom:1px solid #181818;
     }
+
+    .tab-btn{
+      padding:12px 18px;
+      background:none; border:0;
+      color:#777; font-size:14px; font-weight:700;
+      cursor:pointer;
+      border-bottom:2px solid transparent;
+      transition:.3s;
+    }
+
+    .tab-btn.active{ color:#b7ff00; border-color:#b7ff00; }
+
+    .tab-panel{ display:none; }
+    .tab-panel.active{ display:block; }
+
+    /* SECTION HEADER */
 
     .section-head{
-        align-items:flex-start;
-        flex-direction:column;
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:20px; flex-wrap:wrap; gap:10px;
     }
 
-    .form-grid{
-        grid-template-columns:1fr;
+    .section-head h2{ font-size:19px; }
+    .section-head span{ color:#777; font-size:12.5px; }
+
+    .primary-btn{
+      padding:11px 18px;
+      background:#b7ff00; color:#050505;
+      border:0; border-radius:8px;
+      font-size:13px; font-weight:800;
+      cursor:pointer; transition:.3s;
+    }
+    .primary-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(183,255,0,.2); }
+
+    /* POST FORM */
+
+    .post-form{
+      display:none;
+      background:#0b0b0b; border:1px solid #202020; border-radius:16px;
+      padding:24px; margin-bottom:24px;
+    }
+    .post-form.open{ display:block; }
+
+    .form-row{ display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
+    .form-row label{ font-size:12.5px; font-weight:700; color:#ddd; }
+
+    .form-row input, .form-row textarea{
+      width:100%; border:1px solid #292929; outline:none;
+      background:#101010; color:#fff; border-radius:9px;
+      padding:12px 13px; font-size:13px; transition:.3s;
+    }
+    .form-row input:focus, .form-row textarea:focus{
+      border-color:rgba(183,255,0,.5); box-shadow:0 0 0 3px rgba(183,255,0,.05);
+    }
+    .form-row textarea{ min-height:80px; resize:vertical; }
+    .form-row .hint{ color:#666; font-size:11px; }
+
+    .form-actions{ display:flex; gap:10px; margin-top:6px; }
+
+    .module-row{
+      display:flex; gap:8px; margin-bottom:8px; align-items:flex-start;
+    }
+    .module-row input{
+      border:1px solid #292929; outline:none; background:#101010; color:#fff;
+      border-radius:9px; padding:10px 12px; font-size:12.5px;
+    }
+    .module-row .mod-title{ flex:0.9; }
+    .module-row .mod-desc{ flex:1.4; }
+    .module-row .remove-module-btn{
+      flex-shrink:0; width:34px; height:38px;
+      border:1px solid #292929; background:#101010; color:#999;
+      border-radius:8px; cursor:pointer; font-size:14px; transition:.3s;
+    }
+    .module-row .remove-module-btn:hover{ border-color:#ff8080; color:#ff8080; }
+
+    .secondary-btn{
+      padding:11px 18px;
+      background:none; color:#999;
+      border:1px solid #292929; border-radius:8px;
+      font-size:13px; font-weight:700;
+      cursor:pointer; transition:.3s;
+    }
+    .secondary-btn:hover{ border-color:#555; color:#fff; }
+
+    /* POST LIST */
+
+    .post-item{
+      display:flex; gap:16px; align-items:flex-start;
+      background:#0b0b0b; border:1px solid #202020; border-radius:14px;
+      padding:16px; margin-bottom:12px;
+    }
+    .post-item img{
+      width:80px; height:60px; object-fit:cover; border-radius:8px;
+      background:#161616; flex-shrink:0;
+    }
+    .post-item .post-info{ flex:1; min-width:0; }
+    .post-item h3{ font-size:14.5px; margin-bottom:4px; }
+    .post-item p{ color:#888; font-size:12.5px; }
+    .post-item .post-actions{ display:flex; gap:8px; flex-shrink:0; }
+
+    .icon-btn{
+      width:32px; height:32px; border-radius:7px;
+      border:1px solid #292929; background:#101010; color:#999;
+      cursor:pointer; font-size:13px; transition:.3s;
+    }
+    .icon-btn:hover{ border-color:#b7ff00; color:#b7ff00; }
+    .icon-btn.danger:hover{ border-color:#ff8080; color:#ff8080; }
+
+    .empty-note{ color:#666; font-size:13px; padding:20px; text-align:center; }
+
+    /* STUDENT TABLE */
+
+    .student-list{ display:flex; flex-direction:column; gap:10px; }
+
+    .student-card{
+      background:#0b0b0b; border:1px solid #202020; border-radius:14px;
+      padding:16px 18px;
+      display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr auto; gap:14px; align-items:center;
     }
 
-    .form-group.full{
-        grid-column:auto;
+    .student-card .s-name, .payment-card .s-name{ font-weight:700; font-size:13.5px; }
+    .student-card .s-sub, .payment-card .s-sub{ color:#777; font-size:11.5px; margin-top:2px; }
+    .student-card .s-field, .payment-card .s-field{ font-size:12.5px; color:#ccc; }
+    .student-card .s-field span, .payment-card .s-field span{ display:block; color:#666; font-size:10.5px; margin-bottom:2px; }
+
+    @media(max-width:800px){
+      .student-card{ grid-template-columns:1fr 1fr; }
     }
 
-    .top-actions .btn:not(.btn-primary){
-        display:none;
+    /* PAYMENTS */
+
+    .payment-card{
+      background:#0b0b0b; border:1px solid #202020; border-radius:14px;
+      padding:16px 18px;
+      display:grid; grid-template-columns:1.1fr 1.1fr 0.9fr 0.8fr auto; gap:14px; align-items:center;
     }
 
-    .page-title h1{
-        font-size:18px;
+    .payment-card .p-actions{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+
+    .status-pill{
+      display:inline-block; padding:5px 11px; border-radius:50px;
+      font-size:11px; font-weight:800;
+    }
+    .status-pill.pending{ background:rgba(255,157,92,.1); color:#ff9d5c; border:1px solid rgba(255,157,92,.3); }
+    .status-pill.confirmed{ background:rgba(74,222,128,.1); color:#4ade80; border:1px solid rgba(74,222,128,.3); }
+    .status-pill.cancelled{ background:rgba(255,128,128,.1); color:#ff8080; border:1px solid rgba(255,128,128,.3); }
+
+    .confirm-btn.cancel-variant{
+      border-color:rgba(255,128,128,.4);
+      background:rgba(255,128,128,.08);
+      color:#ff8080;
+    }
+    .confirm-btn.cancel-variant:hover{ background:rgba(255,128,128,.18); }
+
+    .contact-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      padding:8px 12px;
+      border-radius:7px;
+      font-size:11px;
+      font-weight:800;
+      text-decoration:none;
+      transition:.3s;
+    }
+    .contact-btn.whatsapp{
+      background:rgba(37,211,102,.1);
+      border:1px solid rgba(37,211,102,.4);
+      color:#25D366;
+    }
+    .contact-btn.whatsapp:hover{ background:rgba(37,211,102,.2); }
+
+    .contact-btn.call{
+      background:rgba(183,255,0,.1);
+      border:1px solid rgba(183,255,0,.4);
+      color:#b7ff00;
+    }
+    .contact-btn.call:hover{ background:rgba(183,255,0,.2); }
+
+    .confirm-btn{
+      padding:8px 12px; border-radius:7px; border:1px solid rgba(74,222,128,.4);
+      background:rgba(74,222,128,.08); color:#4ade80; font-size:11px; font-weight:800;
+      cursor:pointer; transition:.3s;
+    }
+    .confirm-btn:hover{ background:rgba(74,222,128,.18); }
+
+    @media(max-width:900px){
+      .payment-card{ grid-template-columns:1fr 1fr; }
     }
 
-    .page-title p{
-        display:none;
-    }
-
-    .modal{
-        padding:10px;
-    }
-
-    .modal-box{
-        max-height:94vh;
-    }
-}
-
-@media(max-width:430px){
-    .stats{
-        grid-template-columns:1fr 1fr;
-        gap:9px;
-    }
-
-    .stat{
-        padding:13px;
-    }
-
-    .stat-icon{
-        font-size:18px;
-        margin-bottom:7px;
-    }
-
-    .stat-label{
-        font-size:11px;
-    }
-
-    .stat-value{
-        font-size:22px;
-    }
-}
-</style>
+  </style>
 </head>
 
 <body>
 
-<!-- =========================
-     AUTH GATE
-========================= -->
+  <div class="toast" id="toast"></div>
 
-<div class="auth-gate" id="authGate">
+  <div class="auth-gate" id="authGate">লোড হচ্ছে...</div>
 
-    <div class="auth-box">
+  <div class="dashboard-body" id="dashboardBody">
 
-        <img
-        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-        alt="SNK IT Institute">
+    <header class="admin-header">
+      <div class="container">
+        <div class="admin-brand">
+          <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK">
+          <span>Admin Dashboard</span>
+        </div>
+        <button class="logout-btn" id="logoutBtn">Logout →</button>
+      </div>
+    </header>
 
-        <h2>Admin Access</h2>
+    <div class="container">
 
-        <p>Checking administrator authentication...</p>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="posts">ব্লগ পোস্ট</button>
+        <button class="tab-btn" data-tab="courses">কোর্স ম্যানেজ</button>
+        <button class="tab-btn" data-tab="students">Admission তালিকা</button>
+        <button class="tab-btn" data-tab="payments">Payments</button>
+      </div>
 
-    </div>
 
-</div>
+      <!-- BLOG POSTS TAB -->
 
+      <div class="tab-panel active" id="tab-posts">
 
-<!-- =========================
-     APP
-========================= -->
-
-<div class="app" id="app">
-
-    <!-- SIDEBAR -->
-
-    <aside class="sidebar" id="sidebar">
-
-        <div class="brand">
-
-            <img
-            src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-            alt="SNK IT">
-
-            <div class="brand-text">
-                <strong>SNK IT Institute</strong>
-                <span>Admin Panel</span>
-            </div>
-
+        <div class="section-head">
+          <div>
+            <h2>ব্লগ পোস্ট</h2>
+            <span>এখান থেকে যোগ/এডিট/ডিলিট করলে blog.html-এ সাথে সাথে দেখা যাবে</span>
+          </div>
+          <button class="primary-btn" id="newPostBtn">+ নতুন পোস্ট</button>
         </div>
 
-
-        <div class="nav-title">Management</div>
-
-        <nav class="nav">
-
-            <button class="nav-btn active" data-section="dashboard">
-                <span class="nav-icon">⌂</span>
-                <span>Dashboard</span>
-            </button>
-
-            <button class="nav-btn" data-section="admissions">
-                <span class="nav-icon">👥</span>
-                <span>Admission তালিকা</span>
-            </button>
-
-            <button class="nav-btn" data-section="courses">
-                <span class="nav-icon">🎓</span>
-                <span>Course Manage</span>
-            </button>
-
-            <button class="nav-btn" data-section="payments">
-                <span class="nav-icon">৳</span>
-                <span>Payments</span>
-            </button>
-
-            <button class="nav-btn" data-section="blog">
-                <span class="nav-icon">📝</span>
-                <span>Blog Posts</span>
-            </button>
-
-        </nav>
-
-
-        <div class="sidebar-bottom">
-
-            <button class="btn btn-danger" id="sidebarLogout" style="width:100%;">
-                🚪 Logout
-            </button>
-
-        </div>
-
-    </aside>
-
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-        <!-- TOPBAR -->
-
-        <header class="topbar">
-
-            <div class="topbar-left">
-
-                <button class="mobile-menu" id="mobileMenu">
-                    ☰
-                </button>
-
-                <div class="page-title">
-                    <h1 id="pageTitle">Dashboard</h1>
-                    <p id="pageSubtitle">SNK IT Institute Management</p>
-                </div>
-
-            </div>
-
-
-            <div class="top-actions">
-
-                <button class="btn" id="refreshBtn">
-                    ↻ Refresh
-                </button>
-
-                <button class="btn btn-primary" id="topLogout">
-                    Logout
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <!-- CONTENT -->
-
-        <div class="content">
-
-
-            <!-- =========================
-                 DASHBOARD
-            ========================= -->
-
-            <section class="page-section active" id="section-dashboard">
-
-                <div class="stats">
-
-                    <div class="stat">
-                        <div class="stat-icon">👥</div>
-                        <div class="stat-label">Total Students</div>
-                        <div class="stat-value" id="statStudents">0</div>
-                    </div>
-
-                    <div class="stat">
-                        <div class="stat-icon">📩</div>
-                        <div class="stat-label">Applications</div>
-                        <div class="stat-value" id="statApplications">0</div>
-                    </div>
-
-                    <div class="stat">
-                        <div class="stat-icon">🎓</div>
-                        <div class="stat-label">Active Courses</div>
-                        <div class="stat-value" id="statCourses">0</div>
-                    </div>
-
-                    <div class="stat">
-                        <div class="stat-icon">💳</div>
-                        <div class="stat-label">Total Payments</div>
-                        <div class="stat-value" id="statPayments">0</div>
-                    </div>
-
-                    <div class="stat">
-                        <div class="stat-icon">⏳</div>
-                        <div class="stat-label">Pending</div>
-                        <div class="stat-value" id="statPending">0</div>
-                    </div>
-
-                </div>
-
-
-                <div class="dashboard-grid">
-
-                    <div class="panel">
-
-                        <div class="panel-title">
-
-                            <h3>Recent Admissions</h3>
-
-                            <button
-                            class="btn btn-small"
-                            onclick="showSection('admissions')">
-                                View All
-                            </button>
-
-                        </div>
-
-                        <div id="recentAdmissions">
-                            <div class="loading">
-                                <div class="spinner"></div>
-                                Loading...
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="panel">
-
-                        <div class="panel-title">
-
-                            <h3>Quick Actions</h3>
-
-                        </div>
-
-                        <div style="display:grid;gap:10px;">
-
-                            <button
-                            class="btn btn-primary"
-                            onclick="showSection('admissions')">
-                                👥 View Applications
-                            </button>
-
-                            <button
-                            class="btn"
-                            onclick="openCourseModal()">
-                                🎓 Add New Course
-                            </button>
-
-                            <button
-                            class="btn"
-                            onclick="openBlogModal()">
-                                📝 Create Blog Post
-                            </button>
-
-                            <button
-                            class="btn"
-                            onclick="showSection('payments')">
-                                💳 Check Payments
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =========================
-                 ADMISSIONS
-            ========================= -->
-
-            <section class="page-section" id="section-admissions">
-
-                <div class="section-head">
-
-                    <div>
-                        <h2>Admission তালিকা</h2>
-                        <p>All student applications and admission records.</p>
-                    </div>
-
-                    <button class="btn" onclick="loadAllData()">
-                        ↻ Refresh
-                    </button>
-
-                </div>
-
-
-                <div class="panel">
-
-                    <div class="toolbar">
-
-                        <div class="search-box">
-                            <span>⌕</span>
-                            <input
-                            type="text"
-                            id="studentSearch"
-                            placeholder="নাম, ফোন, email বা course দিয়ে খুঁজুন...">
-                        </div>
-
-                        <select id="studentStatusFilter" style="max-width:180px;">
-                            <option value="">সব Status</option>
-                            <option value="pending">Pending</option>
-                            <option value="approved">Approved</option>
-                            <option value="rejected">Rejected</option>
-                        </select>
-
-                        <select id="studentCourseFilter" style="max-width:230px;">
-                            <option value="">সব Course</option>
-                        </select>
-
-                    </div>
-
-
-                    <div class="table-wrap">
-
-                        <table>
-
-                            <thead>
-                                <tr>
-                                    <th>Student</th>
-                                    <th>Phone</th>
-                                    <th>Course</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="studentsTable"></tbody>
-
-                        </table>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =========================
-                 COURSES
-            ========================= -->
-
-            <section class="page-section" id="section-courses">
-
-                <div class="section-head">
-
-                    <div>
-                        <h2>Course Management</h2>
-                        <p>Create, edit and manage institute courses.</p>
-                    </div>
-
-                    <button
-                    class="btn btn-primary"
-                    onclick="openCourseModal()">
-                        + Add Course
-                    </button>
-
-                </div>
-
-
-                <div class="course-grid" id="courseGrid">
-
-                    <div class="loading">
-                        <div class="spinner"></div>
-                        Loading courses...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =========================
-                 PAYMENTS
-            ========================= -->
-
-            <section class="page-section" id="section-payments">
-
-                <div class="section-head">
-
-                    <div>
-                        <h2>Payments</h2>
-                        <p>Payment verification and student enrollment.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="panel">
-
-                    <div class="toolbar">
-
-                        <div class="search-box">
-                            <span>⌕</span>
-                            <input
-                            type="text"
-                            id="paymentSearch"
-                            placeholder="নাম, ফোন অথবা TrxID দিয়ে খুঁজুন...">
-                        </div>
-
-                        <select id="paymentStatusFilter" style="max-width:180px;">
-                            <option value="">সব Status</option>
-                            <option value="pending">Pending</option>
-                            <option value="confirmed">Confirmed</option>
-                            <option value="cancelled">Cancelled</option>
-                        </select>
-
-                    </div>
-
-
-                    <div class="table-wrap">
-
-                        <table>
-
-                            <thead>
-                                <tr>
-                                    <th>Payer</th>
-                                    <th>Phone</th>
-                                    <th>bKash</th>
-                                    <th>TrxID</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="paymentsTable"></tbody>
-
-                        </table>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =========================
-                 BLOG
-            ========================= -->
-
-            <section class="page-section" id="section-blog">
-
-                <div class="section-head">
-
-                    <div>
-                        <h2>Blog Posts</h2>
-                        <p>Create and manage institute content.</p>
-                    </div>
-
-                    <button
-                    class="btn btn-primary"
-                    onclick="openBlogModal()">
-                        + New Post
-                    </button>
-
-                </div>
-
-
-                <div class="blog-grid" id="blogGrid">
-
-                    <div class="loading">
-                        <div class="spinner"></div>
-                        Loading posts...
-                    </div>
-
-                </div>
-
-            </section>
-
-        </div>
-
-    </main>
-
-</div>
-
-
-<!-- =========================
-     STUDENT MODAL
-========================= -->
-
-<div class="modal" id="studentModal">
-
-    <div class="modal-box">
-
-        <div class="modal-head">
-
-            <h3>Student Details</h3>
-
-            <button class="close" onclick="closeModal('studentModal')">
-                ×
-            </button>
-
-        </div>
-
-        <div class="modal-body" id="studentDetails"></div>
-
-        <div class="modal-footer">
-
-            <button
-            class="btn"
-            onclick="closeModal('studentModal')">
-                Close
-            </button>
-
-            <button
-            class="btn btn-danger"
-            id="rejectStudentBtn">
-                Reject
-            </button>
-
-            <button
-            class="btn btn-success"
-            id="approveStudentBtn">
-                Approve
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     COURSE MODAL
-========================= -->
-
-<div class="modal" id="courseModal">
-
-    <div class="modal-box">
-
-        <div class="modal-head">
-
-            <h3 id="courseModalTitle">Add Course</h3>
-
-            <button class="close" onclick="closeModal('courseModal')">
-                ×
-            </button>
-
-        </div>
-
-
-        <form id="courseForm">
-
-            <div class="modal-body">
-
-                <div class="form-grid">
-
-                    <div class="form-group full">
-
-                        <label>Course Image URL / Base64</label>
-
-                        <input
-                        id="courseImage"
-                        placeholder="https://...">
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>Course Title</label>
-
-                        <input
-                        id="courseTitle"
-                        required>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>Tag</label>
-
-                        <input
-                        id="courseTag"
-                        placeholder="Career Program">
-
-                    </div>
-
-
-                    <div class="form-group full">
-
-                        <label>Description</label>
-
-                        <textarea
-                        id="courseDescription"
-                        rows="4"></textarea>
-
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Old Price</label>
-                        <input id="courseOldPrice" placeholder="12000">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>New Price</label>
-                        <input id="courseNewPrice" placeholder="7999">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Duration</label>
-                        <input id="courseDuration" placeholder="6 Months">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Total Seats</label>
-                        <input id="courseSeats" type="number" placeholder="20">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Seats Remaining</label>
-                        <input id="courseSeatsRemaining" type="number" placeholder="8">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Next Batch Starts</label>
-                        <input id="courseBatchStart" placeholder="Coming Soon">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Status</label>
-
-                        <select id="courseStatus">
-                            <option value="active">Active</option>
-                            <option value="upcoming">Upcoming</option>
-                            <option value="closed">Closed</option>
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-group full">
-
-                        <label>Meta Information — প্রতি লাইনে একটি</label>
-
-                        <textarea
-                        id="courseMeta"
-                        rows="5"
-                        placeholder="⏱ 6 Months&#10;🎨 Professional Graphic Design&#10;💻 AI-Powered Design Tools&#10;📜 Certificate&#10;👥 8 Seats Remaining"></textarea>
-
-                    </div>
-
-
-                    <div class="form-group full">
-
-                        <label>What Students Will Learn — প্রতি লাইনে একটি</label>
-
-                        <textarea
-                        id="courseLearn"
-                        rows="5"></textarea>
-
-                    </div>
-
-
-                    <div class="form-group full">
-
-                        <label>Modules — প্রতি লাইনে একটি</label>
-
-                        <textarea
-                        id="courseModules"
-                        rows="5"></textarea>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="modal-footer">
-
-                <button
-                type="button"
-                class="btn"
-                onclick="closeModal('courseModal')">
-                    Cancel
-                </button>
-
-                <button
-                type="submit"
-                class="btn btn-primary">
-                    Save Course
-                </button>
-
-            </div>
+        <form class="post-form" id="postForm">
+
+          <input type="hidden" id="postId">
+
+          <div class="form-row">
+            <label>পোস্টের ছবি</label>
+            <input type="file" id="postImageFile" accept="image/*">
+            <input type="hidden" id="postImageData">
+            <span class="hint">ছবি আপলোড করলে ছোট করে (compressed) সেভ হবে। খালি রাখলে default ছবি দেখাবে।</span>
+            <img id="imagePreview" style="display:none; margin-top:10px; max-width:180px; border-radius:8px; border:1px solid #292929;">
+          </div>
+
+          <div class="form-row">
+            <label>টাইটেল *</label>
+            <input type="text" id="postTitle" required placeholder="যেমন: কেন AI Skill শেখা জরুরি">
+          </div>
+
+          <div class="form-row">
+            <label>ছোট বিবরণ (Excerpt) *</label>
+            <textarea id="postExcerpt" required placeholder="২-৩ লাইনের সংক্ষিপ্ত বিবরণ..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <label>পুরো লেখা *</label>
+            <textarea id="postContent" required style="min-height:160px;" placeholder="পুরো লেখা লিখুন। একটা প্যারাগ্রাফ শেষ করে একটা ফাঁকা লাইন রেখে পরের প্যারাগ্রাফ লিখুন।"></textarea>
+            <span class="hint">প্রতিটা প্যারাগ্রাফের মাঝে একটা ফাঁকা লাইন রাখবেন</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn" id="savePostBtn">পোস্ট সেভ করুন</button>
+            <button type="button" class="secondary-btn" id="cancelPostBtn">বাতিল</button>
+          </div>
 
         </form>
 
-    </div>
+        <div id="postList"></div>
+        <div class="empty-note" id="postsEmpty" style="display:none;">এখনো কোনো পোস্ট যোগ করা হয়নি।</div>
 
-</div>
+      </div>
 
 
-<!-- =========================
-     BLOG MODAL
-========================= -->
+      <!-- COURSES TAB -->
 
-<div class="modal" id="blogModal">
+      <div class="tab-panel" id="tab-courses">
 
-    <div class="modal-box">
-
-        <div class="modal-head">
-
-            <h3 id="blogModalTitle">Create Blog Post</h3>
-
-            <button class="close" onclick="closeModal('blogModal')">
-                ×
-            </button>
-
+        <div class="section-head">
+          <div>
+            <h2>কোর্স ম্যানেজ</h2>
+            <span>ছবি, দাম, বিবরণ, মডিউল — সব এখান থেকে বদলাতে বা নতুন কোর্স যোগ করতে পারবেন</span>
+          </div>
+          <button type="button" class="primary-btn" id="newCourseBtn">+ নতুন কোর্স</button>
         </div>
 
+        <form class="post-form" id="courseForm">
 
-        <form id="blogForm">
+          <input type="hidden" id="courseId">
+          <input type="hidden" id="courseIsNew">
 
-            <div class="modal-body">
+          <div class="form-row">
+            <label>কোর্সের ছবি</label>
+            <input type="file" id="courseImageFile" accept="image/*">
+            <input type="hidden" id="courseImageData">
+            <span class="hint">ছবি আপলোড করলে ছোট করে সেভ হবে। খালি রাখলে আগের ছবিই থাকবে।</span>
+            <img id="courseImagePreview" style="display:none; margin-top:10px; max-width:180px; border-radius:8px; border:1px solid #292929;">
+          </div>
 
-                <div class="form-group">
+          <div class="form-row">
+            <label>টাইটেল *</label>
+            <input type="text" id="courseTitle" required>
+          </div>
 
-                    <label>Image URL / Base64</label>
+          <div class="form-row">
+            <label>ব্যাজ টেক্সট (যেমন: AI POWERED, LIMITED SEATS)</label>
+            <input type="text" id="courseTagText">
+          </div>
 
-                    <input
-                    id="blogImage"
-                    placeholder="https://...">
+          <div class="form-row">
+            <label>ব্যাজ রঙ</label>
+            <select id="courseTagClass" style="width:100%; border:1px solid #292929; background:#101010; color:#fff; border-radius:9px; padding:12px 13px; font-size:13px;">
+              <option value="">সাধারণ (lime)</option>
+              <option value="urgent">জরুরি (কমলা)</option>
+              <option value="info">তথ্য (নীল)</option>
+            </select>
+          </div>
 
-                </div>
+          <div class="form-row">
+            <label>বিবরণ (Description) *</label>
+            <textarea id="courseDesc" required></textarea>
+          </div>
 
+          <div class="form-row">
+            <label>মেটা তথ্য (৪টা, প্রতিটা নতুন লাইনে — যেমন: ⏱ 3 Months)</label>
+            <textarea id="courseMeta" placeholder="⏱ 3 Months
+🎯 Career Program
+📜 Certificate
+💻 Online + Offline"></textarea>
+          </div>
 
-                <div class="form-group">
+          <div class="form-row">
+            <label>পুরাতন দাম</label>
+            <input type="text" id="coursePriceOld" placeholder="৳11,500">
+          </div>
 
-                    <label>Title</label>
+          <div class="form-row">
+            <label>নতুন দাম *</label>
+            <input type="text" id="coursePriceNew" required placeholder="৳7,490">
+          </div>
 
-                    <input
-                    id="blogTitle"
-                    required>
+          <div class="form-row">
+            <label>আপনি যা শিখবেন (প্রতিটা পয়েন্ট নতুন লাইনে)</label>
+            <textarea id="courseLearnItems" style="min-height:120px;"></textarea>
+          </div>
 
-                </div>
+          <div class="form-row">
+            <label>কোর্স মডিউল</label>
+            <div id="moduleRows"></div>
+            <button type="button" class="secondary-btn" id="addModuleRowBtn" style="margin-top:6px; align-self:flex-start;">+ মডিউল যোগ করুন</button>
+          </div>
 
-
-                <div class="form-group">
-
-                    <label>Short Excerpt</label>
-
-                    <textarea
-                    id="blogExcerpt"
-                    rows="3"></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>Content</label>
-
-                    <textarea
-                    id="blogContent"
-                    rows="9"></textarea>
-
-                </div>
-
-            </div>
-
-
-            <div class="modal-footer">
-
-                <button
-                type="button"
-                class="btn"
-                onclick="closeModal('blogModal')">
-                    Cancel
-                </button>
-
-                <button
-                type="submit"
-                class="btn btn-primary">
-                    Save Post
-                </button>
-
-            </div>
+          <div class="form-actions">
+            <button type="submit" class="primary-btn" id="saveCourseBtn">সেভ করুন</button>
+            <button type="button" class="secondary-btn" id="cancelCourseBtn">বাতিল</button>
+          </div>
 
         </form>
 
+        <div id="courseList"></div>
+
+      </div>
+
+
+      <!-- STUDENTS TAB -->
+
+      <div class="tab-panel" id="tab-students">
+
+        <div class="section-head">
+          <div>
+            <h2>Admission তালিকা</h2>
+            <span>admission.html ফর্ম থেকে জমা হওয়া সব আবেদন</span>
+          </div>
+        </div>
+
+        <div class="student-list" id="studentList"></div>
+        <div class="empty-note" id="studentsEmpty" style="display:none;">এখনো কোনো আবেদন জমা হয়নি।</div>
+
+      </div>
+
+
+      <!-- PAYMENTS TAB -->
+
+      <div class="tab-panel" id="tab-payments">
+
+        <div class="section-head">
+          <div>
+            <h2>Payments</h2>
+            <span>Checkout পেজ থেকে জমা হওয়া bKash Transaction তথ্য — যাচাই করে Confirm করুন</span>
+          </div>
+        </div>
+
+        <form class="post-form" id="paymentEditForm">
+
+          <input type="hidden" id="editPaymentId">
+
+          <div class="form-row">
+            <label>নাম *</label>
+            <input type="text" id="editPayerName" required>
+          </div>
+
+          <div class="form-row">
+            <label>মোবাইল নম্বর *</label>
+            <input type="text" id="editPayerPhone" required>
+          </div>
+
+          <div class="form-row">
+            <label>যেই bKash নম্বর থেকে পাঠিয়েছে</label>
+            <input type="text" id="editPayerBkash">
+          </div>
+
+          <div class="form-row">
+            <label>Transaction ID</label>
+            <input type="text" id="editTrxId">
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn" id="savePaymentEditBtn">সেভ করুন</button>
+            <button type="button" class="secondary-btn" id="cancelPaymentEditBtn">বাতিল</button>
+          </div>
+
+        </form>
+
+        <div class="student-list" id="paymentList"></div>
+        <div class="empty-note" id="paymentsEmpty" style="display:none;">এখনো কোনো Payment জমা হয়নি।</div>
+
+      </div>
+
     </div>
 
-</div>
+  </div>
 
 
-<!-- =========================
-     TOAST
-========================= -->
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
-<div class="toast-container" id="toastContainer"></div>
+  <script>
 
+    const firebaseConfig = {
+      apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
+      authDomain: "snk-it-institute.firebaseapp.com",
+      projectId: "snk-it-institute",
+      storageBucket: "snk-it-institute.firebasestorage.app",
+      messagingSenderId: "948436125833",
+      appId: "1:948436125833:web:36788463d4dd3ef20bde58"
+    };
 
-<!-- =========================
-     FIREBASE
-========================= -->
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    const authGate = document.getElementById("authGate");
+    const dashboardBody = document.getElementById("dashboardBody");
 
-
-<script>
-
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
-
-const firebaseConfig = {
-    apiKey: "AIzaSyDapm0z0sAMJjKhEOWO7NlQKyjY0HgmXYA",
-    authDomain: "snk-it-institute.firebaseapp.com",
-    projectId: "snk-it-institute",
-    storageBucket: "snk-it-institute.firebasestorage.app",
-    messagingSenderId: "948436125833",
-    appId: "1:948436125833:web:36788463d4dd3ef20bde58"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-
-/* =========================================================
-   GLOBAL DATA
-========================================================= */
-
-let students = [];
-let payments = [];
-let courses = [];
-let posts = [];
-
-let editingCourseId = null;
-let editingBlogId = null;
-let selectedStudentId = null;
-
-
-/* =========================================================
-   COURSE SEEDS
-========================================================= */
-
-const COURSE_SEEDS = {
-
-    "ui-ux": {
-        title:"AI Driven UI/UX Design Career Track Program",
-        tag:"Career Program",
-        description:"Build a market-ready UI/UX design career with AI-powered tools, practical projects and modern design workflows.",
-        oldPrice:"15000",
-        newPrice:"9999",
-        duration:"3 Months",
-        seats:"",
-        seatsRemaining:"",
-        batchStart:"Coming Soon",
-        status:"active",
-        meta:[
-            "⏱ 3 Months",
-            "🎯 Career Program",
-            "📜 Certificate",
-            "💻 Online + Offline"
-        ],
-        learn:[
-            "UI/UX Design Fundamentals",
-            "User Research & UX Thinking",
-            "Wireframing & Prototyping",
-            "Figma & AI-Powered Design Tools",
-            "Real Project Case Studies",
-            "Portfolio Development"
-        ],
-        modules:[
-            "UX Research",
-            "Information Architecture",
-            "Wireframe",
-            "UI Design",
-            "Prototype",
-            "AI Workflow",
-            "Portfolio"
-        ]
-    },
-
-    "cyber-security": {
-        title:"AI-Powered Cyber Security & Ethical Hacking",
-        tag:"Ethical Hacking",
-        description:"Learn modern cybersecurity concepts, ethical hacking fundamentals and AI-assisted security workflows.",
-        oldPrice:"18000",
-        newPrice:"12999",
-        duration:"6 Months",
-        seats:"",
-        seatsRemaining:"",
-        batchStart:"Coming Soon",
-        status:"active",
-        meta:[
-            "⏱ 6 Months",
-            "🛡 Ethical Hacking",
-            "📜 Certificate",
-            "💻 Online + Offline"
-        ],
-        learn:[
-            "Cyber Security Fundamentals",
-            "Networking Basics",
-            "Linux Fundamentals",
-            "Ethical Hacking",
-            "Web Security",
-            "AI-Powered Security Tools"
-        ],
-        modules:[
-            "Networking",
-            "Linux",
-            "Security Basics",
-            "Ethical Hacking",
-            "Web Security",
-            "AI Security Workflow"
-        ]
-    },
-
-    "graphic-design": {
-        title:"AI-Powered Graphic Design",
-        tag:"Creative Career",
-        description:"Learn professional graphic design using modern design principles and AI-powered creative tools.",
-        oldPrice:"12000",
-        newPrice:"7999",
-        duration:"4 Months",
-        seats:"",
-        seatsRemaining:"",
-        batchStart:"Coming Soon",
-        status:"active",
-        meta:[
-            "⏱ 4 Months",
-            "🎯 Creative Career",
-            "📜 Certificate",
-            "💻 Online + Offline"
-        ],
-        learn:[
-            "Graphic Design Fundamentals",
-            "Typography & Color",
-            "Adobe Photoshop",
-            "Adobe Illustrator",
-            "AI-Powered Design Tools",
-            "Professional Portfolio"
-        ],
-        modules:[
-            "Design Fundamentals",
-            "Photoshop",
-            "Illustrator",
-            "Brand Design",
-            "Social Media Design",
-            "AI Design Workflow"
-        ]
-    },
-
-    "kidz-spoken-english": {
-        title:"AI-Powered 100 Days Kidz Spoken English",
-        tag:"Kids Program",
-        description:"A practical 100-day spoken English learning journey designed for kids with engaging activities and parent updates.",
-        oldPrice:"6000",
-        newPrice:"3999",
-        duration:"100 Days",
-        seats:"",
-        seatsRemaining:"",
-        batchStart:"Coming Soon",
-        status:"upcoming",
-        meta:[
-            "⏱ 100 Days",
-            "🎯 Kids Program",
-            "📜 Certificate",
-            "👨‍👩‍👧 Parent Updates"
-        ],
-        learn:[
-            "Daily Spoken English Practice",
-            "Vocabulary Building",
-            "Simple Conversation",
-            "Confidence Building",
-            "AI-Assisted Learning Activities",
-            "Parent Progress Updates"
-        ],
-        modules:[
-            "Basic Words",
-            "Daily Conversation",
-            "Speaking Practice",
-            "Confidence",
-            "Activities",
-            "Final Practice"
-        ]
+    // TOAST NOTIFICATION
+    let toastTimer = null;
+    function showToast(message, type){
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = "toast show " + (type || "success");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function(){
+        toast.classList.remove("show");
+      }, 3200);
     }
 
-};
-
-
-/* =========================================================
-   AUTH
-========================================================= */
-
-const authGate = document.getElementById("authGate");
-const app = document.getElementById("app");
-
-auth.onAuthStateChanged(async user => {
-
-    if(user){
-
+    // AUTH GUARD
+    auth.onAuthStateChanged(function(user){
+      if(user){
         authGate.style.display = "none";
-        app.style.display = "block";
+        dashboardBody.style.display = "block";
+        loadPosts();
+        loadCourses();
+        loadStudents();
+        loadPayments();
+      }else{
+        window.location.href = "/admin/";
+      }
+    });
 
-        await loadAllData();
+    document.getElementById("logoutBtn").addEventListener("click", function(){
+      auth.signOut().then(function(){
+        window.location.href = "/admin/";
+      });
+    });
 
-    }else{
+    // TABS
+    document.querySelectorAll(".tab-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+      });
+    });
 
-        authGate.style.display = "flex";
-        app.style.display = "none";
+    // POST FORM TOGGLE
+    const postForm = document.getElementById("postForm");
+    const newPostBtn = document.getElementById("newPostBtn");
+    const cancelPostBtn = document.getElementById("cancelPostBtn");
 
-        setTimeout(() => {
-            window.location.href = "/admin/";
-        },1200);
+    function resetForm(){
+      document.getElementById("postId").value = "";
+      document.getElementById("postTitle").value = "";
+      document.getElementById("postImageData").value = "";
+      document.getElementById("postImageFile").value = "";
+      document.getElementById("postExcerpt").value = "";
+      document.getElementById("postContent").value = "";
+      document.getElementById("savePostBtn").textContent = "পোস্ট সেভ করুন";
 
+      const preview = document.getElementById("imagePreview");
+      preview.style.display = "none";
+      preview.src = "";
     }
 
-});
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function escapeHtml(value){
-
-    if(value === null || value === undefined){
-        return "";
-    }
-
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-function safeDate(value){
-
-    if(!value){
-        return 0;
-    }
-
-    if(typeof value.toMillis === "function"){
-        return value.toMillis();
-    }
-
-    if(value.seconds){
-        return value.seconds * 1000;
-    }
-
-    const d = new Date(value);
-
-    return isNaN(d.getTime()) ? 0 : d.getTime();
-
-}
-
-
-function formatDate(value){
-
-    const time = safeDate(value);
-
-    if(!time){
-        return "—";
-    }
-
-    return new Intl.DateTimeFormat("en-GB",{
-        day:"2-digit",
-        month:"short",
-        year:"numeric"
-    }).format(new Date(time));
-
-}
-
-
-function formatDateTime(value){
-
-    const time = safeDate(value);
-
-    if(!time){
-        return "—";
-    }
-
-    return new Intl.DateTimeFormat("en-GB",{
-        day:"2-digit",
-        month:"short",
-        year:"numeric",
-        hour:"2-digit",
-        minute:"2-digit"
-    }).format(new Date(time));
-
-}
-
-
-function initials(name){
-
-    const text = String(name || "S").trim();
-
-    if(!text){
-        return "S";
-    }
-
-    return text
-        .split(/\s+/)
-        .slice(0,2)
-        .map(x => x[0])
-        .join("")
-        .toUpperCase();
-
-}
-
-
-function toast(message,type="success"){
-
-    const container = document.getElementById("toastContainer");
-
-    const item = document.createElement("div");
-
-    item.className = `toast ${type}`;
-
-    item.textContent = message;
-
-    container.appendChild(item);
-
-    setTimeout(() => {
-        item.remove();
-    },3500);
-
-}
-
-
-function closeModal(id){
-
-    document.getElementById(id).classList.remove("show");
-
-}
-
-
-function openModal(id){
-
-    document.getElementById(id).classList.add("show");
-
-}
-
-
-function slugify(text){
-
-    let slug = String(text || "")
-        .toLowerCase()
-        .trim()
-        .replace(/[^\w\u0980-\u09FF]+/g,"-")
-        .replace(/^-+|-+$/g,"");
-
-    if(!slug){
-        slug = "course-" + Date.now();
-    }
-
-    return slug;
-
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-const sectionTitles = {
-
-    dashboard:{
-        title:"Dashboard",
-        subtitle:"SNK IT Institute Management"
-    },
-
-    admissions:{
-        title:"Admission তালিকা",
-        subtitle:"Student applications and admission records"
-    },
-
-    courses:{
-        title:"Course Management",
-        subtitle:"Manage institute courses"
-    },
-
-    payments:{
-        title:"Payments",
-        subtitle:"Payment verification and enrollment"
-    },
-
-    blog:{
-        title:"Blog Posts",
-        subtitle:"Manage institute content"
-
-    }
-
-};
-
-
-function showSection(section){
-
-    document.querySelectorAll(".page-section")
-        .forEach(el => el.classList.remove("active"));
-
-    const target = document.getElementById(`section-${section}`);
-
-    if(target){
-        target.classList.add("active");
-    }
-
-    document.querySelectorAll(".nav-btn")
-        .forEach(btn => {
-            btn.classList.toggle(
-                "active",
-                btn.dataset.section === section
-            );
+    newPostBtn.addEventListener("click", function(){
+      resetForm();
+      postForm.classList.add("open");
+    });
+
+    cancelPostBtn.addEventListener("click", function(){
+      postForm.classList.remove("open");
+      resetForm();
+    });
+
+    // IMAGE UPLOAD: compress and convert to base64 data URL
+    document.getElementById("postImageFile").addEventListener("change", function(e){
+      const file = e.target.files[0];
+      if(!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt){
+        const img = new Image();
+        img.onload = function(){
+          const maxWidth = 800;
+          const scale = Math.min(1, maxWidth / img.width);
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          let quality = 0.7;
+          let compressedData = canvas.toDataURL("image/jpeg", quality);
+
+          // Firestore field limit is ~1MB; keep well under that.
+          // Reduce quality further if the result is still too large.
+          while(compressedData.length > 700000 && quality > 0.2){
+            quality -= 0.15;
+            compressedData = canvas.toDataURL("image/jpeg", quality);
+          }
+
+          if(compressedData.length > 900000){
+            alert("ছবিটা এখনো অনেক বড় হয়ে যাচ্ছে। দয়া করে ছোট সাইজের একটা ছবি বেছে নিন।");
+            document.getElementById("postImageFile").value = "";
+            return;
+          }
+
+          document.getElementById("postImageData").value = compressedData;
+
+          const preview = document.getElementById("imagePreview");
+          preview.src = compressedData;
+          preview.style.display = "block";
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // SAVE POST (create or update)
+    document.getElementById("postForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const id = document.getElementById("postId").value;
+      const data = {
+        title: document.getElementById("postTitle").value.trim(),
+        image: document.getElementById("postImageData").value.trim(),
+        excerpt: document.getElementById("postExcerpt").value.trim(),
+        content: document.getElementById("postContent").value.trim(),
+      };
+
+      const saveBtn = document.getElementById("savePostBtn");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "সেভ হচ্ছে...";
+
+      let promise;
+      const wasEdit = !!id;
+      if(id){
+        promise = db.collection("posts").doc(id).update(data);
+      }else{
+        data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        promise = db.collection("posts").add(data);
+      }
+
+      promise.then(function(){
+        saveBtn.disabled = false;
+        postForm.classList.remove("open");
+        resetForm();
+        loadPosts();
+        showToast(wasEdit ? "✅ পোস্ট আপডেট হয়েছে" : "✅ নতুন পোস্ট যোগ হয়েছে", "success");
+      }).catch(function(error){
+        saveBtn.disabled = false;
+        saveBtn.textContent = "পোস্ট সেভ করুন";
+        showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+      });
+    });
+
+    // LOAD POSTS
+    function loadPosts(){
+      const postList = document.getElementById("postList");
+      const postsEmpty = document.getElementById("postsEmpty");
+
+      db.collection("posts").orderBy("createdAt", "desc").get().then(function(snapshot){
+        postList.innerHTML = "";
+
+        if(snapshot.empty){
+          postsEmpty.style.display = "block";
+          return;
+        }
+        postsEmpty.style.display = "none";
+
+        snapshot.forEach(function(doc){
+          const post = doc.data();
+          const item = document.createElement("div");
+          item.className = "post-item";
+
+          const imgSrc = post.image || "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='60' viewBox='0 0 80 60'%3E%3Crect width='80' height='60' fill='%23161616'/%3E%3Ctext x='40' y='34' font-family='Arial' font-size='24' fill='%23444' text-anchor='middle'%3E%F0%9F%96%BC%EF%B8%8F%3C/text%3E%3C/svg%3E";
+
+          item.innerHTML = `
+            <img src="${imgSrc}" alt="">
+            <div class="post-info">
+              <h3>${escapeHtml(post.title || "")}</h3>
+              <p>${escapeHtml((post.excerpt || "").slice(0,90))}</p>
+            </div>
+            <div class="post-actions">
+              <button class="icon-btn" data-edit="${doc.id}" title="Edit">✎</button>
+              <button class="icon-btn danger" data-delete="${doc.id}" title="Delete">🗑</button>
+            </div>
+          `;
+          postList.appendChild(item);
         });
 
-    const info = sectionTitles[section];
+        // attach edit/delete handlers
+        postList.querySelectorAll("[data-edit]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-edit");
+            db.collection("posts").doc(id).get().then(function(doc){
+              const post = doc.data();
+              document.getElementById("postId").value = id;
+              document.getElementById("postTitle").value = post.title || "";
+              document.getElementById("postImageData").value = post.image || "";
+              document.getElementById("postExcerpt").value = post.excerpt || "";
+              document.getElementById("postContent").value = post.content || "";
+              document.getElementById("savePostBtn").textContent = "আপডেট করুন";
 
-    if(info){
+              const preview = document.getElementById("imagePreview");
+              if(post.image){
+                preview.src = post.image;
+                preview.style.display = "block";
+              }else{
+                preview.style.display = "none";
+              }
 
-        document.getElementById("pageTitle").textContent = info.title;
+              postForm.classList.add("open");
+              window.scrollTo({top:0, behavior:"smooth"});
+            });
+          });
+        });
 
-        document.getElementById("pageSubtitle").textContent = info.subtitle;
-
+        postList.querySelectorAll("[data-delete]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-delete");
+            if(confirm("এই পোস্টটি ডিলিট করতে চান?")){
+              db.collection("posts").doc(id).delete().then(function(){
+                loadPosts();
+                showToast("🗑 পোস্ট ডিলিট হয়েছে", "success");
+              }).catch(function(error){
+                showToast("❌ ডিলিট করতে সমস্যা: " + error.message, "error");
+              });
+            }
+          });
+        });
+      }).catch(function(error){
+        postList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+      });
     }
 
-    document.getElementById("sidebar")
-        .classList.remove("open");
-
-}
-
-
-document.querySelectorAll(".nav-btn").forEach(btn => {
-
-    btn.addEventListener("click",() => {
-
-        showSection(btn.dataset.section);
-
-    });
-
-});
-
-
-document.getElementById("mobileMenu")
-.addEventListener("click",() => {
-
-    document.getElementById("sidebar")
-        .classList.toggle("open");
-
-});
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-async function logout(){
-
-    try{
-
-        await auth.signOut();
-
-    }catch(error){
-
-        toast(error.message,"error");
-
-    }
-
-}
-
-
-document.getElementById("topLogout")
-.addEventListener("click",logout);
-
-document.getElementById("sidebarLogout")
-.addEventListener("click",logout);
-
-
-/* =========================================================
-   LOAD ALL DATA
-========================================================= */
-
-async function loadAllData(){
-
-    try{
-
-        const [
-            studentSnap,
-            paymentSnap,
-            courseSnap,
-            postSnap
-        ] = await Promise.all([
-
-            db.collection("students").get(),
-
-            db.collection("payments").get(),
-
-            db.collection("courses").get(),
-
-            db.collection("posts").get()
-
-        ]);
-
-
-        students = studentSnap.docs.map(doc => ({
-            id:doc.id,
-            ...doc.data()
-        }));
-
-
-        payments = paymentSnap.docs.map(doc => ({
-            id:doc.id,
-            ...doc.data()
-        }));
-
-
-        courses = courseSnap.docs.map(doc => ({
-            id:doc.id,
-            ...doc.data()
-        }));
-
-
-        posts = postSnap.docs.map(doc => ({
-            id:doc.id,
-            ...doc.data()
-        }));
-
-
-        students.sort((a,b) =>
-            safeDate(b.createdAt) - safeDate(a.createdAt)
-        );
-
-
-        payments.sort((a,b) =>
-            safeDate(b.createdAt) - safeDate(a.createdAt)
-        );
-
-
-        courses.sort((a,b) =>
-            String(a.title || "").localeCompare(
-                String(b.title || "")
-            )
-        );
-
-
-        posts.sort((a,b) =>
-            safeDate(b.createdAt) - safeDate(a.createdAt)
-        );
-
-
-        renderDashboard();
-        renderStudents();
-        renderCourses();
-        renderPayments();
-        renderPosts();
-        updateCourseFilter();
-
-    }catch(error){
-
-        console.error(error);
-
-        toast(
-            "Data load করতে সমস্যা হয়েছে: " + error.message,
-            "error"
-        );
-
-    }
-
-}
-
-
-document.getElementById("refreshBtn")
-.addEventListener("click",async () => {
-
-    toast("Refreshing data...");
-
-    await loadAllData();
-
-    toast("Dashboard refreshed","success");
-
-});
-
-
-/* =========================================================
-   DASHBOARD
-========================================================= */
-
-function renderDashboard(){
-
-    document.getElementById("statStudents")
-        .textContent = students.length;
-
-    document.getElementById("statApplications")
-        .textContent = students.length;
-
-    document.getElementById("statCourses")
-        .textContent = courses.filter(
-            c => c.status !== "closed"
-        ).length;
-
-    document.getElementById("statPayments")
-        .textContent = payments.length;
-
-    const pending = students.filter(
-        s => String(s.status || "pending").toLowerCase() === "pending"
-    ).length;
-
-    document.getElementById("statPending")
-        .textContent = pending;
-
-
-    const recent = students.slice(0,6);
-
-    const container = document.getElementById("recentAdmissions");
-
-
-    if(!recent.length){
-
-        container.innerHTML = `
-            <div class="empty">
-                <div class="empty-icon">👥</div>
-                No admission found.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    container.innerHTML = `
-        <div class="activity">
-            ${recent.map(student => {
-
-                const status =
-                    String(student.status || "pending").toLowerCase();
-
-                return `
-                    <div class="activity-item">
-
-                        <div class="activity-dot"></div>
-
-                        <div class="activity-main">
-
-                            <strong>
-                                ${escapeHtml(student.name || "Unnamed Student")}
-                            </strong>
-
-                            <span>
-                                ${escapeHtml(student.course || "Course not selected")}
-                                •
-                                ${formatDate(student.createdAt)}
-                            </span>
-
-                        </div>
-
-                        <span class="badge ${badgeClass(status)}">
-                            ${escapeHtml(statusLabel(status))}
-                        </span>
-
-                    </div>
-                `;
-
-            }).join("")}
-        </div>
-    `;
-
-}
-
-
-/* =========================================================
-   STUDENTS
-========================================================= */
-
-function badgeClass(status){
-
-    if(status === "approved" || status === "confirmed"){
-        return "badge-approved";
-    }
-
-    if(status === "rejected" || status === "cancelled"){
-        return "badge-rejected";
-    }
-
-    return "badge-pending";
-
-}
-
-
-function statusLabel(status){
-
-    const labels = {
-        pending:"Pending",
-        approved:"Approved",
-        rejected:"Rejected",
-        confirmed:"Confirmed",
-        cancelled:"Cancelled"
+    // ==============================
+    // COURSES TAB
+    // ==============================
+
+    const COURSE_SLUGS = ["ui-ux", "cyber-security", "graphic-design", "kidz-spoken-english"];
+
+    const courseSeeds = {
+      "ui-ux": {
+        title: "AI-Powered UI/UX Career Program",
+        tagText: "AI POWERED",
+        tagClass: "",
+        image: "",
+        desc: "UI/UX Fundamentals, User Research, User Flow, Wireframing, Prototyping, Design System, Figma এবং AI-powered design workflow শিখুন — শূন্য থেকে ক্যারিয়ার-রেডি ডিজাইনার হয়ে উঠুন।",
+        meta: ["⏱ 3 Months", "🎯 Career Program", "📜 Certificate", "💻 Online + Offline"],
+        priceOld: "৳11,500",
+        priceNew: "৳7,490",
+        learnItems: ["UI/UX Fundamentals ও Design Thinking", "User Research ও User Flow তৈরি", "Wireframing ও Prototyping (Figma)", "Design System তৈরি করা", "AI-powered design tools ব্যবহার", "Portfolio-ready real project"],
+        modules: [{title:"Design Fundamentals",desc:"Color, typography ও layout basics"}, {title:"User Research",desc:"User persona ও user flow"}, {title:"Wireframing & Prototyping",desc:"Figma দিয়ে হাতে-কলমে"}, {title:"Design Systems",desc:"Reusable component তৈরি"}, {title:"AI Tools in Design",desc:"AI দিয়ে দ্রুত design workflow"}, {title:"Career & Portfolio",desc:"Portfolio তৈরি ও job preparation"}]
+      },
+      "cyber-security": {
+        title: "AI-Powered Cyber Security & Ethical Hacking",
+        tagText: "LIMITED SEATS",
+        tagClass: "urgent",
+        image: "",
+        desc: "Cyber Security fundamentals, ethical hacking, security concepts এবং practical cybersecurity skills হাতে-কলমে শিখুন — সীমিত আসনে ভর্তি চলছে।",
+        meta: ["⏱ 6 Months", "🎯 Ethical Hacking", "📜 Certificate", "💻 Online + Offline"],
+        priceOld: "৳12,500",
+        priceNew: "৳9,500",
+        learnItems: ["Networking ও Security Fundamentals", "Ethical Hacking Techniques", "Vulnerability Assessment", "Penetration Testing Basics", "AI-powered Security Tools", "Real-world Security Project"],
+        modules: [{title:"Networking Basics",desc:"Network fundamentals ও protocols"}, {title:"Security Fundamentals",desc:"Core security concepts"}, {title:"Ethical Hacking Tools",desc:"Kali Linux ও essential tools"}, {title:"Penetration Testing",desc:"হাতে-কলমে vulnerability testing"}, {title:"AI in Cybersecurity",desc:"AI-powered threat detection"}, {title:"Career & Certification",desc:"Job preparation ও certification guidance"}]
+      },
+      "graphic-design": {
+        title: "AI-Powered Graphic Design",
+        tagText: "AI POWERED",
+        tagClass: "",
+        image: "",
+        desc: "Graphic Design fundamentals, visual design, creative tools এবং AI-powered design workflow-এর মাধ্যমে professional skill তৈরি করুন।",
+        meta: ["⏱ 4 Months", "🎯 Creative Career", "📜 Certificate", "💻 Online + Offline"],
+        priceOld: "৳7,500",
+        priceNew: "৳4,500",
+        learnItems: ["Design Fundamentals ও Color Theory", "Adobe Photoshop ও Illustrator", "Branding ও Logo Design", "Social Media Design", "AI-powered Design Tools", "Portfolio Building"],
+        modules: [{title:"Design Basics",desc:"Color theory ও composition"}, {title:"Photoshop Mastery",desc:"Photo editing ও manipulation"}, {title:"Illustrator & Branding",desc:"Logo ও brand identity design"}, {title:"Social Media Design",desc:"Post, banner ও ad creative"}, {title:"AI Design Tools",desc:"AI দিয়ে দ্রুত creative workflow"}, {title:"Portfolio & Freelancing",desc:"Portfolio তৈরি ও freelancing শুরু"}]
+      },
+      "kidz-spoken-english": {
+        title: "100Days Kidz Spoken English",
+        tagText: "100 DAYS",
+        tagClass: "info",
+        image: "",
+        desc: "English speaking, vocabulary, pronunciation এবং communication skill development-এর জন্য structured ১০০ দিনের learning program।",
+        meta: ["⏱ 100 Days", "🎯 Kids Program", "📜 Certificate", "👨‍👩‍👧 Parent Updates"],
+        priceOld: "৳12,500",
+        priceNew: "৳6,500",
+        learnItems: ["Basic Vocabulary ও Pronunciation", "Everyday Conversation Practice", "Grammar Made Simple", "Confidence Building Activities", "Interactive Speaking Sessions", "Weekly Progress Assessment"],
+        modules: [{title:"Alphabet & Basic Words",desc:"Foundation বিল্ড করা"}, {title:"Simple Sentences",desc:"সহজ বাক্য গঠন"}, {title:"Daily Conversation",desc:"রোজকার কথোপকথন practice"}, {title:"Grammar Basics",desc:"সহজভাবে grammar শেখা"}, {title:"Storytelling & Confidence",desc:"গল্প বলা ও confidence তৈরি"}, {title:"Final Assessment",desc:"মূল্যায়ন ও certificate"}]
+      }
     };
 
-    return labels[status] || "Pending";
+    const courseForm = document.getElementById("courseForm");
+    const cancelCourseBtn = document.getElementById("cancelCourseBtn");
+    const newCourseBtn = document.getElementById("newCourseBtn");
+    const moduleRowsEl = document.getElementById("moduleRows");
+    const addModuleRowBtn = document.getElementById("addModuleRowBtn");
 
-}
+    function addModuleRow(title, desc){
+      const row = document.createElement("div");
+      row.className = "module-row";
+      row.innerHTML = `
+        <input type="text" class="mod-title" placeholder="মডিউলের নাম" value="${(title || "").replace(/"/g,'&quot;')}">
+        <input type="text" class="mod-desc" placeholder="ছোট বিবরণ" value="${(desc || "").replace(/"/g,'&quot;')}">
+        <button type="button" class="remove-module-btn" title="মুছে ফেলুন">✕</button>
+      `;
+      row.querySelector(".remove-module-btn").addEventListener("click", function(){
+        row.remove();
+      });
+      moduleRowsEl.appendChild(row);
+    }
 
-
-function renderStudents(){
-
-    const tbody = document.getElementById("studentsTable");
-
-    const search =
-        String(document.getElementById("studentSearch").value || "")
-        .toLowerCase()
-        .trim();
-
-    const statusFilter =
-        document.getElementById("studentStatusFilter").value;
-
-    const courseFilter =
-        document.getElementById("studentCourseFilter").value;
-
-
-    const filtered = students.filter(student => {
-
-        const name = String(student.name || "").toLowerCase();
-
-        const phone = String(student.phone || "").toLowerCase();
-
-        const email = String(student.email || "").toLowerCase();
-
-        const course = String(student.course || "").toLowerCase();
-
-        const status =
-            String(student.status || "pending").toLowerCase();
-
-
-        const matchesSearch =
-            !search ||
-            name.includes(search) ||
-            phone.includes(search) ||
-            email.includes(search) ||
-            course.includes(search);
-
-
-        const matchesStatus =
-            !statusFilter ||
-            status === statusFilter;
-
-
-        const matchesCourse =
-            !courseFilter ||
-            String(student.course || "") === courseFilter;
-
-
-        return (
-            matchesSearch &&
-            matchesStatus &&
-            matchesCourse
-        );
-
+    addModuleRowBtn.addEventListener("click", function(){
+      addModuleRow("", "");
     });
 
-
-    if(!filtered.length){
-
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="7">
-                    <div class="empty">
-                        <div class="empty-icon">🔍</div>
-                        No student found.
-                    </div>
-                </td>
-            </tr>
-        `;
-
-        return;
-
+    function clearModuleRows(){
+      moduleRowsEl.innerHTML = "";
     }
 
-
-    tbody.innerHTML = filtered.map(student => {
-
-        const status =
-            String(student.status || "pending").toLowerCase();
-
-        return `
-            <tr>
-
-                <td>
-
-                    <div class="user-name">
-
-                        <div class="avatar">
-                            ${escapeHtml(initials(student.name))}
-                        </div>
-
-                        <div>
-                            <strong>
-                                ${escapeHtml(student.name || "—")}
-                            </strong>
-
-                            <div class="muted">
-                                ${escapeHtml(student.education || "")}
-                            </div>
-                        </div>
-
-                    </div>
-
-                </td>
-
-
-                <td>
-                    ${escapeHtml(student.phone || "—")}
-                </td>
-
-
-                <td>
-                    ${escapeHtml(student.course || "—")}
-                </td>
-
-
-                <td>
-                    ${escapeHtml(student.email || "—")}
-                </td>
-
-
-                <td>
-
-                    <span class="badge ${badgeClass(status)}">
-                        ${escapeHtml(statusLabel(status))}
-                    </span>
-
-                </td>
-
-
-                <td>
-                    ${formatDate(student.createdAt)}
-                </td>
-
-
-                <td>
-
-                    <div class="actions">
-
-                        <button
-                        class="btn btn-small btn-blue"
-                        onclick="viewStudent('${student.id}')">
-                            View
-                        </button>
-
-                        <button
-                        class="btn btn-small btn-success"
-                        onclick="updateStudentStatus('${student.id}','approved')">
-                            ✓
-                        </button>
-
-                        <button
-                        class="btn btn-small btn-danger"
-                        onclick="updateStudentStatus('${student.id}','rejected')">
-                            ×
-                        </button>
-
-                        <button
-                        class="btn btn-small btn-danger"
-                        onclick="deleteStudent('${student.id}')">
-                            Delete
-                        </button>
-
-                    </div>
-
-                </td>
-
-            </tr>
-        `;
-
-    }).join("");
-
-}
-
-
-function updateCourseFilter(){
-
-    const select =
-        document.getElementById("studentCourseFilter");
-
-    const current = select.value;
-
-    const names = [...new Set(
-        students
-        .map(s => String(s.course || "").trim())
-        .filter(Boolean)
-    )];
-
-    select.innerHTML =
-        `<option value="">সব Course</option>` +
-        names.map(name =>
-            `<option value="${escapeHtml(name)}">
-                ${escapeHtml(name)}
-            </option>`
-        ).join("");
-
-    select.value = names.includes(current) ? current : "";
-
-}
-
-
-document.getElementById("studentSearch")
-.addEventListener("input",renderStudents);
-
-document.getElementById("studentStatusFilter")
-.addEventListener("change",renderStudents);
-
-document.getElementById("studentCourseFilter")
-.addEventListener("change",renderStudents);
-
-
-/* =========================================================
-   VIEW STUDENT
-========================================================= */
-
-function viewStudent(id){
-
-    const student = students.find(s => s.id === id);
-
-    if(!student){
-        return;
+    function resetCourseForm(){
+      courseForm.classList.remove("open");
+      document.getElementById("courseId").value = "";
+      document.getElementById("courseIsNew").value = "";
+      document.getElementById("courseTitle").value = "";
+      document.getElementById("courseTagText").value = "";
+      document.getElementById("courseTagClass").value = "";
+      document.getElementById("courseDesc").value = "";
+      document.getElementById("courseMeta").value = "";
+      document.getElementById("coursePriceOld").value = "";
+      document.getElementById("coursePriceNew").value = "";
+      document.getElementById("courseLearnItems").value = "";
+      document.getElementById("courseImageFile").value = "";
+      document.getElementById("courseImageData").value = "";
+      document.getElementById("courseImagePreview").style.display = "none";
+      clearModuleRows();
     }
 
-    selectedStudentId = id;
+    cancelCourseBtn.addEventListener("click", resetCourseForm);
 
-    const status =
-        String(student.status || "pending").toLowerCase();
+    newCourseBtn.addEventListener("click", function(){
+      resetCourseForm();
+      document.getElementById("courseIsNew").value = "1";
+      addModuleRow("", "");
+      courseForm.classList.add("open");
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
 
+    // image upload + compression
+    document.getElementById("courseImageFile").addEventListener("change", function(e){
+      const file = e.target.files[0];
+      if(!file) return;
 
-    document.getElementById("studentDetails").innerHTML = `
+      const reader = new FileReader();
+      reader.onload = function(evt){
+        const img = new Image();
+        img.onload = function(){
+          const maxWidth = 800;
+          const scale = Math.min(1, maxWidth / img.width);
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-        <div style="
-            display:flex;
-            align-items:center;
-            gap:15px;
-            margin-bottom:22px;
-        ">
+          let quality = 0.7;
+          let compressedData = canvas.toDataURL("image/jpeg", quality);
+          while(compressedData.length > 700000 && quality > 0.2){
+            quality -= 0.15;
+            compressedData = canvas.toDataURL("image/jpeg", quality);
+          }
+          if(compressedData.length > 900000){
+            alert("ছবিটা এখনো অনেক বড়। ছোট সাইজের একটা ছবি বেছে নিন।");
+            document.getElementById("courseImageFile").value = "";
+            return;
+          }
 
-            <div class="avatar" style="
-                width:58px;
-                height:58px;
-                font-size:18px;
-            ">
-                ${escapeHtml(initials(student.name))}
-            </div>
+          document.getElementById("courseImageData").value = compressedData;
+          const preview = document.getElementById("courseImagePreview");
+          preview.src = compressedData;
+          preview.style.display = "block";
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
 
-            <div>
+    function openCourseEditor(slug, data){
+      resetCourseForm();
+      document.getElementById("courseId").value = slug;
+      document.getElementById("courseTitle").value = data.title || "";
+      document.getElementById("courseTagText").value = data.tagText || "";
+      document.getElementById("courseTagClass").value = data.tagClass || "";
+      document.getElementById("courseDesc").value = data.desc || "";
+      document.getElementById("courseMeta").value = (data.meta || []).join("\n");
+      document.getElementById("coursePriceOld").value = data.priceOld || "";
+      document.getElementById("coursePriceNew").value = data.priceNew || "";
+      document.getElementById("courseLearnItems").value = (data.learnItems || []).join("\n");
+      document.getElementById("courseImageData").value = data.image || "";
 
-                <h2 style="font-size:21px;">
-                    ${escapeHtml(student.name || "Unnamed Student")}
-                </h2>
+      clearModuleRows();
+      (data.modules || []).forEach(function(m){
+        addModuleRow(m.title, m.desc);
+      });
+      if(!data.modules || data.modules.length === 0){
+        addModuleRow("", "");
+      }
 
-                <div class="muted">
-                    Applied: ${formatDateTime(student.createdAt)}
-                </div>
+      const preview = document.getElementById("courseImagePreview");
+      if(data.image){
+        preview.src = data.image;
+        preview.style.display = "block";
+      }else{
+        preview.style.display = "none";
+      }
 
-            </div>
+      courseForm.classList.add("open");
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
 
-        </div>
+    function loadCourses(){
+      const courseList = document.getElementById("courseList");
+      courseList.innerHTML = "";
 
+      db.collection("courses").get().then(function(snapshot){
+        const foundSlugs = new Set();
+        const rows = [];
 
-        <div class="form-grid">
+        snapshot.forEach(function(doc){
+          foundSlugs.add(doc.id);
+          rows.push({ id: doc.id, data: doc.data(), isFixed: COURSE_SLUGS.includes(doc.id) });
+        });
 
-            ${detailItem("Status",
-                `<span class="badge ${badgeClass(status)}">
-                    ${escapeHtml(statusLabel(status))}
-                </span>`
-            )}
+        // Add the 4 fixed courses using seed data if they don't have a Firestore doc yet
+        COURSE_SLUGS.forEach(function(slug){
+          if(!foundSlugs.has(slug)){
+            rows.push({ id: slug, data: courseSeeds[slug], isFixed: true });
+          }
+        });
 
-            ${detailItem("Phone",
-                escapeHtml(student.phone || "—")
-            )}
+        renderCourseList(rows);
+      }).catch(function(error){
+        courseList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+        console.error("loadCourses error:", error);
+      });
+    }
 
-            ${detailItem("Email",
-                escapeHtml(student.email || "—")
-            )}
+    function renderCourseList(rows){
+      const courseList = document.getElementById("courseList");
+      courseList.innerHTML = "";
 
-            ${detailItem("Course",
-                escapeHtml(student.course || "—")
-            )}
+      rows.forEach(function(row){
+        const data = row.data;
+        const item = document.createElement("div");
+        item.className = "post-item";
+        const imgSrc = data.image || "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='60' viewBox='0 0 80 60'%3E%3Crect width='80' height='60' fill='%23161616'/%3E%3Ctext x='40' y='34' font-family='Arial' font-size='24' fill='%23444' text-anchor='middle'%3E%F0%9F%96%BC%EF%B8%8F%3C/text%3E%3C/svg%3E";
 
-            ${detailItem("Education",
-                escapeHtml(student.education || "—")
-            )}
+        item.innerHTML = `
+          <img src="${imgSrc}" alt="">
+          <div class="post-info">
+            <h3>${escapeHtml(data.title || "(নাম নেই)")}</h3>
+            <p>${escapeHtml(data.priceOld || "")} → ${escapeHtml(data.priceNew || "")}${row.isFixed ? "" : " • কাস্টম কোর্স"}</p>
+          </div>
+          <div class="post-actions">
+            <button class="icon-btn" data-edit-course="1" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete-course="1" title="Delete">🗑</button>
+          </div>
+        `;
+        courseList.appendChild(item);
 
-            ${detailItem("Age",
-                escapeHtml(student.age || "—")
-            )}
+        item.querySelector("[data-edit-course]").addEventListener("click", function(){
+          openCourseEditor(row.id, data);
+        });
 
-            ${detailItem("Profession",
-                escapeHtml(student.profession || "—")
-            )}
-
-            ${detailItem("PC / Laptop",
-                escapeHtml(student.pcLaptop || "—")
-            )}
-
-            ${detailItem("Address",
-                escapeHtml(student.address || "—")
-            )}
-
-            ${detailItem("Source",
-                escapeHtml(student.source || "—")
-            )}
-
-            <div class="form-group full">
-
-                <label>Message / Note</label>
-
-                <div style="
-                    background:#0b0b0b;
-                    border:1px solid var(--border);
-                    padding:13px;
-                    border-radius:11px;
-                    color:#bbb;
-                    line-height:1.6;
-                ">
-                    ${escapeHtml(student.message || student.note || "—")}
-                </div>
-
-            </div>
-
-        </div>
-    `;
-
-
-    document.getElementById("approveStudentBtn").onclick =
-        () => updateStudentStatus(id,"approved",true);
-
-    document.getElementById("rejectStudentBtn").onclick =
-        () => updateStudentStatus(id,"rejected",true);
-
-
-    openModal("studentModal");
-
-}
-
-
-function detailItem(label,value){
-
-    return `
-        <div class="form-group">
-
-            <label>${escapeHtml(label)}</label>
-
-            <div style="
-                background:#0b0b0b;
-                border:1px solid var(--border);
-                border-radius:11px;
-                padding:11px 13px;
-                min-height:43px;
-            ">
-                ${value}
-            </div>
-
-        </div>
-    `;
-
-}
-
-
-/* =========================================================
-   UPDATE STUDENT STATUS
-========================================================= */
-
-async function updateStudentStatus(id,status,closeAfter=false){
-
-    try{
-
-        await db.collection("students")
-            .doc(id)
-            .update({
-                status:status,
-                updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+        item.querySelector("[data-delete-course]").addEventListener("click", function(){
+          const msg = row.isFixed
+            ? "এই কোর্সের ডাটা ডিলিট করলে পেজটা আগের ডিফল্ট তথ্য দেখাবে। ডিলিট করতে চান?"
+            : "এই কোর্সটি সম্পূর্ণ ডিলিট করতে চান?";
+          if(confirm(msg)){
+            db.collection("courses").doc(row.id).delete().then(function(){
+              loadCourses();
+              showToast("🗑 কোর্স ডিলিট হয়েছে", "success");
+            }).catch(function(error){
+              showToast("❌ ডিলিট করতে সমস্যা: " + error.message, "error");
             });
-
-
-        const student = students.find(s => s.id === id);
-
-        if(student){
-            student.status = status;
-        }
-
-
-        renderStudents();
-        renderDashboard();
-
-
-        toast(
-            status === "approved"
-                ? "Student approved successfully."
-                : "Student rejected.",
-            status === "approved" ? "success" : "error"
-        );
-
-
-        if(closeAfter){
-            closeModal("studentModal");
-        }
-
-    }catch(error){
-
-        toast(error.message,"error");
-
+          }
+        });
+      });
     }
 
-}
-
-
-/* =========================================================
-   DELETE STUDENT
-========================================================= */
-
-async function deleteStudent(id){
-
-    const student = students.find(s => s.id === id);
-
-    if(!student){
-        return;
+    function slugify(text){
+      return (text || "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\u0980-\u09FF]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 60) || ("course-" + Date.now());
     }
 
-    const ok = confirm(
-        `Delete admission record for "${student.name || "this student"}"?`
-    );
+    courseForm.addEventListener("submit", function(e){
+      e.preventDefault();
 
-    if(!ok){
-        return;
-    }
+      try{
+        const isNew = document.getElementById("courseIsNew").value === "1";
+        let slug = document.getElementById("courseId").value;
 
+        const moduleRows = Array.from(moduleRowsEl.querySelectorAll(".module-row"));
+        const modules = moduleRows.map(function(row){
+          const t = row.querySelector(".mod-title").value.trim();
+          const d = row.querySelector(".mod-desc").value.trim();
+          return { title: t, desc: d };
+        }).filter(function(m){ return m.title || m.desc; });
 
-    try{
+        const metaLines = document.getElementById("courseMeta").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
+        const learnLines = document.getElementById("courseLearnItems").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
 
-        await db.collection("students")
-            .doc(id)
-            .delete();
+        const title = document.getElementById("courseTitle").value.trim();
 
-
-        students = students.filter(s => s.id !== id);
-
-
-        renderStudents();
-        renderDashboard();
-        updateCourseFilter();
-
-
-        toast("Student deleted successfully.");
-
-    }catch(error){
-
-        toast(error.message,"error");
-
-    }
-
-}
-
-
-/* =========================================================
-   COURSES
-========================================================= */
-
-function getCourseData(course){
-
-    const slug = course.id;
-
-    const seed = COURSE_SEEDS[slug];
-
-    if(seed){
-
-        return {
-            ...seed,
-            ...course
+        const data = {
+          title: title,
+          tagText: document.getElementById("courseTagText").value.trim(),
+          tagClass: document.getElementById("courseTagClass").value,
+          image: document.getElementById("courseImageData").value.trim(),
+          desc: document.getElementById("courseDesc").value.trim(),
+          meta: metaLines,
+          priceOld: document.getElementById("coursePriceOld").value.trim(),
+          priceNew: document.getElementById("coursePriceNew").value.trim(),
+          learnItems: learnLines,
+          modules: modules,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
         };
 
-    }
-
-    return course;
-
-}
-
-
-async function ensureSeedCourses(){
-
-    const existingIds = new Set(courses.map(c => c.id));
-
-    for(const [id,data] of Object.entries(COURSE_SEEDS)){
-
-        if(existingIds.has(id)){
-            continue;
-        }
-
-        try{
-
-            await db.collection("courses")
-                .doc(id)
-                .set({
-                    ...data,
-                    createdAt:firebase.firestore.FieldValue.serverTimestamp(),
-                    updatedAt:firebase.firestore.FieldValue.serverTimestamp()
-                });
-
-        }catch(error){
-
-            console.error(
-                "Course seed failed:",
-                id,
-                error
-            );
-
-        }
-
-    }
-
-}
-
-
-async function renderCourses(){
-
-    const grid = document.getElementById("courseGrid");
-
-
-    if(!courses.length){
-
-        await ensureSeedCourses();
-
-        const snap =
-            await db.collection("courses").get();
-
-        courses = snap.docs.map(doc => ({
-            id:doc.id,
-            ...doc.data()
-        }));
-
-    }
-
-
-    if(!courses.length){
-
-        grid.innerHTML = `
-            <div class="empty" style="grid-column:1/-1;">
-                <div class="empty-icon">🎓</div>
-                No courses found.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    grid.innerHTML = courses.map(rawCourse => {
-
-        const course = getCourseData(rawCourse);
-
-        const image = course.image || "";
-
-        const meta = Array.isArray(course.meta)
-            ? course.meta
-            : String(course.meta || "")
-                .split("\n")
-                .filter(Boolean);
-
-
-        const learn = Array.isArray(course.learn)
-            ? course.learn
-            : String(course.learn || "")
-                .split("\n")
-                .filter(Boolean);
-
-
-        const status =
-            String(course.status || "active").toLowerCase();
-
-
-        return `
-            <div class="course-card">
-
-                <div class="course-image">
-
-                    ${
-                        image
-                        ?
-                        `<img
-                            src="${escapeHtml(image)}"
-                            alt="${escapeHtml(course.title || "Course")}"
-                        >`
-                        :
-                        `<div class="course-placeholder">🎓</div>`
-                    }
-
-                </div>
-
-
-                <div class="course-body">
-
-                    <span class="course-tag">
-                        ${escapeHtml(course.tag || "Course")}
-                    </span>
-
-
-                    <h3>
-                        ${escapeHtml(course.title || "Untitled Course")}
-                    </h3>
-
-
-                    <p class="course-desc">
-                        ${escapeHtml(course.description || "")}
-                    </p>
-
-
-                    <div class="course-price">
-
-                        ${
-                            course.oldPrice
-                            ?
-                            `<span class="old-price">
-                                ৳${escapeHtml(course.oldPrice)}
-                            </span>`
-                            :
-                            ""
-                        }
-
-                        ${
-                            course.newPrice
-                            ?
-                            `<span class="new-price">
-                                ৳${escapeHtml(course.newPrice)}
-                            </span>`
-                            :
-                            ""
-                        }
-
-                    </div>
-
-
-                    <div class="course-meta">
-
-                        ${
-                            meta.slice(0,5).map(item =>
-                                `<span class="meta-chip">
-                                    ${escapeHtml(item)}
-                                </span>`
-                            ).join("")
-                        }
-
-                    </div>
-
-
-                    <div style="
-                        display:flex;
-                        justify-content:space-between;
-                        align-items:center;
-                        margin-bottom:13px;
-                    ">
-
-                        <span class="badge ${
-                            status === "active"
-                            ? "badge-approved"
-                            : status === "closed"
-                            ? "badge-rejected"
-                            : "badge-pending"
-                        }">
-                            ${escapeHtml(status)}
-                        </span>
-
-                        ${
-                            course.seatsRemaining !== undefined &&
-                            course.seatsRemaining !== ""
-                            ?
-                            `<span class="muted">
-                                ${escapeHtml(course.seatsRemaining)} seats left
-                            </span>`
-                            :
-                            ""
-                        }
-
-                    </div>
-
-
-                    ${
-                        learn.length
-                        ?
-                        `<div style="
-                            color:#777;
-                            font-size:11px;
-                            margin-bottom:13px;
-                        ">
-                            ${escapeHtml(learn.slice(0,3).join(" • "))}
-                        </div>`
-                        :
-                        ""
-                    }
-
-
-                    <div class="course-actions">
-
-                        <button
-                        class="btn btn-small btn-blue"
-                        onclick="editCourse('${rawCourse.id}')">
-                            Edit
-                        </button>
-
-                        <button
-                        class="btn btn-small btn-danger"
-                        onclick="deleteCourse('${rawCourse.id}')">
-                            Delete
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-        `;
-
-    }).join("");
-
-}
-
-
-/* =========================================================
-   COURSE MODAL
-========================================================= */
-
-function openCourseModal(id=null){
-
-    editingCourseId = id;
-
-    const form = document.getElementById("courseForm");
-
-    form.reset();
-
-
-    document.getElementById("courseModalTitle")
-        .textContent = id
-            ? "Edit Course"
-            : "Add Course";
-
-
-    document.getElementById("courseStatus")
-        .value = "active";
-
-
-    if(id){
-
-        const raw = courses.find(c => c.id === id);
-
-        if(!raw){
-            return;
-        }
-
-        const course = getCourseData(raw);
-
-
-        document.getElementById("courseImage").value =
-            course.image || "";
-
-        document.getElementById("courseTitle").value =
-            course.title || "";
-
-        document.getElementById("courseTag").value =
-            course.tag || "";
-
-        document.getElementById("courseDescription").value =
-            course.description || "";
-
-        document.getElementById("courseOldPrice").value =
-            course.oldPrice || "";
-
-        document.getElementById("courseNewPrice").value =
-            course.newPrice || "";
-
-        document.getElementById("courseDuration").value =
-            course.duration || "";
-
-        document.getElementById("courseSeats").value =
-            course.seats ?? "";
-
-        document.getElementById("courseSeatsRemaining").value =
-            course.seatsRemaining ?? "";
-
-        document.getElementById("courseBatchStart").value =
-            course.batchStart || "";
-
-        document.getElementById("courseStatus").value =
-            course.status || "active";
-
-
-        document.getElementById("courseMeta").value =
-            Array.isArray(course.meta)
-            ? course.meta.join("\n")
-            : String(course.meta || "");
-
-
-        document.getElementById("courseLearn").value =
-            Array.isArray(course.learn)
-            ? course.learn.join("\n")
-            : String(course.learn || "");
-
-
-        document.getElementById("courseModules").value =
-            Array.isArray(course.modules)
-            ? course.modules.join("\n")
-            : String(course.modules || "");
-
-    }
-
-
-    openModal("courseModal");
-
-}
-
-
-function editCourse(id){
-
-    openCourseModal(id);
-
-}
-
-
-document.getElementById("courseForm")
-.addEventListener("submit",async event => {
-
-    event.preventDefault();
-
-
-    const title =
-        document.getElementById("courseTitle").value.trim();
-
-    if(!title){
-        toast("Course title required.","error");
-        return;
-    }
-
-
-    const data = {
-
-        image:
-            document.getElementById("courseImage").value.trim(),
-
-        title:title,
-
-        tag:
-            document.getElementById("courseTag").value.trim(),
-
-        description:
-            document.getElementById("courseDescription").value.trim(),
-
-        oldPrice:
-            document.getElementById("courseOldPrice").value.trim(),
-
-        newPrice:
-            document.getElementById("courseNewPrice").value.trim(),
-
-        duration:
-            document.getElementById("courseDuration").value.trim(),
-
-        seats:
-            document.getElementById("courseSeats").value.trim(),
-
-        seatsRemaining:
-            document.getElementById("courseSeatsRemaining").value.trim(),
-
-        batchStart:
-            document.getElementById("courseBatchStart").value.trim(),
-
-        status:
-            document.getElementById("courseStatus").value,
-
-        meta:
-            document.getElementById("courseMeta").value
-            .split("\n")
-            .map(x => x.trim())
-            .filter(Boolean),
-
-        learn:
-            document.getElementById("courseLearn").value
-            .split("\n")
-            .map(x => x.trim())
-            .filter(Boolean),
-
-        modules:
-            document.getElementById("courseModules").value
-            .split("\n")
-            .map(x => x.trim())
-            .filter(Boolean),
-
-        updatedAt:
-            firebase.firestore.FieldValue.serverTimestamp()
-
-    };
-
-
-    try{
-
-        if(editingCourseId){
-
-            await db.collection("courses")
-                .doc(editingCourseId)
-                .update(data);
-
-
-            const index =
-                courses.findIndex(
-                    c => c.id === editingCourseId
-                );
-
-
-            if(index !== -1){
-
-                courses[index] = {
-                    ...courses[index],
-                    ...data
-                };
-
-            }
-
-
-            toast("Course updated successfully.");
-
-        }else{
-
-            const id = slugify(title);
-
-            let finalId = id;
-
-            const exists =
-                await db.collection("courses")
-                .doc(finalId)
-                .get();
-
-
-            if(exists.exists){
-
-                finalId =
-                    id + "-" + Date.now();
-
-            }
-
-
-            await db.collection("courses")
-                .doc(finalId)
-                .set({
-                    ...data,
-                    createdAt:
-                        firebase.firestore.FieldValue.serverTimestamp()
-                });
-
-
-            courses.push({
-                id:finalId,
-                ...data
+        const saveBtn = document.getElementById("saveCourseBtn");
+        saveBtn.disabled = true;
+        saveBtn.textContent = "সেভ হচ্ছে...";
+
+        if(isNew){
+          if(!slug){
+            slug = slugify(title);
+          }
+          data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+          db.collection("courses").doc(slug).set(data)
+            .then(function(){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              resetCourseForm();
+              loadCourses();
+              showToast("✅ নতুন কোর্স তৈরি হয়েছে (courses.html-এ দেখাতে হলে জানান)", "success");
+            })
+            .catch(function(error){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+              console.error("Save (new) error:", error);
             });
-
-
-            toast("Course created successfully.");
-
+        }else{
+          db.collection("courses").doc(slug).set(data, { merge: true })
+            .then(function(){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              resetCourseForm();
+              loadCourses();
+              showToast("✅ কোর্স আপডেট হয়েছে", "success");
+            })
+            .catch(function(error){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+              console.error("Save (update) error:", error);
+            });
         }
-
-
-        closeModal("courseModal");
-
-        renderCourses();
-        renderDashboard();
-
-    }catch(error){
-
-        console.error(error);
-
-        toast(error.message,"error");
-
-    }
-
-});
-
-
-/* =========================================================
-   DELETE COURSE
-========================================================= */
-
-async function deleteCourse(id){
-
-    const course = courses.find(c => c.id === id);
-
-    if(!course){
-        return;
-    }
-
-
-    const ok = confirm(
-        `Delete "${course.title || "this course"}"?`
-    );
-
-    if(!ok){
-        return;
-    }
-
-
-    try{
-
-        await db.collection("courses")
-            .doc(id)
-            .delete();
-
-
-        courses =
-            courses.filter(c => c.id !== id);
-
-
-        renderCourses();
-        renderDashboard();
-
-
-        toast("Course deleted successfully.");
-
-    }catch(error){
-
-        toast(error.message,"error");
-
-    }
-
-}
-
-
-/* =========================================================
-   PAYMENTS
-========================================================= */
-
-function renderPayments(){
-
-    const tbody =
-        document.getElementById("paymentsTable");
-
-
-    const search =
-        String(document.getElementById("paymentSearch").value || "")
-        .toLowerCase()
-        .trim();
-
-
-    const statusFilter =
-        document.getElementById("paymentStatusFilter").value;
-
-
-    const filtered = payments.filter(payment => {
-
-        const name =
-            String(
-                payment.payerName ||
-                payment.name ||
-                ""
-            ).toLowerCase();
-
-
-        const phone =
-            String(
-                payment.payerPhone ||
-                payment.phone ||
-                ""
-            ).toLowerCase();
-
-
-        const trx =
-            String(
-                payment.trxId ||
-                payment.transactionId ||
-                ""
-            ).toLowerCase();
-
-
-        const status =
-            String(payment.status || "pending")
-            .toLowerCase();
-
-
-        return (
-            (!search ||
-                name.includes(search) ||
-                phone.includes(search) ||
-                trx.includes(search)
-            )
-            &&
-            (!statusFilter ||
-                status === statusFilter
-            )
-        );
-
+      }catch(err){
+        alert("একটা সমস্যা হয়েছে: " + err.message);
+        console.error("courseForm submit handler crashed:", err);
+        const saveBtn = document.getElementById("saveCourseBtn");
+        saveBtn.disabled = false;
+        saveBtn.textContent = "সেভ করুন";
+      }
     });
 
-
-    if(!filtered.length){
-
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="8">
-
-                    <div class="empty">
-                        <div class="empty-icon">💳</div>
-                        No payment found.
-                    </div>
-
-                </td>
-            </tr>
-        `;
-
-        return;
-
-    }
-
-
-    tbody.innerHTML = filtered.map(payment => {
-
-        const status =
-            String(payment.status || "pending")
-            .toLowerCase();
-
-
-        const amount =
-            payment.amount ??
-            payment.price ??
-            payment.newPrice ??
-            "";
-
-
-        return `
-            <tr>
-
-                <td>
-                    <strong>
-                        ${escapeHtml(
-                            payment.payerName ||
-                            payment.name ||
-                            "—"
-                        )}
-                    </strong>
-                </td>
-
-
-                <td>
-                    ${escapeHtml(
-                        payment.payerPhone ||
-                        payment.phone ||
-                        "—"
-                    )}
-                </td>
-
-
-                <td>
-                    ${escapeHtml(
-                        payment.payerBkashNumber ||
-                        payment.bkashNumber ||
-                        "—"
-                    )}
-                </td>
-
-
-                <td>
-                    <strong>
-                        ${escapeHtml(
-                            payment.trxId ||
-                            payment.transactionId ||
-                            "—"
-                        )}
-                    </strong>
-                </td>
-
-
-                <td>
-                    ${
-                        amount
-                        ? `৳${escapeHtml(amount)}`
-                        : "—"
-                    }
-                </td>
-
-
-                <td>
-
-                    <span class="badge ${badgeClass(status)}">
-                        ${escapeHtml(statusLabel(status))}
-                    </span>
-
-                </td>
-
-
-                <td>
-                    ${formatDate(payment.createdAt)}
-                </td>
-
-
-                <td>
-
-                    <div class="actions">
-
-                        ${
-                            status === "pending"
-                            ?
-                            `
-                            <button
-                            class="btn btn-small btn-success"
-                            onclick="confirmPayment('${payment.id}')">
-                                Confirm
-                            </button>
-
-                            <button
-                            class="btn btn-small btn-danger"
-                            onclick="cancelPayment('${payment.id}')">
-                                Cancel
-                            </button>
-                            `
-                            :
-                            ""
-                        }
-
-
-                        <button
-                        class="btn btn-small btn-blue"
-                        onclick="editPayment('${payment.id}')">
-                            Edit
-                        </button>
-
-
-                        <button
-                        class="btn btn-small btn-danger"
-                        onclick="deletePayment('${payment.id}')">
-                            Delete
-                        </button>
-
-                    </div>
-
-                </td>
-
-            </tr>
-        `;
-
-    }).join("");
-
-}
-
-
-document.getElementById("paymentSearch")
-.addEventListener("input",renderPayments);
-
-document.getElementById("paymentStatusFilter")
-.addEventListener("change",renderPayments);
-
-
-/* =========================================================
-   CONFIRM PAYMENT
-========================================================= */
-
-async function confirmPayment(id){
-
-    const payment = payments.find(p => p.id === id);
-
-    if(!payment){
-        return;
-    }
-
-
-    const ok = confirm(
-        `Confirm payment from "${payment.payerName || payment.name || "student"}"?`
-    );
-
-    if(!ok){
-        return;
-    }
-
-
-    try{
-
-        let studentId =
-            payment.linkedStudentId || null;
-
-
-        if(!studentId){
-
-            const studentRef =
-                await db.collection("students").add({
-
-                    name:
-                        payment.payerName ||
-                        payment.name ||
-                        "",
-
-                    phone:
-                        payment.payerPhone ||
-                        payment.phone ||
-                        "",
-
-                    email:
-                        payment.email ||
-                        "",
-
-                    course:
-                        payment.course ||
-                        "",
-
-                    education:
-                        payment.education ||
-                        "",
-
-                    status:"approved",
-
-                    paymentId:id,
-
-                    source:"payment",
-
-                    createdAt:
-                        firebase.firestore.FieldValue.serverTimestamp()
-
-                });
-
-
-            studentId = studentRef.id;
-
-        }else{
-
-            await db.collection("students")
-                .doc(studentId)
-                .set({
-                    status:"approved",
-                    paymentId:id,
-                    updatedAt:
-                        firebase.firestore.FieldValue.serverTimestamp()
-                },{
-                    merge:true
-                });
-
+    // LOAD STUDENTS
+    function loadStudents(){
+      const studentList = document.getElementById("studentList");
+      const studentsEmpty = document.getElementById("studentsEmpty");
+
+      db.collection("students").orderBy("createdAt", "desc").get().then(function(snapshot){
+        studentList.innerHTML = "";
+
+        if(snapshot.empty){
+          studentsEmpty.style.display = "block";
+          return;
         }
-
-
-        await db.collection("payments")
-            .doc(id)
-            .update({
-
-                status:"confirmed",
-
-                linkedStudentId:studentId,
-
-                confirmedAt:
-                    firebase.firestore.FieldValue.serverTimestamp(),
-
-                updatedAt:
-                    firebase.firestore.FieldValue.serverTimestamp()
-
-            });
-
-
-        toast("Payment confirmed and student enrolled.");
-
-
-        await loadAllData();
-
-    }catch(error){
-
-        console.error(error);
-
-        toast(error.message,"error");
-
-    }
-
-}
-
-
-/* =========================================================
-   CANCEL PAYMENT
-========================================================= */
-
-async function cancelPayment(id){
-
-    const payment = payments.find(p => p.id === id);
-
-    if(!payment){
-        return;
-    }
-
-
-    const ok = confirm(
-        "Cancel this payment?"
-    );
-
-    if(!ok){
-        return;
-    }
-
-
-    try{
-
-        if(payment.linkedStudentId){
-
-            await db.collection("students")
-                .doc(payment.linkedStudentId)
-                .delete();
-
-        }
-
-
-        await db.collection("payments")
-            .doc(id)
-            .update({
-
-                status:"cancelled",
-
-                linkedStudentId:
-                    firebase.firestore.FieldValue.delete(),
-
-                updatedAt:
-                    firebase.firestore.FieldValue.serverTimestamp()
-
-            });
-
-
-        toast("Payment cancelled.","error");
-
-
-        await loadAllData();
-
-    }catch(error){
-
-        toast(error.message,"error");
-
-    }
-
-}
-
-
-/* =========================================================
-   EDIT PAYMENT
-========================================================= */
-
-async function editPayment(id){
-
-    const payment =
-        payments.find(p => p.id === id);
-
-    if(!payment){
-        return;
-    }
-
-
-    const name = prompt(
-        "Payer Name:",
-        payment.payerName || payment.name || ""
-    );
-
-    if(name === null){
-        return;
-    }
-
-
-    const phone = prompt(
-        "Payer Phone:",
-        payment.payerPhone || payment.phone || ""
-    );
-
-    if(phone === null){
-        return;
-    }
-
-
-    const bkash = prompt(
-        "bKash Number:",
-        payment.payerBkashNumber ||
-        payment.bkashNumber ||
-        ""
-    );
-
-    if(bkash === null){
-        return;
-    }
-
-
-    const trx = prompt(
-        "Transaction ID:",
-        payment.trxId ||
-        payment.transactionId ||
-        ""
-    );
-
-    if(trx === null){
-        return;
-    }
-
-
-    try{
-
-        await db.collection("payments")
-            .doc(id)
-            .update({
-
-                payerName:name,
-
-                payerPhone:phone,
-
-                payerBkashNumber:bkash,
-
-                trxId:trx,
-
-                updatedAt:
-                    firebase.firestore.FieldValue.serverTimestamp()
-
-            });
-
-
-        toast("Payment updated successfully.");
-
-        await loadAllData();
-
-    }catch(error){
-
-        toast(error.message,"error");
-
-    }
-
-}
-
-
-/* =========================================================
-   DELETE PAYMENT
-========================================================= */
-
-async function deletePayment(id){
-
-    const payment =
-        payments.find(p => p.id === id);
-
-    if(!payment){
-        return;
-    }
-
-
-    const ok = confirm(
-        "Delete this payment record?"
-    );
-
-    if(!ok){
-        return;
-    }
-
-
-    try{
-
-        await db.collection("payments")
-            .doc(id)
-            .delete();
-
-
-        payments =
-            payments.filter(p => p.id !== id);
-
-
-        renderPayments();
-        renderDashboard();
-
-
-        toast("Payment deleted successfully.");
-
-    }catch(error){
-
-        toast(error.message,"error");
-
-    }
-
-}
-
-
-/* =========================================================
-   BLOG POSTS
-========================================================= */
-
-function renderPosts(){
-
-    const grid =
-        document.getElementById("blogGrid");
-
-
-    if(!posts.length){
-
-        grid.innerHTML = `
-            <div class="empty" style="grid-column:1/-1;">
-
-                <div class="empty-icon">📝</div>
-
-                No blog post found.
-
+        studentsEmpty.style.display = "none";
+
+        snapshot.forEach(function(doc){
+          const s = doc.data();
+          const card = document.createElement("div");
+          card.className = "student-card";
+          card.innerHTML = `
+            <div>
+              <div class="s-name">${escapeHtml(s.name || "-")}</div>
+              <div class="s-sub">${escapeHtml(s.phone || "-")}</div>
             </div>
-        `;
-
-        return;
-
-    }
-
-
-    grid.innerHTML = posts.map(post => {
-
-        const image = post.image || "";
-
-
-        return `
-            <article class="blog-card">
-
-                <div class="blog-image">
-
-                    ${
-                        image
-                        ?
-                        `<img
-                            src="${escapeHtml(image)}"
-                            alt="${escapeHtml(post.title || "Blog")}"
-                        >`
-                        :
-                        `<div style="
-                            height:100%;
-                            display:flex;
-                            align-items:center;
-                            justify-content:center;
-                            font-size:45px;
-                        ">
-                            📝
-                        </div>`
-                    }
-
-                </div>
-
-
-                <div class="blog-body">
-
-                    <h3>
-                        ${escapeHtml(post.title || "Untitled")}
-                    </h3>
-
-
-                    <p>
-                        ${escapeHtml(
-                            post.excerpt ||
-                            post.content ||
-                            ""
-                        )}
-                    </p>
-
-
-                    <div class="muted" style="
-                        margin-top:9px;
-                        font-size:11px;
-                    ">
-                        ${formatDate(post.createdAt)}
-                    </div>
-
-
-                    <div class="blog-actions">
-
-                        <button
-                        class="btn btn-small btn-blue"
-                        onclick="editBlog('${post.id}')">
-                            Edit
-                        </button>
-
-                        <button
-                        class="btn btn-small btn-danger"
-                        onclick="deleteBlog('${post.id}')">
-                            Delete
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-        `;
-
-    }).join("");
-
-}
-
-
-/* =========================================================
-   BLOG MODAL
-========================================================= */
-
-function openBlogModal(id=null){
-
-    editingBlogId = id;
-
-    document.getElementById("blogForm")
-        .reset();
-
-
-    document.getElementById("blogModalTitle")
-        .textContent =
-        id ? "Edit Blog Post" : "Create Blog Post";
-
-
-    if(id){
-
-        const post =
-            posts.find(p => p.id === id);
-
-        if(!post){
-            return;
-        }
-
-
-        document.getElementById("blogImage").value =
-            post.image || "";
-
-        document.getElementById("blogTitle").value =
-            post.title || "";
-
-        document.getElementById("blogExcerpt").value =
-            post.excerpt || "";
-
-        document.getElementById("blogContent").value =
-            post.content || "";
-
-    }
-
-
-    openModal("blogModal");
-
-}
-
-
-function editBlog(id){
-
-    openBlogModal(id);
-
-}
-
-
-document.getElementById("blogForm")
-.addEventListener("submit",async event => {
-
-    event.preventDefault();
-
-
-    const title =
-        document.getElementById("blogTitle")
-        .value
-        .trim();
-
-
-    if(!title){
-
-        toast("Blog title required.","error");
-
-        return;
-
-    }
-
-
-    const data = {
-
-        image:
-            document.getElementById("blogImage")
-            .value
-            .trim(),
-
-        title:title,
-
-        excerpt:
-            document.getElementById("blogExcerpt")
-            .value
-            .trim(),
-
-        content:
-            document.getElementById("blogContent")
-            .value
-            .trim(),
-
-        updatedAt:
-            firebase.firestore.FieldValue.serverTimestamp()
-
-    };
-
-
-    try{
-
-        if(editingBlogId){
-
-            await db.collection("posts")
-                .doc(editingBlogId)
-                .update(data);
-
-
-            const index =
-                posts.findIndex(
-                    p => p.id === editingBlogId
-                );
-
-
-            if(index !== -1){
-
-                posts[index] = {
-                    ...posts[index],
-                    ...data
-                };
-
+            <div class="s-field"><span>Course</span>${escapeHtml(s.course || "-")}</div>
+            <div class="s-field"><span>Email</span>${escapeHtml(s.email || "-")}</div>
+            <div class="s-field"><span>Education</span>${escapeHtml(s.education || "-")}</div>
+            <button class="icon-btn danger" data-del-student="${doc.id}" title="Delete">🗑</button>
+          `;
+          studentList.appendChild(card);
+        });
+
+        studentList.querySelectorAll("[data-del-student]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-del-student");
+            if(confirm("এই আবেদনটি ডিলিট করতে চান?")){
+              db.collection("students").doc(id).delete().then(loadStudents);
             }
+          });
+        });
+      }).catch(function(error){
+        studentList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+      });
+    }
 
+    // LOAD PAYMENTS
+    const paymentEditForm = document.getElementById("paymentEditForm");
+    const cancelPaymentEditBtn = document.getElementById("cancelPaymentEditBtn");
 
-            toast("Blog post updated successfully.");
+    function resetPaymentEditForm(){
+      paymentEditForm.classList.remove("open");
+      document.getElementById("editPaymentId").value = "";
+      document.getElementById("editPayerName").value = "";
+      document.getElementById("editPayerPhone").value = "";
+      document.getElementById("editPayerBkash").value = "";
+      document.getElementById("editTrxId").value = "";
+    }
 
-        }else{
+    cancelPaymentEditBtn.addEventListener("click", resetPaymentEditForm);
 
-            const ref =
-                await db.collection("posts")
-                .add({
+    paymentEditForm.addEventListener("submit", function(e){
+      e.preventDefault();
 
-                    ...data,
+      const id = document.getElementById("editPaymentId").value;
+      const updated = {
+        payerName: document.getElementById("editPayerName").value.trim(),
+        payerPhone: document.getElementById("editPayerPhone").value.trim(),
+        payerBkashNumber: document.getElementById("editPayerBkash").value.trim(),
+        trxId: document.getElementById("editTrxId").value.trim()
+      };
 
-                    createdAt:
-                        firebase.firestore.FieldValue.serverTimestamp()
+      const saveBtn = document.getElementById("savePaymentEditBtn");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "সেভ হচ্ছে...";
 
-                });
+      db.collection("payments").doc(id).get().then(function(doc){
+        const p = doc.data();
+        const updatePromises = [db.collection("payments").doc(id).update(updated)];
 
-
-            posts.unshift({
-                id:ref.id,
-                ...data
-            });
-
-
-            toast("Blog post created successfully.");
-
+        // keep the linked admission record's name/phone in sync
+        if(p.linkedStudentId){
+          updatePromises.push(
+            db.collection("students").doc(p.linkedStudentId).update({
+              name: updated.payerName,
+              phone: updated.payerPhone
+            }).catch(function(){ /* linked student may have been removed manually; ignore */ })
+          );
         }
 
-
-        closeModal("blogModal");
-
-        renderPosts();
-
-    }catch(error){
-
-        console.error(error);
-
-        toast(error.message,"error");
-
-    }
-
-});
-
-
-/* =========================================================
-   DELETE BLOG
-========================================================= */
-
-async function deleteBlog(id){
-
-    const post =
-        posts.find(p => p.id === id);
-
-    if(!post){
-        return;
-    }
-
-
-    const ok = confirm(
-        `Delete "${post.title || "this post"}"?`
-    );
-
-    if(!ok){
-        return;
-    }
-
-
-    try{
-
-        await db.collection("posts")
-            .doc(id)
-            .delete();
-
-
-        posts =
-            posts.filter(p => p.id !== id);
-
-
-        renderPosts();
-
-
-        toast("Blog post deleted successfully.");
-
-    }catch(error){
-
-        toast(error.message,"error");
-
-    }
-
-}
-
-
-/* =========================================================
-   CLOSE MODALS BY OUTSIDE CLICK
-========================================================= */
-
-document.querySelectorAll(".modal")
-.forEach(modal => {
-
-    modal.addEventListener("click",event => {
-
-        if(event.target === modal){
-
-            modal.classList.remove("show");
-
-        }
-
+        return Promise.all(updatePromises);
+      }).then(function(){
+        saveBtn.disabled = false;
+        saveBtn.textContent = "সেভ করুন";
+        resetPaymentEditForm();
+        loadPayments();
+        showToast("✅ তথ্য আপডেট হয়েছে", "success");
+      }).catch(function(error){
+        saveBtn.disabled = false;
+        saveBtn.textContent = "সেভ করুন";
+        showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+      });
     });
 
-});
+    function loadPayments(){
+      const paymentList = document.getElementById("paymentList");
+      const paymentsEmpty = document.getElementById("paymentsEmpty");
 
+      db.collection("payments").orderBy("createdAt", "desc").get().then(function(snapshot){
+        paymentList.innerHTML = "";
 
-/* =========================================================
-   ESC CLOSE
-========================================================= */
+        if(snapshot.empty){
+          paymentsEmpty.style.display = "block";
+          return;
+        }
+        paymentsEmpty.style.display = "none";
 
-document.addEventListener("keydown",event => {
+        snapshot.forEach(function(doc){
+          const p = doc.data();
+          const status = p.status || "pending";
 
-    if(event.key === "Escape"){
+          let pillHtml, actionButtons;
+          const phoneDigits = (p.payerPhone || "").replace(/[^0-9]/g, "");
+          const waPhone = phoneDigits.startsWith("0") ? "880" + phoneDigits.slice(1) : phoneDigits;
+          const callPhone = phoneDigits.startsWith("0") ? "+880" + phoneDigits.slice(1) : "+" + phoneDigits;
+          const contactButtons = phoneDigits ? `
+              <a class="contact-btn whatsapp" href="https://wa.me/${waPhone}?text=আমি%20SNK%20IT%20Institute%20থেকে%20আপনার%20Payment%20নিয়ে%20কথা%20বলতে%20চাই" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+              <a class="contact-btn call" href="tel:${callPhone}">📞 Call</a>
+          ` : "";
 
-        document.querySelectorAll(".modal.show")
-            .forEach(modal =>
-                modal.classList.remove("show")
-            );
+          if(status === "confirmed"){
+            pillHtml = `<span class="status-pill confirmed">✓ Confirmed</span>`;
+            actionButtons = `<button class="confirm-btn cancel-variant" data-cancel-payment="${doc.id}">Cancel</button>`;
+          }else if(status === "cancelled"){
+            pillHtml = `<span class="status-pill cancelled">✕ Cancelled</span>`;
+            actionButtons = `
+              <button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>
+              ${contactButtons}
+            `;
+          }else{
+            pillHtml = `<span class="status-pill pending">Pending</span>`;
+            actionButtons = `
+              <button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>
+              <button class="confirm-btn cancel-variant" data-cancel-payment="${doc.id}">Cancel</button>
+            `;
+          }
 
+          const card = document.createElement("div");
+          card.className = "payment-card";
+          card.innerHTML = `
+            <div>
+              <div class="s-name">${escapeHtml(p.payerName || "-")}</div>
+              <div class="s-sub">${escapeHtml(p.payerPhone || "-")}</div>
+            </div>
+            <div class="s-field"><span>Course</span>${escapeHtml(p.courseName || "-")} (${escapeHtml(p.price || "-")})</div>
+            <div class="s-field"><span>bKash নম্বর</span>${escapeHtml(p.payerBkashNumber || "-")}</div>
+            <div class="s-field"><span>TrxID</span>${escapeHtml(p.trxId || "-")}</div>
+            <div class="p-actions">
+              ${pillHtml}
+              ${actionButtons}
+              <button class="icon-btn" data-edit-payment="${doc.id}" title="Edit">✎</button>
+              <button class="icon-btn danger" data-del-payment="${doc.id}" title="Delete">🗑</button>
+            </div>
+          `;
+          paymentList.appendChild(card);
+        });
+
+        // CONFIRM: mark confirmed + create/link an admission-list (students) entry
+        paymentList.querySelectorAll("[data-confirm-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-confirm-payment");
+
+            db.collection("payments").doc(id).get().then(function(doc){
+              const p = doc.data();
+
+              if(p.linkedStudentId){
+                // already linked before (e.g. was cancelled then re-confirmed) — just flip status
+                return db.collection("payments").doc(id).update({ status: "confirmed" });
+              }
+
+              // create a new admission-list entry from this payment
+              return db.collection("students").add({
+                name: p.payerName || "",
+                phone: p.payerPhone || "",
+                email: "",
+                age: "",
+                course: p.courseName || "",
+                education: "",
+                profession: "",
+                pcLaptop: "",
+                address: "",
+                message: "Payment-এর মাধ্যমে ভর্তি — TrxID: " + (p.trxId || "-"),
+                source: "payment",
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+              }).then(function(studentRef){
+                return db.collection("payments").doc(id).update({
+                  status: "confirmed",
+                  linkedStudentId: studentRef.id
+                });
+              });
+            }).then(function(){
+              loadPayments();
+              loadStudents();
+              showToast("✅ Confirmed হয়েছে এবং Admission তালিকায় যোগ হয়েছে", "success");
+            }).catch(function(error){
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+            });
+          });
+        });
+
+        // CANCEL: mark cancelled + remove the linked admission-list entry (if any)
+        paymentList.querySelectorAll("[data-cancel-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-cancel-payment");
+
+            if(!confirm("এই Payment বাতিল করতে চান? সংশ্লিষ্ট Admission তালিকা থেকেও এন্ট্রিটা সরে যাবে।")) return;
+
+            db.collection("payments").doc(id).get().then(function(doc){
+              const p = doc.data();
+              const tasks = [db.collection("payments").doc(id).update({ status: "cancelled", linkedStudentId: firebase.firestore.FieldValue.delete() })];
+
+              if(p.linkedStudentId){
+                tasks.push(
+                  db.collection("students").doc(p.linkedStudentId).delete().catch(function(){ /* already gone, ignore */ })
+                );
+              }
+              return Promise.all(tasks);
+            }).then(function(){
+              loadPayments();
+              loadStudents();
+              showToast("🚫 Payment বাতিল হয়েছে", "success");
+            }).catch(function(error){
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+            });
+          });
+        });
+
+        // EDIT
+        paymentList.querySelectorAll("[data-edit-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-edit-payment");
+            db.collection("payments").doc(id).get().then(function(doc){
+              const p = doc.data();
+              document.getElementById("editPaymentId").value = id;
+              document.getElementById("editPayerName").value = p.payerName || "";
+              document.getElementById("editPayerPhone").value = p.payerPhone || "";
+              document.getElementById("editPayerBkash").value = p.payerBkashNumber || "";
+              document.getElementById("editTrxId").value = p.trxId || "";
+              paymentEditForm.classList.add("open");
+              window.scrollTo({top:0, behavior:"smooth"});
+            });
+          });
+        });
+
+        // DELETE
+        paymentList.querySelectorAll("[data-del-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-del-payment");
+            if(confirm("এই Payment তথ্য সম্পূর্ণ ডিলিট করতে চান? (Admission তালিকার এন্ট্রি থাকলে সেটা মুছবে না)")){
+              db.collection("payments").doc(id).delete().then(function(){
+                loadPayments();
+                showToast("🗑 ডিলিট হয়েছে", "success");
+              }).catch(function(error){
+                showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+              });
+            }
+          });
+        });
+      }).catch(function(error){
+        paymentList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+      });
     }
 
-});
+    function escapeHtml(str){
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
 
-
-/* =========================================================
-   INITIAL
-========================================================= */
-
-document.getElementById("pageTitle")
-    .textContent = "Dashboard";
-
-document.getElementById("pageSubtitle")
-    .textContent = "SNK IT Institute Management";
-
-
-</script>
+  </script>
 
 </body>
 </html>
