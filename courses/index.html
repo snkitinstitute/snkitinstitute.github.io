@@ -3,63 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>কোর্সসমূহ | SNK IT Institute</title>
+  <title>কোর্স | SNK IT Institute</title>
 
-  <meta name="description" content="SNK IT Institute-এর সব কোর্স — AI-Powered UI/UX, Cyber Security, Graphic Design, Spoken English এবং আরও অনেক কিছু।">
+  <meta name="description" content="SNK IT Institute-এর কোর্স বিবরণ।">
 
-  
   <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
 
-  <meta property="og:title" content="কোর্সসমূহ | SNK IT Institute">
-  <meta property="og:description" content="SNK IT Institute-এর সব কোর্স — AI-Powered UI/UX, Cyber Security, Graphic Design, Spoken English এবং আরও অনেক কিছু।">
+  <meta property="og:title" content="কোর্স | SNK IT Institute">
   <meta property="og:image" content="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
   <meta property="og:type" content="website">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="কোর্সসমূহ | SNK IT Institute">
-  <meta name="twitter:description" content="SNK IT Institute-এর সব কোর্স — AI-Powered UI/UX, Cyber Security, Graphic Design, Spoken English এবং আরও অনেক কিছু।">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
-
   <style>
 
-    *{ margin:0; padding:0; box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     :root{
-      --bg:#050505; --bg-alt:#080808; --bg-card:#0b0b0b; --bg-input:#101010;
-      --text:#fff; --text-muted:#a4a4a4; --text-dim:#777;
-      --border:#181818; --border-2:#292929;
+      --bg:#050505;
+      --bg-alt:#080808;
+      --bg-card:#0b0b0b;
+      --bg-input:#101010;
+      --text:#fff;
+      --text-muted:#a4a4a4;
+      --text-dim:#777;
+      --border:#181818;
+      --border-2:#292929;
     }
 
     html.light-mode{
-      --bg:#f7f7f2; --bg-alt:#f0f0ea; --bg-card:#ffffff; --bg-input:#ffffff;
-      --text:#111; --text-muted:#555; --text-dim:#777;
-      --border:#e2e2da; --border-2:#dcdcd2;
+      --bg:#f7f7f2;
+      --bg-alt:#f0f0ea;
+      --bg-card:#ffffff;
+      --bg-input:#ffffff;
+      --text:#111;
+      --text-muted:#555;
+      --text-dim:#777;
+      --border:#e2e2da;
+      --border-2:#dcdcd2;
     }
 
     body{
       font-family:Arial, Helvetica, sans-serif;
-      background:var(--bg); color:var(--text); line-height:1.6;
-      overflow-x:hidden; transition:background .3s ease, color .3s ease;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+      transition:background .3s ease, color .3s ease;
     }
 
     a{ text-decoration:none; color:inherit; }
     img{ max-width:100%; display:block; }
     button{ font:inherit; }
 
-    .container{ width:min(1180px,92%); margin:auto; }
+    .container{
+      width:min(1080px,92%);
+      margin:auto;
+    }
 
     /* HEADER */
 
     .header{
-      position:sticky; top:0; z-index:9999;
-      background:var(--bg); opacity:.98;
-      backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      position:sticky;
+      top:0;
+      z-index:9999;
+      background:var(--bg);
+      opacity:.98;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
       border-bottom:1px solid var(--border);
       transition:background .3s ease, border-color .3s ease;
     }
 
-    .nav{ min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+    }
+
     .brand{ display:flex; align-items:center; flex-shrink:0; }
     .brand img{ width:120px; height:auto; }
 
@@ -71,276 +100,386 @@
 
     .theme-toggle, .lang-toggle{
       display:flex; align-items:center; justify-content:center;
-      width:40px; height:40px; border:1px solid var(--border-2); border-radius:8px;
-      background:var(--bg-input); color:var(--text);
-      font-size:15px; font-weight:800; cursor:pointer; transition:.3s;
+      width:40px; height:40px;
+      border:1px solid var(--border-2);
+      border-radius:8px;
+      background:var(--bg-input);
+      color:var(--text);
+      font-size:15px; font-weight:800;
+      cursor:pointer; transition:.3s;
     }
     .lang-toggle{ width:auto; padding:0 12px; font-size:12px; }
     .theme-toggle:hover, .lang-toggle:hover{ border-color:#b7ff00; color:#b7ff00; }
 
     .login-button{
-      background:#b7ff00; color:#050505; padding:10px 17px; border-radius:8px;
+      background:#b7ff00; color:#050505;
+      padding:10px 17px; border-radius:8px;
       font-size:13px; font-weight:800; transition:.3s;
     }
     .login-button:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(183,255,0,.20); }
 
     @media(max-width:900px){ .menu{ display:none; } }
+
     @media(max-width:600px){
-      .nav{ min-height:70px; } .brand img{ width:105px; }
+      .nav{ min-height:70px; }
+      .brand img{ width:105px; }
       .login-button{ padding:9px 12px; font-size:11px; }
     }
 
-    /* PAGE HERO */
+    /* PAGE HERO BANNER */
 
-    .page-hero{
-      position:relative; padding:70px 0 40px; text-align:center; overflow:hidden;
-      background: radial-gradient(circle at center, rgba(183,255,0,.10), transparent 40%), var(--bg);
+    .course-hero{
+      position:relative;
+      padding:45px 0 30px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(183,255,0,.10), transparent 35%),
+        var(--bg);
       transition:background .3s ease;
     }
 
-    .page-badge{
-      display:inline-flex; align-items:center; gap:8px; color:#b7ff00;
-      padding:8px 15px; border:1px solid rgba(183,255,0,.25); background:rgba(183,255,0,.06);
-      border-radius:50px; font-size:11px; font-weight:800; letter-spacing:1px; margin-bottom:20px;
+    .breadcrumb{
+      font-size:12px;
+      color:var(--text-dim);
+      margin-bottom:16px;
     }
 
-    .page-hero h1{ font-size:clamp(34px,5vw,54px); line-height:1.15; letter-spacing:-2px; margin-bottom:14px; }
-    .page-hero h1 span{ color:#b7ff00; }
-    .page-hero p{ max-width:600px; margin:auto; color:var(--text-muted); font-size:15px; }
+    .breadcrumb a{ color:var(--text-dim); }
+    .breadcrumb a:hover{ color:#b7ff00; }
 
-    /* SEARCH */
-
-    .search-wrap{ padding:0 0 40px; }
-    .search-box{
-      max-width:400px; margin:auto;
-      display:flex; align-items:center; gap:8px;
-      padding:0 16px; height:48px;
-      background:var(--bg-input); border:1px solid var(--border-2); border-radius:10px;
-      transition:.3s;
+    .course-hero-image-wrap{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border-2);
+      margin-bottom:20px;
+      max-width:700px;
+      display:none;
     }
-    .search-box:focus-within{ border-color:rgba(183,255,0,.5); box-shadow:0 0 0 3px rgba(183,255,0,.06); }
-    .search-box span{ color:var(--text-dim); font-size:20px; }
-    .search-box input{ width:100%; border:0; outline:0; background:transparent; color:var(--text); font-size:14px; }
-    .search-box input::placeholder{ color:var(--text-dim); }
-
-    /* SECTION */
-
-    .section{ padding:20px 0 90px; }
-    .section-title{
-      font-size:13px; font-weight:800; letter-spacing:2px; color:#b7ff00;
-      margin-bottom:18px; text-transform:uppercase;
+    .course-hero-image-wrap img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      display:block;
     }
-    .section-block{ margin-bottom:55px; }
-
-    /* COURSE GRID (reused from homepage) */
-
-    .course-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-
-    .course-card{
-      position:relative; display:flex; flex-direction:column; padding:20px;
-      background:var(--bg-input); border:1px solid var(--border-2); border-radius:18px;
-      transition:.35s; overflow:hidden;
-    }
-    .course-card:hover{ transform:translateY(-7px); border-color:rgba(183,255,0,.45); box-shadow:0 20px 45px rgba(0,0,0,.25); }
-
-    .course-image-wrap{ overflow:hidden; border-radius:12px; margin-bottom:18px; border:1px solid var(--border-2); }
-    .course-image{ width:100%; height:170px; object-fit:cover; display:block; background:var(--bg-alt); transition:transform .5s ease; }
-    .course-card:hover .course-image{ transform:scale(1.08); }
 
     .course-tag{
-      align-self:flex-start; color:#b7ff00; background:rgba(183,255,0,.07);
-      border:1px solid rgba(183,255,0,.18); padding:5px 9px; border-radius:5px;
-      font-size:9px; font-weight:800; letter-spacing:1px; margin-bottom:13px;
+      display:inline-block;
+      color:#b7ff00;
+      background:rgba(183,255,0,.07);
+      border:1px solid rgba(183,255,0,.18);
+      padding:6px 12px;
+      border-radius:6px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:1px;
+      margin-bottom:16px;
     }
-    .course-tag.urgent{ color:#ff9d5c; background:rgba(255,157,92,.08); border-color:rgba(255,157,92,.25); }
-    .course-tag.info{ color:#5cc8ff; background:rgba(92,200,255,.08); border-color:rgba(92,200,255,.25); }
-    .course-tag.soon{ color:#c58cff; background:rgba(197,140,255,.08); border-color:rgba(197,140,255,.25); }
-    .course-tag.free{ color:#4ade80; background:rgba(74,222,128,.08); border-color:rgba(74,222,128,.25); }
 
-    .course-card h3{ font-size:17px; line-height:1.35; margin-bottom:10px; }
-    .course-card p{ color:var(--text-muted); font-size:13px; line-height:1.7; min-height:80px; margin-bottom:16px; }
-
-    .course-info{ display:flex; flex-direction:column; gap:5px; color:var(--text-dim); font-size:12px; margin-bottom:14px; }
-
-    .price{ display:flex; align-items:center; gap:8px; margin-bottom:16px; }
-    .price del{ color:var(--text-dim); font-size:13px; }
-    .price strong{ color:#b7ff00; font-size:21px; font-weight:900; }
-
-    .course-button{
-      display:block; margin-top:auto; text-align:center; padding:10px;
-      border:1px solid var(--border-2); border-radius:8px; color:var(--text);
-      font-size:12px; font-weight:800; transition:.3s;
+    .course-tag.urgent{
+      color:#ff9d5c;
+      background:rgba(255,157,92,.08);
+      border-color:rgba(255,157,92,.25);
     }
-    .course-button:hover{ background:#b7ff00; border-color:#b7ff00; color:#050505; }
-    .course-button.disabled{ opacity:.5; cursor:not-allowed; pointer-events:none; }
+
+    .course-tag.info{
+      color:#5cc8ff;
+      background:rgba(92,200,255,.08);
+      border-color:rgba(92,200,255,.25);
+    }
+
+    .course-hero h1{
+      font-size:clamp(28px,4.2vw,42px);
+      line-height:1.25;
+      max-width:700px;
+      margin-bottom:16px;
+    }
+
+    .course-hero-desc{
+      max-width:650px;
+      color:var(--text-muted);
+      font-size:15px;
+      line-height:1.85;
+      margin-bottom:22px;
+    }
+
+    .course-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .meta-chip{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 14px;
+      background:var(--bg-card);
+      border:1px solid var(--border-2);
+      border-radius:8px;
+      color:var(--text-muted);
+      font-size:12.5px;
+    }
+
+    /* LAYOUT */
+
+    .course-body{
+      padding:40px 0 90px;
+      display:none;
+    }
+
+    .course-grid{
+      display:grid;
+      grid-template-columns:1.6fr 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .content-block{
+      background:var(--bg-card);
+      border:1px solid var(--border-2);
+      border-radius:16px;
+      padding:28px;
+      margin-bottom:22px;
+    }
+
+    .content-block h2{
+      font-size:20px;
+      margin-bottom:18px;
+    }
+
+    .learn-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .learn-item{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      font-size:13.5px;
+      color:var(--text-muted);
+      line-height:1.6;
+    }
+
+    .learn-check{
+      flex-shrink:0;
+      width:20px;
+      height:20px;
+      display:grid;
+      place-items:center;
+      background:rgba(183,255,0,.12);
+      color:#b7ff00;
+      border-radius:50%;
+      font-size:11px;
+      font-weight:800;
+      margin-top:1px;
+    }
+
+    .module-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .module-item{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:14px 16px;
+      background:var(--bg-input);
+      border:1px solid var(--border-2);
+      border-radius:10px;
+      font-size:13.5px;
+      color:var(--text-muted);
+      transition:.3s;
+    }
+
+    .module-item:hover{
+      border-color:rgba(183,255,0,.35);
+    }
+
+    .module-number{
+      flex-shrink:0;
+      width:30px;
+      height:30px;
+      display:grid;
+      place-items:center;
+      background:rgba(183,255,0,.1);
+      color:#b7ff00;
+      border-radius:8px;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .module-item strong{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar{
+      position:sticky;
+      top:100px;
+    }
+
+    .price-card{
+      background:var(--bg-card);
+      border:1px solid rgba(183,255,0,.25);
+      border-radius:16px;
+      padding:26px;
+      margin-bottom:16px;
+    }
+
+    .price-box{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .price-box del{ color:var(--text-dim); font-size:16px; display:none; }
+    .price-box strong{ color:#b7ff00; font-size:30px; font-weight:900; }
+
+    .action-buttons{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .btn{
+      display:block;
+      text-align:center;
+      padding:14px 18px;
+      border-radius:9px;
+      font-size:14px;
+      font-weight:800;
+      transition:.3s;
+    }
+
+    .btn-payment{ background:#b7ff00; color:#050505; }
+    .btn-payment:hover{ transform:translateY(-2px); box-shadow:0 12px 35px rgba(183,255,0,.20); }
+
+    .btn-talk{ border:1px solid var(--border-2); color:var(--text); }
+    .btn-talk:hover{ border-color:#b7ff00; color:#b7ff00; }
+
+    .whatsapp-box{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:16px;
+      background:var(--bg-input);
+      border:1px solid var(--border-2);
+      border-radius:12px;
+    }
+
+    .whatsapp-icon{
+      width:42px; height:42px; flex-shrink:0;
+      display:grid; place-items:center;
+      background:rgba(37,211,102,.12);
+      border-radius:10px;
+      font-size:20px;
+    }
+
+    .whatsapp-text strong{ display:block; font-size:13px; color:var(--text); }
+    .whatsapp-text span{ color:var(--text-muted); font-size:11.5px; }
+
+    /* LOADING / NOT FOUND STATES */
+
+    .state-box{
+      padding:80px 0;
+      text-align:center;
+      color:var(--text-dim);
+      font-size:14px;
+    }
+    .state-box.not-found{ display:none; }
+    .state-box .icon{ font-size:40px; margin-bottom:16px; }
+    .state-box a{ color:#b7ff00; font-weight:800; }
 
     /* FOOTER */
 
     .footer{
-      padding:35px 0; border-top:1px solid var(--border); background:var(--bg);
-      text-align:center; color:var(--text-dim); font-size:12px;
+      padding:35px 0;
+      border-top:1px solid var(--border);
+      background:var(--bg);
+      text-align:center;
+      color:var(--text-dim);
+      font-size:12px;
       transition:background .3s ease, border-color .3s ease;
     }
+
     .footer a{ color:#b7ff00; }
 
     /* MOBILE */
 
-    @media(max-width:1100px){
-      .course-grid{ grid-template-columns:repeat(2,1fr); }
+    @media(max-width:900px){
+      .course-grid{ grid-template-columns:1fr; }
+      .sidebar{ position:static; }
+      .learn-grid{ grid-template-columns:1fr; }
     }
 
     @media(max-width:600px){
       .container{ width:90%; }
-      .nav{ min-height:70px; } .brand img{ width:105px; }
-      .page-hero{ padding:50px 0 30px; }
-      .course-grid{ grid-template-columns:1fr; }
+      .nav{ min-height:70px; }
+      .brand img{ width:105px; }
+      .course-hero{ padding:30px 0 22px; }
+      .content-block{ padding:20px; }
+      .price-card{ padding:20px; }
     }
 
     /* CAREER COUNSELOR FLOATING WIDGET */
 
     .counselor-trigger{
-      position:fixed;
-      bottom:22px;
-      right:22px;
-      z-index:9998;
-
-      width:56px;
-      height:56px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      background:#25D366;
-      border:0;
-      border-radius:50%;
-
+      position:fixed; bottom:22px; right:22px; z-index:9998;
+      width:56px; height:56px;
+      display:flex; align-items:center; justify-content:center;
+      background:#25D366; border:0; border-radius:50%;
       box-shadow:0 8px 24px rgba(0,0,0,.3);
-
-      font-size:26px;
-      cursor:pointer;
-
-      transition:.3s;
+      font-size:26px; cursor:pointer; transition:.3s;
     }
-
-    .counselor-trigger:hover{
-      transform:scale(1.08);
-      box-shadow:0 10px 30px rgba(37,211,102,.4);
-    }
+    .counselor-trigger:hover{ transform:scale(1.08); box-shadow:0 10px 30px rgba(37,211,102,.4); }
 
     .counselor-popup{
-      display:none;
-      position:fixed;
-      bottom:90px;
-      right:22px;
-      z-index:9999;
-
-      width:260px;
-      background:var(--bg-card, #0b0b0b);
-      border:1px solid var(--border-2, #292929);
-      border-radius:16px;
-      padding:20px;
-
-      box-shadow:0 20px 50px rgba(0,0,0,.4);
-
-      text-align:center;
+      display:none; position:fixed; bottom:90px; right:22px; z-index:9999;
+      width:260px; background:var(--bg-card); border:1px solid var(--border-2);
+      border-radius:16px; padding:20px; box-shadow:0 20px 50px rgba(0,0,0,.4); text-align:center;
     }
-
-    .counselor-popup.open{
-      display:block;
-      animation:counselorFadeIn .25s ease;
-    }
-
-    @keyframes counselorFadeIn{
-      from{ opacity:0; transform:translateY(8px); }
-      to{ opacity:1; transform:translateY(0); }
-    }
+    .counselor-popup.open{ display:block; animation:counselorFadeIn .25s ease; }
+    @keyframes counselorFadeIn{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:translateY(0); } }
 
     .counselor-close{
-      position:absolute;
-      top:10px;
-      right:12px;
-      background:none;
-      border:0;
-      color:var(--text-dim, #777);
-      font-size:16px;
-      cursor:pointer;
-      line-height:1;
+      position:absolute; top:10px; right:12px; background:none; border:0;
+      color:var(--text-dim); font-size:16px; cursor:pointer; line-height:1;
     }
-    .counselor-close:hover{ color:var(--text, #fff); }
+    .counselor-close:hover{ color:var(--text); }
 
     .counselor-avatar{
-      width:56px;
-      height:56px;
-      margin:0 auto 12px;
-      display:grid;
-      place-items:center;
-      background:rgba(183,255,0,.1);
-      border:1px solid rgba(183,255,0,.3);
-      border-radius:50%;
-      font-size:26px;
+      width:56px; height:56px; margin:0 auto 12px;
+      display:grid; place-items:center;
+      background:rgba(183,255,0,.1); border:1px solid rgba(183,255,0,.3);
+      border-radius:50%; font-size:26px;
     }
 
-    .counselor-popup h4{
-      font-size:14px;
-      color:var(--text, #fff);
-      margin-bottom:4px;
-      line-height:1.4;
-    }
+    .counselor-popup h4{ font-size:14px; color:var(--text); margin-bottom:4px; line-height:1.4; }
+    .counselor-popup .counselor-hours{ display:block; color:var(--text-dim); font-size:11px; margin-bottom:16px; }
 
-    .counselor-popup .counselor-hours{
-      display:block;
-      color:var(--text-dim, #777);
-      font-size:11px;
-      margin-bottom:16px;
-    }
-
-    .counselor-actions{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
+    .counselor-actions{ display:flex; flex-direction:column; gap:8px; }
 
     .counselor-btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:11px;
-      border-radius:9px;
-      font-size:13px;
-      font-weight:800;
-      transition:.3s;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      padding:11px; border-radius:9px; font-size:13px; font-weight:800; transition:.3s;
     }
-
-    .counselor-btn.whatsapp{
-      background:#25D366;
-      color:#fff;
-    }
+    .counselor-btn.whatsapp{ background:#25D366; color:#fff; }
     .counselor-btn.whatsapp:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(37,211,102,.3); }
-
-    .counselor-btn.call{
-      background:#b7ff00;
-      color:#050505;
-    }
+    .counselor-btn.call{ background:#b7ff00; color:#050505; }
     .counselor-btn.call:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(183,255,0,.25); }
 
     @media(max-width:600px){
-      .counselor-trigger{
-        width:50px;
-        height:50px;
-        bottom:16px;
-        right:16px;
-        font-size:22px;
-      }
-      .counselor-popup{
-        bottom:82px;
-        right:16px;
-        left:16px;
-        width:auto;
-      }
+      .counselor-trigger{ width:50px; height:50px; bottom:16px; right:16px; font-size:22px; }
+      .counselor-popup{ bottom:82px; right:16px; left:16px; width:auto; }
     }
-
 
   </style>
 </head>
@@ -349,181 +488,119 @@
 
   <header class="header">
     <div class="container nav">
+
       <a href="/" class="brand">
         <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
       </a>
+
       <nav class="menu">
         <a href="/" data-bn="হোম" data-en="Home">হোম</a>
-        <a href="/courses/" class="active" data-bn="কোর্সসমূহ" data-en="Courses">কোর্সসমূহ</a>
+        <a href="/courses/" data-bn="কোর্সসমূহ" data-en="Courses">কোর্সসমূহ</a>
         <a href="/about/" data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</a>
         <a href="/blog/" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
         <a href="/contact/" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
       </nav>
+
       <div class="header-actions">
         <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark/light mode">🌙</button>
         <button id="langToggle" class="lang-toggle" type="button" aria-label="Toggle language">EN</button>
         <a href="/coming-soon/" class="login-button" data-bn="Login / Sign Up →" data-en="Login / Sign Up →">Login / Sign Up →</a>
       </div>
+
     </div>
   </header>
 
 
-  <section class="page-hero">
+  <div class="state-box" id="loadingState">
+    <div class="icon">⏳</div>
+    কোর্স লোড হচ্ছে...
+  </div>
+
+  <div class="state-box not-found" id="notFoundState">
+    <div class="icon">🔍</div>
+    এই কোর্সটি খুঁজে পাওয়া যায়নি।<br><br>
+    <a href="/courses/">সব কোর্স দেখুন →</a>
+  </div>
+
+
+  <section class="course-hero" id="courseHeroSection" style="display:none;">
     <div class="container">
-      <div class="page-badge"><span>📚</span> ALL COURSES</div>
-      <h1>আমাদের <span>কোর্সসমূহ</span></h1>
-      <p>Career-focused, AI-powered courses — যেখান থেকেই শুরু করেন, বাস্তব skill নিয়ে বের হবেন।</p>
+
+      <div class="breadcrumb">
+        <a href="/">হোম</a> / <a href="/courses/">কোর্সসমূহ</a> / <span id="breadcrumbTitle">কোর্স</span>
+      </div>
+
+      <div class="course-hero-image-wrap" id="courseImageWrap">
+        <img id="courseHeroImage" alt="Course image">
+      </div>
+
+      <div class="course-tag" id="courseTagEl">কোর্স</div>
+
+      <h1 id="courseTitleHeading">কোর্স</h1>
+
+      <p class="course-hero-desc" id="courseDescEl"></p>
+
+      <div class="course-meta" id="courseMetaEl"></div>
+
     </div>
   </section>
 
 
-  <div class="search-wrap container">
-    <div class="search-box">
-      <span>⌕</span>
-      <input id="courseSearch" type="text" placeholder="কোর্স খুঁজুন..." aria-label="কোর্স খুঁজুন">
-    </div>
-  </div>
+  <section class="course-body" id="courseBodySection">
+    <div class="container course-grid">
 
+      <div class="main-content">
 
-  <section class="section">
-    <div class="container">
-
-
-      <!-- PAID COURSES -->
-
-      <div class="section-block">
-        <div class="section-title">পেইড কোর্স</div>
-
-        <div class="course-grid" id="paidGrid">
-
-          <article class="course-card" data-course="ui ux ai powered design">
-            <div class="course-image-wrap">
-              <img class="course-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg" alt="AI-Powered UI/UX Career Program">
-            </div>
-            <div class="course-tag">AI POWERED</div>
-            <h3>AI-Powered UI/UX Career Program</h3>
-            <p>UI/UX Fundamentals, User Research, Wireframing, Prototyping এবং AI-powered design workflow শিখুন।</p>
-            <div class="course-info"><span>⏱ 3 Months</span><span>🎯 Career Program</span></div>
-            <div class="price"><del>৳11,500</del><strong>৳7,490</strong></div>
-            <a href="/ui-ux/" class="course-button">কোর্স সম্পর্কে জানুন →</a>
-          </article>
-
-          <article class="course-card" data-course="cyber security ethical hacking ai">
-            <div class="course-image-wrap">
-              <img class="course-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg" alt="AI-Powered Cyber Security">
-            </div>
-            <div class="course-tag urgent">LIMITED SEATS</div>
-            <h3>AI-Powered Cyber Security & Ethical Hacking</h3>
-            <p>Cyber Security fundamentals, ethical hacking এবং practical cybersecurity skills হাতে-কলমে শিখুন।</p>
-            <div class="course-info"><span>⏱ 6 Months</span><span>🎯 Ethical Hacking</span></div>
-            <div class="price"><del>৳12,500</del><strong>৳9,500</strong></div>
-            <a href="/cyber-security/" class="course-button">কোর্স সম্পর্কে জানুন →</a>
-          </article>
-
-          <article class="course-card" data-course="graphic design ai powered">
-            <div class="course-image-wrap">
-              <img class="course-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg" alt="AI-Powered Graphic Design">
-            </div>
-            <div class="course-tag">AI POWERED</div>
-            <h3>AI-Powered Graphic Design</h3>
-            <p>Graphic Design fundamentals, visual design এবং AI-powered design workflow-এর মাধ্যমে skill তৈরি করুন।</p>
-            <div class="course-info"><span>⏱ 4 Months</span><span>🎯 Creative Career</span></div>
-            <div class="price"><del>৳7,500</del><strong>৳4,500</strong></div>
-            <a href="/graphic-design/" class="course-button">কোর্স সম্পর্কে জানুন →</a>
-          </article>
-
-          <article class="course-card" data-course="kidz spoken english kids english">
-            <div class="course-image-wrap">
-              <img class="course-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg" alt="100Days Kidz Spoken English">
-            </div>
-            <div class="course-tag info">100 DAYS</div>
-            <h3>100Days Kidz Spoken English</h3>
-            <p>English speaking, vocabulary, pronunciation এবং communication skill development-এর প্রোগ্রাম।</p>
-            <div class="course-info"><span>⏱ 100 Days</span><span>🎯 Kids Program</span></div>
-            <div class="price"><del>৳12,500</del><strong>৳6,500</strong></div>
-            <a href="/kidz-spoken-english/" class="course-button">কোর্স সম্পর্কে জানুন →</a>
-          </article>
-
+        <div class="content-block" id="learnBlock" style="display:none;">
+          <h2>আপনি যা শিখবেন</h2>
+          <div class="learn-grid" id="learnGridEl"></div>
         </div>
+
+        <div class="content-block" id="moduleBlock" style="display:none;">
+          <h2>কোর্স মডিউল</h2>
+          <div class="module-list" id="moduleListEl"></div>
+        </div>
+
       </div>
 
+      <div class="sidebar">
 
-      <!-- UPCOMING COURSE -->
+        <div class="price-card">
 
-      <div class="section-block">
-        <div class="section-title">শীঘ্রই আসছে</div>
+          <div class="price-box">
+            <del id="priceOldEl"></del>
+            <strong id="priceNewEl">—</strong>
+          </div>
 
-        <div class="course-grid" id="upcomingGrid">
+          <div class="action-buttons">
 
-          <article class="course-card" data-course="motion graphic ai driven">
-            <div class="course-image-wrap">
-              <img class="course-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg" alt="Motion Graphic (AI Driven)">
+            <a href="#" id="paymentBtn" class="btn btn-payment">
+              Payment করতে চাই →
+            </a>
+
+            <a
+              href="https://wa.me/8801705633700"
+              id="talkBtn"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-talk"
+            >
+              কথা বলতে চাই
+            </a>
+
+          </div>
+
+          <div class="whatsapp-box">
+            <div class="whatsapp-icon">💬</div>
+            <div class="whatsapp-text">
+              <strong>WhatsApp: 01705633700</strong>
+              <span>সরাসরি মেসেজ করুন, দ্রুত রিপ্লাই পাবেন</span>
             </div>
-            <div class="course-tag soon">COMING SOON</div>
-            <h3>Motion Graphic (AI Driven)</h3>
-            <p>AI-powered motion graphics ও animation তৈরি করার হাতে-কলমে কোর্স — খুব শীঘ্রই চালু হচ্ছে।</p>
-            <div class="course-info"><span>🎯 Creative Career</span></div>
-            <a href="/coming-soon/" class="course-button">শীঘ্রই আসছে</a>
-          </article>
+          </div>
 
         </div>
+
       </div>
-
-
-      <!-- FREE COURSES -->
-
-      <div class="section-block">
-        <div class="section-title">ফ্রি কোর্স</div>
-
-        <div class="course-grid" id="freeGrid">
-
-          <article class="course-card" data-course="professional graphic design free">
-            <div class="course-image-wrap">
-              <img class="course-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%204.svg" alt="Professional Graphic Design">
-            </div>
-            <div class="course-tag free">FREE</div>
-            <h3>Professional Graphic Design</h3>
-            <p>Graphic Design-এর বেসিক থেকে শুরু করার জন্য সম্পূর্ণ ফ্রি কোর্স।</p>
-            <div class="course-info"><span>🎯 Beginner Friendly</span></div>
-            <a href="https://snkacademy.github.io" target="_blank" rel="noopener noreferrer" class="course-button">ফ্রি শুরু করুন →</a>
-          </article>
-
-          <article class="course-card" data-course="professional web design free">
-            <div class="course-image-wrap">
-              <img class="course-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%201.svg" alt="Professional Web Design">
-            </div>
-            <div class="course-tag free">FREE</div>
-            <h3>Professional Web Design</h3>
-            <p>ওয়েবসাইট ডিজাইনের বেসিক শিখুন সম্পূর্ণ ফ্রি — HTML, CSS ও modern design principles।</p>
-            <div class="course-info"><span>🎯 Beginner Friendly</span></div>
-            <a href="https://snkacademy.github.io" target="_blank" rel="noopener noreferrer" class="course-button">ফ্রি শুরু করুন →</a>
-          </article>
-
-          <article class="course-card" data-course="content creation ai free">
-            <div class="course-image-wrap">
-              <img class="course-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%203.svg" alt="Content Creation with AI">
-            </div>
-            <div class="course-tag free">FREE</div>
-            <h3>Content Creation with AI</h3>
-            <p>AI tools ব্যবহার করে content creation শিখুন — social media থেকে blog পর্যন্ত।</p>
-            <div class="course-info"><span>🎯 Beginner Friendly</span></div>
-            <a href="https://snkacademy.github.io" target="_blank" rel="noopener noreferrer" class="course-button">ফ্রি শুরু করুন →</a>
-          </article>
-
-          <article class="course-card" data-course="design thinking mindset free">
-            <div class="course-image-wrap">
-              <img class="course-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%206.svg" alt="Design Thinking Mindset">
-            </div>
-            <div class="course-tag free">FREE</div>
-            <h3>Design Thinking Mindset</h3>
-            <p>সমস্যা সমাধানের সঠিক চিন্তাধারা ও design thinking process শিখুন — সম্পূর্ণ ফ্রি।</p>
-            <div class="course-info"><span>🎯 Beginner Friendly</span></div>
-            <a href="https://snkacademy.github.io" target="_blank" rel="noopener noreferrer" class="course-button">ফ্রি শুরু করুন →</a>
-          </article>
-
-        </div>
-      </div>
-
 
     </div>
   </section>
@@ -542,10 +619,17 @@
     const htmlEl = document.documentElement;
 
     function applyTheme(theme){
-      if(theme === "light"){ htmlEl.classList.add("light-mode"); themeToggleBtn.textContent = "☀️"; }
-      else{ htmlEl.classList.remove("light-mode"); themeToggleBtn.textContent = "🌙"; }
+      if(theme === "light"){
+        htmlEl.classList.add("light-mode");
+        themeToggleBtn.textContent = "☀️";
+      }else{
+        htmlEl.classList.remove("light-mode");
+        themeToggleBtn.textContent = "🌙";
+      }
     }
+
     applyTheme(localStorage.getItem("snk-theme") || "dark");
+
     themeToggleBtn.addEventListener("click", function(){
       const isLight = htmlEl.classList.contains("light-mode");
       const newTheme = isLight ? "dark" : "light";
@@ -554,28 +638,21 @@
     });
 
     const langToggleBtn = document.getElementById("langToggle");
+
     function applyLang(lang){
       document.querySelectorAll("[data-bn]").forEach(function(el){
         el.textContent = (lang === "bn") ? el.getAttribute("data-bn") : el.getAttribute("data-en");
       });
       langToggleBtn.textContent = (lang === "bn") ? "EN" : "বাংলা";
     }
+
     applyLang(localStorage.getItem("snk-lang") || "bn");
+
     langToggleBtn.addEventListener("click", function(){
       const current = localStorage.getItem("snk-lang") || "bn";
       const next = (current === "bn") ? "en" : "bn";
       applyLang(next);
       localStorage.setItem("snk-lang", next);
-    });
-
-    const searchInput = document.getElementById("courseSearch");
-    const courseCards = document.querySelectorAll(".course-card");
-    searchInput.addEventListener("input", function(){
-      const search = this.value.toLowerCase().trim();
-      courseCards.forEach(function(card){
-        const courseName = card.getAttribute("data-course").toLowerCase();
-        card.style.display = (search === "" || courseName.includes(search)) ? "flex" : "none";
-      });
     });
   </script>
 
@@ -607,6 +684,117 @@
     });
   </script>
 
+
+  <!-- Firebase: load course purely from Firestore by ?id= -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
+      authDomain: "snk-it-institute.firebaseapp.com",
+      projectId: "snk-it-institute",
+      storageBucket: "snk-it-institute.firebasestorage.app",
+      messagingSenderId: "948436125833",
+      appId: "1:948436125833:web:36788463d4dd3ef20bde58"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    function escapeHtml(str){
+      const div = document.createElement("div");
+      div.textContent = str || "";
+      return div.innerHTML;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const courseId = params.get("id");
+
+    function showNotFound(){
+      document.getElementById("loadingState").style.display = "none";
+      document.getElementById("notFoundState").style.display = "block";
+    }
+
+    if(!courseId){
+      showNotFound();
+    }else{
+      db.collection("courses").doc(courseId).get().then(function(doc){
+        if(!doc.exists){
+          showNotFound();
+          return;
+        }
+
+        const data = doc.data();
+
+        document.getElementById("loadingState").style.display = "none";
+        document.getElementById("courseHeroSection").style.display = "block";
+        document.getElementById("courseBodySection").style.display = "block";
+
+        const title = data.title || "কোর্স";
+        document.title = title + " | SNK IT Institute";
+        document.getElementById("courseTitleHeading").textContent = title;
+        document.getElementById("breadcrumbTitle").textContent = title;
+
+        if(data.image){
+          document.getElementById("courseHeroImage").src = data.image;
+          document.getElementById("courseImageWrap").style.display = "block";
+        }
+
+        if(data.tagText){
+          const tagEl = document.getElementById("courseTagEl");
+          tagEl.textContent = data.tagText;
+          tagEl.className = "course-tag" + (data.tagClass ? " " + data.tagClass : "");
+        }else{
+          document.getElementById("courseTagEl").style.display = "none";
+        }
+
+        document.getElementById("courseDescEl").textContent = data.desc || "";
+
+        if(data.meta && data.meta.length){
+          document.getElementById("courseMetaEl").innerHTML = data.meta.map(function(line){
+            return '<div class="meta-chip">' + escapeHtml(line) + '</div>';
+          }).join("");
+        }
+
+        if(data.priceOld){
+          const delEl = document.getElementById("priceOldEl");
+          delEl.textContent = data.priceOld;
+          delEl.style.display = "inline";
+        }
+        document.getElementById("priceNewEl").textContent = data.priceNew || "যোগাযোগ করুন";
+
+        if(data.learnItems && data.learnItems.length){
+          document.getElementById("learnBlock").style.display = "block";
+          document.getElementById("learnGridEl").innerHTML = data.learnItems.map(function(item){
+            return '<div class="learn-item"><span class="learn-check">✓</span><span>' + escapeHtml(item) + '</span></div>';
+          }).join("");
+        }
+
+        if(data.modules && data.modules.length){
+          document.getElementById("moduleBlock").style.display = "block";
+          document.getElementById("moduleListEl").innerHTML = data.modules.map(function(mod, i){
+            return '<div class="module-item"><div class="module-number">' + (i+1) + '</div><div><strong>' + escapeHtml(mod.title) + '</strong> — ' + escapeHtml(mod.desc) + '</div></div>';
+          }).join("");
+        }
+
+        const checkoutUrl = "/checkout/?course=" + encodeURIComponent(title) +
+          "&price=" + encodeURIComponent(data.priceNew || "") +
+          "&old=" + encodeURIComponent(data.priceOld || "") +
+          "&slug=" + encodeURIComponent(courseId);
+        document.getElementById("paymentBtn").href = checkoutUrl;
+
+        document.getElementById("talkBtn").href =
+          "https://wa.me/8801705633700?text=" + encodeURIComponent("আমি " + title + " কোর্স সম্পর্কে কথা বলতে চাই");
+
+      }).catch(function(error){
+        console.error("Failed to load course:", error);
+        showNotFound();
+      });
+    }
+
+  </script>
 
 </body>
 </html>
