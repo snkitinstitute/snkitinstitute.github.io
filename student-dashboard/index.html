@@ -3,478 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Student Dashboard | SNK IT Institute</title>
-  <meta name="description" content="SNK IT Institute Student Dashboard">
 
   <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --accent: #b7ff00;
-      --bg: #050505;
-      --card: #0d0d0d;
-      --card-2: #111;
-      --text: #fff;
-      --muted: #888;
-      --border: #242424;
-      --success: #7dff9a;
-      --warning: #ffd166;
-      --danger: #ff8585;
+
+    *{ margin:0; padding:0; box-sizing:border-box; }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#050505;
+      color:#fff;
+      line-height:1.6;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    a{ text-decoration:none; color:inherit; }
+    button{ font:inherit; }
+
+    .container{ width:min(700px,92%); margin:auto; }
+
+    .header{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 0; border-bottom:1px solid #181818; margin-bottom:30px;
     }
 
-    body {
-      font-family: "Hind Siliguri", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
+    .brand{ display:flex; align-items:center; gap:10px; }
+    .brand img{ width:34px; height:34px; }
+    .brand span{ font-weight:800; font-size:14px; }
+
+    .logout-btn{
+      padding:9px 16px; border:1px solid #292929; border-radius:8px;
+      background:#101010; color:#fff; font-size:12.5px; font-weight:700;
+      cursor:pointer; transition:.3s;
+    }
+    .logout-btn:hover{ border-color:#ff8080; color:#ff8080; }
+
+    .auth-gate{
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+      color:#777; font-size:14px;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .page-body{ display:none; padding-bottom:60px; }
+
+    .welcome{ margin-bottom:24px; }
+    .welcome h1{ font-size:24px; margin-bottom:6px; }
+    .welcome p{ color:#888; font-size:13.5px; }
+
+    .profile-card{
+      background:#0b0b0b; border:1px solid #202020; border-radius:18px;
+      padding:28px; margin-bottom:20px;
     }
 
-    button {
-      font-family: inherit;
+    .status-badge{
+      display:inline-flex; align-items:center; gap:7px;
+      padding:7px 14px; border-radius:50px;
+      background:rgba(183,255,0,.08); border:1px solid rgba(183,255,0,.3);
+      color:#b7ff00; font-size:12px; font-weight:800; margin-bottom:20px;
     }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 16px 5%;
-      background: rgba(5, 5, 5, .94);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(14px);
+    .detail-grid{
+      display:grid; grid-template-columns:1fr 1fr; gap:18px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 18px;
-      font-weight: 700;
+    .detail-item{ }
+    .detail-item span{ display:block; color:#666; font-size:11.5px; margin-bottom:4px; }
+    .detail-item strong{ font-size:14px; color:#fff; }
+
+    .no-record{
+      background:#0b0b0b; border:1px solid #202020; border-radius:18px;
+      padding:40px 28px; text-align:center;
+    }
+    .no-record .icon{ font-size:40px; margin-bottom:14px; }
+    .no-record h2{ font-size:18px; margin-bottom:10px; }
+    .no-record p{ color:#888; font-size:13.5px; margin-bottom:20px; line-height:1.8; }
+
+    .cta-btn{
+      display:inline-block; padding:12px 22px;
+      background:#b7ff00; color:#050505; border-radius:9px;
+      font-size:13px; font-weight:800; transition:.3s;
+    }
+    .cta-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(183,255,0,.2); }
+
+    @media(max-width:500px){
+      .detail-grid{ grid-template-columns:1fr; }
     }
 
-    .brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-    }
-
-    .brand span {
-      color: var(--accent);
-    }
-
-    .logout-btn {
-      border: 1px solid rgba(183,255,0,.45);
-      background: transparent;
-      color: var(--accent);
-      border-radius: 9px;
-      padding: 9px 15px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .logout-btn:hover {
-      background: var(--accent);
-      color: #050505;
-    }
-
-    .container {
-      width: min(1180px, 90%);
-      margin: 0 auto;
-      padding: 42px 0 60px;
-    }
-
-    .welcome {
-      margin-bottom: 28px;
-    }
-
-    .welcome .eyebrow {
-      color: var(--accent);
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .welcome h1 {
-      font-size: clamp(26px, 4vw, 40px);
-      line-height: 1.3;
-      margin-bottom: 8px;
-    }
-
-    .welcome p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .message {
-      display: none;
-      padding: 14px 16px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    .message.show {
-      display: block;
-    }
-
-    .message.error {
-      color: var(--danger);
-      background: rgba(255,133,133,.08);
-      border: 1px solid rgba(255,133,133,.25);
-    }
-
-    .message.info {
-      color: var(--warning);
-      background: rgba(255,209,102,.08);
-      border: 1px solid rgba(255,209,102,.25);
-    }
-
-    .profile-grid {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 22px;
-      margin-bottom: 22px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px;
-    }
-
-    .profile-card {
-      text-align: center;
-    }
-
-    .avatar {
-      width: 110px;
-      height: 110px;
-      margin: 0 auto 16px;
-      border-radius: 50%;
-      border: 2px solid rgba(183,255,0,.55);
-      object-fit: cover;
-      background: #191919;
-    }
-
-    .avatar-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 42px;
-      color: var(--accent);
-    }
-
-    .profile-card h2 {
-      font-size: 23px;
-      margin-bottom: 4px;
-      overflow-wrap: anywhere;
-    }
-
-    .profile-card .email {
-      color: var(--muted);
-      font-size: 13px;
-      overflow-wrap: anywhere;
-    }
-
-    .student-badge {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 5px 12px;
-      border: 1px solid rgba(183,255,0,.35);
-      color: var(--accent);
-      border-radius: 50px;
-      font-size: 12px;
-    }
-
-    .card-title {
-      font-size: 21px;
-      margin-bottom: 20px;
-    }
-
-    .details {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .detail-item {
-      padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--card-2);
-      min-width: 0;
-    }
-
-    .detail-item .label {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 5px;
-    }
-
-    .detail-item .value {
-      font-size: 15px;
-      font-weight: 600;
-      overflow-wrap: anywhere;
-    }
-
-    .status {
-      display: inline-block;
-      border-radius: 50px;
-      padding: 4px 10px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .status.success {
-      color: var(--success);
-      background: rgba(125,255,154,.10);
-    }
-
-    .status.warning {
-      color: var(--warning);
-      background: rgba(255,209,102,.10);
-    }
-
-    .status.neutral {
-      color: #ccc;
-      background: rgba(255,255,255,.08);
-    }
-
-    .course-card {
-      margin-bottom: 22px;
-    }
-
-    .course-box {
-      border: 1px solid var(--border);
-      background: var(--card-2);
-      border-radius: 14px;
-      padding: 20px;
-    }
-
-    .course-box h3 {
-      color: var(--accent);
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .course-box p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 14px;
-    }
-
-    .note-card {
-      margin-bottom: 22px;
-    }
-
-    .note-text {
-      color: #ccc;
-      line-height: 1.9;
-      font-size: 14px;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-    }
-
-    .footer {
-      text-align: center;
-      color: #555;
-      border-top: 1px solid var(--border);
-      padding-top: 22px;
-      font-size: 13px;
-    }
-
-    .loading {
-      text-align: center;
-      color: var(--muted);
-      padding: 45px 10px;
-      font-size: 16px;
-    }
-
-    @media (max-width: 760px) {
-      .profile-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-card {
-        padding: 28px 20px;
-      }
-
-      .details {
-        grid-template-columns: 1fr;
-      }
-
-      .topbar {
-        padding: 13px 5%;
-      }
-
-      .brand {
-        font-size: 15px;
-      }
-
-      .brand img {
-        width: 36px;
-        height: 36px;
-      }
-
-      .container {
-        padding-top: 30px;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .logout-btn {
-        padding: 8px 11px;
-        font-size: 12px;
-      }
-
-      .card {
-        padding: 18px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <header class="topbar">
-    <a href="/" class="brand">
-      <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
-      <div>SNK <span>IT Institute</span></div>
-    </a>
+  <div class="auth-gate" id="authGate">লোড হচ্ছে...</div>
 
-    <button class="logout-btn" id="logoutBtn">Logout ↗</button>
-  </header>
+  <div class="page-body" id="pageBody">
 
-  <main class="container">
-    <section class="welcome">
-      <div class="eyebrow">STUDENT PORTAL</div>
-      <h1>স্বাগতম, <span id="welcomeName">Student</span>!</h1>
-      <p>আপনার ভর্তি ও কোর্স সংক্রান্ত তথ্য এখানে দেখতে পারবেন।</p>
-    </section>
+    <div class="container">
 
-    <div id="messageBox" class="message"></div>
-
-    <div id="loadingBox" class="loading">তথ্য লোড হচ্ছে...</div>
-
-    <div id="dashboardContent" style="display:none;">
-
-      <section class="profile-grid">
-        <div class="card profile-card">
-          <div id="avatarContainer">
-            <div class="avatar avatar-placeholder">👤</div>
-          </div>
-
-          <h2 id="profileName">Student Name</h2>
-          <p class="email" id="profileEmail">student@email.com</p>
-          <div class="student-badge" id="studentIdBadge">Student ID: —</div>
+      <div class="header">
+        <div class="brand">
+          <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK">
+          <span>Student Dashboard</span>
         </div>
+        <button class="logout-btn" id="logoutBtn">Logout →</button>
+      </div>
 
-        <div class="card">
-          <h2 class="card-title">Personal Information</h2>
-
-          <div class="details">
-            <div class="detail-item">
-              <div class="label">Full Name</div>
-              <div class="value" id="nameValue">—</div>
-            </div>
-
-            <div class="detail-item">
-              <div class="label">Phone Number</div>
-              <div class="value" id="phoneValue">—</div>
-            </div>
-
-            <div class="detail-item">
-              <div class="label">Email Address</div>
-              <div class="value" id="emailValue">—</div>
-            </div>
-
-            <div class="detail-item">
-              <div class="label">Education</div>
-              <div class="value" id="educationValue">—</div>
-            </div>
-
-            <div class="detail-item">
-              <div class="label">Address</div>
-              <div class="value" id="addressValue">—</div>
-            </div>
-
-            <div class="detail-item">
-              <div class="label">Profile Status</div>
-              <div class="value">
-                <span class="status success">Profile Active</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card course-card">
-        <h2 class="card-title">Admission & Course Information</h2>
-
-        <div class="details">
-          <div class="detail-item">
-            <div class="label">Enrolled Course</div>
-            <div class="value" id="courseValue">—</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="label">Admission Status</div>
-            <div class="value" id="admissionStatusValue">—</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="label">Payment Status</div>
-            <div class="value" id="paymentStatusValue">—</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="label">Profile Created</div>
-            <div class="value" id="profileCreatedValue">—</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card course-card">
-        <h2 class="card-title">My Course</h2>
-
-        <div class="course-box">
-          <h3 id="courseTitle">Course information unavailable</h3>
-          <p id="courseDescription">
-            আপনার কোর্সের বিস্তারিত তথ্য Admin কর্তৃক আপডেট করা হলে এখানে দেখা যাবে।
-          </p>
-        </div>
-      </section>
-
-      <section class="card note-card" id="noteCard" style="display:none;">
-        <h2 class="card-title">Admin Note</h2>
-        <div class="note-text" id="noteValue"></div>
-      </section>
+      <div id="contentArea">
+        <!-- filled by JS -->
+      </div>
 
     </div>
 
-    <div class="footer">
-      © 2026 SNK IT Institute • Learn To Lead
-    </div>
-  </main>
+  </div>
+
 
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -482,6 +123,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
   <script>
+
     const firebaseConfig = {
       apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
       authDomain: "snk-it-institute.firebaseapp.com",
@@ -492,224 +134,122 @@
     };
 
     firebase.initializeApp(firebaseConfig);
-
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    const loadingBox = document.getElementById("loadingBox");
-    const dashboardContent = document.getElementById("dashboardContent");
-    const messageBox = document.getElementById("messageBox");
-    const welcomeName = document.getElementById("welcomeName");
+    const authGate = document.getElementById("authGate");
+    const pageBody = document.getElementById("pageBody");
+    const contentArea = document.getElementById("contentArea");
 
-    function showMessage(message, type = "error") {
-      messageBox.textContent = message;
-      messageBox.className = "message show " + type;
+    function escapeHtml(str){
+      const div = document.createElement("div");
+      div.textContent = str || "";
+      return div.innerHTML;
     }
 
-    function hideMessage() {
-      messageBox.className = "message";
-      messageBox.textContent = "";
-    }
-
-    function safeValue(value) {
-      if (value === undefined || value === null || value === "") {
-        return "—";
-      }
-      return String(value);
-    }
-
-    function formatDate(value) {
-      if (!value) return "—";
-
-      try {
-        if (value.toDate) {
-          return value.toDate().toLocaleDateString("bn-BD", {
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-          });
-        }
-
-        const date = new Date(value);
-        if (!isNaN(date.getTime())) {
-          return date.toLocaleDateString("bn-BD", {
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-          });
-        }
-      } catch (error) {
-        return "—";
+    auth.onAuthStateChanged(function(user){
+      if(!user){
+        window.location.href = "/student-login/";
+        return;
       }
 
-      return "—";
-    }
+      authGate.style.display = "none";
+      pageBody.style.display = "block";
 
-    function statusBadge(value) {
-      const text = safeValue(value);
-      const lower = text.toLowerCase();
+      db.collection("students").where("email", "==", user.email).limit(1).get()
+        .then(function(snapshot){
 
-      if (
-        lower.includes("approved") ||
-        lower.includes("paid") ||
-        lower.includes("complete") ||
-        lower.includes("active") ||
-        text.includes("অনুমোদিত") ||
-        text.includes("পরিশোধ")
-      ) {
-        return '<span class="status success">' + text + '</span>';
-      }
-
-      if (
-        lower.includes("pending") ||
-        lower.includes("unpaid") ||
-        lower.includes("processing") ||
-        text.includes("অপেক্ষমাণ")
-      ) {
-        return '<span class="status warning">' + text + '</span>';
-      }
-
-      return '<span class="status neutral">' + text + '</span>';
-    }
-
-    async function loadStudentProfile(user) {
-      let studentData = null;
-
-      // প্রথমে Firebase Auth UID দিয়ে Profile খোঁজা হবে
-      try {
-        const uidSnapshot = await db
-          .collection("students")
-          .where("uid", "==", user.uid)
-          .limit(1)
-          .get();
-
-        if (!uidSnapshot.empty) {
-          studentData = uidSnapshot.docs[0].data();
-        }
-      } catch (error) {
-        console.warn("UID query failed:", error);
-      }
-
-      // UID না পাওয়া গেলে Email দিয়ে Profile খোঁজা হবে
-      if (!studentData && user.email) {
-        try {
-          const emailSnapshot = await db
-            .collection("students")
-            .where("email", "==", user.email)
-            .limit(1)
-            .get();
-
-          if (!emailSnapshot.empty) {
-            studentData = emailSnapshot.docs[0].data();
+          if(snapshot.empty){
+            contentArea.innerHTML = `
+              <div class="no-record">
+                <div class="icon">📋</div>
+                <h2>কোনো Admission তথ্য পাওয়া যায়নি</h2>
+                <p>
+                  এই email (${escapeHtml(user.email)}) দিয়ে এখনো কোনো Admission Form
+                  জমা দেওয়া হয়নি, অথবা ভিন্ন email দিয়ে জমা দিয়েছেন।
+                  Admission Form-এ ঠিক এই email ব্যবহার করে আবার জমা দিন।
+                </p>
+                <a href="/admission/" class="cta-btn">Admission Form পূরণ করুন →</a>
+              </div>
+            `;
+            return;
           }
-        } catch (error) {
-          console.warn("Email query failed:", error);
-        }
-      }
 
-      if (!studentData) {
-        loadingBox.style.display = "none";
-        showMessage(
-          "আপনার Firebase Account পাওয়া গেছে, কিন্তু Student Profile পাওয়া যায়নি। Admin-এর সঙ্গে যোগাযোগ করুন।",
-          "info"
-        );
-        return;
-      }
+          const data = snapshot.docs[0].data();
 
-      renderStudentProfile(studentData, user);
-    }
+          contentArea.innerHTML = `
+            <div class="welcome">
+              <h1>স্বাগতম, ${escapeHtml(data.name || "শিক্ষার্থী")} 👋</h1>
+              <p>আপনার ভর্তির তথ্য নিচে দেখতে পাচ্ছেন</p>
+            </div>
 
-    function renderStudentProfile(student, user) {
-      const name = student.name || user.displayName || "Student";
-      const email = student.email || user.email || "—";
+            <div class="profile-card">
 
-      welcomeName.textContent = name;
-      document.getElementById("profileName").textContent = name;
-      document.getElementById("profileEmail").textContent = email;
-      document.getElementById("nameValue").textContent = safeValue(name);
-      document.getElementById("phoneValue").textContent = safeValue(student.phone);
-      document.getElementById("emailValue").textContent = safeValue(email);
-      document.getElementById("educationValue").textContent =
-        safeValue(student.education || student.className || student.class);
-      document.getElementById("addressValue").textContent = safeValue(student.address);
+              <div class="status-badge">● Application Submitted</div>
 
-      document.getElementById("studentIdBadge").textContent =
-        "Student ID: " + safeValue(student.studentId || student.id);
+              <div class="detail-grid">
 
-      document.getElementById("courseValue").textContent = safeValue(student.course);
-      document.getElementById("admissionStatusValue").innerHTML =
-        statusBadge(student.admissionStatus || "Pending");
-      document.getElementById("paymentStatusValue").innerHTML =
-        statusBadge(student.paymentStatus || "Not Updated");
-      document.getElementById("profileCreatedValue").textContent =
-        formatDate(student.profileCreatedAt || student.createdAt);
+                <div class="detail-item">
+                  <span>পূর্ণ নাম</span>
+                  <strong>${escapeHtml(data.name || "-")}</strong>
+                </div>
 
-      document.getElementById("courseTitle").textContent =
-        safeValue(student.course);
+                <div class="detail-item">
+                  <span>মোবাইল নম্বর</span>
+                  <strong>${escapeHtml(data.phone || "-")}</strong>
+                </div>
 
-      const courseDescription =
-        student.courseDescription ||
-        "আপনার কোর্সের বিস্তারিত তথ্য Admin কর্তৃক আপডেট করা হলে এখানে দেখা যাবে।";
+                <div class="detail-item">
+                  <span>Email</span>
+                  <strong>${escapeHtml(data.email || "-")}</strong>
+                </div>
 
-      document.getElementById("courseDescription").textContent = courseDescription;
+                <div class="detail-item">
+                  <span>বয়স</span>
+                  <strong>${escapeHtml(data.age || "-")}</strong>
+                </div>
 
-      if (student.profileImage) {
-        const avatarContainer = document.getElementById("avatarContainer");
-        avatarContainer.innerHTML = "";
+                <div class="detail-item">
+                  <span>নির্বাচিত কোর্স</span>
+                  <strong>${escapeHtml(data.course || "-")}</strong>
+                </div>
 
-        const image = document.createElement("img");
-        image.className = "avatar";
-        image.src = student.profileImage;
-        image.alt = name;
-        image.onerror = function () {
-          avatarContainer.innerHTML =
-            '<div class="avatar avatar-placeholder">👤</div>';
-        };
+                <div class="detail-item">
+                  <span>শিক্ষাগত যোগ্যতা</span>
+                  <strong>${escapeHtml(data.education || "-")}</strong>
+                </div>
 
-        avatarContainer.appendChild(image);
-      }
+                <div class="detail-item">
+                  <span>বর্তমান পেশা</span>
+                  <strong>${escapeHtml(data.profession || "-")}</strong>
+                </div>
 
-      if (student.profileNote) {
-        document.getElementById("noteCard").style.display = "block";
-        document.getElementById("noteValue").textContent = student.profileNote;
-      }
+                <div class="detail-item">
+                  <span>PC/Laptop</span>
+                  <strong>${escapeHtml(data.pcLaptop || "-")}</strong>
+                </div>
 
-      loadingBox.style.display = "none";
-      dashboardContent.style.display = "block";
-    }
+                <div class="detail-item">
+                  <span>ঠিকানা</span>
+                  <strong>${escapeHtml(data.address || "-")}</strong>
+                </div>
 
-    auth.onAuthStateChanged(async function(user) {
-      if (!user) {
-        window.location.href = "/student-login/";
-        return;
-      }
+              </div>
 
-      try {
-        await loadStudentProfile(user);
-      } catch (error) {
-        console.error(error);
-        loadingBox.style.display = "none";
-        showMessage(
-          "Student তথ্য লোড করা যাচ্ছে না। Firestore Rules ও Profile তথ্য পরীক্ষা করুন।",
-          "error"
-        );
-      }
+            </div>
+          `;
+        })
+        .catch(function(error){
+          contentArea.innerHTML = "<div class='no-record'><p>তথ্য লোড করতে সমস্যা হয়েছে: " + escapeHtml(error.message) + "</p></div>";
+        });
     });
 
-    document.getElementById("logoutBtn").addEventListener("click", async function() {
-      const button = this;
-      button.disabled = true;
-      button.textContent = "Logging out...";
-
-      try {
-        await auth.signOut();
+    document.getElementById("logoutBtn").addEventListener("click", function(){
+      auth.signOut().then(function(){
         window.location.href = "/student-login/";
-      } catch (error) {
-        button.disabled = false;
-        button.textContent = "Logout ↗";
-        showMessage("Logout করা যাচ্ছে না। আবার চেষ্টা করুন।", "error");
-      }
+      });
     });
+
   </script>
 
 </body>

@@ -232,10 +232,10 @@
       display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr auto; gap:14px; align-items:center;
     }
 
-    .student-card .s-name, .payment-card .s-name{ font-weight:700; font-size:13.5px; }
-    .student-card .s-sub, .payment-card .s-sub{ color:#777; font-size:11.5px; margin-top:2px; }
-    .student-card .s-field, .payment-card .s-field{ font-size:12.5px; color:#ccc; }
-    .student-card .s-field span, .payment-card .s-field span{ display:block; color:#666; font-size:10.5px; margin-bottom:2px; }
+    .student-card .s-name{ font-weight:700; font-size:13.5px; }
+    .student-card .s-sub{ color:#777; font-size:11.5px; margin-top:2px; }
+    .student-card .s-field{ font-size:12.5px; color:#ccc; }
+    .student-card .s-field span{ display:block; color:#666; font-size:10.5px; margin-bottom:2px; }
 
     @media(max-width:800px){
       .student-card{ grid-template-columns:1fr 1fr; }
@@ -249,7 +249,7 @@
       display:grid; grid-template-columns:1.1fr 1.1fr 0.9fr 0.8fr auto; gap:14px; align-items:center;
     }
 
-    .payment-card .p-actions{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .payment-card .p-actions{ display:flex; gap:8px; align-items:center; }
 
     .status-pill{
       display:inline-block; padding:5px 11px; border-radius:50px;
@@ -257,39 +257,6 @@
     }
     .status-pill.pending{ background:rgba(255,157,92,.1); color:#ff9d5c; border:1px solid rgba(255,157,92,.3); }
     .status-pill.confirmed{ background:rgba(74,222,128,.1); color:#4ade80; border:1px solid rgba(74,222,128,.3); }
-    .status-pill.cancelled{ background:rgba(255,128,128,.1); color:#ff8080; border:1px solid rgba(255,128,128,.3); }
-
-    .confirm-btn.cancel-variant{
-      border-color:rgba(255,128,128,.4);
-      background:rgba(255,128,128,.08);
-      color:#ff8080;
-    }
-    .confirm-btn.cancel-variant:hover{ background:rgba(255,128,128,.18); }
-
-    .contact-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:5px;
-      padding:8px 12px;
-      border-radius:7px;
-      font-size:11px;
-      font-weight:800;
-      text-decoration:none;
-      transition:.3s;
-    }
-    .contact-btn.whatsapp{
-      background:rgba(37,211,102,.1);
-      border:1px solid rgba(37,211,102,.4);
-      color:#25D366;
-    }
-    .contact-btn.whatsapp:hover{ background:rgba(37,211,102,.2); }
-
-    .contact-btn.call{
-      background:rgba(183,255,0,.1);
-      border:1px solid rgba(183,255,0,.4);
-      color:#b7ff00;
-    }
-    .contact-btn.call:hover{ background:rgba(183,255,0,.2); }
 
     .confirm-btn{
       padding:8px 12px; border-radius:7px; border:1px solid rgba(74,222,128,.4);
@@ -503,37 +470,6 @@
             <span>Checkout পেজ থেকে জমা হওয়া bKash Transaction তথ্য — যাচাই করে Confirm করুন</span>
           </div>
         </div>
-
-        <form class="post-form" id="paymentEditForm">
-
-          <input type="hidden" id="editPaymentId">
-
-          <div class="form-row">
-            <label>নাম *</label>
-            <input type="text" id="editPayerName" required>
-          </div>
-
-          <div class="form-row">
-            <label>মোবাইল নম্বর *</label>
-            <input type="text" id="editPayerPhone" required>
-          </div>
-
-          <div class="form-row">
-            <label>যেই bKash নম্বর থেকে পাঠিয়েছে</label>
-            <input type="text" id="editPayerBkash">
-          </div>
-
-          <div class="form-row">
-            <label>Transaction ID</label>
-            <input type="text" id="editTrxId">
-          </div>
-
-          <div class="form-actions">
-            <button type="submit" class="primary-btn" id="savePaymentEditBtn">সেভ করুন</button>
-            <button type="button" class="secondary-btn" id="cancelPaymentEditBtn">বাতিল</button>
-          </div>
-
-        </form>
 
         <div class="student-list" id="paymentList"></div>
         <div class="empty-note" id="paymentsEmpty" style="display:none;">এখনো কোনো Payment জমা হয়নি।</div>
@@ -1192,63 +1128,6 @@
     }
 
     // LOAD PAYMENTS
-    const paymentEditForm = document.getElementById("paymentEditForm");
-    const cancelPaymentEditBtn = document.getElementById("cancelPaymentEditBtn");
-
-    function resetPaymentEditForm(){
-      paymentEditForm.classList.remove("open");
-      document.getElementById("editPaymentId").value = "";
-      document.getElementById("editPayerName").value = "";
-      document.getElementById("editPayerPhone").value = "";
-      document.getElementById("editPayerBkash").value = "";
-      document.getElementById("editTrxId").value = "";
-    }
-
-    cancelPaymentEditBtn.addEventListener("click", resetPaymentEditForm);
-
-    paymentEditForm.addEventListener("submit", function(e){
-      e.preventDefault();
-
-      const id = document.getElementById("editPaymentId").value;
-      const updated = {
-        payerName: document.getElementById("editPayerName").value.trim(),
-        payerPhone: document.getElementById("editPayerPhone").value.trim(),
-        payerBkashNumber: document.getElementById("editPayerBkash").value.trim(),
-        trxId: document.getElementById("editTrxId").value.trim()
-      };
-
-      const saveBtn = document.getElementById("savePaymentEditBtn");
-      saveBtn.disabled = true;
-      saveBtn.textContent = "সেভ হচ্ছে...";
-
-      db.collection("payments").doc(id).get().then(function(doc){
-        const p = doc.data();
-        const updatePromises = [db.collection("payments").doc(id).update(updated)];
-
-        // keep the linked admission record's name/phone in sync
-        if(p.linkedStudentId){
-          updatePromises.push(
-            db.collection("students").doc(p.linkedStudentId).update({
-              name: updated.payerName,
-              phone: updated.payerPhone
-            }).catch(function(){ /* linked student may have been removed manually; ignore */ })
-          );
-        }
-
-        return Promise.all(updatePromises);
-      }).then(function(){
-        saveBtn.disabled = false;
-        saveBtn.textContent = "সেভ করুন";
-        resetPaymentEditForm();
-        loadPayments();
-        showToast("✅ তথ্য আপডেট হয়েছে", "success");
-      }).catch(function(error){
-        saveBtn.disabled = false;
-        saveBtn.textContent = "সেভ করুন";
-        showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
-      });
-    });
-
     function loadPayments(){
       const paymentList = document.getElementById("paymentList");
       const paymentsEmpty = document.getElementById("paymentsEmpty");
@@ -1264,33 +1143,7 @@
 
         snapshot.forEach(function(doc){
           const p = doc.data();
-          const status = p.status || "pending";
-
-          let pillHtml, actionButtons;
-          const phoneDigits = (p.payerPhone || "").replace(/[^0-9]/g, "");
-          const waPhone = phoneDigits.startsWith("0") ? "880" + phoneDigits.slice(1) : phoneDigits;
-          const callPhone = phoneDigits.startsWith("0") ? "+880" + phoneDigits.slice(1) : "+" + phoneDigits;
-          const contactButtons = phoneDigits ? `
-              <a class="contact-btn whatsapp" href="https://wa.me/${waPhone}?text=আমি%20SNK%20IT%20Institute%20থেকে%20আপনার%20Payment%20নিয়ে%20কথা%20বলতে%20চাই" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
-              <a class="contact-btn call" href="tel:${callPhone}">📞 Call</a>
-          ` : "";
-
-          if(status === "confirmed"){
-            pillHtml = `<span class="status-pill confirmed">✓ Confirmed</span>`;
-            actionButtons = `<button class="confirm-btn cancel-variant" data-cancel-payment="${doc.id}">Cancel</button>`;
-          }else if(status === "cancelled"){
-            pillHtml = `<span class="status-pill cancelled">✕ Cancelled</span>`;
-            actionButtons = `
-              <button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>
-              ${contactButtons}
-            `;
-          }else{
-            pillHtml = `<span class="status-pill pending">Pending</span>`;
-            actionButtons = `
-              <button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>
-              <button class="confirm-btn cancel-variant" data-cancel-payment="${doc.id}">Cancel</button>
-            `;
-          }
+          const isConfirmed = p.status === "confirmed";
 
           const card = document.createElement("div");
           card.className = "payment-card";
@@ -1303,107 +1156,30 @@
             <div class="s-field"><span>bKash নম্বর</span>${escapeHtml(p.payerBkashNumber || "-")}</div>
             <div class="s-field"><span>TrxID</span>${escapeHtml(p.trxId || "-")}</div>
             <div class="p-actions">
-              ${pillHtml}
-              ${actionButtons}
-              <button class="icon-btn" data-edit-payment="${doc.id}" title="Edit">✎</button>
+              <span class="status-pill ${isConfirmed ? 'confirmed' : 'pending'}">${isConfirmed ? '✓ Confirmed' : 'Pending'}</span>
+              ${!isConfirmed ? `<button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>` : ""}
               <button class="icon-btn danger" data-del-payment="${doc.id}" title="Delete">🗑</button>
             </div>
           `;
           paymentList.appendChild(card);
         });
 
-        // CONFIRM: mark confirmed + create/link an admission-list (students) entry
         paymentList.querySelectorAll("[data-confirm-payment]").forEach(function(btn){
           btn.addEventListener("click", function(){
             const id = btn.getAttribute("data-confirm-payment");
-
-            db.collection("payments").doc(id).get().then(function(doc){
-              const p = doc.data();
-
-              if(p.linkedStudentId){
-                // already linked before (e.g. was cancelled then re-confirmed) — just flip status
-                return db.collection("payments").doc(id).update({ status: "confirmed" });
-              }
-
-              // create a new admission-list entry from this payment
-              return db.collection("students").add({
-                name: p.payerName || "",
-                phone: p.payerPhone || "",
-                email: "",
-                age: "",
-                course: p.courseName || "",
-                education: "",
-                profession: "",
-                pcLaptop: "",
-                address: "",
-                message: "Payment-এর মাধ্যমে ভর্তি — TrxID: " + (p.trxId || "-"),
-                source: "payment",
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-              }).then(function(studentRef){
-                return db.collection("payments").doc(id).update({
-                  status: "confirmed",
-                  linkedStudentId: studentRef.id
-                });
-              });
-            }).then(function(){
+            db.collection("payments").doc(id).update({ status: "confirmed" }).then(function(){
               loadPayments();
-              loadStudents();
-              showToast("✅ Confirmed হয়েছে এবং Admission তালিকায় যোগ হয়েছে", "success");
+              showToast("✅ Payment Confirmed হয়েছে", "success");
             }).catch(function(error){
               showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
             });
           });
         });
 
-        // CANCEL: mark cancelled + remove the linked admission-list entry (if any)
-        paymentList.querySelectorAll("[data-cancel-payment]").forEach(function(btn){
-          btn.addEventListener("click", function(){
-            const id = btn.getAttribute("data-cancel-payment");
-
-            if(!confirm("এই Payment বাতিল করতে চান? সংশ্লিষ্ট Admission তালিকা থেকেও এন্ট্রিটা সরে যাবে।")) return;
-
-            db.collection("payments").doc(id).get().then(function(doc){
-              const p = doc.data();
-              const tasks = [db.collection("payments").doc(id).update({ status: "cancelled", linkedStudentId: firebase.firestore.FieldValue.delete() })];
-
-              if(p.linkedStudentId){
-                tasks.push(
-                  db.collection("students").doc(p.linkedStudentId).delete().catch(function(){ /* already gone, ignore */ })
-                );
-              }
-              return Promise.all(tasks);
-            }).then(function(){
-              loadPayments();
-              loadStudents();
-              showToast("🚫 Payment বাতিল হয়েছে", "success");
-            }).catch(function(error){
-              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
-            });
-          });
-        });
-
-        // EDIT
-        paymentList.querySelectorAll("[data-edit-payment]").forEach(function(btn){
-          btn.addEventListener("click", function(){
-            const id = btn.getAttribute("data-edit-payment");
-            db.collection("payments").doc(id).get().then(function(doc){
-              const p = doc.data();
-              document.getElementById("editPaymentId").value = id;
-              document.getElementById("editPayerName").value = p.payerName || "";
-              document.getElementById("editPayerPhone").value = p.payerPhone || "";
-              document.getElementById("editPayerBkash").value = p.payerBkashNumber || "";
-              document.getElementById("editTrxId").value = p.trxId || "";
-              paymentEditForm.classList.add("open");
-              window.scrollTo({top:0, behavior:"smooth"});
-            });
-          });
-        });
-
-        // DELETE
         paymentList.querySelectorAll("[data-del-payment]").forEach(function(btn){
           btn.addEventListener("click", function(){
             const id = btn.getAttribute("data-del-payment");
-            if(confirm("এই Payment তথ্য সম্পূর্ণ ডিলিট করতে চান? (Admission তালিকার এন্ট্রি থাকলে সেটা মুছবে না)")){
+            if(confirm("এই Payment তথ্য ডিলিট করতে চান?")){
               db.collection("payments").doc(id).delete().then(function(){
                 loadPayments();
                 showToast("🗑 ডিলিট হয়েছে", "success");
