@@ -3,293 +3,1207 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Admin Dashboard | SNK IT Institute</title>
 
-  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+  <meta
+    name="description"
+    content="SNK IT Institute Admin Dashboard — Manage Blog Posts and Admission Applications."
+  >
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
+  >
 
   <style>
 
-    *{ margin:0; padding:0; box-sizing:border-box; }
+    /* =========================================================
+       RESET
+    ========================================================= */
 
-    body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:#050505;
-      color:#fff;
-      line-height:1.6;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    a{ text-decoration:none; color:inherit; }
-    button, input, textarea{ font:inherit; }
-
-    .container{ width:min(1100px,94%); margin:auto; }
-
-    /* HEADER */
-
-    .admin-header{
-      position:sticky; top:0; z-index:999;
-      background:rgba(5,5,5,.96);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid #181818;
-      padding:16px 0;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .admin-header .container{
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050505;
+      color: #ffffff;
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
-    .admin-brand{ display:flex; align-items:center; gap:10px; }
-    .admin-brand img{ width:36px; height:36px; }
-    .admin-brand span{ font-weight:800; font-size:15px; }
-
-    .logout-btn{
-      padding:9px 16px;
-      border:1px solid #292929;
-      border-radius:8px;
-      background:#101010;
-      color:#fff;
-      font-size:12.5px;
-      font-weight:700;
-      cursor:pointer;
-      transition:.3s;
-    }
-    .logout-btn:hover{ border-color:#ff8080; color:#ff8080; }
-
-    /* LOADING GATE */
-
-    .auth-gate{
-      min-height:100vh;
-      display:flex; align-items:center; justify-content:center;
-      color:#777; font-size:14px;
+    body.no-scroll {
+      overflow: hidden;
     }
 
-    .dashboard-body{ display:none; padding:30px 0 80px; }
-
-    /* TABS */
-
-    .tabs{
-      display:flex; gap:10px; margin-bottom:26px;
-      border-bottom:1px solid #181818;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .tab-btn{
-      padding:12px 18px;
-      background:none; border:0;
-      color:#777; font-size:14px; font-weight:700;
-      cursor:pointer;
-      border-bottom:2px solid transparent;
-      transition:.3s;
+    button,
+    input,
+    textarea {
+      font: inherit;
     }
 
-    .tab-btn.active{ color:#b7ff00; border-color:#b7ff00; }
-
-    .tab-panel{ display:none; }
-    .tab-panel.active{ display:block; }
-
-    /* SECTION HEADER */
-
-    .section-head{
-      display:flex; align-items:center; justify-content:space-between;
-      margin-bottom:20px; flex-wrap:wrap; gap:10px;
+    button {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .section-head h2{ font-size:19px; }
-    .section-head span{ color:#777; font-size:12.5px; }
-
-    .primary-btn{
-      padding:11px 18px;
-      background:#b7ff00; color:#050505;
-      border:0; border-radius:8px;
-      font-size:13px; font-weight:800;
-      cursor:pointer; transition:.3s;
-    }
-    .primary-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(183,255,0,.2); }
-
-    /* POST FORM */
-
-    .post-form{
-      display:none;
-      background:#0b0b0b; border:1px solid #202020; border-radius:16px;
-      padding:24px; margin-bottom:24px;
-    }
-    .post-form.open{ display:block; }
-
-    .form-row{ display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
-    .form-row label{ font-size:12.5px; font-weight:700; color:#ddd; }
-
-    .form-row input, .form-row textarea{
-      width:100%; border:1px solid #292929; outline:none;
-      background:#101010; color:#fff; border-radius:9px;
-      padding:12px 13px; font-size:13px; transition:.3s;
-    }
-    .form-row input:focus, .form-row textarea:focus{
-      border-color:rgba(183,255,0,.5); box-shadow:0 0 0 3px rgba(183,255,0,.05);
-    }
-    .form-row textarea{ min-height:80px; resize:vertical; }
-    .form-row .hint{ color:#666; font-size:11px; }
-
-    .form-actions{ display:flex; gap:10px; margin-top:6px; }
-
-    .secondary-btn{
-      padding:11px 18px;
-      background:none; color:#999;
-      border:1px solid #292929; border-radius:8px;
-      font-size:13px; font-weight:700;
-      cursor:pointer; transition:.3s;
-    }
-    .secondary-btn:hover{ border-color:#555; color:#fff; }
-
-    /* POST LIST */
-
-    .post-item{
-      display:flex; gap:16px; align-items:flex-start;
-      background:#0b0b0b; border:1px solid #202020; border-radius:14px;
-      padding:16px; margin-bottom:12px;
-    }
-    .post-item img{
-      width:80px; height:60px; object-fit:cover; border-radius:8px;
-      background:#161616; flex-shrink:0;
-    }
-    .post-item .post-info{ flex:1; min-width:0; }
-    .post-item h3{ font-size:14.5px; margin-bottom:4px; }
-    .post-item p{ color:#888; font-size:12.5px; }
-    .post-item .post-actions{ display:flex; gap:8px; flex-shrink:0; }
-
-    .icon-btn{
-      width:32px; height:32px; border-radius:7px;
-      border:1px solid #292929; background:#101010; color:#999;
-      cursor:pointer; font-size:13px; transition:.3s;
-    }
-    .icon-btn:hover{ border-color:#b7ff00; color:#b7ff00; }
-    .icon-btn.danger:hover{ border-color:#ff8080; color:#ff8080; }
-
-    .empty-note{ color:#666; font-size:13px; padding:20px; text-align:center; }
-
-    /* STUDENT TABLE */
-
-    .student-list{ display:flex; flex-direction:column; gap:10px; }
-
-    .student-card{
-      background:#0b0b0b; border:1px solid #202020; border-radius:14px;
-      padding:16px 18px;
-      display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr auto; gap:14px; align-items:center;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .student-card .s-name{ font-weight:700; font-size:13.5px; }
-    .student-card .s-sub{ color:#777; font-size:11.5px; margin-top:2px; }
-    .student-card .s-field{ font-size:12.5px; color:#ccc; }
-    .student-card .s-field span{ display:block; color:#666; font-size:10.5px; margin-bottom:2px; }
+    .container {
+      width: min(1120px, 94%);
+      margin: 0 auto;
+    }
 
-    @media(max-width:800px){
-      .student-card{ grid-template-columns:1fr 1fr; }
+
+    /* =========================================================
+       AUTH GATE
+    ========================================================= */
+
+    .auth-gate {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 14px;
+      background: #050505;
+      color: #777;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .auth-loader {
+      width: 34px;
+      height: 34px;
+      border: 3px solid #222;
+      border-top-color: #b7ff00;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .dashboard-body {
+      display: none;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .admin-header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(5, 5, 5, .94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid #181818;
+      padding: 14px 0;
+    }
+
+    .admin-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .admin-brand img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .admin-brand span {
+      display: block;
+      font-weight: 800;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .admin-brand small {
+      display: block;
+      color: #777;
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    .logout-btn {
+      padding: 9px 16px;
+      border: 1px solid #292929;
+      border-radius: 8px;
+      background: #101010;
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s ease;
+      flex-shrink: 0;
+    }
+
+    .logout-btn:hover {
+      border-color: #ff8080;
+      color: #ff8080;
+      background: #120b0b;
+    }
+
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    .dashboard-main {
+      padding-top: 30px;
+    }
+
+
+    /* =========================================================
+       DASHBOARD TOP
+    ========================================================= */
+
+    .dashboard-intro {
+      margin-bottom: 24px;
+    }
+
+    .dashboard-intro h1 {
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .dashboard-intro p {
+      color: #777;
+      font-size: 13px;
+    }
+
+
+    /* =========================================================
+       TABS
+    ========================================================= */
+
+    .tabs-wrap {
+      overflow-x: auto;
+      margin-bottom: 28px;
+      scrollbar-width: none;
+    }
+
+    .tabs-wrap::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 5px;
+      border-bottom: 1px solid #181818;
+      min-width: max-content;
+    }
+
+    .tab-btn {
+      position: relative;
+      padding: 13px 18px;
+      background: none;
+      border: 0;
+      color: #777;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn::after {
+      content: "";
+      position: absolute;
+      left: 15px;
+      right: 15px;
+      bottom: -1px;
+      height: 2px;
+      background: transparent;
+      border-radius: 2px 2px 0 0;
+      transition: .25s ease;
+    }
+
+    .tab-btn:hover {
+      color: #fff;
+    }
+
+    .tab-btn.active {
+      color: #b7ff00;
+    }
+
+    .tab-btn.active::after {
+      background: #b7ff00;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+      animation: fadeIn .25s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* =========================================================
+       SECTION HEADER
+    ========================================================= */
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: 19px;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .section-head span {
+      color: #777;
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+
+    .primary-btn {
+      padding: 11px 18px;
+      background: #b7ff00;
+      color: #050505;
+      border: 0;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .25s ease;
+      white-space: nowrap;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(183, 255, 0, .18);
+    }
+
+    .primary-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .secondary-btn {
+      padding: 11px 18px;
+      background: transparent;
+      color: #999;
+      border: 1px solid #292929;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .secondary-btn:hover {
+      border-color: #555;
+      color: #fff;
+    }
+
+
+    /* =========================================================
+       FORM
+    ========================================================= */
+
+    .post-form {
+      display: none;
+      background: #0b0b0b;
+      border: 1px solid #202020;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .18);
+    }
+
+    .post-form.open {
+      display: block;
+      animation: formOpen .25s ease;
+    }
+
+    @keyframes formOpen {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 22px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #181818;
+    }
+
+    .form-top h3 {
+      font-size: 16px;
+    }
+
+    .form-top span {
+      color: #666;
+      font-size: 11px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .form-row label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #ddd;
+    }
+
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      border: 1px solid #292929;
+      outline: none;
+      background: #101010;
+      color: #fff;
+      border-radius: 9px;
+      padding: 12px 13px;
+      font-size: 13px;
+      transition: .25s ease;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus {
+      border-color: rgba(183, 255, 0, .5);
+      box-shadow: 0 0 0 3px rgba(183, 255, 0, .05);
+    }
+
+    .form-row textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-row textarea.content-input {
+      min-height: 190px;
+    }
+
+    .form-row input[type="file"] {
+      padding: 9px;
+      cursor: pointer;
+    }
+
+    .form-row input[type="file"]::file-selector-button {
+      border: 1px solid #292929;
+      background: #181818;
+      color: #ddd;
+      padding: 7px 10px;
+      border-radius: 6px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .hint {
+      color: #666;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .image-preview-wrap {
+      display: none;
+      margin-top: 5px;
+      width: fit-content;
+      position: relative;
+    }
+
+    .image-preview-wrap.show {
+      display: block;
+    }
+
+    #imagePreview {
+      width: 180px;
+      max-height: 120px;
+      object-fit: cover;
+      border-radius: 9px;
+      border: 1px solid #292929;
+      background: #161616;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+
+    /* =========================================================
+       POST LIST
+    ========================================================= */
+
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .post-item {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      background: #0b0b0b;
+      border: 1px solid #202020;
+      border-radius: 14px;
+      padding: 15px;
+      transition: .25s ease;
+    }
+
+    .post-item:hover {
+      border-color: #2b2b2b;
+      transform: translateY(-1px);
+    }
+
+    .post-item img {
+      width: 88px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #161616;
+      border: 1px solid #1d1d1d;
+      flex-shrink: 0;
+    }
+
+    .post-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .post-info h3 {
+      font-size: 14.5px;
+      margin-bottom: 4px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .post-info p {
+      color: #888;
+      font-size: 12px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .post-date {
+      color: #555;
+      font-size: 10.5px;
+      margin-top: 5px;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 7px;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 7px;
+      border: 1px solid #292929;
+      background: #101010;
+      color: #999;
+      cursor: pointer;
+      font-size: 13px;
+      transition: .25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-btn:hover {
+      border-color: #b7ff00;
+      color: #b7ff00;
+      background: #121700;
+    }
+
+    .icon-btn.danger:hover {
+      border-color: #ff8080;
+      color: #ff8080;
+      background: #170c0c;
+    }
+
+
+    /* =========================================================
+       STUDENT LIST
+    ========================================================= */
+
+    .student-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .student-card {
+      background: #0b0b0b;
+      border: 1px solid #202020;
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1.2fr 1fr auto;
+      gap: 16px;
+      align-items: center;
+      transition: .25s ease;
+    }
+
+    .student-card:hover {
+      border-color: #2b2b2b;
+    }
+
+    .student-name {
+      min-width: 0;
+    }
+
+    .student-card .s-name {
+      font-weight: 700;
+      font-size: 13.5px;
+      word-break: break-word;
+    }
+
+    .student-card .s-sub {
+      color: #777;
+      font-size: 11.5px;
+      margin-top: 2px;
+      word-break: break-word;
+    }
+
+    .student-card .s-field {
+      font-size: 12px;
+      color: #ccc;
+      min-width: 0;
+      word-break: break-word;
+    }
+
+    .student-card .s-field span {
+      display: block;
+      color: #666;
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+
+
+    /* =========================================================
+       EMPTY / LOADING
+    ========================================================= */
+
+    .empty-note {
+      color: #666;
+      font-size: 13px;
+      padding: 30px 20px;
+      text-align: center;
+      background: #0b0b0b;
+      border: 1px dashed #202020;
+      border-radius: 14px;
+    }
+
+    .list-loading {
+      color: #666;
+      font-size: 13px;
+      padding: 25px;
+      text-align: center;
+      background: #0b0b0b;
+      border: 1px solid #202020;
+      border-radius: 14px;
+    }
+
+    .error-box {
+      color: #ff9b9b;
+      background: #170b0b;
+      border: 1px solid #3a1c1c;
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 950px) {
+
+      .student-card {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .student-card .student-name {
+        grid-column: span 2;
+      }
+
+      .student-card .delete-student {
+        justify-self: end;
+      }
+    }
+
+
+    @media (max-width: 700px) {
+
+      .container {
+        width: min(94%, 560px);
+      }
+
+      .dashboard-main {
+        padding-top: 22px;
+      }
+
+      .admin-header {
+        padding: 11px 0;
+      }
+
+      .admin-brand img {
+        width: 34px;
+        height: 34px;
+      }
+
+      .admin-brand span {
+        font-size: 13px;
+      }
+
+      .admin-brand small {
+        display: none;
+      }
+
+      .logout-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+      }
+
+      .section-head {
+        align-items: flex-start;
+      }
+
+      .section-head .primary-btn {
+        width: 100%;
+      }
+
+      .post-form {
+        padding: 17px;
+        border-radius: 13px;
+      }
+
+      .post-item {
+        align-items: flex-start;
+      }
+
+      .post-item img {
+        width: 74px;
+        height: 55px;
+      }
+
+      .post-actions {
+        flex-direction: column;
+      }
+
+      .student-card {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .student-card .student-name {
+        grid-column: span 2;
+      }
+
+      .student-card .delete-student {
+        justify-self: start;
+      }
+    }
+
+
+    @media (max-width: 480px) {
+
+      .dashboard-intro h1 {
+        font-size: 22px;
+      }
+
+      .section-head h2 {
+        font-size: 17px;
+      }
+
+      .section-head span {
+        font-size: 11px;
+      }
+
+      .post-item {
+        flex-wrap: wrap;
+      }
+
+      .post-info {
+        width: calc(100% - 90px);
+      }
+
+      .post-actions {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+
+      .student-card {
+        grid-template-columns: 1fr;
+      }
+
+      .student-card .student-name {
+        grid-column: auto;
+      }
+
+      .student-card .delete-student {
+        justify-self: end;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+
+      .form-actions button {
+        width: 100%;
+      }
     }
 
   </style>
 </head>
 
+
 <body>
 
-  <div class="auth-gate" id="authGate">লোড হচ্ছে...</div>
+  <!-- =======================================================
+       AUTH LOADING
+  ======================================================== -->
+
+  <div class="auth-gate" id="authGate">
+    <div class="auth-loader"></div>
+    <div>Admin Dashboard যাচাই করা হচ্ছে...</div>
+  </div>
+
+
+  <!-- =======================================================
+       DASHBOARD
+  ======================================================== -->
 
   <div class="dashboard-body" id="dashboardBody">
 
+    <!-- HEADER -->
+
     <header class="admin-header">
+
       <div class="container">
+
         <div class="admin-brand">
-          <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK">
-          <span>Admin Dashboard</span>
+
+          <img
+            src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
+            alt="SNK IT Institute"
+          >
+
+          <div class="brand-text">
+            <span>Admin Dashboard</span>
+            <small>SNK IT Institute</small>
+          </div>
+
         </div>
-        <button class="logout-btn" id="logoutBtn">Logout →</button>
+
+        <button
+          type="button"
+          class="logout-btn"
+          id="logoutBtn"
+        >
+          Logout →
+        </button>
+
       </div>
+
     </header>
 
-    <div class="container">
 
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="posts">ব্লগ পোস্ট</button>
-        <button class="tab-btn" data-tab="students">Admission তালিকা</button>
-      </div>
+    <!-- MAIN -->
 
+    <main class="dashboard-main">
 
-      <!-- BLOG POSTS TAB -->
+      <div class="container">
 
-      <div class="tab-panel active" id="tab-posts">
+        <!-- INTRO -->
 
-        <div class="section-head">
-          <div>
-            <h2>ব্লগ পোস্ট</h2>
-            <span>এখান থেকে যোগ/এডিট/ডিলিট করলে blog.html-এ সাথে সাথে দেখা যাবে</span>
-          </div>
-          <button class="primary-btn" id="newPostBtn">+ নতুন পোস্ট</button>
+        <div class="dashboard-intro">
+
+          <h1>Welcome, Admin 👋</h1>
+
+          <p>
+            এখান থেকে আপনার Blog Post এবং Admission Application পরিচালনা করুন।
+          </p>
+
         </div>
 
-        <form class="post-form" id="postForm">
 
-          <input type="hidden" id="postId">
+        <!-- TABS -->
 
-          <div class="form-row">
-            <label>পোস্টের ছবি</label>
-            <input type="file" id="postImageFile" accept="image/*">
-            <input type="hidden" id="postImageData">
-            <span class="hint">ছবি আপলোড করলে ছোট করে (compressed) সেভ হবে। খালি রাখলে default ছবি দেখাবে।</span>
-            <img id="imagePreview" style="display:none; margin-top:10px; max-width:180px; border-radius:8px; border:1px solid #292929;">
+        <div class="tabs-wrap">
+
+          <div class="tabs">
+
+            <button
+              type="button"
+              class="tab-btn active"
+              data-tab="posts"
+            >
+              📝 ব্লগ পোস্ট
+            </button>
+
+            <button
+              type="button"
+              class="tab-btn"
+              data-tab="students"
+            >
+              🎓 Admission তালিকা
+            </button>
+
           </div>
 
-          <div class="form-row">
-            <label>টাইটেল *</label>
-            <input type="text" id="postTitle" required placeholder="যেমন: কেন AI Skill শেখা জরুরি">
-          </div>
-
-          <div class="form-row">
-            <label>ছোট বিবরণ (Excerpt) *</label>
-            <textarea id="postExcerpt" required placeholder="২-৩ লাইনের সংক্ষিপ্ত বিবরণ..."></textarea>
-          </div>
-
-          <div class="form-row">
-            <label>পুরো লেখা *</label>
-            <textarea id="postContent" required style="min-height:160px;" placeholder="পুরো লেখা লিখুন। একটা প্যারাগ্রাফ শেষ করে একটা ফাঁকা লাইন রেখে পরের প্যারাগ্রাফ লিখুন।"></textarea>
-            <span class="hint">প্রতিটা প্যারাগ্রাফের মাঝে একটা ফাঁকা লাইন রাখবেন</span>
-          </div>
-
-          <div class="form-actions">
-            <button type="submit" class="primary-btn" id="savePostBtn">পোস্ট সেভ করুন</button>
-            <button type="button" class="secondary-btn" id="cancelPostBtn">বাতিল</button>
-          </div>
-
-        </form>
-
-        <div id="postList"></div>
-        <div class="empty-note" id="postsEmpty" style="display:none;">এখনো কোনো পোস্ট যোগ করা হয়নি।</div>
-
-      </div>
-
-
-      <!-- STUDENTS TAB -->
-
-      <div class="tab-panel" id="tab-students">
-
-        <div class="section-head">
-          <div>
-            <h2>Admission তালিকা</h2>
-            <span>admission.html ফর্ম থেকে জমা হওয়া সব আবেদন</span>
-          </div>
         </div>
 
-        <div class="student-list" id="studentList"></div>
-        <div class="empty-note" id="studentsEmpty" style="display:none;">এখনো কোনো আবেদন জমা হয়নি।</div>
+
+        <!-- =================================================
+             BLOG POSTS TAB
+        ================================================== -->
+
+        <section
+          class="tab-panel active"
+          id="tab-posts"
+        >
+
+          <div class="section-head">
+
+            <div>
+
+              <h2>ব্লগ পোস্ট</h2>
+
+              <span>
+                এখান থেকে যোগ, এডিট বা ডিলিট করলে Firebase-এর পোস্ট আপডেট হবে।
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              class="primary-btn"
+              id="newPostBtn"
+            >
+              + নতুন পোস্ট
+            </button>
+
+          </div>
+
+
+          <!-- POST FORM -->
+
+          <form
+            class="post-form"
+            id="postForm"
+          >
+
+            <input
+              type="hidden"
+              id="postId"
+            >
+
+
+            <div class="form-top">
+
+              <div>
+
+                <h3 id="formTitle">
+                  নতুন ব্লগ পোস্ট
+                </h3>
+
+                <span>
+                  প্রয়োজনীয় তথ্য পূরণ করে পোস্ট সেভ করুন।
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- IMAGE -->
+
+            <div class="form-row">
+
+              <label for="postImageFile">
+                পোস্টের ছবি
+              </label>
+
+              <input
+                type="file"
+                id="postImageFile"
+                accept="image/*"
+              >
+
+              <input
+                type="hidden"
+                id="postImageData"
+              >
+
+              <span class="hint">
+                ছবি upload করলে automatically compress করে Firebase Firestore-এ save করা হবে।
+                ছবি না দিলে default placeholder ব্যবহার হবে।
+              </span>
+
+              <div
+                class="image-preview-wrap"
+                id="imagePreviewWrap"
+              >
+
+                <img
+                  id="imagePreview"
+                  src=""
+                  alt="Image Preview"
+                >
+
+              </div>
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <div class="form-row">
+
+              <label for="postTitle">
+                টাইটেল *
+              </label>
+
+              <input
+                type="text"
+                id="postTitle"
+                required
+                maxlength="180"
+                placeholder="যেমন: কেন AI Skill শেখা জরুরি?"
+              >
+
+            </div>
+
+
+            <!-- EXCERPT -->
+
+            <div class="form-row">
+
+              <label for="postExcerpt">
+                ছোট বিবরণ (Excerpt) *
+              </label>
+
+              <textarea
+                id="postExcerpt"
+                required
+                maxlength="500"
+                placeholder="২-৩ লাইনের সংক্ষিপ্ত বিবরণ লিখুন..."
+              ></textarea>
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="form-row">
+
+              <label for="postContent">
+                পুরো লেখা *
+              </label>
+
+              <textarea
+                id="postContent"
+                class="content-input"
+                required
+                placeholder="পুরো ব্লগ লেখা লিখুন।&#10;&#10;প্রতিটি paragraph-এর মাঝে একটি blank line রাখুন।"
+              ></textarea>
+
+              <span class="hint">
+                প্রতিটি paragraph-এর মাঝে একটি blank line রাখলে blog page-এ সুন্দরভাবে দেখাবে।
+              </span>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="form-actions">
+
+              <button
+                type="submit"
+                class="primary-btn"
+                id="savePostBtn"
+              >
+                পোস্ট সেভ করুন
+              </button>
+
+              <button
+                type="button"
+                class="secondary-btn"
+                id="cancelPostBtn"
+              >
+                বাতিল
+              </button>
+
+            </div>
+
+          </form>
+
+
+          <!-- POST LIST -->
+
+          <div
+            class="post-list"
+            id="postList"
+          ></div>
+
+          <div
+            class="empty-note"
+            id="postsEmpty"
+            style="display:none;"
+          >
+            এখনো কোনো পোস্ট যোগ করা হয়নি।
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STUDENTS TAB
+        ================================================== -->
+
+        <section
+          class="tab-panel"
+          id="tab-students"
+        >
+
+          <div class="section-head">
+
+            <div>
+
+              <h2>Admission তালিকা</h2>
+
+              <span>
+                admission.html ফর্ম থেকে জমা হওয়া সব আবেদন এখানে দেখা যাবে।
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- STUDENTS -->
+
+          <div
+            class="student-list"
+            id="studentList"
+          ></div>
+
+          <div
+            class="empty-note"
+            id="studentsEmpty"
+            style="display:none;"
+          >
+            এখনো কোনো আবেদন জমা হয়নি।
+          </div>
+
+        </section>
 
       </div>
 
-    </div>
+    </main>
 
   </div>
 
 
-  <!-- Firebase SDK -->
+  <!-- =======================================================
+       FIREBASE SDK
+  ======================================================== -->
+
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
+
   <script>
+
+    /* =======================================================
+       FIREBASE CONFIG
+    ======================================================== */
 
     const firebaseConfig = {
       apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
@@ -300,274 +1214,1451 @@
       appId: "1:948436125833:web:36788463d4dd3ef20bde58"
     };
 
+
+    /* =======================================================
+       INITIALIZE FIREBASE
+    ======================================================== */
+
     firebase.initializeApp(firebaseConfig);
+
     const auth = firebase.auth();
+
     const db = firebase.firestore();
 
-    const authGate = document.getElementById("authGate");
-    const dashboardBody = document.getElementById("dashboardBody");
 
-    // AUTH GUARD
-    auth.onAuthStateChanged(function(user){
-      if(user){
+    /* =======================================================
+       GLOBAL ELEMENTS
+    ======================================================== */
+
+    const authGate =
+      document.getElementById("authGate");
+
+    const dashboardBody =
+      document.getElementById("dashboardBody");
+
+    const postForm =
+      document.getElementById("postForm");
+
+    const postList =
+      document.getElementById("postList");
+
+    const studentList =
+      document.getElementById("studentList");
+
+
+    const DEFAULT_IMAGE =
+      "https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/blog-placeholder-1.jpg";
+
+
+    /* =======================================================
+       AUTH GUARD
+    ======================================================== */
+
+    auth.onAuthStateChanged(function(user) {
+
+      if (user) {
+
         authGate.style.display = "none";
+
         dashboardBody.style.display = "block";
+
         loadPosts();
+
         loadStudents();
-      }else{
-        window.location.href = "/admin/";
+
+      } else {
+
+        authGate.innerHTML = `
+          <div style="font-size:13px;color:#777;">
+            Login page-এ পাঠানো হচ্ছে...
+          </div>
+        `;
+
+        setTimeout(function() {
+
+          window.location.href = "/admin/";
+
+        }, 400);
+
       }
+
     });
 
-    document.getElementById("logoutBtn").addEventListener("click", function(){
-      auth.signOut().then(function(){
-        window.location.href = "/admin/";
+
+    /* =======================================================
+       LOGOUT
+    ======================================================== */
+
+    document
+      .getElementById("logoutBtn")
+      .addEventListener("click", async function() {
+
+        const button = this;
+
+        button.disabled = true;
+
+        button.textContent = "Logging out...";
+
+        try {
+
+          await auth.signOut();
+
+          window.location.href = "/admin/";
+
+        } catch (error) {
+
+          button.disabled = false;
+
+          button.textContent = "Logout →";
+
+          alert(
+            "Logout করতে সমস্যা হয়েছে:\n" +
+            error.message
+          );
+
+        }
+
       });
-    });
 
-    // TABS
-    document.querySelectorAll(".tab-btn").forEach(function(btn){
-      btn.addEventListener("click", function(){
-        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-        document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
-        btn.classList.add("active");
-        document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+
+    /* =======================================================
+       TABS
+    ======================================================== */
+
+    document
+      .querySelectorAll(".tab-btn")
+      .forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach(function(btn) {
+
+              btn.classList.remove("active");
+
+            });
+
+
+          document
+            .querySelectorAll(".tab-panel")
+            .forEach(function(panel) {
+
+              panel.classList.remove("active");
+
+            });
+
+
+          button.classList.add("active");
+
+
+          const target =
+            document.getElementById(
+              "tab-" + button.dataset.tab
+            );
+
+
+          if (target) {
+
+            target.classList.add("active");
+
+          }
+
+        });
+
       });
-    });
 
-    // POST FORM TOGGLE
-    const postForm = document.getElementById("postForm");
-    const newPostBtn = document.getElementById("newPostBtn");
-    const cancelPostBtn = document.getElementById("cancelPostBtn");
 
-    function resetForm(){
+    /* =======================================================
+       RESET FORM
+    ======================================================== */
+
+    function resetForm() {
+
       document.getElementById("postId").value = "";
-      document.getElementById("postTitle").value = "";
-      document.getElementById("postImageData").value = "";
-      document.getElementById("postImageFile").value = "";
-      document.getElementById("postExcerpt").value = "";
-      document.getElementById("postContent").value = "";
-      document.getElementById("savePostBtn").textContent = "পোস্ট সেভ করুন";
 
-      const preview = document.getElementById("imagePreview");
-      preview.style.display = "none";
+      document.getElementById("postTitle").value = "";
+
+      document.getElementById("postImageData").value = "";
+
+      document.getElementById("postImageFile").value = "";
+
+      document.getElementById("postExcerpt").value = "";
+
+      document.getElementById("postContent").value = "";
+
+      document.getElementById("savePostBtn").textContent =
+        "পোস্ট সেভ করুন";
+
+      document.getElementById("formTitle").textContent =
+        "নতুন ব্লগ পোস্ট";
+
+
+      const previewWrap =
+        document.getElementById("imagePreviewWrap");
+
+      const preview =
+        document.getElementById("imagePreview");
+
+
+      previewWrap.classList.remove("show");
+
       preview.src = "";
+
     }
 
-    newPostBtn.addEventListener("click", function(){
-      resetForm();
-      postForm.classList.add("open");
-    });
 
-    cancelPostBtn.addEventListener("click", function(){
-      postForm.classList.remove("open");
-      resetForm();
-    });
+    /* =======================================================
+       NEW POST
+    ======================================================== */
 
-    // IMAGE UPLOAD: compress and convert to base64 data URL
-    document.getElementById("postImageFile").addEventListener("change", function(e){
-      const file = e.target.files[0];
-      if(!file) return;
+    document
+      .getElementById("newPostBtn")
+      .addEventListener("click", function() {
 
-      const reader = new FileReader();
-      reader.onload = function(evt){
-        const img = new Image();
-        img.onload = function(){
-          const maxWidth = 800;
-          const scale = Math.min(1, maxWidth / img.width);
-          const canvas = document.createElement("canvas");
-          canvas.width = img.width * scale;
-          canvas.height = img.height * scale;
-
-          const ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-          let quality = 0.7;
-          let compressedData = canvas.toDataURL("image/jpeg", quality);
-
-          // Firestore field limit is ~1MB; keep well under that.
-          // Reduce quality further if the result is still too large.
-          while(compressedData.length > 700000 && quality > 0.2){
-            quality -= 0.15;
-            compressedData = canvas.toDataURL("image/jpeg", quality);
-          }
-
-          if(compressedData.length > 900000){
-            alert("ছবিটা এখনো অনেক বড় হয়ে যাচ্ছে। দয়া করে ছোট সাইজের একটা ছবি বেছে নিন।");
-            document.getElementById("postImageFile").value = "";
-            return;
-          }
-
-          document.getElementById("postImageData").value = compressedData;
-
-          const preview = document.getElementById("imagePreview");
-          preview.src = compressedData;
-          preview.style.display = "block";
-        };
-        img.src = evt.target.result;
-      };
-      reader.readAsDataURL(file);
-    });
-
-    // SAVE POST (create or update)
-    document.getElementById("postForm").addEventListener("submit", function(e){
-      e.preventDefault();
-
-      const id = document.getElementById("postId").value;
-      const data = {
-        title: document.getElementById("postTitle").value.trim(),
-        image: document.getElementById("postImageData").value.trim(),
-        excerpt: document.getElementById("postExcerpt").value.trim(),
-        content: document.getElementById("postContent").value.trim(),
-      };
-
-      const saveBtn = document.getElementById("savePostBtn");
-      saveBtn.disabled = true;
-      saveBtn.textContent = "সেভ হচ্ছে...";
-
-      let promise;
-      if(id){
-        promise = db.collection("posts").doc(id).update(data);
-      }else{
-        data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-        promise = db.collection("posts").add(data);
-      }
-
-      promise.then(function(){
-        saveBtn.disabled = false;
-        postForm.classList.remove("open");
         resetForm();
-        loadPosts();
-      }).catch(function(error){
-        saveBtn.disabled = false;
-        saveBtn.textContent = "পোস্ট সেভ করুন";
-        alert("সমস্যা হয়েছে: " + error.message);
+
+        postForm.classList.add("open");
+
+        setTimeout(function() {
+
+          document
+            .getElementById("postTitle")
+            .focus();
+
+        }, 100);
+
       });
-    });
 
-    // LOAD POSTS
-    function loadPosts(){
-      const postList = document.getElementById("postList");
-      const postsEmpty = document.getElementById("postsEmpty");
 
-      db.collection("posts").orderBy("createdAt", "desc").get().then(function(snapshot){
+    /* =======================================================
+       CANCEL POST
+    ======================================================== */
+
+    document
+      .getElementById("cancelPostBtn")
+      .addEventListener("click", function() {
+
+        postForm.classList.remove("open");
+
+        resetForm();
+
+      });
+
+
+    /* =======================================================
+       IMAGE UPLOAD + COMPRESSION
+    ======================================================== */
+
+    document
+      .getElementById("postImageFile")
+      .addEventListener("change", function(event) {
+
+        const file =
+          event.target.files[0];
+
+
+        if (!file) {
+          return;
+        }
+
+
+        if (!file.type.startsWith("image/")) {
+
+          alert("দয়া করে একটি image file নির্বাচন করুন।");
+
+          event.target.value = "";
+
+          return;
+
+        }
+
+
+        const reader =
+          new FileReader();
+
+
+        reader.onload = function(readerEvent) {
+
+          const img =
+            new Image();
+
+
+          img.onload = function() {
+
+            const maxWidth = 1000;
+
+            const scale =
+              Math.min(
+                1,
+                maxWidth / img.width
+              );
+
+
+            const canvas =
+              document.createElement("canvas");
+
+
+            canvas.width =
+              Math.max(
+                1,
+                Math.round(img.width * scale)
+              );
+
+
+            canvas.height =
+              Math.max(
+                1,
+                Math.round(img.height * scale)
+              );
+
+
+            const ctx =
+              canvas.getContext("2d");
+
+
+            ctx.drawImage(
+              img,
+              0,
+              0,
+              canvas.width,
+              canvas.height
+            );
+
+
+            let quality = 0.75;
+
+            let compressedData =
+              canvas.toDataURL(
+                "image/jpeg",
+                quality
+              );
+
+
+            /*
+              Firestore document limit approximately 1MB.
+              আমরা 700KB-এর নিচে রাখার চেষ্টা করছি।
+            */
+
+            while (
+              compressedData.length > 700000 &&
+              quality > 0.20
+            ) {
+
+              quality -= 0.10;
+
+              compressedData =
+                canvas.toDataURL(
+                  "image/jpeg",
+                  quality
+                );
+
+            }
+
+
+            if (compressedData.length > 900000) {
+
+              alert(
+                "ছবিটি এখনও অনেক বড়।\n\n" +
+                "দয়া করে ছোট resolution-এর একটি ছবি নির্বাচন করুন।"
+              );
+
+              event.target.value = "";
+
+              return;
+
+            }
+
+
+            document
+              .getElementById("postImageData")
+              .value = compressedData;
+
+
+            const preview =
+              document.getElementById("imagePreview");
+
+            const previewWrap =
+              document.getElementById("imagePreviewWrap");
+
+
+            preview.src = compressedData;
+
+            previewWrap.classList.add("show");
+
+          };
+
+
+          img.onerror = function() {
+
+            alert(
+              "ছবিটি পড়তে সমস্যা হয়েছে। অন্য একটি ছবি নির্বাচন করুন।"
+            );
+
+            event.target.value = "";
+
+          };
+
+
+          img.src =
+            readerEvent.target.result;
+
+        };
+
+
+        reader.onerror = function() {
+
+          alert(
+            "ছবি upload করতে সমস্যা হয়েছে।"
+          );
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+      });
+
+
+    /* =======================================================
+       SAVE POST
+    ======================================================== */
+
+    document
+      .getElementById("postForm")
+      .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+
+        const id =
+          document
+            .getElementById("postId")
+            .value
+            .trim();
+
+
+        const title =
+          document
+            .getElementById("postTitle")
+            .value
+            .trim();
+
+
+        const excerpt =
+          document
+            .getElementById("postExcerpt")
+            .value
+            .trim();
+
+
+        const content =
+          document
+            .getElementById("postContent")
+            .value
+            .trim();
+
+
+        const image =
+          document
+            .getElementById("postImageData")
+            .value
+            .trim();
+
+
+        if (!title || !excerpt || !content) {
+
+          alert(
+            "টাইটেল, ছোট বিবরণ এবং পুরো লেখা অবশ্যই দিতে হবে।"
+          );
+
+          return;
+
+        }
+
+
+        const saveBtn =
+          document.getElementById("savePostBtn");
+
+
+        saveBtn.disabled = true;
+
+        saveBtn.textContent =
+          id
+            ? "আপডেট হচ্ছে..."
+            : "সেভ হচ্ছে...";
+
+
+        try {
+
+          const data = {
+
+            title: title,
+
+            image: image,
+
+            excerpt: excerpt,
+
+            content: content,
+
+            updatedAt:
+              firebase.firestore.FieldValue.serverTimestamp()
+
+          };
+
+
+          if (id) {
+
+            /*
+              UPDATE
+            */
+
+            await db
+              .collection("posts")
+              .doc(id)
+              .update(data);
+
+
+            alert("পোস্ট সফলভাবে আপডেট হয়েছে।");
+
+          } else {
+
+            /*
+              CREATE
+            */
+
+            data.createdAt =
+              firebase.firestore.FieldValue.serverTimestamp();
+
+
+            await db
+              .collection("posts")
+              .add(data);
+
+
+            alert("নতুন পোস্ট সফলভাবে যোগ হয়েছে।");
+
+          }
+
+
+          postForm.classList.remove("open");
+
+          resetForm();
+
+          await loadPosts();
+
+
+        } catch (error) {
+
+          console.error(
+            "Save Post Error:",
+            error
+          );
+
+
+          alert(
+            "পোস্ট সেভ করতে সমস্যা হয়েছে:\n\n" +
+            error.message
+          );
+
+
+        } finally {
+
+          saveBtn.disabled = false;
+
+          if (!id) {
+
+            saveBtn.textContent =
+              "পোস্ট সেভ করুন";
+
+          }
+
+        }
+
+      });
+
+
+    /* =======================================================
+       LOAD POSTS
+    ======================================================== */
+
+    async function loadPosts() {
+
+      postList.innerHTML =
+        `<div class="list-loading">পোস্ট লোড হচ্ছে...</div>`;
+
+
+      document
+        .getElementById("postsEmpty")
+        .style.display = "none";
+
+
+      try {
+
+        const snapshot =
+          await db
+            .collection("posts")
+            .get();
+
+
         postList.innerHTML = "";
 
-        if(snapshot.empty){
-          postsEmpty.style.display = "block";
+
+        if (snapshot.empty) {
+
+          document
+            .getElementById("postsEmpty")
+            .style.display = "block";
+
           return;
+
         }
-        postsEmpty.style.display = "none";
 
-        snapshot.forEach(function(doc){
-          const post = doc.data();
-          const item = document.createElement("div");
-          item.className = "post-item";
 
-          const imgSrc = post.image || "https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/blog-placeholder-1.jpg";
+        const posts = [];
 
-          item.innerHTML = `
-            <img src="${imgSrc}" alt="">
-            <div class="post-info">
-              <h3>${escapeHtml(post.title || "")}</h3>
-              <p>${escapeHtml((post.excerpt || "").slice(0,90))}</p>
-            </div>
-            <div class="post-actions">
-              <button class="icon-btn" data-edit="${doc.id}" title="Edit">✎</button>
-              <button class="icon-btn danger" data-delete="${doc.id}" title="Delete">🗑</button>
-            </div>
-          `;
-          postList.appendChild(item);
-        });
 
-        // attach edit/delete handlers
-        postList.querySelectorAll("[data-edit]").forEach(function(btn){
-          btn.addEventListener("click", function(){
-            const id = btn.getAttribute("data-edit");
-            db.collection("posts").doc(id).get().then(function(doc){
-              const post = doc.data();
-              document.getElementById("postId").value = id;
-              document.getElementById("postTitle").value = post.title || "";
-              document.getElementById("postImageData").value = post.image || "";
-              document.getElementById("postExcerpt").value = post.excerpt || "";
-              document.getElementById("postContent").value = post.content || "";
-              document.getElementById("savePostBtn").textContent = "আপডেট করুন";
+        snapshot.forEach(function(doc) {
 
-              const preview = document.getElementById("imagePreview");
-              if(post.image){
-                preview.src = post.image;
-                preview.style.display = "block";
-              }else{
-                preview.style.display = "none";
-              }
+          posts.push({
 
-              postForm.classList.add("open");
-              window.scrollTo({top:0, behavior:"smooth"});
-            });
+            id: doc.id,
+
+            ...doc.data()
+
           });
+
         });
 
-        postList.querySelectorAll("[data-delete]").forEach(function(btn){
-          btn.addEventListener("click", function(){
-            const id = btn.getAttribute("data-delete");
-            if(confirm("এই পোস্টটি ডিলিট করতে চান?")){
-              db.collection("posts").doc(id).delete().then(loadPosts);
-            }
-          });
+
+        /*
+          Client-side sorting.
+          এতে createdAt missing থাকলেও
+          Firestore orderBy index/error হবে না।
+        */
+
+        posts.sort(function(a, b) {
+
+          const aTime =
+            getTimestampValue(a.createdAt);
+
+          const bTime =
+            getTimestampValue(b.createdAt);
+
+          return bTime - aTime;
+
         });
-      }).catch(function(error){
-        postList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
-      });
+
+
+        posts.forEach(function(post) {
+
+          postList.appendChild(
+            createPostElement(post)
+          );
+
+        });
+
+
+      } catch (error) {
+
+        console.error(
+          "Load Posts Error:",
+          error
+        );
+
+
+        postList.innerHTML = "";
+
+        const errorBox =
+          document.createElement("div");
+
+        errorBox.className =
+          "error-box";
+
+        errorBox.textContent =
+          "পোস্ট লোড করতে সমস্যা হয়েছে: " +
+          error.message;
+
+        postList.appendChild(errorBox);
+
+      }
+
     }
 
-    // LOAD STUDENTS
-    function loadStudents(){
-      const studentList = document.getElementById("studentList");
-      const studentsEmpty = document.getElementById("studentsEmpty");
 
-      db.collection("students").orderBy("createdAt", "desc").get().then(function(snapshot){
+    /* =======================================================
+       CREATE POST ELEMENT
+    ======================================================== */
+
+    function createPostElement(post) {
+
+      const item =
+        document.createElement("div");
+
+
+      item.className =
+        "post-item";
+
+
+      /* IMAGE */
+
+      const image =
+        document.createElement("img");
+
+
+      image.src =
+        isValidImageSource(post.image)
+          ? post.image
+          : DEFAULT_IMAGE;
+
+
+      image.alt =
+        post.title || "Blog Image";
+
+
+      image.onerror =
+        function() {
+
+          this.src =
+            DEFAULT_IMAGE;
+
+        };
+
+
+      /* INFO */
+
+      const info =
+        document.createElement("div");
+
+
+      info.className =
+        "post-info";
+
+
+      const title =
+        document.createElement("h3");
+
+
+      title.textContent =
+        post.title || "Untitled Post";
+
+
+      const excerpt =
+        document.createElement("p");
+
+
+      excerpt.textContent =
+        (post.excerpt || "")
+          .slice(0, 120);
+
+
+      const date =
+        document.createElement("div");
+
+
+      date.className =
+        "post-date";
+
+
+      date.textContent =
+        formatDate(post.createdAt);
+
+
+      info.appendChild(title);
+
+      info.appendChild(excerpt);
+
+      info.appendChild(date);
+
+
+      /* ACTIONS */
+
+      const actions =
+        document.createElement("div");
+
+
+      actions.className =
+        "post-actions";
+
+
+      const editBtn =
+        document.createElement("button");
+
+
+      editBtn.type = "button";
+
+      editBtn.className =
+        "icon-btn";
+
+      editBtn.title =
+        "Edit Post";
+
+      editBtn.textContent =
+        "✎";
+
+
+      editBtn.addEventListener(
+        "click",
+        function() {
+
+          editPost(post.id);
+
+        }
+      );
+
+
+      const deleteBtn =
+        document.createElement("button");
+
+
+      deleteBtn.type = "button";
+
+      deleteBtn.className =
+        "icon-btn danger";
+
+      deleteBtn.title =
+        "Delete Post";
+
+      deleteBtn.textContent =
+        "🗑";
+
+
+      deleteBtn.addEventListener(
+        "click",
+        function() {
+
+          deletePost(post.id);
+
+        }
+      );
+
+
+      actions.appendChild(editBtn);
+
+      actions.appendChild(deleteBtn);
+
+
+      item.appendChild(image);
+
+      item.appendChild(info);
+
+      item.appendChild(actions);
+
+
+      return item;
+
+    }
+
+
+    /* =======================================================
+       EDIT POST
+    ======================================================== */
+
+    async function editPost(id) {
+
+      try {
+
+        const doc =
+          await db
+            .collection("posts")
+            .doc(id)
+            .get();
+
+
+        if (!doc.exists) {
+
+          alert(
+            "এই পোস্টটি আর পাওয়া যাচ্ছে না।"
+          );
+
+          await loadPosts();
+
+          return;
+
+        }
+
+
+        const post =
+          doc.data();
+
+
+        document
+          .getElementById("postId")
+          .value = id;
+
+
+        document
+          .getElementById("postTitle")
+          .value =
+            post.title || "";
+
+
+        document
+          .getElementById("postImageData")
+          .value =
+            post.image || "";
+
+
+        document
+          .getElementById("postExcerpt")
+          .value =
+            post.excerpt || "";
+
+
+        document
+          .getElementById("postContent")
+          .value =
+            post.content || "";
+
+
+        document
+          .getElementById("savePostBtn")
+          .textContent =
+            "আপডেট করুন";
+
+
+        document
+          .getElementById("formTitle")
+          .textContent =
+            "পোস্ট এডিট করুন";
+
+
+        const preview =
+          document.getElementById(
+            "imagePreview"
+          );
+
+
+        const previewWrap =
+          document.getElementById(
+            "imagePreviewWrap"
+          );
+
+
+        if (
+          post.image &&
+          isValidImageSource(post.image)
+        ) {
+
+          preview.src =
+            post.image;
+
+          previewWrap.classList.add(
+            "show"
+          );
+
+        } else {
+
+          preview.src = "";
+
+          previewWrap.classList.remove(
+            "show"
+          );
+
+        }
+
+
+        postForm.classList.add("open");
+
+
+        window.scrollTo({
+
+          top: 0,
+
+          behavior: "smooth"
+
+        });
+
+
+      } catch (error) {
+
+        console.error(
+          "Edit Post Error:",
+          error
+        );
+
+
+        alert(
+          "পোস্ট লোড করতে সমস্যা হয়েছে:\n\n" +
+          error.message
+        );
+
+      }
+
+    }
+
+
+    /* =======================================================
+       DELETE POST
+    ======================================================== */
+
+    async function deletePost(id) {
+
+      const confirmed =
+        confirm(
+          "এই পোস্টটি ডিলিট করতে চান?\n\n" +
+          "ডিলিট করার পর এটি আর ফেরত আনা যাবে না।"
+        );
+
+
+      if (!confirmed) {
+
+        return;
+
+      }
+
+
+      try {
+
+        await db
+          .collection("posts")
+          .doc(id)
+          .delete();
+
+
+        await loadPosts();
+
+
+      } catch (error) {
+
+        console.error(
+          "Delete Post Error:",
+          error
+        );
+
+
+        alert(
+          "পোস্ট ডিলিট করতে সমস্যা হয়েছে:\n\n" +
+          error.message
+        );
+
+      }
+
+    }
+
+
+    /* =======================================================
+       LOAD STUDENTS
+    ======================================================== */
+
+    async function loadStudents() {
+
+      studentList.innerHTML =
+        `<div class="list-loading">Admission data লোড হচ্ছে...</div>`;
+
+
+      document
+        .getElementById("studentsEmpty")
+        .style.display = "none";
+
+
+      try {
+
+        const snapshot =
+          await db
+            .collection("students")
+            .get();
+
+
         studentList.innerHTML = "";
 
-        if(snapshot.empty){
-          studentsEmpty.style.display = "block";
+
+        if (snapshot.empty) {
+
+          document
+            .getElementById("studentsEmpty")
+            .style.display = "block";
+
           return;
+
         }
-        studentsEmpty.style.display = "none";
 
-        snapshot.forEach(function(doc){
-          const s = doc.data();
-          const card = document.createElement("div");
-          card.className = "student-card";
-          card.innerHTML = `
-            <div>
-              <div class="s-name">${escapeHtml(s.name || "-")}</div>
-              <div class="s-sub">${escapeHtml(s.phone || "-")}</div>
-            </div>
-            <div class="s-field"><span>Course</span>${escapeHtml(s.course || "-")}</div>
-            <div class="s-field"><span>Email</span>${escapeHtml(s.email || "-")}</div>
-            <div class="s-field"><span>Education</span>${escapeHtml(s.education || "-")}</div>
-            <button class="icon-btn danger" data-del-student="${doc.id}" title="Delete">🗑</button>
-          `;
-          studentList.appendChild(card);
-        });
 
-        studentList.querySelectorAll("[data-del-student]").forEach(function(btn){
-          btn.addEventListener("click", function(){
-            const id = btn.getAttribute("data-del-student");
-            if(confirm("এই আবেদনটি ডিলিট করতে চান?")){
-              db.collection("students").doc(id).delete().then(loadStudents);
-            }
+        const students = [];
+
+
+        snapshot.forEach(function(doc) {
+
+          students.push({
+
+            id: doc.id,
+
+            ...doc.data()
+
           });
+
         });
-      }).catch(function(error){
-        studentList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
-      });
+
+
+        students.sort(function(a, b) {
+
+          const aTime =
+            getTimestampValue(a.createdAt);
+
+          const bTime =
+            getTimestampValue(b.createdAt);
+
+          return bTime - aTime;
+
+        });
+
+
+        students.forEach(function(student) {
+
+          studentList.appendChild(
+            createStudentElement(student)
+          );
+
+        });
+
+
+      } catch (error) {
+
+        console.error(
+          "Load Students Error:",
+          error
+        );
+
+
+        studentList.innerHTML = "";
+
+
+        const errorBox =
+          document.createElement("div");
+
+
+        errorBox.className =
+          "error-box";
+
+
+        errorBox.textContent =
+          "Admission data লোড করতে সমস্যা হয়েছে: " +
+          error.message;
+
+
+        studentList.appendChild(
+          errorBox
+        );
+
+      }
+
     }
 
-    function escapeHtml(str){
-      const div = document.createElement("div");
-      div.textContent = str;
-      return div.innerHTML;
+
+    /* =======================================================
+       CREATE STUDENT ELEMENT
+    ======================================================== */
+
+    function createStudentElement(student) {
+
+      const card =
+        document.createElement("div");
+
+
+      card.className =
+        "student-card";
+
+
+      /* NAME + PHONE */
+
+      const nameBox =
+        document.createElement("div");
+
+
+      nameBox.className =
+        "student-name";
+
+
+      const name =
+        document.createElement("div");
+
+
+      name.className =
+        "s-name";
+
+
+      name.textContent =
+        student.name || "-";
+
+
+      const phone =
+        document.createElement("div");
+
+
+      phone.className =
+        "s-sub";
+
+
+      phone.textContent =
+        student.phone || "-";
+
+
+      nameBox.appendChild(name);
+
+      nameBox.appendChild(phone);
+
+
+      /* COURSE */
+
+      const course =
+        createStudentField(
+          "Course",
+          student.course || "-"
+        );
+
+
+      /* EMAIL */
+
+      const email =
+        createStudentField(
+          "Email",
+          student.email || "-"
+        );
+
+
+      /* EDUCATION */
+
+      const education =
+        createStudentField(
+          "Education",
+          student.education || "-"
+        );
+
+
+      /* DELETE */
+
+      const deleteBtn =
+        document.createElement("button");
+
+
+      deleteBtn.type =
+        "button";
+
+
+      deleteBtn.className =
+        "icon-btn danger delete-student";
+
+
+      deleteBtn.title =
+        "Delete Application";
+
+
+      deleteBtn.textContent =
+        "🗑";
+
+
+      deleteBtn.addEventListener(
+        "click",
+        function() {
+
+          deleteStudent(student.id);
+
+        }
+      );
+
+
+      card.appendChild(nameBox);
+
+      card.appendChild(course);
+
+      card.appendChild(email);
+
+      card.appendChild(education);
+
+      card.appendChild(deleteBtn);
+
+
+      return card;
+
+    }
+
+
+    /* =======================================================
+       CREATE STUDENT FIELD
+    ======================================================== */
+
+    function createStudentField(labelText, valueText) {
+
+      const field =
+        document.createElement("div");
+
+
+      field.className =
+        "s-field";
+
+
+      const label =
+        document.createElement("span");
+
+
+      label.textContent =
+        labelText;
+
+
+      const value =
+        document.createElement("div");
+
+
+      value.textContent =
+        valueText;
+
+
+      field.appendChild(label);
+
+      field.appendChild(value);
+
+
+      return field;
+
+    }
+
+
+    /* =======================================================
+       DELETE STUDENT
+    ======================================================== */
+
+    async function deleteStudent(id) {
+
+      const confirmed =
+        confirm(
+          "এই admission application-টি ডিলিট করতে চান?\n\n" +
+          "ডিলিট করার পর এটি আর ফেরত আনা যাবে না।"
+        );
+
+
+      if (!confirmed) {
+
+        return;
+
+      }
+
+
+      try {
+
+        await db
+          .collection("students")
+          .doc(id)
+          .delete();
+
+
+        await loadStudents();
+
+
+      } catch (error) {
+
+        console.error(
+          "Delete Student Error:",
+          error
+        );
+
+
+        alert(
+          "Application ডিলিট করতে সমস্যা হয়েছে:\n\n" +
+          error.message
+        );
+
+      }
+
+    }
+
+
+    /* =======================================================
+       TIMESTAMP HELPER
+    ======================================================== */
+
+    function getTimestampValue(timestamp) {
+
+      if (!timestamp) {
+
+        return 0;
+
+      }
+
+
+      if (
+        typeof timestamp.toMillis === "function"
+      ) {
+
+        return timestamp.toMillis();
+
+      }
+
+
+      if (
+        timestamp.seconds
+      ) {
+
+        return timestamp.seconds * 1000;
+
+      }
+
+
+      if (
+        timestamp instanceof Date
+      ) {
+
+        return timestamp.getTime();
+
+      }
+
+
+      return 0;
+
+    }
+
+
+    /* =======================================================
+       DATE FORMAT
+    ======================================================== */
+
+    function formatDate(timestamp) {
+
+      const time =
+        getTimestampValue(timestamp);
+
+
+      if (!time) {
+
+        return "তারিখ পাওয়া যায়নি";
+
+      }
+
+
+      const date =
+        new Date(time);
+
+
+      return date.toLocaleDateString(
+        "bn-BD",
+        {
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+        }
+      );
+
+    }
+
+
+    /* =======================================================
+       IMAGE SOURCE VALIDATION
+    ======================================================== */
+
+    function isValidImageSource(source) {
+
+      if (!source) {
+
+        return false;
+
+      }
+
+
+      return (
+        source.startsWith("data:image/") ||
+        source.startsWith("https://") ||
+        source.startsWith("http://")
+      );
+
     }
 
   </script>
