@@ -2,134 +2,52 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <title>Courses | SNK IT Institute</title>
 
-  <title>Course | SNK IT Institute</title>
+  <meta name="description"
+        content="SNK IT Institute-এর AI Powered Professional Courses. Practical skills শিখুন এবং career-ready হন.">
 
-  <meta
-    name="description"
-    content="SNK IT Institute — AI Powered Skill Based Training Center"
-  >
+  <meta name="theme-color" content="#050505">
 
-  <meta
-    name="theme-color"
-    content="#06111f"
-  >
-
-  <meta
-    name="robots"
-    content="index, follow"
-  >
-
-  <!-- =====================================================
-       OPEN GRAPH
-       ===================================================== -->
-
-  <meta
-    property="og:type"
-    content="website"
-  >
-
-  <meta
-    property="og:title"
-    content="Course | SNK IT Institute"
-  >
-
-  <meta
-    property="og:description"
-    content="SNK IT Institute course details"
-  >
-
-  <meta
-    property="og:image"
-    content=""
-    id="ogImage"
-  >
-
-  <meta
-    property="og:url"
-    content=""
-    id="ogUrl"
-  >
-
-  <link
-    rel="canonical"
-    href=""
-    id="canonicalUrl"
-  >
-
-  <!-- =====================================================
-       FONTS
-       ===================================================== -->
-
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- =====================================================
-       FIREBASE
-       ===================================================== -->
-
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
   <style>
-
-    /* =====================================================
-       ROOT
-       ===================================================== */
+    /* =========================================================
+       SNK IT INSTITUTE
+       ULTRA PREMIUM COURSE PAGE
+       ========================================================= */
 
     :root {
+      --bg: #050505;
+      --bg-soft: #0a0a0a;
+      --card: #101010;
+      --card-2: #151515;
 
-      --accent: #b7ff00;
-      --accent-dark: #7ab800;
+      --text: #ffffff;
+      --text-soft: #c8c8c8;
+      --muted: #858585;
 
-      --dark: #06111f;
-      --dark-2: #081827;
-      --dark-3: #0c2033;
+      --green: #b7ff00;
+      --green-dark: #8bc500;
 
-      --white: #ffffff;
-
-      --text: #0f172a;
-      --text-soft: #475569;
-      --muted: #94a3b8;
-
-      --border: #e5e7eb;
-      --soft: #f8fafc;
-
-      --green: #16a34a;
-      --red: #ef4444;
+      --border: rgba(255,255,255,.09);
+      --border-green: rgba(183,255,0,.25);
 
       --shadow:
-        0 20px 60px rgba(15, 23, 42, .12);
+        0 20px 60px rgba(0,0,0,.45);
 
-      --shadow-large:
-        0 30px 80px rgba(0, 0, 0, .25);
-
-      --radius: 18px;
-
-      --container: 1180px;
+      --radius: 22px;
+      --container: 1240px;
     }
 
-
-    /* =====================================================
-       RESET
-       ===================================================== */
+    /* ================= RESET ================= */
 
     * {
       margin: 0;
@@ -137,5820 +55,630 @@
       box-sizing: border-box;
     }
 
-
     html {
       scroll-behavior: smooth;
     }
 
-
     body {
-
-      font-family:
-        "Hind Siliguri",
-        sans-serif;
+      font-family: "Hind Siliguri", sans-serif;
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(183,255,0,.07),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 30%,
+          rgba(183,255,0,.045),
+          transparent 28%
+        ),
+        var(--bg);
 
       color: var(--text);
-
-      background: #ffffff;
-
-      line-height: 1.65;
-
-      overflow-x: hidden;
+      min-height: 100vh;
+      line-height: 1.6;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
 
-    body,
-    button,
-    input,
-    textarea,
-    select {
-      font-family:
-        "Hind Siliguri",
-        sans-serif;
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        );
+
+      background-size: 60px 60px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+      );
+
+      z-index: -1;
     }
-
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
+    button,
+    input,
+    select {
+      font: inherit;
+    }
 
     button {
-      border: 0;
       cursor: pointer;
     }
 
-
     img {
-      display: block;
       max-width: 100%;
+      display: block;
     }
 
-
     ::selection {
-      background: var(--accent);
+      background: var(--green);
       color: #000;
     }
 
+    /* ================= SCROLLBAR ================= */
 
-    .container {
-
-      width:
-        min(
-          var(--container),
-          calc(100% - 32px)
-        );
-
-      margin-inline: auto;
+    ::-webkit-scrollbar {
+      width: 8px;
     }
 
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 20px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--green);
+    }
+
+    /* ================= COMMON ================= */
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--container)
+      );
+
+      margin: auto;
+    }
 
     .hidden {
       display: none !important;
     }
 
+    .green {
+      color: var(--green);
+    }
 
-    /* =====================================================
-       ACCESSIBILITY
-       ===================================================== */
+    /* ================= HEADER ================= */
 
-    .skip-link {
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
 
-      position: fixed;
+      background: rgba(5,5,5,.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
 
-      left: 15px;
-      top: -100px;
+      border-bottom: 1px solid var(--border);
+    }
 
-      z-index: 99999;
+    .header-inner {
+      height: 76px;
 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      width: 150px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+    }
+
+    .nav a {
+      padding: 9px 13px;
+
+      color: #cfcfcf;
+      font-size: 14px;
+      font-weight: 600;
+
+      border-radius: 10px;
+
+      transition:
+        .25s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--green);
+      background: rgba(183,255,0,.06);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
+      color: #ddd;
+      background: rgba(255,255,255,.04);
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      transition: .25s ease;
+    }
+
+    .icon-btn:hover {
+      color: var(--green);
+      border-color: var(--border-green);
+      background: rgba(183,255,0,.07);
+    }
+
+    .login-btn {
       padding: 10px 15px;
 
-      background: var(--accent);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+
+      color: #fff;
+      background: rgba(255,255,255,.04);
+
+      transition: .25s ease;
+    }
+
+    .login-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .signup-btn {
+      padding: 10px 17px;
+
+      border: 1px solid var(--green);
+      border-radius: 11px;
 
       color: #000;
+      background: var(--green);
 
-      border-radius: 8px;
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+
+      transition: .25s ease;
+    }
+
+    .signup-btn:hover {
+      background: #d0ff63;
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      padding:
+        80px 0
+        55px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: auto;
+
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 7px 13px;
+
+      color: var(--green);
+      background: rgba(183,255,0,.07);
+
+      border: 1px solid var(--border-green);
+      border-radius: 999px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      margin-bottom: 20px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      background: var(--green);
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 15px var(--green);
+    }
+
+    .hero h1 {
+      font-family: Inter, "Hind Siliguri", sans-serif;
+
+      font-size: clamp(
+        38px,
+        6vw,
+        70px
+      );
+
+      line-height: 1.08;
+      letter-spacing: -2px;
 
       font-weight: 800;
     }
 
-
-    .skip-link:focus {
-      top: 15px;
+    .hero h1 span {
+      color: var(--green);
     }
 
+    .hero p {
+      max-width: 650px;
 
-    :focus-visible {
+      margin: 22px auto 0;
 
-      outline:
-        3px solid
-        rgba(183,255,0,.65);
+      color: var(--text-soft);
 
-      outline-offset: 3px;
+      font-size: 17px;
+      line-height: 1.8;
     }
 
+    /* ================= SEARCH ================= */
 
-    /* =====================================================
-       ANNOUNCEMENT
-       ===================================================== */
-
-    .announcement {
-
-      min-height: 38px;
+    .course-toolbar {
+      margin-bottom: 35px;
 
       display: flex;
-
       align-items: center;
-
-      justify-content: center;
-
-      padding: 7px 15px;
-
-      text-align: center;
-
-      color: #fff;
-
-      background:
-        linear-gradient(
-          90deg,
-          #0b8f4d,
-          #15a85e,
-          #0a8e4a
-        );
-
-      font-size: 13px;
-
-      font-weight: 600;
-    }
-
-
-    .announcement strong {
-      color: var(--accent);
-    }
-
-
-    /* =====================================================
-       HEADER
-       ===================================================== */
-
-    .header {
-
-      position: sticky;
-
-      top: 0;
-
-      z-index: 2000;
-
-      background:
-        rgba(255,255,255,.94);
-
-      backdrop-filter:
-        blur(18px);
-
-      border-bottom:
-        1px solid #e8edf2;
-    }
-
-
-    .nav {
-
-      min-height: 72px;
-
-      display: flex;
-
-      align-items: center;
+      justify-content: space-between;
 
       gap: 20px;
     }
 
-
-    .brand {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      flex-shrink: 0;
-    }
-
-
-    .brand img {
-
-      width: 45px;
-      height: 45px;
-
-      object-fit: contain;
-    }
-
-
-    .brand-title {
-
-      font-family: Inter, sans-serif;
-
-      font-size: 17px;
-
-      font-weight: 900;
-
-      line-height: 1.1;
-
-      color: #101828;
-    }
-
-
-    .brand-subtitle {
-
-      margin-top: 3px;
-
-      color: #64748b;
-
-      font-size: 10px;
-    }
-
-
-    .desktop-nav {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 3px;
-
-      margin-left: auto;
-    }
-
-
-    .desktop-nav a {
-
-      padding: 9px 12px;
-
-      border-radius: 9px;
-
-      color: #475569;
-
-      font-size: 13px;
-
-      font-weight: 600;
-
-      transition: .2s;
-    }
-
-
-    .desktop-nav a:hover,
-    .desktop-nav a.active {
-
-      color: #111827;
-
-      background: #f1f5f9;
-    }
-
-
-    .nav-actions {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 7px;
-    }
-
-
-    .nav-button {
-
-      min-height: 39px;
-
-      padding: 0 14px;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      border-radius: 9px;
-
-      background: #f1f5f9;
-
-      color: #334155;
-
-      font-size: 12px;
-
-      font-weight: 800;
-    }
-
-
-    .nav-button.primary {
-
-      background: var(--accent);
-
-      color: #07110a;
-    }
-
-
-    .icon-button {
-
-      width: 39px;
-      height: 39px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 9px;
-
-      background: #f1f5f9;
-
-      color: #334155;
-
-      font-weight: 800;
-
-      font-size: 13px;
-    }
-
-
-    .mobile-toggle {
-
-      display: none;
-
-      width: 40px;
-      height: 40px;
-
-      border-radius: 9px;
-
-      background: #f1f5f9;
-
-      font-size: 19px;
-    }
-
-
-    /* =====================================================
-       MOBILE MENU
-       ===================================================== */
-
-    .mobile-menu {
-
-      display: none;
-
-      padding: 10px 16px 18px;
-
-      border-top:
-        1px solid #edf1f5;
-
-      background: #fff;
-    }
-
-
-    .mobile-menu.open {
-      display: block;
-    }
-
-
-    .mobile-menu a {
-
-      display: block;
-
-      padding: 11px 12px;
-
-      border-radius: 9px;
-
-      color: #334155;
-
-      font-weight: 600;
-    }
-
-
-    .mobile-menu a:hover {
-      background: #f1f5f9;
-    }
-
-
-    /* =====================================================
-       LOADING
-       ===================================================== */
-
-    .loading {
-
-      min-height: 70vh;
-
-      display: grid;
-
-      place-items: center;
-
-      padding: 60px 20px;
-    }
-
-
-    .loading-card {
-
-      width:
-        min(450px,100%);
-
-      padding: 40px;
-
-      text-align: center;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 22px;
-
-      background: #fff;
-
-      box-shadow: var(--shadow);
-    }
-
-
-    .spinner {
-
-      width: 48px;
-      height: 48px;
-
-      margin:
-        0 auto 18px;
-
-      border:
-        4px solid #e5e7eb;
-
-      border-top-color:
-        var(--accent-dark);
-
-      border-radius: 50%;
-
-      animation:
-        spin .8s linear infinite;
-    }
-
-
-    @keyframes spin {
-
-      to {
-        transform: rotate(360deg);
-      }
-
-    }
-
-
-    /* =====================================================
-       STATE
-       ===================================================== */
-
-    .state {
-
-      min-height: 70vh;
-
-      display: grid;
-
-      place-items: center;
-
-      padding: 60px 20px;
-    }
-
-
-    .state-card {
-
-      width:
-        min(550px,100%);
-
-      padding: 45px 30px;
-
-      text-align: center;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 24px;
-
-      background: #fff;
-
-      box-shadow: var(--shadow);
-    }
-
-
-    .state-icon {
-
-      width: 70px;
-      height: 70px;
-
-      margin:
-        0 auto 18px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: #f1f5f9;
-
-      font-size: 28px;
-    }
-
-
-    .state-card h2 {
-
-      margin-bottom: 7px;
-
-      font-size: 25px;
-    }
-
-
-    .state-card p {
-
-      margin-bottom: 20px;
-
-      color: #64748b;
-
-      font-size: 14px;
-    }
-
-
-    /* =====================================================
-       HERO
-       ===================================================== */
-
-    .hero {
-
+    .search-box {
       position: relative;
 
-      overflow: hidden;
-
-      color: #fff;
-
-      background:
-
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(183,255,0,.15),
-          transparent 25%
-        ),
-
-        radial-gradient(
-          circle at 10% 100%,
-          rgba(0,130,255,.16),
-          transparent 30%
-        ),
-
-        linear-gradient(
-          135deg,
-          #06111f,
-          #071a2a 55%,
-          #061923
-        );
+      flex: 1;
+      max-width: 520px;
     }
 
+    .search-box input {
+      width: 100%;
 
-    .hero::after {
-
-      content: "";
-
-      position: absolute;
-
-      width: 500px;
-      height: 500px;
-
-      right: -250px;
-      bottom: -300px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(183,255,0,.07);
-
-      filter: blur(30px);
-
-      pointer-events: none;
-    }
-
-
-    .hero-grid {
-
-      position: relative;
-
-      z-index: 1;
-
-      min-height: 500px;
+      height: 52px;
 
       padding:
-        55px 0 65px;
+        0 20px
+        0 48px;
 
+      color: #fff;
+      background: rgba(255,255,255,.045);
+
+      border: 1px solid var(--border);
+      border-radius: 15px;
+
+      outline: none;
+
+      transition: .25s ease;
+    }
+
+    .search-box input::placeholder {
+      color: #777;
+    }
+
+    .search-box input:focus {
+      border-color: rgba(183,255,0,.45);
+
+      box-shadow:
+        0 0 0 4px rgba(183,255,0,.06);
+    }
+
+    .search-icon {
+      position: absolute;
+
+      left: 17px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #777;
+    }
+
+    .course-count {
+      color: #888;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .course-count strong {
+      color: var(--green);
+    }
+
+    /* ================= COURSES ================= */
+
+    .courses-section {
+      padding-bottom: 100px;
+    }
+
+    .course-grid {
       display: grid;
 
       grid-template-columns:
-        minmax(0,1.05fr)
-        minmax(350px,.85fr);
+        repeat(3, minmax(0, 1fr));
 
-      align-items: center;
-
-      gap: 55px;
+      gap: 24px;
     }
 
-
-    .breadcrumb {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      align-items: center;
-
-      gap: 7px;
-
-      margin-bottom: 17px;
-
-      color: #8ea1b5;
-
-      font-size: 12px;
-    }
-
-
-    .breadcrumb a:hover {
-      color: var(--accent);
-    }
-
-
-    .breadcrumb .current {
-      color: #e2e8f0;
-    }
-
-
-    .tag {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      margin-bottom: 14px;
-
-      padding: 6px 11px;
-
-      border-radius: 999px;
-
-      color: var(--accent);
-
-      background:
-        rgba(183,255,0,.10);
-
-      border:
-        1px solid
-        rgba(183,255,0,.27);
-
-      font-size: 11px;
-
-      font-weight: 900;
-    }
-
-
-    .tag.info {
-
-      color: #7dd3fc;
-
-      background:
-        rgba(56,189,248,.09);
-
-      border-color:
-        rgba(56,189,248,.25);
-    }
-
-
-    .hero-title {
-
-      max-width: 760px;
-
-      margin-bottom: 17px;
-
-      font-family:
-        Inter,
-        "Hind Siliguri",
-        sans-serif;
-
-      font-size:
-        clamp(30px,4vw,48px);
-
-      line-height: 1.13;
-
-      letter-spacing: -1.2px;
-
-      font-weight: 900;
-    }
-
-
-    .hero-description {
-
-      max-width: 730px;
-
-      margin-bottom: 22px;
-
-      color: #c5d1dd;
-
-      font-size: 15px;
-
-      line-height: 1.85;
-    }
-
-
-    .hero-meta {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 8px;
-
-      margin-bottom: 25px;
-    }
-
-
-    .meta {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 6px;
-
-      padding: 7px 10px;
-
-      border-radius: 8px;
-
-      color: #d9e3ed;
-
-      background:
-        rgba(255,255,255,.055);
-
-      border:
-        1px solid
-        rgba(255,255,255,.12);
-
-      font-size: 11px;
-
-      font-weight: 600;
-    }
-
-
-    /* =====================================================
-       BUTTONS
-       ===================================================== */
-
-    .btn {
-
-      min-height: 45px;
-
-      padding: 0 17px;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 7px;
-
-      border-radius: 9px;
-
-      font-size: 13px;
-
-      font-weight: 900;
-
-      transition:
-        .2s ease;
-    }
-
-
-    .btn:hover {
-
-      transform:
-        translateY(-2px);
-    }
-
-
-    .btn-primary {
-
-      color: #07110a;
-
-      background:
-        var(--accent);
-
-      box-shadow:
-        0 10px 30px
-        rgba(183,255,0,.16);
-    }
-
-
-    .btn-primary:hover {
-      background: #c6ff30;
-    }
-
-
-    .btn-white {
-
-      color: #0f172a;
-
-      background: #fff;
-    }
-
-
-    .btn-outline {
-
-      color: #fff;
-
-      background:
-        transparent;
-
-      border:
-        1px solid
-        rgba(255,255,255,.23);
-    }
-
-
-    .btn-outline:hover {
-      background:
-        rgba(255,255,255,.08);
-    }
-
-
-    .btn-whatsapp {
-
-      color: #15803d;
-
-      background: #ecfdf5;
-    }
-
-
-    .hero-actions {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 9px;
-    }
-
-
-    /* =====================================================
-       HERO COURSE CARD
-       ===================================================== */
-
-    .visual {
-
-      position: relative;
-    }
-
+    /* ================= CARD ================= */
 
     .course-card {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+
+      min-width: 0;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.018)
+        );
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
 
       overflow: hidden;
 
-      border-radius: 22px;
+      box-shadow: var(--shadow);
 
-      color: #0f172a;
-
-      background: #fff;
-
-      box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.35);
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
     }
 
+    .course-card:hover {
+      transform: translateY(-7px);
+
+      border-color:
+        rgba(183,255,0,.35);
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.6),
+        0 0 0 1px rgba(183,255,0,.04);
+    }
+
+    /* ================= IMAGE ================= */
 
     .course-image {
-
       position: relative;
 
+      width: 100%;
       aspect-ratio: 16 / 9;
 
       overflow: hidden;
 
       background:
-        radial-gradient(
-          circle at center,
-          rgba(183,255,0,.16),
-          transparent 35%
-        ),
-
         linear-gradient(
           135deg,
-          #0c2235,
-          #102c2d
+          #141414,
+          #090909
         );
     }
 
-
     .course-image img {
-
       width: 100%;
       height: 100%;
 
       object-fit: cover;
+
+      transition:
+        transform .5s ease;
     }
 
+    .course-card:hover
+    .course-image img {
+      transform: scale(1.06);
+    }
 
-    .image-placeholder {
+    .course-image::after {
+      content: "";
 
       position: absolute;
-
       inset: 0;
-
-      display: grid;
-
-      place-items: center;
-
-      padding: 30px;
-
-      text-align: center;
-
-      color: #fff;
-    }
-
-
-    .image-placeholder strong {
-
-      display: block;
-
-      margin-bottom: 4px;
-
-      font-family: Inter, sans-serif;
-
-      font-size: 24px;
-
-      font-weight: 900;
-    }
-
-
-    .image-placeholder span {
-
-      color: #aab9c8;
-
-      font-size: 12px;
-    }
-
-
-    .card-body {
-      padding: 20px;
-    }
-
-
-    .small-label {
-
-      margin-bottom: 3px;
-
-      color: #64748b;
-
-      font-size: 11px;
-    }
-
-
-    .price-row {
-
-      display: flex;
-
-      align-items: center;
-
-      flex-wrap: wrap;
-
-      gap: 9px;
-
-      margin-bottom: 15px;
-    }
-
-
-    .price {
-
-      font-family: Inter, sans-serif;
-
-      color: #0f172a;
-
-      font-size: 29px;
-
-      font-weight: 900;
-    }
-
-
-    .old-price {
-
-      color: #94a3b8;
-
-      font-size: 13px;
-
-      text-decoration:
-        line-through;
-    }
-
-
-    .offer {
-
-      padding: 5px 8px;
-
-      border-radius: 6px;
-
-      color: #15803d;
-
-      background: #dcfce7;
-
-      font-size: 10px;
-
-      font-weight: 900;
-    }
-
-
-    .card-buttons {
-
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 8px;
-    }
-
-
-    .card-buttons .btn {
-      width: 100%;
-    }
-
-
-    .trust {
-
-      display: flex;
-
-      justify-content:
-        space-between;
-
-      gap: 8px;
-
-      margin-top: 14px;
-
-      padding-top: 13px;
-
-      border-top:
-        1px solid #edf0f3;
-
-      color: #64748b;
-
-      font-size: 10px;
-    }
-
-
-    /* =====================================================
-       QUICK INFO
-       ===================================================== */
-
-    .quick-section {
-
-      background: #fff;
-
-      border-bottom:
-        1px solid #e5e7eb;
-    }
-
-
-    .quick-grid {
-
-      position: relative;
-
-      z-index: 5;
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      border:
-        1px solid #dce3ea;
-
-      border-radius: 15px;
-
-      background: #fff;
-
-      box-shadow:
-        0 10px 30px
-        rgba(15,23,42,.06);
-
-      transform:
-        translateY(-25px);
-
-      overflow: hidden;
-    }
-
-
-    .quick-item {
-
-      min-height: 78px;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      padding: 13px 16px;
-
-      border-right:
-        1px solid #e5e7eb;
-    }
-
-
-    .quick-item:last-child {
-      border-right: 0;
-    }
-
-
-    .quick-icon {
-
-      width: 37px;
-      height: 37px;
-
-      flex-shrink: 0;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 9px;
-
-      background: #f1f5f9;
-
-      font-size: 16px;
-    }
-
-
-    .quick-label {
-
-      color: #94a3b8;
-
-      font-size: 10px;
-    }
-
-
-    .quick-value {
-
-      color: #1e293b;
-
-      font-size: 12px;
-
-      font-weight: 800;
-    }
-
-
-    /* =====================================================
-       MAIN
-       ===================================================== */
-
-    .main {
-
-      padding:
-        5px 0 100px;
-    }
-
-
-    .main-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        minmax(0,1fr)
-        340px;
-
-      gap: 28px;
-
-      align-items: start;
-    }
-
-
-    .content-card {
-
-      margin-bottom: 20px;
-
-      padding: 28px;
-
-      border:
-        1px solid #e5e7eb;
-
-      border-radius: 19px;
-
-      background: #fff;
-
-      box-shadow:
-        0 8px 35px
-        rgba(15,23,42,.045);
-    }
-
-
-    .section-heading {
-
-      display: flex;
-
-      align-items: flex-start;
-
-      gap: 11px;
-
-      margin-bottom: 20px;
-    }
-
-
-    .section-icon {
-
-      width: 42px;
-      height: 42px;
-
-      flex-shrink: 0;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 10px;
-
-      background: #f0fdf4;
-
-      color: #15803d;
-
-      font-size: 17px;
-    }
-
-
-    .section-heading h2 {
-
-      color: #0f172a;
-
-      font-size: 23px;
-
-      line-height: 1.25;
-    }
-
-
-    .section-heading p {
-
-      margin-top: 2px;
-
-      color: #94a3b8;
-
-      font-size: 12px;
-    }
-
-
-    .description {
-
-      color: #475569;
-
-      font-size: 14px;
-
-      line-height: 1.9;
-    }
-
-
-    /* =====================================================
-       LEARNING
-       ===================================================== */
-
-    .learning-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(2,1fr);
-
-      gap: 10px;
-    }
-
-
-    .learning-item {
-
-      display: flex;
-
-      align-items: flex-start;
-
-      gap: 9px;
-
-      padding: 13px;
-
-      border:
-        1px solid #e7ebef;
-
-      border-radius: 12px;
-
-      background: #fbfcfd;
-
-      transition: .2s;
-    }
-
-
-    .learning-item:hover {
-
-      transform:
-        translateY(-2px);
-
-      border-color:
-        #cfe995;
-
-      background:
-        #fbfff4;
-    }
-
-
-    .check {
-
-      width: 23px;
-      height: 23px;
-
-      flex-shrink: 0;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: #ecfccb;
-
-      color: #3f6212;
-
-      font-size: 12px;
-
-      font-weight: 900;
-    }
-
-
-    .learning-text {
-
-      color: #334155;
-
-      font-size: 12px;
-
-      font-weight: 600;
-
-      line-height: 1.55;
-    }
-
-
-    /* =====================================================
-       MODULES
-       ===================================================== */
-
-    .modules {
-
-      display: grid;
-
-      gap: 9px;
-    }
-
-
-    .module {
-
-      overflow: hidden;
-
-      border:
-        1px solid #e5e7eb;
-
-      border-radius: 13px;
-
-      background: #fff;
-    }
-
-
-    .module summary {
-
-      list-style: none;
-
-      cursor: pointer;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      padding: 15px;
-    }
-
-
-    .module summary::-webkit-details-marker {
-      display: none;
-    }
-
-
-    .module-number {
-
-      width: 31px;
-      height: 31px;
-
-      flex-shrink: 0;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 8px;
-
-      background: #f1f5f9;
-
-      color: #475569;
-
-      font-size: 11px;
-
-      font-weight: 900;
-    }
-
-
-    .module-title {
-
-      color: #1e293b;
-
-      font-size: 13px;
-
-      font-weight: 800;
-    }
-
-
-    .module-arrow {
-
-      margin-left: auto;
-
-      color: #94a3b8;
-
-      transition: .2s;
-    }
-
-
-    .module[open]
-    .module-arrow {
-
-      transform:
-        rotate(180deg);
-    }
-
-
-    .module-body {
-
-      padding:
-        0 16px 17px 56px;
-
-      color: #64748b;
-
-      font-size: 12px;
-
-      line-height: 1.75;
-    }
-
-
-    .lesson-list {
-
-      display: grid;
-
-      gap: 5px;
-
-      margin-top: 8px;
-    }
-
-
-    .lesson {
-
-      display: flex;
-
-      gap: 7px;
-    }
-
-
-    .lesson::before {
-
-      content: "•";
-
-      color: #65a30d;
-
-      font-weight: 900;
-    }
-
-
-    /* =====================================================
-       BENEFITS
-       ===================================================== */
-
-    .benefits {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(2,1fr);
-
-      gap: 11px;
-    }
-
-
-    .benefit {
-
-      padding: 15px;
-
-      border:
-        1px solid #e7ebef;
-
-      border-radius: 13px;
 
       background:
         linear-gradient(
-          135deg,
-          #f8fafc,
-          #fff
+          to top,
+          rgba(0,0,0,.7),
+          transparent 60%
         );
+
+      pointer-events: none;
     }
 
-
-    .benefit-icon {
-
-      width: 36px;
-      height: 36px;
+    .course-placeholder {
+      width: 100%;
+      height: 100%;
 
       display: grid;
-
       place-items: center;
 
-      margin-bottom: 8px;
+      font-family: Inter, sans-serif;
+      font-size: 42px;
+      font-weight: 800;
 
-      border-radius: 9px;
+      color: rgba(183,255,0,.18);
 
-      background: #ecfccb;
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(183,255,0,.12),
+          transparent 50%
+        ),
+        #0b0b0b;
     }
 
+    /* ================= BADGES ================= */
 
-    .benefit h3 {
+    .course-badge {
+      position: absolute;
 
-      margin-bottom: 2px;
+      top: 15px;
+      left: 15px;
 
-      font-size: 14px;
-    }
+      z-index: 2;
 
+      padding: 6px 10px;
 
-    .benefit p {
-
-      color: #64748b;
+      border-radius: 8px;
 
       font-size: 11px;
-    }
+      font-weight: 800;
 
+      text-transform: uppercase;
+      letter-spacing: .3px;
 
-    /* =====================================================
-       SIDEBAR
-       ===================================================== */
-
-    .sidebar {
-
-      position: sticky;
-
-      top: 95px;
-    }
-
-
-    .enroll-card {
-
-      overflow: hidden;
-
-      border:
-        1px solid #e1e7ed;
-
-      border-radius: 19px;
-
-      background: #fff;
+      color: #000;
+      background: var(--green);
 
       box-shadow:
-        0 18px 50px
-        rgba(15,23,42,.11);
+        0 8px 25px rgba(183,255,0,.16);
     }
 
+    .course-badge.urgent {
+      color: #fff;
+      background: #ef4444;
+    }
 
-    .enroll-top {
+    .course-badge.info {
+      color: #000;
+      background: var(--green);
+    }
+
+    /* ================= CARD BODY ================= */
+
+    .course-body {
+      display: flex;
+      flex-direction: column;
+
+      flex: 1;
 
       padding: 22px;
+    }
+
+    .course-category {
+      margin-bottom: 8px;
+
+      color: var(--green);
+
+      font-family: Inter, sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .course-title {
+      min-height: 58px;
 
       color: #fff;
 
-      background:
+      font-size: 22px;
+      font-weight: 700;
 
-        radial-gradient(
-          circle at 100% 0,
-          rgba(183,255,0,.14),
-          transparent 40%
-        ),
-
-        #071522;
+      line-height: 1.35;
     }
 
+    .course-description {
+      margin-top: 10px;
 
-    .enroll-top small {
+      color: #999;
 
-      color: #9db0c2;
+      font-size: 14px;
 
-      font-size: 11px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+
+      overflow: hidden;
     }
 
+    /* ================= META ================= */
 
-    .sidebar-price {
-
-      margin-top: 3px;
-
-      font-family: Inter, sans-serif;
-
-      font-size: 30px;
-
-      font-weight: 900;
-    }
-
-
-    .sidebar-old {
-
-      margin-left: 6px;
-
-      color: #8495a7;
-
-      font-size: 12px;
-
-      text-decoration:
-        line-through;
-    }
-
-
-    .sidebar-offer {
-
-      display: inline-flex;
-
-      margin-top: 7px;
-
-      padding: 5px 8px;
-
-      border-radius: 6px;
-
-      color: var(--accent);
-
-      background:
-        rgba(183,255,0,.1);
-
-      border:
-        1px solid
-        rgba(183,255,0,.2);
-
-      font-size: 10px;
-
-      font-weight: 900;
-    }
-
-
-    .enroll-body {
-
-      padding: 20px;
-    }
-
-
-    .enroll-title {
-
-      margin-bottom: 10px;
-
-      font-size: 15px;
-
-      font-weight: 900;
-    }
-
-
-    .enroll-feature {
-
+    .course-meta {
       display: flex;
+      flex-wrap: wrap;
 
       gap: 8px;
 
-      padding: 8px 0;
-
-      border-bottom:
-        1px dashed #e8edf2;
-
-      color: #475569;
-
-      font-size: 12px;
-    }
-
-
-    .enroll-feature:last-child {
-      border-bottom: 0;
-    }
-
-
-    .enroll-feature b {
-      color: var(--green);
-    }
-
-
-    .full-btn {
-
-      width: 100%;
-
-      margin-top: 14px;
-    }
-
-
-    .security-note {
-
-      margin-top: 11px;
-
-      text-align: center;
-
-      color: #94a3b8;
-
-      font-size: 10px;
-    }
-
-
-    /* =====================================================
-       COUNSELOR
-       ===================================================== */
-
-    .counselor {
-
-      position: fixed;
-
-      right: 20px;
-
-      bottom: 20px;
-
-      z-index: 1500;
-    }
-
-
-    .counselor-panel {
-
-      position: absolute;
-
-      right: 0;
-
-      bottom: 64px;
-
-      width: 285px;
-
-      display: none;
-
-      padding: 18px;
-
-      border:
-        1px solid #e5e7eb;
-
-      border-radius: 18px;
-
-      background: #fff;
-
-      box-shadow:
-        0 25px 65px
-        rgba(15,23,42,.2);
-    }
-
-
-    .counselor-panel.show {
-
-      display: block;
-
-      animation:
-        counselorIn .2s ease;
-    }
-
-
-    @keyframes counselorIn {
-
-      from {
-        opacity: 0;
-        transform:
-          translateY(10px)
-          scale(.98);
-      }
-
-      to {
-        opacity: 1;
-        transform:
-          translateY(0)
-          scale(1);
-      }
-
-    }
-
-
-    .counselor-head {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      margin-bottom: 10px;
-    }
-
-
-    .counselor-icon {
-
-      width: 44px;
-      height: 44px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: #ecfccb;
-
-      font-size: 19px;
-    }
-
-
-    .counselor-head strong {
-
-      display: block;
-
-      font-size: 14px;
-    }
-
-
-    .counselor-head span {
-
-      display: block;
-
-      color: #94a3b8;
-
-      font-size: 10px;
-    }
-
-
-    .counselor-panel p {
-
-      margin-bottom: 12px;
-
-      color: #64748b;
-
-      font-size: 11px;
-    }
-
-
-    .counselor-buttons {
-
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 7px;
-    }
-
-
-    .counselor-trigger {
-
-      width: 54px;
-      height: 54px;
-
-      border-radius: 50%;
-
-      color: #07110a;
-
-      background:
-        var(--accent);
-
-      box-shadow:
-        0 12px 30px
-        rgba(183,255,0,.3);
-
-      font-size: 20px;
-
-      font-weight: 900;
-    }
-
-
-    /* =====================================================
-       TOAST
-       ===================================================== */
-
-    .toast {
-
-      position: fixed;
-
-      left: 50%;
-
-      bottom: 25px;
-
-      z-index: 99999;
-
-      transform:
-        translate(-50%,120px);
-
-      padding:
-        11px 17px;
-
-      border-radius: 9px;
-
-      color: #fff;
-
-      background: #0f172a;
-
-      box-shadow:
-        0 15px 40px
-        rgba(15,23,42,.2);
-
-      opacity: 0;
-
-      transition: .25s;
-    }
-
-
-    .toast.show {
-
-      opacity: 1;
-
-      transform:
-        translate(-50%,0);
-    }
-
-
-    /* =====================================================
-       MOBILE ENROLL
-       ===================================================== */
-
-    .mobile-enroll {
-
-      display: none;
-
-      position: fixed;
-
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      z-index: 1800;
-
-      padding: 8px 12px;
-
-      background:
-        rgba(255,255,255,.96);
-
-      backdrop-filter:
-        blur(15px);
-
-      border-top:
-        1px solid #e2e8f0;
-
-      box-shadow:
-        0 -10px 35px
-        rgba(15,23,42,.1);
-    }
-
-
-    .mobile-enroll-inner {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content:
-        space-between;
-
-      gap: 10px;
-    }
-
-
-    .mobile-price small {
-
-      display: block;
-
-      color: #94a3b8;
-
-      font-size: 9px;
-    }
-
-
-    .mobile-price strong {
-
-      display: block;
-
-      font-family: Inter, sans-serif;
-
-      font-size: 17px;
-    }
-
-
-    /* =====================================================
-       FOOTER
-       ===================================================== */
-
-    .footer {
-
-      padding:
-        55px 0 22px;
-
-      color: #fff;
-
-      background: #06111f;
-    }
-
-
-    .footer-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        1.4fr 1fr 1fr 1fr;
-
-      gap: 30px;
-
-      padding-bottom: 30px;
-    }
-
-
-    .footer-description {
-
-      max-width: 370px;
-
-      margin-top: 12px;
-
-      color: #91a4b8;
-
-      font-size: 12px;
-
-      line-height: 1.8;
-    }
-
-
-    .footer-title {
-
-      margin-bottom: 11px;
-
-      font-size: 13px;
-
-      font-weight: 900;
-    }
-
-
-    .footer-links {
-
-      display: grid;
-
-      gap: 7px;
-    }
-
-
-    .footer-links a {
-
-      color: #91a4b8;
-
-      font-size: 12px;
-
-      transition: .2s;
-    }
-
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-
-    .footer-bottom {
-
-      padding-top: 20px;
-
-      border-top:
-        1px solid
-        rgba(255,255,255,.08);
-
-      display: flex;
-
-      justify-content:
-        space-between;
-
-      gap: 15px;
-
-      color: #718399;
-
-      font-size: 10px;
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-       ===================================================== */
-
-    @media (max-width: 1000px) {
-
-      .desktop-nav,
-      .nav-button {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: grid;
-        place-items: center;
-      }
-
-      .hero-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-      }
-
-      .visual {
-
-        width: 100%;
-
-        max-width: 650px;
-      }
-
-      .main-grid {
-
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        display: none;
-      }
-
-      .mobile-enroll {
-        display: block;
-      }
-
-      .counselor {
-        bottom: 76px;
-      }
-
-    }
-
-
-    @media (max-width: 760px) {
-
-      .container {
-
-        width:
-          calc(100% - 22px);
-      }
-
-      .announcement {
-
-        min-height: 34px;
-
-        font-size: 10px;
-      }
-
-      .nav {
-
-        min-height: 62px;
-      }
-
-      .brand img {
-
-        width: 40px;
-        height: 40px;
-      }
-
-      .brand-title {
-        font-size: 14px;
-      }
-
-      .brand-subtitle {
-        display: none;
-      }
-
-      .hero-grid {
-
-        min-height: auto;
-
-        padding:
-          35px 0 45px;
-      }
-
-      .hero-title {
-
-        font-size: 30px;
-
-        letter-spacing:
-          -.5px;
-      }
-
-      .hero-description {
-
-        font-size: 13px;
-      }
-
-      .hero-actions {
-
-        display: grid;
-
-        grid-template-columns:
-          1fr 1fr;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-      }
-
-      .quick-grid {
-
-        grid-template-columns:
-          1fr 1fr;
-
-        transform:
-          translateY(-15px);
-      }
-
-      .quick-item {
-
-        min-height: 70px;
-
-        padding: 11px;
-      }
-
-      .quick-item:nth-child(2) {
-        border-right: 0;
-      }
-
-      .quick-item:nth-child(3),
-      .quick-item:nth-child(4) {
-
-        border-bottom: 0;
-      }
-
-      .quick-item:nth-child(4) {
-        border-right: 0;
-      }
-
-      .content-card {
-
-        padding: 20px 16px;
-
-        border-radius: 16px;
-      }
-
-      .section-heading h2 {
-        font-size: 20px;
-      }
-
-      .learning-grid,
-      .benefits {
-
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-
-        grid-template-columns:
-          1fr 1fr;
-      }
-
-      .footer-brand {
-
-        grid-column:
-          1 / -1;
-      }
-
-    }
-
-
-    @media (max-width: 470px) {
-
-      .hero-actions {
-
-        grid-template-columns: 1fr;
-      }
-
-      .card-buttons {
-
-        grid-template-columns: 1fr;
-      }
-
-      .quick-grid {
-
-        grid-template-columns: 1fr;
-      }
-
-      .quick-item,
-      .quick-item:nth-child(2),
-      .quick-item:nth-child(3),
-      .quick-item:nth-child(4) {
-
-        border-right: 0;
-
-        border-bottom:
-          1px solid #e5e7eb;
-      }
-
-      .quick-item:last-child {
-        border-bottom: 0;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-brand {
-        grid-column: auto;
-      }
-
-    }
-
-
-    @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-
-        animation-duration:
-          .01ms !important;
-
-        transition-duration:
-          .01ms !important;
-
-        scroll-behavior:
-          auto !important;
-      }
-
-    }
-
-  </style>
-</head>
-
-
-<body>
-
-  <!-- =====================================================
-       SKIP LINK
-       ===================================================== -->
-
-  <a
-    href="#mainContent"
-    class="skip-link"
-  >
-    মূল কনটেন্টে যান
-  </a>
-
-
-  <!-- =====================================================
-       ANNOUNCEMENT
-       ===================================================== -->
-
-  <div class="announcement">
-
-    🚀
-    <strong>SNK IT Institute</strong>
-    &nbsp; — AI Powered Skill Based Training Center
-
-  </div>
-
-
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
-
-  <header class="header">
-
-    <div class="container nav">
-
-      <a
-        href="/"
-        class="brand"
-      >
-
-        <img
-          src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-          alt="SNK IT Institute"
-          onerror="this.style.display='none'"
-        >
-
-        <div>
-
-          <div class="brand-title">
-            SNK IT Institute
-          </div>
-
-          <div class="brand-subtitle">
-            Learn To Lead
-          </div>
-
-        </div>
-
-      </a>
-
-
-      <nav class="desktop-nav">
-
-        <a href="/">
-          হোম
-        </a>
-
-        <a
-          href="/courses/"
-          class="active"
-        >
-          কোর্সসমূহ
-        </a>
-
-        <a href="/about/">
-          আমাদের সম্পর্কে
-        </a>
-
-        <a href="/blog/">
-          ব্লগ
-        </a>
-
-        <a href="/contact/">
-          যোগাযোগ
-        </a>
-
-      </nav>
-
-
-      <div class="nav-actions">
-
-        <button
-          type="button"
-          class="icon-button"
-          id="languageBtn"
-        >
-          EN
-        </button>
-
-
-        <button
-          type="button"
-          class="icon-button"
-          id="shareBtn"
-          title="Share"
-        >
-          ↗
-        </button>
-
-
-        <a
-          href="/courses/"
-          class="nav-button primary"
-        >
-          কোর্স দেখুন →
-        </a>
-
-
-        <button
-          type="button"
-          class="mobile-toggle"
-          id="mobileToggle"
-          aria-expanded="false"
-        >
-          ☰
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="mobile-menu"
-      id="mobileMenu"
-    >
-
-      <a href="/">
-        হোম
-      </a>
-
-      <a href="/courses/">
-        কোর্সসমূহ
-      </a>
-
-      <a href="/about/">
-        আমাদের সম্পর্কে
-      </a>
-
-      <a href="/blog/">
-        ব্লগ
-      </a>
-
-      <a href="/contact/">
-        যোগাযোগ
-      </a>
-
-    </div>
-
-  </header>
-
-
-  <!-- =====================================================
-       LOADING
-       ===================================================== -->
-
-  <section
-    id="loadingState"
-    class="loading"
-  >
-
-    <div class="loading-card">
-
-      <div class="spinner"></div>
-
-      <h2>
-        কোর্স লোড হচ্ছে...
-      </h2>
-
-      <p
-        style="
-          color:#64748b;
-          margin-top:6px;
-          font-size:13px;
-        "
-      >
-        SNK IT Institute থেকে তথ্য আনা হচ্ছে।
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       NOT FOUND
-       ===================================================== -->
-
-  <section
-    id="notFoundState"
-    class="state hidden"
-  >
-
-    <div class="state-card">
-
-      <div class="state-icon">
-        📚
-      </div>
-
-      <h2>
-        কোর্স পাওয়া যায়নি
-      </h2>
-
-      <p>
-        এই কোর্সের তথ্য পাওয়া যায়নি।
-        Courses page থেকে আবার চেষ্টা করুন।
-      </p>
-
-      <a
-        href="/courses/"
-        class="btn btn-primary"
-      >
-        সব কোর্স দেখুন →
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       ERROR
-       ===================================================== -->
-
-  <section
-    id="errorState"
-    class="state hidden"
-  >
-
-    <div class="state-card">
-
-      <div class="state-icon">
-        ⚠️
-      </div>
-
-      <h2>
-        Course Load Error
-      </h2>
-
-      <p id="errorMessage">
-        কোর্সের তথ্য লোড করা যায়নি।
-      </p>
-
-      <button
-        type="button"
-        class="btn btn-primary"
-        onclick="location.reload()"
-      >
-        আবার চেষ্টা করুন
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       MAIN COURSE
-       ===================================================== -->
-
-  <main
-    id="mainContent"
-    class="hidden"
-  >
-
-
-    <!-- ===================================================
-         HERO
-         =================================================== -->
-
-    <section class="hero">
-
-      <div class="container hero-grid">
-
-
-        <!-- LEFT -->
-        <div>
-
-          <div class="breadcrumb">
-
-            <a href="/">
-              হোম
-            </a>
-
-            <span>›</span>
-
-            <a href="/courses/">
-              কোর্সসমূহ
-            </a>
-
-            <span>›</span>
-
-            <span
-              id="breadcrumbTitle"
-              class="current"
-            >
-              Course
-            </span>
-
-          </div>
-
-
-          <div
-            id="courseTag"
-            class="tag"
-          >
-            ✦ Featured Course
-          </div>
-
-
-          <h1
-            id="courseTitle"
-            class="hero-title"
-          >
-            Course Title
-          </h1>
-
-
-          <div
-            id="courseDescription"
-            class="hero-description"
-          >
-            Course description
-          </div>
-
-
-          <div
-            id="heroMeta"
-            class="hero-meta"
-          ></div>
-
-
-          <div class="hero-actions">
-
-            <a
-              href="#"
-              id="heroEnrollBtn"
-              class="btn btn-primary"
-            >
-              🚀 ভর্তি হতে চাই
-            </a>
-
-
-            <button
-              type="button"
-              id="heroShareBtn"
-              class="btn btn-outline"
-            >
-              ↗ শেয়ার
-            </button>
-
-
-            <a
-              href="#"
-              id="heroWhatsAppBtn"
-              class="btn btn-white"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <!-- RIGHT -->
-        <div class="visual">
-
-          <div class="course-card">
-
-
-            <!-- IMAGE -->
-
-            <div class="course-image">
-
-              <img
-                id="courseImage"
-                src=""
-                alt=""
-                class="hidden"
-              >
-
-
-              <div
-                id="imagePlaceholder"
-                class="image-placeholder"
-              >
-
-                <div>
-
-                  <strong id="placeholderTitle">
-                    SNK IT Institute
-                  </strong>
-
-                  <span>
-                    AI Powered Skill Based Training
-                  </span>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <!-- CARD BODY -->
-
-            <div class="card-body">
-
-              <div class="small-label">
-                কোর্স ফি
-              </div>
-
-
-              <div class="price-row">
-
-                <strong
-                  id="heroPrice"
-                  class="price"
-                >
-                  ৳0
-                </strong>
-
-
-                <span
-                  id="heroOldPrice"
-                  class="old-price"
-                ></span>
-
-
-                <span
-                  id="heroOffer"
-                  class="offer hidden"
-                >
-                  Special Offer
-                </span>
-
-              </div>
-
-
-              <div class="card-buttons">
-
-                <a
-                  href="#"
-                  id="cardEnrollBtn"
-                  class="btn btn-primary"
-                >
-                  ভর্তি করুন →
-                </a>
-
-
-                <a
-                  href="#"
-                  id="cardWhatsAppBtn"
-                  class="btn btn-whatsapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  WhatsApp
-                </a>
-
-              </div>
-
-
-              <div class="trust">
-
-                <span>
-                  ✓ Practical
-                </span>
-
-                <span>
-                  ✓ Career Focused
-                </span>
-
-                <span>
-                  ✓ SNK Support
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         QUICK INFO
-         =================================================== -->
-
-    <section class="quick-section">
-
-      <div class="container">
-
-        <div
-          id="quickInfo"
-          class="quick-grid"
-        ></div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         CONTENT
-         =================================================== -->
-
-    <section class="main">
-
-      <div class="container main-grid">
-
-
-        <!-- LEFT -->
-        <div>
-
-
-          <!-- ABOUT -->
-
-          <article class="content-card">
-
-            <div class="section-heading">
-
-              <div class="section-icon">
-                📖
-              </div>
-
-              <div>
-
-                <h2>
-                  কোর্স সম্পর্কে
-                </h2>
-
-                <p>
-                  এই কোর্সে কী থাকছে
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div
-              id="fullDescription"
-              class="description"
-            ></div>
-
-          </article>
-
-
-          <!-- LEARNING -->
-
-          <article
-            id="learningSection"
-            class="content-card"
-          >
-
-            <div class="section-heading">
-
-              <div class="section-icon">
-                ✓
-              </div>
-
-              <div>
-
-                <h2>
-                  আপনি যা শিখবেন
-                </h2>
-
-                <p>
-                  Practical & Career Focused Learning
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div
-              id="learningGrid"
-              class="learning-grid"
-            ></div>
-
-          </article>
-
-
-          <!-- MODULES -->
-
-          <article
-            id="modulesSection"
-            class="content-card"
-          >
-
-            <div class="section-heading">
-
-              <div class="section-icon">
-                ☷
-              </div>
-
-              <div>
-
-                <h2>
-                  কোর্স মডিউল
-                </h2>
-
-                <p>
-                  Step-by-step structured curriculum
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div
-              id="moduleList"
-              class="modules"
-            ></div>
-
-          </article>
-
-
-          <!-- BENEFITS -->
-
-          <article class="content-card">
-
-            <div class="section-heading">
-
-              <div class="section-icon">
-                ★
-              </div>
-
-              <div>
-
-                <h2>
-                  ক্যারিয়ার ফোকাসড লার্নিং
-                </h2>
-
-                <p>
-                  শেখার পাশাপাশি বাস্তব কাজের প্রস্তুতি
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div class="benefits">
-
-
-              <div class="benefit">
-
-                <div class="benefit-icon">
-                  ⚡
-                </div>
-
-                <h3>
-                  Practical Learning
-                </h3>
-
-                <p>
-                  বাস্তব কাজ ও hands-on practice।
-                </p>
-
-              </div>
-
-
-              <div class="benefit">
-
-                <div class="benefit-icon">
-                  🧠
-                </div>
-
-                <h3>
-                  AI Focused Skills
-                </h3>
-
-                <p>
-                  AI-driven modern industry skills।
-                </p>
-
-              </div>
-
-
-              <div class="benefit">
-
-                <div class="benefit-icon">
-                  🛠
-                </div>
-
-                <h3>
-                  Real Projects
-                </h3>
-
-                <p>
-                  Project-based practical experience।
-                </p>
-
-              </div>
-
-
-              <div class="benefit">
-
-                <div class="benefit-icon">
-                  🚀
-                </div>
-
-                <h3>
-                  Career Support
-                </h3>
-
-                <p>
-                  Career preparation ও guidance।
-                </p>
-
-              </div>
-
-
-            </div>
-
-          </article>
-
-        </div>
-
-
-        <!-- SIDEBAR -->
-
-        <aside class="sidebar">
-
-          <div class="enroll-card">
-
-
-            <div class="enroll-top">
-
-              <small>
-                এই কোর্সে ভর্তি হতে
-              </small>
-
-
-              <div>
-
-                <strong
-                  id="sidebarPrice"
-                  class="sidebar-price"
-                >
-                  ৳0
-                </strong>
-
-
-                <span
-                  id="sidebarOld"
-                  class="sidebar-old"
-                ></span>
-
-              </div>
-
-
-              <span
-                id="sidebarOffer"
-                class="sidebar-offer hidden"
-              >
-                Special Offer
-              </span>
-
-            </div>
-
-
-            <div class="enroll-body">
-
-              <div class="enroll-title">
-                কোর্সে যা যা পাবেন
-              </div>
-
-
-              <div class="enroll-feature">
-                <b>✓</b>
-                <span>
-                  Structured Course Curriculum
-                </span>
-              </div>
-
-
-              <div class="enroll-feature">
-                <b>✓</b>
-                <span>
-                  Practical & Hands-on Learning
-                </span>
-              </div>
-
-
-              <div class="enroll-feature">
-                <b>✓</b>
-                <span>
-                  Real-world Project Practice
-                </span>
-              </div>
-
-
-              <div class="enroll-feature">
-                <b>✓</b>
-                <span>
-                  Career Focused Guidance
-                </span>
-              </div>
-
-
-              <div class="enroll-feature">
-                <b>✓</b>
-                <span>
-                  Course Completion Support
-                </span>
-              </div>
-
-
-              <a
-                href="#"
-                id="sidebarEnrollBtn"
-                class="btn btn-primary full-btn"
-              >
-                ভর্তি হতে চাই →
-              </a>
-
-
-              <a
-                href="#"
-                id="sidebarWhatsAppBtn"
-                class="btn btn-whatsapp full-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp এ কথা বলুন
-              </a>
-
-
-              <div class="security-note">
-                🔒 Secure Admission Process
-              </div>
-
-            </div>
-
-          </div>
-
-        </aside>
-
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       FOOTER
-       ===================================================== -->
-
-  <footer class="footer">
-
-    <div class="container">
-
-      <div class="footer-grid">
-
-
-        <div class="footer-brand">
-
-          <div class="brand">
-
-            <img
-              src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
-              alt="SNK IT Institute"
-              onerror="this.style.display='none'"
-            >
-
-            <div>
-
-              <div
-                class="brand-title"
-                style="color:#fff;"
-              >
-                SNK IT Institute
-              </div>
-
-              <div
-                class="brand-subtitle"
-                style="color:#8fa2b5;"
-              >
-                Learn To Lead
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <p class="footer-description">
-
-            AI Powered Skill Based Training Center —
-            practical skill, modern technology এবং
-            career-focused learning-এর মাধ্যমে
-            ভবিষ্যতের জন্য প্রস্তুত হোন।
-
-          </p>
-
-        </div>
-
-
-        <div>
-
-          <div class="footer-title">
-            Quick Links
-          </div>
-
-          <div class="footer-links">
-
-            <a href="/">
-              হোম
-            </a>
-
-            <a href="/courses/">
-              কোর্সসমূহ
-            </a>
-
-            <a href="/about/">
-              আমাদের সম্পর্কে
-            </a>
-
-            <a href="/contact/">
-              যোগাযোগ
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <div>
-
-          <div class="footer-title">
-            Resources
-          </div>
-
-          <div class="footer-links">
-
-            <a href="/blog/">
-              ব্লগ
-            </a>
-
-            <a href="/courses/">
-              Paid Courses
-            </a>
-
-            <a href="/coming-soon/">
-              Free Courses
-            </a>
-
-            <a href="/contact/">
-              Support
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <div>
-
-          <div class="footer-title">
-            Contact
-          </div>
-
-          <div class="footer-links">
-
-            <a href="tel:+8801705633700">
-              01705-633700
-            </a>
-
-            <a
-              href="https://wa.me/8801705633700"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
-
-            <a href="mailto:iamsnkbd@protonmail.com">
-              Email
-            </a>
-
-            <a href="/">
-              Moulvibazar, Bangladesh
-            </a>
-
-          </div>
-
-        </div>
-
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        <span>
-          ©
-          <span id="year"></span>
-          SNK IT Institute. All rights reserved.
-        </span>
-
-        <span>
-          Learn To Lead
-        </span>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-
-  <!-- =====================================================
-       COUNSELOR
-       ===================================================== -->
-
-  <div class="counselor">
-
-
-    <div
-      id="counselorPanel"
-      class="counselor-panel"
-    >
-
-      <div class="counselor-head">
-
-        <div class="counselor-icon">
-          🎧
-        </div>
-
-        <div>
-
-          <strong>
-            Career Counselor
-          </strong>
-
-          <span>
-            আপনার প্রশ্নের উত্তর পেতে
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <p>
-        কোর্স, ভর্তি, ফি অথবা career path
-        সম্পর্কে জানতে আমাদের সাথে কথা বলুন।
-      </p>
-
-
-      <div class="counselor-buttons">
-
-        <a
-          href="https://wa.me/8801705633700"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-whatsapp"
-        >
-          WhatsApp
-        </a>
-
-
-        <a
-          href="tel:+8801705633700"
-          class="btn btn-primary"
-        >
-          Call
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <button
-      type="button"
-      id="counselorTrigger"
-      class="counselor-trigger"
-      aria-expanded="false"
-    >
-      ☎
-    </button>
-
-  </div>
-
-
-  <!-- =====================================================
-       MOBILE ENROLL
-       ===================================================== -->
-
-  <div class="mobile-enroll">
-
-    <div class="mobile-enroll-inner">
-
-      <div class="mobile-price">
-
-        <small>
-          কোর্স ফি
-        </small>
-
-        <strong id="mobilePrice">
-          ৳0
-        </strong>
-
-      </div>
-
-
-      <a
-        href="#"
-        id="mobileEnrollBtn"
-        class="btn btn-primary"
-      >
-        ভর্তি করুন →
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <!-- =====================================================
-       TOAST
-       ===================================================== -->
-
-  <div
-    id="toast"
-    class="toast"
-  ></div>
-
-
-  <!-- =====================================================
-       JAVASCRIPT
-       ===================================================== -->
-
-  <script>
-
-    /* =====================================================
-       FIREBASE CONFIG
-       ===================================================== */
-
-    const firebaseConfig = {
-
-      apiKey:
-        "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjH0gmXYA",
-
-      authDomain:
-        "snk-it-institute.firebaseapp.com",
-
-      projectId:
-        "snk-it-institute",
-
-      storageBucket:
-        "snk-it-institute.firebasestorage.app",
-
-      messagingSenderId:
-        "948436125833",
-
-      appId:
-        "1:948436125833:web:36788463d4dd3ef20bde58"
-
-    };
-
-
-    const WHATSAPP =
-      "8801705633700";
-
-
-    let db = null;
-
-    let currentCourse = null;
-
-    let currentLanguage =
-      localStorage.getItem(
-        "snkCourseLanguage"
-      ) || "bn";
-
-
-    /* =====================================================
-       DOM HELPER
-       ===================================================== */
-
-    const $ = (selector) =>
-      document.querySelector(selector);
-
-
-    /* =====================================================
-       FIREBASE INIT
-       ===================================================== */
-
-    try {
-
-      if (!firebase.apps.length) {
-
-        firebase.initializeApp(
-          firebaseConfig
-        );
-
-      }
-
-      db =
-        firebase.firestore();
-
-    } catch (error) {
-
-      console.error(
-        "Firebase initialization failed:",
-        error
-      );
-
-      showError(
-        "Firebase connection তৈরি করা যায়নি।"
-      );
-
-    }
-
-
-    /* =====================================================
-       SAFE HELPERS
-       ===================================================== */
-
-    function safeArray(value) {
-
-      return Array.isArray(value)
-        ? value
-        : [];
-
-    }
-
-
-    function escapeHtml(value) {
-
-      if (
-        value === null ||
-        value === undefined
-      ) {
-        return "";
-      }
-
-      return String(value)
-
-        .replace(
-          /&/g,
-          "&amp;"
-        )
-
-        .replace(
-          /</g,
-          "&lt;"
-        )
-
-        .replace(
-          />/g,
-          "&gt;"
-        )
-
-        .replace(
-          /"/g,
-          "&quot;"
-        )
-
-        .replace(
-          /'/g,
-          "&#039;"
-        );
-
-    }
-
-
-    function getText(
-      data,
-      bnKey,
-      enKey,
-      fallbackKey
-    ) {
-
-      if (!data) {
-        return "";
-      }
-
-      if (
-        currentLanguage === "en"
-      ) {
-
-        return (
-          data[enKey] ??
-          data[bnKey] ??
-          data[fallbackKey] ??
-          ""
-        );
-
-      }
-
-      return (
-        data[bnKey] ??
-        data[enKey] ??
-        data[fallbackKey] ??
-        ""
-      );
-
-    }
-
-
-    function getArray(
-      data,
-      bnKey,
-      enKey,
-      fallbackKey
-    ) {
-
-      const value =
-        getText(
-          data,
-          bnKey,
-          enKey,
-          fallbackKey
-        );
-
-      return safeArray(value);
-    }
-
-
-    function formatPrice(value) {
-
-      if (
-        value === null ||
-        value === undefined ||
-        value === ""
-      ) {
-        return "";
-      }
-
-      if (
-        typeof value === "number"
-      ) {
-
-        return (
-          "৳" +
-          value.toLocaleString(
-            "en-BD"
-          )
-        );
-
-      }
-
-      const text =
-        String(value).trim();
-
-
-      if (!text) {
-        return "";
-      }
-
-
-      if (
-        text.includes("৳") ||
-        /tk/i.test(text)
-      ) {
-
-        return text;
-
-      }
-
-
-      const numeric =
-        Number(
-          text.replace(
-            /[,\s]/g,
-            ""
-          )
-        );
-
-
-      if (
-        !Number.isNaN(numeric)
-      ) {
-
-        return (
-          "৳" +
-          numeric.toLocaleString(
-            "en-BD"
-          )
-        );
-
-      }
-
-
-      return text;
-
-    }
-
-
-    /* =====================================================
-       STATES
-       ===================================================== */
-
-    function hideStates() {
-
-      $("#loadingState")
-        .classList.add("hidden");
-
-      $("#notFoundState")
-        .classList.add("hidden");
-
-      $("#errorState")
-        .classList.add("hidden");
-
-      $("#mainContent")
-        .classList.add("hidden");
-
-    }
-
-
-    function showLoading() {
-
-      hideStates();
-
-      $("#loadingState")
-        .classList.remove("hidden");
-
-    }
-
-
-    function showNotFound() {
-
-      hideStates();
-
-      $("#notFoundState")
-        .classList.remove("hidden");
-
-    }
-
-
-    function showError(message) {
-
-      hideStates();
-
-      if (message) {
-
-        $("#errorMessage")
-          .textContent =
-          message;
-
-      }
-
-      $("#errorState")
-        .classList.remove("hidden");
-
-    }
-
-
-    function showCourse() {
-
-      hideStates();
-
-      $("#mainContent")
-        .classList.remove("hidden");
-
-    }
-
-
-    /* =====================================================
-       GET COURSE PARAMETERS
-       ===================================================== */
-
-    function getParameters() {
-
-      const params =
-        new URLSearchParams(
-          window.location.search
-        );
-
-
-      return {
-
-        id:
-          params.get("id") ||
-          params.get("course") ||
-          params.get("courseId"),
-
-        slug:
-          params.get("slug")
-
-      };
-
-    }
-
-
-    /* =====================================================
-       FIND COURSE
-       ===================================================== */
-
-    async function findCourse() {
-
-      const params =
-        getParameters();
-
-
-      console.log(
-        "Course parameters:",
-        params
-      );
-
-
-      /*
-       -----------------------------------------------------
-       1. DOCUMENT ID
-       -----------------------------------------------------
-      */
-
-      if (params.id) {
-
-        const id =
-          decodeURIComponent(
-            params.id
-          ).trim();
-
-
-        const doc =
-          await db
-            .collection("courses")
-            .doc(id)
-            .get();
-
-
-        if (doc.exists) {
-
-          return {
-
-            id: doc.id,
-
-            data: doc.data()
-
-          };
-
-        }
-
-
-        /*
-         ---------------------------------------------------
-         2. courseId FIELD
-         ---------------------------------------------------
-        */
-
-        const byCourseId =
-          await db
-            .collection("courses")
-            .where(
-              "courseId",
-              "==",
-              id
-            )
-            .limit(1)
-            .get();
-
-
-        if (
-          !byCourseId.empty
-        ) {
-
-          const found =
-            byCourseId.docs[0];
-
-          return {
-
-            id: found.id,
-
-            data: found.data()
-
-          };
-
-        }
-
-
-        /*
-         ---------------------------------------------------
-         3. slug FIELD
-         ---------------------------------------------------
-        */
-
-        const bySlug =
-          await db
-            .collection("courses")
-            .where(
-              "slug",
-              "==",
-              id
-            )
-            .limit(1)
-            .get();
-
-
-        if (
-          !bySlug.empty
-        ) {
-
-          const found =
-            bySlug.docs[0];
-
-          return {
-
-            id: found.id,
-
-            data: found.data()
-
-          };
-
-        }
-
-      }
-
-
-      /*
-       -----------------------------------------------------
-       4. EXPLICIT SLUG
-       -----------------------------------------------------
-      */
-
-      if (params.slug) {
-
-        const slug =
-          decodeURIComponent(
-            params.slug
-          ).trim();
-
-
-        const result =
-          await db
-            .collection("courses")
-            .where(
-              "slug",
-              "==",
-              slug
-            )
-            .limit(1)
-            .get();
-
-
-        if (
-          !result.empty
-        ) {
-
-          const found =
-            result.docs[0];
-
-          return {
-
-            id: found.id,
-
-            data: found.data()
-
-          };
-
-        }
-
-      }
-
-
-      /*
-       -----------------------------------------------------
-       5. FALLBACK
-       -----------------------------------------------------
-
-       যদি URL-এ কোনো ID না থাকে,
-       collection থেকে প্রথম course
-       load করবে।
-
-       এতে course.html সরাসরি খুললেও
-       blank থাকবে না।
-      */
-
-      const fallback =
-        await db
-          .collection("courses")
-          .limit(1)
-          .get();
-
-
-      if (
-        !fallback.empty
-      ) {
-
-        const found =
-          fallback.docs[0];
-
-        return {
-
-          id: found.id,
-
-          data: found.data()
-
-        };
-
-      }
-
-
-      return null;
-
-    }
-
-
-    /* =====================================================
-       RENDER TAG
-       ===================================================== */
-
-    function renderTag(data) {
-
-      const tag =
-        getText(
-          data,
-          "tagTextBn",
-          "tagTextEn",
-          "tagText"
-        );
-
-
-      const element =
-        $("#courseTag");
-
-
-      if (!tag) {
-
-        element.textContent =
-          "✦ Featured Course";
-
-        return;
-
-      }
-
-
-      element.textContent =
-        "✦ " + tag;
-
-
-      element.classList.toggle(
-        "info",
-        data.tagClass === "info"
-      );
-
-    }
-
-
-    /* =====================================================
-       RENDER TITLE
-       ===================================================== */
-
-    function renderTitle(data) {
-
-      const title =
-        getText(
-          data,
-          "titleBn",
-          "titleEn",
-          "title"
-        ) ||
-        "SNK IT Institute Course";
-
-
-      $("#courseTitle")
-        .textContent =
-        title;
-
-
-      $("#breadcrumbTitle")
-        .textContent =
-        title;
-
-
-      $("#placeholderTitle")
-        .textContent =
-        title;
-
-
-      document.title =
-        title +
-        " | SNK IT Institute";
-
-    }
-
-
-    /* =====================================================
-       DESCRIPTION
-       ===================================================== */
-
-    function renderDescription(data) {
-
-      const short =
-        getText(
-          data,
-          "descBn",
-          "descEn",
-          "desc"
-        );
-
-
-      const full =
-        getText(
-          data,
-          "fullDescBn",
-          "fullDescEn",
-          "fullDesc"
-        );
-
-
-      const text =
-        full ||
-        short ||
-        "এই কোর্সের বিস্তারিত তথ্য শীঘ্রই যুক্ত করা হবে।";
-
-
-      const html =
-        escapeHtml(
-          text
-        ).replace(
-          /\n/g,
-          "<br>"
-        );
-
-
-      $("#courseDescription")
-        .innerHTML =
-        escapeHtml(
-          short || text
-        ).replace(
-          /\n/g,
-          "<br>"
-        );
-
-
-      $("#fullDescription")
-        .innerHTML =
-        html;
-
-    }
-
-
-    /* =====================================================
-       META
-       ===================================================== */
-
-    function renderMeta(data) {
-
-      let meta =
-        getArray(
-          data,
-          "metaBn",
-          "metaEn",
-          "meta"
-        );
-
-
-      if (!meta.length) {
-
-        const fields = [
-
-          [
-            "duration",
-            "সময়কাল",
-            "Duration"
-          ],
-
-          [
-            "batch",
-            "ব্যাচ",
-            "Batch"
-          ],
-
-          [
-            "startDate",
-            "শুরু",
-            "Starts"
-          ],
-
-          [
-            "seats",
-            "আসন",
-            "Seats"
-          ],
-
-          [
-            "mode",
-            "মোড",
-            "Mode"
-          ],
-
-          [
-            "level",
-            "লেভেল",
-            "Level"
-          ]
-
-        ];
-
-
-        fields.forEach(
-          (field) => {
-
-            if (
-              data[field[0]] !==
-                undefined &&
-              data[field[0]] !==
-                null &&
-              data[field[0]] !==
-                ""
-            ) {
-
-              meta.push(
-
-                currentLanguage === "en"
-
-                  ? `${field[2]}: ${data[field[0]]}`
-
-                  : `${field[1]}: ${data[field[0]]}`
-
-              );
-
-            }
-
-          }
-        );
-
-      }
-
-
-      $("#heroMeta")
-        .innerHTML =
-        meta
-          .map(
-            item => `
-              <span class="meta">
-                ◆ ${escapeHtml(item)}
-              </span>
-            `
-          )
-          .join("");
-
-    }
-
-
-    /* =====================================================
-       QUICK INFO
-       ===================================================== */
-
-    function renderQuickInfo(data) {
-
-      const items = [];
-
-
-      function add(
-        icon,
-        bn,
-        en,
-        key
-      ) {
-
-        if (
-          data[key] !==
-            undefined &&
-          data[key] !==
-            null &&
-          data[key] !==
-            ""
-        ) {
-
-          items.push({
-
-            icon,
-
-            label:
-              currentLanguage === "en"
-                ? en
-                : bn,
-
-            value:
-              String(
-                data[key]
-              )
-
-          });
-
-        }
-
-      }
-
-
-      add(
-        "⏱",
-        "সময়কাল",
-        "Duration",
-        "duration"
-      );
-
-
-      add(
-        "▣",
-        "ব্যাচ",
-        "Batch",
-        "batch"
-      );
-
-
-      add(
-        "◷",
-        "শুরু",
-        "Starts",
-        "startDate"
-      );
-
-
-      add(
-        "◉",
-        "আসন",
-        "Seats",
-        "seats"
-      );
-
-
-      const defaults = [
-
-        {
-          icon: "✓",
-          label:
-            currentLanguage === "en"
-              ? "Learning"
-              : "লার্নিং",
-          value:
-            currentLanguage === "en"
-              ? "Practical"
-              : "প্র্যাকটিক্যাল"
-        },
-
-        {
-          icon: "★",
-          label:
-            currentLanguage === "en"
-              ? "Focus"
-              : "ফোকাস",
-          value:
-            currentLanguage === "en"
-              ? "Career"
-              : "ক্যারিয়ার"
-        },
-
-        {
-          icon: "◆",
-          label:
-            currentLanguage === "en"
-              ? "Support"
-              : "সাপোর্ট",
-          value:
-            currentLanguage === "en"
-              ? "Guidance"
-              : "গাইডেন্স"
-        },
-
-        {
-          icon: "🚀",
-          label:
-            currentLanguage === "en"
-              ? "Institute"
-              : "ইনস্টিটিউট",
-          value:
-            "SNK IT Institute"
-        }
-
-      ];
-
-
-      while (
-        items.length < 4
-      ) {
-
-        items.push(
-          defaults[
-            items.length
-          ]
-        );
-
-      }
-
-
-      $("#quickInfo")
-        .innerHTML =
-        items
-          .slice(0,4)
-          .map(
-            item => `
-
-              <div class="quick-item">
-
-                <div class="quick-icon">
-                  ${escapeHtml(item.icon)}
-                </div>
-
-                <div>
-
-                  <div class="quick-label">
-                    ${escapeHtml(item.label)}
-                  </div>
-
-                  <div class="quick-value">
-                    ${escapeHtml(item.value)}
-                  </div>
-
-                </div>
-
-              </div>
-
-            `
-          )
-          .join("");
-
-    }
-
-
-    /* =====================================================
-       IMAGE
-       ===================================================== */
-
-    function renderImage(data) {
-
-      const image =
-        data.image ||
-        data.imageUrl ||
-        data.thumbnail ||
-        data.coverImage ||
-        "";
-
-
-      const img =
-        $("#courseImage");
-
-
-      const placeholder =
-        $("#imagePlaceholder");
-
-
-      if (!image) {
-
-        img.classList.add(
-          "hidden"
-        );
-
-        placeholder.classList.remove(
-          "hidden"
-        );
-
-        return;
-
-      }
-
-
-      img.src =
-        image;
-
-
-      img.alt =
-        getText(
-          data,
-          "titleBn",
-          "titleEn",
-          "title"
-        );
-
-
-      img.onload =
-        () => {
-
-          img.classList.remove(
-            "hidden"
-          );
-
-          placeholder.classList.add(
-            "hidden"
-          );
-
-        };
-
-
-      img.onerror =
-        () => {
-
-          img.classList.add(
-            "hidden"
-          );
-
-          placeholder.classList.remove(
-            "hidden"
-          );
-
-        };
-
-    }
-
-
-    /* =====================================================
-       PRICE
-       ===================================================== */
-
-    function renderPrice(data) {
-
-      const current =
-        formatPrice(
-          data.priceNew ??
-          data.price ??
-          data.currentPrice
-        );
-
-
-      const old =
-        formatPrice(
-          data.priceOld ??
-          data.oldPrice ??
-          data.regularPrice
-        );
-
-
-      const price =
-        current ||
-        (
-          currentLanguage === "en"
-            ? "Contact Us"
-            : "যোগাযোগ করুন"
-        );
-
-
-      $("#heroPrice")
-        .textContent =
-        price;
-
-
-      $("#sidebarPrice")
-        .textContent =
-        price;
-
-
-      $("#mobilePrice")
-        .textContent =
-        price;
-
-
-      $("#heroOldPrice")
-        .textContent =
-        old;
-
-
-      $("#sidebarOld")
-        .textContent =
-        old;
-
-
-      const offer =
-        data.offerText ||
-        data.offer ||
-        data.discountText ||
-        data.discount;
-
-
-      if (offer) {
-
-        $("#heroOffer")
-          .textContent =
-          offer;
-
-        $("#heroOffer")
-          .classList.remove(
-            "hidden"
-          );
-
-
-        $("#sidebarOffer")
-          .textContent =
-          offer;
-
-        $("#sidebarOffer")
-          .classList.remove(
-            "hidden"
-          );
-
-      } else {
-
-        $("#heroOffer")
-          .classList.add(
-            "hidden"
-          );
-
-        $("#sidebarOffer")
-          .classList.add(
-            "hidden"
-          );
-
-      }
-
-    }
-
-
-    /* =====================================================
-       LEARNING
-       ===================================================== */
-
-    function renderLearning(data) {
-
-      const items =
-        getArray(
-          data,
-          "learnItemsBn",
-          "learnItemsEn",
-          "learnItems"
-        );
-
-
-      if (!items.length) {
-
-        $("#learningSection")
-          .classList.add(
-            "hidden"
-          );
-
-        return;
-
-      }
-
-
-      $("#learningSection")
-        .classList.remove(
-          "hidden"
-        );
-
-
-      $("#learningGrid")
-        .innerHTML =
-        items
-          .map(
-            item => {
-
-              let text =
-                item;
-
-
-              if (
-                typeof item ===
-                "object"
-              ) {
-
-                text =
-                  item.text ||
-                  item.title ||
-                  item.name ||
-                  "";
-
-              }
-
-
-              return `
-
-                <div class="learning-item">
-
-                  <span class="check">
-                    ✓
-                  </span>
-
-                  <span class="learning-text">
-                    ${escapeHtml(text)}
-                  </span>
-
-                </div>
-
-              `;
-
-            }
-          )
-          .join("");
-
-    }
-
-
-    /* =====================================================
-       MODULES
-       ===================================================== */
-
-    function renderModules(data) {
-
-      const modules =
-        getArray(
-          data,
-          "modulesBn",
-          "modulesEn",
-          "modules"
-        );
-
-
-      if (!modules.length) {
-
-        $("#modulesSection")
-          .classList.add(
-            "hidden"
-          );
-
-        return;
-
-      }
-
-
-      $("#modulesSection")
-        .classList.remove(
-          "hidden"
-        );
-
-
-      $("#moduleList")
-        .innerHTML =
-
-        modules
-          .map(
-            (module,index) => {
-
-              if (
-                typeof module ===
-                "string"
-              ) {
-
-                return `
-
-                  <details
-                    class="module"
-                    ${index === 0 ? "open" : ""}
-                  >
-
-                    <summary>
-
-                      <span class="module-number">
-                        ${String(index + 1).padStart(2,"0")}
-                      </span>
-
-                      <span class="module-title">
-                        ${escapeHtml(module)}
-                      </span>
-
-                      <span class="module-arrow">
-                        ▼
-                      </span>
-
-                    </summary>
-
-                  </details>
-
-                `;
-
-              }
-
-
-              const title =
-
-                currentLanguage === "en"
-
-                  ? (
-                      module.titleEn ||
-                      module.titleBn ||
-                      module.title ||
-                      module.name ||
-                      `Module ${index + 1}`
-                    )
-
-                  : (
-                      module.titleBn ||
-                      module.titleEn ||
-                      module.title ||
-                      module.name ||
-                      `মডিউল ${index + 1}`
-                    );
-
-
-              const description =
-
-                currentLanguage === "en"
-
-                  ? (
-                      module.descEn ||
-                      module.descBn ||
-                      module.desc ||
-                      ""
-                    )
-
-                  : (
-                      module.descBn ||
-                      module.descEn ||
-                      module.desc ||
-                      ""
-                    );
-
-
-              const lessons =
-
-                currentLanguage === "en"
-
-                  ? (
-                      module.lessonsEn ||
-                      module.lessonsBn ||
-                      module.lessons ||
-                      []
-                    )
-
-                  : (
-                      module.lessonsBn ||
-                      module.lessonsEn ||
-                      module.lessons ||
-                      []
-                    );
-
-
-              return `
-
-                <details
-                  class="module"
-                  ${index === 0 ? "open" : ""}
-                >
-
-                  <summary>
-
-                    <span class="module-number">
-                      ${String(index + 1).padStart(2,"0")}
-                    </span>
-
-                    <span class="module-title">
-                      ${escapeHtml(title)}
-                    </span>
-
-                    <span class="module-arrow">
-                      ▼
-                    </span>
-
-                  </summary>
-
-
-                  <div class="module-body">
-
-                    ${
-                      description
-                        ? escapeHtml(
-                            description
-                          ).replace(
-                            /\n/g,
-                            "<br>"
-                          )
-                        : ""
-                    }
-
-
-                    ${
-                      safeArray(
-                        lessons
-                      ).length
-
-                        ? `
-
-                          <div class="lesson-list">
-
-                            ${
-                              safeArray(
-                                lessons
-                              )
-                              .map(
-                                lesson => {
-
-                                  let text =
-                                    lesson;
-
-                                  if (
-                                    typeof lesson ===
-                                    "object"
-                                  ) {
-
-                                    text =
-                                      lesson.title ||
-                                      lesson.text ||
-                                      "";
-
-                                  }
-
-                                  return `
-
-                                    <div class="lesson">
-                                      ${escapeHtml(text)}
-                                    </div>
-
-                                  `;
-
-                                }
-                              )
-                              .join("")
-                            }
-
-                          </div>
-
-                        `
-
-                        : ""
-                    }
-
-                  </div>
-
-                </details>
-
-              `;
-
-            }
-          )
-          .join("");
-
-    }
-
-
-    /* =====================================================
-       CHECKOUT
-       ===================================================== */
-
-    function setupCheckout(
-      data,
-      documentId
-    ) {
-
-      const price =
-        data.priceNew ??
-        data.price ??
-        data.currentPrice ??
-        "";
-
-
-      const old =
-        data.priceOld ??
-        data.oldPrice ??
-        data.regularPrice ??
-        "";
-
-
-      const slug =
-        data.slug ||
-        documentId;
-
-
-      const params =
-        new URLSearchParams();
-
-
-      params.set(
-        "course",
-        documentId
-      );
-
-
-      if (price !== "") {
-
-        params.set(
-          "price",
-          String(price)
-        );
-
-      }
-
-
-      if (old !== "") {
-
-        params.set(
-          "old",
-          String(old)
-        );
-
-      }
-
-
-      if (slug) {
-
-        params.set(
-          "slug",
-          String(slug)
-        );
-
-      }
-
-
-      const url =
-        `/checkout/?${params.toString()}`;
-
-
-      [
-
-        "#heroEnrollBtn",
-        "#cardEnrollBtn",
-        "#sidebarEnrollBtn",
-        "#mobileEnrollBtn"
-
-      ].forEach(
-        selector => {
-
-          const element =
-            $(selector);
-
-          if (element) {
-
-            element.href =
-              url;
-
-          }
-
-        }
-      );
-
-    }
-
-
-    /* =====================================================
-       WHATSAPP
-       ===================================================== */
-
-    function setupWhatsApp(data) {
-
-      const title =
-        getText(
-          data,
-          "titleBn",
-          "titleEn",
-          "title"
-        );
-
-
-      const message =
-
-        currentLanguage === "en"
-
-          ? `Hello SNK IT Institute. I want to know more about "${title}".`
-
-          : `আসসালামু আলাইকুম। আমি "${title}" কোর্স সম্পর্কে বিস্তারিত জানতে চাই।`;
-
-
-      const url =
-        `https://wa.me/${WHATSAPP}?text=` +
-        encodeURIComponent(
-          message
-        );
-
-
-      [
-
-        "#heroWhatsAppBtn",
-        "#cardWhatsAppBtn",
-        "#sidebarWhatsAppBtn"
-
-      ].forEach(
-        selector => {
-
-          const element =
-            $(selector);
-
-          if (element) {
-
-            element.href =
-              url;
-
-          }
-
-        }
-      );
-
-    }
-
-
-    /* =====================================================
-       SEO
-       ===================================================== */
-
-    function updateSEO(data) {
-
-      const title =
-        getText(
-          data,
-          "titleBn",
-          "titleEn",
-          "title"
-        ) ||
-        "Course";
-
-
-      const description =
-        getText(
-          data,
-          "descBn",
-          "descEn",
-          "desc"
-        ) ||
-        "SNK IT Institute course details";
-
-
-      document.title =
-        `${title} | SNK IT Institute`;
-
-
-      const descriptionMeta =
-        document.querySelector(
-          'meta[name="description"]'
-        );
-
-
-      if (
-        descriptionMeta
-      ) {
-
-        descriptionMeta.content =
-          description;
-
-      }
-
-
-      $("#canonicalUrl")
-        .href =
-        window.location.href;
-
-
-      $("#ogUrl")
-        .content =
-        window.location.href;
-
-
-      document
-        .querySelector(
-          'meta[property="og:title"]'
-        )
-        .content =
-        title;
-
-
-      document
-        .querySelector(
-          'meta[property="og:description"]'
-        )
-        .content =
-        description;
-
-
-      if (
-        data.image
-      ) {
-
-        $("#ogImage")
-          .content =
-          data.image;
-
-      }
-
-
-      /* JSON-LD */
-
-      const oldSchema =
-        document.getElementById(
-          "courseSchema"
-        );
-
-
-      if (oldSchema) {
-
-        oldSchema.remove();
-
-      }
-
-
-      const schema = {
-
-        "@context":
-          "https://schema.org",
-
-        "@type":
-          "Course",
-
-        "name":
-          title,
-
-        "description":
-          description,
-
-        "provider": {
-
-          "@type":
-            "Organization",
-
-          "name":
-            "SNK IT Institute",
-
-          "url":
-            "https://snkitinstitute.github.io/"
-
-        }
-
-      };
-
-
-      const price =
-        data.priceNew;
-
-
-      if (
-        price !== undefined &&
-        price !== null &&
-        price !== ""
-      ) {
-
-        schema.offers = {
-
-          "@type":
-            "Offer",
-
-          "price":
-            String(price)
-              .replace(
-                /[^\d.]/g,
-                ""
-              ),
-
-          "priceCurrency":
-            "BDT",
-
-          "availability":
-            "https://schema.org/InStock"
-
-        };
-
-      }
-
-
-      const script =
-        document.createElement(
-          "script"
-        );
-
-
-      script.type =
-        "application/ld+json";
-
-
-      script.id =
-        "courseSchema";
-
-
-      script.textContent =
-        JSON.stringify(
-          schema
-        );
-
-
-      document.head.appendChild(
-        script
-      );
-
-    }
-
-
-    /* =====================================================
-       RENDER EVERYTHING
-       ===================================================== */
-
-    function renderCourse(
-      data,
-      documentId
-    ) {
-
-      currentCourse =
-        data;
-
-
-      renderTitle(data);
-
-      renderTag(data);
-
-      renderDescription(data);
-
-      renderMeta(data);
-
-      renderQuickInfo(data);
-
-      renderImage(data);
-
-      renderPrice(data);
-
-      renderLearning(data);
-
-      renderModules(data);
-
-      setupCheckout(
-        data,
-        documentId
-      );
-
-      setupWhatsApp(data);
-
-      updateSEO(data);
-
-    }
-
-
-    /* =====================================================
-       LOAD
-       ===================================================== */
-
-    async function loadCourse() {
-
-      showLoading();
-
-
-      if (!db) {
-
-        showError(
-          "Firebase database connection পাওয়া যায়নি।"
-        );
-
-        return;
-
-      }
-
-
-      try {
-
-        const result =
-          await findCourse();
-
-
-        if (!result) {
-
-          showNotFound();
-
-          return;
-
-        }
-
-
-        console.log(
-          "COURSE FOUND:",
-          result.id,
-          result.data
-        );
-
-
-        renderCourse(
-          result.data,
-          result.id
-        );
-
-
-        showCourse();
-
-
-      } catch (error) {
-
-        console.error(
-          "COURSE ERROR:",
-          error
-        );
-
-
-        if (
-          error.code ===
-          "permission-denied"
-        ) {
-
-          showError(
-            "Firestore permission denied। Firebase Firestore Rules চেক করুন।"
-          );
-
-          return;
-
-        }
-
-
-        showError(
-          "Course data load করা যায়নি। Firebase configuration অথবা Firestore data চেক করুন।"
-        );
-
-      }
-
-    }
-
-
-    /* =====================================================
-       LANGUAGE
-       ===================================================== */
-
-    function updateLanguageButton() {
-
-      const button =
-        $("#languageBtn");
-
-
-      if (
-        currentLanguage ===
-        "bn"
-      ) {
-
-        button.textContent =
-          "EN";
-
-      } else {
-
-        button.textContent =
-          "বাং";
-
-      }
-
-    }
-
-
-    $("#languageBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-          currentLanguage =
-            currentLanguage === "bn"
-              ? "en"
-              : "bn";
-
-
-          localStorage.setItem(
-            "snkCourseLanguage",
-            currentLanguage
-          );
-
-
-          updateLanguageButton();
-
-
-          if (
-            currentCourse
-          ) {
-
-            const params =
-              getParameters();
-
-
-            renderCourse(
-              currentCourse,
-              params.id ||
-              currentCourse.id ||
-              getCourseIdFromURL()
-            );
-
-          }
-
-        }
-      );
-
-
-    function getCourseIdFromURL() {
-
-      const params =
-        getParameters();
-
-
-      return (
-        params.id ||
-        params.slug ||
-        ""
-      );
-
-    }
-
-
-    updateLanguageButton();
-
-
-    /* =====================================================
-       MOBILE MENU
-       ===================================================== */
-
-    $("#mobileToggle")
-      .addEventListener(
-        "click",
-        () => {
-
-          const menu =
-            $("#mobileMenu");
-
-          const button =
-            $("#mobileToggle");
-
-
-          const isOpen =
-            menu.classList.toggle(
-              "open"
-            );
-
-
-          button.setAttribute(
-            "aria-expanded",
-            String(isOpen)
-          );
-
-
-          button.textContent =
-            isOpen
-              ? "✕"
-              : "☰";
-
-        }
-      );
-
-
-    document
-      .querySelectorAll(
-        "#mobileMenu a"
-      )
-      .forEach(
-        link => {
-
-          link.addEventListener(
-            "click",
-            () => {
-
-              $("#mobileMenu")
-                .classList.remove(
-                  "open"
-                );
-
-
-              $("#mobileToggle")
-                .textContent =
-                "☰";
-
-
-              $("#mobileToggle")
-                .setAttribute(
-                  "aria-expanded",
-                  "false"
-                );
-
-            }
-          );
-
-        }
-      );
-
-
-    /* =====================================================
-       SHARE
-       ===================================================== */
-
-    async function shareCourse() {
-
-      const title =
-        currentCourse
-
-          ? getText(
-              currentCourse,
-              "titleBn",
-              "titleEn",
-              "title"
-            )
-
-          : "SNK IT Institute Course";
-
-
-      try {
-
-        if (
-          navigator.share
-        ) {
-
-          await navigator.share({
-
-            title,
-
-            text:
-              `${title} — SNK IT Institute`,
-
-            url:
-              window.location.href
-
-          });
-
-          return;
-
-        }
-
-
-        await navigator
-          .clipboard
-          .writeText(
-            window.location.href
-          );
-
-
-        showToast(
-          "Course link copied ✓"
-        );
-
-
-      } catch (error) {
-
-        console.log(
-          "Share cancelled"
-        );
-
-      }
-
-    }
-
-
-    $("#shareBtn")
-      .addEventListener(
-        "click",
-        shareCourse
-      );
-
-
-    $("#heroShareBtn")
-      .addEventListener(
-        "click",
-        shareCourse
-      );
-
-
-    /* =====================================================
-       COUNSELOR
-       ===================================================== */
-
-    $("#counselorTrigger")
-      .addEventListener(
-        "click",
-        () => {
-
-          const panel =
-            $("#counselorPanel");
-
-
-          const button =
-            $("#counselorTrigger");
-
-
-          const open =
-            panel.classList.toggle(
-              "show"
-            );
-
-
-          button.setAttribute(
-            "aria-expanded",
-            String(open)
-          );
-
-        }
-      );
-
-
-    document.addEventListener(
-      "click",
-      event => {
-
-        if (
-          !event.target.closest(
-            ".counselor"
-          )
-        ) {
-
-          $("#counselorPanel")
-            .classList.remove(
-              "show"
-            );
-
-        }
-
-      }
-    );
-
-
-    /* =====================================================
-       TOAST
-       ===================================================== */
-
-    function showToast(
-      message
-    ) {
-
-      const toast =
-        $("#toast");
-
-
-      toast.textContent =
-        message;
-
-
-      toast.classList.add(
-        "show"
-      );
-
-
-      clearTimeout(
-        window.__toastTimer
-      );
-
-
-      window.__toastTimer =
-        setTimeout(
-          () => {
-
-            toast.classList.remove(
-              "show"
-            );
-
-          },
-          2500
-        );
-
+      margin-top: 18px;
     }
-
-
-    /* =====================================================
-       YEAR
-       ===================================================== */
-
-    $("#year")
-      .textContent =
-      new Date()
-        .getFullYear();
-
-
-    /* =====================================================
-       ESC KEY
-       ===================================================== */
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key ===
-          "Escape"
-        ) {
-
-          $("#mobileMenu")
-            .classList.remove(
-              "open"
-            );
-
-          $("#counselorPanel")
-            .classList.remove(
-              "show"
-            );
-
-        }
-
-      }
-    );
-
-
-    /* =====================================================
-       START
-       ===================================================== */
 
-    loadCourse();
+    .meta-item {
+      padding: 6px 9px;
 
-  </script>
+      color: #aaa;
+      background: rgba(255,255,255,.04);
 
-</body>
-</html>
+      border: 1px solid rgba(255,255,255,.06);
+     
