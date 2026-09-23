@@ -1,103 +1,858 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ধন্যবাদ | SNK IT Institute</title>
 
-  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+  <meta
+    name="description"
+    content="আপনার Admission Request সফলভাবে জমা হয়েছে — SNK IT Institute"
+  >
+
+  <meta name="theme-color" content="#050505">
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
 
   <style>
 
-    *{ margin:0; padding:0; box-sizing:border-box; }
+    /* =========================================================
+       SNK IT INSTITUTE
+       PREMIUM ADMISSION SUCCESS PAGE
+    ========================================================= */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --bg:#050505;
+      --card:#0b0b0b;
+      --card-2:#101010;
+
+      --text:#ffffff;
+      --muted:#a1a1a1;
+      --dim:#696969;
+
+      --border:#191919;
+      --border-2:#292929;
+
+      --lime:#b7ff00;
+      --lime-soft:rgba(183,255,0,.08);
+      --lime-border:rgba(183,255,0,.28);
+
+      --green:#25d366;
+    }
 
     body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:#050505;
-      color:#fff;
       min-height:100vh;
+
       display:flex;
       align-items:center;
       justify-content:center;
+
+      padding:35px 20px;
+
+      background:
+        radial-gradient(
+          circle at 50% 35%,
+          rgba(183,255,0,.075),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 15% 85%,
+          rgba(183,255,0,.035),
+          transparent 25%
+        ),
+        #050505;
+
+      color:var(--text);
+
+      font-family:
+        "Hind Siliguri",
+        "Inter",
+        Arial,
+        sans-serif;
+
+      overflow-x:hidden;
+    }
+
+
+    /* =========================================================
+       TOP LINE
+    ========================================================= */
+
+    body::before{
+      content:"";
+
+      position:fixed;
+
+      top:0;
+      left:0;
+
+      width:100%;
+      height:3px;
+
+      background:var(--lime);
+
+      box-shadow:
+        0 0 25px rgba(183,255,0,.4);
+
+      z-index:100;
+    }
+
+
+    /* =========================================================
+       BACKGROUND GRID
+    ========================================================= */
+
+    .background-grid{
+      position:fixed;
+      inset:0;
+
+      pointer-events:none;
+
+      opacity:.28;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.022) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.022) 1px,
+          transparent 1px
+        );
+
+      background-size:60px 60px;
+
+      mask-image:
+        radial-gradient(
+          ellipse at center,
+          black 0%,
+          transparent 72%
+        );
+    }
+
+
+    /* =========================================================
+       MAIN CARD
+    ========================================================= */
+
+    .page{
+      width:100%;
+      max-width:650px;
+
+      position:relative;
+
+      z-index:2;
+
+      animation:
+        pageIn .7s ease both;
+    }
+
+    @keyframes pageIn{
+
+      from{
+        opacity:0;
+        transform:translateY(25px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+
+    .success-card{
+      position:relative;
+
+      padding:48px 45px 42px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.025),
+          rgba(255,255,255,.008)
+        ),
+        var(--card);
+
+      border:1px solid var(--border-2);
+
+      border-radius:25px;
+
       text-align:center;
-      padding:25px;
+
+      box-shadow:
+        0 35px 100px rgba(0,0,0,.5);
+
+      overflow:hidden;
     }
 
-    a{ text-decoration:none; color:inherit; }
 
-    .box{ max-width:480px; }
+    .success-card::before{
+      content:"";
 
-    .icon{
-      width:70px; height:70px; margin:0 auto 22px;
-      display:grid; place-items:center;
-      background:rgba(183,255,0,.1);
-      border:1px solid rgba(183,255,0,.3);
+      position:absolute;
+
+      width:300px;
+      height:300px;
+
+      left:50%;
+      top:-180px;
+
+      transform:translateX(-50%);
+
       border-radius:50%;
-      font-size:32px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.13),
+          transparent 70%
+        );
+
+      pointer-events:none;
     }
 
-    h1{ font-size:26px; margin-bottom:14px; }
 
-    p{ color:#999; font-size:14px; line-height:1.8; margin-bottom:26px; }
+    /* =========================================================
+       LOGO
+    ========================================================= */
+
+    .logo{
+      position:relative;
+
+      width:125px;
+
+      margin:0 auto 28px;
+
+      opacity:.95;
+    }
+
+
+    /* =========================================================
+       SUCCESS ICON
+    ========================================================= */
+
+    .success-icon-wrap{
+      position:relative;
+
+      width:82px;
+      height:82px;
+
+      margin:0 auto 25px;
+
+      display:grid;
+      place-items:center;
+    }
+
+
+    .success-icon-ring{
+      position:absolute;
+      inset:0;
+
+      border-radius:50%;
+
+      border:1px solid var(--lime-border);
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.12),
+          rgba(183,255,0,.035) 60%,
+          transparent
+        );
+
+      box-shadow:
+        0 0 50px rgba(183,255,0,.09);
+
+      animation:
+        ringIn .8s ease .15s both;
+    }
+
+
+    .success-icon-ring::before{
+      content:"";
+
+      position:absolute;
+      inset:-8px;
+
+      border-radius:50%;
+
+      border:1px solid rgba(183,255,0,.08);
+    }
+
+
+    .check{
+      position:relative;
+
+      width:38px;
+      height:38px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:50%;
+
+      background:var(--lime);
+
+      color:#050505;
+
+      font-family:"Inter",sans-serif;
+
+      font-size:20px;
+      font-weight:900;
+
+      box-shadow:
+        0 0 30px rgba(183,255,0,.22);
+
+      animation:
+        checkIn .6s cubic-bezier(.2,.8,.2,1) .35s both;
+    }
+
+
+    @keyframes ringIn{
+
+      from{
+        opacity:0;
+        transform:scale(.65);
+      }
+
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+
+    }
+
+
+    @keyframes checkIn{
+
+      from{
+        opacity:0;
+        transform:scale(.4);
+      }
+
+      70%{
+        transform:scale(1.12);
+      }
+
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+
+    }
+
+
+    /* =========================================================
+       TEXT
+    ========================================================= */
+
+    .eyebrow{
+      color:var(--lime);
+
+      font-family:"Inter",sans-serif;
+
+      font-size:9px;
+      font-weight:800;
+
+      letter-spacing:2px;
+
+      margin-bottom:10px;
+    }
+
+
+    h1{
+      position:relative;
+
+      font-size:
+        clamp(28px,6vw,42px);
+
+      line-height:1.2;
+
+      letter-spacing:-1px;
+
+      margin-bottom:15px;
+
+      font-weight:800;
+    }
+
+
+    h1 span{
+      color:var(--lime);
+    }
+
+
+    .intro{
+      max-width:510px;
+
+      margin:0 auto;
+
+      color:var(--muted);
+
+      font-size:14px;
+
+      line-height:1.9;
+    }
+
+
+    .intro strong{
+      color:#fff;
+      font-weight:700;
+    }
+
+
+    /* =========================================================
+       NEXT STEP BOX
+    ========================================================= */
+
+    .next-step{
+      position:relative;
+
+      margin:28px 0 23px;
+
+      padding:19px 20px;
+
+      text-align:left;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.07),
+          rgba(183,255,0,.025)
+        );
+
+      border:1px solid var(--lime-border);
+
+      border-radius:14px;
+    }
+
+
+    .next-step-title{
+      display:flex;
+      align-items:center;
+
+      gap:9px;
+
+      margin-bottom:7px;
+
+      color:var(--lime);
+
+      font-size:12px;
+      font-weight:800;
+    }
+
+
+    .next-step p{
+      color:var(--muted);
+
+      font-size:12px;
+
+      line-height:1.8;
+    }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
 
     .buttons{
-      display:flex; flex-direction:column; gap:10px;
-      margin-bottom:20px;
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:10px;
+
+      margin-top:23px;
     }
 
+
     .btn{
-      display:block; padding:14px 20px;
-      border-radius:9px; font-size:13.5px; font-weight:800;
+      min-height:50px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      gap:7px;
+
+      padding:0 18px;
+
+      border-radius:10px;
+
+      font-family:"Inter","Hind Siliguri",sans-serif;
+
+      font-size:11px;
+      font-weight:800;
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+    }
+
+
+    .btn-primary{
+      background:var(--lime);
+
+      color:#050505;
+
+      border:1px solid var(--lime);
+    }
+
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+
+      box-shadow:
+        0 14px 35px rgba(183,255,0,.2);
+    }
+
+
+    .btn-secondary{
+      background:var(--card-2);
+
+      color:#fff;
+
+      border:1px solid var(--border-2);
+    }
+
+
+    .btn-secondary:hover{
+      transform:translateY(-3px);
+
+      border-color:var(--lime);
+
+      color:var(--lime);
+    }
+
+
+    /* =========================================================
+       WHATSAPP
+    ========================================================= */
+
+    .whatsapp-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      gap:7px;
+
+      margin-top:22px;
+
+      color:#777;
+
+      font-size:11px;
+
       transition:.3s;
     }
 
-    .btn-primary{ background:#b7ff00; color:#050505; }
-    .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 35px rgba(183,255,0,.20); }
 
-    .btn-secondary{ border:1px solid #292929; color:#fff; }
-    .btn-secondary:hover{ border-color:#b7ff00; color:#b7ff00; }
+    .whatsapp-link:hover{
+      color:var(--green);
+    }
 
-    .back-link{ color:#666; font-size:12.5px; }
-    .back-link:hover{ color:#b7ff00; }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .mini-footer{
+      margin-top:23px;
+
+      color:#505050;
+
+      font-family:"Inter",sans-serif;
+
+      font-size:9px;
+
+      letter-spacing:.2px;
+    }
+
+
+    .mini-footer span{
+      color:#777;
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media(max-width:600px){
+
+      body{
+        padding:20px 14px;
+      }
+
+
+      .success-card{
+        padding:38px 22px 32px;
+
+        border-radius:20px;
+      }
+
+
+      .logo{
+        width:110px;
+
+        margin-bottom:25px;
+      }
+
+
+      .success-icon-wrap{
+        width:74px;
+        height:74px;
+
+        margin-bottom:22px;
+      }
+
+
+      .check{
+        width:34px;
+        height:34px;
+
+        font-size:18px;
+      }
+
+
+      h1{
+        font-size:29px;
+
+        letter-spacing:-.5px;
+      }
+
+
+      .intro{
+        font-size:13px;
+      }
+
+
+      .next-step{
+        padding:17px;
+      }
+
+
+      .buttons{
+        grid-template-columns:1fr;
+      }
+
+
+      .btn{
+        min-height:48px;
+      }
+
+    }
+
+
+    @media(max-width:360px){
+
+      .success-card{
+        padding:32px 17px 28px;
+      }
+
+      h1{
+        font-size:26px;
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media(prefers-reduced-motion:reduce){
+
+      *,
+      *::before,
+      *::after{
+        animation:none !important;
+        transition:none !important;
+      }
+
+    }
 
   </style>
+
 </head>
+
 
 <body>
 
-  <div class="box">
 
-    <div class="icon">✓</div>
+  <div class="background-grid"></div>
 
-    <h1>আবেদন জমা হয়েছে!</h1>
 
-    <p>
-      আপনার Admission Request সফলভাবে জমা হয়েছে।
-      আমাদের team শীঘ্রই আপনার তথ্য যাচাই করে
-      WhatsApp-এ যোগাযোগ করবে।
-      <br><br>
-      নিজের আবেদনের status যেকোনো সময় দেখতে চাইলে,
-      নিচে থেকে একটা Student Account বানিয়ে নিন —
-      <strong style="color:#fff;">ঠিক এই একই Email</strong> ব্যবহার করবেন।
-    </p>
+  <main class="page">
 
-    <div class="buttons">
 
-      <a href="/signup/" class="btn btn-primary">
-        Student Account তৈরি করুন →
+    <section class="success-card">
+
+
+      <!-- LOGO -->
+
+      <img
+        class="logo"
+        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg"
+        alt="SNK IT Institute"
+      >
+
+
+      <!-- SUCCESS ICON -->
+
+      <div class="success-icon-wrap">
+
+        <div class="success-icon-ring"></div>
+
+        <div class="check">
+          ✓
+        </div>
+
+      </div>
+
+
+      <!-- TITLE -->
+
+      <div class="eyebrow">
+        ADMISSION REQUEST RECEIVED
+      </div>
+
+
+      <h1>
+        আবেদন <span>জমা হয়েছে!</span>
+      </h1>
+
+
+      <p class="intro">
+
+        আপনার Admission Request সফলভাবে জমা হয়েছে।
+        আমাদের team আপনার তথ্য যাচাই করে
+        শীঘ্রই WhatsApp-এ আপনার সাথে যোগাযোগ করবে।
+
+        <br><br>
+
+        নিজের আবেদনের status যেকোনো সময় দেখতে চাইলে,
+        নিচের button থেকে একটি
+        <strong>Student Account</strong>
+        তৈরি করুন।
+
+        <br>
+
+        <strong>
+          অবশ্যই আপনার Admission Form-এ দেওয়া একই Email ব্যবহার করবেন।
+        </strong>
+
+      </p>
+
+
+      <!-- NEXT STEP -->
+
+      <div class="next-step">
+
+        <div class="next-step-title">
+
+          <span>✓</span>
+
+          পরবর্তী ধাপ
+
+        </div>
+
+
+        <p>
+
+          Student Account তৈরি করার পর আপনার admission
+          information এবং ভবিষ্যতের learning activity
+          একই account থেকে পরিচালনা করতে পারবেন।
+
+        </p>
+
+      </div>
+
+
+      <!-- BUTTONS -->
+
+      <div class="buttons">
+
+
+        <a
+          href="/signup/"
+          class="btn btn-primary"
+        >
+          Student Account তৈরি করুন →
+        </a>
+
+
+        <a
+          href="/"
+          class="btn btn-secondary"
+        >
+          ← হোমে ফিরে যান
+        </a>
+
+
+      </div>
+
+
+      <!-- WHATSAPP -->
+
+      <a
+        href="https://wa.me/8801705633700"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-link"
+      >
+
+        <span>💬</span>
+
+        অথবা সরাসরি WhatsApp-এ যোগাযোগ করুন
+
       </a>
 
-      <a href="/" class="btn btn-secondary">
-        হোমে ফিরে যান
-      </a>
 
-    </div>
+      <!-- FOOTER -->
 
-    <a href="https://wa.me/8801705633700" target="_blank" rel="noopener noreferrer" class="back-link">
-      অথবা সরাসরি WhatsApp-এ যোগাযোগ করুন
-    </a>
+      <div class="mini-footer">
 
-  </div>
+        © 2026 SNK IT Institute
+        <span>•</span>
+        Learn To Lead
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
 
 </body>
 </html>
