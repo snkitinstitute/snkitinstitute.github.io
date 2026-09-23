@@ -3,149 +3,303 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Login | SNK IT Institute</title>
+  <title>Admin Dashboard | SNK IT Institute</title>
 
   <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
 
   <style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+    *{ margin:0; padding:0; box-sizing:border-box; }
 
     body{
       font-family:Arial, Helvetica, sans-serif;
       background:#050505;
       color:#fff;
-      min-height:100vh;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      padding:25px;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    .login-box{
-      width:100%;
-      max-width:380px;
-
-      background:#0b0b0b;
-      border:1px solid #202020;
-      border-radius:18px;
-
-      padding:36px 32px;
-
-      box-shadow:0 25px 70px rgba(0,0,0,.3);
-    }
-
-    .logo{
-      width:110px;
-      margin:0 auto 24px;
-    }
-
-    .login-box h1{
-      font-size:22px;
-      text-align:center;
-      margin-bottom:6px;
-    }
-
-    .login-box p.sub{
-      color:#777;
-      font-size:13px;
-      text-align:center;
-      margin-bottom:28px;
-    }
-
-    .form-group{
-      display:flex;
-      flex-direction:column;
-      gap:7px;
-      margin-bottom:16px;
-    }
-
-    .form-group label{
-      color:#ddd;
-      font-size:13px;
-      font-weight:700;
-    }
-
-    .form-group input{
-      width:100%;
-      border:1px solid #292929;
-      outline:none;
-      background:#101010;
-      color:#fff;
-      border-radius:9px;
-      padding:13px 14px;
-      font-size:13px;
-      transition:.3s;
-    }
-
-    .form-group input:focus{
-      border-color:rgba(183,255,0,.55);
-      box-shadow:0 0 0 3px rgba(183,255,0,.05);
-    }
-
-    .login-button{
-      width:100%;
-      margin-top:8px;
-      padding:14px;
-      border:0;
-      border-radius:9px;
-      background:#b7ff00;
-      color:#050505;
-      font-size:14px;
-      font-weight:900;
-      cursor:pointer;
-      transition:.3s;
-    }
-
-    .login-button:hover{
-      transform:translateY(-2px);
-      box-shadow:0 12px 35px rgba(183,255,0,.20);
-    }
-
-    .login-button:disabled{
-      opacity:.6;
-      cursor:not-allowed;
-      transform:none;
-      box-shadow:none;
-    }
-
-    .error-box{
-      display:none;
-      margin-bottom:16px;
-      padding:12px 14px;
-      background:rgba(255,80,80,.08);
-      border:1px solid rgba(255,80,80,.3);
-      border-radius:9px;
-      color:#ff8080;
-      font-size:12.5px;
       line-height:1.6;
     }
 
-    .error-box.show{
-      display:block;
+    a{ text-decoration:none; color:inherit; }
+    button, input, textarea{ font:inherit; }
+
+    .container{ width:min(1100px,94%); margin:auto; }
+
+    /* HEADER */
+
+    .admin-header{
+      position:sticky; top:0; z-index:999;
+      background:rgba(5,5,5,.96);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid #181818;
+      padding:16px 0;
     }
 
-    .back-link{
-      display:block;
-      text-align:center;
-      margin-top:22px;
-      color:#777;
+    .admin-header .container{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+
+    .admin-brand{ display:flex; align-items:center; gap:10px; }
+    .admin-brand img{ width:36px; height:36px; }
+    .admin-brand span{ font-weight:800; font-size:15px; }
+
+    .logout-btn{
+      padding:9px 16px;
+      border:1px solid #292929;
+      border-radius:8px;
+      background:#101010;
+      color:#fff;
       font-size:12.5px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.3s;
+    }
+    .logout-btn:hover{ border-color:#ff8080; color:#ff8080; }
+
+    /* TOAST NOTIFICATION */
+
+    .toast{
+      position:fixed;
+      top:20px;
+      right:20px;
+      z-index:99999;
+      padding:14px 20px;
+      border-radius:10px;
+      font-size:13px;
+      font-weight:700;
+      box-shadow:0 15px 40px rgba(0,0,0,.35);
+      transform:translateX(120%);
+      transition:transform .35s ease;
+      max-width:320px;
     }
 
-    .back-link:hover{
+    .toast.show{
+      transform:translateX(0);
+    }
+
+    .toast.success{
+      background:#0f2e0f;
+      border:1px solid #4ade80;
+      color:#4ade80;
+    }
+
+    .toast.error{
+      background:#2e0f0f;
+      border:1px solid #ff8080;
+      color:#ff8080;
+    }
+
+    @media(max-width:600px){
+      .toast{
+        left:16px;
+        right:16px;
+        top:16px;
+        max-width:none;
+      }
+    }
+
+    /* LOADING GATE */
+
+    .auth-gate{
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      color:#777; font-size:14px;
+    }
+
+    .dashboard-body{ display:none; padding:30px 0 80px; }
+
+    /* TABS */
+
+    .tabs{
+      display:flex; gap:10px; margin-bottom:26px;
+      border-bottom:1px solid #181818;
+    }
+
+    .tab-btn{
+      padding:12px 18px;
+      background:none; border:0;
+      color:#777; font-size:14px; font-weight:700;
+      cursor:pointer;
+      border-bottom:2px solid transparent;
+      transition:.3s;
+    }
+
+    .tab-btn.active{ color:#b7ff00; border-color:#b7ff00; }
+
+    .tab-panel{ display:none; }
+    .tab-panel.active{ display:block; }
+
+    /* SECTION HEADER */
+
+    .section-head{
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:20px; flex-wrap:wrap; gap:10px;
+    }
+
+    .section-head h2{ font-size:19px; }
+    .section-head span{ color:#777; font-size:12.5px; }
+
+    .primary-btn{
+      padding:11px 18px;
+      background:#b7ff00; color:#050505;
+      border:0; border-radius:8px;
+      font-size:13px; font-weight:800;
+      cursor:pointer; transition:.3s;
+    }
+    .primary-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(183,255,0,.2); }
+
+    /* POST FORM */
+
+    .post-form{
+      display:none;
+      background:#0b0b0b; border:1px solid #202020; border-radius:16px;
+      padding:24px; margin-bottom:24px;
+    }
+    .post-form.open{ display:block; }
+
+    .form-row{ display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
+    .form-row label{ font-size:12.5px; font-weight:700; color:#ddd; }
+
+    .form-row input, .form-row textarea{
+      width:100%; border:1px solid #292929; outline:none;
+      background:#101010; color:#fff; border-radius:9px;
+      padding:12px 13px; font-size:13px; transition:.3s;
+    }
+    .form-row input:focus, .form-row textarea:focus{
+      border-color:rgba(183,255,0,.5); box-shadow:0 0 0 3px rgba(183,255,0,.05);
+    }
+    .form-row textarea{ min-height:80px; resize:vertical; }
+    .form-row .hint{ color:#666; font-size:11px; }
+
+    .form-actions{ display:flex; gap:10px; margin-top:6px; }
+
+    .module-row{
+      display:flex; gap:8px; margin-bottom:8px; align-items:flex-start;
+    }
+    .module-row input{
+      border:1px solid #292929; outline:none; background:#101010; color:#fff;
+      border-radius:9px; padding:10px 12px; font-size:12.5px;
+    }
+    .module-row .mod-title{ flex:0.9; }
+    .module-row .mod-desc{ flex:1.4; }
+    .module-row .remove-module-btn{
+      flex-shrink:0; width:34px; height:38px;
+      border:1px solid #292929; background:#101010; color:#999;
+      border-radius:8px; cursor:pointer; font-size:14px; transition:.3s;
+    }
+    .module-row .remove-module-btn:hover{ border-color:#ff8080; color:#ff8080; }
+
+    .secondary-btn{
+      padding:11px 18px;
+      background:none; color:#999;
+      border:1px solid #292929; border-radius:8px;
+      font-size:13px; font-weight:700;
+      cursor:pointer; transition:.3s;
+    }
+    .secondary-btn:hover{ border-color:#555; color:#fff; }
+
+    /* POST LIST */
+
+    .post-item{
+      display:flex; gap:16px; align-items:flex-start;
+      background:#0b0b0b; border:1px solid #202020; border-radius:14px;
+      padding:16px; margin-bottom:12px;
+    }
+    .post-item img{
+      width:80px; height:60px; object-fit:cover; border-radius:8px;
+      background:#161616; flex-shrink:0;
+    }
+    .post-item .post-info{ flex:1; min-width:0; }
+    .post-item h3{ font-size:14.5px; margin-bottom:4px; }
+    .post-item p{ color:#888; font-size:12.5px; }
+    .post-item .post-actions{ display:flex; gap:8px; flex-shrink:0; }
+
+    .icon-btn{
+      width:32px; height:32px; border-radius:7px;
+      border:1px solid #292929; background:#101010; color:#999;
+      cursor:pointer; font-size:13px; transition:.3s;
+    }
+    .icon-btn:hover{ border-color:#b7ff00; color:#b7ff00; }
+    .icon-btn.danger:hover{ border-color:#ff8080; color:#ff8080; }
+
+    .empty-note{ color:#666; font-size:13px; padding:20px; text-align:center; }
+
+    /* STUDENT TABLE */
+
+    .student-list{ display:flex; flex-direction:column; gap:10px; }
+
+    .student-card{
+      background:#0b0b0b; border:1px solid #202020; border-radius:14px;
+      padding:16px 18px;
+      display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr auto; gap:14px; align-items:center;
+    }
+
+    .student-card .s-name, .payment-card .s-name{ font-weight:700; font-size:13.5px; }
+    .student-card .s-sub, .payment-card .s-sub{ color:#777; font-size:11.5px; margin-top:2px; }
+    .student-card .s-field, .payment-card .s-field{ font-size:12.5px; color:#ccc; }
+    .student-card .s-field span, .payment-card .s-field span{ display:block; color:#666; font-size:10.5px; margin-bottom:2px; }
+
+    @media(max-width:800px){
+      .student-card{ grid-template-columns:1fr 1fr; }
+    }
+
+    /* PAYMENTS */
+
+    .payment-card{
+      background:#0b0b0b; border:1px solid #202020; border-radius:14px;
+      padding:16px 18px;
+      display:grid; grid-template-columns:1.1fr 1.1fr 0.9fr 0.8fr auto; gap:14px; align-items:center;
+    }
+
+    .payment-card .p-actions{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+
+    .status-pill{
+      display:inline-block; padding:5px 11px; border-radius:50px;
+      font-size:11px; font-weight:800;
+    }
+    .status-pill.pending{ background:rgba(255,157,92,.1); color:#ff9d5c; border:1px solid rgba(255,157,92,.3); }
+    .status-pill.confirmed{ background:rgba(74,222,128,.1); color:#4ade80; border:1px solid rgba(74,222,128,.3); }
+    .status-pill.cancelled{ background:rgba(255,128,128,.1); color:#ff8080; border:1px solid rgba(255,128,128,.3); }
+
+    .confirm-btn.cancel-variant{
+      border-color:rgba(255,128,128,.4);
+      background:rgba(255,128,128,.08);
+      color:#ff8080;
+    }
+    .confirm-btn.cancel-variant:hover{ background:rgba(255,128,128,.18); }
+
+    .contact-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      padding:8px 12px;
+      border-radius:7px;
+      font-size:11px;
+      font-weight:800;
+      text-decoration:none;
+      transition:.3s;
+    }
+    .contact-btn.whatsapp{
+      background:rgba(37,211,102,.1);
+      border:1px solid rgba(37,211,102,.4);
+      color:#25D366;
+    }
+    .contact-btn.whatsapp:hover{ background:rgba(37,211,102,.2); }
+
+    .contact-btn.call{
+      background:rgba(183,255,0,.1);
+      border:1px solid rgba(183,255,0,.4);
       color:#b7ff00;
+    }
+    .contact-btn.call:hover{ background:rgba(183,255,0,.2); }
+
+    .confirm-btn{
+      padding:8px 12px; border-radius:7px; border:1px solid rgba(74,222,128,.4);
+      background:rgba(74,222,128,.08); color:#4ade80; font-size:11px; font-weight:800;
+      cursor:pointer; transition:.3s;
+    }
+    .confirm-btn:hover{ background:rgba(74,222,128,.18); }
+
+    @media(max-width:900px){
+      .payment-card{ grid-template-columns:1fr 1fr; }
     }
 
   </style>
@@ -153,34 +307,240 @@
 
 <body>
 
-  <div class="login-box">
+  <div class="toast" id="toast"></div>
 
-    <img class="logo" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK IT Institute">
+  <div class="auth-gate" id="authGate">লোড হচ্ছে...</div>
 
-    <h1>Admin Login</h1>
-    <p class="sub">শুধুমাত্র SNK IT Institute Admin-দের জন্য</p>
+  <div class="dashboard-body" id="dashboardBody">
 
-    <div class="error-box" id="errorBox"></div>
+    <header class="admin-header">
+      <div class="container">
+        <div class="admin-brand">
+          <img src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg" alt="SNK">
+          <span>Admin Dashboard</span>
+        </div>
+        <button class="logout-btn" id="logoutBtn">Logout →</button>
+      </div>
+    </header>
 
-    <form id="loginForm">
+    <div class="container">
 
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="email" placeholder="admin@example.com" required>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="posts">ব্লগ পোস্ট</button>
+        <button class="tab-btn" data-tab="courses">কোর্স ম্যানেজ</button>
+        <button class="tab-btn" data-tab="students">Admission তালিকা</button>
+        <button class="tab-btn" data-tab="payments">Payments</button>
       </div>
 
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="password" placeholder="••••••••" required>
+
+      <!-- BLOG POSTS TAB -->
+
+      <div class="tab-panel active" id="tab-posts">
+
+        <div class="section-head">
+          <div>
+            <h2>ব্লগ পোস্ট</h2>
+            <span>এখান থেকে যোগ/এডিট/ডিলিট করলে blog.html-এ সাথে সাথে দেখা যাবে</span>
+          </div>
+          <button class="primary-btn" id="newPostBtn">+ নতুন পোস্ট</button>
+        </div>
+
+        <form class="post-form" id="postForm">
+
+          <input type="hidden" id="postId">
+
+          <div class="form-row">
+            <label>পোস্টের ছবি</label>
+            <input type="file" id="postImageFile" accept="image/*">
+            <input type="hidden" id="postImageData">
+            <span class="hint">ছবি আপলোড করলে ছোট করে (compressed) সেভ হবে। খালি রাখলে default ছবি দেখাবে।</span>
+            <img id="imagePreview" style="display:none; margin-top:10px; max-width:180px; border-radius:8px; border:1px solid #292929;">
+          </div>
+
+          <div class="form-row">
+            <label>টাইটেল *</label>
+            <input type="text" id="postTitle" required placeholder="যেমন: কেন AI Skill শেখা জরুরি">
+          </div>
+
+          <div class="form-row">
+            <label>ছোট বিবরণ (Excerpt) *</label>
+            <textarea id="postExcerpt" required placeholder="২-৩ লাইনের সংক্ষিপ্ত বিবরণ..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <label>পুরো লেখা *</label>
+            <textarea id="postContent" required style="min-height:160px;" placeholder="পুরো লেখা লিখুন। একটা প্যারাগ্রাফ শেষ করে একটা ফাঁকা লাইন রেখে পরের প্যারাগ্রাফ লিখুন।"></textarea>
+            <span class="hint">প্রতিটা প্যারাগ্রাফের মাঝে একটা ফাঁকা লাইন রাখবেন</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn" id="savePostBtn">পোস্ট সেভ করুন</button>
+            <button type="button" class="secondary-btn" id="cancelPostBtn">বাতিল</button>
+          </div>
+
+        </form>
+
+        <div id="postList"></div>
+        <div class="empty-note" id="postsEmpty" style="display:none;">এখনো কোনো পোস্ট যোগ করা হয়নি।</div>
+
       </div>
 
-      <button type="submit" class="login-button" id="loginBtn">
-        Login →
-      </button>
 
-    </form>
+      <!-- COURSES TAB -->
 
-    <a href="/" class="back-link">← হোমে ফিরে যান</a>
+      <div class="tab-panel" id="tab-courses">
+
+        <div class="section-head">
+          <div>
+            <h2>কোর্স ম্যানেজ</h2>
+            <span>ছবি, দাম, বিবরণ, মডিউল — সব এখান থেকে বদলাতে বা নতুন কোর্স যোগ করতে পারবেন</span>
+          </div>
+          <button type="button" class="primary-btn" id="newCourseBtn">+ নতুন কোর্স</button>
+        </div>
+
+        <form class="post-form" id="courseForm">
+
+          <input type="hidden" id="courseId">
+          <input type="hidden" id="courseIsNew">
+
+          <div class="form-row">
+            <label>কোর্সের ছবি</label>
+            <input type="file" id="courseImageFile" accept="image/*">
+            <input type="hidden" id="courseImageData">
+            <span class="hint">ছবি আপলোড করলে ছোট করে সেভ হবে। খালি রাখলে আগের ছবিই থাকবে।</span>
+            <img id="courseImagePreview" style="display:none; margin-top:10px; max-width:180px; border-radius:8px; border:1px solid #292929;">
+          </div>
+
+          <div class="form-row">
+            <label>টাইটেল *</label>
+            <input type="text" id="courseTitle" required>
+          </div>
+
+          <div class="form-row">
+            <label>ব্যাজ টেক্সট (যেমন: AI POWERED, LIMITED SEATS)</label>
+            <input type="text" id="courseTagText">
+          </div>
+
+          <div class="form-row">
+            <label>ব্যাজ রঙ</label>
+            <select id="courseTagClass" style="width:100%; border:1px solid #292929; background:#101010; color:#fff; border-radius:9px; padding:12px 13px; font-size:13px;">
+              <option value="">সাধারণ (lime)</option>
+              <option value="urgent">জরুরি (কমলা)</option>
+              <option value="info">তথ্য (নীল)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>বিবরণ (Description) *</label>
+            <textarea id="courseDesc" required></textarea>
+          </div>
+
+          <div class="form-row">
+            <label>মেটা তথ্য (৪টা, প্রতিটা নতুন লাইনে — যেমন: ⏱ 3 Months)</label>
+            <textarea id="courseMeta" placeholder="⏱ 3 Months
+🎯 Career Program
+📜 Certificate
+💻 Online + Offline"></textarea>
+          </div>
+
+          <div class="form-row">
+            <label>পুরাতন দাম</label>
+            <input type="text" id="coursePriceOld" placeholder="৳11,500">
+          </div>
+
+          <div class="form-row">
+            <label>নতুন দাম *</label>
+            <input type="text" id="coursePriceNew" required placeholder="৳7,490">
+          </div>
+
+          <div class="form-row">
+            <label>আপনি যা শিখবেন (প্রতিটা পয়েন্ট নতুন লাইনে)</label>
+            <textarea id="courseLearnItems" style="min-height:120px;"></textarea>
+          </div>
+
+          <div class="form-row">
+            <label>কোর্স মডিউল</label>
+            <div id="moduleRows"></div>
+            <button type="button" class="secondary-btn" id="addModuleRowBtn" style="margin-top:6px; align-self:flex-start;">+ মডিউল যোগ করুন</button>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn" id="saveCourseBtn">সেভ করুন</button>
+            <button type="button" class="secondary-btn" id="cancelCourseBtn">বাতিল</button>
+          </div>
+
+        </form>
+
+        <div id="courseList"></div>
+
+      </div>
+
+
+      <!-- STUDENTS TAB -->
+
+      <div class="tab-panel" id="tab-students">
+
+        <div class="section-head">
+          <div>
+            <h2>Admission তালিকা</h2>
+            <span>admission.html ফর্ম থেকে জমা হওয়া সব আবেদন</span>
+          </div>
+        </div>
+
+        <div class="student-list" id="studentList"></div>
+        <div class="empty-note" id="studentsEmpty" style="display:none;">এখনো কোনো আবেদন জমা হয়নি।</div>
+
+      </div>
+
+
+      <!-- PAYMENTS TAB -->
+
+      <div class="tab-panel" id="tab-payments">
+
+        <div class="section-head">
+          <div>
+            <h2>Payments</h2>
+            <span>Checkout পেজ থেকে জমা হওয়া bKash Transaction তথ্য — যাচাই করে Confirm করুন</span>
+          </div>
+        </div>
+
+        <form class="post-form" id="paymentEditForm">
+
+          <input type="hidden" id="editPaymentId">
+
+          <div class="form-row">
+            <label>নাম *</label>
+            <input type="text" id="editPayerName" required>
+          </div>
+
+          <div class="form-row">
+            <label>মোবাইল নম্বর *</label>
+            <input type="text" id="editPayerPhone" required>
+          </div>
+
+          <div class="form-row">
+            <label>যেই bKash নম্বর থেকে পাঠিয়েছে</label>
+            <input type="text" id="editPayerBkash">
+          </div>
+
+          <div class="form-row">
+            <label>Transaction ID</label>
+            <input type="text" id="editTrxId">
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn" id="savePaymentEditBtn">সেভ করুন</button>
+            <button type="button" class="secondary-btn" id="cancelPaymentEditBtn">বাতিল</button>
+          </div>
+
+        </form>
+
+        <div class="student-list" id="paymentList"></div>
+        <div class="empty-note" id="paymentsEmpty" style="display:none;">এখনো কোনো Payment জমা হয়নি।</div>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -188,6 +548,7 @@
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
   <script>
 
@@ -202,56 +563,866 @@
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+    const db = firebase.firestore();
 
-    const loginForm = document.getElementById("loginForm");
-    const loginBtn = document.getElementById("loginBtn");
-    const errorBox = document.getElementById("errorBox");
+    const authGate = document.getElementById("authGate");
+    const dashboardBody = document.getElementById("dashboardBody");
 
-    function showError(message){
-      errorBox.textContent = message;
-      errorBox.classList.add("show");
+    // TOAST NOTIFICATION
+    let toastTimer = null;
+    function showToast(message, type){
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = "toast show " + (type || "success");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function(){
+        toast.classList.remove("show");
+      }, 3200);
     }
 
-    function hideError(){
-      errorBox.classList.remove("show");
-    }
-
-    // If already logged in, go straight to dashboard
+    // AUTH GUARD
     auth.onAuthStateChanged(function(user){
       if(user){
-        window.location.href = "/admin-dashboard/";
+        authGate.style.display = "none";
+        dashboardBody.style.display = "block";
+        loadPosts();
+        loadCourses();
+        loadStudents();
+        loadPayments();
+      }else{
+        window.location.href = "/admin/";
       }
     });
 
-    loginForm.addEventListener("submit", function(e){
+    document.getElementById("logoutBtn").addEventListener("click", function(){
+      auth.signOut().then(function(){
+        window.location.href = "/admin/";
+      });
+    });
+
+    // TABS
+    document.querySelectorAll(".tab-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    // POST FORM TOGGLE
+    const postForm = document.getElementById("postForm");
+    const newPostBtn = document.getElementById("newPostBtn");
+    const cancelPostBtn = document.getElementById("cancelPostBtn");
+
+    function resetForm(){
+      document.getElementById("postId").value = "";
+      document.getElementById("postTitle").value = "";
+      document.getElementById("postImageData").value = "";
+      document.getElementById("postImageFile").value = "";
+      document.getElementById("postExcerpt").value = "";
+      document.getElementById("postContent").value = "";
+      document.getElementById("savePostBtn").textContent = "পোস্ট সেভ করুন";
+
+      const preview = document.getElementById("imagePreview");
+      preview.style.display = "none";
+      preview.src = "";
+    }
+
+    newPostBtn.addEventListener("click", function(){
+      resetForm();
+      postForm.classList.add("open");
+    });
+
+    cancelPostBtn.addEventListener("click", function(){
+      postForm.classList.remove("open");
+      resetForm();
+    });
+
+    // IMAGE UPLOAD: compress and convert to base64 data URL
+    document.getElementById("postImageFile").addEventListener("change", function(e){
+      const file = e.target.files[0];
+      if(!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt){
+        const img = new Image();
+        img.onload = function(){
+          const maxWidth = 800;
+          const scale = Math.min(1, maxWidth / img.width);
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          let quality = 0.7;
+          let compressedData = canvas.toDataURL("image/jpeg", quality);
+
+          // Firestore field limit is ~1MB; keep well under that.
+          // Reduce quality further if the result is still too large.
+          while(compressedData.length > 700000 && quality > 0.2){
+            quality -= 0.15;
+            compressedData = canvas.toDataURL("image/jpeg", quality);
+          }
+
+          if(compressedData.length > 900000){
+            alert("ছবিটা এখনো অনেক বড় হয়ে যাচ্ছে। দয়া করে ছোট সাইজের একটা ছবি বেছে নিন।");
+            document.getElementById("postImageFile").value = "";
+            return;
+          }
+
+          document.getElementById("postImageData").value = compressedData;
+
+          const preview = document.getElementById("imagePreview");
+          preview.src = compressedData;
+          preview.style.display = "block";
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // SAVE POST (create or update)
+    document.getElementById("postForm").addEventListener("submit", function(e){
       e.preventDefault();
-      hideError();
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
+      const id = document.getElementById("postId").value;
+      const data = {
+        title: document.getElementById("postTitle").value.trim(),
+        image: document.getElementById("postImageData").value.trim(),
+        excerpt: document.getElementById("postExcerpt").value.trim(),
+        content: document.getElementById("postContent").value.trim(),
+      };
 
-      loginBtn.disabled = true;
-      loginBtn.textContent = "Logging in...";
+      const saveBtn = document.getElementById("savePostBtn");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "সেভ হচ্ছে...";
 
-      auth.signInWithEmailAndPassword(email, password)
-        .then(function(){
-          window.location.href = "/admin-dashboard/";
-        })
-        .catch(function(error){
-          loginBtn.disabled = false;
-          loginBtn.textContent = "Login →";
+      let promise;
+      const wasEdit = !!id;
+      if(id){
+        promise = db.collection("posts").doc(id).update(data);
+      }else{
+        data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        promise = db.collection("posts").add(data);
+      }
 
-          if(error.code === "auth/invalid-credential" || error.code === "auth/wrong-password" || error.code === "auth/user-not-found"){
-            showError("Email অথবা Password ভুল হয়েছে। আবার চেষ্টা করুন।");
-          }else if(error.code === "auth/invalid-email"){
-            showError("সঠিক Email address দিন।");
-          }else if(error.code === "auth/too-many-requests"){
-            showError("অনেকবার ভুল চেষ্টা হয়েছে। কিছুক্ষণ পর আবার চেষ্টা করুন।");
-          }else{
-            showError("Login করতে সমস্যা হয়েছে: " + error.message);
+      promise.then(function(){
+        saveBtn.disabled = false;
+        postForm.classList.remove("open");
+        resetForm();
+        loadPosts();
+        showToast(wasEdit ? "✅ পোস্ট আপডেট হয়েছে" : "✅ নতুন পোস্ট যোগ হয়েছে", "success");
+      }).catch(function(error){
+        saveBtn.disabled = false;
+        saveBtn.textContent = "পোস্ট সেভ করুন";
+        showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+      });
+    });
+
+    // LOAD POSTS
+    function loadPosts(){
+      const postList = document.getElementById("postList");
+      const postsEmpty = document.getElementById("postsEmpty");
+
+      db.collection("posts").orderBy("createdAt", "desc").get().then(function(snapshot){
+        postList.innerHTML = "";
+
+        if(snapshot.empty){
+          postsEmpty.style.display = "block";
+          return;
+        }
+        postsEmpty.style.display = "none";
+
+        snapshot.forEach(function(doc){
+          const post = doc.data();
+          const item = document.createElement("div");
+          item.className = "post-item";
+
+          const imgSrc = post.image || "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='60' viewBox='0 0 80 60'%3E%3Crect width='80' height='60' fill='%23161616'/%3E%3Ctext x='40' y='34' font-family='Arial' font-size='24' fill='%23444' text-anchor='middle'%3E%F0%9F%96%BC%EF%B8%8F%3C/text%3E%3C/svg%3E";
+
+          item.innerHTML = `
+            <img src="${imgSrc}" alt="">
+            <div class="post-info">
+              <h3>${escapeHtml(post.title || "")}</h3>
+              <p>${escapeHtml((post.excerpt || "").slice(0,90))}</p>
+            </div>
+            <div class="post-actions">
+              <button class="icon-btn" data-edit="${doc.id}" title="Edit">✎</button>
+              <button class="icon-btn danger" data-delete="${doc.id}" title="Delete">🗑</button>
+            </div>
+          `;
+          postList.appendChild(item);
+        });
+
+        // attach edit/delete handlers
+        postList.querySelectorAll("[data-edit]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-edit");
+            db.collection("posts").doc(id).get().then(function(doc){
+              const post = doc.data();
+              document.getElementById("postId").value = id;
+              document.getElementById("postTitle").value = post.title || "";
+              document.getElementById("postImageData").value = post.image || "";
+              document.getElementById("postExcerpt").value = post.excerpt || "";
+              document.getElementById("postContent").value = post.content || "";
+              document.getElementById("savePostBtn").textContent = "আপডেট করুন";
+
+              const preview = document.getElementById("imagePreview");
+              if(post.image){
+                preview.src = post.image;
+                preview.style.display = "block";
+              }else{
+                preview.style.display = "none";
+              }
+
+              postForm.classList.add("open");
+              window.scrollTo({top:0, behavior:"smooth"});
+            });
+          });
+        });
+
+        postList.querySelectorAll("[data-delete]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-delete");
+            if(confirm("এই পোস্টটি ডিলিট করতে চান?")){
+              db.collection("posts").doc(id).delete().then(function(){
+                loadPosts();
+                showToast("🗑 পোস্ট ডিলিট হয়েছে", "success");
+              }).catch(function(error){
+                showToast("❌ ডিলিট করতে সমস্যা: " + error.message, "error");
+              });
+            }
+          });
+        });
+      }).catch(function(error){
+        postList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+      });
+    }
+
+    // ==============================
+    // COURSES TAB
+    // ==============================
+
+    const COURSE_SLUGS = ["ui-ux", "cyber-security", "graphic-design", "kidz-spoken-english"];
+
+    const courseSeeds = {
+      "ui-ux": {
+        title: "AI-Powered UI/UX Career Program",
+        tagText: "AI POWERED",
+        tagClass: "",
+        image: "",
+        desc: "UI/UX Fundamentals, User Research, User Flow, Wireframing, Prototyping, Design System, Figma এবং AI-powered design workflow শিখুন — শূন্য থেকে ক্যারিয়ার-রেডি ডিজাইনার হয়ে উঠুন।",
+        meta: ["⏱ 3 Months", "🎯 Career Program", "📜 Certificate", "💻 Online + Offline"],
+        priceOld: "৳11,500",
+        priceNew: "৳7,490",
+        learnItems: ["UI/UX Fundamentals ও Design Thinking", "User Research ও User Flow তৈরি", "Wireframing ও Prototyping (Figma)", "Design System তৈরি করা", "AI-powered design tools ব্যবহার", "Portfolio-ready real project"],
+        modules: [{title:"Design Fundamentals",desc:"Color, typography ও layout basics"}, {title:"User Research",desc:"User persona ও user flow"}, {title:"Wireframing & Prototyping",desc:"Figma দিয়ে হাতে-কলমে"}, {title:"Design Systems",desc:"Reusable component তৈরি"}, {title:"AI Tools in Design",desc:"AI দিয়ে দ্রুত design workflow"}, {title:"Career & Portfolio",desc:"Portfolio তৈরি ও job preparation"}]
+      },
+      "cyber-security": {
+        title: "AI-Powered Cyber Security & Ethical Hacking",
+        tagText: "LIMITED SEATS",
+        tagClass: "urgent",
+        image: "",
+        desc: "Cyber Security fundamentals, ethical hacking, security concepts এবং practical cybersecurity skills হাতে-কলমে শিখুন — সীমিত আসনে ভর্তি চলছে।",
+        meta: ["⏱ 6 Months", "🎯 Ethical Hacking", "📜 Certificate", "💻 Online + Offline"],
+        priceOld: "৳12,500",
+        priceNew: "৳9,500",
+        learnItems: ["Networking ও Security Fundamentals", "Ethical Hacking Techniques", "Vulnerability Assessment", "Penetration Testing Basics", "AI-powered Security Tools", "Real-world Security Project"],
+        modules: [{title:"Networking Basics",desc:"Network fundamentals ও protocols"}, {title:"Security Fundamentals",desc:"Core security concepts"}, {title:"Ethical Hacking Tools",desc:"Kali Linux ও essential tools"}, {title:"Penetration Testing",desc:"হাতে-কলমে vulnerability testing"}, {title:"AI in Cybersecurity",desc:"AI-powered threat detection"}, {title:"Career & Certification",desc:"Job preparation ও certification guidance"}]
+      },
+      "graphic-design": {
+        title: "AI-Powered Graphic Design",
+        tagText: "AI POWERED",
+        tagClass: "",
+        image: "",
+        desc: "Graphic Design fundamentals, visual design, creative tools এবং AI-powered design workflow-এর মাধ্যমে professional skill তৈরি করুন।",
+        meta: ["⏱ 4 Months", "🎯 Creative Career", "📜 Certificate", "💻 Online + Offline"],
+        priceOld: "৳7,500",
+        priceNew: "৳4,500",
+        learnItems: ["Design Fundamentals ও Color Theory", "Adobe Photoshop ও Illustrator", "Branding ও Logo Design", "Social Media Design", "AI-powered Design Tools", "Portfolio Building"],
+        modules: [{title:"Design Basics",desc:"Color theory ও composition"}, {title:"Photoshop Mastery",desc:"Photo editing ও manipulation"}, {title:"Illustrator & Branding",desc:"Logo ও brand identity design"}, {title:"Social Media Design",desc:"Post, banner ও ad creative"}, {title:"AI Design Tools",desc:"AI দিয়ে দ্রুত creative workflow"}, {title:"Portfolio & Freelancing",desc:"Portfolio তৈরি ও freelancing শুরু"}]
+      },
+      "kidz-spoken-english": {
+        title: "100Days Kidz Spoken English",
+        tagText: "100 DAYS",
+        tagClass: "info",
+        image: "",
+        desc: "English speaking, vocabulary, pronunciation এবং communication skill development-এর জন্য structured ১০০ দিনের learning program।",
+        meta: ["⏱ 100 Days", "🎯 Kids Program", "📜 Certificate", "👨‍👩‍👧 Parent Updates"],
+        priceOld: "৳12,500",
+        priceNew: "৳6,500",
+        learnItems: ["Basic Vocabulary ও Pronunciation", "Everyday Conversation Practice", "Grammar Made Simple", "Confidence Building Activities", "Interactive Speaking Sessions", "Weekly Progress Assessment"],
+        modules: [{title:"Alphabet & Basic Words",desc:"Foundation বিল্ড করা"}, {title:"Simple Sentences",desc:"সহজ বাক্য গঠন"}, {title:"Daily Conversation",desc:"রোজকার কথোপকথন practice"}, {title:"Grammar Basics",desc:"সহজভাবে grammar শেখা"}, {title:"Storytelling & Confidence",desc:"গল্প বলা ও confidence তৈরি"}, {title:"Final Assessment",desc:"মূল্যায়ন ও certificate"}]
+      }
+    };
+
+    const courseForm = document.getElementById("courseForm");
+    const cancelCourseBtn = document.getElementById("cancelCourseBtn");
+    const newCourseBtn = document.getElementById("newCourseBtn");
+    const moduleRowsEl = document.getElementById("moduleRows");
+    const addModuleRowBtn = document.getElementById("addModuleRowBtn");
+
+    function addModuleRow(title, desc){
+      const row = document.createElement("div");
+      row.className = "module-row";
+      row.innerHTML = `
+        <input type="text" class="mod-title" placeholder="মডিউলের নাম" value="${(title || "").replace(/"/g,'&quot;')}">
+        <input type="text" class="mod-desc" placeholder="ছোট বিবরণ" value="${(desc || "").replace(/"/g,'&quot;')}">
+        <button type="button" class="remove-module-btn" title="মুছে ফেলুন">✕</button>
+      `;
+      row.querySelector(".remove-module-btn").addEventListener("click", function(){
+        row.remove();
+      });
+      moduleRowsEl.appendChild(row);
+    }
+
+    addModuleRowBtn.addEventListener("click", function(){
+      addModuleRow("", "");
+    });
+
+    function clearModuleRows(){
+      moduleRowsEl.innerHTML = "";
+    }
+
+    function resetCourseForm(){
+      courseForm.classList.remove("open");
+      document.getElementById("courseId").value = "";
+      document.getElementById("courseIsNew").value = "";
+      document.getElementById("courseTitle").value = "";
+      document.getElementById("courseTagText").value = "";
+      document.getElementById("courseTagClass").value = "";
+      document.getElementById("courseDesc").value = "";
+      document.getElementById("courseMeta").value = "";
+      document.getElementById("coursePriceOld").value = "";
+      document.getElementById("coursePriceNew").value = "";
+      document.getElementById("courseLearnItems").value = "";
+      document.getElementById("courseImageFile").value = "";
+      document.getElementById("courseImageData").value = "";
+      document.getElementById("courseImagePreview").style.display = "none";
+      clearModuleRows();
+    }
+
+    cancelCourseBtn.addEventListener("click", resetCourseForm);
+
+    newCourseBtn.addEventListener("click", function(){
+      resetCourseForm();
+      document.getElementById("courseIsNew").value = "1";
+      addModuleRow("", "");
+      courseForm.classList.add("open");
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+
+    // image upload + compression
+    document.getElementById("courseImageFile").addEventListener("change", function(e){
+      const file = e.target.files[0];
+      if(!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt){
+        const img = new Image();
+        img.onload = function(){
+          const maxWidth = 800;
+          const scale = Math.min(1, maxWidth / img.width);
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          let quality = 0.7;
+          let compressedData = canvas.toDataURL("image/jpeg", quality);
+          while(compressedData.length > 700000 && quality > 0.2){
+            quality -= 0.15;
+            compressedData = canvas.toDataURL("image/jpeg", quality);
+          }
+          if(compressedData.length > 900000){
+            alert("ছবিটা এখনো অনেক বড়। ছোট সাইজের একটা ছবি বেছে নিন।");
+            document.getElementById("courseImageFile").value = "";
+            return;
+          }
+
+          document.getElementById("courseImageData").value = compressedData;
+          const preview = document.getElementById("courseImagePreview");
+          preview.src = compressedData;
+          preview.style.display = "block";
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function openCourseEditor(slug, data){
+      resetCourseForm();
+      document.getElementById("courseId").value = slug;
+      document.getElementById("courseTitle").value = data.title || "";
+      document.getElementById("courseTagText").value = data.tagText || "";
+      document.getElementById("courseTagClass").value = data.tagClass || "";
+      document.getElementById("courseDesc").value = data.desc || "";
+      document.getElementById("courseMeta").value = (data.meta || []).join("\n");
+      document.getElementById("coursePriceOld").value = data.priceOld || "";
+      document.getElementById("coursePriceNew").value = data.priceNew || "";
+      document.getElementById("courseLearnItems").value = (data.learnItems || []).join("\n");
+      document.getElementById("courseImageData").value = data.image || "";
+
+      clearModuleRows();
+      (data.modules || []).forEach(function(m){
+        addModuleRow(m.title, m.desc);
+      });
+      if(!data.modules || data.modules.length === 0){
+        addModuleRow("", "");
+      }
+
+      const preview = document.getElementById("courseImagePreview");
+      if(data.image){
+        preview.src = data.image;
+        preview.style.display = "block";
+      }else{
+        preview.style.display = "none";
+      }
+
+      courseForm.classList.add("open");
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    function loadCourses(){
+      const courseList = document.getElementById("courseList");
+      courseList.innerHTML = "";
+
+      db.collection("courses").get().then(function(snapshot){
+        const foundSlugs = new Set();
+        const rows = [];
+
+        snapshot.forEach(function(doc){
+          foundSlugs.add(doc.id);
+          rows.push({ id: doc.id, data: doc.data(), isFixed: COURSE_SLUGS.includes(doc.id) });
+        });
+
+        // Add the 4 fixed courses using seed data if they don't have a Firestore doc yet
+        COURSE_SLUGS.forEach(function(slug){
+          if(!foundSlugs.has(slug)){
+            rows.push({ id: slug, data: courseSeeds[slug], isFixed: true });
           }
         });
+
+        renderCourseList(rows);
+      }).catch(function(error){
+        courseList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+        console.error("loadCourses error:", error);
+      });
+    }
+
+    function renderCourseList(rows){
+      const courseList = document.getElementById("courseList");
+      courseList.innerHTML = "";
+
+      rows.forEach(function(row){
+        const data = row.data;
+        const item = document.createElement("div");
+        item.className = "post-item";
+        const imgSrc = data.image || "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='60' viewBox='0 0 80 60'%3E%3Crect width='80' height='60' fill='%23161616'/%3E%3Ctext x='40' y='34' font-family='Arial' font-size='24' fill='%23444' text-anchor='middle'%3E%F0%9F%96%BC%EF%B8%8F%3C/text%3E%3C/svg%3E";
+
+        item.innerHTML = `
+          <img src="${imgSrc}" alt="">
+          <div class="post-info">
+            <h3>${escapeHtml(data.title || "(নাম নেই)")}</h3>
+            <p>${escapeHtml(data.priceOld || "")} → ${escapeHtml(data.priceNew || "")}${row.isFixed ? "" : " • কাস্টম কোর্স"}</p>
+          </div>
+          <div class="post-actions">
+            <button class="icon-btn" data-edit-course="1" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete-course="1" title="Delete">🗑</button>
+          </div>
+        `;
+        courseList.appendChild(item);
+
+        item.querySelector("[data-edit-course]").addEventListener("click", function(){
+          openCourseEditor(row.id, data);
+        });
+
+        item.querySelector("[data-delete-course]").addEventListener("click", function(){
+          const msg = row.isFixed
+            ? "এই কোর্সের ডাটা ডিলিট করলে পেজটা আগের ডিফল্ট তথ্য দেখাবে। ডিলিট করতে চান?"
+            : "এই কোর্সটি সম্পূর্ণ ডিলিট করতে চান?";
+          if(confirm(msg)){
+            db.collection("courses").doc(row.id).delete().then(function(){
+              loadCourses();
+              showToast("🗑 কোর্স ডিলিট হয়েছে", "success");
+            }).catch(function(error){
+              showToast("❌ ডিলিট করতে সমস্যা: " + error.message, "error");
+            });
+          }
+        });
+      });
+    }
+
+    function slugify(text){
+      return (text || "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\u0980-\u09FF]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 60) || ("course-" + Date.now());
+    }
+
+    courseForm.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      try{
+        const isNew = document.getElementById("courseIsNew").value === "1";
+        let slug = document.getElementById("courseId").value;
+
+        const moduleRows = Array.from(moduleRowsEl.querySelectorAll(".module-row"));
+        const modules = moduleRows.map(function(row){
+          const t = row.querySelector(".mod-title").value.trim();
+          const d = row.querySelector(".mod-desc").value.trim();
+          return { title: t, desc: d };
+        }).filter(function(m){ return m.title || m.desc; });
+
+        const metaLines = document.getElementById("courseMeta").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
+        const learnLines = document.getElementById("courseLearnItems").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
+
+        const title = document.getElementById("courseTitle").value.trim();
+
+        const data = {
+          title: title,
+          tagText: document.getElementById("courseTagText").value.trim(),
+          tagClass: document.getElementById("courseTagClass").value,
+          image: document.getElementById("courseImageData").value.trim(),
+          desc: document.getElementById("courseDesc").value.trim(),
+          meta: metaLines,
+          priceOld: document.getElementById("coursePriceOld").value.trim(),
+          priceNew: document.getElementById("coursePriceNew").value.trim(),
+          learnItems: learnLines,
+          modules: modules,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        const saveBtn = document.getElementById("saveCourseBtn");
+        saveBtn.disabled = true;
+        saveBtn.textContent = "সেভ হচ্ছে...";
+
+        if(isNew){
+          if(!slug){
+            slug = slugify(title);
+          }
+          data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+          db.collection("courses").doc(slug).set(data)
+            .then(function(){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              resetCourseForm();
+              loadCourses();
+              showToast("✅ নতুন কোর্স তৈরি হয়েছে (courses.html-এ দেখাতে হলে জানান)", "success");
+            })
+            .catch(function(error){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+              console.error("Save (new) error:", error);
+            });
+        }else{
+          db.collection("courses").doc(slug).set(data, { merge: true })
+            .then(function(){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              resetCourseForm();
+              loadCourses();
+              showToast("✅ কোর্স আপডেট হয়েছে", "success");
+            })
+            .catch(function(error){
+              saveBtn.disabled = false;
+              saveBtn.textContent = "সেভ করুন";
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+              console.error("Save (update) error:", error);
+            });
+        }
+      }catch(err){
+        alert("একটা সমস্যা হয়েছে: " + err.message);
+        console.error("courseForm submit handler crashed:", err);
+        const saveBtn = document.getElementById("saveCourseBtn");
+        saveBtn.disabled = false;
+        saveBtn.textContent = "সেভ করুন";
+      }
     });
+
+    // LOAD STUDENTS
+    function loadStudents(){
+      const studentList = document.getElementById("studentList");
+      const studentsEmpty = document.getElementById("studentsEmpty");
+
+      db.collection("students").orderBy("createdAt", "desc").get().then(function(snapshot){
+        studentList.innerHTML = "";
+
+        if(snapshot.empty){
+          studentsEmpty.style.display = "block";
+          return;
+        }
+        studentsEmpty.style.display = "none";
+
+        snapshot.forEach(function(doc){
+          const s = doc.data();
+          const card = document.createElement("div");
+          card.className = "student-card";
+          card.innerHTML = `
+            <div>
+              <div class="s-name">${escapeHtml(s.name || "-")}</div>
+              <div class="s-sub">${escapeHtml(s.phone || "-")}</div>
+            </div>
+            <div class="s-field"><span>Course</span>${escapeHtml(s.course || "-")}</div>
+            <div class="s-field"><span>Email</span>${escapeHtml(s.email || "-")}</div>
+            <div class="s-field"><span>Education</span>${escapeHtml(s.education || "-")}</div>
+            <button class="icon-btn danger" data-del-student="${doc.id}" title="Delete">🗑</button>
+          `;
+          studentList.appendChild(card);
+        });
+
+        studentList.querySelectorAll("[data-del-student]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-del-student");
+            if(confirm("এই আবেদনটি ডিলিট করতে চান?")){
+              db.collection("students").doc(id).delete().then(loadStudents);
+            }
+          });
+        });
+      }).catch(function(error){
+        studentList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+      });
+    }
+
+    // LOAD PAYMENTS
+    const paymentEditForm = document.getElementById("paymentEditForm");
+    const cancelPaymentEditBtn = document.getElementById("cancelPaymentEditBtn");
+
+    function resetPaymentEditForm(){
+      paymentEditForm.classList.remove("open");
+      document.getElementById("editPaymentId").value = "";
+      document.getElementById("editPayerName").value = "";
+      document.getElementById("editPayerPhone").value = "";
+      document.getElementById("editPayerBkash").value = "";
+      document.getElementById("editTrxId").value = "";
+    }
+
+    cancelPaymentEditBtn.addEventListener("click", resetPaymentEditForm);
+
+    paymentEditForm.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const id = document.getElementById("editPaymentId").value;
+      const updated = {
+        payerName: document.getElementById("editPayerName").value.trim(),
+        payerPhone: document.getElementById("editPayerPhone").value.trim(),
+        payerBkashNumber: document.getElementById("editPayerBkash").value.trim(),
+        trxId: document.getElementById("editTrxId").value.trim()
+      };
+
+      const saveBtn = document.getElementById("savePaymentEditBtn");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "সেভ হচ্ছে...";
+
+      db.collection("payments").doc(id).get().then(function(doc){
+        const p = doc.data();
+        const updatePromises = [db.collection("payments").doc(id).update(updated)];
+
+        // keep the linked admission record's name/phone in sync
+        if(p.linkedStudentId){
+          updatePromises.push(
+            db.collection("students").doc(p.linkedStudentId).update({
+              name: updated.payerName,
+              phone: updated.payerPhone
+            }).catch(function(){ /* linked student may have been removed manually; ignore */ })
+          );
+        }
+
+        return Promise.all(updatePromises);
+      }).then(function(){
+        saveBtn.disabled = false;
+        saveBtn.textContent = "সেভ করুন";
+        resetPaymentEditForm();
+        loadPayments();
+        showToast("✅ তথ্য আপডেট হয়েছে", "success");
+      }).catch(function(error){
+        saveBtn.disabled = false;
+        saveBtn.textContent = "সেভ করুন";
+        showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+      });
+    });
+
+    function loadPayments(){
+      const paymentList = document.getElementById("paymentList");
+      const paymentsEmpty = document.getElementById("paymentsEmpty");
+
+      db.collection("payments").orderBy("createdAt", "desc").get().then(function(snapshot){
+        paymentList.innerHTML = "";
+
+        if(snapshot.empty){
+          paymentsEmpty.style.display = "block";
+          return;
+        }
+        paymentsEmpty.style.display = "none";
+
+        snapshot.forEach(function(doc){
+          const p = doc.data();
+          const status = p.status || "pending";
+
+          let pillHtml, actionButtons;
+          const phoneDigits = (p.payerPhone || "").replace(/[^0-9]/g, "");
+          const waPhone = phoneDigits.startsWith("0") ? "880" + phoneDigits.slice(1) : phoneDigits;
+          const callPhone = phoneDigits.startsWith("0") ? "+880" + phoneDigits.slice(1) : "+" + phoneDigits;
+          const contactButtons = phoneDigits ? `
+              <a class="contact-btn whatsapp" href="https://wa.me/${waPhone}?text=আমি%20SNK%20IT%20Institute%20থেকে%20আপনার%20Payment%20নিয়ে%20কথা%20বলতে%20চাই" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+              <a class="contact-btn call" href="tel:${callPhone}">📞 Call</a>
+          ` : "";
+
+          if(status === "confirmed"){
+            pillHtml = `<span class="status-pill confirmed">✓ Confirmed</span>`;
+            actionButtons = `<button class="confirm-btn cancel-variant" data-cancel-payment="${doc.id}">Cancel</button>`;
+          }else if(status === "cancelled"){
+            pillHtml = `<span class="status-pill cancelled">✕ Cancelled</span>`;
+            actionButtons = `
+              <button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>
+              ${contactButtons}
+            `;
+          }else{
+            pillHtml = `<span class="status-pill pending">Pending</span>`;
+            actionButtons = `
+              <button class="confirm-btn" data-confirm-payment="${doc.id}">Confirm</button>
+              <button class="confirm-btn cancel-variant" data-cancel-payment="${doc.id}">Cancel</button>
+            `;
+          }
+
+          const card = document.createElement("div");
+          card.className = "payment-card";
+          card.innerHTML = `
+            <div>
+              <div class="s-name">${escapeHtml(p.payerName || "-")}</div>
+              <div class="s-sub">${escapeHtml(p.payerPhone || "-")}</div>
+            </div>
+            <div class="s-field"><span>Course</span>${escapeHtml(p.courseName || "-")} (${escapeHtml(p.price || "-")})</div>
+            <div class="s-field"><span>bKash নম্বর</span>${escapeHtml(p.payerBkashNumber || "-")}</div>
+            <div class="s-field"><span>TrxID</span>${escapeHtml(p.trxId || "-")}</div>
+            <div class="p-actions">
+              ${pillHtml}
+              ${actionButtons}
+              <button class="icon-btn" data-edit-payment="${doc.id}" title="Edit">✎</button>
+              <button class="icon-btn danger" data-del-payment="${doc.id}" title="Delete">🗑</button>
+            </div>
+          `;
+          paymentList.appendChild(card);
+        });
+
+        // CONFIRM: mark confirmed + create/link an admission-list (students) entry
+        paymentList.querySelectorAll("[data-confirm-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-confirm-payment");
+
+            db.collection("payments").doc(id).get().then(function(doc){
+              const p = doc.data();
+
+              if(p.linkedStudentId){
+                // already linked before (e.g. was cancelled then re-confirmed) — just flip status
+                return db.collection("payments").doc(id).update({ status: "confirmed" });
+              }
+
+              // create a new admission-list entry from this payment
+              return db.collection("students").add({
+                name: p.payerName || "",
+                phone: p.payerPhone || "",
+                email: "",
+                age: "",
+                course: p.courseName || "",
+                education: "",
+                profession: "",
+                pcLaptop: "",
+                address: "",
+                message: "Payment-এর মাধ্যমে ভর্তি — TrxID: " + (p.trxId || "-"),
+                source: "payment",
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+              }).then(function(studentRef){
+                return db.collection("payments").doc(id).update({
+                  status: "confirmed",
+                  linkedStudentId: studentRef.id
+                });
+              });
+            }).then(function(){
+              loadPayments();
+              loadStudents();
+              showToast("✅ Confirmed হয়েছে এবং Admission তালিকায় যোগ হয়েছে", "success");
+            }).catch(function(error){
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+            });
+          });
+        });
+
+        // CANCEL: mark cancelled + remove the linked admission-list entry (if any)
+        paymentList.querySelectorAll("[data-cancel-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-cancel-payment");
+
+            if(!confirm("এই Payment বাতিল করতে চান? সংশ্লিষ্ট Admission তালিকা থেকেও এন্ট্রিটা সরে যাবে।")) return;
+
+            db.collection("payments").doc(id).get().then(function(doc){
+              const p = doc.data();
+              const tasks = [db.collection("payments").doc(id).update({ status: "cancelled", linkedStudentId: firebase.firestore.FieldValue.delete() })];
+
+              if(p.linkedStudentId){
+                tasks.push(
+                  db.collection("students").doc(p.linkedStudentId).delete().catch(function(){ /* already gone, ignore */ })
+                );
+              }
+              return Promise.all(tasks);
+            }).then(function(){
+              loadPayments();
+              loadStudents();
+              showToast("🚫 Payment বাতিল হয়েছে", "success");
+            }).catch(function(error){
+              showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+            });
+          });
+        });
+
+        // EDIT
+        paymentList.querySelectorAll("[data-edit-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-edit-payment");
+            db.collection("payments").doc(id).get().then(function(doc){
+              const p = doc.data();
+              document.getElementById("editPaymentId").value = id;
+              document.getElementById("editPayerName").value = p.payerName || "";
+              document.getElementById("editPayerPhone").value = p.payerPhone || "";
+              document.getElementById("editPayerBkash").value = p.payerBkashNumber || "";
+              document.getElementById("editTrxId").value = p.trxId || "";
+              paymentEditForm.classList.add("open");
+              window.scrollTo({top:0, behavior:"smooth"});
+            });
+          });
+        });
+
+        // DELETE
+        paymentList.querySelectorAll("[data-del-payment]").forEach(function(btn){
+          btn.addEventListener("click", function(){
+            const id = btn.getAttribute("data-del-payment");
+            if(confirm("এই Payment তথ্য সম্পূর্ণ ডিলিট করতে চান? (Admission তালিকার এন্ট্রি থাকলে সেটা মুছবে না)")){
+              db.collection("payments").doc(id).delete().then(function(){
+                loadPayments();
+                showToast("🗑 ডিলিট হয়েছে", "success");
+              }).catch(function(error){
+                showToast("❌ সমস্যা হয়েছে: " + error.message, "error");
+              });
+            }
+          });
+        });
+      }).catch(function(error){
+        paymentList.innerHTML = "<div class='empty-note'>লোড করতে সমস্যা হয়েছে: " + error.message + "</div>";
+      });
+    }
+
+    function escapeHtml(str){
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
 
   </script>
 
