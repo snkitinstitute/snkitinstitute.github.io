@@ -6,29 +6,33 @@
 
   <title>Admission | SNK IT Institute</title>
 
-  <meta
-    name="description"
-    content="SNK IT Institute Admission Form — Apply for your selected course."
-  >
+  <meta name="description"
+        content="SNK IT Institute Admission Form — Apply for your selected course.">
 
-  
-  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+  <link rel="icon"
+        type="image/svg+xml"
+        href="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
 
   <meta property="og:title" content="Admission | SNK IT Institute">
-  <meta property="og:description" content="SNK IT Institute Admission Form — Apply for your selected course.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+  <meta property="og:description"
+        content="SNK IT Institute Admission Form — Apply for your selected course.">
+  <meta property="og:image"
+        content="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
   <meta property="og:type" content="website">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Admission | SNK IT Institute">
-  <meta name="twitter:description" content="SNK IT Institute Admission Form — Apply for your selected course.">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk%20itlogo%20tn.svg">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
   <style>
 
-    /* ==============================
-       RESET
-    ============================== */
+    /* =========================================================
+       SNK IT INSTITUTE — ADMISSION PAGE
+       Premium Dark / Lime Design
+       ========================================================= */
 
     *{
       margin:0;
@@ -41,41 +45,79 @@
     }
 
     :root{
-      --bg:var(--bg);
-      --bg-alt:var(--bg-alt);
-      --bg-card:var(--bg-card);
-      --bg-input:var(--bg-input);
-      --text:#fff;
-      --text-muted:var(--text-muted);
-      --text-dim:var(--text-dim);
-      --border:var(--border);
-      --border-2:var(--border-2);
+      --bg:#050505;
+      --bg-alt:#090909;
+      --bg-card:#0d0d0d;
+      --bg-input:#101010;
+
+      --text:#ffffff;
+      --text-muted:#b8b8b8;
+      --text-dim:#777777;
+
+      --border:#1c1c1c;
+      --border-2:#292929;
+
+      --accent:#b7ff00;
+      --accent-soft:rgba(183,255,0,.08);
+      --accent-border:rgba(183,255,0,.22);
+
+      --danger:#ff5252;
+
+      --shadow:0 25px 70px rgba(0,0,0,.30);
     }
 
     html.light-mode{
-      --bg:#f7f7f2;
-      --bg-alt:#f0f0ea;
+      --bg:#f7f8f4;
+      --bg-alt:#eef0ea;
       --bg-card:#ffffff;
       --bg-input:#ffffff;
-      --text:#111;
-      --text-muted:var(--text-dim);
-      --text-dim:var(--text-dim);
-      --border:#e2e2da;
-      --border-2:#dcdcd2;
+
+      --text:#111111;
+      --text-muted:#555555;
+      --text-dim:#777777;
+
+      --border:#e4e6df;
+      --border-2:#d7d9d1;
+
+      --accent:#78a900;
+      --accent-soft:rgba(120,169,0,.08);
+      --accent-border:rgba(120,169,0,.25);
+
+      --shadow:0 20px 60px rgba(0,0,0,.08);
     }
 
     body{
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:'Hind Siliguri',Arial,sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.6;
       overflow-x:hidden;
-      transition:background .3s ease, color .3s ease;
+
+      transition:
+        background .3s ease,
+        color .3s ease;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+
+      height:2px;
+
+      background:var(--accent);
+
+      z-index:100000;
+
+      box-shadow:
+        0 0 18px rgba(183,255,0,.35);
     }
 
     a{
-      text-decoration:none;
       color:inherit;
+      text-decoration:none;
     }
 
     button,
@@ -85,53 +127,134 @@
       font:inherit;
     }
 
+    button{
+      -webkit-tap-highlight-color:transparent;
+    }
+
     .container{
       width:min(1180px,92%);
       margin:auto;
     }
 
 
-    /* ==============================
+    /* =========================================================
        HEADER
-    ============================== */
+       ========================================================= */
 
     .header{
       position:sticky;
       top:0;
       z-index:9999;
 
-      background:var(--bg);
-      opacity:.98;
-
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
+      background:rgba(5,5,5,.90);
 
       border-bottom:1px solid var(--border);
 
-      transition:background .3s ease, border-color .3s ease;
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+
+      transition:
+        background .3s ease,
+        border-color .3s ease;
+    }
+
+    .light-mode .header{
+      background:rgba(247,248,244,.92);
+    }
+
+    .nav{
+      min-height:80px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+
+      flex-shrink:0;
+    }
+
+    .brand img{
+      width:122px;
+      height:auto;
+      display:block;
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:25px;
+    }
+
+    .menu a{
+      position:relative;
+
+      color:var(--text-muted);
+
+      font-size:14px;
+      font-weight:500;
+
+      transition:.3s;
+    }
+
+    .menu a::after{
+      content:"";
+
+      position:absolute;
+
+      left:0;
+      bottom:-7px;
+
+      width:0;
+      height:2px;
+
+      background:var(--accent);
+
+      transition:.3s;
+    }
+
+    .menu a:hover,
+    .menu a.active{
+      color:var(--accent);
+    }
+
+    .menu a:hover::after,
+    .menu a.active::after{
+      width:100%;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:9px;
+
+      flex-shrink:0;
     }
 
     .theme-toggle,
     .lang-toggle{
+      width:40px;
+      height:40px;
+
       display:flex;
       align-items:center;
       justify-content:center;
 
-      width:40px;
-      height:40px;
-
       border:1px solid var(--border-2);
-
-      border-radius:8px;
+      border-radius:9px;
 
       background:var(--bg-input);
-
       color:var(--text);
 
-      font-size:15px;
-      font-weight:800;
-
       cursor:pointer;
+
+      font-size:14px;
+      font-weight:700;
 
       transition:.3s;
     }
@@ -144,62 +267,21 @@
 
     .theme-toggle:hover,
     .lang-toggle:hover{
-      border-color:#b7ff00;
-      color:#b7ff00;
-    }
-
-    .nav{
-      min-height:82px;
-
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-
-      gap:22px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      flex-shrink:0;
-    }
-
-    .brand img{
-      width:120px;
-      height:auto;
-    }
-
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:25px;
-    }
-
-    .menu a{
-      color:var(--text-muted);
-      font-size:14px;
-      transition:.3s;
-    }
-
-    .menu a:hover,
-    .menu a.active{
-      color:#b7ff00;
-    }
-
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-shrink:0;
+      color:var(--accent);
+      border-color:var(--accent);
     }
 
     .login-button{
-      background:#b7ff00;
-      color:var(--bg);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
 
       padding:10px 17px;
 
-      border-radius:8px;
+      border-radius:9px;
+
+      background:var(--accent);
+      color:#050505;
 
       font-size:13px;
       font-weight:800;
@@ -211,19 +293,19 @@
       transform:translateY(-2px);
 
       box-shadow:
-        0 10px 30px
+        0 12px 30px
         rgba(183,255,0,.20);
     }
 
 
-    /* ==============================
-       PAGE HERO
-    ============================== */
+    /* =========================================================
+       HERO
+       ========================================================= */
 
     .page-hero{
       position:relative;
 
-      padding:90px 0 55px;
+      padding:100px 0 65px;
 
       text-align:center;
 
@@ -231,11 +313,10 @@
 
       background:
         radial-gradient(
-          circle at center,
-          rgba(183,255,0,.10),
-          transparent 40%
+          circle at 50% 45%,
+          rgba(183,255,0,.12),
+          transparent 30%
         ),
-
         var(--bg);
     }
 
@@ -244,16 +325,35 @@
 
       position:absolute;
 
-      width:500px;
-      height:500px;
+      width:620px;
+      height:620px;
 
       left:50%;
       top:50%;
 
       transform:translate(-50%,-50%);
 
-      border:1px solid
-        rgba(183,255,0,.05);
+      border:1px solid rgba(183,255,0,.055);
+
+      border-radius:50%;
+
+      pointer-events:none;
+    }
+
+    .page-hero::after{
+      content:"";
+
+      position:absolute;
+
+      width:350px;
+      height:350px;
+
+      left:50%;
+      top:50%;
+
+      transform:translate(-50%,-50%);
+
+      border:1px solid rgba(183,255,0,.035);
 
       border-radius:50%;
     }
@@ -265,55 +365,69 @@
 
     .page-badge{
       display:inline-flex;
-
       align-items:center;
-      gap:8px;
+      gap:9px;
 
-      color:#b7ff00;
-
-      padding:8px 15px;
-
-      border:1px solid
-        rgba(183,255,0,.25);
-
-      background:
-        rgba(183,255,0,.06);
-
-      border-radius:50px;
-
-      font-size:11px;
-      font-weight:800;
-
-      letter-spacing:1px;
+      padding:8px 16px;
 
       margin-bottom:20px;
+
+      color:var(--accent);
+
+      background:var(--accent-soft);
+
+      border:1px solid var(--accent-border);
+
+      border-radius:100px;
+
+      font-size:11px;
+      font-weight:700;
+
+      letter-spacing:1.5px;
     }
 
     .page-badge-dot{
       width:7px;
       height:7px;
 
-      background:#b7ff00;
+      background:var(--accent);
 
       border-radius:50%;
 
       box-shadow:
-        0 0 12px #b7ff00;
+        0 0 14px var(--accent);
+
+      animation:pulseDot 1.8s infinite;
+    }
+
+    @keyframes pulseDot{
+      0%,100%{
+        transform:scale(1);
+        opacity:1;
+      }
+
+      50%{
+        transform:scale(.65);
+        opacity:.5;
+      }
     }
 
     .page-hero h1{
-      font-size:
-        clamp(40px,6vw,68px);
+      max-width:850px;
+
+      margin:0 auto 18px;
+
+      font-size:clamp(42px,6vw,72px);
 
       line-height:1.05;
 
-      letter-spacing:-3px;
+      letter-spacing:-2.5px;
 
-      margin-bottom:18px;
+      font-weight:700;
     }
 
     .page-hero h1 span{
-      color:#b7ff00;
+      color:var(--accent);
     }
 
     .page-hero p{
@@ -324,15 +438,16 @@
       color:var(--text-muted);
 
       font-size:16px;
+      line-height:1.9;
     }
 
 
-    /* ==============================
-       ADMISSION AREA
-    ============================== */
+    /* =========================================================
+       ADMISSION SECTION
+       ========================================================= */
 
     .admission-section{
-      padding:50px 0 100px;
+      padding:55px 0 105px;
 
       background:var(--bg);
     }
@@ -344,39 +459,68 @@
         .72fr
         1.28fr;
 
-      gap:25px;
+      gap:26px;
 
       align-items:start;
     }
 
 
-    /* ==============================
-       LEFT INFO
-    ============================== */
+    /* =========================================================
+       LEFT INFO CARD
+       ========================================================= */
 
     .admission-info{
       position:sticky;
-      top:110px;
+      top:105px;
 
       padding:30px;
 
-      background:var(--bg-card);
+      background:
+        linear-gradient(
+          145deg,
+          var(--bg-card),
+          var(--bg-alt)
+        );
 
       border:1px solid var(--border-2);
 
-      border-radius:18px;
+      border-radius:20px;
+
+      box-shadow:var(--shadow);
+
+      overflow:hidden;
+    }
+
+    .admission-info::before{
+      content:"";
+
+      position:absolute;
+
+      width:180px;
+      height:180px;
+
+      right:-90px;
+      top:-90px;
+
+      background:var(--accent);
+
+      opacity:.035;
+
+      border-radius:50%;
     }
 
     .admission-info h2{
-      font-size:27px;
+      position:relative;
 
-      line-height:1.25;
+      font-size:28px;
 
-      margin-bottom:15px;
+      line-height:1.3;
+
+      margin-bottom:14px;
     }
 
     .admission-info h2 span{
-      color:#b7ff00;
+      color:var(--accent);
     }
 
     .admission-info > p{
@@ -384,46 +528,44 @@
 
       font-size:14px;
 
-      line-height:1.8;
+      line-height:1.9;
 
-      margin-bottom:25px;
+      margin-bottom:23px;
     }
 
     .info-item{
       display:flex;
-
       align-items:center;
 
       gap:13px;
 
-      padding:15px 5px;
+      padding:14px 5px;
 
       border-top:1px solid var(--border);
-
-      border-radius:8px;
 
       transition:.3s;
     }
 
     .info-item:hover{
-      background:rgba(183,255,0,.03);
-
       padding-left:10px;
+
+      background:var(--accent-soft);
     }
 
     .info-icon{
-      width:40px;
-      height:40px;
-
-      flex-shrink:0;
+      width:42px;
+      height:42px;
 
       display:grid;
       place-items:center;
 
-      background:
-        rgba(183,255,0,.08);
+      flex-shrink:0;
 
-      border-radius:10px;
+      background:var(--accent-soft);
+
+      border:1px solid var(--accent-border);
+
+      border-radius:11px;
 
       font-size:18px;
 
@@ -431,7 +573,9 @@
     }
 
     .info-item:hover .info-icon{
-      background:rgba(183,255,0,.15);
+      transform:scale(1.05);
+
+      background:rgba(183,255,0,.14);
     }
 
     .info-item strong{
@@ -451,30 +595,33 @@
     }
 
 
-    /* ==============================
+    /* =========================================================
        FORM CARD
-    ============================== */
+       ========================================================= */
 
     .form-card{
-      padding:32px;
+      padding:34px;
 
-      background:var(--bg-card);
+      background:
+        linear-gradient(
+          145deg,
+          var(--bg-card),
+          var(--bg-alt)
+        );
 
       border:1px solid var(--border-2);
 
-      border-radius:18px;
+      border-radius:20px;
 
-      box-shadow:
-        0 25px 70px
-        rgba(0,0,0,.20);
+      box-shadow:var(--shadow);
     }
 
     .form-title{
-      margin-bottom:28px;
+      margin-bottom:27px;
     }
 
     .form-title small{
-      color:#b7ff00;
+      color:var(--accent);
 
       font-size:11px;
 
@@ -484,11 +631,11 @@
     }
 
     .form-title h2{
-      font-size:30px;
+      font-size:31px;
 
-      margin-top:7px;
+      line-height:1.3;
 
-      margin-bottom:7px;
+      margin:5px 0 5px;
     }
 
     .form-title p{
@@ -499,14 +646,12 @@
 
     .process-strip{
       display:flex;
-
       flex-wrap:wrap;
-
       align-items:center;
 
       gap:8px;
 
-      margin-top:16px;
+      margin-top:17px;
 
       padding:12px 14px;
 
@@ -514,35 +659,33 @@
 
       border:1px solid var(--border-2);
 
-      border-radius:9px;
-
-      font-size:11.5px;
+      border-radius:10px;
 
       color:var(--text-muted);
+
+      font-size:11.5px;
     }
 
     .process-arrow{
-      color:#b7ff00;
+      color:var(--accent);
       font-weight:800;
     }
 
 
-    /* ==============================
-       FORM
-    ============================== */
+    /* =========================================================
+       FORM GRID
+       ========================================================= */
 
     .form-grid{
       display:grid;
 
-      grid-template-columns:
-        repeat(2,1fr);
+      grid-template-columns:repeat(2,1fr);
 
       gap:18px;
     }
 
     .form-group{
       display:flex;
-
       flex-direction:column;
 
       gap:7px;
@@ -553,21 +696,20 @@
     }
 
     .form-group label{
-      color:#ddd;
+      color:var(--text);
 
       font-size:13px;
 
-      font-weight:700;
+      font-weight:600;
     }
 
     .required{
-      color:#b7ff00;
+      color:var(--accent);
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea{
-
       width:100%;
 
       border:1px solid var(--border-2);
@@ -575,16 +717,34 @@
       outline:none;
 
       background:var(--bg-input);
-
       color:var(--text);
 
-      border-radius:9px;
+      border-radius:10px;
 
       padding:13px 14px;
 
       font-size:13px;
 
-      transition:.3s;
+      transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+    }
+
+    .form-group input:hover,
+    .form-group select:hover,
+    .form-group textarea:hover{
+      border-color:#3a3a3a;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus{
+      border-color:var(--accent);
+
+      box-shadow:
+        0 0 0 3px
+        var(--accent-soft);
     }
 
     .form-group input::placeholder,
@@ -592,29 +752,19 @@
       color:var(--text-dim);
     }
 
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus{
-
-      border-color:
-        rgba(183,255,0,.55);
-
-      box-shadow:
-        0 0 0 3px
-        rgba(183,255,0,.05);
-    }
-
     .form-group select{
       cursor:pointer;
     }
 
     .form-group textarea{
-      min-height:110px;
+      min-height:115px;
 
       resize:vertical;
     }
 
     .form-help{
+      margin-top:7px;
+
       color:var(--text-dim);
 
       font-size:11px;
@@ -623,26 +773,26 @@
     }
 
 
-    /* ==============================
+    /* =========================================================
        RADIO
-    ============================== */
+       ========================================================= */
 
     .radio-options{
       display:flex;
-
       flex-wrap:wrap;
-
       gap:10px;
     }
 
     .radio-option{
       position:relative;
-
       cursor:pointer;
     }
 
     .radio-option input{
       position:absolute;
+
+      width:1px;
+      height:1px;
 
       opacity:0;
 
@@ -658,71 +808,102 @@
 
       border:1px solid var(--border-2);
 
-      border-radius:8px;
+      border-radius:9px;
 
       color:var(--text-muted);
 
       font-size:12px;
 
-      transition:.3s;
+      transition:.25s;
+    }
+
+    .radio-option:hover span{
+      border-color:#454545;
     }
 
     .radio-option input:checked + span{
-      color:#b7ff00;
+      color:var(--accent);
 
-      border-color:#b7ff00;
+      border-color:var(--accent);
 
-      background:
-        rgba(183,255,0,.06);
+      background:var(--accent-soft);
+
+      box-shadow:
+        0 0 0 2px rgba(183,255,0,.03);
     }
 
 
-    /* ==============================
+    /* =========================================================
        FILE UPLOAD
-    ============================== */
+       ========================================================= */
 
     .file-box{
       position:relative;
-
-      border:1px dashed var(--border-2);
-
-      background:var(--bg-input);
-
-      border-radius:10px;
 
       padding:20px;
 
       text-align:center;
 
+      background:var(--bg-input);
+
+      border:1px dashed var(--border-2);
+
+      border-radius:11px;
+
       transition:.3s;
     }
 
     .file-box:hover{
-      border-color:
-        rgba(183,255,0,.5);
+      border-color:var(--accent);
+      background:var(--accent-soft);
     }
 
     .file-box input{
-      padding:10px;
+      width:100%;
+
+      padding:9px;
 
       cursor:pointer;
+
+      color:var(--text-muted);
+    }
+
+    .file-box input::file-selector-button{
+      margin-right:10px;
+
+      padding:8px 12px;
+
+      border:1px solid var(--border-2);
+
+      border-radius:7px;
+
+      background:var(--bg-card);
+
+      color:var(--text);
+
+      cursor:pointer;
+
+      transition:.3s;
+    }
+
+    .file-box input::file-selector-button:hover{
+      border-color:var(--accent);
+      color:var(--accent);
     }
 
 
-    /* ==============================
+    /* =========================================================
        NOTICE
-    ============================== */
+       ========================================================= */
 
     .notice{
       margin-top:22px;
 
-      padding:15px;
+      padding:15px 16px;
 
-      border:1px solid
-        rgba(183,255,0,.15);
+      background:var(--accent-soft);
 
-      background:
-        rgba(183,255,0,.04);
+      border:1px solid var(--accent-border);
 
       border-radius:10px;
 
@@ -730,19 +911,21 @@
 
       font-size:12px;
 
-      line-height:1.7;
+      line-height:1.8;
     }
 
     .notice strong{
-      color:#b7ff00;
+      color:var(--accent);
     }
 
 
-    /* ==============================
-       SUBMIT
-    ============================== */
+    /* =========================================================
+       SUBMIT BUTTON
+       ========================================================= */
 
     .submit-button{
+      position:relative;
+
       width:100%;
 
       margin-top:22px;
@@ -751,40 +934,77 @@
 
       border:0;
 
-      border-radius:9px;
+      border-radius:10px;
 
-      background:#b7ff00;
+      background:var(--accent);
 
-      color:var(--bg);
+      color:#050505;
 
       font-size:14px;
 
-      font-weight:900;
+      font-weight:800;
 
       cursor:pointer;
 
+      overflow:hidden;
+
       transition:.3s;
+    }
+
+    .submit-button::before{
+      content:"";
+
+      position:absolute;
+
+      top:0;
+      left:-100%;
+
+      width:50%;
+      height:100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.30),
+          transparent
+        );
+
+      transform:skewX(-20deg);
+
+      transition:.6s;
+    }
+
+    .submit-button:hover::before{
+      left:130%;
     }
 
     .submit-button:hover{
       transform:translateY(-2px);
 
       box-shadow:
-        0 12px 35px
+        0 14px 35px
         rgba(183,255,0,.20);
     }
 
+    .submit-button:disabled{
+      opacity:.65;
+      cursor:not-allowed;
+      transform:none;
+      box-shadow:none;
+    }
 
-    /* ==============================
+
+    /* =========================================================
        FOOTER
-    ============================== */
+       ========================================================= */
 
     .footer{
-      padding:45px 0 25px;
+      padding:48px 0 25px;
 
       border-top:1px solid var(--border);
 
-      background:var(--bg);
+      background:var(--bg-alt);
     }
 
     .footer-top{
@@ -793,7 +1013,7 @@
       grid-template-columns:
         1.3fr 1fr 1fr;
 
-      gap:40px;
+      gap:45px;
 
       padding-bottom:35px;
     }
@@ -803,29 +1023,31 @@
 
       font-size:21px;
 
-      font-weight:800;
+      font-weight:700;
 
-      margin-bottom:5px;
+      margin-bottom:2px;
     }
 
     .footer-brand span{
-      color:#b7ff00;
+      color:var(--accent);
     }
 
     .footer-tagline{
-      color:var(--text-dim);
+      color:var(--accent);
 
-      margin-bottom:14px;
+      font-size:12px;
+
+      margin-bottom:12px;
     }
 
     .footer-description{
-      max-width:350px;
+      max-width:370px;
 
       color:var(--text-dim);
 
       font-size:13px;
 
-      line-height:1.8;
+      line-height:1.9;
     }
 
     .footer-column h3{
@@ -838,9 +1060,7 @@
 
     .footer-links{
       display:flex;
-
       flex-direction:column;
-
       gap:9px;
     }
 
@@ -853,40 +1073,40 @@
     }
 
     .footer-links a:hover{
-      color:#b7ff00;
+      color:var(--accent);
+      padding-left:3px;
     }
 
     .social-links{
       display:flex;
-
       flex-wrap:wrap;
-
       gap:8px;
     }
 
     .social-links a{
-      width:36px;
-      height:36px;
+      width:37px;
+      height:37px;
 
       display:grid;
-
       place-items:center;
 
       border:1px solid var(--border-2);
 
-      border-radius:8px;
+      border-radius:9px;
 
-      color:#aaa;
+      color:var(--text-dim);
 
-      font-size:13px;
+      font-size:12px;
+      font-weight:700;
 
       transition:.3s;
     }
 
     .social-links a:hover{
-      color:#b7ff00;
+      color:var(--accent);
+      border-color:var(--accent);
 
-      border-color:#b7ff00;
+      transform:translateY(-2px);
     }
 
     .footer-bottom{
@@ -906,9 +1126,194 @@
     }
 
 
-    /* ==============================
-       MOBILE
-    ============================== */
+    /* =========================================================
+       COUNSELOR
+       ========================================================= */
+
+    .counselor-trigger{
+      position:fixed;
+
+      right:22px;
+      bottom:22px;
+
+      z-index:9998;
+
+      width:57px;
+      height:57px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      border:0;
+      border-radius:50%;
+
+      background:#25D366;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.30);
+
+      font-size:25px;
+
+      cursor:pointer;
+
+      transition:.3s;
+    }
+
+    .counselor-trigger:hover{
+      transform:scale(1.08);
+
+      box-shadow:
+        0 12px 35px
+        rgba(37,211,102,.35);
+    }
+
+    .counselor-popup{
+      display:none;
+
+      position:fixed;
+
+      right:22px;
+      bottom:92px;
+
+      z-index:9999;
+
+      width:280px;
+
+      padding:21px;
+
+      background:var(--bg-card);
+
+      border:1px solid var(--border-2);
+
+      border-radius:17px;
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.45);
+
+      text-align:center;
+    }
+
+    .counselor-popup.open{
+      display:block;
+
+      animation:counselorFade .25s ease;
+    }
+
+    @keyframes counselorFade{
+      from{
+        opacity:0;
+        transform:translateY(10px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .counselor-close{
+      position:absolute;
+
+      top:10px;
+      right:12px;
+
+      width:25px;
+      height:25px;
+
+      border:0;
+
+      background:transparent;
+
+      color:var(--text-dim);
+
+      cursor:pointer;
+    }
+
+    .counselor-close:hover{
+      color:var(--text);
+    }
+
+    .counselor-avatar{
+      width:58px;
+      height:58px;
+
+      margin:0 auto 12px;
+
+      display:grid;
+      place-items:center;
+
+      background:var(--accent-soft);
+
+      border:1px solid var(--accent-border);
+
+      border-radius:50%;
+
+      font-size:25px;
+    }
+
+    .counselor-popup h4{
+      color:var(--text);
+
+      font-size:14px;
+
+      line-height:1.5;
+
+      margin-bottom:4px;
+    }
+
+    .counselor-hours{
+      display:block;
+
+      color:var(--text-dim);
+
+      font-size:11px;
+
+      margin-bottom:16px;
+    }
+
+    .counselor-actions{
+      display:flex;
+      flex-direction:column;
+
+      gap:8px;
+    }
+
+    .counselor-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      gap:8px;
+
+      padding:11px;
+
+      border-radius:9px;
+
+      font-size:13px;
+      font-weight:700;
+
+      transition:.3s;
+    }
+
+    .counselor-btn.whatsapp{
+      background:#25D366;
+      color:#fff;
+    }
+
+    .counselor-btn.call{
+      background:var(--accent);
+      color:#050505;
+    }
+
+    .counselor-btn:hover{
+      transform:translateY(-2px);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
 
     @media(max-width:900px){
 
@@ -921,14 +1326,13 @@
       }
 
       .admission-info{
-        position:static;
+        position:relative;
+        top:auto;
       }
 
       .footer-top{
-        grid-template-columns:
-          repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
       }
-
     }
 
 
@@ -946,20 +1350,32 @@
         width:105px;
       }
 
-      .login-button{
-        padding:9px 12px;
+      .header-actions{
+        gap:6px;
+      }
 
-        font-size:11px;
+      .theme-toggle{
+        width:36px;
+        height:36px;
+      }
+
+      .lang-toggle{
+        height:36px;
+        padding:0 9px;
+      }
+
+      .login-button{
+        padding:9px 11px;
+        font-size:10px;
       }
 
       .page-hero{
-        padding:70px 0 40px;
+        padding:72px 0 42px;
       }
 
       .page-hero h1{
         font-size:42px;
-
-        letter-spacing:-2px;
+        letter-spacing:-1.7px;
       }
 
       .page-hero p{
@@ -967,16 +1383,23 @@
       }
 
       .admission-section{
-        padding:30px 0 70px;
+        padding:30px 0 75px;
+      }
+
+      .admission-info{
+        padding:23px;
+      }
+
+      .admission-info h2{
+        font-size:23px;
       }
 
       .form-card{
-        padding:22px;
+        padding:21px;
       }
 
       .form-grid{
         grid-template-columns:1fr;
-
         gap:16px;
       }
 
@@ -984,59 +1407,12 @@
         grid-column:auto;
       }
 
-      .footer-top{
-        grid-template-columns:1fr;
-
-        gap:28px;
-      }
-
-      .footer-bottom{
-        flex-direction:column;
-      }
-
-    }
-
-
-    /* ==============================
-       VERY SMALL MOBILE (1.2)
-    ============================== */
-
-    @media(max-width:400px){
-
-      .page-hero{
-        padding:60px 0 32px;
-      }
-
-      .page-hero h1{
-        font-size:34px;
-
-        letter-spacing:-1.5px;
-      }
-
-      .page-hero p{
-        font-size:13px;
-      }
-
-      .page-badge{
-        font-size:10px;
-
-        padding:7px 12px;
-      }
-
-      .form-card{
-        padding:16px;
-      }
-
       .form-title h2{
-        font-size:24px;
+        font-size:26px;
       }
 
-      .admission-info{
-        padding:20px;
-      }
-
-      .admission-info h2{
-        font-size:22px;
+      .process-strip{
+        line-height:1.8;
       }
 
       .radio-options{
@@ -1047,159 +1423,69 @@
         text-align:center;
       }
 
-      .submit-button{
-        font-size:13px;
-
-        padding:14px;
+      .footer-top{
+        grid-template-columns:1fr;
+        gap:28px;
       }
 
-    }
+      .footer-bottom{
+        flex-direction:column;
+        gap:7px;
+      }
 
-    /* CAREER COUNSELOR FLOATING WIDGET */
-
-    .counselor-trigger{
-      position:fixed;
-      bottom:22px;
-      right:22px;
-      z-index:9998;
-
-      width:56px;
-      height:56px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      background:#25D366;
-      border:0;
-      border-radius:50%;
-
-      box-shadow:0 8px 24px rgba(0,0,0,.3);
-
-      font-size:26px;
-      cursor:pointer;
-
-      transition:.3s;
-    }
-
-    .counselor-trigger:hover{
-      transform:scale(1.08);
-      box-shadow:0 10px 30px rgba(37,211,102,.4);
-    }
-
-    .counselor-popup{
-      display:none;
-      position:fixed;
-      bottom:90px;
-      right:22px;
-      z-index:9999;
-
-      width:260px;
-      background:var(--bg-card, #0b0b0b);
-      border:1px solid var(--border-2, #292929);
-      border-radius:16px;
-      padding:20px;
-
-      box-shadow:0 20px 50px rgba(0,0,0,.4);
-
-      text-align:center;
-    }
-
-    .counselor-popup.open{
-      display:block;
-      animation:counselorFadeIn .25s ease;
-    }
-
-    @keyframes counselorFadeIn{
-      from{ opacity:0; transform:translateY(8px); }
-      to{ opacity:1; transform:translateY(0); }
-    }
-
-    .counselor-close{
-      position:absolute;
-      top:10px;
-      right:12px;
-      background:none;
-      border:0;
-      color:var(--text-dim, #777);
-      font-size:16px;
-      cursor:pointer;
-      line-height:1;
-    }
-    .counselor-close:hover{ color:var(--text, #fff); }
-
-    .counselor-avatar{
-      width:56px;
-      height:56px;
-      margin:0 auto 12px;
-      display:grid;
-      place-items:center;
-      background:rgba(183,255,0,.1);
-      border:1px solid rgba(183,255,0,.3);
-      border-radius:50%;
-      font-size:26px;
-    }
-
-    .counselor-popup h4{
-      font-size:14px;
-      color:var(--text, #fff);
-      margin-bottom:4px;
-      line-height:1.4;
-    }
-
-    .counselor-popup .counselor-hours{
-      display:block;
-      color:var(--text-dim, #777);
-      font-size:11px;
-      margin-bottom:16px;
-    }
-
-    .counselor-actions{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-
-    .counselor-btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:11px;
-      border-radius:9px;
-      font-size:13px;
-      font-weight:800;
-      transition:.3s;
-    }
-
-    .counselor-btn.whatsapp{
-      background:#25D366;
-      color:#fff;
-    }
-    .counselor-btn.whatsapp:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(37,211,102,.3); }
-
-    .counselor-btn.call{
-      background:#b7ff00;
-      color:#050505;
-    }
-    .counselor-btn.call:hover{ transform:translateY(-2px); box-shadow:0 10px 25px rgba(183,255,0,.25); }
-
-    @media(max-width:600px){
       .counselor-trigger{
-        width:50px;
-        height:50px;
-        bottom:16px;
+        width:51px;
+        height:51px;
+
         right:16px;
+        bottom:16px;
+
         font-size:22px;
       }
+
       .counselor-popup{
-        bottom:82px;
-        right:16px;
         left:16px;
+        right:16px;
+
+        bottom:80px;
+
         width:auto;
       }
     }
 
+
+    @media(max-width:400px){
+
+      .brand img{
+        width:94px;
+      }
+
+      .login-button{
+        padding:8px 9px;
+        font-size:9px;
+      }
+
+      .page-hero h1{
+        font-size:35px;
+      }
+
+      .page-badge{
+        font-size:9px;
+        padding:7px 12px;
+      }
+
+      .form-card{
+        padding:16px;
+      }
+
+      .form-title h2{
+        font-size:23px;
+      }
+
+      .submit-button{
+        font-size:13px;
+      }
+    }
 
   </style>
 </head>
@@ -1208,9 +1494,9 @@
 <body>
 
 
-  <!-- ==============================
+  <!-- =======================================================
        HEADER
-  ============================== -->
+       ======================================================= -->
 
   <header class="header">
 
@@ -1257,7 +1543,7 @@
           id="themeToggle"
           class="theme-toggle"
           type="button"
-          aria-label="Toggle dark/light mode"
+          aria-label="Toggle theme"
         >
           🌙
         </button>
@@ -1266,7 +1552,6 @@
           id="langToggle"
           class="lang-toggle"
           type="button"
-          aria-label="Toggle language"
         >
           EN
         </button>
@@ -1274,8 +1559,6 @@
         <a
           href="/coming-soon/"
           class="login-button"
-          data-bn="Login / Sign Up →"
-          data-en="Login / Sign Up →"
         >
           Login / Sign Up →
         </a>
@@ -1287,10 +1570,9 @@
   </header>
 
 
-
-  <!-- ==============================
-       PAGE HERO
-  ============================== -->
+  <!-- =======================================================
+       HERO
+       ======================================================= -->
 
   <section class="page-hero">
 
@@ -1305,22 +1587,13 @@
       </div>
 
       <h1>
-
         আপনার যাত্রা
-
-        <span>
-          শুরু করুন।
-        </span>
-
+        <span>শুরু করুন।</span>
       </h1>
 
       <p>
-
-        আপনার পছন্দের কোর্স নির্বাচন করে
-        Admission Form পূরণ করুন।
-        তথ্য যাচাই করার পর আমাদের team
-        আপনার সাথে যোগাযোগ করবে।
-
+        আপনার পছন্দের কোর্স নির্বাচন করে Admission Form পূরণ করুন।
+        তথ্য যাচাই করার পর আমাদের team আপনার সাথে যোগাযোগ করবে।
       </p>
 
     </div>
@@ -1328,39 +1601,29 @@
   </section>
 
 
-
-  <!-- ==============================
+  <!-- =======================================================
        ADMISSION
-  ============================== -->
+       ======================================================= -->
 
   <section class="admission-section">
 
     <div class="container admission-grid">
 
 
-      <!-- ============================
-           INFO
-      ============================= -->
+      <!-- LEFT -->
 
       <div class="admission-info">
 
         <h2>
-
           SNK IT Institute-এর
-
-          <span>
-            সাথে শুরু করুন।
-          </span>
-
+          <span>সাথে শুরু করুন।</span>
         </h2>
 
         <p>
-
           আপনার তথ্য সঠিকভাবে প্রদান করুন।
           Admission request submit করার পর
           আমাদের team আপনার তথ্য যাচাই করে
           পরবর্তী নির্দেশনা দেবে।
-
         </p>
 
 
@@ -1371,15 +1634,8 @@
           </div>
 
           <div>
-
-            <strong>
-              Practical Learning
-            </strong>
-
-            <span>
-              Project-based training
-            </span>
-
+            <strong>Practical Learning</strong>
+            <span>Project-based training</span>
           </div>
 
         </div>
@@ -1392,15 +1648,8 @@
           </div>
 
           <div>
-
-            <strong>
-              AI-Powered Skills
-            </strong>
-
-            <span>
-              Modern tools & workflow
-            </span>
-
+            <strong>AI-Powered Skills</strong>
+            <span>Modern tools & workflow</span>
           </div>
 
         </div>
@@ -1413,15 +1662,8 @@
           </div>
 
           <div>
-
-            <strong>
-              Career Support
-            </strong>
-
-            <span>
-              Career-focused guidance
-            </span>
-
+            <strong>Career Support</strong>
+            <span>Career-focused guidance</span>
           </div>
 
         </div>
@@ -1434,15 +1676,8 @@
           </div>
 
           <div>
-
-            <strong>
-              Contact
-            </strong>
-
-            <span>
-              01705633700
-            </span>
-
+            <strong>Admission Support</strong>
+            <span>01705633700</span>
           </div>
 
         </div>
@@ -1450,23 +1685,15 @@
       </div>
 
 
-
-      <!-- ============================
-           FORM
-      ============================= -->
+      <!-- FORM -->
 
       <div class="form-card">
 
-
         <div class="form-title">
 
-          <small>
-            ADMISSION FORM
-          </small>
+          <small>ADMISSION FORM</small>
 
-          <h2>
-            ভর্তি আবেদন করুন
-          </h2>
+          <h2>ভর্তি আবেদন করুন</h2>
 
           <p>
             * চিহ্নিত তথ্যগুলো অবশ্যই পূরণ করতে হবে।
@@ -1475,9 +1702,13 @@
           <div class="process-strip">
 
             <span>১. ফর্ম পূরণ করুন</span>
+
             <span class="process-arrow">→</span>
+
             <span>২. তথ্য যাচাই হবে</span>
+
             <span class="process-arrow">→</span>
+
             <span>৩. WhatsApp-এ যোগাযোগ</span>
 
           </div>
@@ -1485,18 +1716,12 @@
         </div>
 
 
-
-        <!-- FORM -->
-
         <form
           id="admissionForm"
           action="https://formsubmit.co/iamsnkbd@protonmail.com"
           method="POST"
           enctype="multipart/form-data"
         >
-
-
-          <!-- FORM SETTINGS -->
 
           <input
             type="hidden"
@@ -1523,7 +1748,6 @@
           >
 
 
-
           <div class="form-grid">
 
 
@@ -1532,18 +1756,19 @@
             <div class="form-group">
 
               <label>
-                পূর্ণ নাম <span class="required">*</span>
+                পূর্ণ নাম
+                <span class="required">*</span>
               </label>
 
               <input
                 type="text"
                 name="Full Name"
                 placeholder="আপনার পূর্ণ নাম"
+                autocomplete="name"
                 required
               >
 
             </div>
-
 
 
             <!-- PHONE -->
@@ -1551,18 +1776,21 @@
             <div class="form-group">
 
               <label>
-                মোবাইল নম্বর <span class="required">*</span>
+                মোবাইল নম্বর
+                <span class="required">*</span>
               </label>
 
               <input
                 type="tel"
                 name="Phone"
                 placeholder="01XXXXXXXXX"
+                autocomplete="tel"
+                pattern="01[0-9]{9}"
+                title="১১ সংখ্যার সঠিক বাংলাদেশি মোবাইল নম্বর দিন"
                 required
               >
 
             </div>
-
 
 
             <!-- EMAIL -->
@@ -1570,18 +1798,19 @@
             <div class="form-group">
 
               <label>
-                Email Address <span class="required">*</span>
+                Email Address
+                <span class="required">*</span>
               </label>
 
               <input
                 type="email"
                 name="Email"
                 placeholder="example@email.com"
+                autocomplete="email"
                 required
               >
 
             </div>
-
 
 
             <!-- AGE -->
@@ -1589,7 +1818,8 @@
             <div class="form-group">
 
               <label>
-                বয়স <span class="required">*</span>
+                বয়স
+                <span class="required">*</span>
               </label>
 
               <input
@@ -1602,7 +1832,6 @@
               >
 
             </div>
-
 
 
             <!-- COURSE -->
@@ -1635,14 +1864,13 @@
                   AI-Powered Graphic Design
                 </option>
 
-                <option value="100Days Kidz Spoken English">
-                  100Days Kidz Spoken English
+                <option value="100 Days Kidz Spoken English">
+                  100 Days Kidz Spoken English
                 </option>
 
               </select>
 
             </div>
-
 
 
             <!-- EDUCATION -->
@@ -1664,7 +1892,6 @@
             </div>
 
 
-
             <!-- PROFESSION -->
 
             <div class="form-group">
@@ -1682,8 +1909,7 @@
             </div>
 
 
-
-            <!-- PC -->
+            <!-- DEVICE -->
 
             <div class="form-group full">
 
@@ -1694,7 +1920,6 @@
 
               <div class="radio-options">
 
-
                 <label class="radio-option">
 
                   <input
@@ -1704,9 +1929,7 @@
                     required
                   >
 
-                  <span>
-                    হ্যাঁ, আছে
-                  </span>
+                  <span>হ্যাঁ, আছে</span>
 
                 </label>
 
@@ -1719,9 +1942,7 @@
                     value="No"
                   >
 
-                  <span>
-                    না, নেই
-                  </span>
+                  <span>না, নেই</span>
 
                 </label>
 
@@ -1734,9 +1955,7 @@
                     value="Can use shared device"
                   >
 
-                  <span>
-                    Shared device ব্যবহার করব
-                  </span>
+                  <span>Shared device ব্যবহার করব</span>
 
                 </label>
 
@@ -1745,8 +1964,7 @@
             </div>
 
 
-
-            <!-- NID / SCREENSHOT -->
+            <!-- DOCUMENT -->
 
             <div class="form-group full">
 
@@ -1773,7 +1991,6 @@
             </div>
 
 
-
             <!-- ADDRESS -->
 
             <div class="form-group full">
@@ -1786,10 +2003,10 @@
                 type="text"
                 name="Address"
                 placeholder="আপনার বর্তমান ঠিকানা"
+                autocomplete="street-address"
               >
 
             </div>
-
 
 
             <!-- MESSAGE -->
@@ -1807,18 +2024,14 @@
 
             </div>
 
-
           </div>
-
 
 
           <!-- NOTICE -->
 
           <div class="notice">
 
-            <strong>
-              গুরুত্বপূর্ণ:
-            </strong>
+            <strong>গুরুত্বপূর্ণ:</strong>
 
             Form submit করার পর আপনার তথ্য
             আমাদের Admission Team-এর কাছে যাবে।
@@ -1828,7 +2041,6 @@
           </div>
 
 
-
           <!-- SUBMIT -->
 
           <button
@@ -1836,11 +2048,8 @@
             id="submitBtn"
             class="submit-button"
           >
-
             Admission Request Submit করুন →
-
           </button>
-
 
         </form>
 
@@ -1851,27 +2060,21 @@
   </section>
 
 
-
-  <!-- ==============================
+  <!-- =======================================================
        FOOTER
-  ============================== -->
+       ======================================================= -->
 
   <footer class="footer">
 
     <div class="container">
 
-
       <div class="footer-top">
 
-
-        <!-- BRAND -->
 
         <div>
 
           <div class="footer-brand">
-
             SNK <span>IT</span> Institute
-
           </div>
 
           <div class="footer-tagline">
@@ -1879,64 +2082,40 @@
           </div>
 
           <p class="footer-description">
-
             Practical skills, AI-powered learning
             এবং career-focused training-এর মাধ্যমে
             আপনার ভবিষ্যৎ গড়ে তুলুন।
-
           </p>
 
         </div>
 
 
-
-        <!-- QUICK LINKS -->
-
         <div class="footer-column">
 
-          <h3>
-            Quick Links
-          </h3>
+          <h3>Quick Links</h3>
 
           <div class="footer-links">
 
-            <a href="/">
-              হোম
-            </a>
+            <a href="/">হোম</a>
 
-            <a href="/courses/">
-              কোর্সসমূহ
-            </a>
+            <a href="/courses/">কোর্সসমূহ</a>
 
-            <a href="/admission/">
-              Admission
-            </a>
+            <a href="/admission/">Admission</a>
 
-            <a href="/blog/">
-              ব্লগ
-            </a>
+            <a href="/blog/">ব্লগ</a>
 
-            <a href="/coming-soon/">
-              Login / Sign Up
-            </a>
+            <a href="/coming-soon/">Login / Sign Up</a>
 
-            <a href="/contact/">
-              যোগাযোগ
-            </a>
+            <a href="/contact/">যোগাযোগ</a>
 
           </div>
 
         </div>
 
 
-
-        <!-- SOCIAL -->
-
         <div class="footer-column">
 
-          <h3>
-            Follow Us
-          </h3>
+          <h3>Follow Us</h3>
 
           <div class="social-links">
 
@@ -1945,56 +2124,42 @@
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-            >
-              f
-            </a>
+            >f</a>
 
             <a
               href="https://www.instagram.com/snkitinstitute"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-            >
-              ◎
-            </a>
+            >◎</a>
 
             <a
               href="https://www.youtube.com/@snkitinstitute"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
-            >
-              ▶
-            </a>
+            >▶</a>
 
             <a
               href="https://www.tiktok.com/@snkitinstitute"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="TikTok"
-            >
-              ♪
-            </a>
+            >♪</a>
 
             <a
               href="https://www.linkedin.com/company/snkitinstitute"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-            >
-              in
-            </a>
+            >in</a>
 
           </div>
 
         </div>
 
-
       </div>
 
-
-
-      <!-- FOOTER BOTTOM -->
 
       <div class="footer-bottom">
 
@@ -2008,31 +2173,102 @@
 
       </div>
 
-
     </div>
 
   </footer>
 
 
-  <script>
+  <!-- =======================================================
+       COUNSELOR POPUP
+       ======================================================= -->
 
-    const themeToggleBtn =
-      document.getElementById("themeToggle");
+  <div
+    class="counselor-popup"
+    id="counselorPopup"
+  >
+
+    <button
+      class="counselor-close"
+      id="counselorClose"
+      aria-label="Close"
+    >
+      ✕
+    </button>
+
+    <div class="counselor-avatar">
+      🎧
+    </div>
+
+    <h4>
+      একজন Career Counselor-এর সাথে কথা বলুন
+    </h4>
+
+    <span class="counselor-hours">
+      সকাল ১০টা থেকে রাত ১০টা
+    </span>
+
+    <div class="counselor-actions">
+
+      <a
+        href="https://wa.me/8801705633700?text=আমি%20একজন%20counselor-এর%20সাথে%20কথা%20বলতে%20চাই"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="counselor-btn whatsapp"
+      >
+        💬 WhatsApp
+      </a>
+
+      <a
+        href="tel:+8801705633700"
+        class="counselor-btn call"
+      >
+        📞 Call
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="counselor-trigger"
+    id="counselorTrigger"
+    aria-label="Talk to a counselor"
+  >
+    💬
+  </button>
+
+
+  <!-- =======================================================
+       THEME + LANGUAGE
+       ======================================================= -->
+
+  <script>
 
     const htmlEl =
       document.documentElement;
 
+    const themeToggleBtn =
+      document.getElementById("themeToggle");
+
+    const langToggleBtn =
+      document.getElementById("langToggle");
+
+
+    /* THEME */
 
     function applyTheme(theme){
 
       if(theme === "light"){
 
         htmlEl.classList.add("light-mode");
+
         themeToggleBtn.textContent = "☀️";
 
       }else{
 
         htmlEl.classList.remove("light-mode");
+
         themeToggleBtn.textContent = "🌙";
 
       }
@@ -2040,148 +2276,329 @@
     }
 
 
-    applyTheme(localStorage.getItem("snk-theme") || "dark");
+    const savedTheme =
+      localStorage.getItem("snk-theme") || "dark";
+
+    applyTheme(savedTheme);
 
 
-    themeToggleBtn.addEventListener("click", function(){
+    themeToggleBtn.addEventListener(
+      "click",
+      function(){
 
-      const isLight =
-        htmlEl.classList.contains("light-mode");
+        const isLight =
+          htmlEl.classList.contains("light-mode");
 
-      const newTheme =
-        isLight ? "dark" : "light";
+        const nextTheme =
+          isLight ? "dark" : "light";
 
-      applyTheme(newTheme);
+        applyTheme(nextTheme);
 
-      localStorage.setItem("snk-theme", newTheme);
+        localStorage.setItem(
+          "snk-theme",
+          nextTheme
+        );
 
-    });
+      }
+    );
 
 
-    const langToggleBtn =
-      document.getElementById("langToggle");
-
+    /* LANGUAGE */
 
     function applyLang(lang){
 
-      document.querySelectorAll("[data-bn]").forEach(function(el){
+      document
+        .querySelectorAll("[data-bn]")
+        .forEach(function(el){
 
-        el.textContent =
-          (lang === "bn")
-            ? el.getAttribute("data-bn")
-            : el.getAttribute("data-en");
+          el.textContent =
+            lang === "bn"
+              ? el.getAttribute("data-bn")
+              : el.getAttribute("data-en");
 
-      });
+        });
 
       langToggleBtn.textContent =
-        (lang === "bn") ? "EN" : "বাংলা";
+        lang === "bn"
+          ? "EN"
+          : "বাংলা";
 
     }
 
 
-    applyLang(localStorage.getItem("snk-lang") || "bn");
+    const savedLang =
+      localStorage.getItem("snk-lang") || "bn";
+
+    applyLang(savedLang);
 
 
-    langToggleBtn.addEventListener("click", function(){
+    langToggleBtn.addEventListener(
+      "click",
+      function(){
 
-      const current =
-        localStorage.getItem("snk-lang") || "bn";
+        const current =
+          localStorage.getItem("snk-lang") || "bn";
 
-      const next =
-        (current === "bn") ? "en" : "bn";
+        const next =
+          current === "bn" ? "en" : "bn";
 
-      applyLang(next);
+        applyLang(next);
 
-      localStorage.setItem("snk-lang", next);
+        localStorage.setItem(
+          "snk-lang",
+          next
+        );
 
-    });
+      }
+    );
 
   </script>
 
 
-  <!-- Firebase: save admission data so students can view it after signup -->
+  <!-- =======================================================
+       FIREBASE
+       ======================================================= -->
+
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
 
   <script>
 
     const firebaseConfig = {
-      apiKey: "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
-      authDomain: "snk-it-institute.firebaseapp.com",
-      projectId: "snk-it-institute",
-      storageBucket: "snk-it-institute.firebasestorage.app",
-      messagingSenderId: "948436125833",
-      appId: "1:948436125833:web:36788463d4dd3ef20bde58"
+
+      apiKey:
+        "AIzaSyDapm0z0sAMjJKhEOWO7NlQKyjY0HgmXYA",
+
+      authDomain:
+        "snk-it-institute.firebaseapp.com",
+
+      projectId:
+        "snk-it-institute",
+
+      storageBucket:
+        "snk-it-institute.firebasestorage.app",
+
+      messagingSenderId:
+        "948436125833",
+
+      appId:
+        "1:948436125833:web:36788463d4dd3ef20bde58"
+
     };
 
+
     firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
 
-    const admissionForm = document.getElementById("admissionForm");
-    const submitBtn = document.getElementById("submitBtn");
 
-    admissionForm.addEventListener("submit", function(e){
+    const db =
+      firebase.firestore();
 
-      e.preventDefault();
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = "জমা হচ্ছে...";
+    const admissionForm =
+      document.getElementById("admissionForm");
 
-      const pcRadio = admissionForm.querySelector('input[name="PC or Laptop"]:checked');
+    const submitBtn =
+      document.getElementById("submitBtn");
 
-      const studentData = {
-        name: admissionForm["Full Name"].value.trim(),
-        phone: admissionForm["Phone"].value.trim(),
-        email: admissionForm["Email"].value.trim(),
-        age: admissionForm["Age"].value.trim(),
-        course: admissionForm["Selected Course"].value,
-        education: admissionForm["Educational Qualification"].value.trim(),
-        profession: admissionForm["Current Profession"].value.trim(),
-        pcLaptop: pcRadio ? pcRadio.value : "",
-        address: admissionForm["Address"].value.trim(),
-        message: admissionForm["Additional Information"].value.trim(),
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      };
 
-      db.collection("students").add(studentData)
-        .catch(function(error){
-          console.error("Firestore save failed:", error);
-        })
-        .finally(function(){
-          // Continue with the normal FormSubmit email flow either way
-          admissionForm.submit();
-        });
+    admissionForm.addEventListener(
+      "submit",
+      async function(e){
 
-    });
+        e.preventDefault();
+
+
+        if(!admissionForm.checkValidity()){
+
+          admissionForm.reportValidity();
+
+          return;
+
+        }
+
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+          "জমা হচ্ছে...";
+
+
+        const pcRadio =
+          admissionForm.querySelector(
+            'input[name="PC or Laptop"]:checked'
+          );
+
+
+        const studentData = {
+
+          name:
+            admissionForm
+              .querySelector('[name="Full Name"]')
+              .value
+              .trim(),
+
+          phone:
+            admissionForm
+              .querySelector('[name="Phone"]')
+              .value
+              .trim(),
+
+          email:
+            admissionForm
+              .querySelector('[name="Email"]')
+              .value
+              .trim(),
+
+          age:
+            admissionForm
+              .querySelector('[name="Age"]')
+              .value
+              .trim(),
+
+          course:
+            admissionForm
+              .querySelector('[name="Selected Course"]')
+              .value,
+
+          education:
+            admissionForm
+              .querySelector('[name="Educational Qualification"]')
+              .value
+              .trim(),
+
+          profession:
+            admissionForm
+              .querySelector('[name="Current Profession"]')
+              .value
+              .trim(),
+
+          pcLaptop:
+            pcRadio
+              ? pcRadio.value
+              : "",
+
+          address:
+            admissionForm
+              .querySelector('[name="Address"]')
+              .value
+              .trim(),
+
+          message:
+            admissionForm
+              .querySelector('[name="Additional Information"]')
+              .value
+              .trim(),
+
+          status:
+            "new",
+
+          createdAt:
+            firebase.firestore.FieldValue.serverTimestamp()
+
+        };
+
+
+        try{
+
+          await db
+            .collection("students")
+            .add(studentData);
+
+          console.log(
+            "Admission saved successfully."
+          );
+
+        }catch(error){
+
+          console.error(
+            "Firestore save failed:",
+            error
+          );
+
+        }
+
+
+        /*
+          FormSubmit will handle:
+          - Email notification
+          - File attachment
+          - Redirect
+        */
+
+        admissionForm.submit();
+
+      }
+    );
 
   </script>
 
-  <div class="counselor-popup" id="counselorPopup">
-    <button class="counselor-close" id="counselorClose" aria-label="Close">✕</button>
-    <div class="counselor-avatar">🎧</div>
-    <h4>একজন Career Counselor-এর সাথে কথা বলুন</h4>
-    <span class="counselor-hours">সকাল ১০টা থেকে রাত ১০টা</span>
-    <div class="counselor-actions">
-      <a href="https://wa.me/8801705633700?text=আমি%20একজন%20counselor-এর%20সাথে%20কথা%20বলতে%20চাই" target="_blank" rel="noopener noreferrer" class="counselor-btn whatsapp">
-        💬 WhatsApp
-      </a>
-      <a href="tel:+8801705633700" class="counselor-btn call">
-        📞 Call
-      </a>
-    </div>
-  </div>
 
-  <button class="counselor-trigger" id="counselorTrigger" aria-label="Talk to a counselor">
-    💬
-  </button>
+  <!-- =======================================================
+       COUNSELOR JS
+       ======================================================= -->
 
   <script>
-    document.getElementById("counselorTrigger").addEventListener("click", function(){
-      document.getElementById("counselorPopup").classList.toggle("open");
-    });
-    document.getElementById("counselorClose").addEventListener("click", function(){
-      document.getElementById("counselorPopup").classList.remove("open");
-    });
+
+    const counselorTrigger =
+      document.getElementById(
+        "counselorTrigger"
+      );
+
+    const counselorPopup =
+      document.getElementById(
+        "counselorPopup"
+      );
+
+    const counselorClose =
+      document.getElementById(
+        "counselorClose"
+      );
+
+
+    counselorTrigger.addEventListener(
+      "click",
+      function(){
+
+        counselorPopup.classList.toggle(
+          "open"
+        );
+
+      }
+    );
+
+
+    counselorClose.addEventListener(
+      "click",
+      function(){
+
+        counselorPopup.classList.remove(
+          "open"
+        );
+
+      }
+    );
+
+
+    document.addEventListener(
+      "click",
+      function(e){
+
+        if(
+          !counselorPopup.contains(e.target) &&
+          !counselorTrigger.contains(e.target)
+        ){
+
+          counselorPopup.classList.remove(
+            "open"
+          );
+
+        }
+
+      }
+    );
+
   </script>
 
 
