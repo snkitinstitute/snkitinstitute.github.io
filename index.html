@@ -86,31 +86,28 @@
     .signup-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(183,255,0,0.22); }
     .mobile-menu-btn { display: none; }
 
-    /* HERO */
-    .home-hero { position: relative; overflow: hidden; padding: 100px 0 90px; background: radial-gradient(circle at 12% 15%, rgba(183,255,0,0.10), transparent 32%), radial-gradient(circle at 88% 85%, rgba(183,255,0,0.07), transparent 32%), #060806; color: #fff; }
-    .home-hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 55px 55px; mask-image: linear-gradient(to bottom, black, transparent); pointer-events: none; }
-    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 50px; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border-radius: 999px; background: rgba(183,255,0,0.08); border: 1px solid rgba(183,255,0,0.20); color: var(--accent); font-family: "Inter", sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 22px; }
-    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
-    .hero-title { font-size: clamp(36px, 4.6vw, 60px); line-height: 1.1; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 22px; }
-    .hero-title em { font-style: normal; color: var(--accent); }
-    .hero-description { max-width: 520px; color: #aeb5ac; font-size: 16px; margin-bottom: 34px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
-    .btn { min-height: 45px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 20px; border-radius: 11px; font-size: 13px; font-weight: 700; transition: 0.2s ease; }
-    .btn-primary { background: var(--accent); color: #000; box-shadow: 0 8px 22px rgba(183,255,0,0.13); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(183,255,0,0.23); }
-    .btn-ghost { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
-    .btn-ghost:hover { border-color: var(--accent); }
-    .hero-stats { display: flex; flex-wrap: wrap; gap: 10px; }
-    .hero-stat { min-width: 130px; padding: 14px 18px; border-radius: 14px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.08); }
-    .hero-stat strong { display: block; color: #fff; font-family: "Inter", sans-serif; font-size: 19px; }
-    .hero-stat span { color: #858e84; font-size: 12px; }
-    .hero-panel { position: relative; border-radius: 26px; padding: 26px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.10); }
-    .hero-panel-track { display: flex; flex-direction: column; gap: 14px; }
-    .track-item { display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
-    .track-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center; background: rgba(183,255,0,0.12); color: var(--accent); }
-    .track-item strong { display: block; font-size: 14px; color: #fff; }
-    .track-item span { font-size: 12px; color: #8a9184; }
+    /* HERO — restored original design */
+    .lh-hero{ position:relative; min-height:calc(100vh - 82px); display:flex; align-items:center; overflow:hidden; background: radial-gradient(circle at 80% 40%, rgba(183,255,0,.12), transparent 30%), radial-gradient(circle at 10% 80%, rgba(183,255,0,.05), transparent 25%), #050505; }
+    .lh-hero::before{ content:""; position:absolute; width:650px; height:650px; right:-320px; top:50%; transform:translateY(-50%); border:1px solid rgba(183,255,0,.07); border-radius:50%; }
+    .lh-hero::after{ content:""; position:absolute; width:380px; height:380px; right:-190px; top:50%; transform:translateY(-50%); border:1px solid rgba(183,255,0,.05); border-radius:50%; }
+    .lh-hero-box{ min-height:calc(100vh - 82px); display:grid; grid-template-columns:.95fr 1.05fr; align-items:center; gap:45px; position:relative; z-index:2; }
+    .lh-hero-content{ padding:70px 0; }
+    .lh-badge{ display:inline-flex; align-items:center; gap:9px; padding:8px 15px; margin-bottom:25px; color:#b7ff00; border:1px solid rgba(183,255,0,.28); background:rgba(183,255,0,.06); border-radius:50px; font-size:12px; font-weight:700; }
+    .lh-badge-dot{ width:7px; height:7px; background:#b7ff00; border-radius:50%; box-shadow:0 0 12px #b7ff00; }
+    .lh-hero-title{ font-size:clamp(46px,6vw,78px); line-height:1.05; letter-spacing:-4px; margin-bottom:25px; color:#fff; }
+    .lh-hero-title span{ color:#b7ff00; }
+    .lh-hero-description{ max-width:650px; color:#aeb5ac; font-size:17px; line-height:1.85; margin-bottom:32px; }
+    .lh-hero-buttons{ display:flex; flex-wrap:wrap; gap:13px; }
+    .lh-btn{ display:inline-flex; align-items:center; justify-content:center; padding:14px 23px; border-radius:9px; font-weight:800; font-size:14px; transition:.3s; }
+    .lh-btn-primary{ background:#b7ff00; color:#050505; }
+    .lh-btn-primary:hover{ transform:translateY(-3px); box-shadow:0 12px 35px rgba(183,255,0,.20); }
+    .lh-btn-secondary{ border:1px solid rgba(255,255,255,0.15); color:#fff; }
+    .lh-btn-secondary:hover{ border-color:#b7ff00; color:#b7ff00; }
+    .lh-hero-visual{ position:relative; min-height:620px; display:flex; align-items:center; justify-content:center; padding:35px; }
+    .lh-hero-main-image{ width:100%; max-width:620px; height:auto; display:block; margin:auto; object-fit:contain; position:relative; z-index:3; filter:drop-shadow(0 0 45px rgba(183,255,0,.12)); transition:transform .5s ease, filter .5s ease; }
+    .lh-hero-main-image:hover{ transform:scale(1.025); filter:drop-shadow(0 0 65px rgba(183,255,0,.20)); }
+    .offer-btn { padding: 9px 14px; border-radius: 11px; background: rgba(183,255,0,0.12); color: var(--text); border: 1px solid rgba(183,255,0,0.30); font-family: "Inter", sans-serif; font-size: 12px; font-weight: 800; }
+    .offer-btn:hover { background: rgba(183,255,0,0.20); }
 
     /* SECTION HEADING */
     .section { padding: 70px 0; }
@@ -176,8 +173,11 @@
     @media (max-width: 1050px) {
       .main-nav { display: none; }
       .mobile-menu-btn { display: inline-flex; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-panel { order: -1; }
+      .lh-hero-box { grid-template-columns: 1fr; text-align: center; min-height: auto; }
+      .lh-hero-content { padding: 90px 0 20px; }
+      .lh-hero-description { margin-left: auto; margin-right: auto; }
+      .lh-hero-buttons { justify-content: center; }
+      .lh-hero-visual { min-height: 500px; padding-bottom: 70px; }
       .why-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .course-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .about-teaser { grid-template-columns: 1fr; }
@@ -189,7 +189,13 @@
       .container { width: min(calc(100% - 28px), var(--container)); }
       .brand-logo { width: 120px; }
       .login-btn, .signup-btn { display: none; }
-      .home-hero { padding: 60px 0 50px; }
+      .lh-hero { min-height: auto; }
+      .lh-hero-box { min-height: auto; }
+      .lh-hero-title { font-size: 47px; letter-spacing: -2.5px; margin-bottom: 20px; }
+      .lh-btn { width: 100%; }
+      .lh-hero-buttons { width: 100%; }
+      .lh-hero-visual { min-height: auto; padding: 25px 0 65px; }
+      .offer-btn { display: none; }
       .section { padding: 50px 0; }
       .why-grid { grid-template-columns: 1fr; }
       .course-grid { grid-template-columns: 1fr; }
@@ -225,6 +231,7 @@
         <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
         <button class="lang-btn" id="languageBtn" type="button" aria-label="Change language"><span id="languageText">EN</span></button>
         <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☾</button>
+        <a href="/courses/" class="offer-btn" data-bn="🎁 বিশেষ অফার" data-en="🎁 Special Offer">🎁 বিশেষ অফার</a>
         <a href="/login/" class="login-btn">Login</a>
         <a href="/admission/" class="signup-btn">ভর্তি / Admission</a>
       </div>
@@ -232,42 +239,31 @@
   </header>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="home-hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><span class="eyebrow-dot"></span><span data-bn="AI Powered Skill Based Learning" data-en="AI Powered Skill Based Learning">AI Powered Skill Based Learning</span></div>
-          <h1 class="hero-title">
-            <span data-bn="দক্ষতা শিখুন," data-en="Learn Skills,">দক্ষতা শিখুন,</span><br />
-            <em data-bn="ক্যারিয়ার গড়ুন" data-en="Build Your Career">ক্যারিয়ার গড়ুন</em>
-          </h1>
-          <p class="hero-description" data-bn="প্র্যাকটিক্যাল, ক্যারিয়ার ফোকাসড এবং AI-powered training-এর মাধ্যমে আপনার পরবর্তী career skill তৈরি করুন — Moulvibazar থেকে সারা বাংলাদেশ।" data-en="Build your next career skill through practical, career-focused and AI-powered training — from Moulvibazar to all of Bangladesh.">
-            প্র্যাকটিক্যাল, ক্যারিয়ার ফোকাসড এবং AI-powered training-এর মাধ্যমে আপনার পরবর্তী career skill তৈরি করুন — Moulvibazar থেকে সারা বাংলাদেশ।
-          </p>
-          <div class="hero-actions">
-            <a href="/courses/" class="btn btn-primary" data-bn="কোর্সসমূহ দেখুন" data-en="Browse Courses">কোর্সসমূহ দেখুন</a>
-            <a href="/admission/" class="btn btn-ghost" data-bn="ভর্তি হোন" data-en="Apply Now">ভর্তি হোন</a>
+    <!-- HERO — restored original design -->
+    <section class="lh-hero" id="home">
+      <div class="container">
+        <div class="lh-hero-box">
+          <div class="lh-hero-content">
+            <div class="lh-badge">
+              <span class="lh-badge-dot"></span>
+              <span data-bn="AI-Powered • Hands-on Training • Real Career" data-en="AI-Powered • Hands-on Training • Real Career">AI-Powered • Hands-on Training • Real Career</span>
+            </div>
+            <h1 class="lh-hero-title">
+              <span data-bn="আজ শিখুন," data-en="Learn today,">আজ শিখুন,</span><br />
+              <span data-bn="আগামীকাল নেতৃত্ব দিন।" data-en="lead tomorrow.">আগামীকাল নেতৃত্ব দিন।</span>
+            </h1>
+            <p class="lh-hero-description">
+              আধুনিক IT skill, AI-powered tools এবং real-world project-এর মাধ্যমে নিজেকে গড়ে তুলুন এমন এক career-এর জন্য, যেখানে আপনি নেতৃত্ব দেবেন — অনুসরণ করবেন না।
+              <br><br>
+              <strong style="color:#fff;">SNK IT Institute — Learn To Lead.</strong>
+            </p>
+            <div class="lh-hero-buttons">
+              <a href="#courses" class="lh-btn lh-btn-primary" data-bn="শেখা শুরু করুন →" data-en="Start Learning →">শেখা শুরু করুন →</a>
+              <a href="https://wa.me/8801705633700?text=আমি%20SNK%20IT%20Institute%20সম্পর্কে%20জানতে%20চাই" target="_blank" rel="noopener noreferrer" class="lh-btn lh-btn-secondary" data-bn="যোগাযোগ করুন" data-en="Contact Us">যোগাযোগ করুন</a>
+            </div>
           </div>
-          <div class="hero-stats">
-            <div class="hero-stat"><strong id="heroCourseCount">—</strong><span data-bn="টি কোর্স" data-en="Courses">টি কোর্স</span></div>
-            <div class="hero-stat"><strong>AI</strong><span data-bn="Powered Learning" data-en="Powered Learning">Powered Learning</span></div>
-            <div class="hero-stat"><strong>100%</strong><span data-bn="Skill Focused" data-en="Skill Focused">Skill Focused</span></div>
-          </div>
-        </div>
-        <div class="hero-panel">
-          <div class="hero-panel-track">
-            <div class="track-item">
-              <span class="track-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16"/><path d="M6 16V9"/><path d="M12 16V5"/><path d="M18 16v-3"/></svg></span>
-              <div><strong data-bn="Hands-on প্রজেক্ট" data-en="Hands-on Projects">Hands-on প্রজেক্ট</strong><span data-bn="থিওরির পাশাপাশি বাস্তব কাজ" data-en="Real work alongside theory">থিওরির পাশাপাশি বাস্তব কাজ</span></div>
-            </div>
-            <div class="track-item">
-              <span class="track-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 11c2.8.3 5 2.7 5 5.5"/></svg></span>
-              <div><strong data-bn="অভিজ্ঞ ইনস্ট্রাক্টর" data-en="Experienced Mentors">অভিজ্ঞ ইনস্ট্রাক্টর</strong><span data-bn="ইন্ডাস্ট্রি থেকে শেখা" data-en="Learn from industry practitioners">ইন্ডাস্ট্রি থেকে শেখা</span></div>
-            </div>
-            <div class="track-item">
-              <span class="track-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg></span>
-              <div><strong data-bn="ক্যারিয়ার সাপোর্ট" data-en="Career Support">ক্যারিয়ার সাপোর্ট</strong><span data-bn="কোর্স শেষে গাইডলাইন" data-en="Guidance after you finish">কোর্স শেষে গাইডলাইন</span></div>
-            </div>
+          <div class="lh-hero-visual">
+            <img class="lh-hero-main-image" src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/Frame%205.svg" alt="SNK IT Institute AI Powered Learning" />
           </div>
         </div>
       </div>
@@ -403,7 +399,7 @@
     let currentLanguage = localStorage.getItem("snk-course-language") || "bn";
     let currentTheme = localStorage.getItem("snk-course-theme") || "dark";
     const featuredGrid = document.getElementById("featuredGrid");
-    const heroCourseCount = document.getElementById("heroCourseCount");
+    const heroCourseCount = document.getElementById("heroCourseCount"); // no longer in hero; guarded below
 
     document.addEventListener("DOMContentLoaded", init);
 
@@ -425,7 +421,7 @@
         let courses = [];
         snapshot.forEach(doc => courses.push({ id: doc.id, ...doc.data() }));
         courses = courses.filter(c => c && (c.title || c.titleBn || c.titleEn));
-        heroCourseCount.textContent = courses.length || "—";
+        if (heroCourseCount) heroCourseCount.textContent = courses.length || "—";
         courses.sort((a, b) => getDateValue(b.createdAt) - getDateValue(a.createdAt));
         const featured = courses.slice(0, 3);
         if (!featured.length) {
